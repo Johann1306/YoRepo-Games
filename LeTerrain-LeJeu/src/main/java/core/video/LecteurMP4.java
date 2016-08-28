@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import core.configuration.Constante;
 import front.MainFrame;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
