@@ -35,6 +35,5 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_101/jre/lib/ext/jl1.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_101/jre/lib/ext/mp3plugin.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_101/jre/lib/ext/jmf.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/TestVLC-Light"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

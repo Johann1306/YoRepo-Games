@@ -71,7 +71,7 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newPlaybackSpeedActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new RateAction(resource("menu.playback.item.speed.item.x4"    ), mediaPlayer, 4f));
         actions.add(new RateAction(resource("menu.playback.item.speed.item.x2"    ), mediaPlayer, 2f));
         actions.add(new RateAction(resource("menu.playback.item.speed.item.normal"), mediaPlayer, 1f));
@@ -81,28 +81,28 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newPlaybackSkipActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new SkipAction(resource("menu.playback.item.skipForward" ), mediaPlayer,  10000));
         actions.add(new SkipAction(resource("menu.playback.item.skipBackward"), mediaPlayer, -10000));
         return ImmutableList.copyOf(actions);
     }
 
     private List<Action> newPlaybackChapterActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new PreviousChapterAction(resource("menu.playback.item.previousChapter"), mediaPlayer));
         actions.add(new NextChapterAction    (resource("menu.playback.item.nextChapter"    ), mediaPlayer));
         return ImmutableList.copyOf(actions);
     }
 
     private List<Action> newPlaybackControlActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new PlayAction(resource("menu.playback.item.play"), mediaPlayer));
         actions.add(new StopAction(resource("menu.playback.item.stop"), mediaPlayer));
         return ImmutableList.copyOf(actions);
     }
 
     private List<Action> newAudioStereoModeActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new StereoModeAction(resource("menu.audio.item.stereoMode.item.stereo" ), mediaPlayer, null));
         actions.add(new StereoModeAction(resource("menu.audio.item.stereoMode.item.left"   ), mediaPlayer, null));
         actions.add(new StereoModeAction(resource("menu.audio.item.stereoMode.item.right"  ), mediaPlayer, null));
@@ -111,7 +111,7 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newAudioControlActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new VolumeAction(resource("menu.audio.item.increaseVolume"), mediaPlayer,  10));
         actions.add(new VolumeAction(resource("menu.audio.item.decreaseVolume"), mediaPlayer, -10));
         actions.add(new MuteAction  (resource("menu.audio.item.mute"          ), mediaPlayer     ));
@@ -119,7 +119,7 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newVideoZoomActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new ZoomAction(resource("menu.video.item.zoom.item.quarter" ), mediaPlayer, 0.25f));
         actions.add(new ZoomAction(resource("menu.video.item.zoom.item.half"    ), mediaPlayer, 0.50f));
         actions.add(new ZoomAction(resource("menu.video.item.zoom.item.original"), mediaPlayer, 1.00f));
@@ -129,7 +129,7 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newVideoAspectRatioActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new AspectRatioAction(resource("menu.video.item.aspectRatio.item.default"), mediaPlayer, null));
         actions.add(new AspectRatioAction("16:9"  , mediaPlayer, "16:9"   ));
         actions.add(new AspectRatioAction("4:3"   , mediaPlayer, "4:3"    ));
@@ -143,7 +143,7 @@ public final class MediaPlayerActions {
     }
 
     private List<Action> newVideoCropActions(MediaPlayer mediaPlayer) {
-        List<Action> actions = new ArrayList<>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(new CropAction(resource("menu.video.item.crop.item.default"), mediaPlayer, null));
         actions.add(new CropAction("16:10" , mediaPlayer, "16:10"  ));
         actions.add(new CropAction("16:9"  , mediaPlayer, "16:9"   ));

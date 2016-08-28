@@ -34,7 +34,7 @@ import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.streams.NativeStreams;
 import uk.co.caprica.vlcjplayer.event.ShutdownEvent;
-import uk.co.caprica.vlcjplayer.view.main.MainFrame;
+import uk.co.caprica.vlcjplayer.view.main.MainFrameVLC;
 
 /**
  * Application entry-point.
@@ -59,7 +59,7 @@ public class VlcjPlayer {
     public VlcjPlayer() {
         mediaPlayerComponent = application().mediaPlayerComponent();
 
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrameVLC();
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

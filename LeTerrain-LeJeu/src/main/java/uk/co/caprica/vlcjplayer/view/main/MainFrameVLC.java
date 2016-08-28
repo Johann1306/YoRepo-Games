@@ -71,7 +71,7 @@ import uk.co.caprica.vlcjplayer.view.action.mediaplayer.MediaPlayerActions;
 import uk.co.caprica.vlcjplayer.view.snapshot.SnapshotView;
 
 @SuppressWarnings("serial")
-public final class MainFrame extends BaseFrame {
+public final class MainFrameVLC extends BaseFrame {
 
     private static final String ACTION_EXIT_FULLSCREEN = "exit-fullscreen";
 
@@ -123,7 +123,7 @@ public final class MainFrame extends BaseFrame {
 
     private final JPanel bottomPane;
 
-    public MainFrame() {
+    public MainFrameVLC() {
         super("vlcj player");
 
         this.mediaPlayerComponent = application().mediaPlayerComponent();
@@ -133,7 +133,7 @@ public final class MainFrame extends BaseFrame {
         mediaOpenAction = new StandardAction(resource("menu.media.item.openFile")) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (JFileChooser.APPROVE_OPTION == fileChooser.showOpenDialog(MainFrame.this)) {
+                if (JFileChooser.APPROVE_OPTION == fileChooser.showOpenDialog(MainFrameVLC.this)) {
                     File file = fileChooser.getSelectedFile();
                     String mrl = file.getAbsolutePath();
                     application().addRecentMedia(mrl);
@@ -174,8 +174,8 @@ public final class MainFrame extends BaseFrame {
                 bottomPane.revalidate();
                 bottomPane.getParent().invalidate();
                 bottomPane.getParent().revalidate();
-                MainFrame.this.invalidate();
-                MainFrame.this.revalidate();
+                MainFrameVLC.this.invalidate();
+                MainFrameVLC.this.revalidate();
             }
         };
 
@@ -343,7 +343,7 @@ public final class MainFrame extends BaseFrame {
             public void error(MediaPlayer mediaPlayer) {
                 videoContentPane.showDefault();
                 application().post(StoppedEvent.INSTANCE);
-                JOptionPane.showMessageDialog(MainFrame.this, MessageFormat.format(resources().getString("error.errorEncountered"), fileChooser.getSelectedFile().toString()), resources().getString("dialog.errorEncountered"), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(MainFrameVLC.this, MessageFormat.format(resources().getString("error.errorEncountered"), fileChooser.getSelectedFile().toString()), resources().getString("dialog.errorEncountered"), JOptionPane.ERROR_MESSAGE);
             }
 
             @Override
@@ -415,7 +415,7 @@ public final class MainFrame extends BaseFrame {
     }
 
     private void applyPreferences() {
-        Preferences prefs = Preferences.userNodeForPackage(MainFrame.class);
+        Preferences prefs = Preferences.userNodeForPackage(MainFrameVLC.class);
         setBounds(
             prefs.getInt("frameX"     , 100),
             prefs.getInt("frameY"     , 100),
@@ -441,7 +441,7 @@ public final class MainFrame extends BaseFrame {
     @Override
     protected void onShutdown() {
         if (wasShown()) {
-            Preferences prefs = Preferences.userNodeForPackage(MainFrame.class);
+            Preferences prefs = Preferences.userNodeForPackage(MainFrameVLC.class);
             prefs.putInt    ("frameX"          , getX     ());
             prefs.putInt    ("frameY"          , getY     ());
             prefs.putInt    ("frameWidth"      , getWidth ());
