@@ -9,7 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import front.MainFrame;
-import modele.item.personnage.PersoNom;
+import modele.item.personnage.PersoPrenom;
 
 public class MenuManager extends JMenuBar implements Serializable {
 
@@ -60,19 +60,19 @@ public class MenuManager extends JMenuBar implements Serializable {
 	
 	public static void lanceRefreshMenu() {
 		JPanel panelShowing = MainFrame.getPanelCentre().getPanelShowing();
-		if (panelShowing.getName().toLowerCase().contains(PersoNom.JOHANN.name().toLowerCase())) {
+		if (panelShowing.getName().toLowerCase().contains(PersoPrenom.JOHANN.name().toLowerCase())) {
 			action.setForeground(Color.BLUE);
 			// add missions dispo pour le perso
 			action.removeAll();
-		} else if (panelShowing.getName().toLowerCase().contains(PersoNom.PIERRE.name().toLowerCase())) {
+		} else if (panelShowing.getName().toLowerCase().contains(PersoPrenom.PIERRE.name().toLowerCase())) {
 			action.setForeground(Color.GREEN);			
-		} else if (panelShowing.getName().toLowerCase().contains(PersoNom.THOMAS.name().toLowerCase())) {
+		} else if (panelShowing.getName().toLowerCase().contains(PersoPrenom.THOMAS.name().toLowerCase())) {
 			action.setForeground(Color.RED);			
-		} else if (panelShowing.getName().toLowerCase().contains(PersoNom.YANNICK.name().toLowerCase())) {
+		} else if (panelShowing.getName().toLowerCase().contains(PersoPrenom.YANNICK.name().toLowerCase())) {
 			action.setForeground(Color.MAGENTA);			
-		} else if (panelShowing.getName().toLowerCase().contains(PersoNom.NICOLAS.name().toLowerCase())) {
+		} else if (panelShowing.getName().toLowerCase().contains(PersoPrenom.NICOLAS.name().toLowerCase())) {
 			action.setForeground(Color.YELLOW);			
-		} else if (panelShowing.getName().toLowerCase().contains(PersoNom.GROUPE.name().toLowerCase())) {
+		} else if (panelShowing.getName().toLowerCase().contains(PersoPrenom.GROUPE.name().toLowerCase())) {
 			action.setForeground(Color.WHITE);
 		}
 		

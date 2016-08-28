@@ -6,12 +6,12 @@ import java.io.*;
 import javax.swing.*;
 import javax.media.*;
 
-public class LecteurMP4 extends JFrame 
+public class LecteurMP4Bis extends JFrame 
 {
     private Player player;
     private File file;
 
-    public LecteurMP4()
+    public LecteurMP4Bis()
     {
         super( "Demonstrating the Java Media Player" );
 
@@ -86,7 +86,7 @@ public class LecteurMP4 extends JFrame
 
     public static void main(String args[])
     {
-        LecteurMP4 app = new LecteurMP4();
+        LecteurMP4Bis app = new LecteurMP4Bis();
 
         app.addWindowListener( new WindowAdapter() 
         {

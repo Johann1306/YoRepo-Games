@@ -19,7 +19,7 @@ import core.ItemManager;
 import core.configuration.Constante;
 import modele.evenement.Evenement;
 import modele.item.Item;
-import modele.item.personnage.PersoNom;
+import modele.item.personnage.PersoPrenom;
 
 public class PanelBas extends JPanel {
 	
@@ -49,7 +49,7 @@ public class PanelBas extends JPanel {
 		panelInventaire.setMaximumSize(new Dimension(1000, Constante.PANEL_BAS_HAUTEUR));
 		
 		// Recuperer la liste d'items
-		refreshPanelInventaire(PersoNom.GROUPE);
+		refreshPanelInventaire(PersoPrenom.GROUPE);
 		
 		// Ajout au panel principale
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -58,7 +58,7 @@ public class PanelBas extends JPanel {
 		this.add(panelInventaire);
 	}
 
-	public void refreshPanelBas(PersoNom nom) {
+	public void refreshPanelBas(PersoPrenom nom) {
 
 		// Refresh Evenements
 		refreshEvenements();
@@ -69,7 +69,7 @@ public class PanelBas extends JPanel {
 
 	private void refreshEvenements() {
 		
-		List<Evenement> evenementsDisponibles = new LinkedList<>(EvenementManager.getEvenementsDisponibles());
+		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(EvenementManager.getEvenementsDisponibles());
 		panelEvenement.removeAll();
 		
 		// Tri les 10 derniers evenements
@@ -86,7 +86,7 @@ public class PanelBas extends JPanel {
 		}
 	}
 
-	private void refreshPanelInventaire(PersoNom nom) {
+	private void refreshPanelInventaire(PersoPrenom nom) {
 		
 		panelInventaire.removeAll();
 		JPanel panelVertical = new JPanel();
@@ -124,9 +124,7 @@ public class PanelBas extends JPanel {
 	}
 
 	public void refreshPanelBasByPerso(String panelCourant) {
-		String nom = panelCourant.substring(5).toUpperCase();
-		PersoNom persoNom = PersoNom.valueOf(nom);
-		refreshPanelBas(persoNom);
+		refreshPanelBas(PersoPrenom.valueOf(panelCourant));
 	}
 }
 

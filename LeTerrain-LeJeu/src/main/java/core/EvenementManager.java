@@ -36,9 +36,9 @@ public class EvenementManager implements Serializable {
 		lecteur = new LecteurMP4();
 		lecteur.init();
 
-		evenements = new ArrayList<>();
-		evenementsDisponibles = new LinkedList<>();
-		evenementsIndisponibles = new ArrayList<>();
+		evenements = new ArrayList<Evenement>();
+		evenementsDisponibles = new LinkedList<Evenement>();
+		evenementsIndisponibles = new ArrayList<Evenement>();
 
 		// Chargement des evenements
 
@@ -50,7 +50,7 @@ public class EvenementManager implements Serializable {
 		EvenementTheme type1 = EvenementTheme.ANNIVERSAIRE;
 		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 10, 0, 0);
 
-		List<Item> itemsDebloques1 = new ArrayList<>();
+		List<Item> itemsDebloques1 = new ArrayList<Item>();
 		Item item1 = ItemManager.getItemByNom("item1");
 		Item item2 = ItemManager.getItemByNom("item2");
 		itemsDebloques1.add(item1);
@@ -65,7 +65,7 @@ public class EvenementManager implements Serializable {
 		String sonPath2 = "";
 		EvenementTheme type2 = EvenementTheme.SORTIE_SERIE;
 		Date date2 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 12, 0, 0);
-		List<Item> itemsDebloques2 = new ArrayList<>();
+		List<Item> itemsDebloques2 = new ArrayList<Item>();
 		Item item3 = ItemManager.getItemByNom("item3");
 		Item item6 = ItemManager.getItemByNom("item6");
 		Item item7 = ItemManager.getItemByNom("item7");
@@ -98,7 +98,7 @@ public class EvenementManager implements Serializable {
 		String sonPath3 = "";
 		EvenementTheme type3 = EvenementTheme.SORTIE_SERIE;
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 14, 0, 0);
-		List<Item> itemsDebloques3 = new ArrayList<>();
+		List<Item> itemsDebloques3 = new ArrayList<Item>();
 
 		Evenement test3 = new Evenement(titre3, informations3, path3, sonPath1, videoPath1, type3, date3, itemsDebloques3);
 		
@@ -108,7 +108,7 @@ public class EvenementManager implements Serializable {
 		String sonPath4 = "";
 		EvenementTheme type4 = EvenementTheme.SORTIE_SERIE;
 		Date date4 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 16, 0, 0);
-		List<Item> itemsDebloques4 = new ArrayList<>();
+		List<Item> itemsDebloques4 = new ArrayList<Item>();
 		Item item4 = ItemManager.getItemByNom("item4");
 		Item item5 = ItemManager.getItemByNom("item5");
 		itemsDebloques4.add(item4);
@@ -151,7 +151,7 @@ public class EvenementManager implements Serializable {
 	}
 
 	private static void refreshEvenements() {
-		List<Evenement> indispoTemp = new ArrayList<>(evenementsIndisponibles);
+		List<Evenement> indispoTemp = new ArrayList<Evenement>(evenementsIndisponibles);
 		for (Evenement evenement : indispoTemp) {
 			if (evenement.estDisponible()) {
 				// Refresh

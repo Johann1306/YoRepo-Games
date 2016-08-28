@@ -148,11 +148,4 @@ public class MainFrame extends JFrame implements Serializable {
 		return coreManager;
 	}
 
-
-	public static void main(String[] args) {
-
-		MainFrame fenetre = new MainFrame();
-		fenetre.startMainFrame();
-	}
-
 }
