@@ -46,8 +46,6 @@ public final class Application {
     private static final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 
     private static final int MAX_RECENT_MEDIA_SIZE = 10;
-
-    
     
     private final EventBus eventBus;
 
