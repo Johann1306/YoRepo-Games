@@ -1,0 +1,23 @@
+-----------------------------------------------------------------------------------------------------
+site : democratie debattons de tous les sujets :
+(wikipedia-like de questions avec votes convaincu ou non en fonction de la connaissance du sujet)
+- themes 					(credibilité %)
+- sujet 					(oui/non ou nombre)
+- connaissance du sujet 			(0/5)
+- documents/arguments/preuves pour 		(convaincu %)
+- documents/arguments/preuves contre 		(convaincu %)
+- documents a valider/verifier			(verifié %)
+- votes constants evolutifs avec commentaires et debats
+- commentaires a moderer
+- ajout de sujet
+- ajout de documents/arguments/preuves pour ou contre
+- niveau de credibilité d'un membre si bcp de document validé et votant convaincu
+
+exemples de sujets :
+- 
+
+-----------------------------------------------------------------------------------------------------
+Videos informatifs :
+
+-----------------------------------------------------------------------------------------------------
+

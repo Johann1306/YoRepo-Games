@@ -1,0 +1,47 @@
+Objectifs :
+
+faire un petit jeu en Java
+faire une jeu generique
+puis adapté pour le terrain
+
+
+moteur de creation de persos (faceyourmanga.com/south park creation de personnage)
+moteur de creation de maps plan vu de dessus qui contient des lieux (tiles, musique, sons) Montfermeil / Franceville
+moteur de creation de lieux 2D vu de haut a la zelda/(vu de coté a la mario) (dimension variable, tiles, points d'action (declenche un mini-jeu), nom ,id, epoque, image, musique, sons)
+moteur de creation de tiles (dimension fixe, couleurs par pixels, nom, id
+moteur de generation de quizz (par classe, type, etc...)
+moteur graphique / rafraichissemnt de l'image
+moteur de creation de mini jeux (obectifs : reussite-defaite-neutre : bonus malus, aptitude par perso, par mini jeux avant de pouvoir le refaire/ gain max / perte max, image, musique, sons)
+moteur pour les musiques et sons de l'epoques configurables (funk, rap fr/us, rnb, generique dessins animés/manga/series/films, ...) (prec, pause, lecture, suiv, ) (option, en canon, barre des longueur d'ondes)
+generateur de Marak
+integrer un emulateur (nes, snes) (Class Process())
+Mettre en place des Achievements (10connexions,50% du jeu,...)
+Fichiers chargés au demarage Excel?/ ou BDD
+site web / Flash
+possibilité d'ajouter du contenu pour les joueurs (generation de fichier a charger au demarage) (missions (rattacher a l'arbe de missions), objets, musique, video, image, dialogue, )
+
+progression des persos vie/energie/experience/argent(points de chouinage petit)/carac/niveau/aptitudes/pouvoirs
+systeme de jour/temps (defile continuellement 1 min = 1 mois avec pause possible? ou passe le temps au tour par tour), passer le temps jusqu'a au moins une action a faire, passer le temps de force par tranche de temps fixe et configurable
+inventaire par perso (objets contextuelles, billes, argent, etc)
+inventaire du joueur (bonus spec +2 sur un perso choisi ou obligatoire)
+liste deroulante de choix par lieux/par perso/par heure?/par epoque, surbrillance si contexte ok / Gestion de POI sur la map
+dialogues defilants a l'ancienne, police adapté
+
+Point and click / Action type (ouvrir donner parler) / Mario type / south park style / RPG / drug wars / Sims / Jeu d'argent / Quizz / Mini Jeux
+
+style de jeu :
+mini jeux aleatoires: 70% de reussite (+1 carac, + aptitude spe), 30% de defaite (-carac -vie), depend des carac de base (need +2 agi, +aptitudes special), evenement contextuelle en fonctions des persos ()
+
+jeu de quizz (questions ajoutables)
+jeu de poker (argent + phrases de contexte en fonction des persos)
+jeu de blackjack (argent + phrases de contexte en fonction des persos)
+jeu de magic (vente du surplus)
+jeu de billes (vente du surplus > technique: poussette)
+jeu de cartes a retourner (vente du surplus)
+jeu de cartes a collectionner (vente du surplus)
+jeu de societe
+jeu de question/reponses ecrite au clavier
+
+jeu de foot (differents terrains, equipe pro, equipe france 98, ...)
+jeu de combat du style retro (double dragon, final fantasy, pokemon)
+jeu a la the lost vikings (3 ou +)
