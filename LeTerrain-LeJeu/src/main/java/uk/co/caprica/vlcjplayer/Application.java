@@ -47,6 +47,8 @@ public final class Application {
 
     private static final int MAX_RECENT_MEDIA_SIZE = 10;
 
+    
+    
     private final EventBus eventBus;
 
     private final EmbeddedMediaPlayerComponent mediaPlayerComponent;
