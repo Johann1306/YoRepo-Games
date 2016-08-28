@@ -1,6 +1,6 @@
 package modele.item.personnage;
 
-public enum PersoNom {
+public enum PersoPrenom {
 	PIERRE,
 	NICOLAS,
 	YANNICK,

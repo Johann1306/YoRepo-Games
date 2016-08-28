@@ -6,10 +6,10 @@ import java.util.Map;
 public class Competence {
 
 	private Map<PersoStat, Integer> stats = null;
-	
-	public void initialise() {
+
+	public Competence() {
 		
-		stats = new HashMap<>();
+		stats = new HashMap<PersoStat, Integer>();
 		
 		stats.put(PersoStat.LUCK, 50);
 		stats.put(PersoStat.LIBERTE_CREATIVE, 50);
@@ -30,5 +30,7 @@ public class Competence {
 		stats.put(PersoStat.NOOBISME, 50);
 	}
 	
-	
+	public Map<PersoStat, Integer> getStats() {
+		return stats;
+	}
 }

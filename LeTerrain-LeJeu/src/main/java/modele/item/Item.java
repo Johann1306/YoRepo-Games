@@ -2,7 +2,7 @@ package modele.item;
 
 import java.util.List;
 
-import modele.item.personnage.PersoNom;
+import modele.item.personnage.PersoPrenom;
 
 public class Item implements Disponible {
 
@@ -12,11 +12,11 @@ public class Item implements Disponible {
 	private List<String> imagePaths;
 	private List<String> sonPaths;
 	private List<String> videoPaths;
-	private PersoNom proprietaire;
+	private PersoPrenom proprietaire;
 	private ItemType type;
 	private boolean isDisponible = false;
 	
-	public Item(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths, List<String> videoPaths, PersoNom proprietaire, ItemType type,  boolean isDisponible) {
+	public Item(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths, List<String> videoPaths, PersoPrenom proprietaire, ItemType type,  boolean isDisponible) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -61,7 +61,7 @@ public class Item implements Disponible {
 		return sonPaths;
 	}
 	
-	public PersoNom getProprietaire() {
+	public PersoPrenom getProprietaire() {
 		return proprietaire;
 	}
 	

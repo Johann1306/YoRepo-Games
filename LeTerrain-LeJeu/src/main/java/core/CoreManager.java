@@ -11,6 +11,7 @@ public class CoreManager implements Serializable  {
 	private ItemManager itemManager;
 	private EvenementManager evenementManager;
 	private MusiqueManager musiqueManager;
+	private BonusManager bonusManager;
 	private MissionManager missionManager;
 	private PersonnageManager personnageManager;
 	
@@ -29,7 +30,10 @@ public class CoreManager implements Serializable  {
 
 		musiqueManager = new MusiqueManager();
 		musiqueManager.initialise();
-
+		
+		bonusManager = new BonusManager();
+		bonusManager.initialise();
+		
 		missionManager = new MissionManager();
 		missionManager.initialise();
 		
@@ -76,6 +80,14 @@ public class CoreManager implements Serializable  {
 
 	public void setMusiqueManager(MusiqueManager musiqueManager) {
 		this.musiqueManager = musiqueManager;
+	}
+
+	public BonusManager getBonusManager() {
+		return bonusManager;
+	}
+
+	public void setBonusManager(BonusManager bonusManager) {
+		this.bonusManager = bonusManager;
 	}
 
 	public MissionManager getMissionManager() {

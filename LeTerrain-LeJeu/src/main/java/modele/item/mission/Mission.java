@@ -5,9 +5,10 @@ import java.util.List;
 
 import modele.bonus.Bonus;
 import modele.item.Item;
+import modele.item.lieu.Lieu;
 import modele.item.mission.enums.MissionDifficulty;
 import modele.item.mission.enums.MissionType;
-import modele.item.personnage.PersoNom;
+import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
 
@@ -35,7 +36,8 @@ public class Mission {
 	private List<String> imagePaths;
 	private List<String> sonPaths;
 	private List<String> videoPaths;
-	private PersoNom proprietaire;
+	private PersoPrenom proprietaire;
+	private Lieu lieu;
 	private int chanceVictoire;
 	private String conditionVictoire;
 	private String conditionDefaite;
@@ -57,7 +59,7 @@ public class Mission {
 	private boolean isDejaFaite = false;
 
 	public Mission(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
-			List<String> videoPaths, PersoNom proprietaire, int chanceVictoire, String conditionVictoire,
+			List<String> videoPaths, PersoPrenom proprietaire, Lieu lieu, int chanceVictoire, String conditionVictoire,
 			String conditionDefaite, String objectif, Bonus gain, Bonus perte, int gainMax, int perteMax, Date date,
 			MissionType type, MissionDifficulty difficulty, List<PersonnagePrincipal> personnagesRequis,
 			List<PersonnagePrincipal> personnagesInterdits, List<PersonnageSecondaire> personnagesSecondaires,
@@ -70,6 +72,7 @@ public class Mission {
 		this.sonPaths = sonPaths;
 		this.videoPaths = videoPaths;
 		this.proprietaire = proprietaire;
+		this.lieu = lieu;
 		this.chanceVictoire = chanceVictoire;
 		this.conditionVictoire = conditionVictoire;
 		this.conditionDefaite = conditionDefaite;
@@ -137,11 +140,11 @@ public class Mission {
 		this.videoPaths = videoPaths;
 	}
 
-	public PersoNom getProprietaire() {
+	public PersoPrenom getProprietaire() {
 		return proprietaire;
 	}
 
-	public void setProprietaire(PersoNom proprietaire) {
+	public void setProprietaire(PersoPrenom proprietaire) {
 		this.proprietaire = proprietaire;
 	}
 
@@ -287,6 +290,22 @@ public class Mission {
 
 	public void setDejaFaite(boolean isDejaFaite) {
 		this.isDejaFaite = isDejaFaite;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Lieu getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(Lieu lieu) {
+		this.lieu = lieu;
 	}
 
 }

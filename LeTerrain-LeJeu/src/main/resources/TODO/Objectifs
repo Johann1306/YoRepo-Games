@@ -19,6 +19,7 @@ Mettre en place des Achievements (10connexions,50% du jeu,...)
 Fichiers chargés au demarage Excel?/ ou BDD
 site web / Flash
 possibilité d'ajouter du contenu pour les joueurs (generation de fichier a charger au demarage) (missions (rattacher a l'arbe de missions), objets, musique, video, image, dialogue, )
+moteur de creation de mission
 
 progression des persos vie/energie/experience/argent(points de chouinage petit)/carac/niveau/aptitudes/pouvoirs
 systeme de jour/temps (defile continuellement 1 min = 1 mois avec pause possible? ou passe le temps au tour par tour), passer le temps jusqu'a au moins une action a faire, passer le temps de force par tranche de temps fixe et configurable
@@ -44,4 +45,5 @@ jeu de question/reponses ecrite au clavier
 
 jeu de foot (differents terrains, equipe pro, equipe france 98, ...)
 jeu de combat du style retro (double dragon, final fantasy, pokemon)
+jeu a la California Games (SEGA Master System)
 jeu a la the lost vikings (3 ou +)

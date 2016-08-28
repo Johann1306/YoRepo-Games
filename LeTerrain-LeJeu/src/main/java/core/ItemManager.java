@@ -6,7 +6,7 @@ import java.util.List;
 
 import modele.item.Item;
 import modele.item.ItemType;
-import modele.item.personnage.PersoNom;
+import modele.item.personnage.PersoPrenom;
 
 public class ItemManager implements Serializable {
 
@@ -18,51 +18,51 @@ public class ItemManager implements Serializable {
 
 	public void initialise() {
 
-		items = new ArrayList<>();
-		itemsDisponibles = new ArrayList<>();
-		itemsIndisponibles = new ArrayList<>();
+		items = new ArrayList<Item>();
+		itemsDisponibles = new ArrayList<Item>();
+		itemsIndisponibles = new ArrayList<Item>();
 
 		// Chargement des items
 
-		List<String> imagePaths1 = new ArrayList<>();
+		List<String> imagePaths1 = new ArrayList<String>();
 		String imagePath1 = "src/main/resources/image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
 
-		List<String> imagePaths2 = new ArrayList<>();
+		List<String> imagePaths2 = new ArrayList<String>();
 		String imagePath2 = "src/main/resources/image/mp3Player/pause.png";
 		imagePaths2.add(imagePath2);
 
-		List<String> imagePaths3 = new ArrayList<>();
+		List<String> imagePaths3 = new ArrayList<String>();
 		String imagePath3 = "src/main/resources/image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
 
-		List<String> sonPaths1 = new ArrayList<>();
+		List<String> sonPaths1 = new ArrayList<String>();
 		String sonPath1 = "src/main/resources/sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
 
-		List<String> sonPaths2 = new ArrayList<>();
+		List<String> sonPaths2 = new ArrayList<String>();
 		String sonPath2 = "src/main/resources/sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
-		List<String> videoPaths1 = new ArrayList<>();
+		List<String> videoPaths1 = new ArrayList<String>();
 		String videoPath1 = "src/main/resources/video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 
-		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoNom.JOHANN, ItemType.CARTES, false);
-		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoNom.NICOLAS, ItemType.BILLES, false);
-		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoNom.THOMAS, ItemType.OBJET_QUETE, false);
-		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item7 = new Item(incrementeId(), "item7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item8 = new Item(incrementeId(), "item8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item9 = new Item(incrementeId(), "item9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item10 = new Item(incrementeId(), "item10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item11 = new Item(incrementeId(), "item11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item12 = new Item(incrementeId(), "item12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item13 = new Item(incrementeId(), "item13", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item14 = new Item(incrementeId(), "item14", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item15 = new Item(incrementeId(), "item15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoNom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, ItemType.CARTES, false);
+		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, ItemType.BILLES, false);
+		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, ItemType.OBJET_QUETE, false);
+		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item7 = new Item(incrementeId(), "item7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item8 = new Item(incrementeId(), "item8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item9 = new Item(incrementeId(), "item9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item10 = new Item(incrementeId(), "item10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item11 = new Item(incrementeId(), "item11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item12 = new Item(incrementeId(), "item12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item13 = new Item(incrementeId(), "item13", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item14 = new Item(incrementeId(), "item14", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item15 = new Item(incrementeId(), "item15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		
 		// Ajout a la liste
 		items.add(item1);
@@ -99,8 +99,8 @@ public class ItemManager implements Serializable {
 	}
 
 	
-	public static List<Item> getItemsByPerso(PersoNom nomPerso) {
-		List<Item> itemPerso = new ArrayList<>();
+	public static List<Item> getItemsByPerso(PersoPrenom nomPerso) {
+		List<Item> itemPerso = new ArrayList<Item>();
 		for (Item item : items) {
 			if (item.getProprietaire().equals(nomPerso) && item.isDisponible()) {
 				itemPerso.add(item);
@@ -130,7 +130,7 @@ public class ItemManager implements Serializable {
 	}
 
 	private static void refreshItems() {
-		List<Item> indispoTemp = new ArrayList<>(itemsIndisponibles);
+		List<Item> indispoTemp = new ArrayList<Item>(itemsIndisponibles);
 		for (Item item : indispoTemp) {
 			if (item.isDisponible()) {
 				// Refresh

@@ -14,20 +14,22 @@ import modele.item.personnage.PersonnagePrincipal;
 
 public class BonusManager implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private static List<Bonus> allBonus;
 
 	public void initialise() {
-		allBonus = new ArrayList<>();
+		allBonus = new ArrayList<Bonus>();
 		
 		// Chargement des Bonus
 		
-		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapVide = new HashMap<>();
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapVide = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
 		
-		Map<PersoStat,Integer> statsMapNicoVide = new HashMap<>();
-		Map<PersoStat,Integer> statsMapPipoVide = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYacoVide = new HashMap<>();
-		Map<PersoStat,Integer> statsMapTomVide = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYoVide = new HashMap<>();
+		Map<PersoStat,Integer> statsMapNicoVide = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapPipoVide = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYacoVide = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapTomVide = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYoVide = new HashMap<PersoStat,Integer>();
 		
 		bonusMapVide.put(PersoPrenom.NICOLAS, statsMapNicoVide);
 		bonusMapVide.put(PersoPrenom.JOHANN, statsMapYoVide);
@@ -37,13 +39,13 @@ public class BonusManager implements Serializable {
 		
 		Bonus bonusVide = new Bonus(bonusMapVide);
 		
-		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMap1 = new HashMap<>();
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMap1 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
 		
-		Map<PersoStat,Integer> statsMapNico = new HashMap<>();
-		Map<PersoStat,Integer> statsMapPipo = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYaco = new HashMap<>();
-		Map<PersoStat,Integer> statsMapTom = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYo = new HashMap<>();
+		Map<PersoStat,Integer> statsMapNico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapPipo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYaco = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapTom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYo = new HashMap<PersoStat,Integer>();
 		
 		statsMapNico.put(PersoStat.ACCELERATION, new Integer(2));
 		statsMapPipo.put(PersoStat.ACCELERATION, new Integer(2));
@@ -60,13 +62,13 @@ public class BonusManager implements Serializable {
 		Bonus bonus1 = new Bonus(bonusMap1);
 		
 		// Chargement des Bonus
-		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMap2 = new HashMap<>();
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMap2 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
 		
-		Map<PersoStat,Integer> statsMapNico2 = new HashMap<>();
-		Map<PersoStat,Integer> statsMapPipo2 = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYaco2 = new HashMap<>();
-		Map<PersoStat,Integer> statsMapTom2 = new HashMap<>();
-		Map<PersoStat,Integer> statsMapYo2 = new HashMap<>();
+		Map<PersoStat,Integer> statsMapNico2 = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapPipo2 = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYaco2 = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapTom2 = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapYo2 = new HashMap<PersoStat,Integer>();
 		
 		statsMapNico2.put(PersoStat.ACCELERATION, new Integer(-1));
 		statsMapPipo2.put(PersoStat.ACCELERATION, new Integer(-1));
