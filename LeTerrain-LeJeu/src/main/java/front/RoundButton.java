@@ -15,7 +15,7 @@ public class RoundButton extends JButton {
 	  }
 	 
 	  /**
-	   * détermine si le point (x, y) est à l'intérieur de l'icône circulaire
+	   * determine si le point (x, y) est a l interieur de l icone circulaire
 	   */
 	  public boolean contains(int x, int y) {
 	    Dimension size = getSize();

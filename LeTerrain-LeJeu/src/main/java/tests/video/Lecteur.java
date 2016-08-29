@@ -19,10 +19,10 @@ public class Lecteur extends JPanel
      try
      {
 
-        // Créer un lecteur pour lire le fichier specifié    
+        // Creer un lecteur pour lire le fichier specifie    
         Player mediaPlayer = Manager.createRealizedPlayer( url_media );
     	
-        // Créer les composants de video et de contrôle PlaysBack
+        // Creer les composants de video et de controle PlaysBack
         Component video = mediaPlayer.getVisualComponent();           
         Component controles = mediaPlayer.getControlPanelComponent();  
 
@@ -33,7 +33,7 @@ public class Lecteur extends JPanel
         if ( controles != null )
            add( controles, BorderLayout.SOUTH );
 
-        // Lancer la lecture de fichier sélectionné 
+        // Lancer la lecture de fichier selectionne 
         mediaPlayer.start(); 
      } 
      catch ( Exception err )

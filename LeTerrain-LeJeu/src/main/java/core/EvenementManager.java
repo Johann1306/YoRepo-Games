@@ -158,7 +158,7 @@ public class EvenementManager implements Serializable {
 				evenementsDisponibles.add(evenement);
 				evenementsIndisponibles.remove(evenement);
 
-				// Lancer le son ou la musique associé a l'evenement
+				// Lancer le son ou la musique associe a l evenement
 				try {
 					if (applicationEvenement != null && applicationEvenement.isPlaying()) {
 						applicationEvenement.stop();
@@ -182,13 +182,13 @@ public class EvenementManager implements Serializable {
 					e.printStackTrace();
 				}
 				
-				// Lancer la video associé a l'evenement
+				// Lancer la video associe a l evenement
 				lecteur.play(evenement.getVideoPath());
 				
-				// Afficher JDialog pour l'evenement
+				// Afficher JDialog pour l evenement
 				int type = getTypeEvenement(evenement);
 				ImageIcon image = new ImageIcon(evenement.getImagePath());
-				// Si il n'y a pas d'image, on retourne l'icone par defaut d'un evenement
+				// Si il n y a pas d image, on retourne l icone par defaut d un evenement
 				if (image.getIconWidth() == -1) {
 					image = new ImageIcon("src/main/resources/image/defaut/defautEvenement.png");
 				}
@@ -198,7 +198,7 @@ public class EvenementManager implements Serializable {
 				List<Item> itemsDebloques = evenement.getItemsDebloques();
 				for (Item item : itemsDebloques) {
 					
-					// Lancer le son ou la musique associé a l'item
+					// Lancer le son ou la musique associe a l item
 					try {
 						if (applicationItem != null && applicationItem.isPlaying()) {
 							applicationItem.stop();
@@ -220,7 +220,7 @@ public class EvenementManager implements Serializable {
 							t.start();
 						}
 						
-						// Lancer la video associé a l'evenement
+						// Lancer la video associe a l item
 						lecteur.play(item.getVideoPaths().get(0));
 					} catch (Exception e) {
 						e.printStackTrace();
