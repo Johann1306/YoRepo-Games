@@ -72,7 +72,7 @@ public class PersonnagePrincipal { //extends Item {
 		// Pour chaque stat
 		for (PersoStat stat : statsPerso.keySet()) {
 			
-			// Si cette stat est modifiée
+			// Si cette stat est modifiee
 			if (map.containsKey(stat)) {
 				
 				// On la modifie

@@ -112,7 +112,7 @@ public class MusiqueOnOffWindow extends JFrame implements ActionListener {
 
 		};
 
-		application = new Sound4("src/main/resources/son/Dans la ferme à Mathurin.mp3", listener);
+		application = new Sound4("src/main/resources/son/Dans la ferme a Mathurin.mp3", listener);
 		setVisible(true);
 		application.play();
 

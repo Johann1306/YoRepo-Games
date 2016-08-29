@@ -55,7 +55,7 @@ public final class Application {
 
     private final ScheduledExecutorService tickService = Executors.newSingleThreadScheduledExecutor();
 
-    private final Deque<String> recentMedia = new ArrayDeque<>(MAX_RECENT_MEDIA_SIZE);
+    private final Deque<String> recentMedia = new ArrayDeque<String>(MAX_RECENT_MEDIA_SIZE);
 
     private static final class ApplicationHolder {
         private static final Application INSTANCE = new Application();
@@ -90,7 +90,7 @@ public final class Application {
         eventBus.register(subscriber);
     }
 
-    public void post(Object event) {
+    public void post(final Object event) {
         // Events are always posted and processed on the Swing Event Dispatch thread
         if (SwingUtilities.isEventDispatchThread()) {
             eventBus.post(event);
@@ -123,7 +123,7 @@ public final class Application {
     }
 
     public List<String> recentMedia() {
-        return new ArrayList<>(recentMedia);
+        return new ArrayList<String>(recentMedia);
     }
 
     public void clearRecentMedia() {

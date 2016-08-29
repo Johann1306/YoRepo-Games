@@ -72,8 +72,8 @@ public class PanelMusique extends JPanel {
 		stop.setBorderPainted(false);
 		next.setBorderPainted(false);
 
-		back.setToolTipText("Précédant");
-		play.setToolTipText("Démarrer");
+		back.setToolTipText("Precedant");
+		play.setToolTipText("Demarrer");
 		pause.setToolTipText("La touche pause ne marche pas putain!!!");
 		stop.setToolTipText("Arreter");
 		next.setToolTipText("Suivant");
@@ -441,12 +441,12 @@ public class PanelMusique extends JPanel {
 							}
 						}
 					}
-					System.out.println("Thread-" + j + " terminé");
+					System.out.println("Thread-" + j + " termine");
 					j++;
 				}
 			});
 			if (!t.isAlive()) {
-				System.out.println("Thread-" + k + " démarré");
+				System.out.println("Thread-" + k + " demarre");
 				k++;
 				t.start();
 			}

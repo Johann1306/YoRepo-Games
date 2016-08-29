@@ -13,13 +13,13 @@ public class TestLecteur
 
   public static void main( String args[] )
   {
-     // Créer un objet JFileChooser
+     // Creer un objet JFileChooser
      JFileChooser fileChooser = new JFileChooser();
 
      // Afficher le JFileChooser
      int etat = fileChooser.showOpenDialog( null );
 
-     // Si un fichier a été sélectionné
+     // Si un fichier a ete selectionne
      if ( etat == JFileChooser.APPROVE_OPTION ) 
      {
         URL fichierVideo = null;
@@ -31,7 +31,7 @@ public class TestLecteur
            JFrame mediaTest = new JFrame( "Lecteur Multimedia" );
            mediaTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 
-           // Faire appel à la classe Lecteur créée précédemment 
+           // Faire appel a la classe Lecteur creee precedemment 
            Lecteur monLecteur = new Lecteur( fichierVideo );
            mediaTest.add( monLecteur );
 

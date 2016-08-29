@@ -22,7 +22,7 @@ import modele.item.personnage.Pouvoir;
 
 public class PersonnageManager implements Serializable {
 
-	// Need PouvoirManager instancié avant
+	// Need PouvoirManager instancie avant
 	
 	private static final long serialVersionUID = 1L;
 	private static Groupe leGroupe;
