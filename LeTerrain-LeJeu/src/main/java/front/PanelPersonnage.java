@@ -1,17 +1,22 @@
 package front;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import core.MenuManager;
+import core.MusiqueManager;
 import core.PersonnageManager;
 import core.configuration.Constante;
+import modele.evenement.EvenementTheme;
+import modele.item.media.audio.Musique;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersoPrenom;
@@ -29,16 +34,17 @@ public class PanelPersonnage extends JPanel {
 //	private ImageIcon iconAli = null;
 //	private ImageIcon iconGuillaume = null;
 //	private ImageIcon iconJonathan = null;
-//
-//	private JButton boutonNicolas = null;
-//	private JButton boutonPierre = null;
-//	private JButton boutonYannick = null;
-//	private JButton boutonThomas = null;
-//	private JButton boutonJohann = null;
-//	private JButton boutonAli = null;
-//	private JButton boutonGuillaume = null;
-//	private JButton boutonJonathan = null;
-//	private JButton boutonGroupe = null;
+
+	private static JButton boutonNicolas = null;
+	private static JButton boutonPierre = null;
+	private static JButton boutonYannick = null;
+	private static JButton boutonThomas = null;
+	private static JButton boutonJohann = null;
+	private static JButton boutonAli = null;
+	private static JButton boutonGuillaume = null;
+	private static JButton boutonJonathan = null;
+	private static JButton boutonGroupe = null;
+	private static List<JButton> boutons = null;
 	
 	public PanelPersonnage() {
 		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -53,16 +59,25 @@ public class PanelPersonnage extends JPanel {
 		PersonnagePrincipal ali = leGroupe.getPersoByNom(PersoPrenom.ALI);
 		PersonnagePrincipal guillaume = leGroupe.getPersoByNom(PersoPrenom.GUILLAUME);
 		PersonnagePrincipal jonathan = leGroupe.getPersoByNom(PersoPrenom.JONATHAN);
+
+		boutonNicolas = new JButton(nicolas.getPhotoPrincipal());
+		boutonPierre = new JButton(pierre.getPhotoPrincipal());
+		boutonYannick = new JButton(yannick.getPhotoPrincipal());
+		boutonThomas = new JButton(thomas.getPhotoPrincipal());
+		boutonJohann = new JButton(johann.getPhotoPrincipal());
+		boutonAli = new JButton(ali.getPhotoPrincipal());
+		boutonGuillaume = new JButton(guillaume.getPhotoPrincipal());
+		boutonJonathan = new JButton(jonathan.getPhotoPrincipal());
+		boutonGroupe = new JButton("GROUPE");
 		
-		JButton boutonNicolas = new JButton(nicolas.getPhotoPrincipal());
-		JButton boutonPierre = new JButton(pierre.getPhotoPrincipal());
-		JButton boutonYannick = new JButton(yannick.getPhotoPrincipal());
-		JButton boutonThomas = new JButton(thomas.getPhotoPrincipal());
-		JButton boutonJohann = new JButton(johann.getPhotoPrincipal());
-		JButton boutonAli = new JButton(ali.getPhotoPrincipal());
-		JButton boutonGuillaume = new JButton(guillaume.getPhotoPrincipal());
-		JButton boutonJonathan = new JButton(jonathan.getPhotoPrincipal());
-		JButton boutonGroupe = new JButton("GROUPE");
+		boutonNicolas.setName(nicolas.getPrenom().name());
+		boutonPierre.setName(pierre.getPrenom().name());
+		boutonYannick.setName(yannick.getPrenom().name());
+		boutonThomas.setName(thomas.getPrenom().name());
+		boutonJohann.setName(johann.getPrenom().name());
+		boutonAli.setName(ali.getPrenom().name());
+		boutonGuillaume.setName(guillaume.getPrenom().name());
+		boutonJonathan.setName(jonathan.getPrenom().name());
 		
 		boutonNicolas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
 		boutonPierre.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
@@ -162,8 +177,27 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.GROUPE.name());
 				panelBas.refreshPanelBas(PersoPrenom.GROUPE);			
 				MenuManager.lanceRefreshMenu();
-		}
+			}
 		});
+		
+		boutonNicolas.setVisible(false);
+		boutonPierre.setVisible(false);
+		boutonYannick.setVisible(false);
+		boutonThomas.setVisible(false);
+		boutonJohann.setVisible(false);
+		boutonAli.setVisible(false);
+		boutonGuillaume.setVisible(false);
+		boutonJonathan.setVisible(false);
+		
+		boutons = new ArrayList<JButton>();
+		boutons.add(boutonNicolas);
+		boutons.add(boutonPierre);
+		boutons.add(boutonYannick);
+		boutons.add(boutonThomas);
+		boutons.add(boutonJohann);
+		boutons.add(boutonAli);
+		boutons.add(boutonGuillaume);
+		boutons.add(boutonJonathan);
 		
 //		JPanel panelVide = new JPanel();
 //		panelVide.setBackground(Color.RED);
@@ -187,5 +221,29 @@ public class PanelPersonnage extends JPanel {
 		this.add(boutonGuillaume);
 		//		this.add(Box.createRigidArea(new Dimension(0, 5)));
 		this.add(boutonJonathan);
+		
+		refreshPanelPersonnage();
+	}
+	
+	// Gestion de l arrivee des personnages dans le groupe
+	public static void refreshPanelPersonnage() {
+		//TODO : arreter refresh quand full persos
+		Groupe leGroupe = PersonnageManager.getLeGroupe();
+		for (PersonnagePrincipal perso : leGroupe.getPersos()) {
+			if (perso.isAvailable()) {
+				if ( boutons != null ) {
+					for (JButton bouton : boutons) {
+						if (bouton.getName().equals(perso.getPrenom().name()) && !bouton.isVisible()) {
+							// affichage du bouton du perso
+							bouton.setVisible(true);
+							// lancer le son arrivee dans le groupe
+							MusiqueManager.play(new Musique("src/main/resources/sonParDefaut/312-SecretOfMana-ally-joins.mp3"));
+							// affichage du panneau arrivee
+							JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+						} 
+					}
+				}
+			}
+		}
 	}
 }

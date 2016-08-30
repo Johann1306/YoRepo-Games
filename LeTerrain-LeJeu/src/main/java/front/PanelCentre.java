@@ -50,15 +50,15 @@ public class PanelCentre extends JPanel {
 		panelYannick.setName(PersoPrenom.YANNICK.name());
 		
 		panelAli = new JPanel();
-		panelAli.setBackground(Color.MAGENTA);
+		panelAli.setBackground(Color.PINK);
 		panelAli.setName(PersoPrenom.ALI.name());
 		
 		panelGuillaume = new JPanel();
-		panelGuillaume.setBackground(Color.MAGENTA);
+		panelGuillaume.setBackground(Color.ORANGE);
 		panelGuillaume.setName(PersoPrenom.GUILLAUME.name());
 		
 		panelJonathan = new JPanel();
-		panelJonathan.setBackground(Color.MAGENTA);
+		panelJonathan.setBackground(Color.CYAN);
 		panelJonathan.setName(PersoPrenom.JONATHAN.name());
 		
 		panelGroupe = new JPanel();
@@ -74,9 +74,9 @@ public class PanelCentre extends JPanel {
 		cardLayout.addLayoutComponent(panelPierre.getName(), panelPierre);
 		cardLayout.addLayoutComponent(panelThomas.getName(), panelThomas);
 		cardLayout.addLayoutComponent(panelYannick.getName(), panelYannick);
-		cardLayout.addLayoutComponent(panelGroupe.getName(), panelAli);
-		cardLayout.addLayoutComponent(panelGroupe.getName(), panelGuillaume);
-		cardLayout.addLayoutComponent(panelGroupe.getName(), panelJonathan);
+		cardLayout.addLayoutComponent(panelAli.getName(), panelAli);
+		cardLayout.addLayoutComponent(panelGuillaume.getName(), panelGuillaume);
+		cardLayout.addLayoutComponent(panelJonathan.getName(), panelJonathan);
 		cardLayout.addLayoutComponent(panelGroupe.getName(), panelGroupe);
 		
 		this.setLayout(cardLayout);

@@ -14,7 +14,7 @@ import modele.item.media.audio.Son;
 
 public class PersonnagePrincipal { //extends Item {
 	
-	private String nom;
+	private PersoNom nom;
 	private PersoPrenom prenom;
 	private String surnomPrincipal;
 	private List<String> surnoms;
@@ -36,7 +36,7 @@ public class PersonnagePrincipal { //extends Item {
 	private Competence competence;
 	private boolean available;
 
-	public PersonnagePrincipal(String nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
+	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, List<ImageIcon> photos, List<Pouvoir> pouvoirs, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
@@ -85,7 +85,7 @@ public class PersonnagePrincipal { //extends Item {
 		}
 	}
 	
-	public String getNom() {
+	public PersoNom getNom() {
 		return nom;
 	}
 
