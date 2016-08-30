@@ -16,6 +16,8 @@ public class CoreManager implements Serializable  {
 	private PersonnageManager personnageManager;
 	
 	public void initialise() {
+		
+		// Ordonne
 		menuManager = new MenuManager();
 		menuManager.initialise();
 		
@@ -28,9 +30,6 @@ public class CoreManager implements Serializable  {
 		evenementManager = new EvenementManager();
 		evenementManager.initialise();
 
-		musiqueManager = new MusiqueManager();
-		musiqueManager.initialise();
-		
 		bonusManager = new BonusManager();
 		bonusManager.initialise();
 		
@@ -39,7 +38,11 @@ public class CoreManager implements Serializable  {
 		
 		personnageManager = new PersonnageManager();
 		personnageManager.initialise();
-
+		
+		// Sans ordre
+		musiqueManager = new MusiqueManager();
+		musiqueManager.initialise();
+		
 	}
 
 	public MenuManager getMenuManager() {

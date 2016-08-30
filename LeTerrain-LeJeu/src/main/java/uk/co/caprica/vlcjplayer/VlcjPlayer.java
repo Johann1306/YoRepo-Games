@@ -76,6 +76,7 @@ public class VlcjPlayer {
             public void windowClosed(WindowEvent e) {
             }
         });
+        // TODO empecher la fermeture / virer l'icone
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.setAlwaysOnTop(true);
 

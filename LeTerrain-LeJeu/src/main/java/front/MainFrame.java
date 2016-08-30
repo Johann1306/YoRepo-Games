@@ -74,13 +74,13 @@ public class MainFrame extends JFrame implements Serializable {
 
 		// Gestion des JPanel de la fenetre principale
 		panelHaut.setBackground(Color.RED);
-		
 		panelGauche.setBackground(Color.BLACK);	
-		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_HAUTEUR));
 		panelCentre.setBackground(Color.YELLOW);	
 		panelDroite.setBackground(Color.GREEN);	
 		panelBas.setBackground(Color.GRAY);
 		
+		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_MAX_HAUTEUR));
+
 		panelGauche.add(panelPersonnage);
 		panelDroite.add(panelMusique);
 

@@ -14,10 +14,12 @@ import javax.swing.JOptionPane;
 import core.audio.Sound;
 import core.video.LecteurMP4;
 import front.MainFrame;
+import front.PanelPersonnage;
 import modele.evenement.Evenement;
 import modele.evenement.EvenementTheme;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.media.audio.Musique;
 
 public class EvenementManager implements Serializable {
 
@@ -25,10 +27,8 @@ public class EvenementManager implements Serializable {
 	private static List<Evenement> evenements;
 	private static List<Evenement> evenementsDisponibles;
 	private static List<Evenement> evenementsIndisponibles;
-	private static Sound applicationEvenement = null;
-	private static Sound applicationItem = null;
-	private static LecteurMP4 lecteur = null;
 
+	private static LecteurMP4 lecteur = null;
 
 	public void initialise() {
 		
@@ -88,7 +88,6 @@ public class EvenementManager implements Serializable {
 		itemsDebloques2.add(item13);
 		itemsDebloques2.add(item14);
 		itemsDebloques2.add(item15);
-
 
 		Evenement test2 = new Evenement(titre2, informations2, path2, sonPath1, videoPath1, type2, date2, itemsDebloques2);
 
@@ -159,28 +158,7 @@ public class EvenementManager implements Serializable {
 				evenementsIndisponibles.remove(evenement);
 
 				// Lancer le son ou la musique associe a l evenement
-				try {
-					if (applicationEvenement != null && applicationEvenement.isPlaying()) {
-						applicationEvenement.stop();
-					}
-					applicationEvenement = new Sound(evenement.getSonPath());
-					Thread t = new Thread(new Runnable() {
-
-						@Override
-						public void run() {
-							try {
-								applicationEvenement.play();
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					});
-					if (!t.isAlive()) {
-						t.start();
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				MusiqueManager.playSonEvenement(evenement.getSonPath());
 				
 				// Lancer la video associe a l evenement
 				lecteur.play(evenement.getVideoPath());
@@ -198,33 +176,12 @@ public class EvenementManager implements Serializable {
 				List<Item> itemsDebloques = evenement.getItemsDebloques();
 				for (Item item : itemsDebloques) {
 					
+					// TODO get(0)
 					// Lancer le son ou la musique associe a l item
-					try {
-						if (applicationItem != null && applicationItem.isPlaying()) {
-							applicationItem.stop();
-						}
-						// TODO : get(0)
-						applicationItem = new Sound(item.getSonPath().get(0));
-						Thread t = new Thread(new Runnable() {
-
-							@Override
-							public void run() {
-								try {
-									applicationItem.play();
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
-							}
-						});
-						if (!t.isAlive()) {
-							t.start();
-						}
+					MusiqueManager.playSonItem(item.getSonPath().get(0));
 						
-						// Lancer la video associe a l item
-						lecteur.play(item.getVideoPaths().get(0));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					// Lancer la video associe a l item
+					lecteur.play(item.getVideoPaths().get(0));
 					
 					// Afficher JDialog pour l'evenement
 					ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
@@ -236,6 +193,8 @@ public class EvenementManager implements Serializable {
 				}
 			}
 		}
+		// Si un evenement a debloque un perso
+		PanelPersonnage.refreshPanelPersonnage();
 	}
 	
 	public static Evenement getNextEvenement() {

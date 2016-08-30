@@ -2,6 +2,7 @@ package core;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class MissionManager implements Serializable  {
 		String videoPath1 = "src/main/resources/video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
-		Date date1 = DateManager.genereUneDate(1990, 9, 3, 11, 00, 00);
+		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 11, 00, 00);
 		Date dateVide = null;
 		
 		List<Bonus> bonus = BonusManager.getAllBonus();
@@ -63,7 +64,7 @@ public class MissionManager implements Serializable  {
 		Bonus bonus1 = bonus.get(1);
 		Bonus malus1 = bonus.get(2);
 		
-		Mission mission1 = new Mission(incrementId(), "mission1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, new Lieu(), 70, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionner un Personnage principal", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, new Lieu(), 70, "", "", "Choisir votre premier Personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission2 = new Mission(incrementId(), "mission2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, new Lieu(), 70, "", "", "objectif1", bonusVide, malus1, 1, 1, dateVide, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission3 = new Mission(incrementId(), "mission3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, new Lieu(), 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateVide, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission4 = new Mission(incrementId(), "mission4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.YANNICK, new Lieu(), 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateVide, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
@@ -104,6 +105,15 @@ public class MissionManager implements Serializable  {
 		return missions;
 	}
 
+	public static Mission getMissionById(int id) {
+		for (Mission mission : missions) {
+			if (mission.getId() == id) {
+				return mission;
+			}
+		}
+		return null;
+	}
+	
 	public static Mission getMissionByNom(String nom) {
 		for (Mission mission : missions) {
 			if (mission.getNom().equals(nom)) {

@@ -99,6 +99,8 @@ public class PanelHaut extends JPanel {
 				System.out.println(panelShowing);
 				PanelBas panelBas = MainFrame.getPanelBas();
 				panelBas.refreshPanelBasByPerso(panelShowing.getName());
+				// TODO verifier sans refresh
+				PanelPersonnage.refreshPanelPersonnage();
 			}
 		});
 
@@ -127,6 +129,8 @@ public class PanelHaut extends JPanel {
 				System.out.println(panelShowing);
 				PanelBas panelBas = MainFrame.getPanelBas();
 				panelBas.refreshPanelBasByPerso(panelShowing.getName());
+				// TODO verifier sans refresh
+				PanelPersonnage.refreshPanelPersonnage();
 			}
 		});
 

@@ -1,12 +1,10 @@
-package core;
+package tests.video;
 
 import java.net.URL;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import tests.video.Lecteur;
 
 public class TestLecteur
 {
