@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.util.List;
 
 import core.audio.Sound;
 import modele.item.media.audio.Musique;
@@ -11,6 +12,7 @@ public class MusiqueManager implements Serializable {
 
 	private static Sound applicationEvenement = null;
 	private static Sound applicationItem = null;
+	private static Sound applicationMission = null;
 	
 	public void initialise() {
 		// Chargement des musiques		
@@ -74,6 +76,32 @@ public class MusiqueManager implements Serializable {
 				public void run() {
 					try {
 						applicationItem.play();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			if (!t.isAlive()) {
+				t.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static void playSonMission(List<String> sonPaths) {
+		try {
+			if (applicationMission != null && applicationMission.isPlaying()) {
+				applicationMission.stop();
+			}
+			applicationMission = new Sound(sonPaths.get(0));
+			Thread t = new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						applicationMission.play();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

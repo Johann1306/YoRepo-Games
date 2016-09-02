@@ -3,6 +3,8 @@ package modele.item.mission;
 import java.util.Date;
 import java.util.List;
 
+import core.DateManager;
+import core.NomJeu;
 import modele.bonus.Bonus;
 import modele.item.Item;
 import modele.item.lieu.Lieu;
@@ -49,6 +51,7 @@ public class Mission {
 	private Date date;
 	private MissionType type;
 	private MissionDifficulty difficulty;
+	private List<NomJeu> jeux;
 	private List<PersonnagePrincipal> personnagesRequis;
 	private List<PersonnagePrincipal> personnagesInterdits;
 	private List<PersonnageSecondaire> personnagesSecondaires;
@@ -57,11 +60,14 @@ public class Mission {
 	private boolean isDisponible = false;
 	private boolean isRepetable = false;
 	private boolean isDejaFaite = false;
+	private boolean isDejaPresentee = false;
+	private int nombreEssai;
+	private int nombreWin;
 
 	public Mission(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
 			List<String> videoPaths, PersoPrenom proprietaire, Lieu lieu, int chanceVictoire, String conditionVictoire,
 			String conditionDefaite, String objectif, Bonus gain, Bonus perte, int gainMax, int perteMax, Date date,
-			MissionType type, MissionDifficulty difficulty, List<PersonnagePrincipal> personnagesRequis,
+			MissionType type, MissionDifficulty difficulty, List<NomJeu> jeux, List<PersonnagePrincipal> personnagesRequis,
 			List<PersonnagePrincipal> personnagesInterdits, List<PersonnageSecondaire> personnagesSecondaires,
 			List<Item> itemsNecessaires, List<Item> itemsDebloques, boolean isRepetable) {
 		super();
@@ -84,12 +90,15 @@ public class Mission {
 		this.date = date;
 		this.type = type;
 		this.difficulty = difficulty;
+		this.jeux = jeux;
 		this.personnagesRequis = personnagesRequis;
 		this.personnagesInterdits = personnagesInterdits;
 		this.personnagesSecondaires = personnagesSecondaires;
 		this.itemsNecessaires = itemsNecessaires;
 		this.itemsDebloques = itemsDebloques;
 		this.isRepetable = isRepetable;
+		this.nombreEssai = 0;
+		this.nombreWin = 0;
 	}
 
 	public int getId() {
@@ -306,6 +315,54 @@ public class Mission {
 
 	public void setLieu(Lieu lieu) {
 		this.lieu = lieu;
+	}
+
+	public boolean estDisponibleAPresenter() {
+		if (isDejaPresentee) {
+			return false;
+		}
+		// dispo objet needed
+		for (Item item : itemsNecessaires) {
+			if (!item.isDisponible()) {
+				return false;
+			}
+		} 
+		// dispo date 
+		if (date != null) {
+			if (!DateManager.estEgaleALaDateCourante(date) || !DateManager.estApresLaDateCourrante(date)) {
+				return false;
+			}
+		}
+		isDisponible = true;
+		return isDisponible;
+	}
+
+	public boolean isDejaPresentee() {
+		return isDejaPresentee;
+	}
+
+	public void setDejaPresentee(boolean isDejaPresente) {
+		this.isDejaPresentee = isDejaPresente;
+	}
+
+	public List<NomJeu> getJeux() {
+		return jeux;
+	}
+
+	public int getNombreEssai() {
+		return nombreEssai;
+	}
+
+	public void setNombreEssai(int nombreEssai) {
+		this.nombreEssai = nombreEssai;
+	}
+
+	public int getNombreWin() {
+		return nombreWin;
+	}
+
+	public void setNombreWin(int nombreWin) {
+		this.nombreWin = nombreWin;
 	}
 
 }

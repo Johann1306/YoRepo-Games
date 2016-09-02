@@ -91,8 +91,8 @@ public class BonusManager implements Serializable {
 	
 	public static void distribueBonus(Groupe groupe, Bonus bonus) {
 		for (PersonnagePrincipal perso : groupe.getPersos()) {
-			if (bonus.getBonusMap().containsKey(perso)) {
-				perso.addCompetences(bonus.getBonusMap().get(perso));
+			if (bonus.getBonusMap().containsKey(perso.getPrenom())) {
+				perso.addCompetences(bonus.getBonusMap().get(perso.getPrenom()));
 			}
 		}
 	}

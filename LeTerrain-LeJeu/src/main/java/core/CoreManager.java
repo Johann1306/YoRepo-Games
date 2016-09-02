@@ -14,7 +14,9 @@ public class CoreManager implements Serializable  {
 	private BonusManager bonusManager;
 	private MissionManager missionManager;
 	private PersonnageManager personnageManager;
-	
+	private VideoManager videoManager;
+	private JeuManager jeuManager; 
+
 	public void initialise() {
 		
 		// Ordonne
@@ -42,6 +44,12 @@ public class CoreManager implements Serializable  {
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
 		musiqueManager.initialise();
+		
+		videoManager = new VideoManager();
+		videoManager.initialise();
+		
+		jeuManager = new JeuManager();
+		jeuManager.initialise();
 		
 	}
 
@@ -107,6 +115,22 @@ public class CoreManager implements Serializable  {
 
 	public void setPersonnageManager(PersonnageManager personnageManager) {
 		this.personnageManager = personnageManager;
+	}
+
+	public VideoManager getVideoManager() {
+		return videoManager;
+	}
+
+	public void setVideoManager(VideoManager videoManager) {
+		this.videoManager = videoManager;
+	}
+
+	public JeuManager getJeuManager() {
+		return jeuManager;
+	}
+
+	public void setJeuManager(JeuManager jeuManager) {
+		this.jeuManager = jeuManager;
 	}
 
 	public static long getSerialversionuid() {

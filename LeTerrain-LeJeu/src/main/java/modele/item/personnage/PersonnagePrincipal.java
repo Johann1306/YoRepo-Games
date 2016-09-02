@@ -66,21 +66,24 @@ public class PersonnagePrincipal { //extends Item {
 	}
 
 	public void addCompetences(Map<PersoStat, Integer> map) {
-		// On recupere les stats du perso
-		Map<PersoStat, Integer> statsPerso = competence.getStats();
 		
-		// Pour chaque stat
-		for (PersoStat stat : statsPerso.keySet()) {
+		if (map != null) {
+			// On recupere les stats du perso
+			Map<PersoStat, Integer> statsPerso = competence.getStats();
 			
-			// Si cette stat est modifiee
-			if (map.containsKey(stat)) {
+			// Pour chaque stat
+			for (PersoStat stat : statsPerso.keySet()) {
 				
-				// On la modifie
-				Integer valeurStat = statsPerso.get(stat);
-				Integer valeurAAJouter = map.get(stat);
-				Integer valeurModifie = valeurStat + valeurAAJouter;
-				// On met a jour les stats du perso
-				statsPerso.put(stat, valeurModifie);				
+				// Si cette stat est modifiee
+				if (map.containsKey(stat)) {
+					
+					// On la modifie
+					Integer valeurStat = statsPerso.get(stat);
+					Integer valeurAAJouter = map.get(stat);
+					Integer valeurModifie = valeurStat + valeurAAJouter;
+					// On met a jour les stats du perso
+					statsPerso.put(stat, valeurModifie);				
+				}
 			}
 		}
 	}

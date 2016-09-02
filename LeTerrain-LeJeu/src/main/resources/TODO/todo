@@ -1,6 +1,8 @@
 TODO :
 
-- Ajouter la gestion des missions et bonus
-- Gerer les 8 personnages principaux / visible si available true
+- Gerer les 8 personnages principaux / taille du panel personnage quand pas full
 - Gestion sauvegarde/charge
 - integrer la fenetre media a l'appli / faire suivre la fenetre en cas de redimensionnement de l'autre fenetre 
+- Java 2D/3D perso vu de dessus (cercles) 
+- Gestion de tous les parametres de Mission
+- Gestion liste de missions disponible a l'ecran + click lanceMission
