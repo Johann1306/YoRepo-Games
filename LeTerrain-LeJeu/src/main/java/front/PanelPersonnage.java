@@ -222,14 +222,15 @@ public class PanelPersonnage extends JPanel {
 		//		this.add(Box.createRigidArea(new Dimension(0, 5)));
 		this.add(boutonJonathan);
 		
-		refreshPanelPersonnage();
+//		refreshPanelPersonnage();
 	}
 	
 	// Gestion de l arrivee des personnages dans le groupe
-	public static void refreshPanelPersonnage() {
+	public static void refreshArriveePersonnage() {
 		//TODO : arreter refresh quand full persos
 		Groupe leGroupe = PersonnageManager.getLeGroupe();
 		for (PersonnagePrincipal perso : leGroupe.getPersos()) {
+//			System.out.println(perso.getCompetence().toString());
 			if (perso.isAvailable()) {
 				if ( boutons != null ) {
 					for (JButton bouton : boutons) {

@@ -60,14 +60,16 @@ public class PanelBas extends JPanel {
 
 	public void refreshPanelBas(PersoPrenom nom) {
 
+		// TODO : refresh sans removeAll()
+		
 		// Refresh Evenements
-		refreshEvenements();
+		refreshPanelEvenements();
 
 		// Refresh Items
 		refreshPanelInventaire(nom);
 	}
 
-	private void refreshEvenements() {
+	private void refreshPanelEvenements() {
 		
 		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(EvenementManager.getEvenementsDisponibles());
 		panelEvenement.removeAll();

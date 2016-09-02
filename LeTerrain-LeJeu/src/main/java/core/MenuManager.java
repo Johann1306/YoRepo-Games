@@ -1,7 +1,11 @@
 package core;
 
 import java.awt.Color;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -9,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import front.MainFrame;
+import modele.item.mission.Mission;
 import modele.item.personnage.PersoPrenom;
 
 public class MenuManager extends JMenuBar implements Serializable {
@@ -62,26 +67,60 @@ public class MenuManager extends JMenuBar implements Serializable {
 		JPanel panelShowing = MainFrame.getPanelCentre().getPanelShowing();
 		if (panelShowing.getName().contains(PersoPrenom.JOHANN.name())) {
 			action.setForeground(Color.BLUE);
-			// add missions dispo pour le perso
-//			action.removeAll();
+			refreshMenuParPerso(action, PersoPrenom.JOHANN);
 		} else if (panelShowing.getName().contains(PersoPrenom.PIERRE.name())) {
-			action.setForeground(Color.GREEN);			
+			action.setForeground(Color.GREEN);		
+			refreshMenuParPerso(action, PersoPrenom.PIERRE);
 		} else if (panelShowing.getName().contains(PersoPrenom.THOMAS.name())) {
 			action.setForeground(Color.RED);			
+			refreshMenuParPerso(action, PersoPrenom.THOMAS);
 		} else if (panelShowing.getName().contains(PersoPrenom.YANNICK.name())) {
 			action.setForeground(Color.MAGENTA);			
+			refreshMenuParPerso(action, PersoPrenom.YANNICK);
 		} else if (panelShowing.getName().contains(PersoPrenom.NICOLAS.name())) {
 			action.setForeground(Color.YELLOW);		
+			refreshMenuParPerso(action, PersoPrenom.NICOLAS);
 		} else if (panelShowing.getName().contains(PersoPrenom.ALI.name())) {
 			action.setForeground(Color.PINK);		
+			refreshMenuParPerso(action, PersoPrenom.ALI);
 		} else if (panelShowing.getName().contains(PersoPrenom.GUILLAUME.name())) {
 			action.setForeground(Color.ORANGE);		
+			refreshMenuParPerso(action, PersoPrenom.GUILLAUME);
 		} else if (panelShowing.getName().contains(PersoPrenom.JONATHAN.name())) {
 			action.setForeground(Color.CYAN);		
+			refreshMenuParPerso(action, PersoPrenom.JONATHAN);
 		} else if (panelShowing.getName().contains(PersoPrenom.GROUPE.name())) {
 			action.setForeground(Color.WHITE);
+			refreshMenuParPerso(action, PersoPrenom.GROUPE);
 		}
 		
 	}
-	
+
+	private static void refreshMenuParPerso(JMenu action, PersoPrenom persoPrenom) {
+		JMenu menu = new JMenu("Missions");
+		// TODO : eviter le removeAll()
+		action.removeAll();
+		List<Mission> missionsByPerso = MissionManager.getMissionsByPerso(persoPrenom);
+		if (!missionsByPerso.isEmpty()) {
+			for (Mission mission : missionsByPerso) {
+				JMenuItem item = new JMenuItem(mission.getNom());
+				item.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MissionManager.lanceMission(mission);
+					}
+				});
+				menu.add(item);
+			}
+			action.add(menu);
+//			action.addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					MenuManager.refreshMenuParPerso(action, persoPrenom);
+//				}
+//			});
+		}
+	}
 }

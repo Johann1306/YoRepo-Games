@@ -33,4 +33,9 @@ public class Competence {
 	public Map<PersoStat, Integer> getStats() {
 		return stats;
 	}
+
+	@Override
+	public String toString() {
+		return "Competence [stats=" + stats + "]";
+	}
 }

@@ -8,6 +8,8 @@ import java.util.Locale;
 
 import javax.swing.JLabel;
 
+import modele.evenement.Evenement;
+
 public class DateManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -68,6 +70,12 @@ public class DateManager implements Serializable {
 			return true;
 		}
 		return false;
+	}
+	
+	public static long compare(Date date) {
+		long dateCourante = DateManager.getDateCourante().getTime();
+		long dateCompare = date.getTime();
+		return dateCompare-dateCourante;
 	}
 	
 	public static void afficheDateCourrante() {

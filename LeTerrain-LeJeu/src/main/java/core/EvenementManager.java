@@ -8,18 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import core.audio.Sound;
-import core.video.LecteurMP4;
 import front.MainFrame;
 import front.PanelPersonnage;
 import modele.evenement.Evenement;
 import modele.evenement.EvenementTheme;
 import modele.item.Item;
-import modele.item.ItemType;
-import modele.item.media.audio.Musique;
 
 public class EvenementManager implements Serializable {
 
@@ -28,14 +23,8 @@ public class EvenementManager implements Serializable {
 	private static List<Evenement> evenementsDisponibles;
 	private static List<Evenement> evenementsIndisponibles;
 
-	private static LecteurMP4 lecteur = null;
-
 	public void initialise() {
 		
-		// Initialisation du lecteur MP4
-		lecteur = new LecteurMP4();
-		lecteur.init();
-
 		evenements = new ArrayList<Evenement>();
 		evenementsDisponibles = new LinkedList<Evenement>();
 		evenementsIndisponibles = new ArrayList<Evenement>();
@@ -161,7 +150,7 @@ public class EvenementManager implements Serializable {
 				MusiqueManager.playSonEvenement(evenement.getSonPath());
 				
 				// Lancer la video associe a l evenement
-				lecteur.play(evenement.getVideoPath());
+				VideoManager.play(evenement.getVideoPath());
 				
 				// Afficher JDialog pour l evenement
 				int type = getTypeEvenement(evenement);
@@ -181,9 +170,9 @@ public class EvenementManager implements Serializable {
 					MusiqueManager.playSonItem(item.getSonPath().get(0));
 						
 					// Lancer la video associe a l item
-					lecteur.play(item.getVideoPaths().get(0));
+					VideoManager.play(item.getVideoPaths().get(0));
 					
-					// Afficher JDialog pour l'evenement
+					// Afficher JDialog pour l item
 					ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
 					if (itemImage.getIconWidth() == -1) {
 						itemImage = new ImageIcon("src/main/resources/image/defaut/defautItem.png");
@@ -194,7 +183,7 @@ public class EvenementManager implements Serializable {
 			}
 		}
 		// Si un evenement a debloque un perso
-		PanelPersonnage.refreshPanelPersonnage();
+		PanelPersonnage.refreshArriveePersonnage();
 	}
 	
 	public static Evenement getNextEvenement() {
@@ -202,19 +191,13 @@ public class EvenementManager implements Serializable {
 		List<Evenement> evenementsIndisponibles = getEvenementsIndisponibles();
 		long minDiff = 1000000000;
 		for (Evenement evenement : evenementsIndisponibles) {
-			long diff = EvenementManager.compare(evenement);
+			long diff = DateManager.compare(evenement.getDate());
 			if (diff < minDiff ) {
 				minDiff = diff;
 				nextEvenement = evenement;
 			}
 		}
 		return nextEvenement;
-	}
-
-	private static long compare(Evenement evenement) {
-		long dateCourante = DateManager.getDateCourante().getTime();
-		long date = evenement.getDate().getTime();
-		return date-dateCourante;
 	}
 
 	private static int getTypeEvenement(Evenement evenement) {

@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import modele.evenement.Evenement;
+import modele.evenement.EvenementTheme;
 import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.personnage.PersoPrenom;
@@ -143,5 +147,13 @@ public class ItemManager implements Serializable {
 	private static int incrementeId() {
 		id = id +1;
 		return id;
+	}
+
+	public static int getTypeItem(Item item) {
+		int type = JOptionPane.PLAIN_MESSAGE;
+		if (item.getType().equals(ItemType.CARTES)) {
+			type = JOptionPane.ERROR_MESSAGE;
+		}
+		return type;
 	}
 }
