@@ -103,16 +103,16 @@ public class MissionManager implements Serializable  {
 		missions.add(mission3);
 		missions.add(mission4);
 		missions.add(mission5);
-		missions.add(mission6);
-		missions.add(mission7);
-		missions.add(mission8);
-		missions.add(mission9);
-		missions.add(mission10);
-		missions.add(mission11);
-		missions.add(mission12);
-		missions.add(mission13);
-		missions.add(mission14);
-		missions.add(mission15);
+//		missions.add(mission6);
+//		missions.add(mission7);
+//		missions.add(mission8);
+//		missions.add(mission9);
+//		missions.add(mission10);
+//		missions.add(mission11);
+//		missions.add(mission12);
+//		missions.add(mission13);
+//		missions.add(mission14);
+//		missions.add(mission15);
 
 		// Refresh Listes
 		triMissions();

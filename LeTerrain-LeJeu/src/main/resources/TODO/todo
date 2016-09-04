@@ -1,8 +1,11 @@
 TODO :
 
-- Gerer les 8 personnages principaux / taille du panel personnage quand pas full
+- Menu principal + Intro + enchainement premiere mission + choix personnage
+- Gerer les 8 personnages principaux / taille du panel personnage quand pas full / deplacement horizontal du panel a supprimer
 - Gestion sauvegarde/charge
 - integrer la fenetre media a l'appli / faire suivre la fenetre en cas de redimensionnement de l'autre fenetre 
 - Java 2D/3D perso vu de dessus (cercles) 
 - Gestion de tous les parametres de Mission
 - Gestion liste de missions disponible a l'ecran + click lanceMission
+
+- Arbre de dialogue

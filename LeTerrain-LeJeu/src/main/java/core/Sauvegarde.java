@@ -30,13 +30,14 @@ public class Sauvegarde {
 
 		try {
 			
+			Thread.sleep(10000);
 			System.out.println("serialisation");
 			final FileOutputStream fichierOut = new FileOutputStream("frame.ser");
 			oos = new ObjectOutputStream(fichierOut);
 			oos.writeObject(frame.getCoreManager());
 			oos.flush();
 
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 			frame.setVisible(false);
 //			frame.removeAll();
 //			frame.dispose();
@@ -65,6 +66,11 @@ public class Sauvegarde {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public static void save() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

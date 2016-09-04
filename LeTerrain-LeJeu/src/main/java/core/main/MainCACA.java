@@ -1,13 +1,11 @@
 package core.main;
 
-import front.MainFrame;
+import front.FenetrePrincipal;
 
 public class MainCACA {
 
 	public static void main(String[] args) {
-		MainFrame mainFrame = new MainFrame();
-		mainFrame.startMainFrame();
-		
-	}
-	
+		FenetrePrincipal fenetrePrincipal = new FenetrePrincipal();
+		fenetrePrincipal.start();
+	}	
 }
