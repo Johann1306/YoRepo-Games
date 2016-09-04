@@ -3,6 +3,8 @@ package front;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.Serializable;
 
 import javax.swing.JFrame;
@@ -18,7 +20,8 @@ import core.ItemManager;
 import core.MenuManager;
 import core.configuration.Constante;
 
-public class MainFrame extends JFrame implements Serializable {
+//public class MainFrame extends JFrame implements KeyListener {
+public class MainFrame extends JFrame {
 
 	private static PanelHaut panelHaut = new PanelHaut();
 	private static JPanel panelGauche = new JPanel();
@@ -27,8 +30,11 @@ public class MainFrame extends JFrame implements Serializable {
 	private static PanelBas panelBas = new PanelBas();
 	
 	private CoreManager coreManager;
+	
+	private static JPanel content = null;
 
 	public MainFrame() {
+		super();
 		coreManager = new CoreManager();
 		coreManager.initialise();
 		panelHaut = new PanelHaut();
@@ -36,6 +42,7 @@ public class MainFrame extends JFrame implements Serializable {
 		panelCentre = new PanelCentre();
 		panelDroite = new JPanel();
 		panelBas = new PanelBas();
+//	    addKeyListener(this);
 	}
 
 	public MainFrame(CoreManager manager) {
@@ -106,7 +113,7 @@ public class MainFrame extends JFrame implements Serializable {
 		// Gestion Panel video
 		
 		// Ajout a la frame principale
-		final JPanel content = new JPanel();		
+		content = new JPanel();		
 		content.setLayout(new BorderLayout());
 		content.add(scrollPaneGauche, BorderLayout.WEST);
 		content.add(panelHaut, BorderLayout.NORTH);
@@ -148,4 +155,22 @@ public class MainFrame extends JFrame implements Serializable {
 		return coreManager;
 	}
 
+//	@Override
+//	public void keyTyped(KeyEvent e) {
+//		System.out.println("KeyTyped");				
+//	}
+//	
+//	@Override
+//	public void keyReleased(KeyEvent e) {
+//		System.out.println("KeyTyped");				
+//	}
+//	
+//	@Override
+//	public void keyPressed(KeyEvent e) {
+//		System.out.println("KeyTyped");				
+//	}
+	
+	public static MainFrame getMainFrame() {
+		return (MainFrame) content.getParent().getParent().getParent().getParent();
+	}
 }

@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 
 import core.audio.Sound;
 import core.configuration.Constante;
-import front.PanelTitre;
 
 public class WindowMP3WithTitlesScrolling {
 
@@ -26,7 +25,7 @@ public class WindowMP3WithTitlesScrolling {
 	public static File[] musiques = null;
 	public static boolean enchaineNext = true;
 	public static String titre = null;
-	public static PanelTitre panelTitre = null;
+	public static PanelTitreMP3 panelTitre = null;
 	public static JLabel jTitre = null;
 	
 	public static void main(String[] args) {
@@ -398,7 +397,7 @@ public class WindowMP3WithTitlesScrolling {
 
 		// Set the window to be visible as the default to be false
 		titre = musiques[indexCourrant].getName();
-		panelTitre = new PanelTitre(titre);
+		panelTitre = new PanelTitreMP3(titre);
 		panelTitre.setBackground(Color.BLACK);
 //		ExamplePanel panelExample= new ExamplePanel();
 //		panel.add(panelExample);

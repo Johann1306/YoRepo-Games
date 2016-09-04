@@ -10,8 +10,10 @@ import java.util.List;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import front.FenetrePrincipal;
 import front.MainFrame;
 import modele.item.mission.Mission;
 import modele.item.personnage.PersoPrenom;
@@ -40,6 +42,22 @@ public class MenuManager extends JMenuBar implements Serializable {
 		JMenuItem piedThomas = new JMenuItem("a pied.");
 		JMenu chezYannick = new JMenu("chez Yannick...");
 		JMenuItem piedYannick = new JMenuItem("a pied.");
+		
+		menuQuitter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int reponse = JOptionPane.showOptionDialog(getParent(), "N'oublie pas de sauvegarder avant de quitter batard!", "Attention jeune puceau", 0, 0, null, new String[] { "Sauvegarder", "Quitter" }, "defaut");
+				System.out.println(reponse);
+				if (reponse == 0) {
+					Sauvegarde.save();
+				}
+				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
+				fenetrePrincipal.show();
+				// Bloquer la MainFrame
+				MainFrame.getMainFrame().disable();
+			}
+		});
+		
 		this.add(menuFichier);
 			menuFichier.add(menuStart);
 			menuFichier.add(menuCharger);

@@ -45,8 +45,8 @@ public class PanelMusique extends JPanel {
 		ImageIcon pressIcon4 = new ImageIcon("src/main/resources/image/mp3Player/stop.png");
 		ImageIcon pressIcon5 = new ImageIcon("src/main/resources/image/mp3Player/next.png");
 
-		Dimension d = new Dimension(pressIcon1.getIconWidth() + pressIcon2.getIconWidth() + pressIcon3.getIconWidth()
-				+ pressIcon4.getIconWidth() + pressIcon5.getIconWidth(), 100);
+//		Dimension d = new Dimension(pressIcon1.getIconWidth() + pressIcon2.getIconWidth() + pressIcon3.getIconWidth()
+//				+ pressIcon4.getIconWidth() + pressIcon5.getIconWidth(), 100);
 
 		JButton back = new JButton(pressIcon1);
 		JButton play = new JButton(pressIcon2);

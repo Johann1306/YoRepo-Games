@@ -1,5 +1,6 @@
 package core;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,8 +14,10 @@ import front.MainFrame;
 import modele.item.mission.Mission;
 import modele.jeu.Jeu;
 
-public class JeuManager {
+public class JeuManager implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private static Map<NomJeu,Jeu> jeux;  
 	
 	public void initialise() {
