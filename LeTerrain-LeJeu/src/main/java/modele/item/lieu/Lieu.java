@@ -1,13 +1,16 @@
 package modele.item.lieu;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 
 import modele.item.poi.Poi;
 
-public class Lieu {
+public class Lieu implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private int x; // Coordonnee x sur la map
 	private int y; // Coordonnee x sur la map
 	private String name; // Nom du lieu

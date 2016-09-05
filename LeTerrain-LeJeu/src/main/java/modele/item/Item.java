@@ -1,10 +1,13 @@
 package modele.item;
 
+import java.io.Serializable;
 import java.util.List;
 
 import modele.item.personnage.PersoPrenom;
 
-public class Item implements Disponible {
+public class Item implements Disponible, Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private String nom;

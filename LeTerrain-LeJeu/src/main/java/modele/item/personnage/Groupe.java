@@ -1,9 +1,12 @@
 package modele.item.personnage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Groupe {
+public class Groupe implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private List<PersonnagePrincipal> leGroupe;
 

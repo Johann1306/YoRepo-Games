@@ -14,9 +14,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import core.SauvegardeManager;
 import core.configuration.Constante;
 
 public class MenuPrincipal extends JPanel {
+	
+	private static MainFrame mainFrame;
 
 	public MenuPrincipal() {
 	}
@@ -80,7 +83,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame();
+				mainFrame = new MainFrame();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
@@ -91,6 +94,8 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				mainFrame = SauvegardeManager.load();
+				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
 			}
@@ -99,6 +104,8 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				mainFrame = SauvegardeManager.load();
+				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
 			}
@@ -108,7 +115,7 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
-				fenetrePrincipal.hide();
+	//			fenetrePrincipal.hide();
 			}
 		});
 		boutonJeux.addActionListener(new ActionListener() {
@@ -116,7 +123,7 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
-				fenetrePrincipal.hide();
+	//			fenetrePrincipal.hide();
 			}
 		});
 		boutonScore.addActionListener(new ActionListener() {
@@ -124,16 +131,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
-				fenetrePrincipal.hide();
+	//			fenetrePrincipal.hide();
 			}
 		});
 		boutonQuit.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// int confirme = JOptionPane.showConfirmDialog((Component)
-				// null, "T'es sur de vouloir t'arreter maintenant?","Attention
-				// jeune puceau", JOptionPane.OK_CANCEL_OPTION);
 				demandeConfirmationQuitter();
 			}
 
@@ -332,5 +336,12 @@ public class MenuPrincipal extends JPanel {
 			System.exit(0);
 		}
 	}
+	
+	public static MainFrame getMainFrame(){
+		return mainFrame;
+	}
 
+	public static void setMainFrame(MainFrame frame) {
+		mainFrame = frame;
+	}
 }

@@ -18,7 +18,7 @@ public class JeuManager implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private static Map<NomJeu,Jeu> jeux;  
+	private Map<NomJeu,Jeu> jeux;  
 	
 	public void initialise() {
 	
@@ -35,7 +35,7 @@ public class JeuManager implements Serializable {
 		jeux.put(NomJeu.JEU_AGILITE, jeuAgilite);
 	}
 	
-	public static Jeu getJeu(NomJeu nomJeu) {
+	public Jeu getJeu(NomJeu nomJeu) {
 		return jeux.get(nomJeu);
 	}
 

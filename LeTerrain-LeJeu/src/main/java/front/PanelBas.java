@@ -36,7 +36,7 @@ public class PanelBas extends JPanel {
 		panelEvenement.setMaximumSize(new Dimension(500, Constante.PANEL_BAS_HAUTEUR));
 		
 		// Generations des evenements
-		List<Evenement> evenementsDisponibles = EvenementManager.getEvenementsDisponibles();
+		List<Evenement> evenementsDisponibles = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles();
 		for (Evenement evenement : evenementsDisponibles) {
 			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
 			panelEvenement.add(labelEvenement);
@@ -71,7 +71,7 @@ public class PanelBas extends JPanel {
 
 	private void refreshPanelEvenements() {
 		
-		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(EvenementManager.getEvenementsDisponibles());
+		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles());
 		panelEvenement.removeAll();
 		
 		// Tri les 10 derniers evenements
@@ -96,7 +96,7 @@ public class PanelBas extends JPanel {
 		BoxLayout boxLayout = new BoxLayout(panelVertical, BoxLayout.Y_AXIS);
 		panelVertical.setLayout(boxLayout);
 		
-		List<Item> items = ItemManager.getItemsByPerso(nom);
+		List<Item> items = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsByPerso(nom);
 		int compteur = 0;
 		JPanel panelHorizontal = new JPanel();
 		panelVertical.add(panelHorizontal);

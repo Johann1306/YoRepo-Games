@@ -1,5 +1,6 @@
 package modele.item.personnage;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
 
-public class PersonnagePrincipal { //extends Item {
+public class PersonnagePrincipal implements Serializable { //extends Item {
 	
 	private PersoNom nom;
 	private PersoPrenom prenom;

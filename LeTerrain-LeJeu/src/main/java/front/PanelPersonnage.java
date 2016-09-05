@@ -50,7 +50,7 @@ public class PanelPersonnage extends JPanel {
 		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(boxlayout);
 		
-		Groupe leGroupe = PersonnageManager.getLeGroupe();
+		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
 		PersonnagePrincipal nicolas = leGroupe.getPersoByNom(PersoPrenom.NICOLAS);
 		PersonnagePrincipal pierre = leGroupe.getPersoByNom(PersoPrenom.PIERRE);
 		PersonnagePrincipal yannick = leGroupe.getPersoByNom(PersoPrenom.YANNICK);
@@ -104,6 +104,7 @@ public class PanelPersonnage extends JPanel {
 		PanelCentre panelCentre = MainFrame.getPanelCentre();
 		CardLayout cardLayout = panelCentre.getCardLayout();
 		PanelBas panelBas = MainFrame.getPanelBas();
+		MenuManager menuManager = MenuPrincipal.getMainFrame().getCoreManager().getMenuManager();
 		
 		// Gestion lien entre boutons Persos et la fenetre centrales
 		boutonNicolas.addActionListener(new ActionListener() {
@@ -112,7 +113,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.NICOLAS.name());
 				// TODO : essayer de ne pas rafraichir
 				panelBas.refreshPanelBas(PersoPrenom.NICOLAS);
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {
@@ -120,7 +121,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.PIERRE.name());
 				panelBas.refreshPanelBas(PersoPrenom.PIERRE);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonYannick.addActionListener(new ActionListener() {
@@ -128,7 +129,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.YANNICK.name());
 				panelBas.refreshPanelBas(PersoPrenom.YANNICK);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonThomas.addActionListener(new ActionListener() {
@@ -136,7 +137,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.THOMAS.name());
 				panelBas.refreshPanelBas(PersoPrenom.THOMAS);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonJohann.addActionListener(new ActionListener() {
@@ -144,7 +145,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.JOHANN.name());
 				panelBas.refreshPanelBas(PersoPrenom.JOHANN);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonAli.addActionListener(new ActionListener() {
@@ -152,7 +153,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.ALI.name());
 				panelBas.refreshPanelBas(PersoPrenom.ALI);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonGuillaume.addActionListener(new ActionListener() {
@@ -160,7 +161,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.GUILLAUME.name());
 				panelBas.refreshPanelBas(PersoPrenom.GUILLAUME);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonJonathan.addActionListener(new ActionListener() {
@@ -168,7 +169,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.JONATHAN.name());
 				panelBas.refreshPanelBas(PersoPrenom.JONATHAN);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		boutonGroupe.addActionListener(new ActionListener() {
@@ -176,7 +177,7 @@ public class PanelPersonnage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.GROUPE.name());
 				panelBas.refreshPanelBas(PersoPrenom.GROUPE);			
-				MenuManager.lanceRefreshMenu();
+				menuManager.lanceRefreshMenu();
 			}
 		});
 		
@@ -228,20 +229,22 @@ public class PanelPersonnage extends JPanel {
 	// Gestion de l arrivee des personnages dans le groupe
 	public static void refreshArriveePersonnage() {
 		//TODO : arreter refresh quand full persos
-		Groupe leGroupe = PersonnageManager.getLeGroupe();
-		for (PersonnagePrincipal perso : leGroupe.getPersos()) {
-//			System.out.println(perso.getCompetence().toString());
-			if (perso.isAvailable()) {
-				if ( boutons != null ) {
-					for (JButton bouton : boutons) {
-						if (bouton.getName().equals(perso.getPrenom().name()) && !bouton.isVisible()) {
-							// affichage du bouton du perso
-							bouton.setVisible(true);
-							// lancer le son arrivee dans le groupe
-							MusiqueManager.play(new Musique("src/main/resources/sonParDefaut/312-SecretOfMana-ally-joins.mp3"));
-							// affichage du panneau arrivee
-							JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
-						} 
+		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
+		if (leGroupe != null) {
+			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
+	//			System.out.println(perso.getCompetence().toString());
+				if (perso.isAvailable()) {
+					if ( boutons != null ) {
+						for (JButton bouton : boutons) {
+							if (bouton.getName().equals(perso.getPrenom().name()) && !bouton.isVisible()) {
+								// affichage du bouton du perso
+								bouton.setVisible(true);
+								// lancer le son arrivee dans le groupe
+								MusiqueManager.play(new Musique("src/main/resources/sonParDefaut/312-SecretOfMana-ally-joins.mp3"));
+								// affichage du panneau arrivee
+								JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+							} 
+						}
 					}
 				}
 			}

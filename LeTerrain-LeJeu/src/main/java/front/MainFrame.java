@@ -3,9 +3,6 @@ package front;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.Serializable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,9 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import core.CoreManager;
-import core.DateManager;
-import core.EvenementManager;
-import core.ItemManager;
+import core.JeuManager;
 import core.MenuManager;
 import core.configuration.Constante;
 
@@ -33,6 +28,7 @@ public class MainFrame extends JFrame {
 	
 	private static JPanel content = null;
 
+	// Nouvelle Partie
 	public MainFrame() {
 		super();
 		coreManager = new CoreManager();
@@ -45,8 +41,17 @@ public class MainFrame extends JFrame {
 //	    addKeyListener(this);
 	}
 
+	// Chargement Partie
 	public MainFrame(CoreManager manager) {
+		// TODO : virer super ?
+		super();
 		coreManager = manager;
+		MenuManager menuManager = new MenuManager();
+		menuManager.initialise();
+		JeuManager jeuManager = new JeuManager();
+		jeuManager.initialise();
+		coreManager.setMenuManager(menuManager);
+		coreManager.setJeuManager(jeuManager);
 		panelHaut = new PanelHaut();
 		panelGauche = new JPanel();
 		panelCentre = new PanelCentre();
@@ -150,7 +155,6 @@ public class MainFrame extends JFrame {
 		return panelBas;
 	}
 	
-	
 	public CoreManager getCoreManager() {
 		return coreManager;
 	}
@@ -169,8 +173,5 @@ public class MainFrame extends JFrame {
 //	public void keyPressed(KeyEvent e) {
 //		System.out.println("KeyTyped");				
 //	}
-	
-	public static MainFrame getMainFrame() {
-		return (MainFrame) content.getParent().getParent().getParent().getParent();
-	}
+
 }

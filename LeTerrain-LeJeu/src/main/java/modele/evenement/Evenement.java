@@ -1,13 +1,16 @@
 package modele.evenement;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import core.DateManager;
+import front.MenuPrincipal;
 import modele.item.Item;
 
-public class Evenement {
+public class Evenement implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String titre;
 	private String informations;
 	private String imagePath;
@@ -16,6 +19,7 @@ public class Evenement {
 	private EvenementTheme theme;
 	private Date date;
 	private List<Item> itemsDebloques;
+	private boolean isDejaPresente;
 
 	public Evenement(String titre, String informations, String imagePath, String sonPath, String videoPath, EvenementTheme theme, Date date, List<Item> itemsDebloques) {
 		this.titre = titre;
@@ -26,13 +30,14 @@ public class Evenement {
 		this.theme = theme;
 		this.date = date;
 		this.itemsDebloques = itemsDebloques;
+		this.isDejaPresente = false;
 	}
 
-	public boolean estDisponible() {
-		if (DateManager.estEgaleALaDateCourante(date)) {
+	public boolean estDisponibleAPresenter() {
+		if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date) && !isDejaPresente) {
 			return true;
 		}
-		if (DateManager.estAvantLaDateCourrante(date)) {
+		if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estAvantLaDateCourrante(date) && !isDejaPresente) {
 			return true;
 			
 		} else {
@@ -72,4 +77,11 @@ public class Evenement {
 		return date;
 	}
 
+	public boolean isDejaPresente() {
+		return isDejaPresente;
+	}
+
+	public void setDejaPresente(boolean isDejaPresente) {
+		this.isDejaPresente = isDejaPresente;
+	}
 }

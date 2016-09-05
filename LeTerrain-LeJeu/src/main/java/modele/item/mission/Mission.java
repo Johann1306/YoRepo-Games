@@ -1,10 +1,12 @@
 package modele.item.mission;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import core.DateManager;
 import core.NomJeu;
+import front.MenuPrincipal;
 import modele.bonus.Bonus;
 import modele.item.Item;
 import modele.item.lieu.Lieu;
@@ -30,7 +32,9 @@ import modele.item.personnage.PersonnageSecondaire;
  *         itemsDebloques :
  * 
  **/
-public class Mission {
+public class Mission implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private String nom;
@@ -329,7 +333,7 @@ public class Mission {
 		} 
 		// dispo date 
 		if (date != null) {
-			if (!DateManager.estEgaleALaDateCourante(date) || !DateManager.estApresLaDateCourrante(date)) {
+			if (!MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date) || !MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estApresLaDateCourrante(date)) {
 				return false;
 			}
 		}

@@ -1,7 +1,6 @@
 package core;
 
 import java.awt.Color;
-import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
@@ -15,13 +14,14 @@ import javax.swing.JPanel;
 
 import front.FenetrePrincipal;
 import front.MainFrame;
+import front.MenuPrincipal;
 import modele.item.mission.Mission;
 import modele.item.personnage.PersoPrenom;
 
 public class MenuManager extends JMenuBar implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static JMenu action;
+	private JMenu action;
 	
 	public void initialise() {
 		
@@ -43,18 +43,46 @@ public class MenuManager extends JMenuBar implements Serializable {
 		JMenu chezYannick = new JMenu("chez Yannick...");
 		JMenuItem piedYannick = new JMenuItem("a pied.");
 		
+		menuStart.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame mainFrame = new MainFrame();
+				MenuPrincipal.setMainFrame(mainFrame);
+				mainFrame.startMainFrame();
+			}
+		});
+		
+		menuCharger.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame load = SauvegardeManager.load();
+				MenuPrincipal.setMainFrame(load);
+				load.startMainFrame();
+			}
+		});
+		
+		menuSauvegarder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SauvegardeManager.save();
+			}
+		});
+		
 		menuQuitter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int reponse = JOptionPane.showOptionDialog(getParent(), "N'oublie pas de sauvegarder avant de quitter batard!", "Attention jeune puceau", 0, 0, null, new String[] { "Sauvegarder", "Quitter" }, "defaut");
 				System.out.println(reponse);
 				if (reponse == 0) {
-					Sauvegarde.save();
+					SauvegardeManager.save();
 				}
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.show();
 				// Bloquer la MainFrame
-				MainFrame.getMainFrame().disable();
+				MenuPrincipal.getMainFrame().disable();
 			}
 		});
 		
@@ -81,7 +109,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 	}
 	
-	public static void lanceRefreshMenu() {
+	public void lanceRefreshMenu() {
 		JPanel panelShowing = MainFrame.getPanelCentre().getPanelShowing();
 		if (panelShowing.getName().contains(PersoPrenom.JOHANN.name())) {
 			action.setForeground(Color.BLUE);
@@ -114,11 +142,12 @@ public class MenuManager extends JMenuBar implements Serializable {
 		
 	}
 
-	private static void refreshMenuParPerso(JMenu action, PersoPrenom persoPrenom) {
+	private void refreshMenuParPerso(JMenu action, PersoPrenom persoPrenom) {
 		JMenu menu = new JMenu("Missions");
 		// TODO : eviter le removeAll()
 		action.removeAll();
-		List<Mission> missionsByPerso = MissionManager.getMissionsByPerso(persoPrenom);
+		MissionManager missionManager = MenuPrincipal.getMainFrame().getCoreManager().getMissionManager();
+		List<Mission> missionsByPerso = missionManager.getMissionsByPerso(persoPrenom);
 		if (!missionsByPerso.isEmpty()) {
 			for (Mission mission : missionsByPerso) {
 				JMenuItem item = new JMenuItem(mission.getNom());
@@ -126,7 +155,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						MissionManager.lanceMission(mission);
+						missionManager.lanceMission(mission);
 					}
 				});
 				menu.add(item);

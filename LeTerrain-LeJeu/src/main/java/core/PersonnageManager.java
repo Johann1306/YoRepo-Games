@@ -26,8 +26,9 @@ public class PersonnageManager implements Serializable {
 	// Need PouvoirManager instancie avant
 	
 	private static final long serialVersionUID = 1L;
-	private static Groupe leGroupe;
-	private static List<PersonnageSecondaire> personnagesSecondaires;
+	
+	private Groupe leGroupe;
+	private List<PersonnageSecondaire> personnagesSecondaires;
 
 	public void initialise() {
 
@@ -74,11 +75,11 @@ public class PersonnageManager implements Serializable {
 		return leGroupe.getPersoByNom(nom);
 	}
 
-	public static Groupe getLeGroupe() {
+	public Groupe getLeGroupe() {
 		return leGroupe;
 	}
 
-	public static List<PersonnageSecondaire> getPersonnagesSecondaires() {
+	public List<PersonnageSecondaire> getPersonnagesSecondaires() {
 		return personnagesSecondaires;
 	}
 

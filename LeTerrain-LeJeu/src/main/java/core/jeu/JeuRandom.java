@@ -1,5 +1,6 @@
 package core.jeu;
 
+import java.io.Serializable;
 import java.util.List;
 
 import core.NomJeu;
@@ -11,7 +12,9 @@ import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnageSecondaire;
 import modele.jeu.Jeu;
 
-public class JeuRandom extends Jeu {
+public class JeuRandom extends Jeu implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public JeuRandom(NomJeu nomJeu) {
 		super(nomJeu);

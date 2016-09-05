@@ -14,8 +14,11 @@ public class CoreManager implements Serializable  {
 	private BonusManager bonusManager;
 	private MissionManager missionManager;
 	private PersonnageManager personnageManager;
-	private VideoManager videoManager;
-	private JeuManager jeuManager; 
+	private transient VideoManager videoManager;
+	private transient JeuManager jeuManager; 
+	
+	public CoreManager() {
+	}
 
 	public void initialise() {
 		
@@ -30,7 +33,7 @@ public class CoreManager implements Serializable  {
 		itemManager.initialise();
 
 		evenementManager = new EvenementManager();
-		evenementManager.initialise();
+		evenementManager.initialise(itemManager);
 
 		bonusManager = new BonusManager();
 		bonusManager.initialise();

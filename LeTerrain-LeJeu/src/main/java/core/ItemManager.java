@@ -15,9 +15,9 @@ import modele.item.personnage.PersoPrenom;
 public class ItemManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static List<Item> items;
-	private static List<Item> itemsDisponibles;
-	private static List<Item> itemsIndisponibles;
+	private List<Item> items;
+	private List<Item> itemsDisponibles;
+	private List<Item> itemsIndisponibles;
 	private static int id = 0;
 
 	public void initialise() {
@@ -89,11 +89,11 @@ public class ItemManager implements Serializable {
 		triItems();
 	}
 
-	public static List<Item> getAllItems() {
+	public List<Item> getAllItems() {
 		return items;
 	}
 
-	public static Item getItemByNom(String nom) {
+	public Item getItemByNom(String nom) {
 		for (Item item : items) {
 			if (item.getNom().equals(nom)) {
 				return item;
@@ -103,7 +103,7 @@ public class ItemManager implements Serializable {
 	}
 
 	
-	public static List<Item> getItemsByPerso(PersoPrenom nomPerso) {
+	public List<Item> getItemsByPerso(PersoPrenom nomPerso) {
 		List<Item> itemPerso = new ArrayList<Item>();
 		for (Item item : items) {
 			if (item.getProprietaire().equals(nomPerso) && item.isDisponible()) {
@@ -113,17 +113,17 @@ public class ItemManager implements Serializable {
 		return itemPerso;
 	}
 
-	public static List<Item> getItemsDisponibles() {
+	public List<Item> getItemsDisponibles() {
 		refreshItems();
 		return itemsDisponibles;
 	}
 
-	public static List<Item> getItemsIndisponibles() {
+	public List<Item> getItemsIndisponibles() {
 		refreshItems();
 		return itemsIndisponibles;
 	}
 
-	private static void triItems() {
+	private void triItems() {
 		for (Item item : items) {
 			if (item.isDisponible()) {
 				itemsDisponibles.add(item);
@@ -133,7 +133,7 @@ public class ItemManager implements Serializable {
 		}
 	}
 
-	private static void refreshItems() {
+	private void refreshItems() {
 		List<Item> indispoTemp = new ArrayList<Item>(itemsIndisponibles);
 		for (Item item : indispoTemp) {
 			if (item.isDisponible()) {
@@ -144,12 +144,12 @@ public class ItemManager implements Serializable {
 		}
 	}
 	
-	private static int incrementeId() {
+	private int incrementeId() {
 		id = id +1;
 		return id;
 	}
 
-	public static int getTypeItem(Item item) {
+	public int getTypeItem(Item item) {
 		int type = JOptionPane.PLAIN_MESSAGE;
 		if (item.getType().equals(ItemType.CARTES)) {
 			type = JOptionPane.ERROR_MESSAGE;
