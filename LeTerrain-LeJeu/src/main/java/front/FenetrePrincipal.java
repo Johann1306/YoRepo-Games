@@ -47,7 +47,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				FenetrePrincipal.getFenetrePrincipal().hide();
-				MainFrame.getMainFrame().enable();
+				MenuPrincipal.getMainFrame().enable();
 			}
 			
 			@Override

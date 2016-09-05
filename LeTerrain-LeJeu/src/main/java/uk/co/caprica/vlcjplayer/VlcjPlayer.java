@@ -53,7 +53,7 @@ public class VlcjPlayer {
             nativeStreams = null;
 //        }
     }
-    private final JFrame mainFrame;
+    private JFrame mainFrame;
     private static EmbeddedMediaPlayerComponent mediaPlayerComponent;
 
     public VlcjPlayer() {
@@ -79,6 +79,7 @@ public class VlcjPlayer {
         // TODO empecher la fermeture / virer l'icone
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.setAlwaysOnTop(true);
+        mainFrame.setVisible(true);
 
         EmbeddedMediaPlayer embeddedMediaPlayer = mediaPlayerComponent.getMediaPlayer();
         embeddedMediaPlayer.setFullScreenStrategy(new VlcjPlayerFullScreenStrategy(mainFrame));

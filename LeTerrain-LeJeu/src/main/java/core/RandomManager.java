@@ -3,6 +3,7 @@ package core;
 import java.util.List;
 import java.util.Random;
 
+import front.MenuPrincipal;
 import modele.jeu.Jeu;
 
 public class RandomManager {
@@ -26,14 +27,15 @@ public class RandomManager {
 	}
 	
 	public static Jeu getRandomJeu(List<NomJeu> jeux) {
+		JeuManager jeuManager = MenuPrincipal.getMainFrame().getCoreManager().getJeuManager();
 		Jeu jeu = null;
 		int nombreJeu = jeux.size();
 		if (nombreJeu>1) {
 			//random
 			int random = RandomManager.random(0, nombreJeu-1);
-			jeu = JeuManager.getJeu(jeux.get(random));
+			jeu = jeuManager.getJeu(jeux.get(random));
 		} else {
-			jeu = JeuManager.getJeu(jeux.get(0));
+			jeu = jeuManager.getJeu(jeux.get(0));
 		}
 		return jeu;
 	}

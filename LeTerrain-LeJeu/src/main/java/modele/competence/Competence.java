@@ -1,9 +1,12 @@
 package modele.competence;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Competence {
+public class Competence implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Map<PersoStat, Integer> stats = null;
 

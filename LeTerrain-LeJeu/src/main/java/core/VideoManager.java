@@ -16,6 +16,10 @@ public class VideoManager implements Serializable {
 	}
 	
 	public static void play(String mediaPath) {
-		lecteur.play(mediaPath);;
+		if (lecteur == null) {
+			lecteur = new LecteurMP4();
+			lecteur.init();
+		}
+		lecteur.play(mediaPath);
 	}
 }

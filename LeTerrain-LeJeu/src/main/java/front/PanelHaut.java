@@ -83,7 +83,8 @@ public class PanelHaut extends JPanel {
 		// date
 		JPanel panelDate = new JPanel();
 		panelDate.setBackground(Color.BLACK);
-		labelDate = new JLabel(DateManager.getDateCouranteFormateeUpperCase());
+		labelDate = new JLabel(MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCouranteFormateeUpperCase());
+		MissionManager missionManager = MenuPrincipal.getMainFrame().getCoreManager().getMissionManager();
 	
 		// heure / tranche horaire
 		
@@ -94,39 +95,41 @@ public class PanelHaut extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DateManager.passeUneHeure(labelDate);
+				MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
 				// Refresh du panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
 //				PanelPersonnage.refreshPanelPersonnage();
-				MissionManager.refreshMissionsAPresenter();
+				missionManager.refreshMissionsAPresenter();
 			}
 		});
 
 		// bouton passer jusqu'au prochain evenement ou la prochaine mission
 		JButton boutonPasserNext = new JButton(Constante.SYMBOLE_PASSER_NEXT);
 		boutonPasserNext.addActionListener(new ActionListener() {
+			
 			// TODO : gestion de la fin des evenements et des missions
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Si il n'y a plus d'evenement et de mission, on grise le passage rapide
-				if (EvenementManager.getEvenementsIndisponibles().isEmpty() && MissionManager.getMissionsNonPresentees().isEmpty()) {
+				if (MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsIndisponibles().isEmpty() && missionManager.getMissionsNonPresentees().isEmpty()) {
 					boutonPasserNext.setEnabled(false);
 					System.out.println("Fin des evenements et des missions a presenter");
 					// sinon on passe jusqu'au prochain evenement ou la prochaine mission
 				} else {
-					Evenement nextEvenement = EvenementManager.getNextEvenement();
-					Mission nextMission = MissionManager.getNextMissionAvecDate();
+					Evenement nextEvenement = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getNextEvenement();
+					
+					Mission nextMission = missionManager.getNextMissionAvecDate();
 					boutonPasserNext.setEnabled(false);
 					if (nextMission == null && nextEvenement != null) {
 						System.out.println("Fin des missions avec date");
-						while (!nextEvenement.estDisponible()) {
-							DateManager.passeUneHeure(labelDate);
+						while (!nextEvenement.estDisponibleAPresenter()) {
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
 						}
 						boutonPasserNext.setEnabled(true);
 					} else if (nextEvenement == null && nextMission != null){
 						System.out.println("Fin des evenements");
 						while (!nextMission.estDisponibleAPresenter()) {
-							DateManager.passeUneHeure(labelDate);
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
 						}
 						boutonPasserNext.setEnabled(true);
 						
@@ -134,8 +137,8 @@ public class PanelHaut extends JPanel {
 						System.out.println("Fin des missions avec date et des evenements");
 						
 					} else {
-						while (!nextEvenement.estDisponible() && !nextMission.estDisponibleAPresenter()) {
-							DateManager.passeUneHeure(labelDate);
+						while (!nextEvenement.estDisponibleAPresenter() && !nextMission.estDisponibleAPresenter()) {
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
 						}
 						boutonPasserNext.setEnabled(true);
 					}
@@ -143,7 +146,7 @@ public class PanelHaut extends JPanel {
 				// Refresh des panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
 //				PanelPersonnage.refreshPanelPersonnage();
-				MissionManager.refreshMissionsAPresenter();
+				missionManager.refreshMissionsAPresenter();
 			}
 		});
 		

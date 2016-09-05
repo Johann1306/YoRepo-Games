@@ -12,7 +12,7 @@ import uk.co.caprica.vlcjplayer.VlcjPlayer;
 
 public class LecteurMP4 {
 
-	private static VlcjPlayer player = null;
+	private VlcjPlayer player = null;
 
 	public LecteurMP4() {
 		// TODO Auto-generated constructor stub
@@ -43,10 +43,10 @@ public class LecteurMP4 {
 		player.play(mediaPath);
 		
 	}
-	
-	public static VlcjPlayer getPlayer() {
-		return player;
-	}
+//	
+//	public static VlcjPlayer getPlayer() {
+//		return player;
+//	}
 	
 	private static void setLookAndFeel() {
 		String lookAndFeelClassName;

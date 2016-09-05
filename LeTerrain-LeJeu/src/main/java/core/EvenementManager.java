@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import front.MainFrame;
+import front.MenuPrincipal;
 import front.PanelPersonnage;
 import modele.evenement.Evenement;
 import modele.evenement.EvenementTheme;
@@ -19,11 +20,11 @@ import modele.item.Item;
 public class EvenementManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static List<Evenement> evenements;
-	private static List<Evenement> evenementsDisponibles;
-	private static List<Evenement> evenementsIndisponibles;
+	private List<Evenement> evenements;
+	private List<Evenement> evenementsDisponibles;
+	private List<Evenement> evenementsIndisponibles;
 
-	public void initialise() {
+	public void initialise(ItemManager itemManager) {
 		
 		evenements = new ArrayList<Evenement>();
 		evenementsDisponibles = new LinkedList<Evenement>();
@@ -40,8 +41,8 @@ public class EvenementManager implements Serializable {
 		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 10, 0, 0);
 
 		List<Item> itemsDebloques1 = new ArrayList<Item>();
-		Item item1 = ItemManager.getItemByNom("item1");
-		Item item2 = ItemManager.getItemByNom("item2");
+		Item item1 = itemManager.getItemByNom("item1");
+		Item item2 = itemManager.getItemByNom("item2");
 		itemsDebloques1.add(item1);
 		itemsDebloques1.add(item2);
 //		ItemManager.addItem() // ???
@@ -55,17 +56,17 @@ public class EvenementManager implements Serializable {
 		EvenementTheme type2 = EvenementTheme.SORTIE_SERIE;
 		Date date2 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 12, 0, 0);
 		List<Item> itemsDebloques2 = new ArrayList<Item>();
-		Item item3 = ItemManager.getItemByNom("item3");
-		Item item6 = ItemManager.getItemByNom("item6");
-		Item item7 = ItemManager.getItemByNom("item7");
-		Item item8 = ItemManager.getItemByNom("item8");
-		Item item9 = ItemManager.getItemByNom("item9");
-		Item item10 = ItemManager.getItemByNom("item10");
-		Item item11 = ItemManager.getItemByNom("item11");
-		Item item12 = ItemManager.getItemByNom("item12");
-		Item item13 = ItemManager.getItemByNom("item13");
-		Item item14 = ItemManager.getItemByNom("item14");
-		Item item15 = ItemManager.getItemByNom("item15");
+		Item item3 = itemManager.getItemByNom("item3");
+		Item item6 = itemManager.getItemByNom("item6");
+		Item item7 = itemManager.getItemByNom("item7");
+		Item item8 = itemManager.getItemByNom("item8");
+		Item item9 = itemManager.getItemByNom("item9");
+		Item item10 = itemManager.getItemByNom("item10");
+		Item item11 = itemManager.getItemByNom("item11");
+		Item item12 = itemManager.getItemByNom("item12");
+		Item item13 = itemManager.getItemByNom("item13");
+		Item item14 = itemManager.getItemByNom("item14");
+		Item item15 = itemManager.getItemByNom("item15");
 		itemsDebloques2.add(item3);
 		itemsDebloques2.add(item6);
 		itemsDebloques2.add(item7);
@@ -97,8 +98,8 @@ public class EvenementManager implements Serializable {
 		EvenementTheme type4 = EvenementTheme.SORTIE_SERIE;
 		Date date4 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 16, 0, 0);
 		List<Item> itemsDebloques4 = new ArrayList<Item>();
-		Item item4 = ItemManager.getItemByNom("item4");
-		Item item5 = ItemManager.getItemByNom("item5");
+		Item item4 = itemManager.getItemByNom("item4");
+		Item item5 = itemManager.getItemByNom("item5");
 		itemsDebloques4.add(item4);
 		itemsDebloques4.add(item5);
 
@@ -110,41 +111,32 @@ public class EvenementManager implements Serializable {
 		evenements.add(test3);
 		evenements.add(test4);
 
-		triEvenements();
+		evenementsIndisponibles.addAll(evenements);
 
 	}
 
-	public static List<Evenement> getEvenements() {
+	public List<Evenement> getEvenements() {
 		return evenements;
 	}
 
-	public static List<Evenement> getEvenementsDisponibles() {
-		refreshEvenements();
+	public List<Evenement> getEvenementsDisponibles() {
+		refreshEvenementsAPresenter();
 		return evenementsDisponibles;
 	}
 
-	public static List<Evenement> getEvenementsIndisponibles() {
-		refreshEvenements();
+	public List<Evenement> getEvenementsIndisponibles() {
+		refreshEvenementsAPresenter();
 		return evenementsIndisponibles;
 	}
 
-	private static void triEvenements() {
-		for (Evenement evenement : evenements) {
-			if (evenement.estDisponible()) {
-				evenementsDisponibles.add(evenement);
-			} else {
-				evenementsIndisponibles.add(evenement);
-			}
-		}
-	}
-
-	private static void refreshEvenements() {
+	private void refreshEvenementsAPresenter() {
 		List<Evenement> indispoTemp = new ArrayList<Evenement>(evenementsIndisponibles);
 		for (Evenement evenement : indispoTemp) {
-			if (evenement.estDisponible()) {
+			if (evenement.estDisponibleAPresenter()) {
 				// Refresh
 				evenementsDisponibles.add(evenement);
 				evenementsIndisponibles.remove(evenement);
+				evenement.setDejaPresente(true);
 
 				// Lancer le son ou la musique associe a l evenement
 				MusiqueManager.playSonEvenement(evenement.getSonPath());
@@ -180,18 +172,18 @@ public class EvenementManager implements Serializable {
 					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
 					item.setDisponible(true);
 				}
-			}
+			} 
 		}
 		// Si un evenement a debloque un perso
 		PanelPersonnage.refreshArriveePersonnage();
 	}
 	
-	public static Evenement getNextEvenement() {
+	public Evenement getNextEvenement() {
 		Evenement nextEvenement = null;
 		List<Evenement> evenementsIndisponibles = getEvenementsIndisponibles();
 		long minDiff = 1000000000;
 		for (Evenement evenement : evenementsIndisponibles) {
-			long diff = DateManager.compare(evenement.getDate());
+			long diff = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(evenement.getDate());
 			if (diff < minDiff ) {
 				minDiff = diff;
 				nextEvenement = evenement;
@@ -200,7 +192,7 @@ public class EvenementManager implements Serializable {
 		return nextEvenement;
 	}
 
-	private static int getTypeEvenement(Evenement evenement) {
+	private int getTypeEvenement(Evenement evenement) {
 		int type = JOptionPane.PLAIN_MESSAGE;
 		if (evenement.getTheme().equals(EvenementTheme.SORTIE_SERIE)) {
 			type = JOptionPane.ERROR_MESSAGE;

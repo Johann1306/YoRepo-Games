@@ -13,8 +13,8 @@ import modele.evenement.Evenement;
 public class DateManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static Date dateCourante = null;
-	private static DateFormat format = null;
+	private Date dateCourante;
+	private DateFormat format;
 	
 	public void initialise() {
 		genereDateDepart();
@@ -34,35 +34,35 @@ public class DateManager implements Serializable {
 		return date;
 	}
 	
-	public static void passeUneHeure(JLabel labelDate) {
+	public void passeUneHeure(JLabel labelDate) {
 		dateCourante.setHours(dateCourante.getHours()+1);
 		labelDate.setText(getDateCouranteFormateeUpperCase());
 	}
 	
-	public static void passeUneJournee(JLabel labelDate) {
+	public void passeUneJournee(JLabel labelDate) {
 		dateCourante.setDate(dateCourante.getDate()+1);
 		labelDate.setText(getDateCouranteFormateeUpperCase());
 	}
 	
-	public static void passeUnMois(JLabel labelDate) {
+	public void passeUnMois(JLabel labelDate) {
 		dateCourante.setMonth(dateCourante.getMonth()+1);
 		labelDate.setText(getDateCouranteFormateeUpperCase());
 	}
 
-	public static void passeUneAnnee(JLabel labelDate) {
+	public void passeUneAnnee(JLabel labelDate) {
 		dateCourante.setYear(dateCourante.getYear()+1);
 		labelDate.setText(getDateCouranteFormateeUpperCase());
 	}
 	
-	public static boolean estApresLaDateCourrante(Date date) {
+	public boolean estApresLaDateCourrante(Date date) {
 		return dateCourante.before(date);
 	}
 	
-	public static boolean estAvantLaDateCourrante(Date date) {
+	public boolean estAvantLaDateCourrante(Date date) {
 		return dateCourante.after(date);
 	}
 
-	public static boolean estEgaleALaDateCourante(Date date) {
+	public boolean estEgaleALaDateCourante(Date date) {
 		if ((dateCourante.getYear() == date.getYear())
 				&& (dateCourante.getMonth() == date.getMonth())
 				&& (dateCourante.getDay() == date.getDay())
@@ -72,35 +72,36 @@ public class DateManager implements Serializable {
 		return false;
 	}
 	
-	public static long compare(Date date) {
-		long dateCourante = DateManager.getDateCourante().getTime();
+	public long compare(Date date) {
+		long dateCourante = this.dateCourante.getTime();
 		long dateCompare = date.getTime();
 		return dateCompare-dateCourante;
 	}
 	
-	public static void afficheDateCourrante() {
+	public void afficheDateCourrante() {
 		System.out.println(format.format(dateCourante));
 	}
 	
-	public static String getDateCouranteFormatee() {
+	public String getDateCouranteFormatee() {
 		return format.format(dateCourante);
 	}
 	
-	public static String getDateCouranteFormateeLowerCase() {
+	public String getDateCouranteFormateeLowerCase() {
 		return format.format(dateCourante).toLowerCase();
 	}
 	
-	public static String getDateCouranteFormateeUpperCase() {
+	public String getDateCouranteFormateeUpperCase() {
 		return format.format(dateCourante).toUpperCase();
 	}
 
-	public static Date getDateCourante() {
+	public Date getDateCourante() {
 		return dateCourante;
 	}
 
-	public static void setDateCourante(Date dateCourante) {
-		DateManager.dateCourante = dateCourante;
+	public void setDateCourante(Date dateCourante) {
+		this.dateCourante = dateCourante;
 	}
+
 	
 //	public static void calculeMaxCaractere() {
 //		DateManager manager = new DateManager();
