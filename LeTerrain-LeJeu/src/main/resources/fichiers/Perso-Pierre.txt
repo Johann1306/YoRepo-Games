@@ -1,84 +1,54 @@
-nom:
-prenom :
-Surnoms :	
-date de naissance :
-Origine :
-Particularités :
-Particularités Physique :
-aime :
-n'aime pas :
-Pouvoir :
+Pierre:
 
-Film :
-Serie : 
-Musique : 
-Dessin animé : 
-Emission : 
-Jeu video : 
-
-objets :
-
-Competences :
--Luck/Liberté Creative	0			
--Technique/Tir			0		
--Endurance/Energie		0			
--Rapidité/Réactivité	0			
--Resistance/Robustesse	0			
--Agilité/Acceleration	0			
--Intelligence/Instinct	0			
--Nervosité/Noobisme		0 
-
-Pierre: Pierrot, pierrou, pierron, pipo, pip, pips, pipas, pipouze, pieeeeerre, dj pierrot, les doigts de fer, la grosse bite
-
-Si j'étais auteur je te ferais un Marak! C'est l'Almarak des sports, mais ça dit que de la merde!
-Si j'etais rappeur, je serais docteur Dré. C'est quoi la difference entre toi et moi?
-Si j'étais musicien, je serais Daft Punk. C'est pas du Daft Punk ça? C'est mieux, plus dur, plus rapide, plus fort!
-Si j'étais dentiste je te referais ta dent en acier. C'est oeil pour oeil, dent pour dent! J'ai déjà donné pour les dents à la Lucha Libre!
-Si j'étais ophtalmologue, je redonnerais cet oeil à ta mere. Parcequ'elle est borgne, parce qu'elle dort que d'un oeil, parce que c'est une alien!
-Si j'étais trapezistes, je monterais un numéro avec Nico, dans tes escaliers. Car peu importe la chute, ce qui compte c'est l'aterrissage et l'important s'est de se relever!
+Si j'ï¿½tais auteur je te ferais un Marak! C'est l'Almarak des sports, mais ï¿½a dit que de la merde!
+Si j'etais rappeur, je serais docteur Drï¿½. C'est quoi la difference entre toi et moi?
+Si j'ï¿½tais musicien, je serais Daft Punk. C'est pas du Daft Punk ï¿½a? C'est mieux, plus dur, plus rapide, plus fort!
+Si j'ï¿½tais dentiste je te referais ta dent en acier. C'est oeil pour oeil, dent pour dent! J'ai dï¿½jï¿½ donnï¿½ pour les dents ï¿½ la Lucha Libre!
+Si j'ï¿½tais ophtalmologue, je redonnerais cet oeil ï¿½ ta mere. Parcequ'elle est borgne, parce qu'elle dort que d'un oeil, parce que c'est une alien!
+Si j'ï¿½tais trapezistes, je monterais un numï¿½ro avec Nico, dans tes escaliers. Car peu importe la chute, ce qui compte c'est l'aterrissage et l'important s'est de se relever!
 Si j'etais coiffeur je te laisserais repousser ta petite queue. Enfin ta petite queue... Ta grosse bite oui!
-Si j'étais joueur de foot, je serais Zidane, Ronaldinho ou Johan Cruyff. Mais je te prendrais avec moi dans mon equipe!
-Si j'étais Tchéque je serais Slovaque, ou l'inverse. Ma grand mère est Tchecoslovaque putain!
-Si j'étais Russ(e) je serais pas Azteque. Comme le dit le proverbe : T-shirt déchiquetée, pastèque éclatée!
-Si j'étais Gitan, je prendrais v'la l'pavé et j'te mettrais un coup d'bottes dans les couilles. T'inquiète pas qu'chai l'en faire du velo mon copain!
-Si j'étais la lune, je serais dedans. Il parait que meme de la-bas on la voit, ... sa petite queue!
-Si j'étais une partie du corps humain, je serais... non pas la queue, mais le nez et les oreilles. Il parait qu'on a capté un message et des odeurs venant de la bas!
-Si j'étais un jeu video, je serais GoldenEye. Pose ton GoldenGun, et tout le monde rentre a la base-ment!
-Si j'étais un objet, je serais une pierre. Pierre, Pierre, lèche moi la pierre hihan hihan!
-Si j'étais un objet de torture, je serais le serre-main. Maman? C'est pour ca qu'on l'appele Pierre les doigts de Fer? Non ma cherie, c'est juste qu'il a une grosse bi...
-Si j'étais un alcool, je serais du Martini. Du Martina plutot, ca tient mieux l'Absynthe. 
-Si j'étais une gerbe de Montfermeil, je serais John Malkovitch, un Kamehameha, un louveteau ou DJ Piero. Ali est pas bien, y a Nico qui le grappine!
-Si j'étais un dress code, je serais le theme caillera. Lacoste, Tachini, Nike, Adidas, Reebok, Umbro, Ralph Lauren... et Vans. De vrais petits spots publicitaires a la photo de classe!
-Si j'étais une grande surface, je serais Carrefour evidemment. Mais juste samedi après-midi. Bon ca va! ... Mais toutes les semaines... Arf :(
-Si j'étais un habit, que j'aurais acheté a Carrefour, je serais une pantoufle. Pieeeeere, Alexaaanndre, Meliiiiine, a table.
-Si j'étais une table, je me casserais la gueule le jour du mariage de mon pote. Maman? Pourquoi il y a trois messieurs qui sortent des toilettes en meme temps?
-Si j'étais une bataille, je serais Waterloo. Pourtant l'attaque des archers au petit suisse m'avait fait bander, mais ils crachent pas dans les verres eux!
-Si j'étais une experience inutile, je serai le retour de toncar fléchi et triple vrillé, casqué frappé. Ca picotte les yeux et les papilles!
-Si j'étais un jour de l'an, je chialerais comme une pute. Mais pourquoi il chiale pour rien? Ca picotte les yeux et les papilles on t'a dit!
-Si j'étais un pote de pote chiant, je serais Renaud et je roulerais en Twingo. Il a fini camioneur avec ces conneries!
-Si j'étais un mot inutile et dont personne ne connait la signification, je serais la papillo. Hey mais les gars, ciao la papillo!
+Si j'ï¿½tais joueur de foot, je serais Zidane, Ronaldinho ou Johan Cruyff. Mais je te prendrais avec moi dans mon equipe!
+Si j'ï¿½tais Tchï¿½que je serais Slovaque, ou l'inverse. Ma grand mï¿½re est Tchecoslovaque putain!
+Si j'ï¿½tais Russ(e) je serais pas Azteque. Comme le dit le proverbe : T-shirt dï¿½chiquetï¿½e, pastï¿½que ï¿½clatï¿½e!
+Si j'ï¿½tais Gitan, je prendrais v'la l'pavï¿½ et j'te mettrais un coup d'bottes dans les couilles. T'inquiï¿½te pas qu'chai l'en faire du velo mon copain!
+Si j'ï¿½tais la lune, je serais dedans. Il parait que meme de la-bas on la voit, ... sa petite queue!
+Si j'ï¿½tais une partie du corps humain, je serais... non pas la queue, mais le nez et les oreilles. Il parait qu'on a captï¿½ un message et des odeurs venant de la bas!
+Si j'ï¿½tais un jeu video, je serais GoldenEye. Pose ton GoldenGun, et tout le monde rentre a la base-ment!
+Si j'ï¿½tais un objet, je serais une pierre. Pierre, Pierre, lï¿½che moi la pierre hihan hihan!
+Si j'ï¿½tais un objet de torture, je serais le serre-main. Maman? C'est pour ca qu'on l'appele Pierre les doigts de Fer? Non ma cherie, c'est juste qu'il a une grosse bi...
+Si j'ï¿½tais un alcool, je serais du Martini. Du Martina plutot, ca tient mieux l'Absynthe. 
+Si j'ï¿½tais une gerbe de Montfermeil, je serais John Malkovitch, un Kamehameha, un louveteau ou DJ Piero. Ali est pas bien, y a Nico qui le grappine!
+Si j'ï¿½tais un dress code, je serais le theme caillera. Lacoste, Tachini, Nike, Adidas, Reebok, Umbro, Ralph Lauren... et Vans. De vrais petits spots publicitaires a la photo de classe!
+Si j'ï¿½tais une grande surface, je serais Carrefour evidemment. Mais juste samedi aprï¿½s-midi. Bon ca va! ... Mais toutes les semaines... Arf :(
+Si j'ï¿½tais un habit, que j'aurais achetï¿½ a Carrefour, je serais une pantoufle. Pieeeeere, Alexaaanndre, Meliiiiine, a table.
+Si j'ï¿½tais une table, je me casserais la gueule le jour du mariage de mon pote. Maman? Pourquoi il y a trois messieurs qui sortent des toilettes en meme temps?
+Si j'ï¿½tais une bataille, je serais Waterloo. Pourtant l'attaque des archers au petit suisse m'avait fait bander, mais ils crachent pas dans les verres eux!
+Si j'ï¿½tais une experience inutile, je serai le retour de toncar flï¿½chi et triple vrillï¿½, casquï¿½ frappï¿½. Ca picotte les yeux et les papilles!
+Si j'ï¿½tais un jour de l'an, je chialerais comme une pute. Mais pourquoi il chiale pour rien? Ca picotte les yeux et les papilles on t'a dit!
+Si j'ï¿½tais un pote de pote chiant, je serais Renaud et je roulerais en Twingo. Il a fini camioneur avec ces conneries!
+Si j'ï¿½tais un mot inutile et dont personne ne connait la signification, je serais la papillo. Hey mais les gars, ciao la papillo!
 
 
 le terrain
 
-Si j'étais un cul, je serai celui d'Ali coincé dans la fenetre de chez Ya. Si les smartphone existaient, il s'appelerait Brown Sugar ou White Ass!
-Si j'étais bilingue comme toi, je demanderais a Snoop Dog et Eminem de faire une chanson sur Fukushima. Mange pas mes papiers, et mes tabacs, fils de pute de Japanese!
+Si j'ï¿½tais un cul, je serai celui d'Ali coincï¿½ dans la fenetre de chez Ya. Si les smartphone existaient, il s'appelerait Brown Sugar ou White Ass!
+Si j'ï¿½tais bilingue comme toi, je demanderais a Snoop Dog et Eminem de faire une chanson sur Fukushima. Mange pas mes papiers, et mes tabacs, fils de pute de Japanese!
 
-Si j'étais une chartre, je n'ecrirais pas sur les murs parce que c'est pas bien. Et en plus on a ecrit une char...
+Si j'ï¿½tais une chartre, je n'ecrirais pas sur les murs parce que c'est pas bien. Et en plus on a ecrit une char...
 Ferme ta gueule! Je suis Shanaz Ricard! Alors t'ecris pas sur les murs et tu fermes ta gueule!!!
 
 Si je m'appellais Pierre je demanderais a mon fils de me malaxer les couilles. Ou l'inverse, du coup il aurait plus qu'une couille!
-Si je m'habillais en chantant, je ferais du skate. Un bouche de rat et une chatte en lain qui braquaient du bois façon Oudni durant l'age Ulferry!
+Si je m'habillais en chantant, je ferais du skate. Un bouche de rat et une chatte en lain qui braquaient du bois faï¿½on Oudni durant l'age Ulferry!
 
-Si j'étais une pratique révolus de nos jours, je serais la branlette entre amis.
+Si j'ï¿½tais une pratique rï¿½volus de nos jours, je serais la branlette entre amis.
 Pardon Messieur?
 Canal+, VHS, 1er samedi du mois! Internet n'existait pas! 
 Mais ca n'excuse pas le fait de se branler en bande messieur! 
 Comment on aurait su qu'il avait une petite queue sinon?
 
-Si j'étais Nicolas, je me taperai ta meuf! Oeil pour oeil, gland pour gland! Attention la cagette dans la gueule... trop tard!
-Si j'étais Thomas, je me taperai ta meuf! Oeil pour oeil, gland pour gland! On l'a pas deja dite celle la? Ah bon...
-Si j'étais Yannick, je me taperai sa meuf! Oeil pour oeil, doigt dans le cul... Ah merde ca derape!
+Si j'ï¿½tais Nicolas, je me taperai ta meuf! Oeil pour oeil, gland pour gland! Attention la cagette dans la gueule... trop tard!
+Si j'ï¿½tais Thomas, je me taperai ta meuf! Oeil pour oeil, gland pour gland! On l'a pas deja dite celle la? Ah bon...
+Si j'ï¿½tais Yannick, je me taperai sa meuf! Oeil pour oeil, doigt dans le cul... Ah merde ca derape!
 
 Si j'avais les doigts de Pierre doigts de Fer, j'en ferai bon usage. Parceque si l'homme se doit, la femme se doigte! Non ...
 Si j'avais les doigts de Pierre doigts de Fer, j'en ferai bon usage. Parceque si l'homme se doit, la femme se doit de faire le menage! Non, Pardon...
