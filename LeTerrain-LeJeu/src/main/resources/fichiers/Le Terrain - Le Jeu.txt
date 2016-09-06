@@ -1,50 +1,3 @@
-faire un petit jeu en Java
-faire une jeu generique
-puis adapté pour le terrain
-
-
-moteur de creation de persos (faceyourmanga.com/south park creation de personnage)
-moteur de creation de maps plan vu de dessus qui contient des lieux (tiles, musique, sons) Montfermeil / Franceville
-moteur de creation de lieux 2D vu de haut a la zelda/(vu de coté a la mario) (dimension variable, tiles, points d'action (declenche un mini-jeu), nom ,id, epoque, image, musique, sons)
-moteur de creation de tiles (dimension fixe, couleurs par pixels, nom, id
-moteur de generation de quizz (par classe, type, etc...)
-moteur graphique / rafraichissemnt de l'image
-moteur de creation de mini jeux (obectifs : reussite-defaite-neutre : bonus malus, aptitude par perso, par mini jeux avant de pouvoir le refaire/ gain max / perte max, image, musique, sons)
-moteur pour les musiques et sons de l'epoques configurables (funk, rap fr/us, rnb, generique dessins animés/manga/series/films, ...) (prec, pause, lecture, suiv, ) (option, en canon, barre des longueur d'ondes)
-generateur de Marak
-integrer un emulateur (nes, snes) (Class Process())
-Mettre en place des Achievements (10connexions,50% du jeu,...)
-Fichiers chargés au demarage Excel?/ ou BDD
-site web / Flash
-possibilité d'ajouter du contenu pour les joueurs (generation de fichier a charger au demarage) (missions (rattacher a l'arbe de missions), objets, musique, video, image, dialogue, )
-
-progression des persos vie/energie/experience/argent(points de chouinage petit)/carac/niveau/aptitudes/pouvoirs
-systeme de jour/temps (defile continuellement 1 min = 1 mois avec pause possible? ou passe le temps au tour par tour), passer le temps jusqu'a au moins une action a faire, passer le temps de force par tranche de temps fixe et configurable
-inventaire par perso (objets contextuelles, billes, argent, etc)
-inventaire du joueur (bonus spec +2 sur un perso choisi ou obligatoire)
-liste deroulante de choix par lieux/par perso/par heure?/par epoque, surbrillance si contexte ok / Gestion de POI sur la map
-dialogues defilants a l'ancienne, police adapté
-faire une/des videos avec des photos de tetes collés sur la video
-
-Point and click / Action type (ouvrir donner parler) / Mario type / south park style / RPG / drug wars / Sims / Jeu d'argent / Quizz / Mini Jeux
-
-style de jeu :
-mini jeux aleatoires: 70% de reussite (+1 carac, + aptitude spe), 30% de defaite (-carac -vie), depend des carac de base (need +2 agi, +aptitudes special), evenement contextuelle en fonctions des persos ()
-
-jeu de quizz (questions ajoutables)
-jeu de poker (argent + phrases de contexte en fonction des persos)
-jeu de blackjack (argent + phrases de contexte en fonction des persos)
-jeu de magic (vente du surplus)
-jeu de billes (vente du surplus > technique: poussette)
-jeu de cartes a retourner (vente du surplus)
-jeu de cartes a collectionner (vente du surplus)
-jeu de societe
-jeu de question/reponses ecrite au clavier
-
-jeu de foot (differents terrains, equipe pro, equipe france 98, ...)
-jeu de combat du style retro (double dragon, final fantasy, pokemon)
-jeu a la the lost vikings (3 ou +)
-
 
 Epoque : Primaire / Adolescence
 
@@ -55,121 +8,9 @@ Persos : Ecole Primaire Principaux (Nico, Pierre, Ya, Thomas, Yo)
 Persos : Ecole Primaire Secondaires (barbara stolic, mikael karagoz, ludovic vandeville, julien Prioux, thomas juvy dans mon cul, les CM1, virginie Idjer (squetch, chenille), claires BB/Jacquet, lucie Lecoq, priscilla Remy, shanaz Ricard, Patty et Geoffrey les Martinos, Jacqueline Guinet, Judith RosenKrantz, Georges Charpentier, Christelle Boulineau, Jonathan Flama, )
 
 Persos : Adolescence Principaux (Nico, Pierre, Ya, Thomas, Yo + Ali, Guy, Russ)
-Persos : Adolescence Secondaires (Les familles, Renaut, Marc, Tristan, )
+Persos : Adolescence Secondaires (Les familles, Renaut, Marc, Tristan, Sida, )
 
 Persos : Adolescence++ (Les meufs, Marin, Stephane Dauphin, )
-
-
-Primaire : A l'ecole : 
-
-en classe :
-gagner un bon point, une image (image de notre enfance avec des trucs caché,
-passer au tableau
-lire
-reciter une poesie
--faire des dictée/ recopiée avec mademoiselle chatelain	
--faire des sketchs avec madame dubois 
--faire pousser des plantes/secher de l'eau salé avec madame Durand et Oudni/directrice
--faire des dessins avec madame Braquet (elle defonce ton dessin)
--faire du sport avec monsieur bouchra quand il fait beau, faire des fiches de lecture
-se faire confisquer un truc
-
-dans la cour:
-	insulter l'ecole a coté,
- 	manger du tang,
- 	taper les mechants de la classe,
- 	marelle, 
-	la chenille expulsante, 
-	les trois arbres, 
-	jeu de l'imitation (leche un mur), 
-	perché la balle sur le mur,
- 	ecrire sur les murs, 
-	faire de l'escalade, 
-	balle aux prisonnier, 
-	ouvrir la bouche quand il pleut,
-	rattraper dans sa bouche les gouttes de la goutieres,
-	faire une bataille de boule de neige,
-	en cours avec Bouchrat, on fait du sport
-	on s'entraine a se battre,
-	parler du film de la veille
-	on fait des sketchs,
-	kermesse,
-	foot, 
-	tennis, 
-	basket,
-	apprendre a faire du velo,
-	jakadi de dire, 
-	ramener des jeux de societe (Hero Quest, Les mysteres de Pekin, Qui est-ce?, Monopoly, docteur Maboul, Piqu'puces, Pieges, Master Mind, tablette effacable, jeux video pocket, puissance 4, Tricky Bille), 
-	faire un anniversaire : johann pas invité
-	eclater les ballons chez judith
-	percer la main de judith avec un crayon, casser la dent de pierre, planter les veines de thomas
-	chanter a la chorale
-	ecouter genevieve (et cric et crac et l'histoire sort du sac, epaminondas, trois tortue trottez sur trois toits tres etroits, sur trois toits tres etroits trottez trois tortue, j'aime la galette savez vous comment, quand elle est bien faite avec du beurre dedans
-	lire un	Poppy/petit ours brun
-	lire un j'aimelire (tomtom et nana)
-	faire un spectacle de fin d'annee (dans la vie faut que ca glisse, theme europe, carnaval)
-	decrocher un manteau du porte manteau avant de rentree en classe
-	soulever les jupes des filles
-	jouer a l'elastique
-	jouer a la marelle
-	jouer a la deli delo
-	jouer a chat/chat perché
-	jouer aux avions en papier
-	jouer aux billes
-	jouer aux images a retourner (dbz, les crados, foot
-	jouer aux pogs
-	jouer a la course
-	jouer a la game boy
-	jouer a un jeu de ronde ( le fromage est battu, un samedi soir je dit a ma mere, )
-	jouer a un jeu de main (trois petits chats, guillaume le mechant homme, )
-	jouer aux puces rebondissantes
-
-	chanter ( un dimanche matin avec ma putain sur ma mobilette avec Miguel, 
-		quand je vois ton sexe je me sens mieux (contrex), ma bite se redresse entre tes yeux, c'est comme un obus qui rentre dans l'cul, je sais qu'c'est pas bien mais nous on l'sait que ca fait du bien
-		c'est tonton chirac a la guerre 14-18, qui chie dans son casque pour boucher le canon, le canon explose chirac est foutu, mitterran arrive , le prends par la peau du cul, le fout dans les chiottes et chie par dessus,
-		a la deli delo : je suis capitaine capitaine d'un navire, 
-		dans ma maison sous terre, omawé, omawé, hotel hotel au wistiti, hotel hotel au wistiti, one two three,
-		un samedi soir je dit a ma mere, voulez vous savoir le garcon que j'aime, c'est un jeune garcon a qui j'ai donné mon nom, j'ai donné mon nom a ,
-		Entrer dans la danse, voyez comme on danse, dansez, chantez, embrassez qui vous voudrez
-	jouer avec un jeu MacDo de Jonathan Flama
-	ecouter Mikael Karagoz dire ( Mais qu'est ce qu'elle a la difference?)
-	demander a aller faire pipi/caca
-	chier dans son froc avant d'arriver aux chiottes
-	faire des conneries avec les robinets d'eau des chiottes
-	boire au robinet avec la bouche
-	voir le pere de jonathan qui fait peur
-	
-
-	se moquer de Benjamin blondel parcequ'il est gros (appeler Boule/Bouboule Cerise)
-	ecouter Miguel Dos Santos lire en classe
-	etre a coté de georges charpentier en classe (qui vient un samedi sur trois)
-	aller a l'etude
-	aller au centre aéré (chanter loup y es tu m'entends, le jeu du foulard en ligne, poule renard viper, jeu de piste avec boussole, aquaboulevard, les monos demandent de marcher comme sur la lune, faire un foot avec (Mais vas-y!!!), manger equilibré (brique de lait, fruit, connerie au chocolat, pain et chips)
-	aller a la cantine, etre chef de table, faire trop de bruit, etre puni, etre a la table des perfs et manger tous les jours devant la petite qui bave
-	aller au coin dans la cour
-	aller au cinema	(Aladin, Microcosmos)
-	aller visiter le muséee du verre
-	aller jouer au tennis en club avec thomas delarboulasse
-	boufonner aux profs
-	regarder la chatte de Shanaz Ricard
-	envoyer qqun a sa place pour dire a qqun qu'on l'aime
-	se battre contre les CM1
-	se battre contre les mechants de la classe (faire l'attaque du dragon, faire la transformation en super sayen)
-	se faire voler ses objets par les CM1
-	
-	acheter des babies
-	acheter des pipas / bonbons
-	acheter du shit	a un mec en dehors de l ecole
-	
-	faire une boom en classe (east17)
-	faire une boom chez claire blaque belair (celine dion : pour que tu m'aimes encore)
-	courir en sortant de lecole (faire croire aux parents qu'on est content de les voir alors qu'on est content de se casser)
-
-
-
-
-
-
 
 
 
@@ -215,12 +56,12 @@ Chez les gens (Missions):
 	squatter chez thomas : son frere coupe du shit en ecoutant de la funk, film, jouer aux magics dans le jardin, jouer aux flingues a bille, pisser dans les escaliers
 	squatter chez ali : non y a ses parents
 	squatter chez johann : film dans le garage, jouer aux magics, sortir la nuit, feu sur la terasse, tirer au fusil, tirer avec un pistolet lachrymo, ecouter le son et lumiere, allumer le pc (la grosse chatte poilu, prout prout prout que je t'aime, jouer a des vieux jeu avec Russ en fumant)
-	squatter chez Ya : basket, film, aquarium , bea cramé par la soeur, sortir la nuit, entrer par effraction (cul d'ali), aller sur internet pour la premiere fois
+	squatter chez Ya : basket, film, aquarium , bea cramï¿½ï¿½ï¿½ par la soeur, sortir la nuit, entrer par effraction (cul d'ali), aller sur internet pour la premiere fois
 	squatter chez Guillaume : pes, films, se taper le bord du meuble dans la tete, poker, faire des videos (Nico, Ali)
 	squatter chez russ : chiens, faire un jour de l'an (guillaume se retame, chauffage au sol bouillant, Nathalie qui demoule thomas qui passe apres), aller pecho au Dallia
 	squatter aux petites ecoles : gitans, miranda, jafar, rebeu, film
 
-	boire le Rhum de l'enculé de Pierre
+	boire le Rhum de l'enculï¿½ï¿½ï¿½ de Pierre
 	boire du whisky
 	boire de la vodka 'Zubrowka'
 	boire de l'absynthe
@@ -236,11 +77,11 @@ Chez les gens (Missions):
 
 	aller au cinema (CopLand au lieu de Jurassik Park/the full monthy) (sex crimes/sex intentions)
 	faire un concours de roulage
-	fumer un join flechi et triple vrillé, casqué frappé
+	fumer un join flechi et triple vrillï¿½ï¿½ï¿½, casquï¿½ï¿½ï¿½ frappï¿½ï¿½ï¿½
 	faire un aquarium
 	faire un bang
 	
-	faire un film ( musique de armageddon, pierre en meuf, le frere de thomas c'est trop tard enculé, ludovic das neves creuvez!, la mere de yo pistache chocolat vanille!, 
+	faire un film ( musique de armageddon, pierre en meuf, le frere de thomas c'est trop tard enculï¿½ï¿½ï¿½, ludovic das neves creuvez!, la mere de yo pistache chocolat vanille!, 
 
 	Fumer un oinj en groupe (qui dit ... prends le oinj, (6x7) ... prends le oinj
 	ecouter (Skyrock, funRadio, Difool)
@@ -259,7 +100,7 @@ se deplacer :
 	en scooter (controle de flic, nico se fait fouiller, yo se fait tentative de peta son scoot 3 fois, ali tombe, yo eclate son scoot avec un piquet avant)
 	en voiture (controle de flic guillaume, russe se plante dans un virage trop serre, 
 	partir en vacances (a Argeles, en Espagne, A perpignan, chez Russ, chez Azopardi)
-	partir en soiree (voiture melissa, chez Suzie, sur Paris, peniche, soirée etudiant, restaurant, au terrain dans la voiture, soirée a theme, 
+	partir en soiree (voiture melissa, chez Suzie, sur Paris, peniche, soirï¿½ï¿½ï¿½e etudiant, restaurant, au terrain dans la voiture, soirï¿½ï¿½ï¿½e a theme, 
 
 BOSS FINAL DE GROUPE :
  - Les Papas
@@ -289,57 +130,15 @@ Trucs a Debloquer:
 
 Points perso :
 
-	Nico : ne mange pas a la cantine, petit et pas beau, grappine, petit farfouilli,  est fier comme un espagnol (aime se faire entourer de plastique fondu quand foncdé, aime se faire fracasser le crane pour regarder le feu d'artifice par la fentre, aime casser les radiateurs, aime sniffer du nez(j'ai giclé), aime se titiller la narine avec un cordon pour eternuer, parle beucoup quand foncdé)
-	Pierre : est asmatique, a une petite queue, des oreilles fines, met une cagoule et des bottes avec semelles decollés, a perdu une dent a cause de yo, se fait maltraiter par yo,  (a une grosse bite et des doigts de Fer, aime aller au fond du jardin quand foncdé Dj Piero), a des origines francaises a grosse bite
-	Thomas : saigne du nez, fais la tortue, petit, fait rire les adultes, se fait maltraiter par yo, a un mono sourcil et des crottes de nez apparentes, a des origines juives (met l'ambiance en soirée)
-	Ya : a fait de l'escalade, a une force superieur, a eu des seins a une epoque, Yannick ta mere, se fait maltraiter par yo, a des origines francaises et violette, aime starwars, nirvana, worms, crash lego,  ()
-	Yo : est perturbé mentalement, cours en calecon dans la cour en chantant rocky Balboula, leche les murs, ne sait pas ce qu'est un orphelinat, reponds aux adultes, est premier de sa classe, a qu'une couille et des boucles d'or, se deguise en fille, fait des cadeaux pourri aux anniversaires, n'est plus invité aux anniversaires (fait des debut de merde, boit dans les flaques, vomi avec le rhum de l'enculé de pierre (95% de chance), a des problemes vestimentaires, aime se faire mettre une bite dans la bouche quand foncé, a des origines tchequoslovaque, aime le foot, joue a croche mensonge, )
-	Guillaume :  foncdé en soirée, connait Renaud, traine a la butte, crache pas dans les verres, ingurgite, waterloo, se tape des moches/petites, a des caillots dans la bite et des trous dans les cheveux, montre pas son cul mais sa bite, aime quand yo le fait bander, aime se faire dessiner des bite dessus, des escargots, quand foncdé, mange des pizza mayo, joue a la playstation, a des origines italiennes, aime johann en secret
-	Ali : taxe des clopes, est nerveux parce qu'il a un corps de lache et une narine qui part en couille, porte des lunettes de bigleux, foncdé sur un canapé, aime se faire rouler dessus en velo quand foncdé, a des origines pakitou, aime montrer son cul, aime et sent le paprika, aime les glacons sur les tetons quand il fait chaud, fume comme un pd la main a plat, sait faire le gitan
-	Jonathan : est nerveux et a une force superieur, a une moto cross, eclate des pasteques, fait des coups de putes, toujours dispo pour un demenagement ou une epreuve physique, fait encore des etudes, se rase totalement, aime mettre du minaves quand foncdé, a un oeil plus petit que l'autre, fait bien l'accent belge, a des origines italienne, aime le sport et gueuler
+	Nico : ne mange pas a la cantine, petit et pas beau, grappine, petit farfouilli,  est fier comme un espagnol (aime se faire entourer de plastique fondu quand foncdï¿½ï¿½ï¿½, aime se faire fracasser le crane pour regarder le feu d'artifice par la fentre, aime casser les radiateurs, aime sniffer du nez(j'ai giclï¿½ï¿½ï¿½), aime se titiller la narine avec un cordon pour eternuer, parle beucoup quand foncdï¿½ï¿½ï¿½)
+	Pierre : est asmatique, a une petite queue, des oreilles fines, met une cagoule et des bottes avec semelles decollï¿½ï¿½ï¿½s, a perdu une dent a cause de yo, se fait maltraiter par yo,  (a une grosse bite et des doigts de Fer, aime aller au fond du jardin quand foncdï¿½ï¿½ï¿½ Dj Piero)
+	Thomas : saigne du nez, fais la tortue, petit, fait rire les adultes, se fait maltraiter par yo, a un mono sourcil et des crottes de nez apparentes, (met l'ambiance en soirï¿½ï¿½ï¿½e)
+	Ya : a fait de l'escalade, a une force superieur, a eu des seins a une epoque, Yannick ta mere, se fait maltraiter par yo, aime starwars, nirvana, worms, crash lego,  ()
+	Yo : est perturbï¿½ï¿½ï¿½ mentalement, cours en calecon dans la cour en chantant rocky Balboula, leche les murs, ne sait pas ce qu'est un orphelinat, reponds aux adultes, est premier de sa classe, a qu'une couille et des boucles d'or, se deguise en fille, fait des cadeaux pourri aux anniversaires, n'est plus invitï¿½ï¿½ï¿½ aux anniversaires (fait des debut de merde, boit dans les flaques, vomi avec le rhum de l'enculï¿½ï¿½ï¿½ de pierre (95% de chance), a des problemes vestimentaires, aime se faire mettre une bite dans la bouche quand foncï¿½ï¿½ï¿½, aime le foot, joue a croche mensonge, )
+	Guillaume :  foncdï¿½ï¿½ï¿½ en soirï¿½ï¿½ï¿½e, connait Renaud, traine a la butte, crache pas dans les verres, ingurgite, waterloo, se tape des moches/petites, a des caillots dans la bite et des trous dans les cheveux, montre pas son cul mais sa bite, aime quand yo le fait bander, aime se faire dessiner des bite dessus, des escargots, quand foncdï¿½ï¿½ï¿½, mange des pizza mayo, joue a la playstation, aime johann en secret
+	Ali : taxe des clopes, est nerveux parce qu'il a un corps de lache et une narine qui part en couille, porte des lunettes de bigleux, foncdï¿½ï¿½ï¿½ sur un canapï¿½ï¿½ï¿½, aime se faire rouler dessus en velo quand foncdï¿½ï¿½ï¿½, a des origines pakitou, aime montrer son cul, aime et sent le paprika, aime les glacons sur les tetons quand il fait chaud, fume sans acheter de ce paquet, fume comme un pd la main a plat, sait faire le gitan
+	Jonathan : est nerveux et a une force superieur, a une moto cross, eclate des pasteques, fait des coups de putes, toujours dispo pour un demenagement ou une epreuve physique, fait encore des etudes, se rase totalement, aime mettre du minaves quand foncdï¿½ï¿½ï¿½, a un oeil plus petit que l'autre, fait bien l'accent belge, aime le sport et gueuler
 	
-Jeux videos perso :
-	Nico : ISS deluxe / Tomb Raiders / Blood / Secret Of Mana
-	Pierre : Heroes of Might and magic 3 / maniac manson / double dragon / GoldenEye / Gargoyl's Quest (GB)
-	Thomas : mario3 / warcraft2 / nintendo64
-	Ya : worms armageddon / jedi knight
-	Yo : Secret Of Mana
-	Guillaume : PES / GTA
-	Ali : Clock Tower / Resident Evil / 
-	Jonathan : Soul Calibur
-	
-Fiche Perso :
-	
-nom:
-prenom :
-Surnoms :	
-date de naissance :
-Origine :
-Particularités :
-Particularités Physique :
-aime :
-n'aime pas :
-Pouvoir :
-
-Film : Les Goonies, 
-Serie : Toutes dont les 3 de la trilogie du samedi
-Musique : ladies, i got what you need so tell me what you need
-Dessin animé : 
-Emission : Turbo
-Jeu video : Soul Calibur
-
-objets :
-
-Competences :
--Luck/Liberté Creative	0			
--Technique/Tir			0		
--Endurance/Energie		0			
--Rapidité/Réactivité	0			
--Resistance/Robustesse	0			
--Agilité/Acceleration	0			
--Intelligence/Instinct	0			
--Nervosité/Noobisme		0
-
 
 	
 Musique:
@@ -359,21 +158,21 @@ Musique:
 
 	Enfants :	
 			un dimanche matin avec ma putain sur ma mobilette, je lui met la main, entre les deux seins, direction kekette. Tu les verras plus, Les poils de mon cul, J'en ai fait des brosses. Dix francs le kilo, C'est un bon boulot Pour nourrir les gosses. avec Miguel (elle me dit ca fait du bien!) 
-			C'est la java, trou du cul du chat, la bite a papa, les couilles a jeannot, coincé dans l'piano, ca fait de la musique!
-			ma mere m'a donné cent sou,  
+			C'est la java, trou du cul du chat, la bite a papa, les couilles a jeannot, coincï¿½ï¿½ï¿½ dans l'piano, ca fait de la musique!
+			ma mere m'a donnï¿½ï¿½ï¿½ cent sou,  
 			pour acheter des bretelles  
-			j'ai gardé les cent sou
+			j'ai gardï¿½ï¿½ï¿½ les cent sou
 			pour aller au bordel
  
 			chemin faisant
-			j'ai rencontré grand mere
+			j'ai rencontrï¿½ï¿½ï¿½ grand mere
 			ou va tu mon enfant
 			je vais au bordel
  
 			garde tes cent sou
 			je ferais bien l'affaire
 			j'ai garde les cent sou
-			et j'ai niqué grand mere
+			et j'ai niquï¿½ï¿½ï¿½ grand mere
  
 			chemin rentrant
 			j'ai rencontre mon pere
@@ -383,26 +182,26 @@ Musique:
 			fils de salaud!
 			tu viens de niquer ma mere
 			fils de salaud toi meme
-			t'as bien niqué la mienne! 
+			t'as bien niquï¿½ï¿½ï¿½ la mienne! 
 			c'est tonton chirac a la guerre 14-18, qui chie dans son casque pour boucher le canon, le canon explose chirac est foutu, mitterran arrive , le prends par la peau du cul, le fout dans les chiottes et chie par dessus,
 			fraicheur de bite, hollywood capote, capote au gout tres frais, Hooolywood 
 			quand je vois ton sexe, je me sens mieux (contrex), ma bite se redresse entre tes fesses, c'est comme un obus qui rentre dans l'cul, je sais qu'c'est pas bien mais nous on l'sait que ca fait du bien
-			au clair de la lune, j'ai peté dans l'eau, ca faisait des bulles, c'etait rigolo. Ma grand mere arrive , avec des ciseaux, elle me coupe les burnes, en 3000 morceaux.
+			au clair de la lune, j'ai petï¿½ï¿½ï¿½ dans l'eau, ca faisait des bulles, c'etait rigolo. Ma grand mere arrive , avec des ciseaux, elle me coupe les burnes, en 3000 morceaux.
 			frere Jacques, jacques Chirac, ou vas tu? trou du cul, je vais a la messe, draguer les gonzesses, ding deing dong.
     Mohammed Couscous
-    Quand il pète ça fait de la mousse
+    Quand il pï¿½ï¿½ï¿½te ï¿½ï¿½ï¿½a fait de la mousse
     Il fait du tam-tam,
     sur le cul de sa bonne femme
     Mohammed il est malade
-    on l’emmène à l’hopital
-    L’hopital il est fermé
+    on lï¿½ï¿½ï¿½emmï¿½ï¿½ï¿½ne ï¿½ï¿½ï¿½ lï¿½ï¿½ï¿½hopital
+    Lï¿½ï¿½ï¿½hopital il est fermï¿½ï¿½ï¿½
     Mohammed il va crever
 HAUT LES MAINS !
 PEAU D'LAPIN !
 LA MAITRESSE EN MAILLOT DE BAIN !
 hou la menteuse elle est amoureuse
 rapporteur de PAris met ta couche et va au lit
-où t’habites, dans ma bite
+oï¿½ï¿½ï¿½ tï¿½ï¿½ï¿½habites, dans ma bite
 quelle rue, dans mon cul
 quelle adresse, dans mes fesses
 ... 
@@ -425,10 +224,10 @@ Jeu :	a la deli delo
 		
 
 	Jeu de mains :	 je suis capitaine capitaine d'un navire, 
-			dans ma maison sous terre, omawé, omawé, hotel hotel au wistiti, hotel hotel au wistiti, one two three,
+			dans ma maison sous terre, omawï¿½ï¿½ï¿½, omawï¿½ï¿½ï¿½, hotel hotel au wistiti, hotel hotel au wistiti, one two three,
 			j'appuie sur le bouton, je prsse les citrons, je tourne la manivelle et voici mon caramelle	
 			
-	Jeu de ronde : 	un samedi soir je dit a ma mere, voulez vous savoir le garcon que j'aime, c'est un jeune garcon a qui j'ai donné mon nom, j'ai donné mon nom a ,
+	Jeu de ronde : 	un samedi soir je dit a ma mere, voulez vous savoir le garcon que j'aime, c'est un jeune garcon a qui j'ai donnï¿½ï¿½ï¿½ mon nom, j'ai donnï¿½ï¿½ï¿½ mon nom a ,
 			le fromage est battu , le fromage est battu hohe hohe hohe le fromage est battu, le fermier prend sa femme
 
 Expressions de l'epoque :
@@ -446,47 +245,47 @@ Objets de l'epoque :
 	Une banane a la ceinture, une cagoule, un k-way, bombers schott, t-Shirt lc. waikiki, jogging a pression adidas, basket Fila, nike air, gants magique
 	Magic troll, les totoches, les babies, Polly Pocket et Mighty Mask, les popples, les tamagoshi, skip it, la pogo ball
 	Les pin's, Yoyo, scoubidou, ressort multicolore,  figurines tortue ninja, GI Joe (action man), chevalier du zodiaque, barbie, lego, circuit de course en guise de tapis, Le Spirograph, 
-	Barres chocolatés de l'epoque (Yes, 
+	Barres chocolatï¿½ï¿½ï¿½s de l'epoque (Yes, 
 	Boissons de l'epoque ( super poulain, )
 	Bonbons de l'epoque (malabar(qu'en y en a marre), carambar(abedou flish)
 	Jouets de l'epoque
 	Pubs de l'epoque
 	Marques de l'epoque (ddp,Fila,schott)
 
-Series/Films/Emissions/Dessins Animés/Musique de l'epoque :
-	Series (80):	4 octobre 1980 : Fantômas
-			13 décembre 1981 : Magnum
+Series/Films/Emissions/Dessins Animï¿½ï¿½ï¿½s/Musique de l'epoque :
+	Series (80):	4 octobre 1980 : Fantï¿½ï¿½ï¿½mas
+			13 dï¿½ï¿½ï¿½cembre 1981 : Magnum
 			Mac Gyver
 			L'agence tout risque
 			Code Quantum
 			22 avril 1986 : K 2000
 			21 avril 1986 : Supercopter
-			Tonerre mécanique
+			Tonerre mï¿½ï¿½ï¿½canique
 			15 avril 1988 : Cosby Show
 			Alf
 			L'homme qui tombe a pic
 			l'homme qui valait 3 milliards
 			21 jump street 
-			26 décembre 1981 : Star Trek
+			26 dï¿½ï¿½ï¿½cembre 1981 : Star Trek
 			V
 			Les Envahisseurs
 			Hawai police d'etat
-			19 septembre 1986 : Deux flics à Miami
+			19 septembre 1986 : Deux flics ï¿½ï¿½ï¿½ Miami
 			18 septembre 1983 : CHiPs
-			23 décembre 1985 (Vitamine) : Punky Brewster
+			23 dï¿½ï¿½ï¿½cembre 1985 (Vitamine) : Punky Brewster
 			Happy Days
 			Fame
 			Starsky et Hutch
-			28 février 1986 : Arabesque
-			12 avril 1988 : Côte Ouest
-			12 juin 1989 : Amour, Gloire et Beauté
-			16 août 1989 : Les Feux de l'amour
+			28 fï¿½ï¿½ï¿½vrier 1986 : Arabesque
+			12 avril 1988 : Cï¿½ï¿½ï¿½te Ouest
+			12 juin 1989 : Amour, Gloire et Beautï¿½ï¿½ï¿½
+			16 aoï¿½ï¿½ï¿½t 1989 : Les Feux de l'amour
 			Dynastie
 			24 janvier 1981 : Dallas (TF1)
-			14 octobre 1985 : Santa Barbara (TF1), premier soap opera diffusé en France
+			14 octobre 1985 : Santa Barbara (TF1), premier soap opera diffusï¿½ï¿½ï¿½ en France
 			Columbo
-			26 février 1986 : Inspecteur Derrick
-			Marié, 2 enfants
+			26 fï¿½ï¿½ï¿½vrier 1986 : Inspecteur Derrick
+			Mariï¿½ï¿½ï¿½, 2 enfants
 			7 a la maison
 			amicalment votre
 			Family Ties (Marty McFly)
@@ -494,35 +293,35 @@ Series/Films/Emissions/Dessins Animés/Musique de l'epoque :
 			Chapeau Melon et bottes de cuir
 			Kojak
 			L'amour du risque
-			La croisière s'amuse
+			La croisiï¿½ï¿½ï¿½re s'amuse
 			La petite maison dans la prairie
 			Les Incorruptibles
 			Le Saint
 			Droles de dames
-			Les mystères de l'Ouest
-			Ma sorciere bien-aimée
+			Les mystï¿½ï¿½ï¿½res de l'Ouest
+			Ma sorciere bien-aimï¿½ï¿½ï¿½e
 			Mission Impossible
 			7 janvier 1988 : Rick Hunter
 			Ricky la belle vie
-			Sauvé par le gong
+			Sauvï¿½ï¿½ï¿½ par le gong
 			Zorro
 			Les contes de la crypte
-			5 janvier 1980 : La croisière s'amuse
+			5 janvier 1980 : La croisiï¿½ï¿½ï¿½re s'amuse
 			8 septembre 1985 : Maguy (Antenne 2)
 			Marc et Sophie
-			2 février 1987 : Objectif : nul (Canal Plus)
+			2 fï¿½ï¿½ï¿½vrier 1987 : Objectif : nul (Canal Plus)
 			29 juin 1987 : Papa Schultz
 			12 septembre 1987 : Les Aventures de Superman
 			1989 : Mes Deux Papas
 
-	Series (90):	X-Files : Aux frontières du réel
+	Series (90):	X-Files : Aux frontiï¿½ï¿½ï¿½res du rï¿½ï¿½ï¿½el
 			Friends
 			Le prince de Bel-Air
 			Buffy contre les vampires
 			Beverly Hills 90210
 			Ally McBeal
 			Stargate SG-1
-			Le Caméléon
+			Le Camï¿½ï¿½ï¿½lï¿½ï¿½ï¿½on
 			Melrose Place
 			Alerte a Malibu
 			Charmed
@@ -547,48 +346,48 @@ Series/Films/Emissions/Dessins Animés/Musique de l'epoque :
 			Les Dessous de Palm Beach
 			Walker, Texas Ranger
 			Sous le soleil
-			Xena, la guerrière
+			Xena, la guerriï¿½ï¿½ï¿½re
 			Corky, un adolescent pas comme les autres
 			That '70s Show
 			1994 : Power Rangers
 
 Emissions/Jeux (80):
-			1978 : RécréA2
+			1978 : Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½A2
 			14 septembre 1980 : Benny Hill (FR3)
-			Décembre 1980 : Dimanche Martin (présenté par Jacques Martin) (Antenne 2)
-			1981 : Sept sur sept (présenté par Jean-Louis Burgat et Jean-Loup Demigneux puis par Anne Sinclair) (TF1)
-			15 mars 1981 : La Chasse au trésor (présenté par Philippe de Dieuleveult) (Antenne 2)
-			16 janvier 1982 : Champs-Elysées (présenté par Michel Drucker) (Antenne 2)
-			19 janvier 1982 : La Dernière Séance (présenté par Eddy Mitchell) (FR3)
-			13 septembre 1982 : Le Théâtre de Bouvard (présenté par Philippe Bouvard) (Antenne 2)
-			1983 : La cuisine des mousquetaires (présenté par Maïté et Micheline Banzet) (FR3)
-			Octobre 1983 : Le Bébête show
-			1984 : Top 50 (Présentée par Marc Toesca)
+			Dï¿½ï¿½ï¿½cembre 1980 : Dimanche Martin (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Jacques Martin) (Antenne 2)
+			1981 : Sept sur sept (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Jean-Louis Burgat et Jean-Loup Demigneux puis par Anne Sinclair) (TF1)
+			15 mars 1981 : La Chasse au trï¿½ï¿½ï¿½sor (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Philippe de Dieuleveult) (Antenne 2)
+			16 janvier 1982 : Champs-Elysï¿½ï¿½ï¿½es (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Michel Drucker) (Antenne 2)
+			19 janvier 1982 : La Derniï¿½ï¿½ï¿½re Sï¿½ï¿½ï¿½ance (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Eddy Mitchell) (FR3)
+			13 septembre 1982 : Le Thï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tre de Bouvard (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Philippe Bouvard) (Antenne 2)
+			1983 : La cuisine des mousquetaires (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Maï¿½ï¿½ï¿½tï¿½ï¿½ï¿½ et Micheline Banzet) (FR3)
+			Octobre 1983 : Le Bï¿½ï¿½ï¿½bï¿½ï¿½ï¿½te show
+			1984 : Top 50 (Prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½e par Marc Toesca)
 			1984 sur Canal+ : Cabou Cadin
-			4 novembre 1984 : Démarrage de Canal+, chaîne cryptée par abonnement.
-			7 janvier 1985 : Télématin (Antenne 2)
-			9 septembre 1985 : Tournez manège (présenté par Simone Garnier, Fabienne Égal et Évelyne Leclercq)
+			4 novembre 1984 : Dï¿½ï¿½ï¿½marrage de Canal+, chaï¿½ï¿½ï¿½ne cryptï¿½ï¿½ï¿½e par abonnement.
+			7 janvier 1985 : Tï¿½ï¿½ï¿½lï¿½ï¿½ï¿½matin (Antenne 2)
+			9 septembre 1985 : Tournez manï¿½ï¿½ï¿½ge (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Simone Garnier, Fabienne ï¿½ï¿½ï¿½gal et ï¿½ï¿½ï¿½velyne Leclercq)
 
-			20 février 1986 : Lancement de La Cinq, première chaîne généraliste privée française.
-			1er mars 1986 : Lancement de TV6, chaîne musicale privée et gratuite.
-			28 février 1987 : Disparition de TV6, due à la réattribution du sixième réseau à M6.
-			1er mars 1987 : Lancement de M6 sur le sixième réseau, en remplacement de TV6.
+			20 fï¿½ï¿½ï¿½vrier 1986 : Lancement de La Cinq, premiï¿½ï¿½ï¿½re chaï¿½ï¿½ï¿½ne gï¿½ï¿½ï¿½nï¿½ï¿½ï¿½raliste privï¿½ï¿½ï¿½e franï¿½ï¿½ï¿½aise.
+			1er mars 1986 : Lancement de TV6, chaï¿½ï¿½ï¿½ne musicale privï¿½ï¿½ï¿½e et gratuite.
+			28 fï¿½ï¿½ï¿½vrier 1987 : Disparition de TV6, due ï¿½ï¿½ï¿½ la rï¿½ï¿½ï¿½attribution du sixiï¿½ï¿½ï¿½me rï¿½ï¿½ï¿½seau ï¿½ï¿½ï¿½ M6.
+			1er mars 1987 : Lancement de M6 sur le sixiï¿½ï¿½ï¿½me rï¿½ï¿½ï¿½seau, en remplacement de TV6.
 
-			6 septembre 1987 : Pas de Pitié pour les Croissants
-			Septembre 1987 : Ushuaïa (présenté par Nicolas Hulot) (TF1)
-			Septembre 1987 : Sacrée Soirée (présenté par Jean-Pierre Foucault)
-			4 septembre 1987 : Dorothée Matin et Club Dorothée (présentés par Dorothée) (TF1)
-			30 septembre 1987 : La Marche du siècle (présenté par Jean-Marie Cavada) (Antenne 2 puis FR3)
-			Octobre 1987 : Nulle part ailleurs (présentée par Philippe Gildas) (Canal Plus)
-			13 décembre 1987 : Le Juste Prix (TF1)
+			6 septembre 1987 : Pas de Pitiï¿½ï¿½ï¿½ pour les Croissants
+			Septembre 1987 : Ushuaï¿½ï¿½ï¿½a (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Nicolas Hulot) (TF1)
+			Septembre 1987 : Sacrï¿½ï¿½ï¿½e Soirï¿½ï¿½ï¿½e (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Jean-Pierre Foucault)
+			4 septembre 1987 : Dorothï¿½ï¿½ï¿½e Matin et Club Dorothï¿½ï¿½ï¿½e (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½s par Dorothï¿½ï¿½ï¿½e) (TF1)
+			30 septembre 1987 : La Marche du siï¿½ï¿½ï¿½cle (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Jean-Marie Cavada) (Antenne 2 puis FR3)
+			Octobre 1987 : Nulle part ailleurs (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½e par Philippe Gildas) (Canal Plus)
+			13 dï¿½ï¿½ï¿½cembre 1987 : Le Juste Prix (TF1)
 		
-			Mai 1988 : Ciel mon mardi (présenté par Christophe Dechavanne) (TF1)
+			Mai 1988 : Ciel mon mardi (prï¿½ï¿½ï¿½sentï¿½ï¿½ï¿½ par Christophe Dechavanne) (TF1)
 			7 novembre 1988 : Questions pour un champion (FR3)
-			29 août 1988 : Les Guignols de l'info (Canal Plus)
-			19 février 1989 : Disney Parade
+			29 aoï¿½ï¿½ï¿½t 1988 : Les Guignols de l'info (Canal Plus)
+			19 fï¿½ï¿½ï¿½vrier 1989 : Disney Parade
 			24 septembre 1989 : Culture pub (M6) (INF)
 			21 octobre 1989 : Surprise sur prise
-			22 décembre 1989 : Salut les muscles
+			22 dï¿½ï¿½ï¿½cembre 1989 : Salut les muscles
 			Intervilles
 			Jeux sans frontieres
 			Le Muppets show
@@ -596,82 +395,82 @@ Emissions/Jeux (80):
 
 			
 Emissions/Jeux (90):	Perdu de vue
-			La Nuit des héros
-			Les Grosses Têtes
-			Mystères
+			La Nuit des hï¿½ï¿½ï¿½ros
+			Les Grosses Tï¿½ï¿½ï¿½tes
+			Mystï¿½ï¿½ï¿½res
 			Coucou c'est nous !
 			Frou-Frou
-			Les Enfants de la télé
-			N'oubliez pas votre brosse à dents
+			Les Enfants de la tï¿½ï¿½ï¿½lï¿½ï¿½ï¿½
+			N'oubliez pas votre brosse ï¿½ï¿½ï¿½ dents
 			Tout le monde en parle
 			Le Plus Grand Cabaret du monde
 			Vivement dimanche
 			Bas les masques
 			Sagas
 			Bouillon de culture
-			Télévisator 2
+			Tï¿½ï¿½ï¿½lï¿½ï¿½ï¿½visator 2
 			Les Minikeums
 			Taratata
 			E=M6
 			C'est pas sorcier
-			L'Équipe du dimanche
+			L'ï¿½ï¿½ï¿½quipe du dimanche
 			Motus
 			Fort Boyard
 			Le Chevalier du labyrinthe
 			Que le meilleur gagne
 			Millionnaire
 			Sur la piste de Xapatan
-			Hugo Délire
+			Hugo Dï¿½ï¿½ï¿½lire
 			Les Mondes fantastiques
 			Le Bigdil
 			Ricky ou la belle vie
-			1994 : Hartley, Coeurs à Vif
+			1994 : Hartley, Coeurs ï¿½ï¿½ï¿½ Vif
 			1994 : Harry et les Henderson   (Bigfoot)
 			1995 : Cyberflash
 
-Dessins Animés (80) :				
+Dessins Animï¿½ï¿½ï¿½s (80) :				
 				
-    1978 : Il était une fois… l’Homme
+    1978 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ lï¿½ï¿½ï¿½Homme
     7 janvier 1980 : Albator, le corsaire de l'espace
 	1981 : Bouba mon petit ourson
 	1981 : Cocoshaker
-	1981 sur Antenne 2 (Récré A2) : Quick et Flupke
+	1981 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Quick et Flupke
     7 janvier 1981 : Capitaine Flam
     3 octobre 1981 : Ulysse 31
-    21 décembre 1981 : Bouba
-	1982 : Il était une fois… l’Espace
+    21 dï¿½ï¿½ï¿½cembre 1981 : Bouba
+	1982 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ lï¿½ï¿½ï¿½Espace
     1982 : Belle et Sebastien
-    17 février 1982 : Rémi sans famille
+    17 fï¿½ï¿½ï¿½vrier 1982 : Rï¿½ï¿½ï¿½mi sans famille
     4 mars 1982 : Boule et Bill
     3 octobre 1982 : Arnold et Willy
-	13 décembre 1982 sur Antenne 2 (Récré A2) : Tom Sawyer
-	27 décembre 1982 sur Antenne 2 (Récré A2) : Les Schtroumpfs
-	1983 : Musclor et Les maîtres de l’univers
-    28 septembre 1983 : Les Mystérieuses Cités d'or
-    3 octobre 1983 sur Antenne 2 (Récré A2) : Téléchat
+	13 dï¿½ï¿½ï¿½cembre 1982 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Tom Sawyer
+	27 dï¿½ï¿½ï¿½cembre 1982 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Les Schtroumpfs
+	1983 : Musclor et Les maï¿½ï¿½ï¿½tres de lï¿½ï¿½ï¿½univers
+    28 septembre 1983 : Les Mystï¿½ï¿½ï¿½rieuses Citï¿½ï¿½ï¿½s d'or
+    3 octobre 1983 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Tï¿½ï¿½ï¿½lï¿½ï¿½ï¿½chat
     24 octobre 1983 : Inspecteur Gadget
 	11 avril 1984 (Vitamine) : Gigi
-	10 octobre 1984 sur Antenne 2 (Récré A2) : Johan & Pirlouit
+	10 octobre 1984 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Johan & Pirlouit
 	novembre 1984 sur Canal+ (Cabou Cadin) : Les minipouss
 	4 novembre 1984 sur Canal+ (Cabou Cadin) : Sherlock Holmes
-	1985 : Décode pas Bunny!
+	1985 : Dï¿½ï¿½ï¿½code pas Bunny!
 	1985 : Bibifoc
-	1985 sur Canal+ (Cabou Cadin) : Les Triplés
+	1985 sur Canal+ (Cabou Cadin) : Les Triplï¿½ï¿½ï¿½s
     26 janvier 1985 : Les Aventures de Winnie l'ourson
-	20 février 1985 sur Canal+ (Cabou Cadin) : Cobra
+	20 fï¿½ï¿½ï¿½vrier 1985 sur Canal+ (Cabou Cadin) : Cobra
     27 mars 1985 (Vitamine) : Pole Position
-	1 juillet 1985 sur Canal+ (Cabou Cadin) : Bioman (premier sentai japonais diffusé en France)
+	1 juillet 1985 sur Canal+ (Cabou Cadin) : Bioman (premier sentai japonais diffusï¿½ï¿½ï¿½ en France)
     9 septembre 1985 : Blondine au pays de l'arc-en-ciel
-	9 septembre 1985 (Salut les P’tits Loups !) : Jayce et les conquérants de la Lumière
-	17 septembre 1985 sur Antenne 2 (Récré A2) : Les mondes engloutis
+	9 septembre 1985 (Salut les Pï¿½ï¿½ï¿½tits Loups !) : Jayce et les conquï¿½ï¿½ï¿½rants de la Lumiï¿½ï¿½ï¿½re
+	17 septembre 1985 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Les mondes engloutis
     22 septembre 1985 : Alice au pays des merveilles
-	2 octobre 1985 sur Antenne 2 (Récré A2) : Clémentine
-    14 octobre 1985 (Salut les P’tits Loups !) : Les Bisounours
+	2 octobre 1985 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Clï¿½ï¿½ï¿½mentine
+    14 octobre 1985 (Salut les Pï¿½ï¿½ï¿½tits Loups !) : Les Bisounours
 	14 octobre 1985 : Les Entrechats
 	1986 : Dragon Ball
-	1986 : Il était une fois… la Vie
+	1986 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ la Vie
 	1986 : Astro le petit robot
-	1986 : Cat’s Eye
+	1986 : Catï¿½ï¿½ï¿½s Eye
 	1986 : Pingu
 	1986 : Boumbo
     1986 : Mimi Cracra
@@ -690,57 +489,57 @@ Dessins Animés (80) :
 	1987 : Le Croc-note show
 	1987 : Le Piaf
 	1987 : Les Luxioles
-	1987 : S.O.S Fantômes
+	1987 : S.O.S Fantï¿½ï¿½ï¿½mes
 	7 janvier 1987 (Vitamine) : Mon petit poney
-	7 janvier 1987 sur Antenne 2 (Récré A2) : Les Ewoks
+	7 janvier 1987 sur Antenne 2 (Rï¿½ï¿½ï¿½crï¿½ï¿½ï¿½ A2) : Les Ewoks
 	Mars 1987 : Princesse Sahara
 	3 mai 1987 : Les Petits Malins   (Les aventures de Malinville) l'ours Gaby
-    31 août 1987 sur La Cinq (Youpi ! L’école est finie) : Jeanne et Serge
+    31 aoï¿½ï¿½ï¿½t 1987 sur La Cinq (Youpi ! Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cole est finie) : Jeanne et Serge
 	29 novembre 1987 sur Canal+ (Cabou Cadin) : Rahan
-    1988 : Tortues Ninja : Les chevaliers d'écaille
-	15 janvier 1988 sur La Cinq (Youpi ! L’école est finie) : Lucile, amour et rock’n roll
-	31 août 1988 (Club Dorothée) : Georgie
-    31 août 1988 (Club Dorothée) : Lamu
-    2 janvier 1988 : La Bande à Picsou
+    1988 : Tortues Ninja : Les chevaliers d'ï¿½ï¿½ï¿½caille
+	15 janvier 1988 sur La Cinq (Youpi ! Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cole est finie) : Lucile, amour et rockï¿½ï¿½ï¿½n roll
+	31 aoï¿½ï¿½ï¿½t 1988 (Club Dorothï¿½ï¿½ï¿½e) : Georgie
+    31 aoï¿½ï¿½ï¿½t 1988 (Club Dorothï¿½ï¿½ï¿½e) : Lamu
+    2 janvier 1988 : La Bande ï¿½ï¿½ï¿½ Picsou
 	14 mars 1988 : Diplodo
     18 mars 1988 : Alf
-	6 avril 1988 (Club Dorothée) : Les chevaliers du zodiaque
+	6 avril 1988 (Club Dorothï¿½ï¿½ï¿½e) : Les chevaliers du zodiaque
 	6 avril 1988 : La Sagesse des Gnomes
-	31 août 1988 (Club Dorothée) : Ken le survivant
-	5 septembre 1988 (Club Dorothée) : Docteur Slump
-	5 septembre 1988 sur La Cinq (Youpi ! L’école est finie) : Olive et Tom
+	31 aoï¿½ï¿½ï¿½t 1988 (Club Dorothï¿½ï¿½ï¿½e) : Ken le survivant
+	5 septembre 1988 (Club Dorothï¿½ï¿½ï¿½e) : Docteur Slump
+	5 septembre 1988 sur La Cinq (Youpi ! Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cole est finie) : Olive et Tom
     11 septembre 1988 : Galaxy Express 999
     12 septembre 1988 : Petit Ours Brun
-    1988 : Club Bécébégé
+    1988 : Club Bï¿½ï¿½ï¿½cï¿½ï¿½ï¿½bï¿½ï¿½ï¿½gï¿½ï¿½ï¿½
 	1989 : Pif et Hercule
 	1989 : Denver, le dernier dinosaure
     23 janvier 1989 : Conan, le fils du futur
-	11 février 1989 (Sam’Dynamite) : La panthere rose
+	11 fï¿½ï¿½ï¿½vrier 1989 (Samï¿½ï¿½ï¿½Dynamite) : La panthere rose
 	26 avril 1989 : Dino-Riders
 	11 septembre 1989 : But pour Rudy
 	11 septembre 1989 : Gwendoline
 	12 septembre 1989 : Sous le Signe des Mousquetaires
-	8 novembre 1989 (Club Dorothée) : Le collège fou, fou, fou
-    11 décembre 1989 : Babar
+	8 novembre 1989 (Club Dorothï¿½ï¿½ï¿½e) : Le collï¿½ï¿½ï¿½ge fou, fou, fou
+    11 dï¿½ï¿½ï¿½cembre 1989 : Babar
     decembre 1989 : Les Simpson
-	L’anglais avec Victor
+	Lï¿½ï¿½ï¿½anglais avec Victor
 	
 
 
 
-Dessins Animés (90) :	(Années de 1ere diffusion en france)
+Dessins Animï¿½ï¿½ï¿½s (90) :	(Annï¿½ï¿½ï¿½es de 1ere diffusion en france)
     1990 : Nicky Larson		
     1990 : Beetlejuice
 	1990 : Tifou
-	7 janvier 1990 : Tic et Tac – Les Rangers du Risque
+	7 janvier 1990 : Tic et Tac ï¿½ï¿½ï¿½ Les Rangers du Risque
 	5 mars 1990 : Manu
 	14 mai 1990 : Max et Compagnie
-	24 décembre 1990 : Dragon Ball Z
-	1991 : Il était une fois… les Amériques
+	24 dï¿½ï¿½ï¿½cembre 1990 : Dragon Ball Z
+	1991 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ les Amï¿½ï¿½ï¿½riques
     1991 : Doug
     1991 : Capitaine Planete
     1991 : Les jumeaux du bout du monde
-	1991 : Samouraï Pizza cats
+	1991 : Samouraï¿½ï¿½ï¿½ Pizza cats
 	1991 : Les Moomins
 	1991 : Super Baloo
 	1991 : Super Mario Bros
@@ -753,19 +552,19 @@ Dessins Animés (90) :	(Années de 1ere diffusion en france)
 	1992 sur Antenne 2 (Hanna Barbera Dingue Dong) : Les Pierrafeu en culottes courtes
     5 mai 1992 : Les Aventures de Tintin (1992)
     17 octobre 1992 : Les Razmoket
-    25 novembre 1992 : L'école des champions
+    25 novembre 1992 : L'ï¿½ï¿½ï¿½cole des champions
 	1993 : La Famille Addams
 	1993 : Sonic
-	1993 : La Bande à Dingo
+	1993 : La Bande ï¿½ï¿½ï¿½ Dingo
 	1993 : Sailor Moon
-    22 avril 1993 : Les Histoires du père Castor (c'est le premier série animation diffusé sur le câble français)
-	1994 : Il était une fois… les Découvreurs
+    22 avril 1993 : Les Histoires du pï¿½ï¿½ï¿½re Castor (c'est le premier sï¿½ï¿½ï¿½rie animation diffusï¿½ï¿½ï¿½ sur le cï¿½ï¿½ï¿½ble franï¿½ï¿½ï¿½ais)
+	1994 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ les Dï¿½ï¿½ï¿½couvreurs
 	1994 : Les Pastagums
 	1994 : Les animaniacs
 	1994 : Zoo Cup
 	1994 : Mighty Max
 	1994 : Fly
-	1994 : Albert le 5ème Mousquetaire
+	1994 : Albert le 5ï¿½ï¿½ï¿½me Mousquetaire
     13 avril 1994 : Power Rangers
 	1995 : Iznogoud
 	1995 : Gargoyles   (Les Anges de la Nuit)
@@ -773,10 +572,10 @@ Dessins Animés (90) :	(Années de 1ere diffusion en france)
 	1996 : Minus et Cortex
 	1996 : Le bus magique
 	1996 : The Mask
-	1997 : Il était une fois… les Explorateurs
-	1997 : Drôles de Monstres
+	1997 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ les Explorateurs
+	1997 : Drï¿½ï¿½ï¿½les de Monstres
     17 juillet 1998 : South Park
-	2008 : Il était une fois… notre Terre
+	2008 : Il ï¿½ï¿½ï¿½tait une foisï¿½ï¿½ï¿½ notre Terre
 
 
 
@@ -785,7 +584,7 @@ Musique 80:
 Musique 90:
 
 Historique de l'evolution des jeux video :
-	- Arrivée de la sauvegarde dans les jeux
+	- Arrivï¿½ï¿½ï¿½e de la sauvegarde dans les jeux
 	- 3D
 	- consoles
 	- 1er jeu d'une longue serie
@@ -798,10 +597,11 @@ Evenement Internet :
 Histoire:
 	Choix d'un perso (fiche de presentation)
 	Scene d'intro
-	Arrivée a l'ecole (tutoriel de base)
+	Arrivï¿½ï¿½ï¿½e a l'ecole (tutoriel de base)
 	1ere mission : Les persos doivent tous se rencontrer (fiches de presentation)
 	Choix entre 3 actions : 
 	Arbre a partir des 3 premieres actions (Physique, Mental, Social) (Jeu sportif, Jeu reflexion, Jeu Quizz)
-	Chaque actions debloquent de nouvelles : possibilité d'appeler, faire des jeux, debloquer des lieux, des persos, debloquer des trucs
+	Chaque actions debloquent de nouvelles : possibilitï¿½ï¿½ï¿½ d'appeler, faire des jeux, debloquer des lieux, des persos, debloquer des trucs
 	
 	
+

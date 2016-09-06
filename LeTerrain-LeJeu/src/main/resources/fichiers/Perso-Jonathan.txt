@@ -1,39 +1,3 @@
-nom:
-prenom :
-Surnoms :	
-date de naissance :
-Origine :
-Particularités :
-Particularités Physique :
-aime :
-n'aime pas :
-Pouvoir :
-
-Film : Les Goonies, 
-Serie : Toutes dont les 3 de la trilogie du samedi
-Musique : ladies, i got what you need so tell me what you need
-Dessin animé : 
-Emission : Turbo
-Jeu video : Soul Calibur
-
-objets :
-
-Competences :
--Luck/Liberté Creative	0			
--Technique/Tir			0		
--Endurance/Energie		0			
--Rapidité/Réactivité	0			
--Resistance/Robustesse	0			
--Agilité/Acceleration	0			
--Intelligence/Instinct	0			
--Nervosité/Noobisme		0 
-
-Film : 
-Serie : Toutes dont les 3 de la trilogie du samedi
-Musique : ladies, i got what you need so tell me what you need
-Dessin animé :
-Emission :
-
 Aime les voitures
 Conduit uniquement des Fiat Punto
 a une moto cross
@@ -42,4 +6,4 @@ plantage de crayon dans la main + balayette
 evanouite chez Camille
 Russ qui se prend le trottoir au volant
 Russ qui se venere au volant
-Russ qui eclate une pasteque pour son maillot de l'italie dechiré
+Russ qui eclate une pasteque pour son maillot de l'italie dechirï¿½

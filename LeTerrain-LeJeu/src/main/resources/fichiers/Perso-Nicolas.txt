@@ -1,45 +1,14 @@
-nom:
-prenom :
-Surnoms :	
-date de naissance :
-Origine :
-Particularités :
-Particularités Physique :
-aime :
-n'aime pas :
-Pouvoir :
-
-Film :
-Serie : 
-Musique : 
-Dessin animé : 
-Emission : 
-Jeu video : 
-
-objets :
-
-Competences :
--Luck/Liberté Creative	0			
--Technique/Tir			0		
--Endurance/Energie		0			
--Rapidité/Réactivité	0			
--Resistance/Robustesse	0			
--Agilité/Acceleration	0			
--Intelligence/Instinct	0			
--Nervosité/Noobisme		0 
-
-
 Noms cultes:
 - Le p'tit pas beau
 - Le p'tit farfouilli au rapport
 - Le p'tit saoulant qui vient de fumer
 - Le p'tit grapineur
 - Thomas Delarboulasse
-- Johann début de merde
+- Johann dï¿½but de merde
 - Rickie morve au nez
 
 Phrases cultes:
-- Jonathan du centre aéré(Mais Vas-y!!!)
+- Jonathan du centre aï¿½rï¿½(Mais Vas-y!!!)
 - Mes manses font qu'un
 - Le sphyncter il a dit quoi
 - On s'habille en chantant, on fait du skate...
@@ -61,44 +30,44 @@ Phrases cultes:
 - Pieeeerrre, mes pantoufles...
 - Ali et son super champignon atomique
 - Vanille, Fraise, Caramel, ... Mais casses toi, tu pues.
-- C'est trop tard, enculé
-- J'ai triché...
-- J'ai giclé...
+- C'est trop tard, enculï¿½
+- J'ai trichï¿½...
+- J'ai giclï¿½...
 - T'as vu, tu vois...
 - Imagine tu dois vivre toute ta vie avec un mec qui te tire la peau de la glotte
 - Nico, j'ai soif...
-- On a pas le droit d'écrire sur les murs, parceque c'est pas bien, et on a ecrit une chartre...
+- On a pas le droit d'ï¿½crire sur les murs, parceque c'est pas bien, et on a ecrit une chartre...
 
 Situations cultes :
 - On joue a faire du sable doux
 - On joue a faire bouffer du sable a une ptite meuf en maternel
 - On joue a ecraser les ballons chez Judith Rosenkrantz
 - On joue a Sangoku brun, Sangoku blond trop mal fait
-- On joue a nicker Jonathan/Miguel le portos/Ludovic Vandeville/George le gitan/Mickael Karagoz avec l'attaque du dragon désynchronisé
-- On joue aux Mysteres de Pekin quand on a le droit de ramener des jeux a la fin de l'année
+- On joue a nicker Jonathan/Miguel le portos/Ludovic Vandeville/George le gitan/Mickael Karagoz avec l'attaque du dragon dï¿½synchronisï¿½
+- On joue aux Mysteres de Pekin quand on a le droit de ramener des jeux a la fin de l'annï¿½e
 - On joue a Blood a deux sur un clavier, et on se chie dessus
 - On joue a Seigneur de guerre
-- On joue a Secret of Mana, et ma mere débranche le cable
+- On joue a Secret of Mana, et ma mere dï¿½branche le cable
 - On joue a la chaise qui nike mon radiateur
-- On joue a je t'éclate la tete avec ma fenetre
-- On joue a je monte sur le toit attaché a une corde
-- On joue a je sors dans la rue avec un fusil de chasse trop mal caché, et on tire sur un pneu a bout portant
+- On joue a je t'ï¿½clate la tete avec ma fenetre
+- On joue a je monte sur le toit attachï¿½ a une corde
+- On joue a je sors dans la rue avec un fusil de chasse trop mal cachï¿½, et on tire sur un pneu a bout portant
 - On joue a se maquiller et puis vu que c'est de la merde on maquille tout en noir
-- On joue a se faire cramer dans la tente a dire des conneries par ma cousine et Gaelle Chabot qui ont tout écrit
-- On joue a ecrire ce qu'on dit quand on est foncdé
+- On joue a se faire cramer dans la tente a dire des conneries par ma cousine et Gaelle Chabot qui ont tout ï¿½crit
+- On joue a ecrire ce qu'on dit quand on est foncdï¿½
 - On joue a fumer des graines de pavot
 - On joue a tu me fais croire que je prends un ecsta
 - On joue a Pierre te jette une cagette dans la gueule
-- On joue a je te fais fondre du plastique autour de toi quand t'es foncdé
+- On joue a je te fais fondre du plastique autour de toi quand t'es foncdï¿½
 - On joue a on va au stade en plein air et t'as envie de chier
 
 - On mange le tang de Barbara Stolic/Mickael Karagoz
-- On se fout de la gueule de Barbouza qui s'est pissé dessus en sport
+- On se fout de la gueule de Barbouza qui s'est pissï¿½ dessus en sport
 - On fait un film de merde pour l'ecole avec une morale de merde
 - On fait un film de merde entre nous et on le fini pas
 - On se leve pendant les vacances pour regarder les episodes de Dragon Ball qui n'avancent pas
 - On regarde Blade Runner et on comprend rien
-- On prend l'apero dans un mobil-home de mecs qu'on connait pas et on ressort dechiré
+- On prend l'apero dans un mobil-home de mecs qu'on connait pas et on ressort dechirï¿½
 - On va voir Copland au lieu de The Full Monty parcequ'il y a plus de place pour Jurassik Park 3
 - On tise, on fume, je suis malade, "Nico j'ai soif", je chie comme un gros porc et ta mere m'entends
 
