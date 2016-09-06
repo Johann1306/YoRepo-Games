@@ -1,0 +1,29 @@
+nom:
+prenom :
+Surnoms :	
+date de naissance :
+Origine :
+Particularités :
+Particularités Physique :
+aime :
+n'aime pas :
+Pouvoir :
+
+Film : Les 3 freres, 
+Serie :
+Musique :
+Dessin animé : 
+Emission :
+Jeu video :
+
+objets :
+
+Competences :
+-Luck/Liberté Creative	0			
+-Technique/Tir			0		
+-Endurance/Energie		0			
+-Rapidité/Réactivité	0			
+-Resistance/Robustesse	0			
+-Agilité/Acceleration	0			
+-Intelligence/Instinct	0			
+-Nervosité/Noobisme		0 

@@ -66,10 +66,10 @@ public class MediaPlayer2 extends Application {
 		stage.show();
 	}
 
-	public static void main(String[] args) {
-		if (args.length > 0) {
-			arg1 = args[0];
-		}
-		Application.launch(args);
-	}
+//	public static void main(String[] args) {
+//		if (args.length > 0) {
+//			arg1 = args[0];
+//		}
+//		Application.launch(args);
+//	}
 }

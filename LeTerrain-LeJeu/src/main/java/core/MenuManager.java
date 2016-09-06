@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
+import front.PanelPersonnage;
 import modele.item.mission.Mission;
 import modele.item.personnage.PersoPrenom;
 
@@ -57,9 +58,11 @@ public class MenuManager extends JMenuBar implements Serializable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO : load identique dans la MainFrame
 				MainFrame load = SauvegardeManager.load();
 				MenuPrincipal.setMainFrame(load);
 				load.startMainFrame();
+				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 			}
 		});
 		

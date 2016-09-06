@@ -36,11 +36,11 @@ public class PanelBas extends JPanel {
 		panelEvenement.setMaximumSize(new Dimension(500, Constante.PANEL_BAS_HAUTEUR));
 		
 		// Generations des evenements
-		List<Evenement> evenementsDisponibles = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles();
-		for (Evenement evenement : evenementsDisponibles) {
-			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
-			panelEvenement.add(labelEvenement);
-		}
+//		List<Evenement> evenementsDisponibles = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles();
+//		for (Evenement evenement : evenementsDisponibles) {
+//			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
+//			panelEvenement.add(labelEvenement);
+//		}
 
 		// Panel Inventaire
 		panelInventaire = new JPanel();

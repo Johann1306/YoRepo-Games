@@ -44,6 +44,7 @@ public class MissionManager implements Serializable  {
 		
 		// Chargement des missions
 
+		// Images
 		List<String> imagePaths1 = new ArrayList<String>();
 		String imagePath1 = "src/main/resources/image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
@@ -56,6 +57,7 @@ public class MissionManager implements Serializable  {
 		String imagePath3 = "src/main/resources/image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
 
+		// Sons
 		List<String> sonPaths1 = new ArrayList<String>();
 		String sonPath1 = "src/main/resources/sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
@@ -64,26 +66,30 @@ public class MissionManager implements Serializable  {
 		String sonPath2 = "src/main/resources/sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
+		// Videos
 		List<String> videoPaths1 = new ArrayList<String>();
 		String videoPath1 = "src/main/resources/video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
-		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 11, 00, 00);
+		// Dates
+		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 9, 00, 00);
 		Date date2 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 17, 00, 00);
 		Date dateNull = null;
 		
+		// Bonus
 		List<Bonus> bonus = BonusManager.getAllBonus();
 		Bonus bonusVide = bonus.get(0);
 		Bonus bonus1 = bonus.get(1);
 		Bonus malus1 = bonus.get(2);
 		
+		// Jeux
 		List<NomJeu> jeux = new ArrayList<NomJeu>();
 		jeux.add(NomJeu.JEU_RANDOM);
 		jeux.add(NomJeu.JEU_RANDOM);
 		jeux.add(NomJeu.JEU_RANDOM);
 		
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)
-		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionne ton personnage principal :", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, new Lieu(), 70, "", "", "Choisir votre premier Personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionne ton personnage principal :", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, new Lieu(), 70, "", "", "Choisir votre personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission2 = new Mission(incrementId(), "mission2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, new Lieu(), 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission3 = new Mission(incrementId(), "mission3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, new Lieu(), 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission4 = new Mission(incrementId(), "mission4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.YANNICK, new Lieu(), 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
@@ -354,8 +360,8 @@ public class MissionManager implements Serializable  {
 			BonusManager.distribueBonus(leGroupe, mission.getPerte());
 		}
 
-		// Si un evenement a debloque un perso
-		PanelPersonnage.refreshArriveePersonnage();
+		// Si une mission a debloque un perso
+		MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 	}
 
 }

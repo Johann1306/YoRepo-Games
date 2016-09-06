@@ -7,6 +7,7 @@ public class CoreManager implements Serializable  {
 	private static final long serialVersionUID = 1L;
 
 	private transient MenuManager menuManager;
+	private transient VideoManager videoManager;
 	private DateManager dateManager;
 	private ItemManager itemManager;
 	private EvenementManager evenementManager;
@@ -14,8 +15,7 @@ public class CoreManager implements Serializable  {
 	private BonusManager bonusManager;
 	private MissionManager missionManager;
 	private PersonnageManager personnageManager;
-	private transient VideoManager videoManager;
-	private transient JeuManager jeuManager; 
+	private JeuManager jeuManager; 
 	
 	public CoreManager() {
 	}

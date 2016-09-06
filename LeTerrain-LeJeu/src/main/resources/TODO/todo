@@ -2,10 +2,15 @@ TODO :
 
 - Menu principal + Intro + enchainement premiere mission + choix personnage
 - Gerer les 8 personnages principaux / taille du panel personnage quand pas full / deplacement horizontal du panel a supprimer
-- Gestion sauvegarde/charge
-- integrer la fenetre media a l'appli / faire suivre la fenetre en cas de redimensionnement de l'autre fenetre 
+- Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
+- integrer la fenetre media a l'appli / ou faire suivre la fenetre en cas de redimensionnement de l'autre fenetre !!!
 - Java 2D/3D perso vu de dessus (cercles) 
 - Gestion de tous les parametres de Mission
-- virer static dans MissionManager pour sauvegarde
+- integrer un emulateur
+- presentation/fin des missions ameliorés (+d'infos)
+- gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)
+- gerer les boss / combats
+- faire un jar executable avec icone
+
 
 - Arbre de dialogue

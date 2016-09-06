@@ -1,0 +1,15 @@
+https://www.google.fr/maps/@48.8932366,2.5515078,2572m/data=!3m1!1e3?hl=fr
+
+https://www.google.fr/maps/@48.8918704,2.5526923,1286m/data=!3m1!1e3?hl=fr
+
+https://www.google.fr/maps/@48.8592078,2.5521264,3892a,20y,40.86t/data=!3m1!1e3?hl=fr
+
+Doublon 2D/3D ecole :
+3D : https://www.google.fr/maps/@48.8911012,2.5529605,319a,20y,359.53h,9.5t/data=!3m1!1e3?hl=fr
+2D : https://www.google.fr/maps/@48.8915823,2.5529697,110m/data=!3m1!1e3?hl=fr
+
+Intro Ecole : https://www.google.fr/maps/@48.8889261,2.5522386,122a,20y,6.45h,50.08t/data=!3m1!1e3?hl=fr
+
+Les Dalhias : https://www.google.fr/maps/@48.8953125,2.5467752,199a,20y,220.22h,55.55t/data=!3m1!1e3
+
+Saint Cyprien Villa : https://www.google.fr/maps/@42.6349024,3.0350422,46a,41.3y,260.62h,49.39t/data=!3m1!1e3

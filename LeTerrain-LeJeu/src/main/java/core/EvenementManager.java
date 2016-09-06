@@ -175,7 +175,7 @@ public class EvenementManager implements Serializable {
 			} 
 		}
 		// Si un evenement a debloque un perso
-		PanelPersonnage.refreshArriveePersonnage();
+		MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 	}
 	
 	public Evenement getNextEvenement() {
