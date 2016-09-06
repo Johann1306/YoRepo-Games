@@ -121,7 +121,7 @@ public class DateManager implements Serializable {
 //		System.out.println("Taille Max = " + tailleMax);
 //	}
 	
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 //		DateManager.genereDateDepart();
 //		JLabel labelDate = new JLabel(DateManager.getDateCouranteFormatee());
 //		DateManager.afficheDateCourrante();
@@ -138,7 +138,6 @@ public class DateManager implements Serializable {
 //		DateManager.passeUnMois(labelDate);
 //		DateManager.afficheDateCourrante();
 //		calculeMaxCaractere();
-		
-	}
+//	}
 
 }

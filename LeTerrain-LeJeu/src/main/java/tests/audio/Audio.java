@@ -67,8 +67,8 @@ public class Audio extends Thread{
         }
     }
     
-    public static void main(String[] args) {
-		Audio audio = new Audio();
-		audio.run();
-	}
+//    public static void main(String[] args) {
+//		Audio audio = new Audio();
+//		audio.run();
+//	}
 }

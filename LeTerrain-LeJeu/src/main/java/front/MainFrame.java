@@ -11,7 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import core.CoreManager;
-import core.JeuManager;
 import core.MenuManager;
 import core.configuration.Constante;
 
@@ -23,6 +22,7 @@ public class MainFrame extends JFrame {
 	private static PanelCentre panelCentre = new PanelCentre();
 	private static JPanel panelDroite = new JPanel();
 	private static PanelBas panelBas = new PanelBas();
+	private static PanelPersonnage panelPersonnage;
 	
 	private CoreManager coreManager;
 	
@@ -48,10 +48,7 @@ public class MainFrame extends JFrame {
 		coreManager = manager;
 		MenuManager menuManager = new MenuManager();
 		menuManager.initialise();
-		JeuManager jeuManager = new JeuManager();
-		jeuManager.initialise();
 		coreManager.setMenuManager(menuManager);
-		coreManager.setJeuManager(jeuManager);
 		panelHaut = new PanelHaut();
 		panelGauche = new JPanel();
 		panelCentre = new PanelCentre();
@@ -80,7 +77,7 @@ public class MainFrame extends JFrame {
 		panelHaut.generePanelHaut();
 		panelBas.generePanelBas();
 		
-		JPanel panelPersonnage = new PanelPersonnage();
+		panelPersonnage = new PanelPersonnage();
 		PanelMusique panelMusique = new PanelMusique();
 		panelMusique.generePanelMusique();
 
@@ -153,6 +150,10 @@ public class MainFrame extends JFrame {
 	
 	public static PanelBas getPanelBas(){
 		return panelBas;
+	}
+	
+	public static PanelPersonnage getPanelPersonnage(){
+		return panelPersonnage;
 	}
 	
 	public CoreManager getCoreManager() {

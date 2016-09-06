@@ -1,9 +1,11 @@
 package modele.jeu;
 
+import java.io.Serializable;
+
 import core.NomJeu;
 import modele.item.mission.Mission;
 
-public class Jeu implements Jouable {
+public class Jeu implements Jouable, Serializable {
 	
 	private NomJeu nomJeu;
 

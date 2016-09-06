@@ -1,0 +1,34 @@
+
+Competences :
+-Luck/Liberté Creative	
+-Exploit/Excentricité/Exemplarité
+-Technique/Tir
+-Endurance/Energie
+-Rapidité/Réactivité
+-Resistance/Robustesse
+-Agilité/Acceleration
+-Intelligence/Instinct
+-Nervosité/Noobisme
+
+Competences : LE TERRAIN
+-Luck/Liberté Creative				(Chance aux jeux, Creativité au foot)							Jeu de chance ( % de chance + prix d'entree(argent, cartes, billes,...))
+-Exploit/Excentricité/Exemplarité	(Critique aux jeux, Critique au foot) // EXPERIENCE ??			Jeu difficile (faire un saut precis sans voir la plate forme)
+
+-Technique/Tir						(Precision aux jeux, Technique/Tir au foot)						Jeu de precision (Viser une cible mouvante/ garder la souris dans une cible mouvante)
+-Endurance/Energie					(Force aux jeux, Endurance/Energie au foot)						Jeu de tape (taper vite sur une touche / clicker vite)
+-Rapidité/Réactivité				(Vitesse max aux jeux, Vitesse max au foot)						Jeu de rapidité (3x4 : repondre au clavier / cible qui apparait/se deplace a cliquer / mot a taper vite)
+-Resistance/Robustesse				(Vie max aux jeux, Defense au foot)								Jeu de defense (Tower defense / bloquer des cibles qui descendent)
+-Agilité/Acceleration				(Agilité/Acceleration aux jeux, Agilité/Acceleration au foot)	Jeu de tape (taper vite sur deux touches en alterné / clicker vite)
+-Intelligence/Instinct				(Temps max dans les Quizz aux jeux, Vision de jeu au foot)		Jeu Quizz (par classe, quizz video, audio, image, illusion d'optique)
+-Nervosité/Noobisme					(--------- aux jeux, Nervosité/Noobisme au foot)				Jeu de stress (Timer, )
+
+Jeux :
+
+
+
+Missions normales:
+
+Missions aleatoires:
+
+Missions negatives:
+

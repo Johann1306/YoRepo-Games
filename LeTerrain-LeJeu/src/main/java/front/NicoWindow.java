@@ -39,9 +39,9 @@ public class NicoWindow extends JFrame implements ActionListener {
 
 	}
 
-	public static void main(String[] args) {
-		new NicoWindow();
-	}
+//	public static void main(String[] args) {
+//		new NicoWindow();
+//	}
 
 	public NicoWindow() {
 		super("Fiche Perso : Nico");

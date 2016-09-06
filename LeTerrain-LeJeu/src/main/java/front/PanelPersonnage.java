@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 import core.MenuManager;
 import core.MusiqueManager;
-import core.PersonnageManager;
 import core.configuration.Constante;
 import modele.evenement.EvenementTheme;
 import modele.item.media.audio.Musique;
@@ -35,15 +34,15 @@ public class PanelPersonnage extends JPanel {
 //	private ImageIcon iconGuillaume = null;
 //	private ImageIcon iconJonathan = null;
 
-	private static JButton boutonNicolas = null;
-	private static JButton boutonPierre = null;
-	private static JButton boutonYannick = null;
-	private static JButton boutonThomas = null;
-	private static JButton boutonJohann = null;
-	private static JButton boutonAli = null;
-	private static JButton boutonGuillaume = null;
-	private static JButton boutonJonathan = null;
-	private static JButton boutonGroupe = null;
+	private JButton boutonNicolas = null;
+	private JButton boutonPierre = null;
+	private JButton boutonYannick = null;
+	private JButton boutonThomas = null;
+	private JButton boutonJohann = null;
+	private JButton boutonAli = null;
+	private JButton boutonGuillaume = null;
+	private JButton boutonJonathan = null;
+	private JButton boutonGroupe = null;
 	private static List<JButton> boutons = null;
 	
 	public PanelPersonnage() {
@@ -190,15 +189,7 @@ public class PanelPersonnage extends JPanel {
 		boutonGuillaume.setVisible(false);
 		boutonJonathan.setVisible(false);
 		
-		boutons = new ArrayList<JButton>();
-		boutons.add(boutonNicolas);
-		boutons.add(boutonPierre);
-		boutons.add(boutonYannick);
-		boutons.add(boutonThomas);
-		boutons.add(boutonJohann);
-		boutons.add(boutonAli);
-		boutons.add(boutonGuillaume);
-		boutons.add(boutonJonathan);
+		initialiseListeBoutons();
 		
 //		JPanel panelVide = new JPanel();
 //		panelVide.setBackground(Color.RED);
@@ -223,26 +214,45 @@ public class PanelPersonnage extends JPanel {
 		//		this.add(Box.createRigidArea(new Dimension(0, 5)));
 		this.add(boutonJonathan);
 		
-//		refreshPanelPersonnage();
+//		refreshArriveePersonnage();
+	}
+
+	private void initialiseListeBoutons() {
+		boutons = new ArrayList<JButton>();
+		boutons.add(boutonNicolas);
+		boutons.add(boutonPierre);
+		boutons.add(boutonYannick);
+		boutons.add(boutonThomas);
+		boutons.add(boutonJohann);
+		boutons.add(boutonAli);
+		boutons.add(boutonGuillaume);
+		boutons.add(boutonJonathan);
 	}
 	
 	// Gestion de l arrivee des personnages dans le groupe
-	public static void refreshArriveePersonnage() {
+	public void refreshArriveePersonnage() {
 		//TODO : arreter refresh quand full persos
 		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
 		if (leGroupe != null) {
 			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
-	//			System.out.println(perso.getCompetence().toString());
+//				System.out.println(perso.getCompetence().toString());
 				if (perso.isAvailable()) {
+					// presentation du perso
 					if ( boutons != null ) {
 						for (JButton bouton : boutons) {
 							if (bouton.getName().equals(perso.getPrenom().name()) && !bouton.isVisible()) {
 								// affichage du bouton du perso
 								bouton.setVisible(true);
-								// lancer le son arrivee dans le groupe
-								MusiqueManager.play(new Musique("src/main/resources/sonParDefaut/312-SecretOfMana-ally-joins.mp3"));
-								// affichage du panneau arrivee
-								JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+						
+								if (!perso.isDejaPresente()) {
+									// lancer le son arrivee dans le groupe
+									MusiqueManager.play(new Musique("src/main/resources/sonParDefaut/312-SecretOfMana-ally-joins.mp3"));
+									// affichage du panneau arrivee
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+									// TODO : Affichage fiche perso
+									
+									perso.setDejaPresente(true);
+								}
 							} 
 						}
 					}

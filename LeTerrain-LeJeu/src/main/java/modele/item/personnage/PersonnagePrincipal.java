@@ -15,6 +15,8 @@ import modele.item.media.audio.Son;
 
 public class PersonnagePrincipal implements Serializable { //extends Item {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private PersoNom nom;
 	private PersoPrenom prenom;
 	private String surnomPrincipal;
@@ -35,7 +37,9 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 	private List<Item> sac;
 	private Lieu domicile;
 	private Competence competence;
+	public boolean isDejaPresente;
 	private boolean available;
+
 
 	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
@@ -63,6 +67,7 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 		this.sac = sac;
 		this.domicile = domicile;
 		this.competence = competence;
+		this.isDejaPresente = false;
 		this.available = available;
 	}
 
@@ -173,4 +178,11 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 		this.available = available;
 	}
 
+	public boolean isDejaPresente() {
+		return isDejaPresente;
+	}
+
+	public void setDejaPresente(boolean isDejaPresente) {
+		this.isDejaPresente = isDejaPresente;
+	}
 }
