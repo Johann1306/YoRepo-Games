@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import core.NomJeu;
 import modele.item.mission.Mission;
+import modele.item.personnage.Groupe;
 
 public class Jeu implements Jouable, Serializable {
 	
@@ -17,7 +18,7 @@ public class Jeu implements Jouable, Serializable {
 		return nomJeu;
 	}
 
-	public boolean start(Mission mission) {
+	public boolean start(Groupe groupe, Mission mission) {
 		return true;
 	}
 

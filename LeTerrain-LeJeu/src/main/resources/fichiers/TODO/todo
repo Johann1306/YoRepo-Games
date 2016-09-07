@@ -1,0 +1,53 @@
+TODO :
+
+Priorités :
+
+Indispensables:
+- Ajouter Scroller au PanelCentre 
+- Fiche perso evolutive
+- Gerer les Carte, Lieu, POI (+deplacement/click souris dans le Panel Centre)
+- Menu principal + Intro + enchainement premiere mission + choix personnage
+- integrer la fenetre media a l'appli / ou faire suivre la fenetre en cas de redimensionnement de l'autre fenetre !!!
+- Gestion de tous les parametres de Mission
+- gerer les boss / combats
+- faire un jar executable avec icone
+- Remplir le contenu (Jeux)
+
+- gerer la possibilité d'ajouter du contenu
+- Remplir le contenu (Carte) + IHM de creation
+- Remplir le contenu (Lieux) + IHM de creation
+- Remplir le contenu (POIs) + IHM de creation
+- Remplir le contenu (Missions) + IHM de creation
+- Remplir le contenu (Evenements) + IHM de creation
+- Remplir le contenu (Items) + IHM de creation
+- Remplir le contenu (Persos) + IHM de creation
+- Remplir le contenu (PersonnageSecondaires) + IHM de creation
+- Remplir le contenu (image, audio, video, dialogue) + IHM de creation
+
+- Tester sur un autre PC/Portable
+
+
+Optionnelles:
+
+- Panel Image pour les photos/images associés 
+- Ajouter image dans panel MP3
+- Panel Dialogue
+- gerer zone achievements/deloques =>(Persos, items, missions, evenements, Musique, Videos, Jeux, Dessin animé)
+- gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)
+- presentation/fin des missions ameliorés (+d'infos) (+ Panel pour afficher Bonus/Malus en fin de mission)
+- integrer un emulateur
+- Java 2D/3D perso vu de dessus (cercles) 
+- PanelPersonnage / taille du panel quand pas full / deplacement horizontal du panel a supprimer
+- Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
+- zone affiche dernier evenement, mission, image pendant 3s puis disparait en fondu
+- Gerer le deplacement des peros sur des maps adaptés vue de dessus (+animation des mouvements / des maps) pour le jeu
+- Gerer le deplacement de persos sur des maps adaptés vue de coté (+animation des mouvements / des maps) pour les mini-jeux
+- les TODOs
+
+JP:
+- Arbre de dialogue
+
+
+
+
+

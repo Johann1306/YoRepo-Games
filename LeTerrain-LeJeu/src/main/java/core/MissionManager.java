@@ -84,9 +84,9 @@ public class MissionManager implements Serializable  {
 		
 		// Jeux
 		List<NomJeu> jeux = new ArrayList<NomJeu>();
-		jeux.add(NomJeu.JEU_RANDOM);
-		jeux.add(NomJeu.JEU_RANDOM);
-		jeux.add(NomJeu.JEU_RANDOM);
+		jeux.add(NomJeu.JEU_COMBAT);
+		jeux.add(NomJeu.JEU_COMBAT);
+		jeux.add(NomJeu.JEU_COMBAT);
 		
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)
 		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionne ton personnage principal :", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, new Lieu(), 70, "", "", "Choisir votre personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Item>(), new ArrayList<Item>(), false);
