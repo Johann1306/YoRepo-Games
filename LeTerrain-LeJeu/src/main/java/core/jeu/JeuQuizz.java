@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import core.NomJeu;
 import modele.item.mission.Mission;
+import modele.item.personnage.Groupe;
 import modele.jeu.Jeu;
 
 public class JeuQuizz extends Jeu implements Serializable {
@@ -15,7 +16,7 @@ public class JeuQuizz extends Jeu implements Serializable {
 	}
 
 	@Override
-	public boolean start(Mission mission) {
+	public boolean start(Groupe groupe, Mission mission) {
 		
 		return true;
 	}
