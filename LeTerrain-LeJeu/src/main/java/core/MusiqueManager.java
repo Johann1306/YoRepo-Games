@@ -13,9 +13,11 @@ public class MusiqueManager implements Serializable {
 	private static Sound applicationEvenement = null;
 	private static Sound applicationItem = null;
 	private static Sound applicationMission = null;
-	
+	private static Sound applicationMenuPrincipal = null;
+	private static boolean stopped = false;
+
 	public void initialise() {
-		// Chargement des musiques		
+		// Chargement des musiques
 	}
 
 	public static void play(Musique musique) {
@@ -36,7 +38,7 @@ public class MusiqueManager implements Serializable {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	public static void playSonEvenement(String sonPath) {
@@ -87,7 +89,7 @@ public class MusiqueManager implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static void playSonMission(List<String> sonPaths) {
@@ -113,9 +115,76 @@ public class MusiqueManager implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	public static void playPlaylistEnBoucle(List<String> sonPaths) {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					// Boucle infini
+					while (!stopped) {
+						for (String sonPath : sonPaths) {
+							// Pause 1s entre 2 musiques
+							if (!stopped) {
+								Thread.sleep(1000);
+								if (applicationMenuPrincipal == null) {
+									applicationMenuPrincipal = new Sound(sonPath);
+									applicationMenuPrincipal.play();
+								} else {
+									applicationMenuPrincipal = new Sound(sonPath);
+									applicationMenuPrincipal.play();
+								}
+							}
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		if (!t.isAlive()) {
+			t.start();
+		}
 	}
 	
-	
+	public static void stopPlaylistEnBoucle() {
+		try {
+			if (applicationMenuPrincipal != null) {
+				applicationMenuPrincipal.stop();
+			}
+			stopped = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	public static void playPlaylist(List<String> sonPaths) {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					for (String sonPath : sonPaths) {
+						// Pause 1s entre 2 musiques
+							Thread.sleep(1000);
+							if (applicationMenuPrincipal == null) {
+								applicationMenuPrincipal = new Sound(sonPath);
+								applicationMenuPrincipal.play();
+							} else {
+								applicationMenuPrincipal = new Sound(sonPath);
+								applicationMenuPrincipal.play();
+							}
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		if (!t.isAlive()) {
+			t.start();
+		}
+	}
 }

@@ -12,6 +12,7 @@ import modele.item.Item;
 import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
+import modele.location.Location;
 
 public class PersonnagePrincipal implements Serializable { //extends Item {
 	
@@ -36,10 +37,10 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 	private List<Musique> musiques;
 	private List<Item> sac;
 	private Lieu domicile;
+	private Location location;
 	private Competence competence;
 	public boolean isDejaPresente;
 	private boolean available;
-
 
 	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
@@ -66,6 +67,8 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 		this.musiques = musiques;
 		this.sac = sac;
 		this.domicile = domicile;
+		// TODO : location/domicile a setter plus tard (apres intialisation du coreManager)
+		this.location = null;
 		this.competence = competence;
 		this.isDejaPresente = false;
 		this.available = available;
@@ -184,5 +187,13 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 
 	public void setDejaPresente(boolean isDejaPresente) {
 		this.isDejaPresente = isDejaPresente;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 }

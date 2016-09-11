@@ -61,4 +61,9 @@ public class LecteurMP4 {
 			// Silently fail, it doesn't matter
 		}
 	}
+
+	public void hide() {
+		player.hide();
+		
+	}
 }

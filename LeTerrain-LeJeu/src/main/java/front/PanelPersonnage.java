@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import core.LieuManager;
 import core.MenuManager;
 import core.MusiqueManager;
 import core.configuration.Constante;

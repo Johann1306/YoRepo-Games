@@ -99,4 +99,8 @@ public class VlcjPlayer {
         mainFrame.setVisible(true);
     }
 
+	public void hide() {
+        mainFrame.setVisible(false);
+	}
+
 }
