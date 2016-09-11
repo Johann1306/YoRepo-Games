@@ -15,7 +15,6 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.LineMetrics;
 import java.awt.geom.Rectangle2D;
@@ -37,7 +36,7 @@ import javax.swing.event.MouseInputListener;
 public class Scroller extends JPanel implements MouseInputListener {
 
 	private static final long serialVersionUID = 1l;
-	private int nbTile = 10;
+	private int nbTile = 1;
 	private BufferedImage[] imTile = new BufferedImage[nbTile];
 	private int[] xTile = new int[nbTile];
 	private int[] yTile = new int[nbTile];
@@ -49,6 +48,60 @@ public class Scroller extends JPanel implements MouseInputListener {
 	public Scroller() throws IOException {
 		super();
 		BufferedImage imageSrc = ImageIO.read(new File("src/main/resources/image/carte/montfermeil.png"));
+		tileWidth = imageSrc.getWidth();
+		tileHeight = imageSrc.getHeight();
+		// Promote image for some acceleration.
+		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
+				.getDefaultConfiguration();
+		BufferedImage image = gc.createCompatibleImage(tileWidth, tileHeight, imageSrc.getTransparency());
+		Graphics2D g2d = image.createGraphics();
+		g2d.drawImage(imageSrc, 0, 0, null);
+		g2d.dispose();
+		// Layout tiles.
+		int sideX = (int) Math.ceil(Math.sqrt(nbTile));
+		int sideY = (int) Math.ceil(nbTile / (float) sideX);
+		int index = 0;
+		for (int j = 0; j < sideY && index < nbTile; j++) {
+			for (int i = 0; i < sideX && index < nbTile; i++, index++) {
+				imTile[index] = image;
+				xTile[index] = i * tileWidth;
+				yTile[index] = j * tileHeight;
+			}
+		}
+		areaWidth = sideX * tileWidth;
+		areaHeight = sideY * tileHeight;
+		System.out.println("Area:");
+		System.out.println("\tTiles: " + nbTile);
+		System.out.println("\tLayout: " + sideX + " x " + sideY);
+		System.out.println("\tDimension: " + areaWidth + " x " + areaHeight);
+		// Set view on area center.
+		dx = -(areaWidth - tileWidth) / 2;
+		dy = -(areaHeight - tileHeight) / 2;
+		//
+		setFont(getFont().deriveFont(Font.BOLD, 15f));
+		addMouseListener(this);
+		addMouseMotionListener(this);
+//		addMouseListener(new MouseAdapter() {
+//			public void mousePressed(MouseEvent e) {
+//				int x = e.getX();
+//				int y = e.getY();
+//
+//				dx = x - 512;
+//				dy = -y + 369;
+//				repaint();
+//			}
+//		});
+	}
+
+	public Scroller(String background) {
+		super();
+		BufferedImage imageSrc = null;
+		try {
+			imageSrc = ImageIO.read(new File(background));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		tileWidth = imageSrc.getWidth();
 		tileHeight = imageSrc.getHeight();
 		// Promote image for some acceleration.

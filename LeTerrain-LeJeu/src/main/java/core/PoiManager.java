@@ -1,5 +1,12 @@
 package core;
 
-public class PoiManager {
+import java.io.Serializable;
+
+public class PoiManager implements Serializable {
+
+	public void initialise() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

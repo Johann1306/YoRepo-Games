@@ -3,14 +3,15 @@ package front;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.io.IOException;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
+import core.LieuManager;
 import modele.item.personnage.PersoPrenom;
+import tests.front.Scroller;
 
 public class PanelCentre extends JPanel {
 
@@ -28,7 +29,7 @@ public class PanelCentre extends JPanel {
 	public void generePanelCentre() {
 
 		this.cardLayout = new CardLayout();
-		
+
 		panelJohann = new JPanel();
 		panelJohann.setBackground(Color.BLUE);
 		panelJohann.setName(PersoPrenom.JOHANN.name());
@@ -65,9 +66,44 @@ public class PanelCentre extends JPanel {
 		panelGroupe.setBackground(Color.BLACK);
 		panelGroupe.setName(PersoPrenom.GROUPE.name());
 		
-		ImageIcon image = new ImageIcon("src/main/resources/image/carte/montfermeil.png");
-		JLabel label = new JLabel(image);
-		panelGroupe.add(label);
+		// Image par defaut
+		ImageIcon imageGroupe = new ImageIcon("src/main/resources/image/carte/montfermeil.png");
+		JLabel labelGroupe = new JLabel(imageGroupe);
+		panelGroupe.add(labelGroupe);
+		// TODO : gerer la taile des panel plus petit
+		//panelGroupe.setMaximumSize(new Dimension(imageGroupe.getIconWidth(), imageGroupe.getIconHeight()));
+		
+		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
+		lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackground();
+
+		// TODO : gerer le scroll click
+//		Scroller scrollJohann = new Scroller(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackgroundPath());
+//		panelJohann.setLayout(new BorderLayout());
+//		panelJohann.add(scrollJohann, BorderLayout.CENTER);
+		
+		JLabel labelJohann = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackground());
+		panelJohann.add(labelJohann);
+		
+		JLabel labelNicolas = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.NICOLAS).getBackground());
+		panelNicolas.add(labelNicolas);
+		
+		JLabel labelPierre = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.PIERRE).getBackground());
+		panelPierre.add(labelPierre);
+		
+		JLabel labelThomas = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.THOMAS).getBackground());
+		panelThomas.add(labelThomas);
+		
+		JLabel labelYannick = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.YANNICK).getBackground());
+		panelYannick.add(labelYannick);
+		
+		JLabel labelAli = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.ALI).getBackground());
+		panelAli.add(labelAli);
+		
+		JLabel labelGuillaume = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.GUILLAUME).getBackground());
+		panelGuillaume.add(labelGuillaume);
+		
+		JLabel labelJonathan = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.JONATHAN).getBackground());
+		panelJonathan.add(labelJonathan);
 		
 		cardLayout.addLayoutComponent(panelJohann.getName(), panelJohann);
 		cardLayout.addLayoutComponent(panelNicolas.getName(), panelNicolas);

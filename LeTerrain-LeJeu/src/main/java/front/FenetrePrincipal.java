@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import core.MusiqueManager;
 import core.configuration.Constante;
 
 public class FenetrePrincipal extends JFrame implements KeyListener {
@@ -29,6 +32,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	public FenetrePrincipal() {
 		super();
         addKeyListener(this);
+        this.setUndecorated(true);
 //		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.addWindowListener(new WindowListener() {
 			
@@ -46,8 +50,13 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
-				FenetrePrincipal.getFenetrePrincipal().hide();
-				MenuPrincipal.getMainFrame().enable();
+				MainFrame mainFrame = MenuPrincipal.getMainFrame();
+				if (mainFrame != null) {
+					FenetrePrincipal.getFenetrePrincipal().hide();
+					mainFrame.enable();
+				} else {
+					System.exit(0);
+				}
 			}
 			
 			@Override
@@ -64,7 +73,16 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	}
 	
 	public void start() {
+		
+		// Lecture musiques d'ambiances en boucle menu principal
+		List<String> musiquesPaths = new ArrayList<String>();
+		String musiquePath1 = "src/main/resources/son/23-ending.mp3"; 
+		String musiquePath2 = "src/main/resources/son/01AlexKid-title-screen.mp3"; 
+		musiquesPaths.add(musiquePath1);
+		musiquesPaths.add(musiquePath2);
+		MusiqueManager.playPlaylistEnBoucle(musiquesPaths);
 
+		// Panel content
         content = new JLayeredPane();
         content.setLayout(new LayeredLayoutManager());
 		

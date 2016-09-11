@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import modele.evenement.Evenement;
-import modele.evenement.EvenementTheme;
 import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.personnage.PersoPrenom;

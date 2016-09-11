@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import core.LieuManager;
 import core.MenuManager;
 import core.MusiqueManager;
 import core.configuration.Constante;
@@ -113,6 +114,7 @@ public class PanelPersonnage extends JPanel {
 				// TODO : essayer de ne pas rafraichir
 				panelBas.refreshPanelBas(PersoPrenom.NICOLAS);
 				menuManager.lanceRefreshMenu();
+				
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {

@@ -7,18 +7,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
+import core.MusiqueManager;
 import core.SauvegardeManager;
 import core.configuration.Constante;
 
 public class MenuPrincipal extends JPanel {
 	
+	private static final Border BORDER = BorderFactory.createLineBorder(Color.BLUE, 3);
 	private static MainFrame mainFrame;
 
 	public MenuPrincipal() {
@@ -83,6 +86,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				mainFrame = new MainFrame();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
@@ -94,26 +98,31 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				mainFrame = SauvegardeManager.load();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
+				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 			}
 		});
 		boutonLoad.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				mainFrame = SauvegardeManager.load();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
+				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 			}
 		});
 		boutonEdit.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
 			}
@@ -122,6 +131,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
 			}
@@ -130,6 +140,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
 			}
@@ -157,11 +168,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonNew.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonNew.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonNew.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonNew.setBorder(BORDER);
 			}
 
 			@Override
@@ -181,11 +194,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonContinue.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonContinue.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonContinue.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonContinue.setBorder(BORDER);
 			}
 
 			@Override
@@ -205,11 +220,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonLoad.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonLoad.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonLoad.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonLoad.setBorder(BORDER);
 			}
 
 			@Override
@@ -229,11 +246,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonEdit.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonEdit.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonEdit.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonEdit.setBorder(BORDER);
 			}
 
 			@Override
@@ -253,11 +272,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonJeux.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonJeux.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonJeux.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonJeux.setBorder(BORDER);
 			}
 
 			@Override
@@ -277,11 +298,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonScore.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonScore.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonScore.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonScore.setBorder(BORDER);
 			}
 
 			@Override
@@ -301,11 +324,13 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				boutonQuit.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonQuit.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				boutonQuit.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonQuit.setBorder(BORDER);
 			}
 
 			@Override
@@ -313,6 +338,14 @@ public class MenuPrincipal extends JPanel {
 			}
 		});
 
+		boutonNew.setBorder(null);
+		boutonContinue.setBorder(null);
+		boutonLoad.setBorder(null);
+		boutonEdit.setBorder(null);
+		boutonJeux.setBorder(null);
+		boutonScore.setBorder(null);
+		boutonQuit.setBorder(null);
+		
 		this.add(boutonNew);
 		this.add(boutonContinue);
 		this.add(boutonLoad);
@@ -320,6 +353,7 @@ public class MenuPrincipal extends JPanel {
 		this.add(boutonJeux);
 		this.add(boutonScore);
 		this.add(boutonQuit);
+//		this.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 
 	public void demandeConfirmationQuitter() {

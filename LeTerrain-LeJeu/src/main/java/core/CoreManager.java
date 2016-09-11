@@ -2,8 +2,8 @@ package core;
 
 import java.io.Serializable;
 
-public class CoreManager implements Serializable  {
-	
+public class CoreManager implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private transient MenuManager menuManager;
@@ -15,20 +15,22 @@ public class CoreManager implements Serializable  {
 	private BonusManager bonusManager;
 	private MissionManager missionManager;
 	private PersonnageManager personnageManager;
-	private JeuManager jeuManager; 
-	
+	private JeuManager jeuManager;
+	private PoiManager poiManager;
+	private LieuManager lieuManager;
+
 	public CoreManager() {
 	}
 
 	public void initialise() {
-		
+
 		// Ordonne
 		menuManager = new MenuManager();
 		menuManager.initialise();
-		
+
 		dateManager = new DateManager();
 		dateManager.initialise();
-		
+
 		itemManager = new ItemManager();
 		itemManager.initialise();
 
@@ -37,23 +39,30 @@ public class CoreManager implements Serializable  {
 
 		bonusManager = new BonusManager();
 		bonusManager.initialise();
-		
+
 		missionManager = new MissionManager();
 		missionManager.initialise();
-		
+
+
 		personnageManager = new PersonnageManager();
 		personnageManager.initialise();
-		
+
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
 		musiqueManager.initialise();
-		
+
 		videoManager = new VideoManager();
 		videoManager.initialise();
-		
+
 		jeuManager = new JeuManager();
 		jeuManager.initialise();
 		
+		poiManager = new PoiManager();
+		poiManager.initialise();
+		
+		lieuManager = new LieuManager();
+		lieuManager.initialise();
+
 	}
 
 	public MenuManager getMenuManager() {
@@ -111,7 +120,7 @@ public class CoreManager implements Serializable  {
 	public void setMissionManager(MissionManager missionManager) {
 		this.missionManager = missionManager;
 	}
-	
+
 	public PersonnageManager getPersonnageManager() {
 		return personnageManager;
 	}
@@ -136,9 +145,16 @@ public class CoreManager implements Serializable  {
 		this.jeuManager = jeuManager;
 	}
 
+	public LieuManager getLieuManager() {
+		return lieuManager;
+	}
+
+	public void setLieuManager(LieuManager lieuManager) {
+		this.lieuManager = lieuManager;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 
 }
