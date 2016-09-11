@@ -74,6 +74,7 @@ public class PanelCentre extends JPanel {
 		//panelGroupe.setMaximumSize(new Dimension(imageGroupe.getIconWidth(), imageGroupe.getIconHeight()));
 		
 		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
+		lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackground();
 
 		// TODO : gerer le scroll click
 //		Scroller scrollJohann = new Scroller(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackgroundPath());

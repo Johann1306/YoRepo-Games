@@ -114,6 +114,7 @@ public class PanelPersonnage extends JPanel {
 				// TODO : essayer de ne pas rafraichir
 				panelBas.refreshPanelBas(PersoPrenom.NICOLAS);
 				menuManager.lanceRefreshMenu();
+				
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {

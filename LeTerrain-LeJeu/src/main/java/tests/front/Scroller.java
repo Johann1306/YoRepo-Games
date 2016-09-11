@@ -36,7 +36,7 @@ import javax.swing.event.MouseInputListener;
 public class Scroller extends JPanel implements MouseInputListener {
 
 	private static final long serialVersionUID = 1l;
-	private int nbTile = 10;
+	private int nbTile = 1;
 	private BufferedImage[] imTile = new BufferedImage[nbTile];
 	private int[] xTile = new int[nbTile];
 	private int[] yTile = new int[nbTile];
