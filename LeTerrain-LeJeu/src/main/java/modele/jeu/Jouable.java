@@ -5,6 +5,6 @@ import modele.item.personnage.Groupe;
 
 public interface Jouable {
 
-	boolean start(Groupe groupe, Mission mission);
+	void start(Groupe groupe, Mission mission);
 	
 }

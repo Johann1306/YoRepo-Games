@@ -1,3 +1,4 @@
+
 package modele.item.personnage;
 
 import java.io.Serializable;

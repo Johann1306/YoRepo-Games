@@ -13,7 +13,8 @@ public class Constante {
 	public static final int MAX_CASE_PAR_LIGNE = 10;
 	public static final Dimension ITEM_TAILLE = new Dimension(32,32);
 	public static final Dimension FENETRE_PRINCIPAL_DIMENSION = new Dimension(700,700);
-	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);;
+	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
+	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
 
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire
 	public static final int PANEL_GAUCHE_LARGEUR = 180;
@@ -27,6 +28,7 @@ public class Constante {
 
 	public static final int MENU_HEIGHT = 250;
 	public static final int MENU_WIDTH = 380;
+
 
 
 }

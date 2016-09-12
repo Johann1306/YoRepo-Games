@@ -6,6 +6,7 @@ import java.util.Map;
 
 import core.jeu.JeuAgilite;
 import core.jeu.JeuCombat;
+import core.jeu.JeuCourse;
 import core.jeu.JeuQuizz;
 import core.jeu.JeuRandom;
 import front.MenuPrincipal;
@@ -28,21 +29,23 @@ public class JeuManager implements Serializable {
 		Jeu jeuQuizz = new JeuQuizz(NomJeu.JEU_QUIZZ);
 		Jeu jeuAgilite = new JeuAgilite(NomJeu.JEU_AGILITE);
 		Jeu jeuCombat = new JeuCombat(NomJeu.JEU_COMBAT);
+		Jeu jeuCourse = new JeuCourse(NomJeu.JEU_COURSE);
 		// JEU_BILLE
 
 		jeux.put(NomJeu.JEU_RANDOM, jeuRandom);
 		jeux.put(NomJeu.JEU_QUIZZ, jeuQuizz);
 		jeux.put(NomJeu.JEU_AGILITE, jeuAgilite);
 		jeux.put(NomJeu.JEU_COMBAT, jeuCombat);
+		jeux.put(NomJeu.JEU_COURSE, jeuCourse);
 	}
 	
 	public Jeu getJeu(NomJeu nomJeu) {
 		return jeux.get(nomJeu);
 	}
 
-	public static boolean lanceJeu(Jeu jeu, Mission mission) {
+	public static void lanceJeu(Jeu jeu, Mission mission) {
 		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
-		return jeu.start(leGroupe, mission);
+		jeu.start(leGroupe, mission);
 	}
 
 }
