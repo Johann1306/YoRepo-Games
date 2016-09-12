@@ -15,7 +15,7 @@ public class Lieu extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Point position; // Coordonnees sur la map
+	private Point position; // Coordonnees sur la carte
 	private ImageIcon background; // Background du lieu
 	private String backgroundPath; // Chemin du background du lieu
 	private List<Poi> pois; // Points of Interest du lieu
@@ -23,7 +23,7 @@ public class Lieu extends Item implements Serializable {
 
 	public Lieu(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths, List<String> videoPaths,
 			PersoPrenom proprietaire, Point position, String backgroundPath, List<Poi> pois, boolean isDisponible) {
-		super(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, ItemType.LIEU, false);
+		super(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, ItemType.LIEU, isDisponible);
 		this.position = position;
 		this.background = new ImageIcon(backgroundPath);
 		this.backgroundPath = backgroundPath;

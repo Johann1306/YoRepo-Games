@@ -32,7 +32,8 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	public FenetrePrincipal() {
 		super();
         addKeyListener(this);
-        this.setUndecorated(true);
+// TODO undecorated
+//        this.setUndecorated(true);
 //		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.addWindowListener(new WindowListener() {
 			

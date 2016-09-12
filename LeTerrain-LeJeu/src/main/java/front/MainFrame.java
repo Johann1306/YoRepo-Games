@@ -112,7 +112,7 @@ public class MainFrame extends JFrame {
 		JScrollPane scrollPaneCentre = new JScrollPane();
 		scrollPaneCentre.getViewport().add(panelCentre);
 		// TODO : autoscrolls sur les bords
-		//scrollPaneCentre.setAutoscrolls(true);
+//		scrollPaneCentre.setAutoscrolls(true);
 		
 		// Gestion Panel video
 		

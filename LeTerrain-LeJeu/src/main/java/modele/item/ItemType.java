@@ -1,12 +1,13 @@
 package modele.item;
 
 public enum ItemType {
-	CARTES,
-	BILLES,
+	CARTE,
+	BILLE,
 	OBJET_QUETE,
 	MISSION,
 	LIEU,
-	POI;
+	POI,
+	MAP;
 	
 
 }

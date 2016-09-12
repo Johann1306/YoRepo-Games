@@ -16,7 +16,7 @@ public class ItemManager implements Serializable {
 	private List<Item> items;
 	private List<Item> itemsDisponibles;
 	private List<Item> itemsIndisponibles;
-	private static int id = 0;
+	private int id = 0;
 
 	public void initialise() {
 
@@ -50,8 +50,8 @@ public class ItemManager implements Serializable {
 		String videoPath1 = "src/main/resources/video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 
-		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, ItemType.CARTES, false);
-		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, ItemType.BILLES, false);
+		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, ItemType.CARTE, false);
+		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, ItemType.BILLE, false);
 		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, ItemType.OBJET_QUETE, false);
 		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
@@ -149,7 +149,7 @@ public class ItemManager implements Serializable {
 
 	public int getTypeItem(Item item) {
 		int type = JOptionPane.PLAIN_MESSAGE;
-		if (item.getType().equals(ItemType.CARTES)) {
+		if (item.getType().equals(ItemType.CARTE)) {
 			type = JOptionPane.ERROR_MESSAGE;
 		}
 		return type;
