@@ -18,6 +18,7 @@ public class CoreManager implements Serializable {
 	private JeuManager jeuManager;
 	private PoiManager poiManager;
 	private LieuManager lieuManager;
+	private CarteManager carteManager;
 
 	public CoreManager() {
 	}
@@ -43,7 +44,6 @@ public class CoreManager implements Serializable {
 		missionManager = new MissionManager();
 		missionManager.initialise();
 
-
 		personnageManager = new PersonnageManager();
 		personnageManager.initialise();
 
@@ -58,10 +58,13 @@ public class CoreManager implements Serializable {
 		jeuManager.initialise();
 		
 		poiManager = new PoiManager();
-		poiManager.initialise();
+		poiManager.initialise(missionManager);
 		
 		lieuManager = new LieuManager();
-		lieuManager.initialise();
+		lieuManager.initialise(poiManager);
+		
+		carteManager = new CarteManager();
+		carteManager.initialise(lieuManager);
 
 	}
 
@@ -151,6 +154,22 @@ public class CoreManager implements Serializable {
 
 	public void setLieuManager(LieuManager lieuManager) {
 		this.lieuManager = lieuManager;
+	}
+	
+	public PoiManager getPoiManager() {
+		return poiManager;
+	}
+
+	public void setPoiManager(PoiManager poiManager) {
+		this.poiManager = poiManager;
+	}
+
+	public CarteManager getCarteManager() {
+		return carteManager;
+	}
+
+	public void setCarteManager(CarteManager carteManager) {
+		this.carteManager = carteManager;
 	}
 
 	public static long getSerialversionuid() {

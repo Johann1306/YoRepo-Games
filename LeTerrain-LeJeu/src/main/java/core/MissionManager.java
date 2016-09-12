@@ -32,7 +32,7 @@ public class MissionManager implements Serializable  {
 	private List<Mission> missionsIndisponibles;
 	private List<Mission> missionsJouables;
 	private List<Mission> missionsTerminees;
-	private static int id = 0;
+	private int id = 0;
 
 	public void initialise() {
 
@@ -329,7 +329,7 @@ public class MissionManager implements Serializable  {
 		}
 	}
 	
-	private static int incrementId() {
+	private int incrementId() {
 		id = id +1;
 		return id;
 	}

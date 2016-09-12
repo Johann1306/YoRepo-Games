@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import core.ImageManager;
@@ -154,6 +155,7 @@ public class FrameCombat extends JFrame {
 		MenuPrincipal.getMainFrame().setVisible(false);
 		VideoManager.hideAndStop();
 		MusiqueManager.stop();
+		JOptionPane.showMessageDialog(this, "Debut du jeu");
 	}
 	
 	private void stop(Mission mission, boolean win) {

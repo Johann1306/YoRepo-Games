@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 
 import modele.item.lieu.Lieu;
 import modele.item.personnage.PersoPrenom;
+import modele.item.poi.Poi;
 
 public class LieuManager implements Serializable {
 
@@ -17,9 +18,9 @@ public class LieuManager implements Serializable {
 	private List<Lieu> lieux;
 	private List<Lieu> lieuxDisponible;
 	private List<Lieu> lieuxIndisponible;
-	private static int id = 0;
+	private int id = 0;
 	
-	public void initialise() {
+	public void initialise(PoiManager poiManager) {
 		
 		// Chargement de tous les lieux
 		
@@ -35,25 +36,18 @@ public class LieuManager implements Serializable {
 		List<String> sonPaths = new ArrayList<String>();
 		sonPaths.add(sonIconPath);
 		
-//		ImageIcon backgroundYo = new ImageIcon("src/main/resources/image/lieu/MaisonYo.png");
-//		ImageIcon backgroundNico = new ImageIcon("src/main/resources/image/lieu/MaisonNicoEtTom.png");
-//		ImageIcon backgroundTom = new ImageIcon("src/main/resources/image/lieu/MaisonNicoEtTom.png");
-//		ImageIcon backgroundPip = new ImageIcon("src/main/resources/image/lieu/MaisonPip.png");
-//		ImageIcon backgroundYa = new ImageIcon("src/main/resources/image/lieu/MaisonYa.png");
-//		ImageIcon backgroundAli = new ImageIcon("src/main/resources/image/lieu/MaisonYo.png");
-//		ImageIcon backgroundGuy = new ImageIcon("src/main/resources/image/lieu/MaisonYo.png");
-//		ImageIcon backgroundJo = new ImageIcon("src/main/resources/image/lieu/MaisonYo.png");
-//		ImageIcon backgroundEcole = new ImageIcon("src/main/resources/image/lieu/Ecole.png");
+		// TODO 
+		List<Poi> pois = poiManager.getPois();
 		
-		Lieu chezYo = new Lieu(incrementeId(), "Chez Yo", "La maison de Johann", imagePaths , sonPaths, null, PersoPrenom.JOHANN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", null, false);
-		Lieu chezNico = new Lieu(incrementeId(), "Chez Nico", "La maison de Nicolas", imagePaths , sonPaths, null, PersoPrenom.NICOLAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", null, false);
-		Lieu chezTom = new Lieu(incrementeId(), "Chez Tom", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.THOMAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", null, false);
-		Lieu chezPip = new Lieu(incrementeId(), "Chez Pip", "La maison de Pierre", imagePaths , sonPaths, null, PersoPrenom.PIERRE, new Point(200, 200), "src/main/resources/image/lieu/MaisonPip.png", null, false);
-		Lieu chezYa = new Lieu(incrementeId(), "Chez Ya", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.YANNICK, new Point(200, 200), "src/main/resources/image/lieu/MaisonYa.png", null, false);
-		Lieu chezAli = new Lieu(incrementeId(), "Chez Ali", "La maison de Ali", imagePaths , sonPaths, null, PersoPrenom.ALI, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", null, false);
-		Lieu chezGuy = new Lieu(incrementeId(), "Chez Guy", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.GUILLAUME, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", null, false);
-		Lieu chezJo = new Lieu(incrementeId(), "Chez Russ", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.JONATHAN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", null, false);
-		Lieu ecole = new Lieu(incrementeId(), "A l'école", "L'école élémentaire Jules Fery", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(200, 200), "src/main/resources/image/lieu/Ecole.png", null, false);
+		Lieu chezYo = new Lieu(incrementeId(), "Chez johann", "La maison de Johann", imagePaths , sonPaths, null, PersoPrenom.JOHANN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, true);
+		Lieu chezNico = new Lieu(incrementeId(), "Chez nicolas", "La maison de Nicolas", imagePaths , sonPaths, null, PersoPrenom.NICOLAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois, false);
+		Lieu chezTom = new Lieu(incrementeId(), "Chez thomas", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.THOMAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois, false);
+		Lieu chezPip = new Lieu(incrementeId(), "Chez pierre", "La maison de Pierre", imagePaths , sonPaths, null, PersoPrenom.PIERRE, new Point(200, 200), "src/main/resources/image/lieu/MaisonPip.png", pois, false);
+		Lieu chezYa = new Lieu(incrementeId(), "Chez yannick", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.YANNICK, new Point(200, 200), "src/main/resources/image/lieu/MaisonYa.png", pois, false);
+		Lieu chezAli = new Lieu(incrementeId(), "Chez ali", "La maison de Ali", imagePaths , sonPaths, null, PersoPrenom.ALI, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
+		Lieu chezGuy = new Lieu(incrementeId(), "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.GUILLAUME, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
+		Lieu chezJo = new Lieu(incrementeId(), "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.JONATHAN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
+		Lieu ecole = new Lieu(incrementeId(), "A l'école", "L'école élémentaire Jules Fery", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(100, 100), "src/main/resources/image/lieu/Ecole.png", new ArrayList<Poi>(), true);
 			
 		lieux.add(chezYo);
 		lieux.add(chezNico);
@@ -74,13 +68,13 @@ public class LieuManager implements Serializable {
 		return id;
 	}
 
+	public List<Lieu> getLieux() {
+		return lieux;
+	}
+	
 	public List<Lieu> getLieuxDisponible() {
 		refreshLieux();
 		return lieuxDisponible;
-	}
-
-	public void setLieuxDisponible(List<Lieu> lieuxDisponible) {
-		this.lieuxDisponible = lieuxDisponible;
 	}
 
 	public List<Lieu> getLieuxIndisponible() {
@@ -88,13 +82,18 @@ public class LieuManager implements Serializable {
 		return lieuxIndisponible;
 	}
 
-	public void setLieuxIndisponible(List<Lieu> lieuxIndisponible) {
-		this.lieuxIndisponible = lieuxIndisponible;
-	}
-
 	public Lieu getDomicileByNom(PersoPrenom prenom) {
 		for (Lieu lieu : lieux) {
 			if (lieu.getProprietaire().equals(prenom)) {
+				return lieu;
+			}
+		}		
+		return null;
+	}
+	
+	public Lieu getLieuByNom(String nomLieu) {
+		for (Lieu lieu : lieux) {
+			if (lieu.getNom().equals(nomLieu)) {
 				return lieu;
 			}
 		}		
