@@ -16,9 +16,8 @@ public class JeuQuizz extends Jeu implements Serializable {
 	}
 
 	@Override
-	public boolean start(Groupe groupe, Mission mission) {
+	public void start(Groupe groupe, Mission mission) {
 		
-		return true;
 	}
 	
 }

@@ -23,9 +23,15 @@ public class VideoManager implements Serializable {
 		lecteur.play(mediaPath);
 	}
 
-	public static void hide() {
+	public static void hideAndStop() {
 		if (lecteur != null) {
-			lecteur.hide();
+			lecteur.hideAndStop();
+		}
+	}
+
+	public static void show() {
+		if (lecteur != null) {
+			lecteur.show();
 		}
 	}
 

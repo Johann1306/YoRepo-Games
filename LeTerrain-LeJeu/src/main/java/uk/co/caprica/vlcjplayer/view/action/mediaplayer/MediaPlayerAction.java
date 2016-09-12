@@ -27,7 +27,7 @@ abstract class MediaPlayerAction extends StandardAction {
 
     protected final MediaPlayer mediaPlayer;
 
-    MediaPlayerAction(Resource resource, MediaPlayer mediaPlayer) {
+	MediaPlayerAction(Resource resource, MediaPlayer mediaPlayer) {
         super(resource);
         this.mediaPlayer = mediaPlayer;
     }
@@ -36,4 +36,9 @@ abstract class MediaPlayerAction extends StandardAction {
         super(name);
         this.mediaPlayer = mediaPlayer;
     }
+    
+    public MediaPlayer getMediaPlayer() {
+		return mediaPlayer;
+	}
+
 }

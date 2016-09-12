@@ -243,27 +243,30 @@ public class MissionManager implements Serializable  {
 		Jeu randomJeu = RandomManager.getRandomJeu(jeux);
 		
 		// Lancement du jeu
-		boolean win = JeuManager.lanceJeu(randomJeu, mission);
-		
+		JeuManager.lanceJeu(randomJeu, mission);
+	}
+	
+	
+	public void termineMission(Mission mission, boolean win) {
 		// Gestion des recompenses et stats missions
 		
 		// Si win
 		if (win) {
 			mission.setDejaFaite(true);
 			// Message mission win
-			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), mission.getInformations() + "/nMission réussie!", mission.getNom(), 0, new ImageIcon(mission.getImagePaths().get(0)));
+			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Mission réussie!", mission.getNom(), 0, new ImageIcon(mission.getImagePaths().get(0)));
+			// TODO : Ajouter un son de victoire
 			if (!mission.isRepetable()) {
 				mission.setNombreWin(1);
 				distribueRecompenses(mission, true);
 				// TODO : ajouter la mission aux achievments
-				// TODO : Ajouter un son de victoire
 			} else {
 				mission.setNombreWin(mission.getNombreWin()+1);
 				distribueRecompenses(mission, true);
 			}
 		// Si loose
 		} else {
-			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), mission.getInformations() + "/nMission échouée!", mission.getNom(), 1, new ImageIcon(mission.getImagePaths().get(0)));
+			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Mission échouée!", mission.getNom(), 1, new ImageIcon(mission.getImagePaths().get(0)));
 			// TODO : Ajouter un son de defaite
 			mission.setNombreEssai(mission.getNombreEssai()+1);
 			distribueRecompenses(mission, false);

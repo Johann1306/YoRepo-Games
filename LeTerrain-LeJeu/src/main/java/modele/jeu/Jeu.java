@@ -18,8 +18,8 @@ public class Jeu implements Jouable, Serializable {
 		return nomJeu;
 	}
 
-	public boolean start(Groupe groupe, Mission mission) {
-		return true;
+	public void start(Groupe groupe, Mission mission) {
+		
 	}
 
 }

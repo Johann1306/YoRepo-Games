@@ -26,7 +26,7 @@ public class LecteurMP4 {
 		  SwingUtilities.invokeLater(new Runnable() {
 	            @Override
 	            public void run() {
-	                player.start();
+	                player.show();
 	            }
 	        });
 	}
@@ -62,8 +62,13 @@ public class LecteurMP4 {
 		}
 	}
 
-	public void hide() {
+	public void hideAndStop() {
 		player.hide();
+		player.stop();
+	}
+
+	public void show() {
+		player.show();
 		
 	}
 }

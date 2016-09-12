@@ -25,15 +25,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
-import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
-import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.streams.NativeStreams;
 import uk.co.caprica.vlcjplayer.event.ShutdownEvent;
+import uk.co.caprica.vlcjplayer.view.action.mediaplayer.StopAction;
 import uk.co.caprica.vlcjplayer.view.main.MainFrame;
 
 /**
@@ -95,12 +92,17 @@ public class VlcjPlayer {
 		return mainFrame;
 	}
 
-    public void start() {
+    public void show() {
         mainFrame.setVisible(true);
     }
 
 	public void hide() {
         mainFrame.setVisible(false);
+	}
+	
+	public void stop(){
+		StopAction playbackStopAction = (StopAction) application().mediaPlayerActions().playbackStopAction();
+		playbackStopAction.getMediaPlayer().stop();
 	}
 
 }

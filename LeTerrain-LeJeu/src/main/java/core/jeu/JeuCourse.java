@@ -5,6 +5,7 @@ import java.util.List;
 
 import core.NomJeu;
 import front.FrameCombat;
+import front.FrameCourse;
 import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionDifficulty;
@@ -13,11 +14,11 @@ import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnageSecondaire;
 import modele.jeu.Jeu;
 
-public class JeuCombat extends Jeu implements Serializable {
+public class JeuCourse extends Jeu implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public JeuCombat(NomJeu nomJeu) {
+	public JeuCourse(NomJeu nomJeu) {
 		super(nomJeu);
 	}
 	
@@ -36,7 +37,7 @@ public class JeuCombat extends Jeu implements Serializable {
 		boolean win = false;
 
 		// PanelCombat
-		FrameCombat frameCombat = new FrameCombat(groupe, mission);
-		frameCombat.start();
+		FrameCourse frameCourse = new FrameCourse();
+		frameCourse.start(groupe, mission);
 	}
 }

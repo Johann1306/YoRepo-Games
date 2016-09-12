@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import core.audio.Sound;
+import front.PanelMusique;
 import modele.item.media.audio.Musique;
 
 public class MusiqueManager implements Serializable {
@@ -185,6 +186,26 @@ public class MusiqueManager implements Serializable {
 		});
 		if (!t.isAlive()) {
 			t.start();
+		}
+	}
+
+	public static void stop() {
+		try {
+			if (applicationMenuPrincipal != null) {
+				applicationMenuPrincipal.stop();
+			}
+			if (applicationEvenement != null) {
+				applicationEvenement.stop();
+			}
+			if (applicationItem != null) {
+				applicationItem.stop();
+			}
+			if (applicationMission != null) {
+				applicationMission.stop();
+			}
+			PanelMusique.application.stop();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

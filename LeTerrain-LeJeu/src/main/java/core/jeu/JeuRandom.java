@@ -5,6 +5,7 @@ import java.util.List;
 
 import core.NomJeu;
 import core.RandomManager;
+import front.MenuPrincipal;
 import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionDifficulty;
@@ -22,7 +23,7 @@ public class JeuRandom extends Jeu implements Serializable {
 	}
 
 	@Override
-	public boolean start(Groupe groupe, Mission mission) {
+	public void start(Groupe groupe, Mission mission) {
 		
 		int chanceVictoire = mission.getChanceVictoire();
 		MissionDifficulty difficulty = mission.getDifficulty();
@@ -50,7 +51,7 @@ public class JeuRandom extends Jeu implements Serializable {
 		if (random100 <= chanceVictoire){
 			win = true;
 		}
-		return win;
+		MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().termineMission(mission, win);
 	}
 
 	

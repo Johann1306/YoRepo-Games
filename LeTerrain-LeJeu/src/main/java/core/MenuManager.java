@@ -63,6 +63,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 				MenuPrincipal.setMainFrame(load);
 				load.startMainFrame();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
+				JOptionPane.showMessageDialog(menuCharger.getParent().getParent(), "Chargement Réussi!");
 			}
 		});
 
@@ -71,6 +72,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SauvegardeManager.save();
+				JOptionPane.showMessageDialog(menuCharger.getParent().getParent(), "Sauvegarde Réussie!");
 			}
 		});
 
@@ -91,7 +93,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 					MenuPrincipal.getMainFrame().dispose();
 //					MenuPrincipal.getMainFrame().removeAll();
 //					MenuPrincipal.getMainFrame().setVisible(false);
-					VideoManager.hide();
+					VideoManager.hideAndStop();
 				}
 			}
 		});
