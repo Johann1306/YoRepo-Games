@@ -1,5 +1,6 @@
 package core.configuration;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -11,6 +12,7 @@ public class Constante {
 	
 	public static final int MAX_EVENEMENTS_AFFICHES = 10;
 	public static final int MAX_CASE_PAR_LIGNE = 10;
+	
 	public static final Dimension ITEM_TAILLE = new Dimension(32,32);
 	public static final Dimension FENETRE_PRINCIPAL_DIMENSION = new Dimension(700,700);
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
@@ -28,6 +30,14 @@ public class Constante {
 
 	public static final int MENU_HEIGHT = 250;
 	public static final int MENU_WIDTH = 380;
+
+	public static final int ESPACE_PANEL_CENTRE = 10;
+
+	public static final Color COULEUR_MISSION_REPETABLE = Color.GREEN;
+	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
+	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
+
+
 
 
 

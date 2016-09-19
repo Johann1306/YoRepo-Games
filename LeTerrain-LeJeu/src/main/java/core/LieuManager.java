@@ -38,16 +38,28 @@ public class LieuManager implements Serializable {
 		
 		// TODO 
 		List<Poi> pois = poiManager.getPois();
+		List<Poi> pois1 = new ArrayList<Poi>();
+		List<Poi> pois2 = new ArrayList<Poi>();
+		List<Poi> pois3 = new ArrayList<Poi>();
+		List<Poi> pois4 = new ArrayList<Poi>();
+		Poi poi1 = poiManager.getPoisByNom("poi1");
+		Poi poi2 = poiManager.getPoisByNom("poi2");
+		Poi poi3 = poiManager.getPoisByNom("poi3");
+		Poi poi4 = poiManager.getPoisByNom("poi4");
+		pois1.add(poi1);
+		pois2.add(poi2);
+		pois3.add(poi3);
+		pois4.add(poi4);
 		
-		Lieu chezYo = new Lieu(incrementeId(), "Chez johann", "La maison de Johann", imagePaths , sonPaths, null, PersoPrenom.JOHANN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, true);
-		Lieu chezNico = new Lieu(incrementeId(), "Chez nicolas", "La maison de Nicolas", imagePaths , sonPaths, null, PersoPrenom.NICOLAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois, false);
-		Lieu chezTom = new Lieu(incrementeId(), "Chez thomas", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.THOMAS, new Point(200, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois, false);
-		Lieu chezPip = new Lieu(incrementeId(), "Chez pierre", "La maison de Pierre", imagePaths , sonPaths, null, PersoPrenom.PIERRE, new Point(200, 200), "src/main/resources/image/lieu/MaisonPip.png", pois, false);
-		Lieu chezYa = new Lieu(incrementeId(), "Chez yannick", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.YANNICK, new Point(200, 200), "src/main/resources/image/lieu/MaisonYa.png", pois, false);
-		Lieu chezAli = new Lieu(incrementeId(), "Chez ali", "La maison de Ali", imagePaths , sonPaths, null, PersoPrenom.ALI, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
-		Lieu chezGuy = new Lieu(incrementeId(), "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.GUILLAUME, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
-		Lieu chezJo = new Lieu(incrementeId(), "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.JONATHAN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, false);
-		Lieu ecole = new Lieu(incrementeId(), "A l'école", "L'école élémentaire Jules Fery", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(100, 100), "src/main/resources/image/lieu/Ecole.png", new ArrayList<Poi>(), true);
+		Lieu chezYo = new Lieu(incrementeId(), "Chez johann", "La maison de Johann", imagePaths , sonPaths, null, PersoPrenom.JOHANN, new Point(200, 200), "src/main/resources/image/lieu/MaisonYo.png", pois1, true);
+		Lieu chezNico = new Lieu(incrementeId(), "Chez nicolas", "La maison de Nicolas", imagePaths , sonPaths, null, PersoPrenom.NICOLAS, new Point(220, 200), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois2, true);
+		Lieu chezTom = new Lieu(incrementeId(), "Chez thomas", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.THOMAS, new Point(200, 220), "src/main/resources/image/lieu/MaisonNicoEtTom.png", pois3, true);
+		Lieu chezPip = new Lieu(incrementeId(), "Chez pierre", "La maison de Pierre", imagePaths , sonPaths, null, PersoPrenom.PIERRE, new Point(200, 240), "src/main/resources/image/lieu/MaisonPip.png", pois4, true);
+		Lieu chezYa = new Lieu(incrementeId(), "Chez yannick", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.YANNICK, new Point(200, 260), "src/main/resources/image/lieu/MaisonYa.png", pois, true);
+		Lieu chezAli = new Lieu(incrementeId(), "Chez ali", "La maison de Ali", imagePaths , sonPaths, null, PersoPrenom.ALI, new Point(-260, -200), "src/main/resources/image/lieu/MaisonYo.png", pois, true);
+		Lieu chezGuy = new Lieu(incrementeId(), "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.GUILLAUME, new Point(-240, 200), "src/main/resources/image/lieu/MaisonYo.png", pois, true);
+		Lieu chezJo = new Lieu(incrementeId(), "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.JONATHAN, new Point(200, -280), "src/main/resources/image/lieu/MaisonYo.png", pois, true);
+		Lieu ecole = new Lieu(incrementeId(), "A l'école", "L'école élémentaire Jules Fery", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(0, 0), "src/main/resources/image/lieu/Ecole.png", new ArrayList<Poi>(), true);
 			
 		lieux.add(chezYo);
 		lieux.add(chezNico);

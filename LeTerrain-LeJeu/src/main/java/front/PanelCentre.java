@@ -2,78 +2,85 @@ package front;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import core.CoreManager;
-import core.LieuManager;
 import modele.item.carte.Carte;
 import modele.item.lieu.Lieu;
-import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
-import modele.item.personnage.PersonnagePrincipal;
 import modele.item.poi.Poi;
 
 public class PanelCentre extends JPanel {
 
 	private CardLayout cardLayout;
-	private JPanel panelJohann = null;
-	private JPanel panelNicolas = null;
-	private JPanel panelPierre = null;
-	private JPanel panelThomas = null;
-	private JPanel panelYannick = null;
-	private JPanel panelAli = null;
-	private JPanel panelGuillaume = null;
-	private JPanel panelJonathan = null;
-	private JPanel panelGroupe = null;
-	private JPanel panelTemp = null;
+	private JLayeredPane panelJohann = null;
+	private JLayeredPane panelNicolas = null;
+	private JLayeredPane panelPierre = null;
+	private JLayeredPane panelThomas = null;
+	private JLayeredPane panelYannick = null;
+	private JLayeredPane panelAli = null;
+	private JLayeredPane panelGuillaume = null;
+	private JLayeredPane panelJonathan = null;
+	private JLayeredPane panelGroupe = null;
 
 	public void generePanelCentre() {
 
 		this.cardLayout = new CardLayout();
 
-		panelJohann = new JPanel();
+		panelJohann = new JLayeredPane();
 		panelJohann.setBackground(Color.BLUE);
 		panelJohann.setName(PersoPrenom.JOHANN.name());
+		panelJohann.setLayout(new LayeredLayoutManager());
 
-		panelNicolas = new JPanel();
+		panelNicolas = new JLayeredPane();
 		panelNicolas.setBackground(Color.YELLOW);
 		panelNicolas.setName(PersoPrenom.NICOLAS.name());
+		panelNicolas.setLayout(new LayeredLayoutManager());
 
-		panelPierre = new JPanel();
+		panelPierre = new JLayeredPane();
 		panelPierre.setBackground(Color.GREEN);
 		panelPierre.setName(PersoPrenom.PIERRE.name());
+		panelPierre.setLayout(new LayeredLayoutManager());
 
-		panelThomas = new JPanel();
+		panelThomas = new JLayeredPane();
 		panelThomas.setBackground(Color.RED);
 		panelThomas.setName(PersoPrenom.THOMAS.name());
+		panelThomas.setLayout(new LayeredLayoutManager());
 
-		panelYannick = new JPanel();
+		panelYannick = new JLayeredPane();
 		panelYannick.setBackground(Color.MAGENTA);
 		panelYannick.setName(PersoPrenom.YANNICK.name());
+		panelYannick.setLayout(new LayeredLayoutManager());
 
-		panelAli = new JPanel();
+		panelAli = new JLayeredPane();
 		panelAli.setBackground(Color.PINK);
 		panelAli.setName(PersoPrenom.ALI.name());
+		panelAli.setLayout(new LayeredLayoutManager());
 
-		panelGuillaume = new JPanel();
+		panelGuillaume = new JLayeredPane();
 		panelGuillaume.setBackground(Color.ORANGE);
 		panelGuillaume.setName(PersoPrenom.GUILLAUME.name());
+		panelGuillaume.setLayout(new LayeredLayoutManager());
 
-		panelJonathan = new JPanel();
+		panelJonathan = new JLayeredPane();
 		panelJonathan.setBackground(Color.CYAN);
 		panelJonathan.setName(PersoPrenom.JONATHAN.name());
+		panelJonathan.setLayout(new LayeredLayoutManager());
 
-		panelGroupe = new JPanel();
+		panelGroupe = new JLayeredPane();
 		panelGroupe.setBackground(Color.BLACK);
 		panelGroupe.setName(PersoPrenom.GROUPE.name());
+		panelGroupe.setLayout(new LayeredLayoutManager());
 
 		// Construction de la carte
 		buildPanelPerso(panelGroupe);
@@ -90,57 +97,22 @@ public class PanelCentre extends JPanel {
 		// panelGroupe.setMaximumSize(new Dimension(imageGroupe.getIconWidth(),
 		// imageGroupe.getIconHeight()));
 
-//		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
-
 		// TODO : gerer le scroll click
+//		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
 		// Scroller scrollJohann = new
 		// Scroller(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackgroundPath());
 		// panelJohann.setLayout(new BorderLayout());
 		// panelJohann.add(scrollJohann, BorderLayout.CENTER);
 
-//		JLabel labelJohann = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackground());
-//		panelJohann.add(labelJohann);
-//
-//		JLabel labelNicolas = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.NICOLAS).getBackground());
-//		panelNicolas.add(labelNicolas);
-//
-//		JLabel labelPierre = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.PIERRE).getBackground());
-//		panelPierre.add(labelPierre);
-//
-//		JLabel labelThomas = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.THOMAS).getBackground());
-//		panelThomas.add(labelThomas);
-//
-//		JLabel labelYannick = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.YANNICK).getBackground());
-//		panelYannick.add(labelYannick);
-//
-//		JLabel labelAli = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.ALI).getBackground());
-//		panelAli.add(labelAli);
-//
-//		JLabel labelGuillaume = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.GUILLAUME).getBackground());
-//		panelGuillaume.add(labelGuillaume);
-//
-//		JLabel labelJonathan = new JLabel(lieuManager.getDomicileByNom(PersoPrenom.JONATHAN).getBackground());
-//		panelJonathan.add(labelJonathan);
-
-		cardLayout.addLayoutComponent(panelJohann.getName(), panelJohann);
-		cardLayout.addLayoutComponent(panelNicolas.getName(), panelNicolas);
-		cardLayout.addLayoutComponent(panelPierre.getName(), panelPierre);
-		cardLayout.addLayoutComponent(panelThomas.getName(), panelThomas);
-		cardLayout.addLayoutComponent(panelYannick.getName(), panelYannick);
-		cardLayout.addLayoutComponent(panelAli.getName(), panelAli);
-		cardLayout.addLayoutComponent(panelGuillaume.getName(), panelGuillaume);
-		cardLayout.addLayoutComponent(panelJonathan.getName(), panelJonathan);
-		cardLayout.addLayoutComponent(panelGroupe.getName(), panelGroupe);
-
-		addBoutonCarte(panelJohann);
-		addBoutonCarte(panelNicolas);
-		addBoutonCarte(panelPierre);
-		addBoutonCarte(panelThomas);
-		addBoutonCarte(panelYannick);
-		addBoutonCarte(panelAli);
-		addBoutonCarte(panelGuillaume);
-		addBoutonCarte(panelJonathan);
-		addBoutonCarte(panelGroupe);
+		cardLayout.addLayoutComponent(panelJohann, panelJohann.getName());
+		cardLayout.addLayoutComponent(panelNicolas, panelNicolas.getName());
+		cardLayout.addLayoutComponent(panelPierre, panelPierre.getName());
+		cardLayout.addLayoutComponent(panelThomas, panelThomas.getName());
+		cardLayout.addLayoutComponent(panelYannick, panelYannick.getName());
+		cardLayout.addLayoutComponent(panelAli, panelAli.getName());
+		cardLayout.addLayoutComponent(panelGuillaume, panelGuillaume.getName());
+		cardLayout.addLayoutComponent(panelJonathan, panelJonathan.getName());
+		cardLayout.addLayoutComponent(panelGroupe, panelGroupe.getName());
 
 		this.setLayout(cardLayout);
 		this.add(panelJohann);
@@ -154,7 +126,8 @@ public class PanelCentre extends JPanel {
 		this.add(panelGroupe);
 	}
 
-	private void buildPanelPerso(JPanel panel) {
+	// Construit l'enchainement de map/lieu/poi/missions/jeux pour un panel perso
+	private void buildPanelPerso(JComponent panel) {
 		// On recupere la carte
 		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
 		String backgroungPath = carte.getImagePath().get(0);
@@ -162,53 +135,65 @@ public class PanelCentre extends JPanel {
 		JLabel labelCarte = new JLabel(imageCarte);
 
 		// On recupere les lieux disponibles pour cette carte
-		List<Lieu> lieux = carte.getLieux();
-		List<Lieu> lieuxDisponible = new ArrayList<Lieu>();
-		for (Lieu lieu : lieux) {
-			if (lieu.isDisponible()) {
-				lieuxDisponible.add(lieu);
-			}
-		}
-		for (Lieu lieu : lieuxDisponible) {
+		// TODO : JLabel nom de lieu 
+		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
+		for (Lieu lieu : lieuxPersoGroupe) {
 			JButton bouton = new JButton(lieu.getNom());
-			bouton.setLocation(lieu.getPosition());
+			JPanel panelBouton = new JPanel();
+			panelBouton.setLocation(lieu.getPosition());
+			panelBouton.add(bouton);
+			panelBouton.setOpaque(false);
 			
 			// Si Click sur un lieu de la carte
 			bouton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// Chargement du Panel demande
 					panel.removeAll();
+					// TODO : pois pour ce personnage et groupe
+					// TODO : Panel InfoPoi
 					for (Poi poi : lieu.getPois()) {
 						JButton bouton = new JButton(poi.getNom());
-						bouton.setLocation(poi.getPoint());
+						JPanel panelBouton = new JPanel();
+						panelBouton.setLocation(poi.getPoint());
+						panelBouton.add(bouton);
+						panelBouton.setOpaque(false);
 						
-						// Click sur un Poi
+						// TODO : Click sur un Poi
 						bouton.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
+								JPanel panelInfoPoi = new PanelInfoPoi(poi);
 								panel.removeAll();
-								String poiName = poi.getNom();
-								System.out.println("Nome de Poi : " + poiName);
-								panel.add(new JLabel(new ImageIcon(poi.getImagePath().get(0))));
-								addBoutonCarte(panel);
-								cardLayout.show(MainFrame.getPanelCentre(), panel.getName());
+								panel.add(panelInfoPoi);
+								JPanel panelBoutons = new JPanel();
+								panelBoutons.setOpaque(false);
+								addBoutonCarte(panel, panelBoutons);
 							}
 						});
-						panel.add(bouton);
-						
+						panel.add(panelBouton, Integer.valueOf(2));
 					}
-					panel.add(new JLabel(new ImageIcon(lieu.getBackgroundPath())));
-					addBoutonCarte(panel);
+					JPanel panelBoutonCarte = new JPanel();
+					panelBoutonCarte.setOpaque(false);
+					addBoutonCarte(panel, panelBoutonCarte);
+					
+					JLabel background = new JLabel(new ImageIcon(lieu.getBackgroundPath()));
+					// TODO
+//					panel.setSize(new Dimension(background.getWidth(), background.getHeight()));
+					panel.add(background, Integer.valueOf(1));
 					cardLayout.show(MainFrame.getPanelCentre(), panel.getName());
 				}
 			});
-			panel.add(bouton);
+			panel.add(panelBouton, Integer.valueOf(2));
 		}
-		panel.add(labelCarte);
+		panel.add(labelCarte, Integer.valueOf(1));
+		// TODO
+//		panel.setSize(new Dimension(labelCarte.getWidth(), labelCarte.getHeight()));
+		// TODO : contour couleur autour du panel centre
+//		panel.setMaximumSize(new Dimension(imageCarte.getIconWidth() + Constante.ESPACE_PANEL_CENTRE , imageCarte.getIconHeight() + Constante.ESPACE_PANEL_CENTRE));
+		
 	}
 
-	private void addBoutonCarte(JPanel panel) {
+	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
 		JButton boutonCarte = new JButton("Retour Carte");
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
@@ -217,14 +202,15 @@ public class PanelCentre extends JPanel {
 				buildPanelPerso(panel);
 			}
 		});
-		panel.add(boutonCarte);
+		panelBouton.add(boutonCarte);
+		panel.add(panelBouton, Integer.valueOf(2));
 	}
 
 	public CardLayout getCardLayout() {
 		return cardLayout;
 	}
 
-	public JPanel getPanelShowing() {
+	public JLayeredPane getPanelShowing() {
 		if (panelJohann.isShowing()) {
 			return panelJohann;
 		}
