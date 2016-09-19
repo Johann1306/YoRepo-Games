@@ -1,6 +1,7 @@
 package modele.item.carte;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import modele.item.Item;
@@ -22,6 +23,20 @@ public class Carte extends Item implements Serializable {
 
 	public List<Lieu> getLieux() {
 		return lieux;
+	}
+
+	public List<Lieu> getLieuxDisponiblesByPersoAndGroupe(String nom) {
+		List<Lieu> lieuxDisponiblesByPerso = new ArrayList<Lieu>();
+		for (Lieu lieu : lieux) {
+			if (lieu.isDisponible()) {
+				String proprio = lieu.getProprietaire().name();
+				// Lieux du perso + lieux du groupe
+				if (proprio.equals(nom) || proprio.equals(PersoPrenom.GROUPE.name())) {
+					lieuxDisponiblesByPerso.add(lieu);
+				}
+			}
+		} 
+		return lieuxDisponiblesByPerso;
 	}
 	
 }

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -122,7 +123,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 	}
 
 	public void lanceRefreshMenu() {
-		JPanel panelShowing = MainFrame.getPanelCentre().getPanelShowing();
+		JLayeredPane panelShowing = MainFrame.getPanelCentre().getPanelShowing();
 		if (panelShowing.getName().contains(PersoPrenom.JOHANN.name())) {
 			action.setForeground(Color.BLUE);
 			refreshMenuParPerso(action, PersoPrenom.JOHANN);

@@ -26,15 +26,6 @@ public class PanelPersonnage extends JPanel {
 	
 	// Recuperation des  personnages principaux
 
-//	private ImageIcon iconNicolas = null;
-//	private ImageIcon iconPierre = null;
-//	private ImageIcon iconYannick = null;
-//	private ImageIcon iconThomas = null;
-//	private ImageIcon iconJohann = null;
-//	private ImageIcon iconAli = null;
-//	private ImageIcon iconGuillaume = null;
-//	private ImageIcon iconJonathan = null;
-
 	private JButton boutonNicolas = null;
 	private JButton boutonPierre = null;
 	private JButton boutonYannick = null;

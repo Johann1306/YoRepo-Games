@@ -5,5 +5,6 @@ public enum MissionType {
 	GROUPE,
 	ANNEXE,
 	MINIJEU,
-	QUIZZ;
+	QUIZZ,
+	BOSS;
 }

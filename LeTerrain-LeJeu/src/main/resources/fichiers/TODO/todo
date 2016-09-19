@@ -9,8 +9,10 @@ Indispensables:
 - Gerer les Carte, Lieu, POI (+deplacement/click souris dans le Panel Centre)
 - Menu principal + Intro + enchainement premiere mission + choix personnage
 - integrer la fenetre media a l'appli / ou faire suivre la fenetre en cas de redimensionnement de l'autre fenetre !!!
+- revoir la gestion des chargements des panel / gestion memoire 
 - faire un jar executable avec icone
 - Gerer l'installation sur un autre poste
+- les TODOs
 - Remplir le contenu (Jeux)
 
 - gerer la possibilité d'ajouter du contenu
@@ -26,18 +28,17 @@ Indispensables:
 
 - Tester sur un autre PC/Portable
 
-
 Optionnelles:
 
 - gerer les boss / combats
+- gerer la partie foot
 - Gestion de tous les parametres de Mission
 - Panel Image pour les photos/images associés 
 - presentation/fin des missions ameliorés (+d'infos) (+ Panel pour afficher Bonus/Malus en fin de mission)
 - Java 2D/3D perso vu de dessus (cercles) 
 - PanelPersonnage / taille du panel quand pas full / deplacement horizontal du panel a supprimer
 - Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
-- les TODOs
-
+- ajouter des sons quand deplacment+selection dans le menu principal et quand push bouton perso
 Bonus :
 
 - gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)

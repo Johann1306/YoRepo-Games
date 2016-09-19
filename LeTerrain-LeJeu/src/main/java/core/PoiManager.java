@@ -48,14 +48,28 @@ public class PoiManager implements Serializable {
 		
 		// TODO
 		List<Mission> allMissions = missionManager.getAllMissions();
+		List<Mission> MissionsPoi1 = new ArrayList<Mission>();
+		List<Mission> MissionsPoi2 = new ArrayList<Mission>();
+		List<Mission> MissionsPoi3 = new ArrayList<Mission>();
+		List<Mission> MissionsPoi4 = new ArrayList<Mission>();
+		Mission mission1 = missionManager.getMissionByNom("Premier Perso");		
+		Mission mission2 = missionManager.getMissionByNom("mission2");
+		Mission mission3 = missionManager.getMissionByNom("mission3");
+		Mission mission4 = missionManager.getMissionByNom("mission4");
+		MissionsPoi1.add(mission1);
+		MissionsPoi2.add(mission2);
+		MissionsPoi3.add(mission3);
+		MissionsPoi4.add(mission4);
 		
 		Poi poi1 = new Poi(incrementeId(), "poi1", "info", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, true, new Point(200, 200), allMissions);
-		Poi poi2 = new Poi(incrementeId(), "poi2", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(50, 200), allMissions);
-		Poi poi3 = new Poi(incrementeId(), "poi3", "info", imagePaths1, sonPaths2, null, PersoPrenom.GROUPE, true, new Point(200, 50), allMissions);
+		Poi poi2 = new Poi(incrementeId(), "poi2", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), MissionsPoi2);
+		Poi poi3 = new Poi(incrementeId(), "poi3", "info", imagePaths1, sonPaths2, null, PersoPrenom.GROUPE, true, new Point(200, 250), MissionsPoi3);
+		Poi poi4 = new Poi(incrementeId(), "poi4", "info", imagePaths1, sonPaths2, null, PersoPrenom.GROUPE, true, new Point(250, 250), MissionsPoi4);
 		
 		pois.add(poi1);
 		pois.add(poi2);
 		pois.add(poi3);
+		pois.add(poi4);
 		
 		// On suppose que tous les pois sont indisponibles au depart
 		poisIndisponible.addAll(pois);
@@ -95,6 +109,15 @@ public class PoiManager implements Serializable {
 			}
 		}
 		
+	}
+
+	public Poi getPoisByNom(String nom) {
+		for (Poi poi : pois) {
+			if (poi.getNom().equals(nom)) {
+				return poi;
+			}
+		}		
+		return null;
 	}
 	
 }
