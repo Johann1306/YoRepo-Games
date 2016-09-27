@@ -13,9 +13,10 @@ import modele.item.Item;
 import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
+import modele.item.personnage.action.ActionCombat;
 import modele.location.Location;
 
-public class PersonnagePrincipal implements Serializable { //extends Item {
+public class PersonnagePrincipal extends Personnage implements Serializable { //extends Item {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -29,7 +30,7 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 	private ImageIcon photoPrincipal;
 	private List<ImageIcon> photos;
 	
-	private List<Pouvoir> pouvoirs;
+	private List<ActionCombat> actionsCombat;
 	private List<Objectif> objectifs;
 	private List<MomentCle> momentsCle;
 	private List<PersonnageEnnemi> boss;
@@ -45,7 +46,7 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 
 	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
-			ImageIcon photoPrincipal, List<ImageIcon> photos, List<Pouvoir> pouvoirs, List<Objectif> objectifs,
+			ImageIcon photoPrincipal, List<ImageIcon> photos, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence,
 			boolean available) {
@@ -59,7 +60,7 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 		this.phrasesPerso = phrasesPerso;
 		this.photoPrincipal = photoPrincipal;
 		this.photos = photos;
-		this.pouvoirs = pouvoirs;
+		this.actionsCombat = actionsCombat;
 		this.objectifs = objectifs;
 		this.momentsCle = momentsCle;
 		this.boss = boss;
@@ -134,10 +135,6 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 		return photos;
 	}
 
-	public List<Pouvoir> getPouvoirs() {
-		return pouvoirs;
-	}
-
 	public List<Objectif> getObjectifs() {
 		return objectifs;
 	}
@@ -196,5 +193,13 @@ public class PersonnagePrincipal implements Serializable { //extends Item {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public List<ActionCombat> getActionsCombat() {
+		return actionsCombat;
+	}
+
+	public void setActionsCombat(List<ActionCombat> actionsCombat) {
+		this.actionsCombat = actionsCombat;
 	}
 }

@@ -27,15 +27,15 @@ public class ItemManager implements Serializable {
 		// Chargement des items
 
 		List<String> imagePaths1 = new ArrayList<String>();
-		String imagePath1 = "src/main/resources/image/mp3Player/stop.png";
+		String imagePath1 = "image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
 
 		List<String> imagePaths2 = new ArrayList<String>();
-		String imagePath2 = "src/main/resources/image/mp3Player/pause.png";
+		String imagePath2 = "image/mp3Player/pause.png";
 		imagePaths2.add(imagePath2);
 
 		List<String> imagePaths3 = new ArrayList<String>();
-		String imagePath3 = "src/main/resources/image/mp3Player/back.png";
+		String imagePath3 = "image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
 
 		List<String> sonPaths1 = new ArrayList<String>();
@@ -53,12 +53,12 @@ public class ItemManager implements Serializable {
 		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, ItemType.CARTE, false);
 		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, ItemType.BILLE, false);
 		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, ItemType.OBJET_QUETE, false);
-		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item7 = new Item(incrementeId(), "item7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item8 = new Item(incrementeId(), "item8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item item9 = new Item(incrementeId(), "item9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		Item item7 = new Item(incrementeId(), "item7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		Item item8 = new Item(incrementeId(), "item8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		Item item9 = new Item(incrementeId(), "item9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
 		Item item10 = new Item(incrementeId(), "item10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item11 = new Item(incrementeId(), "item11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item12 = new Item(incrementeId(), "item12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
@@ -101,7 +101,7 @@ public class ItemManager implements Serializable {
 	}
 
 	
-	public List<Item> getItemsByPerso(PersoPrenom nomPerso) {
+	public List<Item> getItemsDisponiblesByPerso(PersoPrenom nomPerso) {
 		List<Item> itemPerso = new ArrayList<Item>();
 		for (Item item : items) {
 			if (item.getProprietaire().equals(nomPerso) && item.isDisponible()) {

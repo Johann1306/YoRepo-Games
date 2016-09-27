@@ -128,6 +128,7 @@ public class MusiqueManager implements Serializable {
 					// Boucle infini
 					while (!stopped) {
 						for (String sonPath : sonPaths) {
+							System.out.println("Play : " + sonPath);
 							// Pause 1s entre 2 musiques
 							if (!stopped) {
 								Thread.sleep(1000);

@@ -7,7 +7,8 @@ public enum ItemType {
 	MISSION,
 	LIEU,
 	POI,
-	MAP;
-	
-
+	MAP, 
+	UTILISABLE,
+	CONSOMMABLE,
+	ACTION_COMBAT;
 }

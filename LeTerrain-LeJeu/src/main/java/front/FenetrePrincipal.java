@@ -2,6 +2,7 @@ package front;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ComponentEvent;
@@ -10,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,14 +72,15 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		this.setAlwaysOnTop(true);
 		this.setSize(Constante.FENETRE_PRINCIPAL_DIMENSION);
 		this.setMinimumSize(Constante.FENETRE_PRINCIPAL_DIMENSION);  
-		centreFenetre();
+		this.centreFenetre();
 	}
 	
 	public void start() {
 		
 		// Lecture musiques d'ambiances en boucle menu principal
 		List<String> musiquesPaths = new ArrayList<String>();
-		String musiquePath1 = "src/main/resources/son/23-ending.mp3"; 
+		// TODO : musique apres jar
+		String musiquePath1 = getURL("son/23-ending.mp3").getPath();
 		String musiquePath2 = "src/main/resources/son/01AlexKid-title-screen.mp3"; 
 		musiquesPaths.add(musiquePath1);
 		musiquesPaths.add(musiquePath2);
@@ -122,7 +125,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		content.setBackground(Color.WHITE);
 
 		// Ajout du menu a la fenetre
-		ImageIcon image = new ImageIcon("src/main/resources/image/carte/montfermeil.png");
+		ImageIcon image = getImageIcon("image/carte/montfermeil.png");
 		JLabel label = new JLabel(image);
 		content.add(label, Integer.valueOf(1));
 		content.add(titre, Integer.valueOf(5));
@@ -162,4 +165,19 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		return (FenetrePrincipal) content.getParent().getParent().getParent();
 	}
 		
+	public static ImageIcon getImageIcon(final String pathAndFileName) {
+		System.out.println(pathAndFileName);
+	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
+	    if (url == null) {
+	    	return null;
+	    }
+		Image image = Toolkit.getDefaultToolkit().getImage(url);
+	    return new ImageIcon(image);
+	}
+	
+	public static URL getURL(final String pathAndFileName) {
+	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
+		System.out.println(url.getPath());
+	    return url;
+	}
 }

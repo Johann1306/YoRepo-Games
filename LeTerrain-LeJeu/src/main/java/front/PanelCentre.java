@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import core.configuration.Constante;
 import modele.item.carte.Carte;
 import modele.item.lieu.Lieu;
 import modele.item.personnage.PersoPrenom;
@@ -130,8 +131,7 @@ public class PanelCentre extends JPanel {
 	private void buildPanelPerso(JComponent panel) {
 		// On recupere la carte
 		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
-		String backgroungPath = carte.getImagePath().get(0);
-		ImageIcon imageCarte = new ImageIcon(backgroungPath);
+		ImageIcon imageCarte = FenetrePrincipal.getImageIcon(carte.getImagePath().get(0));
 		JLabel labelCarte = new JLabel(imageCarte);
 
 		// On recupere les lieux disponibles pour cette carte
@@ -139,6 +139,7 @@ public class PanelCentre extends JPanel {
 		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
 		for (Lieu lieu : lieuxPersoGroupe) {
 			JButton bouton = new JButton(lieu.getNom());
+			bouton.setFont(Constante.PRESS_START_FONT);
 			JPanel panelBouton = new JPanel();
 			panelBouton.setLocation(lieu.getPosition());
 			panelBouton.add(bouton);
@@ -153,6 +154,7 @@ public class PanelCentre extends JPanel {
 					// TODO : Panel InfoPoi
 					for (Poi poi : lieu.getPois()) {
 						JButton bouton = new JButton(poi.getNom());
+						bouton.setFont(Constante.PRESS_START_FONT);
 						JPanel panelBouton = new JPanel();
 						panelBouton.setLocation(poi.getPoint());
 						panelBouton.add(bouton);
@@ -168,6 +170,7 @@ public class PanelCentre extends JPanel {
 								JPanel panelBoutons = new JPanel();
 								panelBoutons.setOpaque(false);
 								addBoutonCarte(panel, panelBoutons);
+								revalidate();
 							}
 						});
 						panel.add(panelBouton, Integer.valueOf(2));
@@ -181,6 +184,7 @@ public class PanelCentre extends JPanel {
 //					panel.setSize(new Dimension(background.getWidth(), background.getHeight()));
 					panel.add(background, Integer.valueOf(1));
 					cardLayout.show(MainFrame.getPanelCentre(), panel.getName());
+					revalidate();
 				}
 			});
 			panel.add(panelBouton, Integer.valueOf(2));
@@ -195,14 +199,17 @@ public class PanelCentre extends JPanel {
 
 	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
 		JButton boutonCarte = new JButton("Retour Carte");
+		boutonCarte.setFont(Constante.PRESS_START_FONT);
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panel.removeAll();
 				buildPanelPerso(panel);
+				revalidate();
 			}
 		});
 		panelBouton.add(boutonCarte);
+		panelBouton.setLocation(-880, 0);
 		panel.add(panelBouton, Integer.valueOf(2));
 	}
 

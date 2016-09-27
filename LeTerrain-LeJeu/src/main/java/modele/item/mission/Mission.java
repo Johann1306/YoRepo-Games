@@ -12,7 +12,9 @@ import modele.item.Item;
 import modele.item.lieu.Lieu;
 import modele.item.mission.enums.MissionDifficulty;
 import modele.item.mission.enums.MissionType;
+import modele.item.personnage.EnnemiType;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnageBoss;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
 
@@ -53,12 +55,14 @@ public class Mission implements Serializable {
 	private int gainMax;
 	private int perteMax;
 	private Date date;
-	private MissionType type;
+	private MissionType missionType;
 	private MissionDifficulty difficulty;
+	private EnnemiType ennemisType;
 	private List<NomJeu> jeux;
 	private List<PersonnagePrincipal> personnagesRequis;
 	private List<PersonnagePrincipal> personnagesInterdits;
 	private List<PersonnageSecondaire> personnagesSecondaires;
+	private BossNom bossNom;
 	private List<Item> itemsNecessaires;
 	private List<Item> itemsDebloques;
 	private boolean isDisponible = false;
@@ -71,9 +75,10 @@ public class Mission implements Serializable {
 	public Mission(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
 			List<String> videoPaths, PersoPrenom proprietaire, Lieu lieu, int chanceVictoire, String conditionVictoire,
 			String conditionDefaite, String objectif, Bonus gain, Bonus perte, int gainMax, int perteMax, Date date,
-			MissionType type, MissionDifficulty difficulty, List<NomJeu> jeux, List<PersonnagePrincipal> personnagesRequis,
-			List<PersonnagePrincipal> personnagesInterdits, List<PersonnageSecondaire> personnagesSecondaires,
-			List<Item> itemsNecessaires, List<Item> itemsDebloques, boolean isRepetable) {
+			MissionType type, MissionDifficulty difficulty, EnnemiType typeEnnemis, List<NomJeu> jeux,
+			List<PersonnagePrincipal> personnagesRequis, List<PersonnagePrincipal> personnagesInterdits,
+			List<PersonnageSecondaire> personnagesSecondaires, BossNom bossNom, List<Item> itemsNecessaires,
+			List<Item> itemsDebloques, boolean isRepetable) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -92,12 +97,14 @@ public class Mission implements Serializable {
 		this.gainMax = gainMax;
 		this.perteMax = perteMax;
 		this.date = date;
-		this.type = type;
+		this.missionType = type;
 		this.difficulty = difficulty;
+		this.ennemisType = typeEnnemis;
 		this.jeux = jeux;
 		this.personnagesRequis = personnagesRequis;
 		this.personnagesInterdits = personnagesInterdits;
 		this.personnagesSecondaires = personnagesSecondaires;
+		this.bossNom = bossNom;
 		this.itemsNecessaires = itemsNecessaires;
 		this.itemsDebloques = itemsDebloques;
 		this.isRepetable = isRepetable;
@@ -225,12 +232,12 @@ public class Mission implements Serializable {
 		this.perteMax = perteMax;
 	}
 
-	public MissionType getType() {
-		return type;
+	public MissionType getMissionType() {
+		return missionType;
 	}
 
 	public void setType(MissionType type) {
-		this.type = type;
+		this.missionType = type;
 	}
 
 	public MissionDifficulty getDifficulty() {
@@ -330,10 +337,11 @@ public class Mission implements Serializable {
 			if (!item.isDisponible()) {
 				return false;
 			}
-		} 
-		// dispo date 
+		}
+		// dispo date
 		if (date != null) {
-			if (!MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date) || !MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estApresLaDateCourrante(date)) {
+			if (!MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date)
+					|| !MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estApresLaDateCourrante(date)) {
 				return false;
 			}
 		}
@@ -367,6 +375,14 @@ public class Mission implements Serializable {
 
 	public void setNombreWin(int nombreWin) {
 		this.nombreWin = nombreWin;
+	}
+
+	public EnnemiType getTypeEnnemis() {
+		return this.ennemisType;
+	}
+
+	public BossNom getBossNom() {
+		return this.bossNom;
 	}
 
 }

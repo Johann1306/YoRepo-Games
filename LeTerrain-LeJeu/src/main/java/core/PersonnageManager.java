@@ -6,20 +6,22 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import front.FenetrePrincipal;
 import modele.competence.Competence;
 import modele.item.Item;
-import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
+import modele.item.mission.BossNom;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.MomentCle;
 import modele.item.personnage.Objectif;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnageBoss;
 import modele.item.personnage.PersonnageEnnemi;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
-import modele.item.personnage.Pouvoir;
+import modele.item.personnage.action.ActionCombat;
 
 public class PersonnageManager implements Serializable {
 
@@ -29,30 +31,32 @@ public class PersonnageManager implements Serializable {
 	
 	private Groupe leGroupe;
 	private List<PersonnageSecondaire> personnagesSecondaires;
+	private List<PersonnageBoss> personnagesBoss;
+	private List<PersonnageEnnemi> personnagesEnnemis;
 
-	public void initialise() {
+	public void initialise(ActionCombatManager actionCombatManager) {
 
 		leGroupe = new Groupe();
 
 		// Chargement des personnages Principaux
 		
-		ImageIcon iconNicolas = new ImageIcon("src/main/resources/image/nico petit.png");
-		ImageIcon iconPierre = new ImageIcon("src/main/resources/image/pierre petit.png");
-		ImageIcon iconYannick = new ImageIcon("src/main/resources/image/yannick petit.png");
-		ImageIcon iconThomas = new ImageIcon("src/main/resources/image/thomas petit.png");
-		ImageIcon iconJohann = new ImageIcon("src/main/resources/image/johann petit.png");
-		ImageIcon iconAli = new ImageIcon("src/main/resources/image/ali.png");
-		ImageIcon iconGuillaume = new ImageIcon("src/main/resources/image/guillaume.png");
-		ImageIcon iconJonathan = new ImageIcon("src/main/resources/image/jonathan.png");
+		ImageIcon iconNicolas = FenetrePrincipal.getImageIcon("image/nico petit.png");
+		ImageIcon iconPierre = FenetrePrincipal.getImageIcon("image/pierre petit.png");
+		ImageIcon iconYannick = FenetrePrincipal.getImageIcon("image/yannick petit.png");
+		ImageIcon iconThomas = FenetrePrincipal.getImageIcon("image/thomas petit.png");
+		ImageIcon iconJohann = FenetrePrincipal.getImageIcon("image/johann petit.png");
+		ImageIcon iconAli = FenetrePrincipal.getImageIcon("image/ali.png");
+		ImageIcon iconGuillaume = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon iconJonathan = FenetrePrincipal.getImageIcon("image/jonathan.png");
 		
-		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.JOHANN, "Yo", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), iconJohann, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.NICOLAS, "Nico",new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconNicolas, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.PIERRE, "Pip", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconPierre, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.THOMAS, "Darm", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconThomas, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.YANNICK, "Ya", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconYannick, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.ALI, "Ali", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconAli, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.GUILLAUME, "Guy", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconGuillaume, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
-		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.JONATHAN, "Russ", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconJonathan, new ArrayList<ImageIcon>(), new ArrayList<Pouvoir>(), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.JOHANN, "Yo", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), iconJohann, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.JOHANN.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.NICOLAS, "Nico",new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconNicolas, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.NICOLAS.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.PIERRE, "Pip", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconPierre, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.PIERRE.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.THOMAS, "Darm", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconThomas, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.THOMAS.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.YANNICK, "Ya", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconYannick, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.YANNICK.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.ALI, "Ali", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconAli, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.ALI.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.GUILLAUME, "Guy", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconGuillaume, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.GUILLAUME.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.JONATHAN, "Russ", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),  iconJonathan, new ArrayList<ImageIcon>(), actionCombatManager.getActionsCombat(PersoPrenom.JONATHAN.name()), new ArrayList<Objectif>(), new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(), new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
 		
 		leGroupe.ajoutePerso(johann);
 		leGroupe.ajoutePerso(nicolas);
@@ -69,9 +73,27 @@ public class PersonnageManager implements Serializable {
 		
 		personnagesSecondaires.add(barbara);
 		
+		// Chargement des personnages Ennemis
+		personnagesEnnemis = new ArrayList<PersonnageEnnemi>();
+		
+		// Chargement des Boss
+		personnagesBoss = new ArrayList<PersonnageBoss>();
+		List<String> particularitesPhysique = new ArrayList<String>();
+		List<String> particularitesSocial = new ArrayList<String>();
+		List<String> phrasesPerso = new ArrayList<String>();
+		ImageIcon photoBoss = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		
+		List<ImageIcon> photos = new ArrayList<ImageIcon>();
+		int vieMax = 100;
+		int manaMax = 50;
+		int chargeMax = 50;
+		List<ActionCombat> actionsCombat = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
+		
+		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat);
+		personnagesBoss.add(boss1);
 	}
 
-	public PersonnagePrincipal getPersoByNom(PersoPrenom nom) {
+	public PersonnagePrincipal getPersoByPrenom(PersoPrenom nom) {
 		return leGroupe.getPersoByNom(nom);
 	}
 
@@ -83,4 +105,21 @@ public class PersonnageManager implements Serializable {
 		return personnagesSecondaires;
 	}
 
+	public List<PersonnageBoss> getPersonnagesBoss() {
+		return personnagesBoss;
+	}
+
+	public List<PersonnageEnnemi> getPersonnagesEnnemis() {
+		return personnagesEnnemis;
+	}
+
+	public PersonnageBoss getPersonnageBossByNom(BossNom bossNom) {
+		for(PersonnageBoss personnageBoss : personnagesBoss) {
+			if(personnageBoss.getNom().equals(bossNom.name())) {
+				return personnageBoss;
+			}
+		}
+		return null;
+	}
+	
 }

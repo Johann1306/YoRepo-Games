@@ -70,17 +70,17 @@ public class PanelPersonnage extends JPanel {
 		boutonGuillaume.setName(guillaume.getPrenom().name());
 		boutonJonathan.setName(jonathan.getPrenom().name());
 		
-		boutonNicolas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonPierre.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonYannick.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonThomas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonJohann.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonAli.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonGuillaume.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
-		boutonJonathan.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION);
+		boutonNicolas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonPierre.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonYannick.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonThomas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonJohann.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonAli.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonGuillaume.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
+		boutonJonathan.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 		// TODO
 		//		boutonGroupe.setMinimumSize(new Dimension(pressIcon1.getIconWidth(), pressIcon1.getIconHeight()/2));
-		boutonGroupe.setMaximumSize(Constante.PERSO_IMAGE_DIMENSION);
+		boutonGroupe.setMaximumSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 	
 		boutonNicolas.setToolTipText(PersoPrenom.NICOLAS + " " + PersoNom.LOPEZ);
 		boutonPierre.setToolTipText(PersoPrenom.PIERRE + " " + PersoNom.SERMAIN);

@@ -4,7 +4,7 @@ public enum MissionDifficulty {
 	HEROIQUE,
 	DIFFICILE,
 	NORMAL,
-	FACILE,
-	HISTOIRE;
+	FACILE;
+//	HISTOIRE;
 
 }

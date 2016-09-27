@@ -12,6 +12,7 @@ import javazoom.jl.player.Player;
 public class Sound {
 
 	private boolean isPlaying = false;
+	// TODO : probleme avec la lib dans /lib/ext pas embarque dans le jar
 	private Player player = null;
 
 	public Sound(String path) throws Exception {
