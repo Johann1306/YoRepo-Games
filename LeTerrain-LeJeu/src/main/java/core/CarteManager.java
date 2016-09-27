@@ -24,7 +24,7 @@ public class CarteManager implements Serializable {
 		cartesIndisponible = new ArrayList<Carte>();
 		
 		List<String> imagePaths1 = new ArrayList<String>();
-		String imagePath1 = "src/main/resources/image/carte/montfermeil.png";
+		String imagePath1 = "image/carte/montfermeil.png";
 		imagePaths1.add(imagePath1);
 
 		List<String> sonPaths1 = new ArrayList<String>();

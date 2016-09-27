@@ -108,7 +108,6 @@ public class PoiManager implements Serializable {
 				poisIndisponible.remove(poi);
 			}
 		}
-		
 	}
 
 	public Poi getPoisByNom(String nom) {

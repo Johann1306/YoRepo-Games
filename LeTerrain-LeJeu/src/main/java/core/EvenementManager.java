@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
 import front.PanelPersonnage;
@@ -34,7 +35,7 @@ public class EvenementManager implements Serializable {
 
 		String titre1 = "testEvent1";
 		String informations1 = "infosEvent1troooooooooooooooooooooooooooooooooooooooooooplong";
-		String path1 = "";
+		String path1 = "image/defaut/defautEvenement.png";
 		String sonPath1 = "src/main/resources/sonParDefaut/314-SecretOfMana-got-an-item.mp3";
 		String videoPath1 = "src/main/resources/video/Trololo.mp4";
 		EvenementTheme type1 = EvenementTheme.ANNIVERSAIRE;
@@ -51,7 +52,7 @@ public class EvenementManager implements Serializable {
 
 		String titre2 = "testEvent2";
 		String informations2 = "infosEvent2";
-		String path2 = "src";
+		String path2 = "image/defaut/defautEvenement.png";
 		String sonPath2 = "";
 		EvenementTheme type2 = EvenementTheme.SORTIE_SERIE;
 		Date date2 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 12, 0, 0);
@@ -83,7 +84,7 @@ public class EvenementManager implements Serializable {
 
 		String titre3 = "testEvent3";
 		String informations3 = "infosEvent3";
-		String path3 = "src";
+		String path3 = "image/defaut/defautEvenement.png";
 		String sonPath3 = "";
 		EvenementTheme type3 = EvenementTheme.SORTIE_SERIE;
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 14, 0, 0);
@@ -93,7 +94,7 @@ public class EvenementManager implements Serializable {
 		
 		String titre4 = "testEvent4";
 		String informations4 = "infosEvent4";
-		String path4 = "src";
+		String path4 = "image/defaut/defautEvenement.png";
 		String sonPath4 = "";
 		EvenementTheme type4 = EvenementTheme.SORTIE_SERIE;
 		Date date4 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 16, 0, 0);
@@ -146,10 +147,10 @@ public class EvenementManager implements Serializable {
 				
 				// Afficher JDialog pour l evenement
 				int type = getTypeEvenement(evenement);
-				ImageIcon image = new ImageIcon(evenement.getImagePath());
+				ImageIcon image = FenetrePrincipal.getImageIcon(evenement.getImagePath());
 				// Si il n y a pas d image, on retourne l icone par defaut d un evenement
 				if (image.getIconWidth() == -1) {
-					image = new ImageIcon("src/main/resources/image/defaut/defautEvenement.png");
+					image = FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png");
 				}
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), evenement.getTitre(), type, image);
 				
@@ -167,7 +168,7 @@ public class EvenementManager implements Serializable {
 					// Afficher JDialog pour l item
 					ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
 					if (itemImage.getIconWidth() == -1) {
-						itemImage = new ImageIcon("src/main/resources/image/defaut/defautItem.png");
+						itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
 					}
 					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
 					item.setDisponible(true);

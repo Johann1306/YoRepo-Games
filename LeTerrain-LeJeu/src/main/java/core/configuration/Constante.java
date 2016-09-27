@@ -8,12 +8,14 @@ import javax.swing.ImageIcon;
 
 public class Constante {
 	
-	public static final Dimension PERSO_IMAGE_DIMENSION = new Dimension(new ImageIcon("src/main/resources/image/nico petit.png").getIconWidth(), new ImageIcon("src/main/resources/image/nico petit.png").getIconHeight());
+	public static final Dimension PERSO_IMAGE_DIMENSION_64_64 = new Dimension(64, 64);
+	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
 	
 	public static final int MAX_EVENEMENTS_AFFICHES = 10;
 	public static final int MAX_CASE_PAR_LIGNE = 10;
 	
-	public static final Dimension ITEM_TAILLE = new Dimension(32,32);
+	public static final Dimension ITEM_TAILLE_DIMENSION = new Dimension(32,32);
+	public static final Dimension ITEM_CONSOMMABLE_DIMENSION = new Dimension(32,32);
 	public static final Dimension FENETRE_PRINCIPAL_DIMENSION = new Dimension(700,700);
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
@@ -21,6 +23,16 @@ public class Constante {
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire
 	public static final int PANEL_GAUCHE_LARGEUR = 180;
 	public static final int PANEL_GAUCHE_MAX_HAUTEUR = 1470;	// Pour 8 persos principaux
+	
+	public static final int PANEL_ACTION_HAUTEUR = 190;
+	public static final int PANEL_INFO_COMBAT_HAUTEUR = 100;		
+	
+	public static final int PANEL_COMBAT_PERSO_LARGEUR = PANEL_ACTION_HAUTEUR;		
+	public static final int PANEL_COMBAT_LARGEUR = 975;		
+	public static final int PANEL_BOUTON_GROUPE_LARGEUR = 150;
+	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
+	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
+	public static final int PANEL_ITEMS_COMBAT_LARGEUR = 150;
 	
 	public static final Font PRESS_START_FONT = new Font("Press Start", Font.PLAIN, 10);
 	public static final Font PRESS_START_FONT_MENU = new Font("Press Start", Font.PLAIN, 20);

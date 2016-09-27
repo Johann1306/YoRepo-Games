@@ -19,6 +19,7 @@ public class CoreManager implements Serializable {
 	private PoiManager poiManager;
 	private LieuManager lieuManager;
 	private CarteManager carteManager;
+	private ActionCombatManager actionCombatManager;
 
 	public CoreManager() {
 	}
@@ -43,9 +44,12 @@ public class CoreManager implements Serializable {
 
 		missionManager = new MissionManager();
 		missionManager.initialise();
+		
+		actionCombatManager = new ActionCombatManager();
+		actionCombatManager.initialise();
 
 		personnageManager = new PersonnageManager();
-		personnageManager.initialise();
+		personnageManager.initialise(actionCombatManager);
 
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
@@ -65,6 +69,7 @@ public class CoreManager implements Serializable {
 		
 		carteManager = new CarteManager();
 		carteManager.initialise(lieuManager);
+
 
 	}
 
@@ -172,6 +177,14 @@ public class CoreManager implements Serializable {
 		this.carteManager = carteManager;
 	}
 
+	public ActionCombatManager getActionCombatManager() {
+		return actionCombatManager;
+	}
+
+	public void setActionCombatManager(ActionCombatManager actionCombatManager) {
+		this.actionCombatManager = actionCombatManager;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

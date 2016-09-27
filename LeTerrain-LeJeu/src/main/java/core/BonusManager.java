@@ -47,11 +47,11 @@ public class BonusManager implements Serializable {
 		Map<PersoStat,Integer> statsMapTom = new HashMap<PersoStat,Integer>();
 		Map<PersoStat,Integer> statsMapYo = new HashMap<PersoStat,Integer>();
 		
-		statsMapNico.put(PersoStat.ACCELERATION, new Integer(2));
-		statsMapPipo.put(PersoStat.ACCELERATION, new Integer(2));
-		statsMapYaco.put(PersoStat.ACCELERATION, new Integer(2));
-		statsMapTom.put(PersoStat.ACCELERATION, new Integer(2));
-		statsMapYo.put(PersoStat.ACCELERATION, new Integer(2));
+		statsMapNico.put(PersoStat.RAPIDITE, new Integer(2));
+		statsMapPipo.put(PersoStat.ENDURANCE, new Integer(2));
+		statsMapYaco.put(PersoStat.RESISTANCE, new Integer(2));
+		statsMapTom.put(PersoStat.INTELLIGENCE, new Integer(2));
+		statsMapYo.put(PersoStat.EXPLOIT, new Integer(2));
 		
 		bonusMap1.put(PersoPrenom.NICOLAS, statsMapNico);
 		bonusMap1.put(PersoPrenom.JOHANN, statsMapYo);
@@ -70,11 +70,11 @@ public class BonusManager implements Serializable {
 		Map<PersoStat,Integer> statsMapTom2 = new HashMap<PersoStat,Integer>();
 		Map<PersoStat,Integer> statsMapYo2 = new HashMap<PersoStat,Integer>();
 		
-		statsMapNico2.put(PersoStat.ACCELERATION, new Integer(-1));
-		statsMapPipo2.put(PersoStat.ACCELERATION, new Integer(-1));
-		statsMapYaco2.put(PersoStat.ACCELERATION, new Integer(-1));
-		statsMapTom2.put(PersoStat.ACCELERATION, new Integer(-1));
-		statsMapYo2.put(PersoStat.ACCELERATION, new Integer(-1));
+		statsMapNico2.put(PersoStat.RAPIDITE, new Integer(-1));
+		statsMapPipo2.put(PersoStat.ENDURANCE, new Integer(-1));
+		statsMapYaco2.put(PersoStat.RESISTANCE, new Integer(-1));
+		statsMapTom2.put(PersoStat.INTELLIGENCE, new Integer(-1));
+		statsMapYo2.put(PersoStat.EXPLOIT, new Integer(-1));
 		
 		bonusMap2.put(PersoPrenom.NICOLAS, statsMapNico2);
 		bonusMap2.put(PersoPrenom.JOHANN, statsMapYo2);

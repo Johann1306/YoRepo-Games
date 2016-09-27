@@ -96,7 +96,7 @@ public class PanelBas extends JPanel {
 		BoxLayout boxLayout = new BoxLayout(panelVertical, BoxLayout.Y_AXIS);
 		panelVertical.setLayout(boxLayout);
 		
-		List<Item> items = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsByPerso(nom);
+		List<Item> items = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsDisponiblesByPerso(nom);
 		int compteur = 0;
 		JPanel panelHorizontal = new JPanel();
 		panelVertical.add(panelHorizontal);
@@ -116,12 +116,13 @@ public class PanelBas extends JPanel {
 		scrollPaneInventaire.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneInventaire.getViewport().add(panelVertical);
 		panelInventaire.add(scrollPaneInventaire);
+		revalidate();
 	}
 
 	private void createItemBouton(JPanel panelHorizontal, Item item) {
-		ImageIcon image = new ImageIcon(item.getImagePath().get(0));
+		ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 		JButton boutonItem = new JButton(image);
-		boutonItem.setPreferredSize(Constante.ITEM_TAILLE);
+		boutonItem.setPreferredSize(Constante.ITEM_TAILLE_DIMENSION);
 		panelHorizontal.add(boutonItem);
 	}
 
