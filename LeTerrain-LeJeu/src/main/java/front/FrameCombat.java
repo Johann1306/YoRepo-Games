@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,10 +33,11 @@ import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionDifficulty;
 import modele.item.mission.enums.MissionType;
-import modele.item.personnage.EnnemiType;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.Personnage;
 import modele.item.personnage.PersonnageBoss;
+import modele.item.personnage.PersonnageEnnemi;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.action.ActionCombat;
 import modele.item.personnage.action.ActionCombatType;
@@ -65,9 +67,13 @@ public class FrameCombat extends JFrame {
 	private Item itemSelectionne = null;
 	private JPanel panelInfosCombat = null;
 	private List<JButton> boutonsEnnemis = null;
+	private List<Personnage> ennemis = null;
+
+	private JMenu menuActions = new JMenu("ACTIONS");
+	private Mission mission;
 
 	public FrameCombat(Groupe groupe, Mission mission) {
-
+		this.mission = mission;
 		win = false;
 		PersoPrenom firstPerso = null;
 
@@ -217,8 +223,6 @@ public class FrameCombat extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				buildPanelActions(panelActions, PersoPrenom.NICOLAS);
-				win = false;
-				System.out.println("Nico : " + win);
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {
@@ -237,8 +241,6 @@ public class FrameCombat extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				buildPanelActions(panelActions, PersoPrenom.THOMAS);
-				win = true;
-				System.out.println("Tom : " + win);
 			}
 		});
 		boutonJohann.addActionListener(new ActionListener() {
@@ -251,7 +253,6 @@ public class FrameCombat extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				buildPanelActions(panelActions, PersoPrenom.ALI);
-				stop(mission, win);
 			}
 		});
 		boutonGuillaume.addActionListener(new ActionListener() {
@@ -293,9 +294,11 @@ public class FrameCombat extends JFrame {
 
 		// Gestion du type d ennemis / BOSS / type de mission
 		boutonsEnnemis = new ArrayList<JButton>();
+		ennemis = new ArrayList<Personnage>();
 		if (mission.getMissionType() == MissionType.BOSS) {
 			PersonnageBoss boss = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
 					.getPersonnageBossByNom(mission.getBossNom());
+			ennemis.add(boss);
 			ImageIcon photoBoss = ImageManager.resizeImage(boss.getPhotoPrincipal(),
 					Constante.PERSO_IMAGE_DIMENSION_64_64);
 			JButton boutonBoss = new JButton(photoBoss);
@@ -306,21 +309,13 @@ public class FrameCombat extends JFrame {
 			panelEnnemis.add(boutonBoss);
 			boutonsEnnemis.add(boutonBoss);
 		}
-		String imagePath = null;
-		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
-			imagePath = "image/ennemi/gitan.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
-			imagePath = "image/ennemi/gitan.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.HANDICAPES) {
-			imagePath = "image/ennemi/gitan.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.NOIRS) {
-			imagePath = "image/ennemi/gitan.png";
-		}
-		ImageIcon imageEnnemi = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
-				Constante.PERSO_IMAGE_DIMENSION_64_64);
-		for (int i = 0; i < nombreEnnemis; i++) {
-			JButton boutonEnnemi = new JButton(imageEnnemi);
-			boutonEnnemi.setName("Ennemi " + (i + 1));
+
+		for (int i = 1; i <= nombreEnnemis; i++) {
+			PersonnageEnnemi ennemi = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
+					.createPersonnageEnnemi(mission, i);
+			ennemis.add(ennemi);
+			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
+			boutonEnnemi.setName(ennemi.getNom());
 			boutonEnnemi.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 			boutonEnnemi.setToolTipText(boutonEnnemi.getName());
 			boutonEnnemi.setFocusable(false);
@@ -407,9 +402,8 @@ public class FrameCombat extends JFrame {
 		panelBoutonsPerso.setLayout(boxlayoutBoutonsPerso);
 
 		JMenuBar menuBar = new JMenuBar();
-		JMenu menuActions = new JMenu("ACTIONS");
 
-		buildMenuActions(perso, menuActions);
+		buildMenuActions(perso);
 
 		JPanel panelMenu = new JPanel();
 		menuBar.add(menuActions);
@@ -557,7 +551,9 @@ public class FrameCombat extends JFrame {
 		panelActions.revalidate();
 	}
 
-	private void buildMenuActions(PersonnagePrincipal perso, JMenu menuAction) {
+	private void buildMenuActions(PersonnagePrincipal perso) {
+		
+		menuActions.removeAll();
 
 		JMenu menuAttaque = new JMenu("ATTAQUE");
 		JMenu menuDefense = new JMenu("DEFENSE");
@@ -587,97 +583,303 @@ public class FrameCombat extends JFrame {
 		}
 
 		//
-		menuAction.add(menuAttaque);
-		menuAction.add(menuDefense);
-		menuAction.add(menuPouvoir);
-		menuAction.add(menuSpecial);
+		menuActions.add(menuAttaque);
+		menuActions.add(menuDefense);
+		menuActions.add(menuPouvoir);
+		menuActions.add(menuSpecial);
 	}
 
+	// Gestion des Actions (ATTAQUE, DEFENSE, POUVOIR, SPECIAL)
 	private AbstractButton configureBoutonAction(PersonnagePrincipal perso, ActionCombat actionCombat) {
 
-		// Si Multicible/Ennemis
-		if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
-			// JMenuItem
-			AbstractButton action = new JMenuItem(actionCombat.getNom());
-			action.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					int min = 0;
-					int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat()) / 10;
-					int pointsDegat = RandomManager.random(min, max);
-					panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
-							+ " et inflige " + pointsDegat + " degats à tous les ennemis."), 0);
-					revalidate();
-				}
-			});
-			return action;
-		}
+		List<Personnage> persosDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getPersosDejaPresente();
+		List<PersonnagePrincipal> persosPrincipauxDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getPersosPrincipauxDejaPresente();
+		// -- ATTAQUE
+		if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE) {
 
-		// Si Monocible/Ennemis
-		if (actionCombat.getCibleType() == CibleType.ENNEMI) {
-			// JMenu
-			AbstractButton action = new JMenu(actionCombat.getNom());
-			for (JButton bouton : boutonsEnnemis) {
-				JMenuItem ennemi = new JMenuItem(bouton.getName());
-				ennemi.addActionListener(new ActionListener() {
+			// Si Multicible/Ennemis
+			if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
+				// JMenuItem
+				AbstractButton action = new JMenuItem(actionCombat.getNom());
+				action.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						int min = 0;
-						int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat()) / 10;
-						int pointsDegat = RandomManager.random(min, max);
+						// Execution du sort
+						List<Personnage> ennemisTemp = new ArrayList<Personnage>(ennemis);
+						int score = executeSort(perso, actionCombat, ennemisTemp);
+
+						// Affichage info sort
 						panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
-								+ " et inflige " + pointsDegat + " degats à " + bouton.getName() + "."), 0);
+								+ " et inflige " + score + " degats à tous les ennemis."), 0);
 						revalidate();
 					}
 				});
-				action.add(ennemi);
+				return action;
 			}
-			return action;
-		}
 
-		// Si Multicible/Allies
-		if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
-			// JMenuItem
-			AbstractButton action = new JMenuItem(actionCombat.getNom());
-			action.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					int min = 0;
-					int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat()) / 10;
-					int pointsVie = RandomManager.random(min, max);
-					panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
-							+ " et soigne " + pointsVie + " points de vie à tous les allies."), 0);
-					revalidate();
+			// Si Monocible/Ennemis
+			if (actionCombat.getCibleType() == CibleType.ENNEMI) {
+				// JMenu
+				AbstractButton action = new JMenu(actionCombat.getNom());
+				for (Personnage ennemi : ennemis) {
+					JMenuItem menuEnnemi = new JMenuItem(ennemi.getNom());
+					menuEnnemi.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+
+							// Execution du sort
+							List<Personnage> unEnnemi = new ArrayList<Personnage>();
+							unEnnemi.add(ennemi);
+							int score = executeSort(perso, actionCombat, unEnnemi);
+
+							// Affichage info sort
+							panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+									+ " et inflige " + score + " degats à " + ennemi.getNom() + "."), 0);
+							revalidate();
+						}
+					});
+					action.add(menuEnnemi);
 				}
-			});
-			return action;
+				return action;
+			}
 		}
 
-		// Si Monocible/Allies
-		if (actionCombat.getCibleType() == CibleType.ALLIE) {
-			// JMenu
-			AbstractButton action = new JMenu(actionCombat.getNom());
-			for (PersonnagePrincipal persoPrincipal : MenuPrincipal.getMainFrame().getCoreManager()
-					.getPersonnageManager().getLeGroupe().getPersosDejaPresente()) {
-				JMenuItem ami = new JMenuItem(persoPrincipal.getSurnomPrincipal());
-				ami.addActionListener(new ActionListener() {
+		// -- DEFENSE
+		if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
+
+			// Si Multicible/Allies
+			if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
+				// JMenuItem
+				AbstractButton action = new JMenuItem(actionCombat.getNom());
+				action.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						int min = 0;
-						int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat()) / 10;
-						int pointsVie = RandomManager.random(min, max);
+						// Execution du sort
+						int score = executeSort(perso, actionCombat, persosDejaPresentes);
+
+						// Affichage info sort
+						panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+								+ " et protege tous les alliés avec un bouclier (" + score + ")."), 0);
+						revalidate();
+					}
+				});
+				return action;
+			}
+
+			// Si Monocible/Allies
+			if (actionCombat.getCibleType() == CibleType.ALLIE) {
+				// JMenu
+				AbstractButton action = new JMenu(actionCombat.getNom());
+				for (PersonnagePrincipal persoPrincipal : persosPrincipauxDejaPresentes) {
+					JMenuItem ami = new JMenuItem(persoPrincipal.getSurnomPrincipal());
+					ami.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// Execution du sort
+							int score = executeSort(perso, actionCombat, persosDejaPresentes);
+
+							// Affichage info sort
+							panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+									+ " et protege " + persoPrincipal.getPrenom().name() + " avec un bouclier ("
+									+ score + ")."), 0);
+							revalidate();
+						}
+					});
+					action.add(ami);
+				}
+				return action;
+			}
+		}
+		// -- POUVOIR
+		if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR) {
+
+			// Si Multicible/Ennemis
+			if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
+				// JMenuItem
+				AbstractButton action = new JMenuItem(actionCombat.getNom());
+				action.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// Execution du sort
+						List<Personnage> ennemisTemp = new ArrayList<Personnage>(ennemis);
+						int score = executeSort(perso, actionCombat, ennemisTemp);
+
+						// Affichage info sort
+						panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+								+ " et inflige " + score + " degats à tous les ennemis."), 0);
+						revalidate();
+					}
+				});
+				return action;
+			}
+
+			// Si Monocible/Ennemis
+			if (actionCombat.getCibleType() == CibleType.ENNEMI) {
+				// JMenu
+				AbstractButton action = new JMenu(actionCombat.getNom());
+				for (Personnage ennemi : ennemis) {
+					JMenuItem menuEnnemi = new JMenuItem(ennemi.getNom());
+					menuEnnemi.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// Execution du sort
+							List<Personnage> ennemisTemp = new ArrayList<Personnage>(ennemis);
+							int score = executeSort(perso, actionCombat, ennemisTemp);
+
+							// Affichage info sort
+							panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+									+ " et inflige " + score + " degats à " + ennemi.getNom() + "."), 0);
+
+							revalidate();
+						}
+					});
+					action.add(menuEnnemi);
+				}
+				return action;
+			}
+
+			// Si Multicible/Allies
+			if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
+				// JMenuItem
+				AbstractButton action = new JMenuItem(actionCombat.getNom());
+				action.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// Execution du sort
+						int	score = executeSort(perso, actionCombat, persosDejaPresentes);
+
+						// Affichage info sort
+						panelInfosCombat.add(new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom()
+								+ " et soigne " + score + " points de vie à tous les alliés."), 0);
+						revalidate();
+					}
+				});
+				return action;
+			}
+
+			// Si Monocible/Allies
+			if (actionCombat.getCibleType() == CibleType.ALLIE) {
+				// JMenu
+				AbstractButton action = new JMenu(actionCombat.getNom());
+				MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getPersosDejaPresente();
+				for (PersonnagePrincipal cible : persosPrincipauxDejaPresentes) {
+					JMenuItem ami = new JMenuItem(cible.getSurnomPrincipal());
+					ami.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							
+							// Execution du sort
+							int score = executeSort(perso, actionCombat, persosDejaPresentes);
+
+							// Affichage info sort
+							panelInfosCombat.add(new JLabel(
+									perso.getPrenom().name() + " lance " + actionCombat.getNom() + " et soigne " + score
+											+ " points de vie à " + cible.getPrenom().name() + "."),
+									0);
+							revalidate();
+						}
+					});
+					action.add(ami);
+				}
+				return action;
+			}
+
+		}
+		// -- SPECIAL
+		if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL) {
+
+			// Si Multicible/Ennemis
+			if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
+				// JMenuItem
+				AbstractButton action = new JMenuItem(actionCombat.getNom());
+				action.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// Execution du sort
+						List<Personnage> ennemisTemp = new ArrayList<Personnage>(ennemis);
+						int score = executeSort(perso, actionCombat, ennemisTemp);
+
+						// Affichage info sort
 						panelInfosCombat.add(
-								new JLabel(perso.getPrenom().name() + " lance " + actionCombat.getNom() + " et soigne "
-										+ pointsVie + " points de vie à " + persoPrincipal.getPrenom().name() + "."),
+								new JLabel(perso.getPrenom().name() + " lance son 'Special' " + actionCombat.getNom()
+										+ " et inflige " + score + " degats à tous les ennemis autour de lui."),
 								0);
 						revalidate();
 					}
 				});
-				action.add(ami);
+				return action;
 			}
-			return action;
+
+			// Si Monocible/Ennemi
+			// Si Multicible/Allies
+			// Si Monocible/Allie
 		}
+
 		return null;
+	}
+
+	private int executeSort(PersonnagePrincipal perso, ActionCombat actionCombat, List<Personnage> cibles) {
+
+		// Augmente l'XP du sort
+		actionCombat.setProgression(actionCombat.getProgression() + 1);
+
+		// Calcul du score
+		int min = 1;
+		// score en fonction de la competence du perso
+		int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat()); 
+		
+		// TODO score en fonction du niveau du sort
+		int score = RandomManager.random(min, max);
+
+		// Pour chaque cible
+		for (Personnage cible : cibles) {
+
+			if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
+				// Gestion defense de l'allie
+				// TODO
+				// cible.setBouclier(cible.getBouclier() + score);
+			} else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
+					&& (actionCombat.getCibleType() == CibleType.ALLIE
+							|| actionCombat.getCibleType() == CibleType.GROUPE_ALLIES)) {
+				// Gestion vie de l'allie
+				cible.setVie(cible.getVie() + score);
+				if (cible.getVie() > cible.getVieMax()) {
+					cible.setVie(cible.getVieMax());
+				}
+			} else {
+				// Gestion vie/mort de l'ennemi
+				cible.setVie(cible.getVie() - score);
+				System.out.println(cible.getNom() + " - Vie: " + cible.getVie());
+				if (cible.getVie() < 0) {
+					cible.setVie(0);
+					cible.setMort(true);
+					ennemis.remove(cible);
+					for (JButton bouton : boutonsEnnemis) {
+						if (bouton.getName().equals(cible.getNom())) {
+							bouton.setEnabled(false);
+						}
+					}
+					
+					// Test Fin du jeu
+					boolean fin = true;
+					for (JButton bouton : boutonsEnnemis) {
+						if (bouton.isEnabled()) {
+							fin = false;
+						}
+					}
+					if (fin) {
+						
+						win = true;
+						stop(mission, win);
+					}
+					
+					// Refresh menu perso monoEnnemi
+					 buildMenuActions(perso);
+					
+				}
+			}
+		}
+		return score;
 	}
 
 	public void start() {
@@ -688,7 +890,36 @@ public class FrameCombat extends JFrame {
 		JOptionPane.showMessageDialog(this, "Debut du jeu");
 	}
 
+	// Fin du jeu
 	private void stop(Mission mission, boolean win) {
+
+		if (win) {
+			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
+			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du combat", 0, icon);
+		} else {
+			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
+			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du combat", 0, icon);
+		}
+		
+		// Gestion de la progression des sorts
+
+		// Pour chaque sort
+		List<ActionCombat> allActions = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager()
+				.getActionsCombatPersosPrincipaux();
+		for (ActionCombat actionCombat : allActions) {
+			// Si la barre de progression est pleine
+			if (actionCombat.getProgression() >= 10) {
+				// On ameliore le sort
+				if (actionCombat.amelioreItem()) {
+					// Message Item ameliore
+					JOptionPane.showMessageDialog(this,
+							"Votre sort '" + actionCombat.getNom() + "' a progressé d'un niveau ! ("
+									+ actionCombat.getNiveau() + ")",
+							"Progression d'un sort", 0, new ImageIcon(actionCombat.getImagePath().get(0)));
+				}
+			}
+		}
+
 		this.dispose();
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);

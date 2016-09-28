@@ -99,7 +99,7 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 		}
 	}
 	
-	public PersoNom getNom() {
+	public PersoNom getNomFamille() {
 		return nom;
 	}
 

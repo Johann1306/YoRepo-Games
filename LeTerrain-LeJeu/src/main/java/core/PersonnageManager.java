@@ -6,12 +6,16 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import core.configuration.Constante;
 import front.FenetrePrincipal;
 import modele.competence.Competence;
 import modele.item.Item;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
 import modele.item.mission.BossNom;
+import modele.item.mission.Mission;
+import modele.item.mission.enums.MissionDifficulty;
+import modele.item.personnage.EnnemiType;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.MomentCle;
 import modele.item.personnage.Objectif;
@@ -120,6 +124,55 @@ public class PersonnageManager implements Serializable {
 			}
 		}
 		return null;
+	}
+
+	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int numero) {
+
+		String imagePath = null;
+		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
+			imagePath = "image/ennemi/gitan.png";
+		} else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
+			imagePath = "image/ennemi/arabe.png";
+		} else if (mission.getTypeEnnemis() == EnnemiType.HANDICAPES) {
+			imagePath = "image/ennemi/handicape.png";
+		} else if (mission.getTypeEnnemis() == EnnemiType.NOIRS) {
+			imagePath = "image/ennemi/noir.png";
+		}
+		ImageIcon photoPrincipal = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
+				Constante.PERSO_IMAGE_DIMENSION_64_64);
+		
+		String nom = "Ennemi " + numero;
+		// TODO
+		List<String> particularitesPhysique = new ArrayList<String>();
+		List<String> particularitesSocial = new ArrayList<String>();
+		List<String> phrasesPerso = new ArrayList<String>();
+		List<ImageIcon> photos = new ArrayList<ImageIcon>();
+
+		int vieMax = 0;
+		int manaMax = 0;
+		int chargeMax = 0;
+		// TODO actionsCombat pour les ennemis en fonction de la difficulte
+		List<ActionCombat> actionsCombat = new ArrayList<ActionCombat>();
+
+		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
+			vieMax = 100;
+			manaMax = 100;
+			chargeMax = 100;
+		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
+			vieMax = 200;
+			manaMax = 200;
+			chargeMax = 200;
+		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
+			vieMax = 500;
+			manaMax = 500;
+			chargeMax = 500;
+		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+			vieMax = 1000;
+			manaMax = 1000;
+			chargeMax = 1000;
+		} 
+		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis());
+		return ennemi;
 	}
 	
 }
