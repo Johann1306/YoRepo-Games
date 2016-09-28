@@ -80,4 +80,19 @@ public class ActionCombatManager implements Serializable {
 		return id;
 	}
 
+	public List<ActionCombat> getActionsCombatPersosPrincipaux() {
+		List<ActionCombat> actions = new ArrayList<ActionCombat>();
+		// Prenoms des personnages principaux
+		 PersoPrenom[] prenoms = PersoPrenom.values();
+		 for (PersoPrenom prenom : prenoms) {
+			if (prenom != PersoPrenom.GROUPE) {
+				List<ActionCombat> actionsParPerso = actionsByPerso.get(prenom.name());
+				if (actionsParPerso != null) {
+					actions.addAll(actionsParPerso);
+				}
+			}
+		}
+		return actions;
+	}
+
 }

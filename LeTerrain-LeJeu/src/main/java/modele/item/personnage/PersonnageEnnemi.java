@@ -9,6 +9,7 @@ import modele.item.personnage.action.ActionCombat;
 public class PersonnageEnnemi extends Personnage {
 
 	private String nom;
+	private int vie;
 	private int vieMax;
 	private int manaMax;
 	private int chargeMax;
@@ -26,6 +27,7 @@ public class PersonnageEnnemi extends Personnage {
 		super();
 		this.nom = nom;
 		this.vieMax = vieMax;
+		this.vie = vieMax;
 		this.manaMax = manaMax;
 		this.chargeMax = chargeMax;
 		this.particularitesPhysique = particularitesPhysique;
@@ -43,6 +45,14 @@ public class PersonnageEnnemi extends Personnage {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public int getVie() {
+		return vie;
+	}
+	
+	public void setVie(int vie) {
+		this.vie = vie;
 	}
 
 	public List<String> getParticularitesPhysique() {
