@@ -10,5 +10,6 @@ public enum ItemType {
 	MAP, 
 	UTILISABLE,
 	CONSOMMABLE,
-	ACTION_COMBAT;
+	ACTION_COMBAT,
+	MUSIQUE;
 }

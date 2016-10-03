@@ -39,20 +39,20 @@ public class ItemManager implements Serializable {
 		imagePaths3.add(imagePath3);
 
 		List<String> sonPaths1 = new ArrayList<String>();
-		String sonPath1 = "src/main/resources/sonParDefaut/photoBruit2.mp3";
+		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
 
 		List<String> sonPaths2 = new ArrayList<String>();
-		String sonPath2 = "src/main/resources/sonParDefaut/08-Zelda-item-catch.mp3";
+		String sonPath2 = "sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
 		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "src/main/resources/video/Trololo.mp4";
+		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 
-		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.JOHANN, ItemType.CARTE, false);
-		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, ItemType.BILLE, false);
-		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, ItemType.OBJET_QUETE, false);
+		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, ItemType.CARTE, false);
+		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, ItemType.BILLE, false);
+		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, ItemType.OBJET_QUETE, false);
 		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
 		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
 		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);

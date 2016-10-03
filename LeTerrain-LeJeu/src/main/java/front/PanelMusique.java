@@ -1,12 +1,16 @@
 package front;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -14,36 +18,45 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import core.MusiqueManager;
 import core.audio.Sound;
 import core.configuration.Constante;
+import modele.item.media.audio.Musique;
 
 public class PanelMusique extends JPanel {
 
 	public static Sound application = null;
 	public static int indexCourrant = 0;
-	public static File[] musiques = null;
+	public static String[] musiques;
 	public static boolean enchaineNext = true;
 	public static String titre = null;
 	public static JLabel jTitre = null;
+	
 	public static int j = 0;
 	public static int k = 0;
 
 	public void generePanelMusique() {
 
+			List<Musique> musiquesDisponible = MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().getMusiquesDisponibles();
+			musiques = new String[musiquesDisponible.size()];
+			int i = 0;
+			for (Musique musique : musiquesDisponible) {
+				musiques[i] = musique.getSonPath().get(0);
+				i++;
+			}
+
 		try {
-			File rep = new File("src/main/resources/son");
-			musiques = rep.listFiles();
-			application = new Sound(musiques[indexCourrant].getPath());
+			application = new Sound(musiques[indexCourrant]);
 		} catch (Exception e) {
-			System.out.println("Error with sound");
+			System.out.println("Error with sound : " + musiques[indexCourrant]);
 			e.printStackTrace();
 		}
 
-		ImageIcon pressIcon1 = new ImageIcon("src/main/resources/image/mp3Player/back.png");
-		ImageIcon pressIcon2 = new ImageIcon("src/main/resources/image/mp3Player/play.png");
-		ImageIcon pressIcon3 = new ImageIcon("src/main/resources/image/mp3Player/pause.png");
-		ImageIcon pressIcon4 = new ImageIcon("src/main/resources/image/mp3Player/stop.png");
-		ImageIcon pressIcon5 = new ImageIcon("src/main/resources/image/mp3Player/next.png");
+		ImageIcon pressIcon1 = FenetrePrincipal.getImageIcon("image/mp3Player/back.png");
+		ImageIcon pressIcon2 = FenetrePrincipal.getImageIcon("image/mp3Player/play.png");
+		ImageIcon pressIcon3 = FenetrePrincipal.getImageIcon("image/mp3Player/pause.png");
+		ImageIcon pressIcon4 = FenetrePrincipal.getImageIcon("image/mp3Player/stop.png");
+		ImageIcon pressIcon5 = FenetrePrincipal.getImageIcon("image/mp3Player/next.png");
 
 //		Dimension d = new Dimension(pressIcon1.getIconWidth() + pressIcon2.getIconWidth() + pressIcon3.getIconWidth()
 //				+ pressIcon4.getIconWidth() + pressIcon5.getIconWidth(), 100);
@@ -112,7 +125,7 @@ public class PanelMusique extends JPanel {
 					if (application.isPlaying()) {
 						application.stop();
 					}
-					application = new Sound(musiques[indexCourrant].getPath());
+					application = new Sound(musiques[indexCourrant]);
 					Thread t = new Thread(new Runnable() {
 
 						@Override
@@ -171,7 +184,7 @@ public class PanelMusique extends JPanel {
 						// on ne fait rien
 					} else {
 						rafraichissmentTitre();
-						application = new Sound(musiques[indexCourrant].getPath());
+						application = new Sound(musiques[indexCourrant]);
 						Thread t = new Thread(new Runnable() {
 
 							@Override
@@ -307,7 +320,7 @@ public class PanelMusique extends JPanel {
 					if (application.isPlaying()) {
 						application.stop();
 					}
-					application = new Sound(musiques[indexCourrant].getPath());
+					application = new Sound(musiques[indexCourrant]);
 					Thread t = new Thread(new Runnable() {
 
 						@Override
@@ -331,7 +344,6 @@ public class PanelMusique extends JPanel {
 			}
 		});
 
-		// Set the panel to add buttons
 		JPanel panelControle = new JPanel();
 		panelControle.setBackground(Color.BLACK);
 		BoxLayout boxlayout = new BoxLayout(panelControle, BoxLayout.X_AXIS);
@@ -346,8 +358,7 @@ public class PanelMusique extends JPanel {
 		panelControle.add(stop);
 		panelControle.add(next);
 
-		// Set the window to be visible as the default to be false
-		titre = musiques[indexCourrant].getName();
+		titre = musiques[indexCourrant];
 		JPanel panelVide = new JPanel();
 		panelVide.setBackground(Color.BLACK);
 
@@ -378,7 +389,7 @@ public class PanelMusique extends JPanel {
 				if (application.isPlaying()) {
 					application.stop();
 				}
-				application = new Sound(musiques[indexCourrant].getPath());
+				application = new Sound(musiques[indexCourrant]);
 				Thread t = new Thread(new Runnable() {
 
 					@Override
@@ -403,7 +414,8 @@ public class PanelMusique extends JPanel {
 	}
 
 	private static void rafraichissmentTitre() {
-		titre = musiques[indexCourrant].getName();
+		titre = musiques[indexCourrant];
+		titre = titre.replace("son/", "");
 		int end = titre.length();
 		if (end > 20) {
 			String titreTemp = titre.substring(0, 20);

@@ -27,23 +27,23 @@ public class PoiManager implements Serializable {
 		poisIndisponible = new ArrayList<Poi>();
 		
 		List<String> imagePaths1 = new ArrayList<String>();
-		String imagePath1 = "src/main/resources/image/mp3Player/stop.png";
+		String imagePath1 = "image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
 
 		List<String> imagePaths2 = new ArrayList<String>();
-		String imagePath2 = "src/main/resources/image/mp3Player/pause.png";
+		String imagePath2 = "image/mp3Player/pause.png";
 		imagePaths2.add(imagePath2);
 
 		List<String> sonPaths1 = new ArrayList<String>();
-		String sonPath1 = "src/main/resources/sonParDefaut/photoBruit2.mp3";
+		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
 
 		List<String> sonPaths2 = new ArrayList<String>();
-		String sonPath2 = "src/main/resources/sonParDefaut/08-Zelda-item-catch.mp3";
+		String sonPath2 = "sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
 		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "src/main/resources/video/Trololo.mp4";
+		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
 		// TODO

@@ -40,42 +40,42 @@ public class PanelCentre extends JPanel {
 
 		panelJohann = new JLayeredPane();
 		panelJohann.setBackground(Color.BLUE);
-		panelJohann.setName(PersoPrenom.JOHANN.name());
+		panelJohann.setName(PersoPrenom.Johann.name());
 		panelJohann.setLayout(new LayeredLayoutManager());
 
 		panelNicolas = new JLayeredPane();
 		panelNicolas.setBackground(Color.YELLOW);
-		panelNicolas.setName(PersoPrenom.NICOLAS.name());
+		panelNicolas.setName(PersoPrenom.Nicolas.name());
 		panelNicolas.setLayout(new LayeredLayoutManager());
 
 		panelPierre = new JLayeredPane();
 		panelPierre.setBackground(Color.GREEN);
-		panelPierre.setName(PersoPrenom.PIERRE.name());
+		panelPierre.setName(PersoPrenom.Pierre.name());
 		panelPierre.setLayout(new LayeredLayoutManager());
 
 		panelThomas = new JLayeredPane();
 		panelThomas.setBackground(Color.RED);
-		panelThomas.setName(PersoPrenom.THOMAS.name());
+		panelThomas.setName(PersoPrenom.Thomas.name());
 		panelThomas.setLayout(new LayeredLayoutManager());
 
 		panelYannick = new JLayeredPane();
 		panelYannick.setBackground(Color.MAGENTA);
-		panelYannick.setName(PersoPrenom.YANNICK.name());
+		panelYannick.setName(PersoPrenom.Yannick.name());
 		panelYannick.setLayout(new LayeredLayoutManager());
 
 		panelAli = new JLayeredPane();
 		panelAli.setBackground(Color.PINK);
-		panelAli.setName(PersoPrenom.ALI.name());
+		panelAli.setName(PersoPrenom.Ali.name());
 		panelAli.setLayout(new LayeredLayoutManager());
 
 		panelGuillaume = new JLayeredPane();
 		panelGuillaume.setBackground(Color.ORANGE);
-		panelGuillaume.setName(PersoPrenom.GUILLAUME.name());
+		panelGuillaume.setName(PersoPrenom.Guillaume.name());
 		panelGuillaume.setLayout(new LayeredLayoutManager());
 
 		panelJonathan = new JLayeredPane();
 		panelJonathan.setBackground(Color.CYAN);
-		panelJonathan.setName(PersoPrenom.JONATHAN.name());
+		panelJonathan.setName(PersoPrenom.Jonathan.name());
 		panelJonathan.setLayout(new LayeredLayoutManager());
 
 		panelGroupe = new JLayeredPane();
@@ -179,7 +179,7 @@ public class PanelCentre extends JPanel {
 					panelBoutonCarte.setOpaque(false);
 					addBoutonCarte(panel, panelBoutonCarte);
 					
-					JLabel background = new JLabel(new ImageIcon(lieu.getBackgroundPath()));
+					JLabel background = new JLabel(FenetrePrincipal.getImageIcon(lieu.getBackgroundPath()));
 					// TODO
 //					panel.setSize(new Dimension(background.getWidth(), background.getHeight()));
 					panel.add(background, Integer.valueOf(1));

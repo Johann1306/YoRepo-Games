@@ -1,7 +1,7 @@
 
 package modele.item.personnage;
 
-import java.io.Serializable;
+import java.awt.Color;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import modele.item.media.audio.Son;
 import modele.item.personnage.action.ActionCombat;
 import modele.location.Location;
 
-public class PersonnagePrincipal extends Personnage implements Serializable { //extends Item {
+public class PersonnagePrincipal extends Personnage { //extends Item {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +29,7 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 	private List<String> phrasesPerso;
 	private ImageIcon photoPrincipal;
 	private List<ImageIcon> photos;
+	private Color couleur;
 	
 	private List<ActionCombat> actionsCombat;
 	private List<Objectif> objectifs;
@@ -46,7 +47,7 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 
 	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
-			ImageIcon photoPrincipal, List<ImageIcon> photos, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
+			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence,
 			boolean available) {
@@ -60,6 +61,7 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 		this.phrasesPerso = phrasesPerso;
 		this.photoPrincipal = photoPrincipal;
 		this.photos = photos;
+		this.setCouleur(couleur);
 		this.actionsCombat = actionsCombat;
 		this.objectifs = objectifs;
 		this.momentsCle = momentsCle;
@@ -74,6 +76,14 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 		this.competence = competence;
 		this.isDejaPresente = false;
 		this.available = available;
+		this.setVieMax(competence.getEndurance());
+		this.setVie(competence.getEndurance());
+		this.setManaMax(competence.getIntelligence());
+		this.setMana(competence.getIntelligence());
+		this.setVitesseCharge(competence.getRapidite());
+		this.setNombreChargeMax(competence.getNoobisme());
+		this.setNombreCharge(0);
+		this.setBouclier(0);
 	}
 
 	public void addCompetences(Map<PersoStat, Integer> map) {
@@ -201,5 +211,13 @@ public class PersonnagePrincipal extends Personnage implements Serializable { //
 
 	public void setActionsCombat(List<ActionCombat> actionsCombat) {
 		this.actionsCombat = actionsCombat;
+	}
+
+	public Color getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
 	}
 }

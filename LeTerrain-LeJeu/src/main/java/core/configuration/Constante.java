@@ -32,12 +32,14 @@ public class Constante {
 	public static final int PANEL_BOUTON_GROUPE_LARGEUR = 150;
 	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
 	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
-	public static final int PANEL_ITEMS_COMBAT_LARGEUR = 150;
-	
+	public static final int PANEL_ITEMS_COMBAT_LARGEUR = 95;
+
+	public static final Font PRESS_START_FONT_FRAMECOMBAT_INFO = new Font("Press Start", Font.PLAIN, 8);
 	public static final Font PRESS_START_FONT = new Font("Press Start", Font.PLAIN, 10);
 	public static final Font PRESS_START_FONT_MENU = new Font("Press Start", Font.PLAIN, 20);
 	public static final Font PRESS_START_FONT_MENU_SELECTED = new Font("Press Start", Font.PLAIN, 23);
 	public static final Font PRESS_START_FONT_TITRE = new Font("Press Start", Font.PLAIN, 30);
+	
 	public static final String SYMBOLE_PASSER_NEXT = ">>";
 
 	public static final int MENU_HEIGHT = 250;

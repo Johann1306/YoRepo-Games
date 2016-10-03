@@ -1,17 +1,26 @@
 package modele.item.personnage;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 
 import modele.item.personnage.action.ActionCombat;
 
-public class Personnage {
+public class Personnage implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private String nom;
 	private int vie;
 	private int vieMax;
-	private boolean mort;
+	private boolean mort = false;
+	private int mana;
+	private int manaMax;
+	private int nombreCharge;
+	private int nombreChargeMax;
+	private int vitesseCharge;
+	private int bouclier;
 	private String prenom;
 	private String surnomPrincipal;
 	private List<String> surnoms;
@@ -51,4 +60,53 @@ public class Personnage {
 		return mort;
 	}
 
+	public int getMana() {
+		return mana;
+	}
+
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+
+	public int getBouclier() {
+		return bouclier;
+	}
+
+	public void setBouclier(int bouclier) {
+		this.bouclier = bouclier;
+	}
+
+	public int getManaMax() {
+		return manaMax;
+	}
+
+	public void setManaMax(int manaMax) {
+		this.manaMax = manaMax;
+	}
+
+	public int getNombreCharge() {
+		return nombreCharge;
+	}
+
+	public void setNombreCharge(int nombreCharge) {
+		this.nombreCharge = nombreCharge;
+	}
+
+	public int getNombreChargeMax() {
+		return nombreChargeMax;
+	}
+
+	public void setNombreChargeMax(int nombreChargeMax) {
+		this.nombreChargeMax = nombreChargeMax;
+	}
+
+	public int getVitesseCharge() {
+		return vitesseCharge;
+	}
+
+	public void setVitesseCharge(int vitesseCharge) {
+		this.vitesseCharge = vitesseCharge;
+	}
+	
+	
 }

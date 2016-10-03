@@ -1,10 +1,6 @@
 package core.audio;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-
+import front.FenetrePrincipal;
 import javazoom.jl.player.Player;
 
 // MP3, WMA, MPEG, WAV compatible
@@ -12,12 +8,13 @@ import javazoom.jl.player.Player;
 public class Sound {
 
 	private boolean isPlaying = false;
-	// TODO : probleme avec la lib dans /lib/ext pas embarque dans le jar
 	private Player player = null;
+	private int position = 0;
 
 	public Sound(String path) throws Exception {
-		InputStream in = (InputStream) new BufferedInputStream(new FileInputStream(new File(path)));
-		player = new Player(in);
+//		InputStream in = (InputStream) new BufferedInputStream(new FileInputStream(new File(path)));
+		System.out.println("Play : " + path);
+		player = new Player(FenetrePrincipal.getStream(path));
 	}
 
 	public void play() throws Exception {

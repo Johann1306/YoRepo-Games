@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class NicoWindow extends JFrame implements ActionListener {
 
-	ImageIcon pressIcon1 = new ImageIcon("src/main/resources/image/nico petit.png");
+	ImageIcon pressIcon1 = FenetrePrincipal.getImageIcon("image/nico petit.png");
 	JButton myButton1 = new JButton(pressIcon1);
 
 	public void actionPerformed(ActionEvent e) {

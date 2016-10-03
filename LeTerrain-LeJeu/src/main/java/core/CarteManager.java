@@ -28,11 +28,11 @@ public class CarteManager implements Serializable {
 		imagePaths1.add(imagePath1);
 
 		List<String> sonPaths1 = new ArrayList<String>();
-		String sonPath1 = "src/main/resources/son/23-ending.mp3";
+		String sonPath1 = "son/23-ending.mp3";
 		sonPaths1.add(sonPath1);
 
 		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "src/main/resources/video/Trololo.mp4";
+		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
 		List<Lieu> lieux = lieuManager.getLieux();

@@ -59,6 +59,10 @@ public class MenuManager extends JMenuBar implements Serializable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO : une seule mainframe/ supprimer la precedante
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
 				MainFrame load = SauvegardeManager.load();
 				MenuPrincipal.setMainFrame(load);
 				load.startMainFrame();
@@ -123,35 +127,34 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 	public void lanceRefreshMenu() {
 		JLayeredPane panelShowing = MainFrame.getPanelCentre().getPanelShowing();
-		if (panelShowing.getName().contains(PersoPrenom.JOHANN.name())) {
+		if (panelShowing.getName().contains(PersoPrenom.Johann.name())) {
 			action.setForeground(Color.BLUE);
-			refreshMenuParPerso(action, PersoPrenom.JOHANN);
-		} else if (panelShowing.getName().contains(PersoPrenom.PIERRE.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Johann);
+		} else if (panelShowing.getName().contains(PersoPrenom.Pierre.name())) {
 			action.setForeground(Color.GREEN);
-			refreshMenuParPerso(action, PersoPrenom.PIERRE);
-		} else if (panelShowing.getName().contains(PersoPrenom.THOMAS.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Pierre);
+		} else if (panelShowing.getName().contains(PersoPrenom.Thomas.name())) {
 			action.setForeground(Color.RED);
-			refreshMenuParPerso(action, PersoPrenom.THOMAS);
-		} else if (panelShowing.getName().contains(PersoPrenom.YANNICK.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Thomas);
+		} else if (panelShowing.getName().contains(PersoPrenom.Yannick.name())) {
 			action.setForeground(Color.MAGENTA);
-			refreshMenuParPerso(action, PersoPrenom.YANNICK);
-		} else if (panelShowing.getName().contains(PersoPrenom.NICOLAS.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Yannick);
+		} else if (panelShowing.getName().contains(PersoPrenom.Nicolas.name())) {
 			action.setForeground(Color.YELLOW);
-			refreshMenuParPerso(action, PersoPrenom.NICOLAS);
-		} else if (panelShowing.getName().contains(PersoPrenom.ALI.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Nicolas);
+		} else if (panelShowing.getName().contains(PersoPrenom.Ali.name())) {
 			action.setForeground(Color.PINK);
-			refreshMenuParPerso(action, PersoPrenom.ALI);
-		} else if (panelShowing.getName().contains(PersoPrenom.GUILLAUME.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Ali);
+		} else if (panelShowing.getName().contains(PersoPrenom.Guillaume.name())) {
 			action.setForeground(Color.ORANGE);
-			refreshMenuParPerso(action, PersoPrenom.GUILLAUME);
-		} else if (panelShowing.getName().contains(PersoPrenom.JONATHAN.name())) {
+			refreshMenuParPerso(action, PersoPrenom.Guillaume);
+		} else if (panelShowing.getName().contains(PersoPrenom.Jonathan.name())) {
 			action.setForeground(Color.CYAN);
-			refreshMenuParPerso(action, PersoPrenom.JONATHAN);
+			refreshMenuParPerso(action, PersoPrenom.Jonathan);
 		} else if (panelShowing.getName().contains(PersoPrenom.GROUPE.name())) {
 			action.setForeground(Color.WHITE);
 			refreshMenuParPerso(action, PersoPrenom.GROUPE);
 		}
-
 	}
 
 	private void refreshMenuParPerso(JMenu action, PersoPrenom persoPrenom) {
