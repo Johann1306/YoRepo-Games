@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,8 +37,8 @@ public class EvenementManager implements Serializable {
 		String titre1 = "testEvent1";
 		String informations1 = "infosEvent1troooooooooooooooooooooooooooooooooooooooooooplong";
 		String path1 = "image/defaut/defautEvenement.png";
-		String sonPath1 = "src/main/resources/sonParDefaut/314-SecretOfMana-got-an-item.mp3";
-		String videoPath1 = "src/main/resources/video/Trololo.mp4";
+		String sonPath1 = "sonParDefaut/314-SecretOfMana-got-an-item.mp3";
+		String videoPath1 = "video/Trololo.mp4";
 		EvenementTheme type1 = EvenementTheme.ANNIVERSAIRE;
 		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 10, 0, 0);
 

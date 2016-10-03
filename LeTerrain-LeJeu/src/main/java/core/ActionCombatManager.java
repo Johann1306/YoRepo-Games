@@ -27,10 +27,10 @@ public class ActionCombatManager implements Serializable {
 		imagePaths.add("image/defautActionCombat.png");
 		
 		List<String> sonPaths = new ArrayList<String>();
-		sonPaths.add("src/main/resources/sonParDefaut/defautActionCombat.mp3");
+		sonPaths.add("sonParDefaut/defautActionCombat.mp3");
 
 		List<String> videoPaths = new ArrayList<String>();
-		videoPaths.add("src/main/resources/video/Trololo.mp4");
+		videoPaths.add("video/Trololo.mp4");
 		
 		boolean disponible = true;
 
@@ -67,8 +67,8 @@ public class ActionCombatManager implements Serializable {
 		
 		nicolasActions.add(nicoAttaque1);
 		
-		actionsByPerso.put(PersoPrenom.JOHANN.name(), johannActions);
-		actionsByPerso.put(PersoPrenom.NICOLAS.name(), nicolasActions);
+		actionsByPerso.put(PersoPrenom.Johann.name(), johannActions);
+		actionsByPerso.put(PersoPrenom.Nicolas.name(), nicolasActions);
 	}
 
 	public List<ActionCombat> getActionsCombat(String personnageNom) {

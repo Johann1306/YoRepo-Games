@@ -31,11 +31,11 @@ public class BonusManager implements Serializable {
 		Map<PersoStat,Integer> statsMapTomVide = new HashMap<PersoStat,Integer>();
 		Map<PersoStat,Integer> statsMapYoVide = new HashMap<PersoStat,Integer>();
 		
-		bonusMapVide.put(PersoPrenom.NICOLAS, statsMapNicoVide);
-		bonusMapVide.put(PersoPrenom.JOHANN, statsMapYoVide);
-		bonusMapVide.put(PersoPrenom.PIERRE, statsMapPipoVide);
-		bonusMapVide.put(PersoPrenom.THOMAS, statsMapTomVide);
-		bonusMapVide.put(PersoPrenom.YANNICK, statsMapYacoVide);
+		bonusMapVide.put(PersoPrenom.Nicolas, statsMapNicoVide);
+		bonusMapVide.put(PersoPrenom.Johann, statsMapYoVide);
+		bonusMapVide.put(PersoPrenom.Pierre, statsMapPipoVide);
+		bonusMapVide.put(PersoPrenom.Thomas, statsMapTomVide);
+		bonusMapVide.put(PersoPrenom.Yannick, statsMapYacoVide);
 		
 		Bonus bonusVide = new Bonus(bonusMapVide);
 		
@@ -53,11 +53,11 @@ public class BonusManager implements Serializable {
 		statsMapTom.put(PersoStat.INTELLIGENCE, new Integer(2));
 		statsMapYo.put(PersoStat.EXPLOIT, new Integer(2));
 		
-		bonusMap1.put(PersoPrenom.NICOLAS, statsMapNico);
-		bonusMap1.put(PersoPrenom.JOHANN, statsMapYo);
-		bonusMap1.put(PersoPrenom.PIERRE, statsMapPipo);
-		bonusMap1.put(PersoPrenom.THOMAS, statsMapTom);
-		bonusMap1.put(PersoPrenom.YANNICK, statsMapYaco);
+		bonusMap1.put(PersoPrenom.Nicolas, statsMapNico);
+		bonusMap1.put(PersoPrenom.Johann, statsMapYo);
+		bonusMap1.put(PersoPrenom.Pierre, statsMapPipo);
+		bonusMap1.put(PersoPrenom.Thomas, statsMapTom);
+		bonusMap1.put(PersoPrenom.Yannick, statsMapYaco);
 		
 		Bonus bonus1 = new Bonus(bonusMap1);
 		
@@ -76,11 +76,11 @@ public class BonusManager implements Serializable {
 		statsMapTom2.put(PersoStat.INTELLIGENCE, new Integer(-1));
 		statsMapYo2.put(PersoStat.EXPLOIT, new Integer(-1));
 		
-		bonusMap2.put(PersoPrenom.NICOLAS, statsMapNico2);
-		bonusMap2.put(PersoPrenom.JOHANN, statsMapYo2);
-		bonusMap2.put(PersoPrenom.PIERRE, statsMapPipo2);
-		bonusMap2.put(PersoPrenom.THOMAS, statsMapTom2);
-		bonusMap2.put(PersoPrenom.YANNICK, statsMapYaco2);
+		bonusMap2.put(PersoPrenom.Nicolas, statsMapNico2);
+		bonusMap2.put(PersoPrenom.Johann, statsMapYo2);
+		bonusMap2.put(PersoPrenom.Pierre, statsMapPipo2);
+		bonusMap2.put(PersoPrenom.Thomas, statsMapTom2);
+		bonusMap2.put(PersoPrenom.Yannick, statsMapYaco2);
 		
 		Bonus bonus2 = new Bonus(bonusMap2);
 		

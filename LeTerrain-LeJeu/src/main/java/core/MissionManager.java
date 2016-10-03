@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
 import modele.bonus.Bonus;
@@ -46,29 +48,29 @@ public class MissionManager implements Serializable  {
 
 		// Images
 		List<String> imagePaths1 = new ArrayList<String>();
-		String imagePath1 = "src/main/resources/image/mp3Player/stop.png";
+		String imagePath1 = "image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
 
 		List<String> imagePaths2 = new ArrayList<String>();
-		String imagePath2 = "src/main/resources/image/mp3Player/pause.png";
+		String imagePath2 = "image/mp3Player/pause.png";
 		imagePaths2.add(imagePath2);
 
 		List<String> imagePaths3 = new ArrayList<String>();
-		String imagePath3 = "src/main/resources/image/mp3Player/back.png";
+		String imagePath3 = "image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
 		
 		// Sons
 		List<String> sonPaths1 = new ArrayList<String>();
-		String sonPath1 = "src/main/resources/sonParDefaut/photoBruit2.mp3";
+		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
 
 		List<String> sonPaths2 = new ArrayList<String>();
-		String sonPath2 = "src/main/resources/sonParDefaut/08-Zelda-item-catch.mp3";
+		String sonPath2 = "sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
 		// Videos
 		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "src/main/resources/video/Trololo.mp4";
+		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
 		// Dates
@@ -91,9 +93,9 @@ public class MissionManager implements Serializable  {
 					
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)
 		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionne ton personnage principal :", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "Choisir votre personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission2 = new Mission(incrementId(), "mission2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.NICOLAS, null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission3 = new Mission(incrementId(), "mission3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.THOMAS, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission4 = new Mission(incrementId(), "mission4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.YANNICK, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission2 = new Mission(incrementId(), "mission2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission3 = new Mission(incrementId(), "mission3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission4 = new Mission(incrementId(), "mission4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission5 = new Mission(incrementId(), "missionBoss", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission6 = new Mission(incrementId(), "mission6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission7 = new Mission(incrementId(), "mission7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
@@ -229,7 +231,7 @@ public class MissionManager implements Serializable  {
 				ImageIcon image = new ImageIcon(mission.getImagePaths().get(0));
 				// Si il n y a pas d image, on retourne l icone par defaut d une mission
 				if (image.getIconWidth() == -1) {
-					image = new ImageIcon("src/main/resources/image/defaut/defautMission.png");
+					image = new ImageIcon("image/defaut/defautMission.png");
 				}
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), mission.getInformations() + "/nMission debloquée pour " + mission.getProprietaire().name(), mission.getNom(), type, image);
 			
@@ -352,7 +354,7 @@ public class MissionManager implements Serializable  {
 			// Afficher JDialog pour l item
 			ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
 			if (itemImage.getIconWidth() == -1) {
-				itemImage = new ImageIcon("src/main/resources/image/defaut/defautItem.png");
+				itemImage = new ImageIcon("image/defaut/defautItem.png");
 			}
 			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
 			item.setDisponible(true);

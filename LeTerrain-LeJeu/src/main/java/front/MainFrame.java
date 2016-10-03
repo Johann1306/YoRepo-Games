@@ -90,7 +90,7 @@ public class MainFrame extends JFrame {
 		panelDroite.setBackground(Color.GREEN);	
 		panelBas.setBackground(Color.GRAY);
 		
-		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_MAX_HAUTEUR));
+//		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_MAX_HAUTEUR));
 
 		panelGauche.add(panelPersonnage);
 		panelDroite.add(panelMusique);
@@ -104,7 +104,7 @@ public class MainFrame extends JFrame {
 		scrollPaneGauche.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		// Vitesse de la barre de scroll
 		JScrollBar jScrollBarPersos = new JScrollBar(1, 5, 5, 0, 10);
-		jScrollBarPersos.setUnitIncrement(30);
+		jScrollBarPersos.setUnitIncrement(50);
 		scrollPaneGauche.setVerticalScrollBar(jScrollBarPersos);
 		scrollPaneGauche.getViewport().add(panelGauche);
 		

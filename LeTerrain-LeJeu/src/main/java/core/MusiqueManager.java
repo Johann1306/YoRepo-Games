@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import core.audio.Sound;
@@ -16,14 +17,32 @@ public class MusiqueManager implements Serializable {
 	private static Sound applicationMission = null;
 	private static Sound applicationMenuPrincipal = null;
 	private static boolean stopped = false;
+	private List<Musique> musiques = null; 
 
 	public void initialise() {
-		// Chargement des musiques
+		// Chargement des musiques a debloquer
+		musiques = new ArrayList<Musique>();
+		
+		String sonPath1 = "son/01.Zelda-title.mp3";
+		List<String> sonPaths1 = new ArrayList<String>();
+		sonPaths1.add(sonPath1);
+
+		String sonPath2 = "son/23-ending.mp3";
+		List<String> sonPaths2 = new ArrayList<String>();
+		sonPaths2.add(sonPath2);
+		
+		String sonPath3 = "son/18-overworld-bgm.mp3";
+		List<String> sonPaths3 = new ArrayList<String>();
+		sonPaths3.add(sonPath3);
+		
+		musiques.add(new Musique(1, "Zelda intro titre", "Nintendo", "", null, null, sonPaths1, null, "La musique d'intro de Zelda 3", true));
+		musiques.add(new Musique(2, "Mario fin", "Nintendo", "", null, null, sonPaths2, null, "La musique de fin de Mario", true));
+		musiques.add(new Musique(3, "Mario Bonus", "Nintendo", "", null, null, sonPaths3, null, "La musique du niveau bonus de Mario", true));
 	}
 
 	public static void play(Musique musique) {
 		try {
-			Sound application = new Sound(musique.getMusiquePath());
+			Sound application = new Sound(musique.getSonPath().get(0));
 			Thread t = new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -40,6 +59,28 @@ public class MusiqueManager implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void playSon(String path) {
+		try {
+			Sound application = new Sound(path);
+			Thread t = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						application.play();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			if (!t.isAlive()) {
+				t.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public static void playSonEvenement(String sonPath) {
@@ -209,4 +250,24 @@ public class MusiqueManager implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+
+	public List<Musique> getMusiques() {
+		return musiques;
+	}
+
+	public void setMusiques(List<Musique> musiques) {
+		this.musiques = musiques;
+	}
+
+	public List<Musique> getMusiquesDisponibles() {
+		List<Musique> musiquesDisponibles = new ArrayList<Musique>();
+		for (Musique musique : musiques) {
+			if (musique.isDisponible()) {
+				musiquesDisponibles.add(musique);
+			}
+		}
+		return musiquesDisponibles;
+	}
+
 }

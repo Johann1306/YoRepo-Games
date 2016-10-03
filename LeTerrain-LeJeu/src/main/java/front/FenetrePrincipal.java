@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,9 +81,13 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		// Lecture musiques d'ambiances en boucle menu principal
 		List<String> musiquesPaths = new ArrayList<String>();
 		// TODO : musique apres jar
-		String musiquePath1 = getURL("son/23-ending.mp3").getPath();
-		String musiquePath2 = "src/main/resources/son/01AlexKid-title-screen.mp3"; 
+		String musiquePath0 = "son/smw_course_clear.wav";
+		String musiquePath1 = "son/23-ending.mp3";
+		String musiquePath2 = "son/01AlexKid-title-screen.mp3"; 
+		String musiquePath3 = "son/Super_mario_bros_coin_sound_effect.mp3";
+		musiquesPaths.add(musiquePath3);
 		musiquesPaths.add(musiquePath1);
+		musiquesPaths.add(musiquePath0);
 		musiquesPaths.add(musiquePath2);
 		MusiqueManager.playPlaylistEnBoucle(musiquesPaths);
 
@@ -166,11 +171,11 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	}
 		
 	public static ImageIcon getImageIcon(final String pathAndFileName) {
-		System.out.println(pathAndFileName);
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
 	    if (url == null) {
 	    	return null;
 	    }
+		System.out.println(url.getPath());
 		Image image = Toolkit.getDefaultToolkit().getImage(url);
 	    return new ImageIcon(image);
 	}
@@ -179,5 +184,10 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
 		System.out.println(url.getPath());
 	    return url;
+	}
+
+	public static InputStream getStream(String pathAndFileName) {
+		final InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathAndFileName);
+		return stream;
 	}
 }

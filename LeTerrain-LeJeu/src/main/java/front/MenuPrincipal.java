@@ -99,6 +99,10 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MusiqueManager.stopPlaylistEnBoucle();
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
 				mainFrame = SauvegardeManager.load();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
@@ -111,6 +115,10 @@ public class MenuPrincipal extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MusiqueManager.stopPlaylistEnBoucle();
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
 				mainFrame = SauvegardeManager.load();
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
@@ -359,7 +367,7 @@ public class MenuPrincipal extends JPanel {
 	public void demandeConfirmationQuitter() {
 		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sûr de vouloir t'arreter maintenant?",
 				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				new ImageIcon("src/main/resources/image/defaut/defautEvenement.png"),
+				FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"),
 				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, // this
 																									// is
 																									// the
