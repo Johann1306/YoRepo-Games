@@ -86,6 +86,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				mainFrame = new MainFrame();
 				mainFrame.startMainFrame();
@@ -98,6 +99,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
 				if (oldMainFrame != null) {
@@ -114,6 +116,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
 				if (oldMainFrame != null) {
@@ -130,6 +133,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
@@ -139,6 +143,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
@@ -148,6 +153,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				MusiqueManager.stopPlaylistEnBoucle();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 	//			fenetrePrincipal.hide();
@@ -157,6 +163,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 				demandeConfirmationQuitter();
 			}
 

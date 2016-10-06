@@ -14,16 +14,16 @@ public class Competence implements Serializable {
 		
 		stats = new HashMap<PersoStat, Integer>();
 		
-//			normal 		/	 jeu de foot			/	 jeu de combat
-//		-Luck			/Liberte Creative-Chance	/Chance de critique
-//		-Exploit		/Excentricite-Critique		/Degats Critique
-//		-Technique		/Technique-Tir				/Attaque
-//		-Endurance		/Energie-Endurance			/Vie
-//		-Rapidite		/Reactivite-Vitesse			/Vitesse de regeneration charge
-//		-Resistance		/Robustesse-Defense			/Defense
-//		-Agilite		/Acceleration-Agilite		/Agilite
-//		-Intelligence	/Instinct					/Mana
-//		-Noobisme		/Nervosite					/Nombre de charge
+//			normal 		/	 jeu de foot			/	 jeu de combat					/	jeu de Quizz
+//		-Luck			/Liberte Creative-Chance	/Chance de critique					/
+//		-Exploit		/Excentricite-Critique		/Degats Critique					/
+//		-Technique		/Technique-Tir				/Attaque							/
+//		-Endurance		/Energie-Endurance			/Vie								/
+//		-Rapidite		/Reactivite-Vitesse			/Vitesse de regeneration charge		/
+//		-Resistance		/Robustesse-Defense			/Defense							/
+//		-Agilite		/Acceleration-Agilite		/Agilite							/
+//		-Intelligence	/Instinct					/Mana								/
+//		-Noobisme		/Nervosite					/Nombre de charge					/
 		
 		stats.put(PersoStat.LUCK, 50);
 		stats.put(PersoStat.EXPLOIT, 50);

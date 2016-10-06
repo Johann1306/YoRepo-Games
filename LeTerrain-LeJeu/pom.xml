@@ -18,11 +18,11 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.21</version>
 		</dependency>
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>javax.media</groupId>
 			<artifactId>jmf</artifactId>
 			<version>2.1.1e</version>
-		</dependency>
+		</dependency> -->
 
 
 		<!-- VLCJ Player -->
@@ -87,18 +87,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<!-- <resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-				<filtering>true</filtering>
-				<excludes>
-					<exclude>.gitignore</exclude>
-				</excludes>
-			</resource>
-		</resources> -->
 	</build>
 
 </project>

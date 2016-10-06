@@ -1,7 +1,7 @@
 package core;
 
-public class TempsManager {
+import javax.swing.JLabel;
 
-	
+public class TempsManager {
 	
 }

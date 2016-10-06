@@ -35,7 +35,7 @@ public class JeuCombat extends Jeu implements Serializable {
 		
 		boolean win = false;
 
-		// PanelCombat
+		// Frame Combat
 		FrameCombat frameCombat = new FrameCombat(groupe, mission);
 		frameCombat.start();
 	}

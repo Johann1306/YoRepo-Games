@@ -86,9 +86,9 @@ public class MissionManager implements Serializable  {
 		
 		// Jeux
 		List<NomJeu> jeux = new ArrayList<NomJeu>();
-		jeux.add(NomJeu.JEU_COMBAT);
-		jeux.add(NomJeu.JEU_COMBAT);
-		jeux.add(NomJeu.JEU_COMBAT);
+		jeux.add(NomJeu.JEU_QUIZZ);
+		jeux.add(NomJeu.JEU_QUIZZ);
+		jeux.add(NomJeu.JEU_QUIZZ);
 		
 					
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)

@@ -45,7 +45,7 @@ import modele.item.personnage.action.ActionCombatType;
 import modele.item.personnage.action.CibleType;
 import modele.item.personnage.action.EnergieType;
 
-public class FrameCombat extends JFrame {
+public class FrameCombat extends FrameJeu {
 
 	private static final long serialVersionUID = 1L;
 
@@ -93,43 +93,18 @@ public class FrameCombat extends JFrame {
 		centreFenetre();
 
 		// Personnages principaux
-		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
-		PersonnagePrincipal nicolas = leGroupe.getPersoByNom(PersoPrenom.Nicolas);
-		PersonnagePrincipal pierre = leGroupe.getPersoByNom(PersoPrenom.Pierre);
-		PersonnagePrincipal yannick = leGroupe.getPersoByNom(PersoPrenom.Yannick);
-		PersonnagePrincipal thomas = leGroupe.getPersoByNom(PersoPrenom.Thomas);
-		PersonnagePrincipal johann = leGroupe.getPersoByNom(PersoPrenom.Johann);
-		PersonnagePrincipal ali = leGroupe.getPersoByNom(PersoPrenom.Ali);
-		PersonnagePrincipal guillaume = leGroupe.getPersoByNom(PersoPrenom.Guillaume);
-		PersonnagePrincipal jonathan = leGroupe.getPersoByNom(PersoPrenom.Jonathan);
+		PersonnagePrincipal nicolas = groupe.getPersoByNom(PersoPrenom.Nicolas);
+		PersonnagePrincipal pierre = groupe.getPersoByNom(PersoPrenom.Pierre);
+		PersonnagePrincipal yannick = groupe.getPersoByNom(PersoPrenom.Yannick);
+		PersonnagePrincipal thomas = groupe.getPersoByNom(PersoPrenom.Thomas);
+		PersonnagePrincipal johann = groupe.getPersoByNom(PersoPrenom.Johann);
+		PersonnagePrincipal ali = groupe.getPersoByNom(PersoPrenom.Ali);
+		PersonnagePrincipal guillaume = groupe.getPersoByNom(PersoPrenom.Guillaume);
+		PersonnagePrincipal jonathan = groupe.getPersoByNom(PersoPrenom.Jonathan);
 
 		// -- Panel Nord - Info
-		JPanel panelInfoCombat = new JPanel();
-
-		PersoPrenom prenom = mission.getProprietaire();
-		ImageIcon image = null;
-		if (prenom.name().equals("GROUPE")) {
-			// TODO : image groupe
-			image = FenetrePrincipal.getImageIcon("image/groupe.png");
-		} else {
-			PersonnagePrincipal proprietaire = leGroupe.getPersoByNom(prenom);
-			image = proprietaire.getPhotoPrincipal();
-		}
-		ImageIcon resizeImagePerso = ImageManager.resizeImage(image,
-				new Dimension(Constante.PANEL_INFO_COMBAT_HAUTEUR - 10, Constante.PANEL_INFO_COMBAT_HAUTEUR - 10));
-		panelInfoCombat.add(new JLabel(resizeImagePerso));
-		panelInfoCombat.add(new JLabel(mission.getProprietaire().name()));
-		panelInfoCombat.add(new JLabel(mission.getNom()));
-		panelInfoCombat.add(new JLabel(mission.getInformations()));
-		panelInfoCombat.add(new JLabel(mission.getObjectif()));
-		panelInfoCombat.add(new JLabel(mission.getConditionVictoire()));
-		panelInfoCombat.add(new JLabel(mission.getDifficulty().name()));
-		panelInfoCombat.add(new JLabel(mission.getMissionType().name()));
-
-		panelInfoCombat
-				.setPreferredSize(new Dimension(Constante.PANEL_COMBAT_LARGEUR, Constante.PANEL_INFO_COMBAT_HAUTEUR));
-
-		panelNord.add(panelInfoCombat);
+		JPanel panelInfoMission = createPanelInfoMission(mission);
+		panelNord.add(panelInfoMission);
 
 		// -- Panel Ouest - Persos
 		ImageIcon resizeImage = ImageManager.resizeImage(nicolas.getPhotoPrincipal(),
@@ -560,7 +535,7 @@ public class FrameCombat extends JFrame {
 		panelActions.add(panelBoutonsGroupe);
 
 		// Refresh Panel Bas
-		panelActions.setPreferredSize(new Dimension(Constante.PANEL_COMBAT_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));
+		panelActions.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));
 		panelActions.revalidate();
 	}
 
