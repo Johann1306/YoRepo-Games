@@ -11,6 +11,7 @@ public class RandomManager {
 	public static int random(int min, int max) {
 		Random rand = new Random(); 
 		int nbAleatoire = rand.nextInt(max - min + 1) + min;
+		System.out.println("Random (" + min + "," + max + ") = " + nbAleatoire);
 		return nbAleatoire;
 	}
 	

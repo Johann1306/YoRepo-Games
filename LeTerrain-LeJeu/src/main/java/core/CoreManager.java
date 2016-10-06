@@ -20,6 +20,7 @@ public class CoreManager implements Serializable {
 	private LieuManager lieuManager;
 	private CarteManager carteManager;
 	private ActionCombatManager actionCombatManager;
+	private QuizzManager quizzManager;
 
 	public CoreManager() {
 	}
@@ -69,6 +70,9 @@ public class CoreManager implements Serializable {
 		
 		carteManager = new CarteManager();
 		carteManager.initialise(lieuManager);
+		
+		quizzManager = new QuizzManager();
+		quizzManager.initialise();
 
 
 	}
@@ -183,6 +187,14 @@ public class CoreManager implements Serializable {
 
 	public void setActionCombatManager(ActionCombatManager actionCombatManager) {
 		this.actionCombatManager = actionCombatManager;
+	}
+	
+	public QuizzManager getQuizzManager() {
+		return quizzManager;
+	}
+
+	public void setQuizzManager(QuizzManager quizzManager) {
+		this.quizzManager = quizzManager;
 	}
 	
 	public static long getSerialversionuid() {

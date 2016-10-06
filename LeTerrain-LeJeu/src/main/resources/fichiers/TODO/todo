@@ -2,7 +2,7 @@ TODO :
 
 Priorités :
 
-Problemes : Mission premier perso qui n'apparait pas tout le temps (fonction de bouton 'passer' ou '>>')
+Problemes : Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ???)
 
 Indispensables:
 - Centrer PanelCentre on click milieu du scroll 
@@ -12,12 +12,11 @@ Indispensables:
 - Menu principal + Intro + enchainement premiere mission + choix personnage
 - integrer la fenetre media a l'appli / ou faire suivre la fenetre en cas de redimensionnement de l'autre fenetre !!!
 - revoir la gestion des chargements des panel / gestion memoire 
-- faire un jar executable avec icone (embarquer les mp3, mp4 : !mp3 compressé!)
+- faire un jar executable avec icone (embarquer les mp4 : ou repertoire a coté)
 - Gerer l'installation sur un autre poste
 - les TODOs
 - Remplir le contenu (Jeux)
 
-- gerer la possibilité d'ajouter du contenu
 - Remplir le contenu (Carte) + IHM de creation
 - Remplir le contenu (Lieux) + IHM de creation
 - Remplir le contenu (POIs) + IHM de creation
@@ -31,6 +30,8 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- gerer la possibilité d'ajouter du contenu
+- jar executable en double clic au lieu de ligne de commande
 - Gestion IA frameCombat
 - Gestion Barre de vie / mana / charge / bouclier dans frameCombat
 - gerer les boss / combats
@@ -41,7 +42,7 @@ Optionnelles:
 - Java 2D/3D perso vu de dessus (cercles) 
 - PanelPersonnage / taille du panel quand vide 
 - Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
-- ajouter des sons quand deplacment+selection dans le menu principal et quand push bouton perso
+- ajouter des sons quand deplacement carte, poi, mission et quand push bouton perso
 Bonus :
 
 - gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)

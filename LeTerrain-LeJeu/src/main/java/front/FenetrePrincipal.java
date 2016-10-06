@@ -84,8 +84,6 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		String musiquePath0 = "son/smw_course_clear.wav";
 		String musiquePath1 = "son/23-ending.mp3";
 		String musiquePath2 = "son/01AlexKid-title-screen.mp3"; 
-		String musiquePath3 = "son/Super_mario_bros_coin_sound_effect.mp3";
-		musiquesPaths.add(musiquePath3);
 		musiquesPaths.add(musiquePath1);
 		musiquesPaths.add(musiquePath0);
 		musiquesPaths.add(musiquePath2);

@@ -149,9 +149,9 @@ public class PanelCentre extends JPanel {
 			bouton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					// TODO evenement aleatoire quand deplacement lieu
+					System.out.println("- evenement aleatoire quand deplacement lieu");
 					panel.removeAll();
-					// TODO : pois pour ce personnage et groupe
-					// TODO : Panel InfoPoi
 					for (Poi poi : lieu.getPois()) {
 						JButton bouton = new JButton(poi.getNom());
 						bouton.setFont(Constante.PRESS_START_FONT);
@@ -164,6 +164,8 @@ public class PanelCentre extends JPanel {
 						bouton.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
+								// TODO evenement aleatoire quand selection Poi
+								System.out.println("- evenement aleatoire quand selection Poi");
 								JPanel panelInfoPoi = new PanelInfoPoi(poi);
 								panel.removeAll();
 								panel.add(panelInfoPoi);

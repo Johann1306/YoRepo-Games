@@ -19,16 +19,17 @@ public class Constante {
 	public static final Dimension FENETRE_PRINCIPAL_DIMENSION = new Dimension(700,700);
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
+	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
 
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire
 	public static final int PANEL_GAUCHE_LARGEUR = 180;
 	public static final int PANEL_GAUCHE_MAX_HAUTEUR = 1470;	// Pour 8 persos principaux
 	
 	public static final int PANEL_ACTION_HAUTEUR = 190;
-	public static final int PANEL_INFO_COMBAT_HAUTEUR = 100;		
+	public static final int PANEL_INFO_MISSION_HAUTEUR = 100;		
 	
 	public static final int PANEL_COMBAT_PERSO_LARGEUR = PANEL_ACTION_HAUTEUR;		
-	public static final int PANEL_COMBAT_LARGEUR = 975;		
+	public static final int PANEL_MISSION_LARGEUR = 975;		
 	public static final int PANEL_BOUTON_GROUPE_LARGEUR = 150;
 	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
 	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
@@ -50,6 +51,7 @@ public class Constante {
 	public static final Color COULEUR_MISSION_REPETABLE = Color.GREEN;
 	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
+	public static final double QUIZZ_MAX_TEMPS = 10.00;
 
 
 

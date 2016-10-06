@@ -35,8 +35,8 @@ public class MusiqueManager implements Serializable {
 		List<String> sonPaths3 = new ArrayList<String>();
 		sonPaths3.add(sonPath3);
 		
-		musiques.add(new Musique(1, "Zelda intro titre", "Nintendo", "", null, null, sonPaths1, null, "La musique d'intro de Zelda 3", true));
-		musiques.add(new Musique(2, "Mario fin", "Nintendo", "", null, null, sonPaths2, null, "La musique de fin de Mario", true));
+		musiques.add(new Musique(1, "Zelda Intro Titre", "Nintendo", "", null, null, sonPaths1, null, "La musique d'intro de Zelda 3", true));
+		musiques.add(new Musique(2, "Mario Fin", "Nintendo", "", null, null, sonPaths2, null, "La musique de fin de Mario", true));
 		musiques.add(new Musique(3, "Mario Bonus", "Nintendo", "", null, null, sonPaths3, null, "La musique du niveau bonus de Mario", true));
 	}
 
