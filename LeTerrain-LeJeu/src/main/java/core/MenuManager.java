@@ -95,8 +95,6 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 					// TODO : supprimer le panelVideo et la MainFrame (probleme de memoire)
 					MenuPrincipal.getMainFrame().dispose();
-//					MenuPrincipal.getMainFrame().removeAll();
-//					MenuPrincipal.getMainFrame().setVisible(false);
 					VideoManager.hideAndStop();
 				}
 			}
