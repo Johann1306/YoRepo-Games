@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import com.sun.jna.NativeLibrary;
+
+import front.FenetrePrincipal;
 import front.MainFrame;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
@@ -20,6 +23,13 @@ public class LecteurMP4 {
 
 	public void init() {
 		// This will locate LibVLC for the vast majority of cases
+		
+//		System.setProperty("jna.library.path", "src/main/resources/lib/libvlc.dll");
+//		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "win32-x86-64");
+//		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "src/main/resources/lib/libvlccore.dll");
+//		System.loadLibrary("lib/libvlc.dll");
+//		System.loadLibrary("src/main/resources/lib/libvlccore.dll");
+		
 		new NativeDiscovery().discover();
 //		setLookAndFeel();
 		player = new VlcjPlayer();

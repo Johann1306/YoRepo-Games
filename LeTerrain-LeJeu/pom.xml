@@ -8,6 +8,7 @@
 
 	<dependencies>
 
+		<!-- SLF4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -18,11 +19,20 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.21</version>
 		</dependency>
-	<!-- 	<dependency>
+
+		<!-- Javazoom librairie lecture mp3 -->
+		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>jlayer</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<!-- JMF TODO : !A retirer! -->
+		<dependency>
 			<groupId>javax.media</groupId>
 			<artifactId>jmf</artifactId>
 			<version>2.1.1e</version>
-		</dependency> -->
+		</dependency>
 
 
 		<!-- VLCJ Player -->
@@ -41,6 +51,26 @@
 			<artifactId>miglayout-swing</artifactId>
 			<version>5.0</version>
 		</dependency>
+
+		<!-- add libvlc.dll / libvlccore.dll -->
+<!-- 		<dependency>
+			<groupId>com.johann.game</groupId>
+			<artifactId>libvlc-dll</artifactId>
+			<version>1.0</version>
+			<scope>runtime</scope>
+			<type>dll</type>
+		</dependency>
+		<dependency>
+			<groupId>com.johann.game</groupId>
+			<artifactId>libvlccore-dll</artifactId>
+			<version>1.0</version>
+			<scope>runtime</scope>
+			<type>dll</type>
+		</dependency> -->
+		
+	<!-- 	mvn install:install-file -Dfile=C:\Users\Nathalie\git\YoRepo-Games\LeTerrain-LeJeu\lib\libvlc.dll -DgroupId=com.johann.game -DartifactId=libvlc-dll -Dversion=1.0 -Dpackaging=dll -DgeneratePom=true
+ 			mvn install:install-file -Dfile=C:\Users\Nathalie\git\YoRepo-Games\LeTerrain-LeJeu\lib\libvlccore.dll -DgroupId=com.johann.game -DartifactId=libvlccore-dll -Dversion=1.0 -Dpackaging=dll -DgeneratePom=true
+ 	-->		
 	</dependencies>
 
 	<build>
@@ -86,7 +116,26 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- add libvlc.dll / libvlccore.dll -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<executions> <execution> <id>copy-dependencies</id> <phase>prepare-package</phase> 
+				<goals> <goal>copy-dependencies</goal> </goals> <configuration> <excludeTransitive>true</excludeTransitive> 
+				<includeArtifactIds>jacob</includeArtifactIds> <failOnMissingClassifierArtifact>true</failOnMissingClassifierArtifact> 
+				<silent>false</silent> <outputDirectory>target/lib</outputDirectory> <overWriteReleases>true</overWriteReleases> 
+				<overWriteSnapshots>true</overWriteSnapshots> <overWriteIfNewer>true</overWriteIfNewer> 
+				</configuration> </execution> </executions> </plugin> -->
 		</plugins>
+
+		<!-- add libvlc.dll / libvlccore.dll -->
+		<!-- <resources> <resource> <directory>src/main/java</directory> <includes> 
+			<include>**/*.*</include> </includes> </resource> <resource> <filtering>false</filtering> 
+			<directory>src/main/resources</directory> <includes> <include>**/*.*</include> 
+			</includes> </resource> <resource> <filtering>false</filtering> <directory>src/main/resources/lib</directory> 
+			<includes> <include>libvlc.dll</include> <include>libvlccore.dll</include> 
+			</includes> </resource> </resources> -->
+
+
 	</build>
 
 </project>

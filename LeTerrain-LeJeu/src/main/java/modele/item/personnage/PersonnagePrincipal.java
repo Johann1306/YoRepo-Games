@@ -20,7 +20,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PersoNom nom;
+	private PersoNom nomFamille;
 	private PersoPrenom prenom;
 	private String surnomPrincipal;
 	private List<String> surnoms;
@@ -45,14 +45,14 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public boolean isDejaPresente;
 	private boolean available;
 
-	public PersonnagePrincipal(PersoNom nom, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
+	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence,
 			boolean available) {
-		super();
-		this.nom = nom;
+		super(prenom.name());
+		this.nomFamille = nomFamille;
 		this.prenom = prenom;
 		this.surnomPrincipal = surnomPrincipal;
 		this.surnoms = surnoms;
@@ -61,7 +61,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.phrasesPerso = phrasesPerso;
 		this.photoPrincipal = photoPrincipal;
 		this.photos = photos;
-		this.setCouleur(couleur);
+		this.couleur = couleur;
 		this.actionsCombat = actionsCombat;
 		this.objectifs = objectifs;
 		this.momentsCle = momentsCle;
@@ -76,7 +76,8 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.competence = competence;
 		this.isDejaPresente = false;
 		this.available = available;
-		this.setVieMax(competence.getEndurance());
+//		this.setVieMax(competence.getEndurance()*10); // max vie = 1000
+		this.setVieMax(competence.getEndurance()); // max vie = 100
 		this.setVie(competence.getEndurance());
 		this.setManaMax(competence.getIntelligence());
 		this.setMana(competence.getIntelligence());
@@ -110,7 +111,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	}
 	
 	public PersoNom getNomFamille() {
-		return nom;
+		return nomFamille;
 	}
 
 	public PersoPrenom getPrenom() {

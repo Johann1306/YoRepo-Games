@@ -253,4 +253,36 @@ public class PanelPersonnage extends JPanel {
 			}
 		}
 	}
+	
+	// Gestion des morts dans le groupe
+	public void refreshMortsPersonnage() {
+		boolean finDuJeu = true;
+		// Si un perso est mort on grise son bouton
+		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
+		if (leGroupe != null) {
+			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
+				if (perso.isMort()) {
+					if ( boutons != null ) {
+						for (JButton bouton : boutons) {
+							if (bouton.getName().equals(perso.getPrenom().name())) {
+								// On grise le bouton du perso
+								bouton.setEnabled(false);
+							} 
+						}
+					}
+				} else {
+					finDuJeu = false;
+				}
+			}
+			// Test fin du Jeu (Tous les persos sont morts)
+			if (finDuJeu) {
+				System.out.println("GAME OVER");
+				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), "GAME OVER");
+				// TODO musique fin jeu
+				
+				// TODO retour menuPrincipal
+			}
+		}
+		
+	}
 }

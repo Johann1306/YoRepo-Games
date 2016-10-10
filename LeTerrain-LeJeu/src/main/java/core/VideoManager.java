@@ -18,18 +18,21 @@ public class VideoManager implements Serializable {
 	}
 	
 	public static void play(String mediaPath) {
+		System.out.println("Play Video MediaPath : " + mediaPath);
 		URL url = FenetrePrincipal.getURL(mediaPath);
 		if (lecteur == null) {
 			lecteur = new LecteurMP4();
 			lecteur.init();
 		}
 		String file = url.getFile();
-		System.out.println("Play Video : " + file);
-		String path = url.getFile();
-		path = path.replaceAll("C:/Users/Nathalie/git/YoRepo-Games/LeTerrain-LeJeu/", "");
-		System.out.println("Play Video Cut : " + path);
+		System.out.println("Play Video File : " + file);
+		String path = url.getPath();
+//		path = path.replaceAll("file:C:/Users/Nathalie/git/YoRepo-Games/LeTerrain-LeJeu/target", "");
+		System.out.println("Play Video Path : " + path);
 		
-		lecteur.play(path);
+//		lecteur.play(path);
+//		lecteur.play(mediaPath);
+		lecteur.play("src/main/resources/" + mediaPath);
 	}
 
 	public static void hideAndStop() {

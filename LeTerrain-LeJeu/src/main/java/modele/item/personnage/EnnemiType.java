@@ -7,6 +7,8 @@ public enum EnnemiType {
 	HANDICAPES,
 	NAZIS,
 	AL_QUAIDA,
+	AL_NOSTRA,
+	DAECH,
 	NO_ENNEMI,
 	BOSS;
 }

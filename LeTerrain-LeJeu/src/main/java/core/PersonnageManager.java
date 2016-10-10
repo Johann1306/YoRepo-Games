@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 
 import core.configuration.Constante;
 import front.FenetrePrincipal;
+import front.MenuPrincipal;
 import modele.competence.Competence;
 import modele.item.Item;
 import modele.item.media.audio.Musique;
@@ -74,7 +75,7 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des personnages Secondaires
 		personnagesSecondaires = new ArrayList<PersonnageSecondaire>();
-		PersonnageSecondaire barbara = new PersonnageSecondaire();
+		PersonnageSecondaire barbara = new PersonnageSecondaire("Barbara");
 		
 		personnagesSecondaires.add(barbara);
 		
@@ -89,6 +90,7 @@ public class PersonnageManager implements Serializable {
 		ImageIcon photoBoss = FenetrePrincipal.getImageIcon("image/guillaume.png");
 		
 		List<ImageIcon> photos = new ArrayList<ImageIcon>();
+		// TODO en fonction de la difficulte
 		int vieMax = 100;
 		int manaMax = 50;
 		int chargeMax = 50;
@@ -120,6 +122,8 @@ public class PersonnageManager implements Serializable {
 
 	public PersonnageBoss getPersonnageBossByNom(BossNom bossNom) {
 		for(PersonnageBoss personnageBoss : personnagesBoss) {
+			System.out.println("Nom : " + personnageBoss.getNom());
+			System.out.println("Nom : " + bossNom.name());
 			if(personnageBoss.getNom().equals(bossNom.name())) {
 				return personnageBoss;
 			}
@@ -129,31 +133,45 @@ public class PersonnageManager implements Serializable {
 
 	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int numero) {
 
-		String imagePath = null;
-		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
-			imagePath = "image/ennemi/gitan.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
-			imagePath = "image/ennemi/arabe.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.HANDICAPES) {
-			imagePath = "image/ennemi/handicape.png";
-		} else if (mission.getTypeEnnemis() == EnnemiType.NOIRS) {
-			imagePath = "image/ennemi/noir.png";
-		}
-		ImageIcon photoPrincipal = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
-				Constante.PERSO_IMAGE_DIMENSION_64_64);
-		
-		String nom = "Ennemi " + numero;
-		// TODO
+		// TODO pour chaque type d ennemis
+		List<ImageIcon> photos = new ArrayList<ImageIcon>();
 		List<String> particularitesPhysique = new ArrayList<String>();
 		List<String> particularitesSocial = new ArrayList<String>();
 		List<String> phrasesPerso = new ArrayList<String>();
-		List<ImageIcon> photos = new ArrayList<ImageIcon>();
+
+		String imagePath = null;
+		String nom = null;
+		
+		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
+			imagePath = "image/ennemi/gitan.png";
+			nom = "Ennemi Gitan " + numero;
+			phrasesPerso.add("T'inquietes pas que je sais l'en faire du vélo mon copain!");
+			phrasesPerso.add("J'te met un coup de botte dans les couilles, tu montes jusqu'à la lune!");
+			phrasesPerso.add("J'prends v'la le pavée et je te le jette dans la gueule!");
+			particularitesPhysique.add("Parle bizarrement en phonétique.");
+			particularitesSocial.add("Nomade.");
+			particularitesSocial.add("Se marie qu'avec des gitans.");
+			particularitesSocial.add("Appelle les autres gitans : mes cousins.");
+		} else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
+			imagePath = "image/ennemi/arabe.png";
+			nom = "Ennemi Arabe " + numero;
+		} else if (mission.getTypeEnnemis() == EnnemiType.HANDICAPES) {
+			imagePath = "image/ennemi/handicape.png";
+			nom = "Ennemi Handicapé " + numero;
+		} else if (mission.getTypeEnnemis() == EnnemiType.NOIRS) {
+			imagePath = "image/ennemi/noir.png";
+			nom = "Ennemi Noir " + numero;
+		}
+		ImageIcon photoPrincipal = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
+				Constante.PERSO_IMAGE_DIMENSION_64_64);
+
 
 		int vieMax = 0;
 		int manaMax = 0;
 		int chargeMax = 0;
+		
 		// TODO actionsCombat pour les ennemis en fonction de la difficulte
-		List<ActionCombat> actionsCombat = new ArrayList<ActionCombat>();
+		List<ActionCombat> actionsCombat = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager().getActionsCombat(mission.getTypeEnnemis().name());
 
 		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
 			vieMax = 100;
