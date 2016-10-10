@@ -8,14 +8,18 @@ import modele.item.personnage.action.ActionCombat;
 
 public class PersonnageEnnemi extends Personnage {
 
-	private String nom;
+	private static final long serialVersionUID = 1L;
+
 	private int vie;
 	private int vieMax;
+	private int mana;
 	private int manaMax;
+	private int charge;
 	private int chargeMax;
 	private List<String> particularitesPhysique;
 	private List<String> particularitesSocial;
 	private List<String> phrasesPerso;
+	// TODO private String photoPath;
 	private ImageIcon photoPrincipal;
 	private List<ImageIcon> photos;
 	private List<ActionCombat> actionsCombat;
@@ -24,12 +28,13 @@ public class PersonnageEnnemi extends Personnage {
 	public PersonnageEnnemi(String nom, int vieMax, int manaMax, int chargeMax, List<String> particularitesPhysique,
 			List<String> particularitesSocial, List<String> phrasesPerso, ImageIcon photoPrincipal,
 			List<ImageIcon> photos, List<ActionCombat> actionsCombat, EnnemiType ennemiType) {
-		super();
-		this.nom = nom;
+		super(nom);
 		this.vieMax = vieMax;
 		this.vie = vieMax;
 		this.manaMax = manaMax;
+		this.mana = manaMax;
 		this.chargeMax = chargeMax;
+		this.charge = 0;
 		this.particularitesPhysique = particularitesPhysique;
 		this.particularitesSocial = particularitesSocial;
 		this.phrasesPerso = phrasesPerso;
@@ -37,14 +42,6 @@ public class PersonnageEnnemi extends Personnage {
 		this.photos = photos;
 		this.actionsCombat = actionsCombat;
 		this.ennemiType = ennemiType;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public int getVie() {
@@ -133,6 +130,22 @@ public class PersonnageEnnemi extends Personnage {
 
 	public void setActionsCombat(List<ActionCombat> actionsCombat) {
 		this.actionsCombat = actionsCombat;
+	}
+
+	public int getMana() {
+		return mana;
+	}
+
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+
+	public int getCharge() {
+		return charge;
+	}
+
+	public void setCharge(int charge) {
+		this.charge = charge;
 	}
 	
 }

@@ -30,7 +30,11 @@ public class Personnage implements Serializable {
 	private ImageIcon photoPrincipal;
 	private List<ImageIcon> photos;	
 	private List<ActionCombat> actionsCombat;
+	private boolean aDejaJoue = false;
 	
+	public Personnage(String nom) {
+		this.nom = nom;
+	}
 	
 	public String getNom() {
 		return nom;
@@ -107,6 +111,30 @@ public class Personnage implements Serializable {
 	public void setVitesseCharge(int vitesseCharge) {
 		this.vitesseCharge = vitesseCharge;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Personnage [nom=" + nom + ", vie=" + vie + "/" + vieMax + ", mort=" + mort + ", mana=" + mana
+				+ "/" + manaMax + ", nombreCharge=" + nombreCharge + "/" + nombreChargeMax
+				+ ", vitesseCharge=" + vitesseCharge + ", bouclier=" + bouclier + ", prenom=" + prenom
+				+ ", surnomPrincipal=" + surnomPrincipal + ", surnoms=" + surnoms + ", particularitesPhysique="
+				+ particularitesPhysique + ", particularitesSocial=" + particularitesSocial + ", phrasesPerso="
+				+ phrasesPerso + ", photoPrincipal=" + photoPrincipal + ", photos=" + photos + ", actionsCombat="
+				+ actionsCombat + "]";
+	}
+
+	public boolean isaDejaJoue() {
+		return aDejaJoue;
+	}
+
+	public void setaDejaJoue(boolean aDejaJoue) {
+		this.aDejaJoue = aDejaJoue;
+	}
+
+	public void ajouteUneCharge() {
+		if (nombreCharge < nombreChargeMax) {
+			nombreCharge = nombreCharge + 1;
+		}
+	}
 	
 }

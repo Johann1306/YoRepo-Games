@@ -12,7 +12,6 @@ public class Sound {
 	private int position = 0;
 
 	public Sound(String path) throws Exception {
-//		InputStream in = (InputStream) new BufferedInputStream(new FileInputStream(new File(path)));
 		System.out.println("Play : " + path);
 		player = new Player(FenetrePrincipal.getStream(path));
 	}
