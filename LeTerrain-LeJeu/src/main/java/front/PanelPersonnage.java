@@ -11,12 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import core.LieuManager;
 import core.MenuManager;
 import core.MusiqueManager;
+import core.VideoManager;
 import core.configuration.Constante;
 import modele.evenement.EvenementTheme;
-import modele.item.media.audio.Musique;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersoPrenom;
@@ -281,6 +280,12 @@ public class PanelPersonnage extends JPanel {
 				// TODO musique fin jeu
 				
 				// TODO retour menuPrincipal
+				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
+				fenetrePrincipal.setVisible(true);
+
+				// TODO : supprimer le panelVideo et la MainFrame (probleme de memoire)
+				MenuPrincipal.getMainFrame().dispose();
+				VideoManager.hideAndStop();
 			}
 		}
 		

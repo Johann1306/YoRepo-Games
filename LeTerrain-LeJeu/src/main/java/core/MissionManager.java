@@ -278,10 +278,9 @@ public class MissionManager implements Serializable  {
 		// Refresh panelPerso persos morts
 		MenuPrincipal.getMainFrame().getPanelPersonnage().refreshMortsPersonnage();
 		
-		// Si la page courante est la page d'un perso mort => switch sur la page d'un perso vivant
-		
 		// refresh liste missions jouables par perso
 		refreshMissionsJouables();
+		// TODO gestion des missions par le menu ?
 		MenuPrincipal.getMainFrame().getCoreManager().getMenuManager().lanceRefreshMenu();
 	}
 	
