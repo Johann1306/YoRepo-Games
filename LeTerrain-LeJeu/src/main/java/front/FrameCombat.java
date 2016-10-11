@@ -31,7 +31,7 @@ import core.MusiqueManager;
 import core.RandomManager;
 import core.VideoManager;
 import core.configuration.Constante;
-import front.FrameCombat.MyActionListener;
+import front.FrameCombat.MyEnnemiActionListener;
 import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionDifficulty;
@@ -46,6 +46,8 @@ import modele.item.personnage.action.ActionCombat;
 import modele.item.personnage.action.ActionCombatType;
 import modele.item.personnage.action.CibleType;
 import modele.item.personnage.action.EnergieType;
+import modele.item.personnage.action.SortType;
+import modele.quizz.Reponse;
 
 public class FrameCombat extends FrameJeu {
 
@@ -55,7 +57,7 @@ public class FrameCombat extends FrameJeu {
 
 	private JPanel panelNord = new JPanel();
 	private JPanel panelOuest = new JPanel();
-	private JPanel panelCentre = new JPanel();
+	private static JPanel panelCentre = new JPanel();
 	private JPanel panelEst = new JPanel();
 	private JPanel panelSud = new JPanel();
 
@@ -79,7 +81,9 @@ public class FrameCombat extends FrameJeu {
 	private Mission mission;
 	private JPanel panelActions = null;
 	private JPanel panelBoutonsGroupe = null;
-	private Timer timer = null;
+	private Timer timerEnnemis = null;
+	private Timer timerJoueurs = null;
+	private JLabel labelTimer = null;
 
 	public FrameCombat(Groupe groupe, Mission mission) {
 		this.mission = mission;
@@ -272,9 +276,6 @@ public class FrameCombat extends FrameJeu {
 
 		panelOuest.add(panelPersos);
 
-		// -- Panel Centre
-		
-
 		// -- Panel Est
 		JPanel panelEnnemis = new JPanel();
 		BoxLayout boxlayoutEnnemis = new BoxLayout(panelEnnemis, BoxLayout.Y_AXIS);
@@ -332,6 +333,10 @@ public class FrameCombat extends FrameJeu {
 		buildPanelActions(firstPerso);
 
 		panelSud.add(panelActions);
+
+		// -- Panel Centre
+		buildPanelCentre();
+
 		// --
 
 		// Resize on resize frame
@@ -835,25 +840,25 @@ public class FrameCombat extends FrameJeu {
 		}
 	}
 
-	private void executeSort(PersonnagePrincipal perso, ActionCombat actionCombat, List<Personnage> cibles,
+	private void executeSort(PersonnagePrincipal lanceur, ActionCombat actionCombat, List<Personnage> cibles,
 			AbstractButton action) {
 
 		// Gestion consommation type energie
 		if (actionCombat.getEnergieType() == EnergieType.CHARGE) {
 			// On retire une charge
-			perso.setNombreCharge(perso.getNombreCharge() - 1);
+			lanceur.setNombreCharge(lanceur.getNombreCharge() - 1);
 			System.out.println(
-					perso.getNom() + " Charge : " + perso.getNombreCharge() + "/" + perso.getNombreChargeMax());
+					lanceur.getNom() + " Charge : " + lanceur.getNombreCharge() + "/" + lanceur.getNombreChargeMax());
 		} else if (actionCombat.getEnergieType() == EnergieType.MANA) {
 			// On retire 10 mana
-			perso.setMana(perso.getMana() - 10);
-			System.out.println(perso.getNom() + " Mana : " + perso.getMana() + "/" + perso.getManaMax());
+			lanceur.setMana(lanceur.getMana() - 10);
+			System.out.println(lanceur.getNom() + " Mana : " + lanceur.getMana() + "/" + lanceur.getManaMax());
 		} else if (actionCombat.getEnergieType() == EnergieType.CHARGE_ET_MANA) {
 			// On retire toutes les charges et tous le mana
-			perso.setMana(0);
-			perso.setNombreCharge(0);
-			System.out.println(perso.getNom() + " Mana : " + perso.getMana() + "/" + perso.getManaMax() + " - Charge : "
-					+ perso.getNombreCharge() + "/" + perso.getNombreChargeMax());
+			lanceur.setMana(0);
+			lanceur.setNombreCharge(0);
+			System.out.println(lanceur.getNom() + " Mana : " + lanceur.getMana() + "/" + lanceur.getManaMax()
+					+ " - Charge : " + lanceur.getNombreCharge() + "/" + lanceur.getNombreChargeMax());
 		}
 
 		// Augmente l'XP du sort
@@ -867,15 +872,15 @@ public class FrameCombat extends FrameJeu {
 		// TODO son/image si critique
 		boolean isCritique = false;
 		// Chance de critique
-		int critique = perso.getCompetence().getLuck() / 3; // max chance de
-															// critique 33%
+		int critique = lanceur.getCompetence().getLuck() / 3; // max chance de
+																// critique 33%
 		int random = RandomManager.random(0, 100);
 		if (random < critique) {
-			// Degats de critique
-			coupCritique = perso.getCompetence().getExploit() / 10; // max
-																	// multiplicateur
-																	// degats
-																	// x10
+			// dégats de critique
+			coupCritique = lanceur.getCompetence().getExploit() / 10; // max
+																		// multiplicateur
+																		// dégats
+																		// x10
 			isCritique = true;
 		}
 
@@ -885,80 +890,166 @@ public class FrameCombat extends FrameJeu {
 		int min = 1;
 
 		// score en fonction de la competence du perso
-		int max = perso.getCompetence().getStats().get(actionCombat.getPersoStat());
+		int max = lanceur.getCompetence().getStats().get(actionCombat.getPersoStat());
 
+		// score en fonction du nombre de cibles si Multi
+		int nombreCibles = cibles.size();
+		
 		// Calcul du score
-		int score = RandomManager.random(min, max) * coupCritique * niveau;
+		int score = (RandomManager.random(min, max) * coupCritique * niveau) / nombreCibles;
 
+		// TODO fail score = 0
+		if (score == 0) {
+		}
+		
+		// Animation lanceur de gauche a droite
+		animationLanceur(lanceur, score, cibles);
+		
 		// Affichage info sort
-		JLabel messageInfoCombat = getMessage(perso, actionCombat, score, cibles, isCritique);
+		JLabel messageInfoCombat = getMessage(lanceur, actionCombat, score, cibles, isCritique);
 		panelInfosCombat.add(messageInfoCombat, 0);
+		
+		// Animation cible de haut en bas
+		animationCible(lanceur, score, cibles);
 
 		// Pour chaque cible
 		for (Personnage cible : cibles) {
 
+			System.out.println("Cible avant sort : " + cible.toString());
+			// Distribution des dégats / protection / soins / absorption /
 			// Si Bouclier
-			if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
-				// Gestion defense de l'allie
-				// TODO
-				// cible.setBouclier(cible.getBouclier() + score);
+			if (actionCombat.getSortType() == SortType.BOUCLIER_MONO
+					|| actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
+				// Gestion defense de l'ennemi
+				cible.setBouclier(cible.getBouclier() + score);
 			}
+			// Si Regen Mana
+			else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO
+					|| actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
+				// Gestion mana de l'allie
+				cible.setMana(cible.getMana() + score);
+				if (cible.getMana() > cible.getManaMax()) {
+					cible.setMana(cible.getManaMax());
+				}
+			}
+			// Si Brulure de Mana
+			else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MONO
+					|| actionCombat.getSortType() == SortType.BRULURE_MANA_MULTI) {
+				// Gestion mana de l'ennemi
+				cible.setMana(cible.getMana() - score);
+				if (cible.getMana() < 0) {
+					cible.setMana(0);
+				}
+			}
+			// Si Absorption Mana
+			else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MONO
+					|| actionCombat.getSortType() == SortType.ABSORPTION_MANA_MULTI) {
+				// Gestion mana du lanceur
+				lanceur.setMana(lanceur.getMana() + score);
+				if (lanceur.getMana() > lanceur.getManaMax()) {
+					lanceur.setMana(lanceur.getManaMax());
+				}
+				// Gestion mana de l'ennemi
+				cible.setMana(cible.getMana() - score);
+				if (cible.getMana() < 0) {
+					cible.setMana(0);
+				}
+			}
+			// Si Resurrection
+			else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO
+					|| actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
+				// Gestion Resurrection
+				cible.setVie(cible.getVieMax() / (11 - actionCombat.getNiveau()));
+				// Ressurection avec +10% de vie par niveau
+				cible.setMort(false);
+				// TODO refresh resurrection ou pas
+			}
+			// TODO Si Aura
+			// else if (actionCombat.getSortType() == SortType.AURA_MONO
+			// || actionCombat.getSortType() == SortType.AURA_MULTI) {
+			// // Gestion aura de l'allie
+			// cible.setVie(cible.getVie() + score);
+			// if (cible.getVie() > cible.getVieMax()) {
+			// cible.setVie(cible.getVieMax());
+			// }
+			// }
 			// Si Soins
-			else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-					&& (actionCombat.getCibleType() == CibleType.ALLIE
-							|| actionCombat.getCibleType() == CibleType.GROUPE_ALLIES)) {
+			else if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO
+					|| actionCombat.getSortType() == SortType.REGEN_VIE_MULTI) {
 				// Gestion vie de l'allie
 				cible.setVie(cible.getVie() + score);
 				if (cible.getVie() > cible.getVieMax()) {
 					cible.setVie(cible.getVieMax());
 				}
 			}
-			// Si Degats
+			// Si dégats
 			else {
-				System.out.println("Cible avant degats : " + cible.toString());
-				// Gestion vie/mort de l'ennemi
-				cible.setVie(cible.getVie() - score);
-				System.out.println(cible.getNom() + " - Vie: " + cible.getVie());
-				if (cible.getVie() < 0) {
-					cible.setVie(0);
-					cible.setMort(true);
-					ennemis.remove(cible);
-					for (JButton bouton : boutonsEnnemis) {
-						if (bouton.getName().equals(cible.getNom())) {
-							bouton.setEnabled(false);
-						}
-					}
 
-					// Message Info Combat ennemi mort
-					JLabel label = new JLabel(perso.getPrenom().name() + " a tué " + cible.getNom() + ".");
-					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
-					label.setForeground(Color.RED);
-					// label.setForeground(perso.getCouleur());
-					panelInfosCombat.add(label, 0);
-					revalidate();
+				// Si Absorption Vie
+				if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO
+						|| actionCombat.getSortType() == SortType.ABSORPTION_VIE_MULTI) {
+					// Gestion vie du lanceur
+					lanceur.setVie(lanceur.getVie() + score);
+					if (lanceur.getVie() > lanceur.getVieMax()) {
+						lanceur.setVie(lanceur.getVieMax());
+					}
+				}
 
-					// Test Fin du jeu
-					boolean fin = true;
-					for (JButton bouton : boutonsEnnemis) {
-						if (bouton.isEnabled()) {
-							fin = false;
+				// Si la cible a un bouclier
+				if (cible.getBouclier() > 0) {
+					cible.setBouclier(cible.getBouclier() - score);
+					if (cible.getBouclier() < 0) {
+						cible.setBouclier(0);
+					}
+				}
+				// Sinon on retire de la vie
+				else {
+
+					System.out.println("Cible avant dégats : " + cible.toString());
+					// Gestion vie/mort de l'ennemi
+					cible.setVie(cible.getVie() - score);
+					System.out.println(cible.getNom() + " - Vie: " + cible.getVie());
+					if (cible.getVie() < 0) {
+						cible.setVie(0);
+						cible.setMort(true);
+						ennemis.remove(cible);
+						for (JButton bouton : boutonsEnnemis) {
+							if (bouton.getName().equals(cible.getNom())) {
+								bouton.setEnabled(false);
+							}
 						}
+
+						// Message Info Combat ennemi mort
+						JLabel label = new JLabel(lanceur.getPrenom().name() + " a tué " + cible.getNom() + ".");
+						// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+						label.setForeground(Color.RED);
+						// label.setForeground(perso.getCouleur());
+						panelInfosCombat.add(label, 0);
+						revalidate();
+
+						// Test Fin du jeu
+						boolean fin = true;
+						for (JButton bouton : boutonsEnnemis) {
+							if (bouton.isEnabled()) {
+								fin = false;
+							}
+						}
+						if (fin) {
+							win = true;
+							stop(mission, win);
+						}
+						// Refresh menu perso monoEnnemi
+						buildMenuActions(lanceur);
 					}
-					if (fin) {
-						win = true;
-						stop(mission, win);
-					}
-					// Refresh menu perso monoEnnemi
-					buildMenuActions(perso);
 				}
 			}
-			System.out.println("Cible apres degats : " + cible.toString());
+			System.out.println("Cible apres sort : " + cible.toString());
 
 			// Ajoute une charge a chaque cible
 			cible.ajouteUneCharge();
 		}
 		// gestion une action par perso par tour
-		perso.setaDejaJoue(true);
+		lanceur.setaDejaJoue(true);
 
 		// // Refresh menu perso pour gestion mana et charge
 		// buildMenuActions(perso);
@@ -980,6 +1071,9 @@ public class FrameCombat extends FrameJeu {
 			buildPanelActions(persoDispo.getPrenom());
 			revalidate();
 		}
+		
+		// Refresh panelCentre vie/mana/charge/bouclier
+		buildPanelCentre();
 
 	}
 
@@ -988,68 +1082,116 @@ public class FrameCombat extends FrameJeu {
 
 		JLabel label = null;
 
+		String lance = " lance ";
+		if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL) {
+			lance = " lance son 'Special' ";
+		}
+
 		// Attaque Mono ennemi
-		if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE
-				&& actionCombat.getCibleType() == CibleType.ENNEMI) {
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et inflige " + score
-					+ " degats à " + cibles.get(0).getNom() + ".");
+		if (actionCombat.getSortType() == SortType.DEGATS_MONO) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et inflige " + score + " dégats à "
+					+ cibles.get(0).getNom() + ".");
 		}
 		// Attaque Multi ennemis
-		else if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE
-				&& actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et inflige " + score
-					+ " degats à tous les ennemis.");
+		else if (actionCombat.getSortType() == SortType.DEGATS_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et inflige " + score
+					+ " dégats à tous les ennemis.");
 		}
-		// Defense Mono ami
-		else if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE
-				&& actionCombat.getCibleType() == CibleType.ALLIE) {
+		// Attaque All
+		else if (actionCombat.getSortType() == SortType.DEGATS_ALL) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et inflige " + score
+					+ " dégats à tout le monde.");
+		}
+		// Bouclier Mono ami
+		else if (actionCombat.getSortType() == SortType.BOUCLIER_MONO) {
 			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et protege "
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et protege "
 					+ personnageCible.getNom() + " avec un bouclier (" + score + ").");
 		}
-		// Defense Multi amis
-		else if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE
-				&& actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom()
+		// Bouclier Multi amis
+		else if (actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom()
 					+ " et protege tous les alliés avec un bouclier (" + score + ").");
 		}
-		// Pouvoir Mono ennemi
-		else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-				&& actionCombat.getCibleType() == CibleType.ENNEMI) {
-			Personnage cible = cibles.get(0);
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et inflige " + score
-					+ " degats à " + cible.getNom() + ".");
-		}
-		// Pouvoir Multi ennemis
-		else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-				&& actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et inflige " + score
-					+ " degats à tous les ennemis.");
-		}
-		// Pouvoir Mono ami
-		else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-				&& actionCombat.getCibleType() == CibleType.ALLIE) {
+		// Soins Mono ami
+		else if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO) {
 			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et soigne " + score
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et soigne " + score
 					+ " points de vie à " + personnageCible.getNom() + ".");
 		}
-		// Pouvoir Multi amis
-		else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-				&& actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
-			label = new JLabel(perso.getNom() + " lance " + actionCombat.getNom() + " et soigne " + score
+		// Soins Multi amis
+		else if (actionCombat.getSortType() == SortType.REGEN_VIE_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et soigne " + score
 					+ " points de vie à tous les alliés.");
 		}
-		// Special Multi ennemis
-		else if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL
-				&& actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
-			label = new JLabel(perso.getNom() + " lance son 'Special' " + actionCombat.getNom() + " et inflige " + score
-					+ " degats à tous les ennemis autour de lui.");
+		// Absorption vie mono
+		else if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et absorbe " + score
+					+ " points de vie à " + personnageCible.getNom() + ".");
+		}
+		// Absorption vie multi
+		else if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et absorbe " + score
+					+ " points de vie à tous les alliés.");
+		}
+		// Regen Mana Mono
+		else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et redonne " + score
+					+ " points de mana à " + personnageCible.getNom() + ".");
+		}
+		// Regen Mana Multi
+		else if (actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et redonne " + score
+					+ " points de mana à tous les alliés.");
+		}
+		// Brulure Mana Mono
+		else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et brule " + score
+					+ " points de mana à " + personnageCible.getNom() + ".");
+		}
+		// Brulure Mana Multi
+		else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et brule " + score
+					+ " points de mana à tous les alliés.");
+		}
+		// Absorption mana mono
+		else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et absorbe " + score
+					+ " points de mana à " + personnageCible.getNom() + ".");
+		}
+		// Absorption mana multi
+		else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MULTI) {
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et absorbe " + score
+					+ " points de mana à tous les alliés.");
+		}
+		// Aura Mono
+		else if (actionCombat.getSortType() == SortType.AURA_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et protège "
+					+ personnageCible.getNom() + " avec une aura.");
+		}
+		// Aura Multi
+		else if (actionCombat.getSortType() == SortType.AURA_MULTI) {
+			label = new JLabel(
+					perso.getNom() + lance + actionCombat.getNom() + " et protège tous les alliés avec une aura.");
+		}
+		// Resurrection Mono
+		else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO) {
+			PersonnagePrincipal personnageCible = (PersonnagePrincipal) cibles.get(0);
+			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et redonne la vie à "
+					+ personnageCible.getNom() + ".");
+		}
+		// Resurrection Multi
+		else if (actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
+			label = new JLabel(
+					perso.getNom() + lance + actionCombat.getNom() + " et redonne la vie à tous les alliés morts.");
 		} else {
 			System.out.println("Ne devrait pas arriver la");
 		}
-		// Special Mono ennemis
-		// Special Multi amis
-		// Special Mono ami
 
 		// Si critique
 		if (isCritique) {
@@ -1059,6 +1201,18 @@ public class FrameCombat extends FrameJeu {
 		// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
 		// label.setForeground(perso.getCouleur());
 		return label;
+	}
+
+	private void animationLanceur(Personnage lanceur, int score, List<Personnage> cibles) {
+		// TODO Deplacement de la fenetre du lanceur de gauche a droite
+		
+	}
+
+	private void animationCible(Personnage lanceur, int score, List<Personnage> cibles) {
+		// TODO Deplacement de la fenetre de la cible de haut en bas
+		
+		// TODO Affichage du score sur les cibles
+		
 	}
 
 	public void start() {
@@ -1091,13 +1245,12 @@ public class FrameCombat extends FrameJeu {
 				.getActionsCombatPersosPrincipaux();
 		for (ActionCombat actionCombat : allActions) {
 			// Si la barre de progression est pleine
-			if (actionCombat.getProgression() >= actionCombat.getNiveau() * 10) { // niv1=10,
-																					// niv2=20,
-																					// ..
-																					// niv10=100
+			// niv1=10, niv2=20, .. , niv10=100
+			if (actionCombat.getProgression() >= actionCombat.getNiveau() * 10) {
 				// On ameliore le sort
 				if (actionCombat.amelioreItem()) {
-					// Message Item ameliore
+					// TODO son sort ameliore
+					// Message sort ameliore
 					JOptionPane.showMessageDialog(this,
 							"Votre sort '" + actionCombat.getNom() + "' a progressé d'un niveau ! ("
 									+ actionCombat.getNiveau() + ")",
@@ -1155,6 +1308,11 @@ public class FrameCombat extends FrameJeu {
 	private void lancePartiePremiereFois() {
 		// Initiative : quelle equipe commence? basé sur une competence + random
 		boolean initiative = false;
+		
+		// Initialisation du timer joueur
+		// TODO : tempsMax en fonction de la difficulte (oo, 60, 45, 30)
+		int tempsMax = 60; 
+		timerJoueurs = new Timer(10, new MyJoueurActionListener(tempsMax));
 
 		if (!initiative) {
 			for (PersonnagePrincipal perso : persosPresents) {
@@ -1162,8 +1320,11 @@ public class FrameCombat extends FrameJeu {
 			}
 			lanceTourEnnemis();
 		} else {
-			// lance tour joueur
+			// lance tour joueurs
 			JOptionPane.showMessageDialog(this, "Tour des allies");
+			
+			// TODO lance chrono tour joueurs si difficulte normal+
+			timerJoueurs.start();
 		}
 	}
 
@@ -1173,9 +1334,9 @@ public class FrameCombat extends FrameJeu {
 		// lance tour ennemis
 		JOptionPane.showMessageDialog(this, "Tour des ennemis");
 
-		timer = new Timer(1000, new MyActionListener());
-		timer.setInitialDelay(100);
-		timer.start();
+		timerEnnemis = new Timer(1000, new MyEnnemiActionListener());
+		timerEnnemis.setInitialDelay(100);
+		timerEnnemis.start();
 	}
 
 	private ActionCombat selectionneAttaqueEnnemi(PersonnageEnnemi ennemi) {
@@ -1216,60 +1377,37 @@ public class FrameCombat extends FrameJeu {
 				lancable = false;
 			}
 		} else if (actionCombat.getEnergieType() == EnergieType.CHARGE) {
-			if (ennemi.getCharge() == 0) {
+			if (ennemi.getNombreCharge() == 0) {
 				lancable = false;
 			}
 		} else if (actionCombat.getEnergieType() == EnergieType.CHARGE_ET_MANA) {
-			if (ennemi.getCharge() != ennemi.getChargeMax() || ennemi.getMana() != ennemi.getManaMax()) {
+			if (ennemi.getNombreCharge() != ennemi.getNombreChargeMax() || ennemi.getMana() != ennemi.getManaMax()) {
 				lancable = false;
 			}
 		}
 		return lancable;
 	}
 
-	private void executeSortEnnemi(PersonnageEnnemi ennemi, ActionCombat actionCombat) {
+	private void executeSortEnnemi(PersonnageEnnemi lanceur, ActionCombat actionCombat) {
 
 		// Gestion consommation type energie
 		if (actionCombat.getEnergieType() == EnergieType.CHARGE) {
 			// On retire une charge
-			ennemi.setNombreCharge(ennemi.getNombreCharge() - 1);
+			lanceur.setNombreCharge(lanceur.getNombreCharge() - 1);
 			System.out.println(
-					ennemi.getNom() + " Charge : " + ennemi.getNombreCharge() + "/" + ennemi.getNombreChargeMax());
+					lanceur.getNom() + " Charge : " + lanceur.getNombreCharge() + "/" + lanceur.getNombreChargeMax());
 		} else if (actionCombat.getEnergieType() == EnergieType.MANA) {
 			// On retire 10 mana
-			ennemi.setMana(ennemi.getMana() - 10);
-			System.out.println(ennemi.getNom() + " Mana : " + ennemi.getMana() + "/" + ennemi.getManaMax());
+			lanceur.setMana(lanceur.getMana() - 10);
+			System.out.println(lanceur.getNom() + " Mana : " + lanceur.getMana() + "/" + lanceur.getManaMax());
 		} else if (actionCombat.getEnergieType() == EnergieType.CHARGE_ET_MANA) {
 			// On retire toutes les charges et tous le mana
-			ennemi.setMana(0);
-			ennemi.setNombreCharge(0);
-			System.out.println(ennemi.getNom() + " Mana : " + ennemi.getMana() + "/" + ennemi.getManaMax()
-					+ " - Charge : " + ennemi.getNombreCharge() + "/" + ennemi.getNombreChargeMax());
+			lanceur.setMana(0);
+			lanceur.setNombreCharge(0);
+			System.out.println(lanceur.getNom() + " Mana : " + lanceur.getMana() + "/" + lanceur.getManaMax()
+					+ " - Charge : " + lanceur.getNombreCharge() + "/" + lanceur.getNombreChargeMax());
 		}
-
-		// Score en fonction du coup critique
-		int coupCritique = 1;
-
-		// TODO son/image si critique
-		boolean isCritique = false;
-		// Chance de critique
-		// TODO : critique en fonction de la difficulte 5,15,25,35
-		int critique = 30; // max chance de critique ennemi 35%
-		int random = RandomManager.random(0, 100);
-		if (random < critique) {
-			// TODO Degats de critique en fonction de la difficulte 2,4,7,10
-			coupCritique = 4; // max multiplicateur degats x10
-			isCritique = true;
-		}
-
-		// TODO score min en fonction de la difficulte 0,0,1,10
-		int min = 0;
-		// TODO score max en fonction de la difficulte 20,40,70,100
-		int max = 70;
-
-		// Calcul du score
-		int score = RandomManager.random(min, max) * coupCritique;
-
+		
 		// Determination de la(les) cible(s)
 		List<Personnage> cibles = new ArrayList<Personnage>();
 		if (actionCombat.getCibleType() == CibleType.ENNEMI) {
@@ -1299,88 +1437,267 @@ public class FrameCombat extends FrameJeu {
 			cibles.addAll(ennemis);
 		}
 
+		// Score en fonction du coup critique
+		int coupCritique = 1;
+
+		// TODO son/image si critique
+		boolean isCritique = false;
+		// Chance de critique
+		// TODO : critique en fonction de la difficulte 5,15,25,35
+		int critique = 30; // max chance de critique ennemi 35%
+		int random = RandomManager.random(0, 100);
+		if (random < critique) {
+			// TODO dégats de critique en fonction de la difficulte 2,4,7,10
+			coupCritique = 4; // max multiplicateur dégats x10
+			isCritique = true;
+		}
+
+		// TODO score min en fonction de la difficulte 0,0,1,10
+		int min = 0;
+		// TODO score max en fonction de la difficulte 20,40,70,100
+		int max = 70;
+		
+		// score en fonction du nombre de cibles si Multi
+		int nombreCibles = cibles.size();
+		
+		// Calcul du score
+		int score = (RandomManager.random(min, max) * coupCritique) / nombreCibles;
+
+		// TODO fail score = 0
+		if (score == 0) {
+		}
+		
+		// Animation lanceur de gauche a droite
+		animationLanceur(lanceur, score, cibles);
+		
 		// Affichage info sort
-		JLabel messageInfoCombat = getMessage(ennemi, actionCombat, score, cibles, isCritique);
+		JLabel messageInfoCombat = getMessage(lanceur, actionCombat, score, cibles, isCritique);
 		// TODO probleme nullpointer
 		if (panelInfosCombat == null) {
 			panelInfosCombat = new JPanel();
 		}
 		panelInfosCombat.add(messageInfoCombat, 0);
-		// panelInfosCombat.updateUI();
-
+		
+		// Animation cible de haut en bas
+		animationCible(lanceur, score, cibles);
+		
 		// Pour chaque cible
 		for (Personnage cible : cibles) {
-			System.out.println("Cible avant degats : " + cible.toString());
-			// Distribution des degats / protection / soins
+			System.out.println("Cible avant sort : " + cible.toString());
+			// Distribution des dégats / protection / soins / absorption /
 			// Si Bouclier
-			if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
+			if (actionCombat.getSortType() == SortType.BOUCLIER_MONO
+					|| actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
 				// Gestion defense de l'ennemi
-				// TODO
-				// cible.setBouclier(cible.getBouclier() + score);
+				cible.setBouclier(cible.getBouclier() + score);
 			}
+			// Si Regen Mana
+			else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO
+					|| actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
+				// Gestion mana de l'allie
+				cible.setMana(cible.getMana() + score);
+				if (cible.getMana() > cible.getManaMax()) {
+					cible.setMana(cible.getManaMax());
+				}
+			}
+			// Si Brulure de Mana
+			else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MONO
+					|| actionCombat.getSortType() == SortType.BRULURE_MANA_MULTI) {
+				// Gestion mana de l'ennemi
+				cible.setMana(cible.getMana() - score);
+				if (cible.getMana() < 0) {
+					cible.setMana(0);
+				}
+			}
+			// Si Absorption Mana
+			else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MONO
+					|| actionCombat.getSortType() == SortType.ABSORPTION_MANA_MULTI) {
+				// Gestion mana du lanceur
+				lanceur.setMana(lanceur.getMana() + score);
+				if (lanceur.getMana() > lanceur.getManaMax()) {
+					lanceur.setMana(lanceur.getManaMax());
+				}
+				// Gestion mana de l'ennemi
+				cible.setMana(cible.getMana() - score);
+				if (cible.getMana() < 0) {
+					cible.setMana(0);
+				}
+			}
+			// Si Resurrection
+			else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO
+					|| actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
+				// Gestion Resurrection
+				cible.setMort(false);
+				// Ressurection avec +10% de vie par niveau
+				cible.setVie(cible.getVieMax() / (11 - actionCombat.getNiveau())); 
+				// TODO refresh resurrection ou pas
+			}
+			// TODO Si Aura
+			// else if (actionCombat.getSortType() == SortType.AURA_MONO
+			// || actionCombat.getSortType() == SortType.AURA_MULTI) {
+			// // Gestion aura de l'allie
+			// cible.setVie(cible.getVie() + score);
+			// if (cible.getVie() > cible.getVieMax()) {
+			// cible.setVie(cible.getVieMax());
+			// }
+			// }
 			// Si Soins
-			else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR
-					&& (actionCombat.getCibleType() == CibleType.ALLIE
-							|| actionCombat.getCibleType() == CibleType.GROUPE_ALLIES)) {
+			else if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO
+					|| actionCombat.getSortType() == SortType.REGEN_VIE_MULTI) {
 				// Gestion vie de l'allie
 				cible.setVie(cible.getVie() + score);
 				if (cible.getVie() > cible.getVieMax()) {
 					cible.setVie(cible.getVieMax());
 				}
 			}
-			// Si Degats
+			// Si dégats
 			else {
-				// Gestion vie/mort des joueurs
-				cible.setVie(cible.getVie() - score);
-				System.out.println(cible.getNom() + " - Vie: " + cible.getVie());
-				
-				// Si la cible meurt
-				if (cible.getVie() < 0) {
-					cible.setVie(0);
-					cible.setMort(true);
-					persosPresents.remove(cible);
-					for (JButton bouton : boutonsAmis) {
-						if (bouton.getName().equals(cible.getNom())) {
-							bouton.setEnabled(false);
-						}
-					}
 
-					// Message Info Combat allie mort
-					JLabel label = new JLabel(ennemi.getNom() + " a tué " + cible.getNom() + ".");
-					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
-					label.setForeground(Color.RED);
-					// label.setForeground(perso.getCouleur());
-					panelInfosCombat.add(label, 0);
-					revalidate();
-
-					// Test Fin du combat
-					boolean fin = true;
-					for (JButton bouton : boutonsAmis) {
-						if (bouton.isEnabled()) {
-							fin = false;
-						}
+				// Si Absorption Vie
+				if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO
+						|| actionCombat.getSortType() == SortType.ABSORPTION_VIE_MULTI) {
+					// Gestion vie du lanceur
+					lanceur.setVie(lanceur.getVie() + score);
+					if (lanceur.getVie() > lanceur.getVieMax()) {
+						lanceur.setVie(lanceur.getVieMax());
 					}
-					if (fin) {
-						win = false;
-						stop(mission, win);
+				}
+
+				// Si la cible a un bouclier
+				if (cible.getBouclier() > 0) {
+					cible.setBouclier(cible.getBouclier() - score);
+					if (cible.getBouclier() < 0) {
+						cible.setBouclier(0);
+					}
+				}
+				// Sinon on retire de la vie
+				else {
+
+					// Gestion vie/mort des joueurs
+					cible.setVie(cible.getVie() - score);
+					System.out.println(cible.getNom() + " - Vie: " + cible.getVie());
+
+					// Si la cible meurt
+					if (cible.getVie() < 0) {
+						cible.setVie(0);
+						cible.setMort(true);
+						persosPresents.remove(cible);
+						for (JButton bouton : boutonsAmis) {
+							if (bouton.getName().equals(cible.getNom())) {
+								bouton.setEnabled(false);
+							}
+						}
+
+						// Message Info Combat allie mort
+						JLabel label = new JLabel(lanceur.getNom() + " a tué " + cible.getNom() + ".");
+						// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+						label.setForeground(Color.RED);
+						// label.setForeground(perso.getCouleur());
+						panelInfosCombat.add(label, 0);
+						revalidate();
+
+						// Test Fin du combat
+						boolean fin = true;
+						for (JButton bouton : boutonsAmis) {
+							if (bouton.isEnabled()) {
+								fin = false;
+							}
+						}
+						if (fin) {
+							win = false;
+							stop(mission, win);
+						}
 					}
 				}
 			}
-			System.out.println("Cible apres degats : " + cible.toString());
+			System.out.println("Cible apres sort : " + cible.toString());
 			// Ajoute une charge a chaque cible
 			cible.ajouteUneCharge();
 		}
+		
+		// Refresh panelCentre vie/mana/charge/bouclier
+		buildPanelCentre();
+	}
+	
+	private void buildPanelCentre() {
+		
+		panelCentre.removeAll();
+		
+		BoxLayout boxlayoutCombat = new BoxLayout(panelCentre, BoxLayout.X_AXIS);
+		panelCentre.setLayout(boxlayoutCombat);
+
+		JPanel panelJoueurs = new JPanel();
+		BoxLayout boxlayoutJoueurs = new BoxLayout(panelJoueurs, BoxLayout.Y_AXIS);
+		panelJoueurs.setLayout(boxlayoutJoueurs);
+//		panelJoueurs.setAlignmentY(LEFT_ALIGNMENT);
+		
+		JPanel panelAdversaires = new JPanel();
+		BoxLayout boxlayoutAdversaires = new BoxLayout(panelAdversaires, BoxLayout.Y_AXIS);
+		panelAdversaires.setLayout(boxlayoutAdversaires);
+//		panelJoueurs.setAlignmentY(RIGHT_ALIGNMENT);
+
+		for (PersonnagePrincipal perso : persosPresents) {
+			JPanel panelPerso = buildPanelPerso(perso);
+			panelJoueurs.add(panelPerso);
+		}
+		
+		for (PersonnageEnnemi perso : ennemis) {
+			JPanel panelPerso = buildPanelPerso(perso);
+			panelAdversaires.add(panelPerso);
+		}
+
+		labelTimer = new JLabel("Timer");
+		
+		panelCentre.add(panelJoueurs);
+		panelCentre.add(labelTimer);
+		panelCentre.add(panelAdversaires);
 	}
 
-	public class MyActionListener implements ActionListener {
+	private JPanel buildPanelPerso(Personnage perso) {
+		JPanel panelPerso = new JPanel();
+		BoxLayout boxlayout = new BoxLayout(panelPerso, BoxLayout.Y_AXIS);
+		panelPerso.setLayout(boxlayout);
+		int largeur = Constante.PANEL_INFO_PERSO_LARGEUR;
+//		panelPerso.setMinimumSize(new Dimension(largeur, 200));
+		
+		// Largeur 100
+		JPanel barreCharge = new JPanel();
+		barreCharge.setBackground(Color.YELLOW);
+		barreCharge.add(new JLabel(perso.getNombreCharge() + "/" + perso.getNombreChargeMax()));
+		JPanel barreMana = new JPanel();
+		barreMana.setBackground(Color.BLUE);
+		barreMana.add(new JLabel(perso.getMana() + "/" + perso.getManaMax()));
+		JPanel barreBouclier = new JPanel();
+		barreBouclier.setBackground(Color.WHITE);
+		barreBouclier.add(new JLabel(String.valueOf(perso.getBouclier())));
+		JPanel barreVie = new JPanel();
+		barreVie.setBackground(Color.RED);
+		barreVie.add(new JLabel(perso.getVie() + "/" + perso.getVieMax()));
+		JPanel barrePersonnage = new JPanel();
+		barrePersonnage.add(new JLabel(perso.getNom()));
+		
+		panelPerso.add(barreCharge);
+		panelPerso.add(barreMana);
+		panelPerso.add(barreBouclier);
+		panelPerso.add(barreVie);
+		panelPerso.add(barrePersonnage);
+		
+		return panelPerso;
+	}
 
-		private int index = ennemis.size() -1;
+	public static FrameCombat getFrameCombat() {
+		return (FrameCombat) panelCentre.getParent().getParent().getParent().getParent();
+	}
+	
+	public class MyEnnemiActionListener implements ActionListener {
+
+		private int index = ennemis.size() - 1;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			menuActions.setEnabled(false);
-			for (int i = 0 ; i < 3 ; i++) {
+			for (int i = 0; i < 3; i++) {
 				Component component = panelBoutonsGroupe.getComponent(i);
 				component.setEnabled(false);
 			}
@@ -1390,48 +1707,117 @@ public class FrameCombat extends FrameJeu {
 			}
 
 			PersonnageEnnemi ennemi = ennemis.get(index);
-				
+
 			// Selectionne une attaque ennemi
 			ActionCombat actionCombat = selectionneAttaqueEnnemi(ennemi);
 
 			// lance attaque ennemi
 			executeSortEnnemi(ennemi, actionCombat);
+
+			index = index - 1;
 			
-			index = index -1;
 			// Quand tous les ennemis ont joue ou que tous les persos sont morts
 			if (index == -1 || persosPresents.isEmpty()) {
-				timer.stop();
-				
+				timerEnnemis.stop();
+
 				// Chaque persos vivants peut rejouer
 				for (PersonnagePrincipal perso : persosPresents) {
 					perso.setaDejaJoue(false);
 				}
-				
-				// Raffraichissment panel Bas quand dernier perso selectionne meurt => switch sur un autre perso vivant
+
+				// Raffraichissment panel Bas quand dernier perso selectionne
+				// meurt => switch sur un autre perso vivant
 				if (!persosPresents.isEmpty()) {
 					PersoPrenom prenom = persosPresents.get(0).getPrenom();
 					buildPanelActions(prenom);
+
+					// TODO message tour allie
+					JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Tour des allies");
+					
+					// TODO lance chrono tour joueurs si difficulte normal+
+					timerJoueurs.start();
 				}
-				
+
 				// Reactive les boutons grises
-				menuActions.setEnabled(true);	
-				for (int i = 0 ; i < 3 ; i++) {
+				menuActions.setEnabled(true);
+				for (int i = 0; i < 3; i++) {
 					Component component = panelBoutonsGroupe.getComponent(i);
 					component.setEnabled(true);
 				}
-				
-				// TODO message tour allie
-//				JOptionPane.showMessageDialog(this, "Tour des allies");
 
 			}
 
 			// TODO Affichage panel centre
 
+			
+			// Refresh
 			revalidate();
 			repaint();
+		}
+	}
+	
+	public class MyJoueurActionListener implements ActionListener {
 
+		private double time;
+		private double maxTime;
+		private boolean running = false;
 
+		public MyJoueurActionListener(double maxTime) {
+			super();
+			this.time = maxTime;
+			this.maxTime = maxTime;
 		}
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.time = time - 0.01;
+			String format = String.format("%1$,.2f", time);
+			labelTimer.setText(format);
+			labelTimer.setForeground(Color.GREEN);
+			if (time < (maxTime/2)) {
+				labelTimer.setForeground(Color.ORANGE);
+			}
+			if (time < (maxTime/4)) {
+				labelTimer.setForeground(Color.RED);
+			}
+			// Tic Tac quand il reste 4s
+			if (time <= 4) {
+				
+				if (!running ) {
+					MusiqueManager.playSon("sonParDefaut/tictac.mp3");
+					running = true;
+				}
+				
+			}
+			
+			// On arrete le timer si tous les joueurs ont deja joue
+			boolean finTourJoueurs = true;
+			for (PersonnagePrincipal perso : persosPresents) {
+				if (!perso.isaDejaJoue()) {
+					finTourJoueurs = false;
+				}
+			}
+			
+			// Fin du Timer
+			if (time <= 0 || finTourJoueurs) {
+				// TODO son Ding de fin de timer
+//				MusiqueManager.playSon("sonParDefaut/ding.mp3");
+				
+				labelTimer.setText(String.format("%1$,.2f", new Double(0.0)));
+				
+				// Quand le timer arrive a 0, on l'arrete
+				timerJoueurs.stop();
+				
+				// On reinitialise le chrono pour le prochain tour
+				time = maxTime;
+				// Attention : ici on suppose que le son tictac de fin de timer est fini, sinon il se relancera
+				running = false;
+						
+				// On lance le tour ennemis
+				if (!finTourJoueurs) {
+					lanceTourEnnemis();
+				}
+			}
+		}
 	}
 }

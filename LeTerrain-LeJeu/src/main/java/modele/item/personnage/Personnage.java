@@ -12,9 +12,9 @@ public class Personnage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String nom;
+	private boolean mort = false;
 	private int vie;
 	private int vieMax;
-	private boolean mort = false;
 	private int mana;
 	private int manaMax;
 	private int nombreCharge;

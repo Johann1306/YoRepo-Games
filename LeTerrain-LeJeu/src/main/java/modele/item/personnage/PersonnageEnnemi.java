@@ -10,12 +10,6 @@ public class PersonnageEnnemi extends Personnage {
 
 	private static final long serialVersionUID = 1L;
 
-	private int vie;
-	private int vieMax;
-	private int mana;
-	private int manaMax;
-	private int charge;
-	private int chargeMax;
 	private List<String> particularitesPhysique;
 	private List<String> particularitesSocial;
 	private List<String> phrasesPerso;
@@ -29,12 +23,14 @@ public class PersonnageEnnemi extends Personnage {
 			List<String> particularitesSocial, List<String> phrasesPerso, ImageIcon photoPrincipal,
 			List<ImageIcon> photos, List<ActionCombat> actionsCombat, EnnemiType ennemiType) {
 		super(nom);
-		this.vieMax = vieMax;
-		this.vie = vieMax;
-		this.manaMax = manaMax;
-		this.mana = manaMax;
-		this.chargeMax = chargeMax;
-		this.charge = 0;
+		this.setVieMax(vieMax);
+		this.setVie(vieMax);
+		this.setManaMax(manaMax);
+		this.setMana(manaMax);
+		this.setNombreChargeMax(chargeMax);
+		this.setNombreCharge(0);
+		this.setBouclier(0);
+		this.setVitesseCharge(50);
 		this.particularitesPhysique = particularitesPhysique;
 		this.particularitesSocial = particularitesSocial;
 		this.phrasesPerso = phrasesPerso;
@@ -42,14 +38,6 @@ public class PersonnageEnnemi extends Personnage {
 		this.photos = photos;
 		this.actionsCombat = actionsCombat;
 		this.ennemiType = ennemiType;
-	}
-
-	public int getVie() {
-		return vie;
-	}
-	
-	public void setVie(int vie) {
-		this.vie = vie;
 	}
 
 	public List<String> getParticularitesPhysique() {
@@ -92,30 +80,6 @@ public class PersonnageEnnemi extends Personnage {
 		this.photos = photos;
 	}
 
-	public int getVieMax() {
-		return vieMax;
-	}
-
-	public void setVieMax(int vieMax) {
-		this.vieMax = vieMax;
-	}
-
-	public int getManaMax() {
-		return manaMax;
-	}
-
-	public void setManaMax(int manaMax) {
-		this.manaMax = manaMax;
-	}
-
-	public int getChargeMax() {
-		return chargeMax;
-	}
-
-	public void setChargeMax(int chargeMax) {
-		this.chargeMax = chargeMax;
-	}
-
 	public EnnemiType getEnnemiType() {
 		return ennemiType;
 	}
@@ -130,22 +94,6 @@ public class PersonnageEnnemi extends Personnage {
 
 	public void setActionsCombat(List<ActionCombat> actionsCombat) {
 		this.actionsCombat = actionsCombat;
-	}
-
-	public int getMana() {
-		return mana;
-	}
-
-	public void setMana(int mana) {
-		this.mana = mana;
-	}
-
-	public int getCharge() {
-		return charge;
-	}
-
-	public void setCharge(int charge) {
-		this.charge = charge;
 	}
 	
 }
