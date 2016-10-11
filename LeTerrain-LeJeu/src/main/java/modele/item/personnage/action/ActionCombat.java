@@ -18,11 +18,12 @@ public class ActionCombat extends Item implements Serializable {
 	private EnergieType energieType;
 	private CibleType cibleType;
 	private PersoStat persoStat;
+	private SortType sortType;
 
 	public ActionCombat(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
 			List<String> videoPaths, boolean isDisponible, int niveau,
 			int niveauMax, int progression, ActionCombatType actionCombatType, EnergieType energieType,
-			CibleType cibleType, PersoStat persoStat) {
+			CibleType cibleType, PersoStat persoStat, SortType sortType) {
 		super(id, nom, informations, imagePaths, sonPaths, videoPaths, null, ItemType.ACTION_COMBAT, isDisponible);
 		this.niveau = niveau;
 		this.niveauMax = niveauMax;
@@ -31,6 +32,7 @@ public class ActionCombat extends Item implements Serializable {
 		this.energieType = energieType;
 		this.cibleType = cibleType;
 		this.persoStat = persoStat;
+		this.sortType = sortType;
 	}
 
 	public int getNiveau() {
@@ -85,9 +87,17 @@ public class ActionCombat extends Item implements Serializable {
 		return persoStat;
 	}
 
+	public SortType getSortType() {
+		return sortType;
+	}
+
+	public void setSortType(SortType sortType) {
+		this.sortType = sortType;
+	}
+
 	@Override
 	public boolean amelioreItem() {
-
+		
 		boolean itemAmeliore = false;
 		if (niveau < niveauMax) {
 			niveau = niveau + 1;
@@ -97,3 +107,4 @@ public class ActionCombat extends Item implements Serializable {
 		return itemAmeliore;
 	}
 }
+

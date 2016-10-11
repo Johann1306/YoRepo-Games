@@ -275,13 +275,13 @@ public class MissionManager implements Serializable  {
 			distribueRecompenses(mission, false);
 		}
 		
-		// Refresh panelPerso persos morts
-		MenuPrincipal.getMainFrame().getPanelPersonnage().refreshMortsPersonnage();
-		
 		// refresh liste missions jouables par perso
 		refreshMissionsJouables();
 		// TODO gestion des missions par le menu ?
 		MenuPrincipal.getMainFrame().getCoreManager().getMenuManager().lanceRefreshMenu();
+		
+		// Refresh panelPerso persos morts
+		MenuPrincipal.getMainFrame().getPanelPersonnage().refreshMortsPersonnage();
 	}
 	
 	public Mission getNextMissionAvecDate() {

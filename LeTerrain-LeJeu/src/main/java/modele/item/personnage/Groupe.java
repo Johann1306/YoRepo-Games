@@ -46,6 +46,14 @@ public class Groupe implements Serializable {
 		return null;
 	}
 	
+	public PersonnagePrincipal getPersoByNom(String nom) {
+		for (PersonnagePrincipal perso : leGroupe)
+			if (nom.equals(perso.getPrenom().name())) {
+				return perso;
+			}
+		return null;
+	}
+	
 	public void ajoutePerso(PersonnagePrincipal perso) {
 		leGroupe.add(perso);
 	}

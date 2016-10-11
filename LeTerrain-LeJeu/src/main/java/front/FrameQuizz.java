@@ -190,6 +190,7 @@ public class FrameQuizz extends FrameJeu {
 		private double time;
 		private double maxTime;
 		private boolean fini = false;
+		private boolean running = false;
 
 		public MyTimerActionListener(double maxTime) {
 			super();
@@ -209,7 +210,19 @@ public class FrameQuizz extends FrameJeu {
 			if (time < (maxTime/4)) {
 				labelTimer.setForeground(Color.RED);
 			}
+			// Tic Tac quand il reste 4s
+			if (time <= 4) {
+				
+				if (!running ) {
+					MusiqueManager.playSon("sonParDefaut/tictac.mp3");
+					running = true;
+				}
+				
+			}
 			if (time <= 0) {
+				// TODO son Ding de fin de timer
+//				MusiqueManager.playSon("sonParDefaut/ding.mp3");
+				
 				labelTimer.setText(String.format("%1$,.2f", new Double(0.0)));
 				for (Reponse reponse : enigme.getReponsesPossibles()) {
 					if (reponse.isBonneReponse()) {

@@ -92,6 +92,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 				} else if (reponse == 1) {
 					FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 					fenetrePrincipal.setVisible(true);
+					FenetrePrincipal.joueMusiquesAmbiances();
 
 					// TODO : supprimer le panelVideo et la MainFrame (probleme de memoire)
 					MenuPrincipal.getMainFrame().dispose();

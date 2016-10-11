@@ -103,6 +103,11 @@ public class PersonnageManager implements Serializable {
 	public PersonnagePrincipal getPersoByPrenom(PersoPrenom nom) {
 		return leGroupe.getPersoByNom(nom);
 	}
+	
+
+	public PersonnagePrincipal getPersoByPrenom(String prenom) {
+		return leGroupe.getPersoByNom(prenom);
+	}
 
 	public Groupe getLeGroupe() {
 		return leGroupe;
@@ -192,6 +197,16 @@ public class PersonnageManager implements Serializable {
 		} 
 		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis());
 		return ennemi;
+	}
+
+	public List<PersonnagePrincipal> getPersoVivants() {
+		List<PersonnagePrincipal> persosVivants = new ArrayList<PersonnagePrincipal>();
+		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			if (!personnage.isMort()) {
+				persosVivants.add(personnage);
+			}
+		}
+		return persosVivants;
 	}
 	
 }

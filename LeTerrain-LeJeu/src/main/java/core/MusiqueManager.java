@@ -183,6 +183,7 @@ public class MusiqueManager implements Serializable {
 							}
 						}
 					}
+					stopped = false;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

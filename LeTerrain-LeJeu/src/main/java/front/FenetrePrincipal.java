@@ -79,15 +79,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	public void start() {
 		
 		// Lecture musiques d'ambiances en boucle menu principal
-		List<String> musiquesPaths = new ArrayList<String>();
-		// TODO : musique apres jar
-		String musiquePath0 = "son/smw_course_clear.wav";
-		String musiquePath1 = "son/23-ending.mp3";
-		String musiquePath2 = "son/01AlexKid-title-screen.mp3"; 
-		musiquesPaths.add(musiquePath1);
-		musiquesPaths.add(musiquePath0);
-		musiquesPaths.add(musiquePath2);
-		MusiqueManager.playPlaylistEnBoucle(musiquesPaths);
+		joueMusiquesAmbiances();
 
 		// Panel content
         content = new JLayeredPane();
@@ -137,6 +129,17 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		// Ajout dans la fenetre
 		this.setContentPane(content);
 		this.setVisible(true);
+	}
+
+	public static void joueMusiquesAmbiances() {
+		List<String> musiquesPaths = new ArrayList<String>();
+		String musiquePath0 = "son/smw_course_clear.wav";
+		String musiquePath1 = "son/23-ending.mp3";
+		String musiquePath2 = "son/01AlexKid-title-screen.mp3"; 
+		musiquesPaths.add(musiquePath1);
+		musiquesPaths.add(musiquePath0);
+		musiquesPaths.add(musiquePath2);
+		MusiqueManager.playPlaylistEnBoucle(musiquesPaths);
 	}
 
 	private void centreFenetre() {

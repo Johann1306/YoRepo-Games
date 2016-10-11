@@ -273,6 +273,7 @@ public class FrameCombat extends FrameJeu {
 		panelOuest.add(panelPersos);
 
 		// -- Panel Centre
+		
 
 		// -- Panel Est
 		JPanel panelEnnemis = new JPanel();
@@ -1107,7 +1108,7 @@ public class FrameCombat extends FrameJeu {
 			}
 		}
 
-		// Fermeture des fenetres
+		// Fermeture de la frame combat et reaffichage de la mainframe
 		this.dispose();
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
@@ -1350,6 +1351,7 @@ public class FrameCombat extends FrameJeu {
 					label.setForeground(Color.RED);
 					// label.setForeground(perso.getCouleur());
 					panelInfosCombat.add(label, 0);
+					revalidate();
 
 					// Test Fin du combat
 					boolean fin = true;
@@ -1396,7 +1398,8 @@ public class FrameCombat extends FrameJeu {
 			executeSortEnnemi(ennemi, actionCombat);
 			
 			index = index -1;
-			if (index == -1) {
+			// Quand tous les ennemis ont joue ou que tous les persos sont morts
+			if (index == -1 || persosPresents.isEmpty()) {
 				timer.stop();
 				
 				// Chaque persos vivants peut rejouer
@@ -1405,9 +1408,12 @@ public class FrameCombat extends FrameJeu {
 				}
 				
 				// Raffraichissment panel Bas quand dernier perso selectionne meurt => switch sur un autre perso vivant
-				PersoPrenom prenom = persosPresents.get(0).getPrenom();
-				buildPanelActions(prenom);
+				if (!persosPresents.isEmpty()) {
+					PersoPrenom prenom = persosPresents.get(0).getPrenom();
+					buildPanelActions(prenom);
+				}
 				
+				// Reactive les boutons grises
 				menuActions.setEnabled(true);	
 				for (int i = 0 ; i < 3 ; i++) {
 					Component component = panelBoutonsGroupe.getComponent(i);
