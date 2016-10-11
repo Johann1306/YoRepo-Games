@@ -1,6 +1,7 @@
 package front;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +19,14 @@ import javax.swing.border.Border;
 import core.MusiqueManager;
 import core.SauvegardeManager;
 import core.configuration.Constante;
+import modele.item.mission.enums.MissionDifficulty;
 
 public class MenuPrincipal extends JPanel {
 	
 	private static final Border BORDER = BorderFactory.createLineBorder(Color.BLUE, 3);
 	private static MainFrame mainFrame;
+	private JPanel panelDifficulte = null;
+	private static JButton boutonQuit = null;
 
 	public MenuPrincipal() {
 	}
@@ -37,7 +41,7 @@ public class MenuPrincipal extends JPanel {
 		JButton boutonEdit = new JButton("Editer");
 		JButton boutonJeux = new JButton("Jeux");
 		JButton boutonScore = new JButton("Score");
-		JButton boutonQuit = new JButton("Quitter");
+		boutonQuit = new JButton("Quitter");
 
 		boutonNew.setFont(Constante.PRESS_START_FONT_MENU);
 		boutonContinue.setFont(Constante.PRESS_START_FONT_MENU);
@@ -81,19 +85,204 @@ public class MenuPrincipal extends JPanel {
 		boutonScore.setFocusable(false);
 		boutonQuit.setFocusable(false);
 
+		boutonNew.setBorder(null);
+		boutonContinue.setBorder(null);
+		boutonLoad.setBorder(null);
+		boutonEdit.setBorder(null);
+		boutonJeux.setBorder(null);
+		boutonScore.setBorder(null);
+		boutonQuit.setBorder(null);
+
 		// Actions des boutons
 		boutonNew.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
-				MusiqueManager.stopPlaylistEnBoucle();
-				mainFrame = new MainFrame();
-				mainFrame.startMainFrame();
-				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
-				fenetrePrincipal.hide();
-//				parent.show();
+				
+				// Cachage MenuPrincipal
+				MenuPrincipal menuPrincipal = getMenuPrincipal();
+				Component[] components = menuPrincipal.getComponents();
+				for (Component component : components) {
+					component.setVisible(false);
+				}
+				
+				panelDifficulte = new JPanel();
+				BoxLayout boxlayout = new BoxLayout(panelDifficulte, BoxLayout.Y_AXIS);
+				panelDifficulte.setLayout(boxlayout);
+				
+				JButton boutonFacile = new JButton(MissionDifficulty.FACILE.name());
+				JButton boutonNormal = new JButton(MissionDifficulty.NORMAL.name());
+				JButton boutonDifficile = new JButton(MissionDifficulty.DIFFICILE.name());
+				JButton boutonHeroique = new JButton(MissionDifficulty.HEROIQUE.name());
+				
+				boutonFacile.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonNormal.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU);
+				
+				boutonFacile.setBackground(Color.BLACK);
+				boutonNormal.setBackground(Color.BLACK);
+				boutonDifficile.setBackground(Color.BLACK);
+				boutonHeroique.setBackground(Color.BLACK);
+				
+				boutonFacile.setForeground(Color.WHITE);
+				boutonNormal.setForeground(Color.WHITE);
+				boutonDifficile.setForeground(Color.WHITE);
+				boutonHeroique.setForeground(Color.WHITE);
+
+				boutonFacile.setMaximumSize(boutonNew.getMaximumSize());
+				boutonNormal.setMaximumSize(boutonNew.getMaximumSize());
+				boutonDifficile.setMaximumSize(boutonNew.getMaximumSize());
+				boutonHeroique.setMaximumSize(boutonNew.getMaximumSize());
+				
+				boutonFacile.setFocusable(false);
+				boutonNormal.setFocusable(false);
+				boutonDifficile.setFocusable(false);
+				boutonHeroique.setFocusable(false);
+			
+				boutonFacile.setBorder(null);
+				boutonNormal.setBorder(null);
+				boutonDifficile.setBorder(null);
+				boutonHeroique.setBorder(null);
+
+				boutonFacile.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						lanceNouvellePartie(MissionDifficulty.FACILE);
+					}
+				});
+				boutonNormal.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						lanceNouvellePartie(MissionDifficulty.NORMAL);
+					}
+				});
+				boutonDifficile.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						lanceNouvellePartie(MissionDifficulty.DIFFICILE);
+					}
+				});
+				boutonHeroique.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						lanceNouvellePartie(MissionDifficulty.HEROIQUE);
+					}
+				});
+				
+				// Refresh Font on focus
+				boutonFacile.addMouseListener(new MouseListener() {
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						boutonFacile.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonFacile.setBorder(null);
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						boutonFacile.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonFacile.setBorder(BORDER);
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					}
+				});
+				boutonNormal.addMouseListener(new MouseListener() {
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						boutonNormal.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonNormal.setBorder(null);
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						boutonNormal.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonNormal.setBorder(BORDER);
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					}
+				});
+				boutonDifficile.addMouseListener(new MouseListener() {
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonDifficile.setBorder(null);
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonDifficile.setBorder(BORDER);
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					}
+				});
+				boutonHeroique.addMouseListener(new MouseListener() {
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonHeroique.setBorder(null);
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonHeroique.setBorder(BORDER);
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					}
+				});
+				panelDifficulte.add(boutonFacile);
+				panelDifficulte.add(boutonNormal);
+				panelDifficulte.add(boutonDifficile);
+				panelDifficulte.add(boutonHeroique);
+				
+				menuPrincipal.add(panelDifficulte);
 			}
+			
 		});
 		boutonContinue.addActionListener(new ActionListener() {
 
@@ -352,14 +541,6 @@ public class MenuPrincipal extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-
-		boutonNew.setBorder(null);
-		boutonContinue.setBorder(null);
-		boutonLoad.setBorder(null);
-		boutonEdit.setBorder(null);
-		boutonJeux.setBorder(null);
-		boutonScore.setBorder(null);
-		boutonQuit.setBorder(null);
 		
 		this.add(boutonNew);
 		this.add(boutonContinue);
@@ -369,6 +550,27 @@ public class MenuPrincipal extends JPanel {
 		this.add(boutonScore);
 		this.add(boutonQuit);
 //		this.setBorder(BorderFactory.createLineBorder(Color.RED));
+	}
+	
+	private void lanceNouvellePartie(MissionDifficulty difficulte) {
+		
+		// Reaffichage panel Menu
+		Component[] components = this.getComponents();
+		for (Component component : components) {
+			component.setVisible(true);
+		}
+		// Supression panelDifficulte
+		panelDifficulte.removeAll();
+		panelDifficulte.setVisible(false);
+		
+		// TODO son clic en fonction de la difficulte (Facile/bebe ou tetine, Normal/bruit d'epee, Difficile/pistolet, Heroique/hahaha)
+		MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
+		MusiqueManager.stopPlaylistEnBoucle();
+		mainFrame = new MainFrame(difficulte);
+		mainFrame.startMainFrame();
+		FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
+		fenetrePrincipal.hide();
+//		parent.show();
 	}
 
 	public void demandeConfirmationQuitter() {
@@ -388,6 +590,10 @@ public class MenuPrincipal extends JPanel {
 	
 	public static MainFrame getMainFrame(){
 		return mainFrame;
+	}
+	
+	public static MenuPrincipal getMenuPrincipal(){
+		return (MenuPrincipal) boutonQuit.getParent();
 	}
 
 	public static void setMainFrame(MainFrame frame) {

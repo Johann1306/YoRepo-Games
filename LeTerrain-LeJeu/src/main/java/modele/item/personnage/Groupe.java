@@ -18,20 +18,20 @@ public class Groupe implements Serializable {
 		return leGroupe;
 	}
 
-	public List<Personnage> getPersosDejaPresente() {
+	public List<Personnage> getPersosVivants() {
 		List<Personnage> persosDejaPresentes = new ArrayList<Personnage>();
 		for (PersonnagePrincipal personnagePrincipal : leGroupe) {
-			if (personnagePrincipal.isDejaPresente()) {
+			if (personnagePrincipal.isDejaPresente() && !personnagePrincipal.isMort()) {
 				persosDejaPresentes.add(personnagePrincipal);
 			}
 		}
 		return persosDejaPresentes;
 	}
 	
-	public List<PersonnagePrincipal> getPersosPrincipauxDejaPresente() {
+	public List<PersonnagePrincipal> getPersosPrincipauxVivants() {
 		List<PersonnagePrincipal> persosDejaPresentes = new ArrayList<PersonnagePrincipal>();
 		for (PersonnagePrincipal personnagePrincipal : leGroupe) {
-			if (personnagePrincipal.isDejaPresente()) {
+			if (personnagePrincipal.isDejaPresente() && !personnagePrincipal.isMort()) {
 				persosDejaPresentes.add(personnagePrincipal);
 			}
 		}

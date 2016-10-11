@@ -2,6 +2,8 @@ package core;
 
 import java.io.Serializable;
 
+import modele.item.mission.enums.MissionDifficulty;
+
 public class CoreManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,8 +23,11 @@ public class CoreManager implements Serializable {
 	private CarteManager carteManager;
 	private ActionCombatManager actionCombatManager;
 	private QuizzManager quizzManager;
+	
+	private MissionDifficulty difficultePartie;
 
-	public CoreManager() {
+	public CoreManager(MissionDifficulty difficultePartie) {
+		this.difficultePartie = difficultePartie;
 	}
 
 	public void initialise() {
@@ -44,13 +49,13 @@ public class CoreManager implements Serializable {
 		bonusManager.initialise();
 
 		missionManager = new MissionManager();
-		missionManager.initialise();
+		missionManager.initialise(difficultePartie);
 		
 		actionCombatManager = new ActionCombatManager();
 		actionCombatManager.initialise();
 
 		personnageManager = new PersonnageManager();
-		personnageManager.initialise(actionCombatManager);
+		personnageManager.initialise(actionCombatManager, difficultePartie);
 
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
@@ -195,6 +200,14 @@ public class CoreManager implements Serializable {
 
 	public void setQuizzManager(QuizzManager quizzManager) {
 		this.quizzManager = quizzManager;
+	}
+	
+	public MissionDifficulty getDifficultePartie() {
+		return difficultePartie;
+	}
+	
+	public void setDifficultePartie(MissionDifficulty difficultePartie) {
+		this.difficultePartie = difficultePartie;
 	}
 	
 	public static long getSerialversionuid() {

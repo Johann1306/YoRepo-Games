@@ -13,6 +13,7 @@ import javax.swing.ScrollPaneConstants;
 import core.CoreManager;
 import core.MenuManager;
 import core.configuration.Constante;
+import modele.item.mission.enums.MissionDifficulty;
 
 //public class MainFrame extends JFrame implements KeyListener {
 public class MainFrame extends JFrame {
@@ -29,9 +30,9 @@ public class MainFrame extends JFrame {
 	private static JPanel content = null;
 
 	// Nouvelle Partie
-	public MainFrame() {
+	public MainFrame(MissionDifficulty missionDifficulty) {
 		super();
-		coreManager = new CoreManager();
+		coreManager = new CoreManager(missionDifficulty);
 		coreManager.initialise();
 		panelHaut = new PanelHaut();
 		panelGauche = new JPanel();
