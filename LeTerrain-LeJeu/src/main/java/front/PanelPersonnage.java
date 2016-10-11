@@ -8,11 +8,14 @@ import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import core.CoreManager;
 import core.MenuManager;
 import core.MusiqueManager;
+import core.PersonnageManager;
 import core.VideoManager;
 import core.configuration.Constante;
 import modele.evenement.EvenementTheme;
@@ -257,7 +260,9 @@ public class PanelPersonnage extends JPanel {
 	public void refreshMortsPersonnage() {
 		boolean finDuJeu = true;
 		// Si un perso est mort on grise son bouton
-		Groupe leGroupe = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe();
+		CoreManager coreManager = MenuPrincipal.getMainFrame().getCoreManager();
+		PersonnageManager personnageManager = coreManager.getPersonnageManager();
+		Groupe leGroupe = personnageManager.getLeGroupe();
 		if (leGroupe != null) {
 			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
 				if (perso.isMort()) {
@@ -273,19 +278,44 @@ public class PanelPersonnage extends JPanel {
 					finDuJeu = false;
 				}
 			}
-			// Test fin du Jeu (Tous les persos sont morts)
+			// Fin du Jeu (Tous les persos sont morts)
 			if (finDuJeu) {
 				System.out.println("GAME OVER");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), "GAME OVER");
-				// TODO musique fin jeu
 				
-				// TODO retour menuPrincipal
+				// Musique fin du jeu
+				MusiqueManager.playSon("son/10AlexKid-game-over.mp3");
+				
+				// Message fin du jeu
+				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), "GAME OVER");
+
+				// Retour menuPrincipal
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.setVisible(true);
+				FenetrePrincipal.joueMusiquesAmbiances();
 
-				// TODO : supprimer le panelVideo et la MainFrame (probleme de memoire)
+				// Supprime le panelVideo et la MainFrame
 				MenuPrincipal.getMainFrame().dispose();
 				VideoManager.hideAndStop();
+			} 
+			// Sinon on continue en reaffichant le panel d'un perso vivant
+			else {
+				
+				// On recupere le perso du panel courant
+				PanelCentre panelCentre = MainFrame.getPanelCentre();
+				PanelBas panelBas = MainFrame.getPanelBas();
+				String prenom = panelCentre.getPanelShowing().getName();
+				
+				// Si il est mort, on affiche le panel d'un perso vivant
+				PersonnagePrincipal perso = personnageManager.getPersoByPrenom(prenom);
+				
+				if (perso.isMort()) {
+					List<PersonnagePrincipal> persoVivants = personnageManager.getPersoVivants();
+					PersonnagePrincipal persoVivant = persoVivants.get(0);
+					CardLayout cardLayout = panelCentre.getCardLayout();
+					cardLayout.show(panelCentre, persoVivant.getPrenom().name());
+					panelBas.refreshPanelBas(persoVivant.getPrenom());			
+					coreManager.getMenuManager().lanceRefreshMenu();
+				}
 			}
 		}
 		
