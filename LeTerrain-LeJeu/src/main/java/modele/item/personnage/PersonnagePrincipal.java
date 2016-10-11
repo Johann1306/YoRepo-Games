@@ -76,9 +76,10 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.competence = competence;
 		this.isDejaPresente = false;
 		this.available = available;
-//		this.setVieMax(competence.getEndurance()*10); // max vie = 1000
-		this.setVieMax(competence.getEndurance()); // max vie = 100
-		this.setVie(competence.getEndurance());
+//		this.setVieMax(competence.getEndurance()); // max vie = 100
+//		this.setVie(competence.getEndurance());
+		this.setVieMax(competence.getEndurance()*10); // max vie = 1000
+		this.setVie(competence.getEndurance()*10);
 		this.setManaMax(competence.getIntelligence());
 		this.setMana(competence.getIntelligence());
 		this.setVitesseCharge(competence.getRapidite());
