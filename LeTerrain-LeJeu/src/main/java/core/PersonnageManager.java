@@ -40,7 +40,7 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageBoss> personnagesBoss;
 	private List<PersonnageEnnemi> personnagesEnnemis;
 
-	public void initialise(ActionCombatManager actionCombatManager) {
+	public void initialise(ActionCombatManager actionCombatManager, MissionDifficulty difficultePartie) {
 
 		leGroupe = new Groupe();
 
@@ -91,9 +91,30 @@ public class PersonnageManager implements Serializable {
 		
 		List<ImageIcon> photos = new ArrayList<ImageIcon>();
 		// TODO en fonction de la difficulte
-		int vieMax = 100;
-		int manaMax = 50;
-		int chargeMax = 50;
+		
+		int vieMax = 1000;
+		int manaMax = 500;
+		int chargeMax = 5;
+		
+		// En fonction difficulte Partie 
+		if (difficultePartie == MissionDifficulty.FACILE) {
+			vieMax = 500;
+			manaMax = 100;
+			chargeMax = 3;
+		} else if (difficultePartie == MissionDifficulty.NORMAL) {
+			vieMax = 1000;
+			manaMax = 200;
+			chargeMax = 5;
+		} else if (difficultePartie == MissionDifficulty.DIFFICILE) {
+			vieMax = 5000;
+			manaMax = 500;
+			chargeMax = 7;
+		} else if (difficultePartie == MissionDifficulty.HEROIQUE) {
+			vieMax = 10000;
+			manaMax = 1000;
+			chargeMax = 10;
+		} 
+
 		List<ActionCombat> actionsCombat = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
 		
 		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat);
@@ -179,21 +200,21 @@ public class PersonnageManager implements Serializable {
 		List<ActionCombat> actionsCombat = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager().getActionsCombat(mission.getTypeEnnemis().name());
 
 		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
-			vieMax = 100;
-			manaMax = 100;
-			chargeMax = 100;
-		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
-			vieMax = 200;
-			manaMax = 200;
-			chargeMax = 200;
-		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
 			vieMax = 500;
-			manaMax = 500;
-			chargeMax = 500;
-		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+			manaMax = 100;
+			chargeMax = 1;
+		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
 			vieMax = 1000;
+			manaMax = 200;
+			chargeMax = 2;
+		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
+			vieMax = 5000;
+			manaMax = 500;
+			chargeMax = 3;
+		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+			vieMax = 10000;
 			manaMax = 1000;
-			chargeMax = 1000;
+			chargeMax = 5;
 		} 
 		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis());
 		return ennemi;

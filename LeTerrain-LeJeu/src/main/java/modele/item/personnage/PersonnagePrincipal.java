@@ -83,7 +83,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setManaMax(competence.getIntelligence());
 		this.setMana(competence.getIntelligence());
 		this.setVitesseCharge(competence.getRapidite());
-		this.setNombreChargeMax(competence.getNoobisme());
+		this.setNombreChargeMax(competence.getNoobisme()/20); // max charge = 5
 		this.setNombreCharge(0);
 		this.setBouclier(0);
 	}

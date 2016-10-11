@@ -31,7 +31,6 @@ import core.MusiqueManager;
 import core.RandomManager;
 import core.VideoManager;
 import core.configuration.Constante;
-import front.FrameCombat.MyEnnemiActionListener;
 import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionDifficulty;
@@ -47,7 +46,6 @@ import modele.item.personnage.action.ActionCombatType;
 import modele.item.personnage.action.CibleType;
 import modele.item.personnage.action.EnergieType;
 import modele.item.personnage.action.SortType;
-import modele.quizz.Reponse;
 
 public class FrameCombat extends FrameJeu {
 
@@ -84,6 +82,8 @@ public class FrameCombat extends FrameJeu {
 	private Timer timerEnnemis = null;
 	private Timer timerJoueurs = null;
 	private JLabel labelTimer = null;
+	private boolean peuxFuir = true;
+	private int tempsMax = 0; 
 
 	public FrameCombat(Groupe groupe, Mission mission) {
 		this.mission = mission;
@@ -514,8 +514,14 @@ public class FrameCombat extends FrameJeu {
 			panelBoutonsGroupe.setLayout(boxlayoutBoutonsGroupe);
 
 			JButton boutonAuto = new JButton("COMBAT AUTO");
+			boutonAuto.setName("boutonAuto");
 			JButton boutonFuir = new JButton("S'ENFUIR");
+			boutonFuir.setName("boutonFuir");
+			if (!peuxFuir) {
+				boutonFuir.setEnabled(false);
+			}
 			JButton boutonSeRendre = new JButton("SE RENDRE");
+			boutonSeRendre.setName("boutonSeRendre");
 
 			panelBoutonsGroupe.setMaximumSize(
 					new Dimension(Constante.PANEL_BOUTON_GROUPE_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));
@@ -530,15 +536,61 @@ public class FrameCombat extends FrameJeu {
 				}
 			});
 			boutonFuir.addActionListener(new ActionListener() {
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					win = false;
-					stop(mission, win);
+					// Chance de fuir en fonction de la difficulte + nombre ennemis restants (80% max - 20% min)
+					
+					// Chance de fuir en fonction du nombre d ennemis restants (40% max - 10% min)
+					int chanceFuite = 0;
+					int nombreEnnemis = ennemis.size(); // 1 a 8
+					if (nombreEnnemis > 6) {
+						chanceFuite = chanceFuite + 10;
+					} else if (nombreEnnemis > 4) {
+						chanceFuite = chanceFuite + 20;
+					} else if (nombreEnnemis > 2) {
+						chanceFuite = chanceFuite + 30;
+					} else if (nombreEnnemis > 0) {
+						chanceFuite = chanceFuite + 40;
+					}
+
+					// Chance de fuir en fonction de la difficulte (40% max - 10% min)
+					if (mission.getDifficulty() == MissionDifficulty.FACILE) {
+						chanceFuite = chanceFuite + 40;
+					} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
+						chanceFuite = chanceFuite + 30;
+					} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
+						chanceFuite = chanceFuite + 20;
+					} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+						chanceFuite = chanceFuite + 10;
+					}
+					
+					int randomFuite = RandomManager.random0_100();
+					
+					// Si on reussit a fuir					
+					if (randomFuite < chanceFuite) {
+						// Message fuite reussi
+						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Vous avez réussi à fuir.");
+						
+						// On arrete la partie
+						timerJoueurs.stop();
+						win = false;
+						stop(mission, win);
+					} else {
+						// TODO Sinon la partie continue avec un malus : action negative si raté (mort, mana, charge, perte des stats, de fric)
+						// Message fuite echoue
+						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Vous n'avez pas réussi à fuir.");
+						boutonFuir.setEnabled(false);
+						peuxFuir = false;
+					}
+					
 				}
 			});
 			boutonSeRendre.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					// TODO action negative se rendre (mort, mana, charge, perte des stats, de fric) en fonction de la difficulte
+					timerJoueurs.stop();
 					win = false;
 					stop(mission, win);
 				}
@@ -623,10 +675,13 @@ public class FrameCombat extends FrameJeu {
 	// Gestion des Actions (ATTAQUE, DEFENSE, POUVOIR, SPECIAL)
 	private AbstractButton configureBoutonAction(PersonnagePrincipal perso, ActionCombat actionCombat) {
 
-		List<Personnage> persosDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
-				.getLeGroupe().getPersosDejaPresente();
-		List<PersonnagePrincipal> persosPrincipauxDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager()
-				.getPersonnageManager().getLeGroupe().getPersosPrincipauxDejaPresente();
+		List<Personnage> persosVivants = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
+				.getLeGroupe().getPersosVivants();
+		List<PersonnagePrincipal> persosPrincipauxVivants = MenuPrincipal.getMainFrame().getCoreManager()
+				.getPersonnageManager().getLeGroupe().getPersosPrincipauxVivants();
+		
+		// TODO  refactoring avec SortType
+		
 		// -- ATTAQUE
 		if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE) {
 
@@ -683,7 +738,7 @@ public class FrameCombat extends FrameJeu {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// Execution du sort
-						executeSort(perso, actionCombat, persosDejaPresentes, action);
+						executeSort(perso, actionCombat, persosVivants, action);
 						revalidate();
 					}
 				});
@@ -694,14 +749,14 @@ public class FrameCombat extends FrameJeu {
 			if (actionCombat.getCibleType() == CibleType.ALLIE) {
 				// JMenu
 				AbstractButton action = new JMenu(actionCombat.getNom() + " - lvl " + actionCombat.getNiveau());
-				for (PersonnagePrincipal persoPrincipal : persosPrincipauxDejaPresentes) {
+				for (PersonnagePrincipal persoPrincipal : persosPrincipauxVivants) {
 					JMenuItem ami = new JMenuItem(persoPrincipal.getSurnomPrincipal());
 					testConsommationEnergie(action, actionCombat, perso);
 					ami.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							// Execution du sort
-							executeSort(perso, actionCombat, persosDejaPresentes, action);
+							executeSort(perso, actionCombat, persosVivants, action);
 							revalidate();
 						}
 					});
@@ -760,7 +815,7 @@ public class FrameCombat extends FrameJeu {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// Execution du sort
-						executeSort(perso, actionCombat, persosDejaPresentes, action);
+						executeSort(perso, actionCombat, persosVivants, action);
 						revalidate();
 					}
 				});
@@ -772,8 +827,8 @@ public class FrameCombat extends FrameJeu {
 				// JMenu
 				AbstractButton action = new JMenu(actionCombat.getNom() + " - lvl " + actionCombat.getNiveau());
 				MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe()
-						.getPersosDejaPresente();
-				for (PersonnagePrincipal cible : persosPrincipauxDejaPresentes) {
+						.getPersosVivants();
+				for (PersonnagePrincipal cible : persosPrincipauxVivants) {
 					JMenuItem ami = new JMenuItem(cible.getSurnomPrincipal());
 					testConsommationEnergie(action, actionCombat, perso);
 					ami.addActionListener(new ActionListener() {
@@ -1309,9 +1364,16 @@ public class FrameCombat extends FrameJeu {
 		// Initiative : quelle equipe commence? basé sur une competence + random
 		boolean initiative = false;
 		
-		// Initialisation du timer joueur
-		// TODO : tempsMax en fonction de la difficulte (oo, 60, 45, 30)
-		int tempsMax = 60; 
+		// Initialisation du timer joueur : tempsMax en fonction de la difficulte (oo, 45, 30, 15)
+		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
+			tempsMax = 0; // TODO pas de timer
+		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
+			tempsMax = 45;
+		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
+			tempsMax = 30;
+		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+			tempsMax = 15;
+		}
 		timerJoueurs = new Timer(10, new MyJoueurActionListener(tempsMax));
 
 		if (!initiative) {
@@ -1323,8 +1385,10 @@ public class FrameCombat extends FrameJeu {
 			// lance tour joueurs
 			JOptionPane.showMessageDialog(this, "Tour des allies");
 			
-			// TODO lance chrono tour joueurs si difficulte normal+
-			timerJoueurs.start();
+			// TODO lance chrono tour joueurs si difficulte facile+
+			if (tempsMax != 0) { 
+				timerJoueurs.start();
+			} 
 		}
 	}
 
@@ -1390,6 +1454,8 @@ public class FrameCombat extends FrameJeu {
 
 	private void executeSortEnnemi(PersonnageEnnemi lanceur, ActionCombat actionCombat) {
 
+		// TODO refactoring executeSort/executeSortEnnemi ++
+		
 		// Gestion consommation type energie
 		if (actionCombat.getEnergieType() == EnergieType.CHARGE) {
 			// On retire une charge
@@ -1646,7 +1712,7 @@ public class FrameCombat extends FrameJeu {
 			panelAdversaires.add(panelPerso);
 		}
 
-		labelTimer = new JLabel("Timer");
+		labelTimer = new JLabel("OO");
 		
 		panelCentre.add(panelJoueurs);
 		panelCentre.add(labelTimer);
@@ -1724,25 +1790,30 @@ public class FrameCombat extends FrameJeu {
 				for (PersonnagePrincipal perso : persosPresents) {
 					perso.setaDejaJoue(false);
 				}
-
-				// Raffraichissment panel Bas quand dernier perso selectionne
-				// meurt => switch sur un autre perso vivant
-				if (!persosPresents.isEmpty()) {
-					PersoPrenom prenom = persosPresents.get(0).getPrenom();
-					buildPanelActions(prenom);
-
-					// TODO message tour allie
-					JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Tour des allies");
-					
-					// TODO lance chrono tour joueurs si difficulte normal+
-					timerJoueurs.start();
-				}
-
+				
 				// Reactive les boutons grises
 				menuActions.setEnabled(true);
 				for (int i = 0; i < 3; i++) {
 					Component component = panelBoutonsGroupe.getComponent(i);
-					component.setEnabled(true);
+					if (component.getName().equals("boutonFuir") && !peuxFuir) {
+						component.setEnabled(false);
+					} else {
+						component.setEnabled(true);
+					}
+				}
+
+				// Raffraichissment panel Bas sur un perso vivant
+				if (!persosPresents.isEmpty()) {
+					PersoPrenom prenom = persosPresents.get(0).getPrenom();
+					buildPanelActions(prenom);
+
+					// Message tour allie
+					JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Tour des allies");
+					
+					// Lance chrono tour joueurs si difficulte normal+
+					if (tempsMax != 0) {
+						timerJoueurs.start();
+					}
 				}
 
 			}
