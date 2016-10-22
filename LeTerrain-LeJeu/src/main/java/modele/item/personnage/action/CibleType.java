@@ -4,5 +4,7 @@ public enum CibleType {
 	ALLIE,
 	ENNEMI,
 	GROUPE_ALLIES,
-	GROUPE_ENNEMIS;
+	GROUPE_ENNEMIS,
+	TOUS,
+	PERSO;
 }
