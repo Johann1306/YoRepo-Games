@@ -33,14 +33,14 @@ public class PanelInfoPoi extends JPanel {
 		JPanel panelCentre = new JPanel();
 		JPanel panelEst = new JPanel();
 		JPanel panelSud = new JPanel();
-		
-//		BoxLayout boxlayoutNord = new BoxLayout(panelNord, BoxLayout.Y_AXIS);
-//		panelNord.setLayout(boxlayoutNord);
+
+		// BoxLayout boxlayoutNord = new BoxLayout(panelNord, BoxLayout.Y_AXIS);
+		// panelNord.setLayout(boxlayoutNord);
 		BoxLayout boxlayoutBoutons = new BoxLayout(panelOuest, BoxLayout.Y_AXIS);
 		panelOuest.setLayout(boxlayoutBoutons);
 		BoxLayout boxlayoutInfo = new BoxLayout(panelCentre, BoxLayout.Y_AXIS);
 		panelCentre.setLayout(boxlayoutInfo);
-		
+
 		// Panel Nord : Poi
 		JLabel labelNomPoi = new JLabel(poi.getNom());
 		JLabel labelInfoPoi = new JLabel(poi.getInformations());
@@ -50,107 +50,117 @@ public class PanelInfoPoi extends JPanel {
 		panelNord.add(labelInfoPoi);
 		System.out.println(this.getMaximumSize());
 		labelNomPoi.setMaximumSize(this.getMaximumSize());
-		
 
 		// TODO : taille des boutons par rapport au plus grand nom de mission
 		// Pour chaque missions du Poi
 		for (Mission mission : poi.getMissions()) {
-			if (mission.isDisponible() && (!mission.isDejaFaite() || mission.isRepetable())) {
-				JButton bouton = new JButton(mission.getNom());
-				bouton.setFont(Constante.PRESS_START_FONT_MENU);
-				if (mission.isRepetable()) {
-					bouton.setBackground(Constante.COULEUR_MISSION_REPETABLE);
-				} else if (mission.getMissionType().equals(MissionType.PRINCIPAL)) {
-					bouton.setBackground(Constante.COULEUR_MISSION_PRINCIPAL);
-				} else if (mission.getMissionType().equals(MissionType.BOSS)) {
-					bouton.setBackground(Constante.COULEUR_MISSION_BOSS);
-				}
-
-				// Clic bouton mission
-				bouton.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						// Nettoyage
-						panelCentre.removeAll();
-						
-						// Presentation de la mission
-						JPanel panelProprio = new JPanel();
-						JPanel panelNomMission = new JPanel();
-						JPanel panelInfoMission = new JPanel();
-						JPanel panelObjectif = new JPanel();
-						JPanel panelCondVictoire = new JPanel();
-						JPanel panelCondDfaite = new JPanel();
-						JPanel panelDifficulte = new JPanel();
-						JPanel panelTypeMission = new JPanel();
-						JPanel panelNombreEssais = new JPanel();
-						JPanel panelNombreVictoire = new JPanel();
-						JPanel panelDateMission = new JPanel();
-						JPanel panelLieuMission = new JPanel();
-						
-						panelProprio.add(new JLabel("Propriétaire : " + mission.getProprietaire().name()));
-						panelNomMission.add(new JLabel("Nom de mission : " + mission.getNom()));
-						panelInfoMission.add(new JLabel("Infos : " + mission.getInformations()));
-						panelObjectif.add(new JLabel("Objectif : " + mission.getObjectif()));
-						panelCondVictoire.add(new JLabel("Condition de victoire : " + mission.getConditionVictoire()));
-						panelCondDfaite.add(new JLabel("Condition de defaite : " + mission.getConditionDefaite()));
-						panelDifficulte.add(new JLabel("Difficulté : " + mission.getDifficulty().name()));
-						panelTypeMission.add(new JLabel("Type de mission : " + mission.getMissionType().name()));
-						panelNombreEssais.add(new JLabel("Essais : " + mission.getNombreEssai()));
-						panelNombreVictoire.add(new JLabel("Victoires : " + mission.getNombreWin()));
-						panelDateMission.add(new JLabel("Date : " + mission.getDate()));
-						panelLieuMission.add(new JLabel("Lieu : " + mission.getLieu()));
-						
-						panelCentre.add(panelProprio);
-						panelCentre.add(panelNomMission);
-						panelCentre.add(panelInfoMission);
-						panelCentre.add(panelObjectif);
-						panelCentre.add(panelCondVictoire);
-						panelCentre.add(panelCondDfaite);
-						panelCentre.add(panelDifficulte);
-						panelCentre.add(panelTypeMission);
-						panelCentre.add(panelNombreEssais);
-						panelCentre.add(panelNombreVictoire);
-						panelCentre.add(panelDateMission);
-						panelCentre.add(panelLieuMission);
-						
-						// TODO : a presenter
-//						List<String> imagePaths = mission.getImagePaths();
-//						List<Item> itemsDebloques = mission.getItemsDebloques();
-//						List<Item> itemsNecessaires = mission.getItemsNecessaires();
-//						List<NomJeu> jeux = mission.getJeux();
-//						List<PersonnagePrincipal> personnagesInterdits = mission.getPersonnagesInterdits();
-//						List<PersonnagePrincipal> personnagesRequis = mission.getPersonnagesRequis(); 
-//						List<PersonnageSecondaire> personnagesSecondaires = mission.getPersonnagesSecondaires();
-//						List<String> sonPaths = mission.getSonPaths();
-//						List<String> videoPaths = mission.getVideoPaths();
-						
-						// Bouton lancer mission
-						JButton boutonMission = new JButton("START");
-						boutonMission.setFont(Constante.PRESS_START_FONT);
-						boutonMission.addActionListener(new ActionListener() {
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// Lance la mission
-								MissionManager missionManager = MenuPrincipal.getMainFrame().getCoreManager().getMissionManager();
-								missionManager.lanceMission(mission);
-
-								// Refresh panel Boutons Missions
-								if (!mission.isRepetable()) {
-									panelOuest.remove(bouton);
-									panelCentre.removeAll();
-								}
-							}
-						});
-						panelCentre.add(boutonMission);
-						// TODO : repaint ou autre
-//						repaint();
-						revalidate();
+			if (mission != null) {
+				if (mission.isDisponible() && (!mission.isDejaFaite() || mission.isRepetable())) {
+					JButton bouton = new JButton(mission.getNom());
+					bouton.setFont(Constante.PRESS_START_FONT_MENU);
+					if (mission.isRepetable()) {
+						bouton.setBackground(Constante.COULEUR_MISSION_REPETABLE);
+					} else if (mission.getMissionType().equals(MissionType.PRINCIPAL)) {
+						bouton.setBackground(Constante.COULEUR_MISSION_PRINCIPAL);
+					} else if (mission.getMissionType().equals(MissionType.BOSS)) {
+						bouton.setBackground(Constante.COULEUR_MISSION_BOSS);
 					}
-				});
-				panelOuest.add(bouton);
+
+					// Clic bouton mission
+					bouton.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+
+							// Nettoyage
+							panelCentre.removeAll();
+
+							// Presentation de la mission
+							JPanel panelProprio = new JPanel();
+							JPanel panelNomMission = new JPanel();
+							JPanel panelInfoMission = new JPanel();
+							JPanel panelObjectif = new JPanel();
+							JPanel panelCondVictoire = new JPanel();
+							JPanel panelCondDfaite = new JPanel();
+							JPanel panelDifficulte = new JPanel();
+							JPanel panelTypeMission = new JPanel();
+							JPanel panelNombreEssais = new JPanel();
+							JPanel panelNombreVictoire = new JPanel();
+							JPanel panelDateMission = new JPanel();
+							JPanel panelLieuMission = new JPanel();
+
+							panelProprio.add(new JLabel("Propriétaire : " + mission.getProprietaire().name()));
+							panelNomMission.add(new JLabel("Nom de mission : " + mission.getNom()));
+							panelInfoMission.add(new JLabel("Infos : " + mission.getInformations()));
+							panelObjectif.add(new JLabel("Objectif : " + mission.getObjectif()));
+							panelCondVictoire
+									.add(new JLabel("Condition de victoire : " + mission.getConditionVictoire()));
+							panelCondDfaite.add(new JLabel("Condition de defaite : " + mission.getConditionDefaite()));
+							panelDifficulte.add(new JLabel("Difficulté : " + mission.getDifficulty().name()));
+							panelTypeMission.add(new JLabel("Type de mission : " + mission.getMissionType().name()));
+							panelNombreEssais.add(new JLabel("Essais : " + mission.getNombreEssai()));
+							panelNombreVictoire.add(new JLabel("Victoires : " + mission.getNombreWin()));
+							panelDateMission.add(new JLabel("Date : " + mission.getDate()));
+							panelLieuMission.add(new JLabel("Lieu : " + mission.getLieu()));
+
+							panelCentre.add(panelProprio);
+							panelCentre.add(panelNomMission);
+							panelCentre.add(panelInfoMission);
+							panelCentre.add(panelObjectif);
+							panelCentre.add(panelCondVictoire);
+							panelCentre.add(panelCondDfaite);
+							panelCentre.add(panelDifficulte);
+							panelCentre.add(panelTypeMission);
+							panelCentre.add(panelNombreEssais);
+							panelCentre.add(panelNombreVictoire);
+							panelCentre.add(panelDateMission);
+							panelCentre.add(panelLieuMission);
+
+							// TODO : a presenter
+							// List<String> imagePaths =
+							// mission.getImagePaths();
+							// List<Item> itemsDebloques =
+							// mission.getItemsDebloques();
+							// List<Item> itemsNecessaires =
+							// mission.getItemsNecessaires();
+							// List<NomJeu> jeux = mission.getJeux();
+							// List<PersonnagePrincipal> personnagesInterdits =
+							// mission.getPersonnagesInterdits();
+							// List<PersonnagePrincipal> personnagesRequis =
+							// mission.getPersonnagesRequis();
+							// List<PersonnageSecondaire> personnagesSecondaires
+							// = mission.getPersonnagesSecondaires();
+							// List<String> sonPaths = mission.getSonPaths();
+							// List<String> videoPaths =
+							// mission.getVideoPaths();
+
+							// Bouton lancer mission
+							JButton boutonMission = new JButton("START");
+							boutonMission.setFont(Constante.PRESS_START_FONT);
+							boutonMission.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									// Lance la mission
+									MissionManager missionManager = MenuPrincipal.getMainFrame().getCoreManager()
+											.getMissionManager();
+									missionManager.lanceMission(mission);
+
+									// Refresh panel Boutons Missions
+									if (!mission.isRepetable()) {
+										panelOuest.remove(bouton);
+										panelCentre.removeAll();
+									}
+								}
+							});
+							panelCentre.add(boutonMission);
+							// TODO : repaint ou autre
+							// repaint();
+							revalidate();
+						}
+					});
+					panelOuest.add(bouton);
+				}
 			}
 		}
 		panelOuest.setBackground(Color.PINK);
@@ -158,7 +168,7 @@ public class PanelInfoPoi extends JPanel {
 		panelNord.setBackground(Color.RED);
 		panelEst.setBackground(Color.BLUE);
 		panelSud.setBackground(Color.GREEN);
-		
+
 		this.setLayout(new BorderLayout());
 		this.add(panelNord, BorderLayout.NORTH);
 		this.add(panelOuest, BorderLayout.WEST);

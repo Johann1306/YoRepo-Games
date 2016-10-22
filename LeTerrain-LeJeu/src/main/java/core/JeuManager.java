@@ -30,6 +30,7 @@ public class JeuManager implements Serializable {
 		Jeu jeuAgilite = new JeuAgilite(NomJeu.JEU_AGILITE);
 		Jeu jeuCombat = new JeuCombat(NomJeu.JEU_COMBAT);
 		Jeu jeuCourse = new JeuCourse(NomJeu.JEU_COURSE);
+		Jeu jeuFoot = new JeuCourse(NomJeu.JEU_FOOT);
 		// JEU_BILLE
 
 		jeux.put(NomJeu.JEU_RANDOM, jeuRandom);
@@ -37,6 +38,7 @@ public class JeuManager implements Serializable {
 		jeux.put(NomJeu.JEU_AGILITE, jeuAgilite);
 		jeux.put(NomJeu.JEU_COMBAT, jeuCombat);
 		jeux.put(NomJeu.JEU_COURSE, jeuCourse);
+		jeux.put(NomJeu.JEU_FOOT, jeuFoot);
 	}
 	
 	public Jeu getJeu(NomJeu nomJeu) {

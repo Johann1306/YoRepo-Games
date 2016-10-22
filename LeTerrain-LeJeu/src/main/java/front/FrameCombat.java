@@ -424,15 +424,15 @@ public class FrameCombat extends FrameJeu {
 			panelMenu.add(menuBar);
 			panelMenu.setMaximumSize(new Dimension(Constante.PANEL_ACTION_PERSO_LARGEUR, 30));
 
+			panelBoutonsPerso.add(new JLabel("CHANCE CRIT : " + perso.getCompetence().getLuck()));
+			panelBoutonsPerso.add(new JLabel("DEGATS CRIT : " + perso.getCompetence().getExploit()));
+			panelBoutonsPerso.add(new JLabel("ATTAQUE MIN : " + perso.getCompetence().getTechnique()));
 			panelBoutonsPerso.add(new JLabel("VIE MAX : " + perso.getCompetence().getEndurance()));
-			panelBoutonsPerso.add(new JLabel("ATTAQUE : " + perso.getCompetence().getTechnique()));
-			panelBoutonsPerso.add(new JLabel("CRITIQUE : " + perso.getCompetence().getExploit()));
 			panelBoutonsPerso.add(new JLabel("DEFENSE : " + perso.getCompetence().getResistance()));
-			panelBoutonsPerso.add(new JLabel("REGEN : " + perso.getCompetence().getRapidite()));
-			panelBoutonsPerso.add(new JLabel("MANA : " + perso.getCompetence().getIntelligence()));
-			panelBoutonsPerso.add(new JLabel("CHARGE : " + perso.getCompetence().getNoobisme()));
-			panelBoutonsPerso.add(new JLabel("AGILITE : " + perso.getCompetence().getAgilite()));
-			panelBoutonsPerso.add(new JLabel("CHANCE : " + perso.getCompetence().getLuck()));
+			panelBoutonsPerso.add(new JLabel("REGEN STUN : " + perso.getCompetence().getRapidite()));
+			panelBoutonsPerso.add(new JLabel("ESQUIVE : " + perso.getCompetence().getAgilite()));
+			panelBoutonsPerso.add(new JLabel("MANA MAX : " + perso.getCompetence().getIntelligence()));
+			panelBoutonsPerso.add(new JLabel("CHARGE MAX : " + perso.getCompetence().getNervosite()));
 			panelBoutonsPerso.add(panelMenu);
 			panelBoutonsPerso.setMaximumSize(
 					new Dimension(Constante.PANEL_ACTION_PERSO_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));

@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import core.ImageManager;
 import core.configuration.Constante;
 import modele.item.carte.Carte;
 import modele.item.lieu.Lieu;
@@ -132,7 +133,8 @@ public class PanelCentre extends JPanel {
 		// On recupere la carte
 		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
 		ImageIcon imageCarte = FenetrePrincipal.getImageIcon(carte.getImagePath().get(0));
-		JLabel labelCarte = new JLabel(imageCarte);
+		ImageIcon resizedImage = ImageManager.resizeImage(imageCarte, Constante.PANEL_CENTRE_DIMENSION);
+		JLabel labelCarte = new JLabel(resizedImage);
 
 		// On recupere les lieux disponibles pour cette carte
 		// TODO : JLabel nom de lieu 
@@ -181,9 +183,10 @@ public class PanelCentre extends JPanel {
 					panelBoutonCarte.setOpaque(false);
 					addBoutonCarte(panel, panelBoutonCarte);
 					
-					JLabel background = new JLabel(FenetrePrincipal.getImageIcon(lieu.getBackgroundPath()));
+					ImageIcon imageIcon = FenetrePrincipal.getImageIcon(lieu.getBackgroundPath());
 					// TODO
-//					panel.setSize(new Dimension(background.getWidth(), background.getHeight()));
+					ImageIcon resizedImage = ImageManager.resizeImage(imageIcon, Constante.PANEL_CENTRE_DIMENSION);			
+					JLabel background = new JLabel(resizedImage);
 					panel.add(background, Integer.valueOf(1));
 					cardLayout.show(MainFrame.getPanelCentre(), panel.getName());
 					revalidate();

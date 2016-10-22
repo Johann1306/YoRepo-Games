@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -92,9 +93,6 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		menu = new MenuPrincipal();
 		menu.initialise();
 		menu.setOpaque(false);
-		int x = (getRootPane().getWidth()/2) - (Constante.MENU_WIDTH/2);
-		int y = (getRootPane().getHeight()/2) - (Constante.MENU_HEIGHT/2);
-		menu.setLocation(new Point(x, y));
 		
 		// Refresh panel menu position quand resize
 		this.addComponentListener(new ComponentListener() {
@@ -104,8 +102,8 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 			
 			@Override
 			public void componentResized(ComponentEvent e) {
-				int x = (getRootPane().getWidth()/2) - (Constante.MENU_WIDTH/2);
-				int y = (getRootPane().getHeight()/2) - (Constante.MENU_HEIGHT/2);
+				int x = (getRootPane().getWidth()/2) - (menu.getMaximumSize().width/2);
+				int y = (getRootPane().getHeight()/2) - (menu.getMaximumSize().height/2);
 				menu.setLocation(new Point(x, y));
 			}
 			
@@ -117,7 +115,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		});
 		
 		menu.setBackground(Color.BLACK);
-		content.setBackground(Color.WHITE);
+ 		content.setBackground(Color.WHITE);
 
 		// Ajout du menu a la fenetre
 		ImageIcon image = getImageIcon("image/carte/montfermeil.png");

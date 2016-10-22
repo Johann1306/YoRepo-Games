@@ -16,10 +16,10 @@ public class Competence implements Serializable {
 		
 //			normal 		/	 jeu de foot			/	 jeu de combat					/	jeu de Quizz
 //		-Luck			/Liberte Creative-Chance	/Chance de critique					/
-//		-Exploit		/Excentricite-Critique		/Degats Critique					/
-//		-Technique		/Technique-Tir				/Attaque							/
+//		-Exploit		/Attaque-Tir				/Degats Critique					/
+//		-Technique		/Technique					/Attaque degats min					/
 //		-Endurance		/Energie-Endurance			/Vie								/
-//		-Rapidite		/Reactivite-Vitesse			/Vitesse de regeneration charge		/
+//		-Rapidite		/Reactivite-Vitesse			/Vitesse de recuperation stun		/
 //		-Resistance		/Robustesse-Defense			/Defense							/
 //		-Agilite		/Acceleration-Agilite		/Agilite							/
 //		-Intelligence	/Instinct					/Mana								/
@@ -33,7 +33,7 @@ public class Competence implements Serializable {
 		stats.put(PersoStat.RESISTANCE, 50);
 		stats.put(PersoStat.AGILITE, 50);
 		stats.put(PersoStat.INTELLIGENCE, 50);
-		stats.put(PersoStat.NOOBISME, 50);
+		stats.put(PersoStat.NERVOSITE, 50);
 	}
 	
 	public Map<PersoStat, Integer> getStats() {
@@ -77,7 +77,7 @@ public class Competence implements Serializable {
 		return stats.get(PersoStat.INTELLIGENCE);
 	}
 	
-	public int getNoobisme() {
-		return stats.get(PersoStat.NOOBISME);
+	public int getNervosite() {
+		return stats.get(PersoStat.NERVOSITE);
 	}
 }
