@@ -20,6 +20,7 @@ public class Constante {
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
+	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
 
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire
 	public static final int PANEL_GAUCHE_LARGEUR = 180;

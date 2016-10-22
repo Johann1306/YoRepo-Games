@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
 		
 //		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_MAX_HAUTEUR));
 
-		panelGauche.add(panelPersonnage);
+//		panelGauche.add(panelPersonnage);
 		panelDroite.add(panelMusique);
 
 		// Gestion de la fenetre principale
@@ -107,7 +107,7 @@ public class MainFrame extends JFrame {
 		JScrollBar jScrollBarPersos = new JScrollBar(1, 5, 5, 0, 10);
 		jScrollBarPersos.setUnitIncrement(50);
 		scrollPaneGauche.setVerticalScrollBar(jScrollBarPersos);
-		scrollPaneGauche.getViewport().add(panelGauche);
+		scrollPaneGauche.getViewport().add(panelPersonnage);
 		
 		// ScrollPane Panel Centre
 		JScrollPane scrollPaneCentre = new JScrollPane();

@@ -6,8 +6,10 @@ Problemes :
 - Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ???)
 - mission premier Perso qui n'apparait pas quand spam Entree
 - Quand fin du jeu (all persos morts) => Nullpointer apres fermeture de la MainFrame.dispose
+- fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
 
 Indispensables:
+- FrameFoot
 - Centrer PanelCentre on click milieu du scroll 
 - Ajouter Scroller au PanelCentre 
 - Fiche perso evolutive
@@ -19,6 +21,7 @@ Indispensables:
 - Gerer l'installation sur un autre poste
 - les TODOs
 - Remplir le contenu (Jeux)
+- gerer la difficulte generale
 
 - Remplir le contenu (Carte) + IHM de creation
 - Remplir le contenu (Lieux) + IHM de creation
@@ -46,6 +49,7 @@ Optionnelles:
 - PanelPersonnage / taille du panel quand vide 
 - Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
 - ajouter des sons quand deplacement carte, poi, mission et quand push bouton perso
+
 Bonus :
 
 - gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)

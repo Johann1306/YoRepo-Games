@@ -21,6 +21,6 @@ public enum PersoStat {
 	RESISTANCE,
 	AGILITE,
 	INTELLIGENCE,
-	NOOBISME;
+	NERVOSITE;
 	
 }
