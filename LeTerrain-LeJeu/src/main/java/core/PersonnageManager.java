@@ -75,7 +75,7 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des personnages Secondaires
 		personnagesSecondaires = new ArrayList<PersonnageSecondaire>();
-		PersonnageSecondaire barbara = new PersonnageSecondaire("Barbara");
+		PersonnageSecondaire barbara = new PersonnageSecondaire("Barbara", "Stolic");
 		
 		personnagesSecondaires.add(barbara);
 		
@@ -96,28 +96,36 @@ public class PersonnageManager implements Serializable {
 		int manaMax = 500;
 		int chargeMax = 5;
 		
+		// Competences pour les BOSS en fonction de la difficulte
+		Competence competence = null;
+		
 		// En fonction difficulte Partie 
 		if (difficultePartie == MissionDifficulty.FACILE) {
 			vieMax = 500;
 			manaMax = 100;
 			chargeMax = 3;
+			competence = new Competence(25);
 		} else if (difficultePartie == MissionDifficulty.NORMAL) {
 			vieMax = 1000;
 			manaMax = 200;
 			chargeMax = 5;
+			competence = new Competence(50);
 		} else if (difficultePartie == MissionDifficulty.DIFFICILE) {
 			vieMax = 5000;
 			manaMax = 500;
 			chargeMax = 7;
+			competence = new Competence(75);
 		} else if (difficultePartie == MissionDifficulty.HEROIQUE) {
 			vieMax = 10000;
 			manaMax = 1000;
 			chargeMax = 10;
+			competence = new Competence(100);
 		} 
 
+		// ActionsCombat du BOSS
 		List<ActionCombat> actionsCombat = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
 		
-		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat);
+		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat, competence);
 		personnagesBoss.add(boss1);
 	}
 
@@ -199,24 +207,32 @@ public class PersonnageManager implements Serializable {
 		// TODO actionsCombat pour les ennemis en fonction de la difficulte
 		List<ActionCombat> actionsCombat = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager().getActionsCombat(mission.getTypeEnnemis().name());
 
+		// Competences pour les ennemis en fonction de la difficulte
+		Competence competence = null;
+		
 		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
 			vieMax = 500;
 			manaMax = 100;
 			chargeMax = 1;
+			competence = new Competence(25);
 		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
 			vieMax = 1000;
 			manaMax = 200;
 			chargeMax = 2;
+			competence = new Competence(50);
 		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
-			vieMax = 5000;
+			vieMax = 2000;
 			manaMax = 500;
 			chargeMax = 3;
+			competence = new Competence(75);
 		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
-			vieMax = 10000;
+			vieMax = 5000;
 			manaMax = 1000;
 			chargeMax = 5;
+			competence = new Competence(100);
 		} 
-		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis());
+
+		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique, particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis(), competence);
 		return ennemi;
 	}
 

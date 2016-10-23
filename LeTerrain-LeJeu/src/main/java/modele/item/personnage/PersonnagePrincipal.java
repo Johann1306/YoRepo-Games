@@ -2,6 +2,7 @@
 package modele.item.personnage;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,13 +22,9 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private static final long serialVersionUID = 1L;
 	
 	private PersoNom nomFamille;
-	private PersoPrenom prenom;
+	private PersoPrenom prenomPerso;
 	private String surnomPrincipal;
 	private List<String> surnoms;
-	private List<String> particularitesPhysique;
-	private List<String> particularitesSocial;
-	private List<String> phrasesPerso;
-	private ImageIcon photoPrincipal;
 	private List<ImageIcon> photos;
 	private Color couleur;
 	
@@ -41,25 +38,24 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private List<Item> sac;
 	private Lieu domicile;
 	private Location location;
-	private Competence competence;
 	public boolean isDejaPresente;
 	private boolean available;
 
-	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenom, String surnomPrincipal, List<String> surnoms,
+	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence,
 			boolean available) {
-		super(prenom.name());
+		super(prenomPerso.name(), nomFamille.name());
 		this.nomFamille = nomFamille;
-		this.prenom = prenom;
+		this.prenomPerso = prenomPerso;
 		this.surnomPrincipal = surnomPrincipal;
 		this.surnoms = surnoms;
-		this.particularitesPhysique = particularitesPhysique;
-		this.particularitesSocial = particularitesSocial;
-		this.phrasesPerso = phrasesPerso;
-		this.photoPrincipal = photoPrincipal;
+		this.setParticularitesPhysique(particularitesPhysique);
+		this.setParticularitesSocial(particularitesSocial);
+		this.setPhrasesPerso(phrasesPerso);
+		this.setPhotoPrincipal(photoPrincipal);
 		this.photos = photos;
 		this.couleur = couleur;
 		this.actionsCombat = actionsCombat;
@@ -73,7 +69,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.domicile = domicile;
 		// TODO : location/domicile a setter plus tard (apres intialisation du coreManager)
 		this.location = null;
-		this.competence = competence;
+		this.setCompetence(competence);
 		this.isDejaPresente = false;
 		this.available = available;
 //		this.setVieMax(competence.getEndurance()); // max vie = 100
@@ -92,7 +88,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		
 		if (map != null) {
 			// On recupere les stats du perso
-			Map<PersoStat, Integer> statsPerso = competence.getStats();
+			Map<PersoStat, Integer> statsPerso = getCompetence().getStats();
 			
 			// Pour chaque stat
 			for (PersoStat stat : statsPerso.keySet()) {
@@ -115,8 +111,8 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		return nomFamille;
 	}
 
-	public PersoPrenom getPrenom() {
-		return prenom;
+	public PersoPrenom getPrenomPerso() {
+		return prenomPerso;
 	}
 
 	public String getSurnomPrincipal() {
@@ -125,22 +121,6 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 
 	public List<String> getSurnoms() {
 		return surnoms;
-	}
-
-	public List<String> getParticularitesPhysique() {
-		return particularitesPhysique;
-	}
-
-	public List<String> getParticularitesSocial() {
-		return particularitesSocial;
-	}
-
-	public List<String> getPhrasesPerso() {
-		return phrasesPerso;
-	}
-
-	public ImageIcon getPhotoPrincipal() {
-		return photoPrincipal;
 	}
 
 	public List<ImageIcon> getPhotos() {
@@ -177,10 +157,6 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 
 	public Lieu getDomicile() {
 		return domicile;
-	}
-
-	public Competence getCompetence() {
-		return competence;
 	}
 
 	public boolean isAvailable() {
@@ -222,4 +198,5 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
+
 }

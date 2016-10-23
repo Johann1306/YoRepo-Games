@@ -38,9 +38,9 @@ public class Groupe implements Serializable {
 		return persosDejaPresentes;
 	}
 
-	public PersonnagePrincipal getPersoByNom(PersoPrenom nom) {
+	public PersonnagePrincipal getPersoByNom(PersoPrenom prenom) {
 		for (PersonnagePrincipal perso : leGroupe)
-			if (nom.equals(perso.getPrenom())) {
+			if (prenom.name().equals(perso.getPrenom())) {
 				return perso;
 			}
 		return null;
@@ -48,7 +48,7 @@ public class Groupe implements Serializable {
 	
 	public PersonnagePrincipal getPersoByNom(String nom) {
 		for (PersonnagePrincipal perso : leGroupe)
-			if (nom.equals(perso.getPrenom().name())) {
+			if (nom.equals(perso.getPrenom())) {
 				return perso;
 			}
 		return null;

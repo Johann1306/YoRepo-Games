@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import modele.item.mission.enums.MissionDifficulty;
+
 public class Competence implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -16,26 +18,53 @@ public class Competence implements Serializable {
 		
 //			normal 		/	 jeu de foot			/	 jeu de combat					/	jeu de Quizz
 //		-Luck			/Liberte Creative-Chance	/Chance de critique					/
-//		-Exploit		/Attaque-Tir				/Degats Critique					/
-//		-Technique		/Technique					/Attaque degats min					/
-//		-Endurance		/Energie-Endurance			/Vie								/
+//		-Exploit		/Attaque-Tir				/Degats critique					/
+//		-Technique		/Technique					/Degats min							/
+//		-Endurance		/Energie-Endurance			/Vie max							/
 //		-Rapidite		/Reactivite-Vitesse			/Vitesse de recuperation stun		/
-//		-Resistance		/Robustesse-Defense			/Defense							/
-//		-Agilite		/Acceleration-Agilite		/Agilite							/
-//		-Intelligence	/Instinct					/Mana								/
-//		-Noobisme		/Nervosite					/Nombre de charge					/
+//		-Resistance		/Robustesse-Defense			/Reduction Degats					/
+//		-Agilite		/Acceleration-Agilite		/chance d'esquive							/
+//		-Intelligence	/Instinct					/Mana max							/
+//		-Nervosite		/Nervosite					/Nombre de charge max				/
 		
-		stats.put(PersoStat.LUCK, 50);
-		stats.put(PersoStat.EXPLOIT, 50);
+		stats.put(PersoStat.LUCK, 50);			// min 3 => chance de crit min = chance/3				(/3)
+		stats.put(PersoStat.EXPLOIT, 50);		// min 10 => degats crit min = expl/10					(/10)
 		stats.put(PersoStat.TECHNIQUE, 50);
 		stats.put(PersoStat.ENDURANCE, 50);
 		stats.put(PersoStat.RAPIDITE, 50);
-		stats.put(PersoStat.RESISTANCE, 50);
-		stats.put(PersoStat.AGILITE, 50);
+		stats.put(PersoStat.RESISTANCE, 50);	// min 0 (conseille 20) => reduction degats max = -80% 	(-20)
+		stats.put(PersoStat.AGILITE, 50);		// min 2 => degats min = agi/2 							(/2)
 		stats.put(PersoStat.INTELLIGENCE, 50);
 		stats.put(PersoStat.NERVOSITE, 50);
 	}
 	
+	public Competence(int valeur) {
+		
+		stats = new HashMap<PersoStat, Integer>();
+		
+		stats.put(PersoStat.LUCK, valeur);			
+		stats.put(PersoStat.EXPLOIT, valeur);		
+		stats.put(PersoStat.TECHNIQUE, valeur);
+		stats.put(PersoStat.ENDURANCE, valeur);
+		stats.put(PersoStat.RAPIDITE, valeur);
+		stats.put(PersoStat.RESISTANCE, valeur);	
+		stats.put(PersoStat.AGILITE, valeur);		
+		stats.put(PersoStat.INTELLIGENCE, valeur);
+		stats.put(PersoStat.NERVOSITE, valeur);
+	}
+	
+	public Competence(MissionDifficulty difficulty) {
+		if (difficulty == MissionDifficulty.FACILE) {
+			new Competence(25);
+		} else if (difficulty == MissionDifficulty.NORMAL) {
+			new Competence(50);
+		} else if (difficulty == MissionDifficulty.DIFFICILE) {
+			new Competence(75);
+		} else if (difficulty == MissionDifficulty.HEROIQUE) {
+			new Competence(100);
+		}
+	}
+
 	public Map<PersoStat, Integer> getStats() {
 		return stats;
 	}

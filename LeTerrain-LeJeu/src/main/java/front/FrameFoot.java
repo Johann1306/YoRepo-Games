@@ -107,14 +107,14 @@ public class FrameFoot extends FrameJeu {
 		boutonGuillaume.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 		boutonJonathan.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 
-		boutonNicolas.setName(nicolas.getPrenom().name());
-		boutonPierre.setName(pierre.getPrenom().name());
-		boutonYannick.setName(yannick.getPrenom().name());
-		boutonThomas.setName(thomas.getPrenom().name());
-		boutonJohann.setName(johann.getPrenom().name());
-		boutonAli.setName(ali.getPrenom().name());
-		boutonGuillaume.setName(guillaume.getPrenom().name());
-		boutonJonathan.setName(jonathan.getPrenom().name());
+		boutonNicolas.setName(nicolas.getPrenom());
+		boutonPierre.setName(pierre.getPrenom());
+		boutonYannick.setName(yannick.getPrenom());
+		boutonThomas.setName(thomas.getPrenom());
+		boutonJohann.setName(johann.getPrenom());
+		boutonAli.setName(ali.getPrenom());
+		boutonGuillaume.setName(guillaume.getPrenom());
+		boutonJonathan.setName(jonathan.getPrenom());
 
 		JPanel panelPersos = new JPanel();
 		BoxLayout boxlayout = new BoxLayout(panelPersos, BoxLayout.Y_AXIS);

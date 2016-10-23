@@ -63,14 +63,14 @@ public class PanelPersonnage extends JPanel {
 		boutonJonathan = new JButton(jonathan.getPhotoPrincipal());
 		boutonGroupe = new JButton("GROUPE");
 		
-		boutonNicolas.setName(nicolas.getPrenom().name());
-		boutonPierre.setName(pierre.getPrenom().name());
-		boutonYannick.setName(yannick.getPrenom().name());
-		boutonThomas.setName(thomas.getPrenom().name());
-		boutonJohann.setName(johann.getPrenom().name());
-		boutonAli.setName(ali.getPrenom().name());
-		boutonGuillaume.setName(guillaume.getPrenom().name());
-		boutonJonathan.setName(jonathan.getPrenom().name());
+		boutonNicolas.setName(nicolas.getPrenom());
+		boutonPierre.setName(pierre.getPrenom());
+		boutonYannick.setName(yannick.getPrenom());
+		boutonThomas.setName(thomas.getPrenom());
+		boutonJohann.setName(johann.getPrenom());
+		boutonAli.setName(ali.getPrenom());
+		boutonGuillaume.setName(guillaume.getPrenom());
+		boutonJonathan.setName(jonathan.getPrenom());
 		
 		boutonNicolas.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 		boutonPierre.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
@@ -235,7 +235,7 @@ public class PanelPersonnage extends JPanel {
 					// presentation du perso
 					if ( boutons != null ) {
 						for (JButton bouton : boutons) {
-							if (bouton.getName().equals(perso.getPrenom().name()) && !bouton.isVisible()) {
+							if (bouton.getName().equals(perso.getPrenom()) && !bouton.isVisible()) {
 								// affichage du bouton du perso
 								bouton.setVisible(true);
 						
@@ -268,7 +268,7 @@ public class PanelPersonnage extends JPanel {
 				if (perso.isMort()) {
 					if ( boutons != null ) {
 						for (JButton bouton : boutons) {
-							if (bouton.getName().equals(perso.getPrenom().name())) {
+							if (bouton.getName().equals(perso.getPrenom())) {
 								// On grise le bouton du perso
 								bouton.setEnabled(false);
 							} 
@@ -312,8 +312,8 @@ public class PanelPersonnage extends JPanel {
 					List<PersonnagePrincipal> persoVivants = personnageManager.getPersoVivants();
 					PersonnagePrincipal persoVivant = persoVivants.get(0);
 					CardLayout cardLayout = panelCentre.getCardLayout();
-					cardLayout.show(panelCentre, persoVivant.getPrenom().name());
-					panelBas.refreshPanelBas(persoVivant.getPrenom());			
+					cardLayout.show(panelCentre, persoVivant.getPrenom());
+					panelBas.refreshPanelBas(persoVivant.getPrenomPerso());			
 					coreManager.getMenuManager().lanceRefreshMenu();
 				}
 			}
