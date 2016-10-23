@@ -2,8 +2,8 @@ package modele.item.personnage;
 
 public class PersonnageSecondaire extends Personnage {
 
-	public PersonnageSecondaire(String nom) {
-		super(nom);
+	public PersonnageSecondaire(String prenom, String nom) {
+		super(prenom, nom);
 		// TODO Auto-generated constructor stub
 	}
 
