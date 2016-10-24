@@ -46,7 +46,6 @@ import modele.item.personnage.action.ActionCombatType;
 import modele.item.personnage.action.CibleType;
 import modele.item.personnage.action.EnergieType;
 import modele.item.personnage.action.SortType;
-import uk.co.caprica.vlcj.player.condition.conditions.TimeReachedCondition;
 
 public class FrameCombat extends FrameJeu {
 

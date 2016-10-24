@@ -2,7 +2,9 @@ package front;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,6 +55,7 @@ public class PanelInfoPoi extends JPanel {
 
 		// TODO : taille des boutons par rapport au plus grand nom de mission
 		// Pour chaque missions du Poi
+		int largeurMax = 0;
 		for (Mission mission : poi.getMissions()) {
 			if (mission != null) {
 				if (mission.isDisponible() && (!mission.isDejaFaite() || mission.isRepetable())) {
@@ -159,10 +162,20 @@ public class PanelInfoPoi extends JPanel {
 							revalidate();
 						}
 					});
+					bouton.setMaximumSize(Constante.BOUTON_MISSIONS_DIMENSION);
 					panelOuest.add(bouton);
+//					if (bouton.getWidth() > largeurMax) {
+//						largeurMax = bouton.getWidth();
+//					}
+////					panelOuest.setMaximumSize(new Dimension(largeurMax, 150));
+//					Component[] components = panelOuest.getComponents();
+//					for (Component component : components) {
+//						component.setMinimumSize(new Dimension(largeurMax, 150));
+//					}
 				}
 			}
 		}
+		
 		panelOuest.setBackground(Color.PINK);
 		panelCentre.setBackground(Color.YELLOW);
 		panelNord.setBackground(Color.RED);
