@@ -92,7 +92,7 @@ public class MissionManager implements Serializable  {
 		
 					
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)
-		Mission mission1 = new Mission(incrementId(), "Premier Perso", "Selectionne ton personnage principal :", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "Choisir votre personnage", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.FACILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission1 = new Mission(incrementId(), "Premier Perso", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.FACILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission2 = new Mission(incrementId(), "mission facile", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, MissionDifficulty.FACILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
 		Mission mission3 = new Mission(incrementId(), "mission normal", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
 		Mission mission4 = new Mission(incrementId(), "mission difficile", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.DIFFICILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
@@ -238,6 +238,8 @@ public class MissionManager implements Serializable  {
 				refreshMissions();
 			}
 		}
+		// TODO refresh panel centre si nouvelle mission disponible
+		MainFrame.getPanelCentre().refreshPanelCourant();
 	}
 	
 	public void lanceMission(Mission mission) {
