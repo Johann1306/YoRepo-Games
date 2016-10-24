@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
-
 public class Constante {
 	
 	public static final Dimension PERSO_IMAGE_DIMENSION_64_64 = new Dimension(64, 64);
@@ -21,8 +19,9 @@ public class Constante {
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
+	public static final Dimension BOUTON_MISSIONS_DIMENSION = new Dimension(300,50); // pas exact
 
-	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire
+	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire TODO mieux
 	public static final int PANEL_GAUCHE_LARGEUR = 180;
 	public static final int PANEL_GAUCHE_MAX_HAUTEUR = 1470;	// Pour 8 persos principaux
 	
@@ -35,10 +34,9 @@ public class Constante {
 	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
 	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
 	public static final int PANEL_ITEMS_COMBAT_LARGEUR = 95;
-
 	public static final int PANEL_INFO_PERSO_LARGEUR = 100;
 
-
+	// FONT
 	public static final Font PRESS_START_FONT_FRAMECOMBAT_INFO = new Font("Press Start", Font.PLAIN, 8);
 	public static final Font PRESS_START_FONT = new Font("Press Start", Font.PLAIN, 10);
 	public static final Font PRESS_START_FONT_MENU = new Font("Press Start", Font.PLAIN, 20);

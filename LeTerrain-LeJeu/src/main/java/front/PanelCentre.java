@@ -95,7 +95,7 @@ public class PanelCentre extends JPanel {
 		buildPanelPerso(panelGuillaume);
 		buildPanelPerso(panelJonathan);
 
-		// TODO : gerer la taile des panel plus petit
+		// TODO : gerer la taille des panel plus petit
 		// panelGroupe.setMaximumSize(new Dimension(imageGroupe.getIconWidth(),
 		// imageGroupe.getIconHeight()));
 
