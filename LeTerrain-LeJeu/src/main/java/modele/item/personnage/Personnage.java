@@ -16,7 +16,6 @@ public class Personnage implements Serializable {
 	private String prenom;
 	private String surnomPrincipal;
 	private List<String> surnoms;
-	private boolean mort = false;
 	private int vie;
 	private int vieMax;
 	private int mana;
@@ -32,7 +31,10 @@ public class Personnage implements Serializable {
 	private List<ImageIcon> photos;
 	private List<ActionCombat> actionsCombat;
 	private Competence competence;
+	
+	private boolean mort = false;
 	private boolean aDejaJoue = false;
+	private int nombreEsquive = 0;
 
 	public Personnage(String prenom, String nom) {
 		this.prenom = prenom;
@@ -207,6 +209,15 @@ public class Personnage implements Serializable {
 		this.aDejaJoue = aDejaJoue;
 	}
 
+	public int getNombreEsquive() {
+		return nombreEsquive;
+	}
+
+	public void setNombreEsquive(int nombreEsquive) {
+		this.nombreEsquive = nombreEsquive;
+		
+	}
+
 	@Override
 	public String toString() {
 		return "Personnage [nom=" + nom + ", vie=" + vie + "/" + vieMax + ", mort=" + mort + ", mana=" + mana + "/"
@@ -223,4 +234,6 @@ public class Personnage implements Serializable {
 			nombreCharge = nombreCharge + 1;
 		}
 	}
+
+
 }

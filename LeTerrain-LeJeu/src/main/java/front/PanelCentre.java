@@ -130,6 +130,7 @@ public class PanelCentre extends JPanel {
 
 	// Construit l'enchainement de map/lieu/poi/missions/jeux pour un panel perso
 	private void buildPanelPerso(JComponent panel) {
+		panel.removeAll();
 		// On recupere la carte
 		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
 		ImageIcon imageCarte = FenetrePrincipal.getImageIcon(carte.getImagePath().get(0));
@@ -140,7 +141,17 @@ public class PanelCentre extends JPanel {
 		// TODO : JLabel nom de lieu 
 		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
 		for (Lieu lieu : lieuxPersoGroupe) {
-			JButton bouton = new JButton(lieu.getNom());
+			// Affiche le nombre de nouvelles missions sur ce lieu
+			int nbMissionsLieu = 0;
+			for (Poi poi : lieu.getPois()) {
+				nbMissionsLieu = nbMissionsLieu + poi.getNouvellesMissionsDisponibles().size();
+			}
+			JButton bouton = null;
+			if (nbMissionsLieu == 0) {
+				bouton = new JButton(lieu.getNom()); 
+			} else {
+				bouton = new JButton(lieu.getNom() + " (" + nbMissionsLieu + ")");
+			}
 			bouton.setFont(Constante.PRESS_START_FONT);
 			JPanel panelBouton = new JPanel();
 			panelBouton.setLocation(lieu.getPosition());
@@ -155,7 +166,14 @@ public class PanelCentre extends JPanel {
 					System.out.println("- evenement aleatoire quand deplacement lieu");
 					panel.removeAll();
 					for (Poi poi : lieu.getPois()) {
-						JButton bouton = new JButton(poi.getNom());
+						// Affiche le nombre de nouvelles missions sur ce lieu
+						int nbMissionsPoi = poi.getNouvellesMissionsDisponibles().size();
+						JButton bouton = null;
+						if (nbMissionsPoi == 0) {
+							bouton = new JButton(poi.getNom());
+						} else {
+							bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
+						}
 						bouton.setFont(Constante.PRESS_START_FONT);
 						JPanel panelBouton = new JPanel();
 						panelBouton.setLocation(poi.getPoint());
@@ -195,11 +213,11 @@ public class PanelCentre extends JPanel {
 			panel.add(panelBouton, Integer.valueOf(2));
 		}
 		panel.add(labelCarte, Integer.valueOf(1));
+		revalidate();
 		// TODO
 //		panel.setSize(new Dimension(labelCarte.getWidth(), labelCarte.getHeight()));
 		// TODO : contour couleur autour du panel centre
 //		panel.setMaximumSize(new Dimension(imageCarte.getIconWidth() + Constante.ESPACE_PANEL_CENTRE , imageCarte.getIconHeight() + Constante.ESPACE_PANEL_CENTRE));
-		
 	}
 
 	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
@@ -251,5 +269,11 @@ public class PanelCentre extends JPanel {
 			return panelGroupe;
 		}
 		return null;
+	}
+
+	public void refreshPanelCourant() {
+		// TODO refresh uniquement le nom des boutons du panel courant
+		buildPanelPerso(getPanelShowing());
+		this.revalidate();
 	}
 }

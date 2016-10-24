@@ -1,7 +1,9 @@
 package modele.item.poi;
 
+import java.awt.Component;
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import modele.item.Item;
@@ -37,6 +39,18 @@ public class Poi extends Item implements Serializable {
 
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;
+	}
+
+	public List<Mission> getNouvellesMissionsDisponibles() {
+		List<Mission> nouvellesMissions = new ArrayList<Mission>();
+		for (Mission mission : missions) {
+			if (mission != null) {
+				if (mission.isDisponible() && !mission.isDejaFaite()) {
+					nouvellesMissions.add(mission);
+				}
+			}
+		}
+		return nouvellesMissions;
 	}
 
 }

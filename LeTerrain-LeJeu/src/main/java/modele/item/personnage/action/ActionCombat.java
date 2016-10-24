@@ -6,6 +6,7 @@ import java.util.List;
 import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.personnage.PersoPrenom;
 
 public class ActionCombat extends Item implements Serializable {
 
@@ -23,8 +24,8 @@ public class ActionCombat extends Item implements Serializable {
 	public ActionCombat(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
 			List<String> videoPaths, boolean isDisponible, int niveau,
 			int niveauMax, int progression, ActionCombatType actionCombatType, EnergieType energieType,
-			CibleType cibleType, PersoStat persoStat, SortType sortType) {
-		super(id, nom, informations, imagePaths, sonPaths, videoPaths, null, ItemType.ACTION_COMBAT, isDisponible);
+			CibleType cibleType, PersoStat persoStat, SortType sortType, PersoPrenom proprietaire) {
+		super(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, ItemType.ACTION_COMBAT, isDisponible);
 		this.niveau = niveau;
 		this.niveauMax = niveauMax;
 		this.progression = progression;

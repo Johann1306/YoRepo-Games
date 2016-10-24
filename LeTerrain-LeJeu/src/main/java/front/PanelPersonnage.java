@@ -26,7 +26,7 @@ import modele.item.personnage.PersonnagePrincipal;
 
 public class PanelPersonnage extends JPanel {
 	
-	// Recuperation des  personnages principaux
+	// Recuperation des personnages principaux
 
 	private JButton boutonNicolas = null;
 	private JButton boutonPierre = null;
@@ -107,7 +107,7 @@ public class PanelPersonnage extends JPanel {
 				// TODO : essayer de ne pas rafraichir
 				panelBas.refreshPanelBas(PersoPrenom.Nicolas);
 				menuManager.lanceRefreshMenu();
-				
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {
@@ -116,6 +116,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Pierre.name());
 				panelBas.refreshPanelBas(PersoPrenom.Pierre);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonYannick.addActionListener(new ActionListener() {
@@ -124,6 +125,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Yannick.name());
 				panelBas.refreshPanelBas(PersoPrenom.Yannick);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonThomas.addActionListener(new ActionListener() {
@@ -132,6 +134,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Thomas.name());
 				panelBas.refreshPanelBas(PersoPrenom.Thomas);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonJohann.addActionListener(new ActionListener() {
@@ -140,6 +143,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Johann.name());
 				panelBas.refreshPanelBas(PersoPrenom.Johann);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonAli.addActionListener(new ActionListener() {
@@ -148,6 +152,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Ali.name());
 				panelBas.refreshPanelBas(PersoPrenom.Ali);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonGuillaume.addActionListener(new ActionListener() {
@@ -156,6 +161,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Guillaume.name());
 				panelBas.refreshPanelBas(PersoPrenom.Guillaume);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonJonathan.addActionListener(new ActionListener() {
@@ -164,6 +170,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.Jonathan.name());
 				panelBas.refreshPanelBas(PersoPrenom.Jonathan);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		boutonGroupe.addActionListener(new ActionListener() {
@@ -172,6 +179,7 @@ public class PanelPersonnage extends JPanel {
 				cardLayout.show(panelCentre, PersoPrenom.GROUPE.name());
 				panelBas.refreshPanelBas(PersoPrenom.GROUPE);			
 				menuManager.lanceRefreshMenu();
+				panelCentre.refreshPanelCourant();
 			}
 		});
 		

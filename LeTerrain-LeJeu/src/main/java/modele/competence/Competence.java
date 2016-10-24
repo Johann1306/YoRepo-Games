@@ -53,18 +53,6 @@ public class Competence implements Serializable {
 		stats.put(PersoStat.NERVOSITE, valeur);
 	}
 	
-	public Competence(MissionDifficulty difficulty) {
-		if (difficulty == MissionDifficulty.FACILE) {
-			new Competence(25);
-		} else if (difficulty == MissionDifficulty.NORMAL) {
-			new Competence(50);
-		} else if (difficulty == MissionDifficulty.DIFFICILE) {
-			new Competence(75);
-		} else if (difficulty == MissionDifficulty.HEROIQUE) {
-			new Competence(100);
-		}
-	}
-
 	public Map<PersoStat, Integer> getStats() {
 		return stats;
 	}

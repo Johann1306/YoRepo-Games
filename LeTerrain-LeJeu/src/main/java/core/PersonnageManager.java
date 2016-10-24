@@ -93,8 +93,8 @@ public class PersonnageManager implements Serializable {
 		// TODO en fonction de la difficulte
 		
 		int vieMax = 1000;
-		int manaMax = 500;
-		int chargeMax = 5;
+		int manaMax = 200;
+		int chargeMax = 10;
 		
 		// Competences pour les BOSS en fonction de la difficulte
 		Competence competence = null;
@@ -106,18 +106,18 @@ public class PersonnageManager implements Serializable {
 			chargeMax = 3;
 			competence = new Competence(25);
 		} else if (difficultePartie == MissionDifficulty.NORMAL) {
-			vieMax = 1000;
-			manaMax = 200;
+			vieMax = 650;
+			manaMax = 150;
 			chargeMax = 5;
 			competence = new Competence(50);
 		} else if (difficultePartie == MissionDifficulty.DIFFICILE) {
-			vieMax = 5000;
-			manaMax = 500;
+			vieMax = 850;
+			manaMax = 150;
 			chargeMax = 7;
 			competence = new Competence(75);
 		} else if (difficultePartie == MissionDifficulty.HEROIQUE) {
-			vieMax = 10000;
-			manaMax = 1000;
+			vieMax = 1000;
+			manaMax = 200;
 			chargeMax = 10;
 			competence = new Competence(100);
 		} 
@@ -211,23 +211,23 @@ public class PersonnageManager implements Serializable {
 		Competence competence = null;
 		
 		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
-			vieMax = 500;
-			manaMax = 100;
+			vieMax = 20;
+			manaMax = 50;
 			chargeMax = 1;
 			competence = new Competence(25);
 		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
-			vieMax = 1000;
-			manaMax = 200;
+			vieMax = 30;
+			manaMax = 100;
 			chargeMax = 2;
 			competence = new Competence(50);
 		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
-			vieMax = 2000;
-			manaMax = 500;
+			vieMax = 40;
+			manaMax = 150;
 			chargeMax = 3;
 			competence = new Competence(75);
 		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
-			vieMax = 5000;
-			manaMax = 1000;
+			vieMax = 50;
+			manaMax = 200;
 			chargeMax = 5;
 			competence = new Competence(100);
 		} 
