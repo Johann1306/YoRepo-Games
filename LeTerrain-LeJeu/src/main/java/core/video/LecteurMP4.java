@@ -24,9 +24,9 @@ public class LecteurMP4 {
 	public void init() {
 		// This will locate LibVLC for the vast majority of cases
 		
-//		System.setProperty("jna.library.path", "src/main/resources/lib/libvlc.dll");
+//		System.setProperty("jna.library.path", "src/main/resources/lib");
 //		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "win32-x86-64");
-//		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "src/main/resources/lib/libvlccore.dll");
+//		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "src/main/resources/lib");
 //		System.loadLibrary("lib/libvlc.dll");
 //		System.loadLibrary("src/main/resources/lib/libvlccore.dll");
 		

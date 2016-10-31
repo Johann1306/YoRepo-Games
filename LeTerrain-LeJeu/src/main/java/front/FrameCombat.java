@@ -910,7 +910,7 @@ public class FrameCombat extends FrameJeu {
 		int score = -1;
 		boolean isCritique = false;
 		int coupCritique = 1;
-		int charge = 1;
+		int charges = 1;
 		int niveau = 1;
 		int min = 0;
 		int max = 100;
@@ -1002,18 +1002,18 @@ public class FrameCombat extends FrameJeu {
 			min = max;
 		}
 
-		// score en fonction du nombre de cibles si Multi (fonction difficulte?
-		// => /2 /3 /4)
+		// score en fonction du nombre de cibles si Multi 
+		// TODO fonction difficulte? => /1 /2 /3 /4)
 		int nombreCibles = cibles.size();
 
 		// score en fonction du nombre de charge consommé (SPECIAL)
 		if (actionCombat.getEnergieType() == EnergieType.CHARGE
 				|| actionCombat.getEnergieType() == EnergieType.CHARGE_ET_MANA) {
-			charge = chargesConsommes;
+			charges = chargesConsommes;
 		}
 
 		// Calcul du score
-		score = (RandomManager.random(min, max) * coupCritique * niveau * charge) / nombreCibles;
+		score = (RandomManager.random(min, max) * coupCritique * niveau * charges) / nombreCibles;
 
 		// TODO fail score = 0
 		if (score == 0) {
@@ -1023,6 +1023,11 @@ public class FrameCombat extends FrameJeu {
 		animationLanceur(lanceur, score, cibles);
 
 		// TODO son/image si critique true
+		if (isCritique) {
+			MusiqueManager.playSon(actionCombat.getSonCritique());
+		} else {
+			MusiqueManager.playSon(actionCombat.getSon());
+		}
 
 		// Affichage info sort
 		JLabel messageInfoCombat = getMessage(lanceur, actionCombat, score, cibles, isCritique);
@@ -1030,11 +1035,13 @@ public class FrameCombat extends FrameJeu {
 
 		// Animation cible de haut en bas
 		animationCible(lanceur, score, cibles);
+		
+		// TODO son/image degats si critique true/false si bouclier si esquive si degats 
 
 		// Pour chaque cible
 		for (Personnage cible : cibles) {
 			// Distribution des dégats / protection / soins / absorption /
-			// brulure / regen / stun
+			// brulure / regen / stun / esquive 
 
 			// Si la cible est vivante ou que c'est un sort de rez
 			if (!cible.isMort() || actionCombat.getSortType() == SortType.RESURRECTION_MONO
@@ -1153,10 +1160,12 @@ public class FrameCombat extends FrameJeu {
 				// Si Esquive
 				else if (actionCombat.getSortType() == SortType.ESQUIVE) {
 					if (isCritique) {
-						cible.setNombreEsquive(2);
+						cible.setNombreEsquive(cible.getNombreEsquive() + 2);
 					} else {
-						cible.setNombreEsquive(1);
+						cible.setNombreEsquive(cible.getNombreEsquive() + 1);
 					}
+					cible.setNiveauEsquive(actionCombat.getNiveau());
+					cible.setNiveauEsquiveMax(actionCombat.getNiveauMax());
 				}
 				// Si dégats
 				else {
@@ -1172,6 +1181,7 @@ public class FrameCombat extends FrameJeu {
 					}
 
 					// Si la cible a un bouclier
+					// TODO bloque tous les degats en fonction de la difficulte
 					if (cible.getBouclier() > 0) {
 						cible.setBouclier(cible.getBouclier() - score);
 						if (cible.getBouclier() < 0) {
@@ -1179,33 +1189,40 @@ public class FrameCombat extends FrameJeu {
 						}
 					}
 
-					// Sinon on retire de la vie a la cible
+					// Sinon la cible essaye d'esquiver
 					else {
 						System.out.println("Cible avant sort : " + cible.toString());
+						
+						// Gestion de l Esquive
 
-						// TODO Esquive (10% Chance - 10% Agilite - 10% Vitesse)
-						int chanceEsquive = (cible.getCompetence().getLuck() / 10)
+						// Esquive naturel (10% Chance - 10% Agilite - 10% Vitesse) : max 30%
+						int chanceEsquiveStats = (cible.getCompetence().getLuck() / 10)
 								+ (cible.getCompetence().getAgilite() / 10)
 								+ (cible.getCompetence().getRapidite() / 10);
-						int random = RandomManager.random0_100();
 
-						// Gestion sort Esquive
+						// Esquive sort (ajoute niveau/niveauMax * 100 * 70/100) : max 70%
+						int chanceEsquiveSort = 0;
 						if (cible.getNombreEsquive() > 0) {
-							chanceEsquive = 100;
+							chanceEsquiveSort = (((cible.getNiveauEsquive() * 100) / cible.getNiveauEsquiveMax() ) * 70) / 100;
 							cible.setNombreEsquive(cible.getNombreEsquive() - 1);
 						}
+						
+						// Esquive final
+						int chanceEsquive = chanceEsquiveStats + chanceEsquiveSort;
+				
+						int random = RandomManager.random0_100();
 
-						// Esquive : max 30%
+						// Si Esquive
 						if (random < chanceEsquive) {
 							JLabel labelEsquive = new JLabel(cible.getPrenom() + " a esquivé l'attaque de "
 									+ lanceur.getPrenom() + " avec (" + chanceEsquive + "%) de chance.");
 							panelInfosCombat.add(labelEsquive, 0);
 							revalidate();
 						}
-						// Esquive raté
+						// Si Esquive ratee : on retire de la vie a la cible
 						else {
-							// Reduction degats en fonction de la resistance
-							// : max -80% degats
+							// Reduction degats en fonction de la resistance : max -80% degats 
+							// TODO (50% max ?)
 							int reductionDegats = cible.getCompetence().getResistance() - 20;
 							if (reductionDegats < 0) {
 								reductionDegats = 0;
@@ -1217,10 +1234,11 @@ public class FrameCombat extends FrameJeu {
 							panelInfosCombat.add(labelDegatsReel, 0);
 							revalidate();
 
-							// Degats infligés
+							// On enleve de la vie a la cible
 							cible.setVie(cible.getVie() - degatsReels);
 
 							// Gestion vie/mort de l'ennemi
+							// TODO gerer mort si renvoi degats au bon endroit
 							if (cible.getVie() <= 0) {
 								cible.setVie(0);
 								cible.setMort(true);
@@ -1460,8 +1478,9 @@ public class FrameCombat extends FrameJeu {
 		}
 		// Esquive
 		else if (actionCombat.getSortType() == SortType.ESQUIVE) {
+			int chanceEsquiveSort = (((actionCombat.getNiveau() * 100) / actionCombat.getNiveauMax() ) * 70) / 100;
 			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom()
-					+ " et obtient 100% de chance d'esquiver pour " + nbTour + " tour(s).");
+					+ " et augmente ses chances d'esquiver de " + chanceEsquiveSort + "% pour " + nbTour + " tour(s).");
 		}
 		// Renvoi degats
 		else if (actionCombat.getSortType() == SortType.RENVOI_DEGATS_PERSO) {
@@ -1539,6 +1558,9 @@ public class FrameCombat extends FrameJeu {
 		if (timerJoueurs != null && timerJoueurs.isRunning()) {
 			timerJoueurs.stop();
 		}
+		
+		// TODO remettre stats a zero pour prochain combat
+		// Charge / bouclier / esquive / vie Boss ? / 
 			
 		// Message fin du jeu
 		if (win) {
@@ -1622,20 +1644,21 @@ public class FrameCombat extends FrameJeu {
 		boolean initiative = false;
 		int random = RandomManager.random0_100();
 		int chanceInitiative = 0;
+		int nombreJoueurs = amisVivants.size();
 
-		// tempsMax en fonction de la difficulte (oo, 45, 30, 20)
+		// tempsMax en fonction de la difficulte et du nombre de joueurs (oo, 45, 30, 20)
 		// chanceInitiative en fonction de la difficulte (100, 75, 50, 25)
 		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
-			tempsMax = 0; // TODO pas de timer
+			tempsMax = 0; // Pas de timer
 			chanceInitiative = 100;
 		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
-			tempsMax = 45;
+			tempsMax = 5 * nombreJoueurs;
 			chanceInitiative = 75;
 		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
-			tempsMax = 30;
+			tempsMax = 4 * nombreJoueurs;
 			chanceInitiative = 50;
 		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
-			tempsMax = 20;
+			tempsMax = 3 * nombreJoueurs;
 			chanceInitiative = 25;
 		}
 		timerJoueurs = new Timer(10, new MyJoueurActionListener(tempsMax));
@@ -1661,7 +1684,7 @@ public class FrameCombat extends FrameJeu {
 			JOptionPane.showMessageDialog(this, "Vous avez gagné l'initiative!");
 			JOptionPane.showMessageDialog(this, "Tour des allies");
 
-			// TODO lance chrono tour joueurs si difficulte facile+
+			// Lance chrono tour joueurs si difficulte facile+
 			if (tempsMax != 0) {
 				timerJoueurs.start();
 			}

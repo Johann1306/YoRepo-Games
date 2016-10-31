@@ -20,12 +20,16 @@ public class ActionCombat extends Item implements Serializable {
 	private CibleType cibleType;
 	private PersoStat persoStat;
 	private SortType sortType;
+	private String son;
+	private String sonCritique;
 
-	public ActionCombat(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
-			List<String> videoPaths, boolean isDisponible, int niveau,
-			int niveauMax, int progression, ActionCombatType actionCombatType, EnergieType energieType,
-			CibleType cibleType, PersoStat persoStat, SortType sortType, PersoPrenom proprietaire) {
-		super(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, ItemType.ACTION_COMBAT, isDisponible);
+	public ActionCombat(int id, String nom, String informations, List<String> imagePaths, String son,
+			String sonCritique, List<String> videoPaths, boolean isDisponible, int niveau, int niveauMax,
+			int progression, ActionCombatType actionCombatType, EnergieType energieType, CibleType cibleType,
+			PersoStat persoStat, SortType sortType, PersoPrenom proprietaire) {
+		
+		super(id, nom, informations, imagePaths, null, videoPaths, proprietaire, ItemType.ACTION_COMBAT, isDisponible);
+		
 		this.niveau = niveau;
 		this.niveauMax = niveauMax;
 		this.progression = progression;
@@ -34,6 +38,8 @@ public class ActionCombat extends Item implements Serializable {
 		this.cibleType = cibleType;
 		this.persoStat = persoStat;
 		this.sortType = sortType;
+		this.son = son;
+		this.sonCritique = sonCritique;
 	}
 
 	public int getNiveau() {
@@ -83,7 +89,7 @@ public class ActionCombat extends Item implements Serializable {
 	public void setNiveauMax(int niveauMax) {
 		this.niveauMax = niveauMax;
 	}
-	
+
 	public PersoStat getPersoStat() {
 		return persoStat;
 	}
@@ -96,9 +102,17 @@ public class ActionCombat extends Item implements Serializable {
 		this.sortType = sortType;
 	}
 
+	public String getSon() {
+		return son;
+	}
+
+	public String getSonCritique() {
+		return sonCritique;
+	}
+	
 	@Override
 	public boolean amelioreItem() {
-		
+
 		boolean itemAmeliore = false;
 		if (niveau < niveauMax) {
 			niveau = niveau + 1;
@@ -107,5 +121,5 @@ public class ActionCombat extends Item implements Serializable {
 		}
 		return itemAmeliore;
 	}
-}
 
+}

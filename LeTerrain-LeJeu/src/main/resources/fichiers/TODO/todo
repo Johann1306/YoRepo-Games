@@ -7,6 +7,7 @@ Problemes :
 - mission premier Perso qui n'apparait pas quand spam Entree
 - Quand fin du jeu (all persos morts) => Nullpointer apres fermeture de la MainFrame.dispose
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
+- Quand lance le 2eme combat, le panel bas ne s'affiche pas (Tom a tué les 3 derniers ennemis au combat 1 et commence au combat 2) 
 
 Indispensables:
 - FrameFoot

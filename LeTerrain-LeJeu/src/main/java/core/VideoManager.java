@@ -28,10 +28,10 @@ public class VideoManager implements Serializable {
 		System.out.println("Play Video File : " + file);
 		String path = url.getPath();
 //		path = path.replaceAll("file:C:/Users/Nathalie/git/YoRepo-Games/LeTerrain-LeJeu/target", "");
+//		path = path.replaceAll("file:/C:/Users/Johann/git/YoRepo-Games/LeTerrain-LeJeu/target/", "");
 		System.out.println("Play Video Path : " + path);
 		
-//		lecteur.play(path);
-//		lecteur.play(mediaPath);
+		// TODO probleme lecture a partir du jar
 		lecteur.play("src/main/resources/" + mediaPath);
 	}
 

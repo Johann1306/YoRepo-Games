@@ -80,8 +80,8 @@ public class PanelPersonnage extends JPanel {
 		boutonAli.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 		boutonGuillaume.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 		boutonJonathan.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
-		// TODO
-		//		boutonGroupe.setMinimumSize(new Dimension(pressIcon1.getIconWidth(), pressIcon1.getIconHeight()/2));
+
+		// TODO bouton groupe
 		boutonGroupe.setMaximumSize(Constante.PERSO_IMAGE_DIMENSION_180_180);
 	
 		boutonNicolas.setToolTipText(PersoPrenom.Nicolas + " " + PersoNom.LOPEZ);
@@ -246,7 +246,7 @@ public class PanelPersonnage extends JPanel {
 							if (bouton.getName().equals(perso.getPrenom()) && !bouton.isVisible()) {
 								// affichage du bouton du perso
 								bouton.setVisible(true);
-						
+								revalidate();
 								if (!perso.isDejaPresente()) {
 									// lancer le son arrivee dans le groupe
 									MusiqueManager.playSon("sonParDefaut/312-SecretOfMana-ally-joins.mp3");
