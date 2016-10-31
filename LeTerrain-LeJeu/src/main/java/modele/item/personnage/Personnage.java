@@ -31,10 +31,12 @@ public class Personnage implements Serializable {
 	private List<ImageIcon> photos;
 	private List<ActionCombat> actionsCombat;
 	private Competence competence;
-	
+
 	private boolean mort = false;
 	private boolean aDejaJoue = false;
 	private int nombreEsquive = 0;
+	private int niveauEsquive = 0;
+	private int niveauEsquiveMax = 0;
 
 	public Personnage(String prenom, String nom) {
 		this.prenom = prenom;
@@ -215,15 +217,30 @@ public class Personnage implements Serializable {
 
 	public void setNombreEsquive(int nombreEsquive) {
 		this.nombreEsquive = nombreEsquive;
-		
+	}
+
+	public int getNiveauEsquive() {
+		return niveauEsquive;
+	}
+
+	public void setNiveauEsquive(int niveauEsquive) {
+		this.niveauEsquive = niveauEsquive;
+	}
+
+	public int getNiveauEsquiveMax() {
+		return niveauEsquiveMax;
+	}
+
+	public void setNiveauEsquiveMax(int niveauEsquiveMax) {
+		this.niveauEsquiveMax = niveauEsquiveMax;
 	}
 
 	@Override
 	public String toString() {
-		return "Personnage [nom=" + nom + ", vie=" + vie + "/" + vieMax + ", mort=" + mort + ", mana=" + mana + "/"
-				+ manaMax + ", nombreCharge=" + nombreCharge + "/" + nombreChargeMax + ", vitesseCharge="
-				+ vitesseCharge + ", bouclier=" + bouclier + ", prenom=" + prenom + ", surnomPrincipal="
-				+ surnomPrincipal + ", surnoms=" + surnoms + ", particularitesPhysique=" + particularitesPhysique
+		return "Personnage [nom=" + nom + ", prenom=" + prenom + ", mort=" + mort + ", vie=" + vie + "/" + vieMax
+				+ ", mana=" + mana + "/" + manaMax + ", charges=" + nombreCharge + "/" + nombreChargeMax
+				+ ", vitesseCharge=" + vitesseCharge + ", bouclier=" + bouclier + ", esquive=" + nombreEsquive + "(" + niveauEsquive + "/" + niveauEsquiveMax + ")" + ", surnomPrincipal=" + surnomPrincipal
+				+ ", surnoms=" + surnoms + ", particularitesPhysique=" + particularitesPhysique
 				+ ", particularitesSocial=" + particularitesSocial + ", phrasesPerso=" + phrasesPerso
 				+ ", photoPrincipal=" + photoPrincipal + ", photos=" + photos + ", actionsCombat=" + actionsCombat
 				+ "]";
@@ -234,6 +251,5 @@ public class Personnage implements Serializable {
 			nombreCharge = nombreCharge + 1;
 		}
 	}
-
 
 }

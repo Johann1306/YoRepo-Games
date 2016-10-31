@@ -111,7 +111,13 @@ public class MainFrame extends JFrame {
 		
 		// ScrollPane Panel Centre
 		JScrollPane scrollPaneCentre = new JScrollPane();
+		// Vitesse de la barre de scroll
+		// TODO : trop rapide
+		JScrollBar jScrollBarCentre = new JScrollBar(1, 5, 5, 0, 10);
+		jScrollBarCentre.setUnitIncrement(50);
+		scrollPaneCentre.setVerticalScrollBar(jScrollBarCentre);
 		scrollPaneCentre.getViewport().add(panelCentre);
+		
 		// TODO : autoscrolls sur les bords
 //		scrollPaneCentre.setAutoscrolls(true);
 		

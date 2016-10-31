@@ -95,10 +95,6 @@ public class PanelCentre extends JPanel {
 		buildPanelPerso(panelGuillaume);
 		buildPanelPerso(panelJonathan);
 
-		// TODO : gerer la taille des panel plus petit
-		// panelGroupe.setMaximumSize(new Dimension(imageGroupe.getIconWidth(),
-		// imageGroupe.getIconHeight()));
-
 		// TODO : gerer le scroll click
 //		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
 		// Scroller scrollJohann = new
@@ -158,7 +154,7 @@ public class PanelCentre extends JPanel {
 			panelBouton.add(bouton);
 			panelBouton.setOpaque(false);
 			
-			// Si Click sur un lieu de la carte
+			// Si Clic sur un lieu de la carte
 			bouton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -180,7 +176,7 @@ public class PanelCentre extends JPanel {
 						panelBouton.add(bouton);
 						panelBouton.setOpaque(false);
 						
-						// TODO : Click sur un Poi
+						// Si Clic sur un Poi
 						bouton.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
@@ -202,7 +198,6 @@ public class PanelCentre extends JPanel {
 					addBoutonCarte(panel, panelBoutonCarte);
 					
 					ImageIcon imageIcon = FenetrePrincipal.getImageIcon(lieu.getBackgroundPath());
-					// TODO
 					ImageIcon resizedImage = ImageManager.resizeImage(imageIcon, Constante.PANEL_CENTRE_DIMENSION);			
 					JLabel background = new JLabel(resizedImage);
 					panel.add(background, Integer.valueOf(1));
