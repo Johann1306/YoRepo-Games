@@ -1,11 +1,14 @@
 package modele.item.personnage;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 
 import modele.competence.Competence;
+import modele.competence.PersoStat;
 import modele.item.personnage.action.ActionCombat;
 
 public class Personnage implements Serializable {
@@ -37,6 +40,8 @@ public class Personnage implements Serializable {
 	private int nombreEsquive = 0;
 	private int niveauEsquive = 0;
 	private int niveauEsquiveMax = 0;
+	private int nombreBloque = 0;
+	private Map<Personnage, Integer> tauntBy = new HashMap<Personnage, Integer>();
 
 	public Personnage(String prenom, String nom) {
 		this.prenom = prenom;
@@ -235,6 +240,14 @@ public class Personnage implements Serializable {
 		this.niveauEsquiveMax = niveauEsquiveMax;
 	}
 
+	public int getNombreBloque() {
+		return nombreBloque;
+	}
+
+	public void setNombreBloque(int nombreBloque) {
+		this.nombreBloque = nombreBloque;
+	}
+
 	@Override
 	public String toString() {
 		return "Personnage [nom=" + nom + ", prenom=" + prenom + ", mort=" + mort + ", vie=" + vie + "/" + vieMax
@@ -251,5 +264,10 @@ public class Personnage implements Serializable {
 			nombreCharge = nombreCharge + 1;
 		}
 	}
+
+	public Map<Personnage, Integer> getTauntBy() {
+		return tauntBy;
+	}
+
 
 }

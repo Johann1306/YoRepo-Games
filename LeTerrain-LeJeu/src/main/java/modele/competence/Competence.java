@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 
 public class Competence implements Serializable {
 

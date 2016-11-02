@@ -19,7 +19,7 @@ import javax.swing.border.Border;
 import core.MusiqueManager;
 import core.SauvegardeManager;
 import core.configuration.Constante;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 
 public class MenuPrincipal extends JPanel {
 	
@@ -110,10 +110,10 @@ public class MenuPrincipal extends JPanel {
 				BoxLayout boxlayout = new BoxLayout(panelDifficulte, BoxLayout.Y_AXIS);
 				panelDifficulte.setLayout(boxlayout);
 				
-				JButton boutonFacile = new JButton(MissionDifficulty.FACILE.name());
-				JButton boutonNormal = new JButton(MissionDifficulty.NORMAL.name());
-				JButton boutonDifficile = new JButton(MissionDifficulty.DIFFICILE.name());
-				JButton boutonHeroique = new JButton(MissionDifficulty.HEROIQUE.name());
+				JButton boutonFacile = new JButton(Difficulte.FACILE.name());
+				JButton boutonNormal = new JButton(Difficulte.NORMAL.name());
+				JButton boutonDifficile = new JButton(Difficulte.DIFFICILE.name());
+				JButton boutonHeroique = new JButton(Difficulte.HEROIQUE.name());
 				
 				boutonFacile.setFont(Constante.PRESS_START_FONT_MENU);
 				boutonNormal.setFont(Constante.PRESS_START_FONT_MENU);
@@ -148,25 +148,25 @@ public class MenuPrincipal extends JPanel {
 				boutonFacile.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						lanceNouvellePartie(MissionDifficulty.FACILE);
+						lanceNouvellePartie(Difficulte.FACILE);
 					}
 				});
 				boutonNormal.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						lanceNouvellePartie(MissionDifficulty.NORMAL);
+						lanceNouvellePartie(Difficulte.NORMAL);
 					}
 				});
 				boutonDifficile.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						lanceNouvellePartie(MissionDifficulty.DIFFICILE);
+						lanceNouvellePartie(Difficulte.DIFFICILE);
 					}
 				});
 				boutonHeroique.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						lanceNouvellePartie(MissionDifficulty.HEROIQUE);
+						lanceNouvellePartie(Difficulte.HEROIQUE);
 					}
 				});
 				
@@ -552,7 +552,7 @@ public class MenuPrincipal extends JPanel {
 //		this.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 	
-	private void lanceNouvellePartie(MissionDifficulty difficulte) {
+	private void lanceNouvellePartie(Difficulte difficulte) {
 		
 		// Reaffichage panel Menu
 		Component[] components = this.getComponents();

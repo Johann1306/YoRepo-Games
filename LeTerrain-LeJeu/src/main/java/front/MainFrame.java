@@ -2,7 +2,6 @@ package front;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,11 +11,12 @@ import javax.swing.ScrollPaneConstants;
 
 import core.CoreManager;
 import core.MenuManager;
-import core.configuration.Constante;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 
 //public class MainFrame extends JFrame implements KeyListener {
 public class MainFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	private static PanelHaut panelHaut = new PanelHaut();
 	private static JPanel panelGauche = new JPanel();
@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 	private static JPanel content = null;
 
 	// Nouvelle Partie
-	public MainFrame(MissionDifficulty missionDifficulty) {
+	public MainFrame(Difficulte missionDifficulty) {
 		super();
 		coreManager = new CoreManager(missionDifficulty);
 		coreManager.initialise();
@@ -85,7 +85,7 @@ public class MainFrame extends JFrame {
 		panelMusique.generePanelMusique();
 
 		// Gestion des JPanel de la fenetre principale
-		panelHaut.setBackground(Color.RED);
+		panelHaut.setBackground(Color.BLACK);
 		panelGauche.setBackground(Color.BLACK);	
 		panelCentre.setBackground(Color.YELLOW);	
 		panelDroite.setBackground(Color.GREEN);	

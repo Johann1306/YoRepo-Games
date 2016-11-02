@@ -16,7 +16,7 @@ import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
 import modele.item.mission.BossNom;
 import modele.item.mission.Mission;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.MomentCle;
@@ -40,7 +40,7 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageBoss> personnagesBoss;
 	private List<PersonnageEnnemi> personnagesEnnemis;
 
-	public void initialise(ActionCombatManager actionCombatManager, MissionDifficulty difficultePartie) {
+	public void initialise(ActionCombatManager actionCombatManager, Difficulte difficultePartie) {
 
 		leGroupe = new Groupe();
 
@@ -100,22 +100,22 @@ public class PersonnageManager implements Serializable {
 		Competence competence = null;
 		
 		// En fonction difficulte Partie 
-		if (difficultePartie == MissionDifficulty.FACILE) {
+		if (difficultePartie == Difficulte.FACILE) {
 			vieMax = 500;
 			manaMax = 100;
 			chargeMax = 3;
 			competence = new Competence(25);
-		} else if (difficultePartie == MissionDifficulty.NORMAL) {
+		} else if (difficultePartie == Difficulte.NORMAL) {
 			vieMax = 650;
 			manaMax = 150;
 			chargeMax = 5;
 			competence = new Competence(50);
-		} else if (difficultePartie == MissionDifficulty.DIFFICILE) {
+		} else if (difficultePartie == Difficulte.DIFFICILE) {
 			vieMax = 850;
 			manaMax = 150;
 			chargeMax = 7;
 			competence = new Competence(75);
-		} else if (difficultePartie == MissionDifficulty.HEROIQUE) {
+		} else if (difficultePartie == Difficulte.HEROIQUE) {
 			vieMax = 1000;
 			manaMax = 200;
 			chargeMax = 10;
@@ -199,35 +199,38 @@ public class PersonnageManager implements Serializable {
 		ImageIcon photoPrincipal = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
 				Constante.PERSO_IMAGE_DIMENSION_64_64);
 
-
-		int vieMax = 0;
-		int manaMax = 0;
-		int chargeMax = 0;
 		
 		// TODO actionsCombat pour les ennemis en fonction de la difficulte
 		List<ActionCombat> actionsCombat = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager().getActionsCombat(mission.getTypeEnnemis().name());
 
 		// Competences pour les ennemis en fonction de la difficulte
+		// TODO Competences pour les ennemis en fonction du type d'ennemis (gitans, arabes, ...)
+		// TODO Competences pour les ennemis en fonction de la classe d'ennemis (Tank, heal, dps, controle)
+		// TODO vie/mana/charge max en fonction des competences comme les joueurs
+		// TODO IMPORTANT Difficulté croissante : Competences en fonction de l'avancement du jeu (par rapport au niveau du meilleur sort du groupe?)
+		int vieMax = 0;
+		int manaMax = 0;
+		int chargeMax = 0;
 		Competence competence = null;
 		
-		if (mission.getDifficulty() == MissionDifficulty.FACILE) {
+		if (mission.getDifficulty() == Difficulte.FACILE) {
 			vieMax = 20;
-			manaMax = 50;
+			manaMax = 20;
 			chargeMax = 1;
 			competence = new Competence(25);
-		} else if (mission.getDifficulty() == MissionDifficulty.NORMAL) {
+		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
 			vieMax = 30;
-			manaMax = 100;
+			manaMax = 30;
 			chargeMax = 2;
 			competence = new Competence(50);
-		} else if (mission.getDifficulty() == MissionDifficulty.DIFFICILE) {
+		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
 			vieMax = 40;
-			manaMax = 150;
+			manaMax = 40;
 			chargeMax = 3;
 			competence = new Competence(75);
-		} else if (mission.getDifficulty() == MissionDifficulty.HEROIQUE) {
+		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
 			vieMax = 50;
-			manaMax = 200;
+			manaMax = 50;
 			chargeMax = 5;
 			competence = new Competence(100);
 		} 

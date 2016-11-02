@@ -7,7 +7,7 @@ import core.NomJeu;
 import front.FrameQuizz;
 import modele.item.Item;
 import modele.item.mission.Mission;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnageSecondaire;
@@ -25,7 +25,7 @@ public class JeuQuizz extends Jeu implements Serializable {
 	public void start(Groupe groupe, Mission mission) {
 
 		int chanceVictoire = mission.getChanceVictoire();
-		MissionDifficulty difficulty = mission.getDifficulty();
+		Difficulte difficulty = mission.getDifficulty();
 		List<PersonnageSecondaire> personnagesSecondaires = mission.getPersonnagesSecondaires();
 		PersoPrenom proprietaire = mission.getProprietaire();
 		List<String> sonPaths = mission.getSonPaths();

@@ -1,6 +1,6 @@
 package modele.item.mission.enums;
 
-public enum MissionDifficulty {
+public enum Difficulte {
 	HEROIQUE,
 	DIFFICILE,
 	NORMAL,

@@ -1,22 +1,40 @@
 package front;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import core.ImageManager;
+import core.MusiqueManager;
 import core.configuration.Constante;
 import modele.item.mission.Mission;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 
 public class FrameJeu extends JFrame {
+	private boolean running = true;
 
 	public JPanel createPanelInfoMission(Mission mission) {
 		JPanel panelInfoMission = new JPanel();
+		JButton boutonMusiqueOnOff = new JButton("SON");
+		boutonMusiqueOnOff.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (running) {
+					MusiqueManager.stopPlaylistEnBoucle();
+					running = false;
+				} else {
+					MusiqueManager.startPlayListEnBoucle(mission);
+					running = true;
+				}
+			}
+		});
 
 		PersoPrenom prenom = mission.getProprietaire();
 		ImageIcon image = null;
@@ -37,6 +55,7 @@ public class FrameJeu extends JFrame {
 		panelInfoMission.add(new JLabel(mission.getConditionVictoire()));
 		panelInfoMission.add(new JLabel(mission.getDifficulty().name()));
 		panelInfoMission.add(new JLabel(mission.getMissionType().name()));
+		panelInfoMission.add(boutonMusiqueOnOff);
 
 		panelInfoMission
 				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));

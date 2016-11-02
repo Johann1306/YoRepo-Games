@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.quizz.Enigme;
 import modele.quizz.Reponse;
 import modele.quizz.TypeEnigme;
@@ -75,7 +75,7 @@ public class QuizzManager implements Serializable {
 		
 	}
 
-	public Enigme getRandomEnigmeDisponible(MissionDifficulty difficulty) {
+	public Enigme getRandomEnigmeDisponible(Difficulte difficulty) {
 		
 		Enigme enigme = null;
 		
