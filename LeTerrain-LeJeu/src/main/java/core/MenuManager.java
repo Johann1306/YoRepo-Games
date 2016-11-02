@@ -16,7 +16,7 @@ import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
 import modele.item.mission.Mission;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.PersoPrenom;
 
 public class MenuManager extends JMenuBar implements Serializable {
@@ -28,10 +28,10 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 		JMenu menuFichier = new JMenu("Fichier");
 		JMenu menuStart = new JMenu("Demarrer une nouvelle partie");
-		JMenuItem menuFacile = new JMenuItem(MissionDifficulty.FACILE.name());
-		JMenuItem menuNormal = new JMenuItem(MissionDifficulty.NORMAL.name());
-		JMenuItem menuDifficile = new JMenuItem(MissionDifficulty.DIFFICILE.name());
-		JMenuItem menuHeroique = new JMenuItem(MissionDifficulty.HEROIQUE.name());
+		JMenuItem menuFacile = new JMenuItem(Difficulte.FACILE.name());
+		JMenuItem menuNormal = new JMenuItem(Difficulte.NORMAL.name());
+		JMenuItem menuDifficile = new JMenuItem(Difficulte.DIFFICILE.name());
+		JMenuItem menuHeroique = new JMenuItem(Difficulte.HEROIQUE.name());
 		JMenuItem menuCharger = new JMenuItem("Charger la derniere partie sauvegardee");
 		JMenuItem menuSauvegarder = new JMenuItem("Sauvegarder la partie en cours");
 		JMenuItem menuQuitter = new JMenuItem("Quitter");
@@ -53,7 +53,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(MissionDifficulty.FACILE);
+				MainFrame mainFrame = new MainFrame(Difficulte.FACILE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
 			}
@@ -63,7 +63,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(MissionDifficulty.NORMAL);
+				MainFrame mainFrame = new MainFrame(Difficulte.NORMAL);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
 			}
@@ -73,7 +73,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(MissionDifficulty.DIFFICILE);
+				MainFrame mainFrame = new MainFrame(Difficulte.DIFFICILE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
 			}
@@ -83,7 +83,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(MissionDifficulty.HEROIQUE);
+				MainFrame mainFrame = new MainFrame(Difficulte.HEROIQUE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
 			}

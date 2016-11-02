@@ -2,7 +2,7 @@ package core;
 
 import java.io.Serializable;
 
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 
 public class CoreManager implements Serializable {
 
@@ -24,9 +24,9 @@ public class CoreManager implements Serializable {
 	private ActionCombatManager actionCombatManager;
 	private QuizzManager quizzManager;
 	
-	private MissionDifficulty difficultePartie;
+	private Difficulte difficultePartie;
 
-	public CoreManager(MissionDifficulty difficultePartie) {
+	public CoreManager(Difficulte difficultePartie) {
 		this.difficultePartie = difficultePartie;
 	}
 
@@ -52,7 +52,7 @@ public class CoreManager implements Serializable {
 		missionManager.initialise(difficultePartie);
 		
 		actionCombatManager = new ActionCombatManager();
-		actionCombatManager.initialise();
+		actionCombatManager.initialise(difficultePartie);
 
 		personnageManager = new PersonnageManager();
 		personnageManager.initialise(actionCombatManager, difficultePartie);
@@ -202,11 +202,11 @@ public class CoreManager implements Serializable {
 		this.quizzManager = quizzManager;
 	}
 	
-	public MissionDifficulty getDifficultePartie() {
+	public Difficulte getDifficultePartie() {
 		return difficultePartie;
 	}
 	
-	public void setDifficultePartie(MissionDifficulty difficultePartie) {
+	public void setDifficultePartie(Difficulte difficultePartie) {
 		this.difficultePartie = difficultePartie;
 	}
 	

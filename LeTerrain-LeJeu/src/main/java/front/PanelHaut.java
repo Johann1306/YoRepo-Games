@@ -16,6 +16,7 @@ import core.MissionManager;
 import core.configuration.Constante;
 import modele.evenement.Evenement;
 import modele.item.mission.Mission;
+import modele.item.mission.enums.Difficulte;
 
 public class PanelHaut extends JPanel {
 
@@ -77,8 +78,21 @@ public class PanelHaut extends JPanel {
 			t.start();
 		}
 		
+		// label Difficulte
+		Difficulte difficultePartie = MenuPrincipal.getMainFrame().getCoreManager().getDifficultePartie();
+		JLabel labelDifficulte = new JLabel(difficultePartie.name());
+		if (difficultePartie == Difficulte.FACILE) {
+			labelDifficulte.setForeground(Color.GREEN);
+		} else if (difficultePartie == Difficulte.NORMAL) {
+			labelDifficulte.setForeground(Color.BLUE);
+		} else if (difficultePartie == Difficulte.DIFFICILE) {
+			labelDifficulte.setForeground(Color.RED);
+		} else if (difficultePartie == Difficulte.HEROIQUE) {
+			labelDifficulte.setForeground(Color.MAGENTA);
+		} 
+		
 		// label avancement du jeu
-		JLabel labelAvancement = new JLabel("0/100");
+		JLabel labelAvancement = new JLabel(" 0 / 100 ");
 		
 		// date
 		JPanel panelDate = new JPanel();
@@ -151,6 +165,7 @@ public class PanelHaut extends JPanel {
 		});
 		
 		// Font
+		labelDifficulte.setFont(Constante.PRESS_START_FONT);
 		labelAvancement.setFont(Constante.PRESS_START_FONT);
 		labelDate.setFont(Constante.PRESS_START_FONT);
 		labelDate.setForeground(Color.WHITE);
@@ -161,6 +176,7 @@ public class PanelHaut extends JPanel {
 		this.add(labelTempsPasseDansLeJeu);
 		panelDate.add(labelDate);
 		this.add(panelDate);
+		this.add(labelDifficulte);
 		this.add(labelAvancement);
 		this.add(boutonPasser);
 		this.add(boutonPasserNext);

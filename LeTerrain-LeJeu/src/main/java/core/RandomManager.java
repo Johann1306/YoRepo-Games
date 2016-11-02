@@ -1,10 +1,6 @@
 package core;
 
-import java.util.List;
 import java.util.Random;
-
-import front.MenuPrincipal;
-import modele.jeu.Jeu;
 
 public class RandomManager {
 
@@ -27,19 +23,19 @@ public class RandomManager {
 		return nbAleatoire;
 	}
 	
-	public static Jeu getRandomJeu(List<NomJeu> jeux) {
-		JeuManager jeuManager = MenuPrincipal.getMainFrame().getCoreManager().getJeuManager();
-		Jeu jeu = null;
-		int nombreJeu = jeux.size();
-		if (nombreJeu>1) {
-			//random
-			int random = RandomManager.random(0, nombreJeu-1);
-			jeu = jeuManager.getJeu(jeux.get(random));
-		} else {
-			jeu = jeuManager.getJeu(jeux.get(0));
-		}
-		return jeu;
-	}
+//	public static Jeu getRandomJeu(List<NomJeu> jeux) {
+//		JeuManager jeuManager = MenuPrincipal.getMainFrame().getCoreManager().getJeuManager();
+//		Jeu jeu = null;
+//		int nombreJeu = jeux.size();
+//		if (nombreJeu>1) {
+//			//random
+//			int random = RandomManager.random(0, nombreJeu-1);
+//			jeu = jeuManager.getJeu(jeux.get(random));
+//		} else {
+//			jeu = jeuManager.getJeu(jeux.get(0));
+//		}
+//		return jeu;
+//	}
 
 
 }

@@ -10,7 +10,7 @@ import front.MenuPrincipal;
 import modele.bonus.Bonus;
 import modele.item.Item;
 import modele.item.lieu.Lieu;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.PersoPrenom;
@@ -56,9 +56,9 @@ public class Mission implements Serializable {
 	private int perteMax;
 	private Date date;
 	private MissionType missionType;
-	private MissionDifficulty difficulty;
+	private Difficulte difficulty;
 	private EnnemiType ennemisType;
-	private List<NomJeu> jeux;
+	private NomJeu jeu;
 	private List<PersonnagePrincipal> personnagesRequis;
 	private List<PersonnagePrincipal> personnagesInterdits;
 	private List<PersonnageSecondaire> personnagesSecondaires;
@@ -75,7 +75,7 @@ public class Mission implements Serializable {
 	public Mission(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths,
 			List<String> videoPaths, PersoPrenom proprietaire, Lieu lieu, int chanceVictoire, String conditionVictoire,
 			String conditionDefaite, String objectif, Bonus gain, Bonus perte, int gainMax, int perteMax, Date date,
-			MissionType type, MissionDifficulty difficulty, EnnemiType typeEnnemis, List<NomJeu> jeux,
+			MissionType type, Difficulte difficulty, EnnemiType typeEnnemis, NomJeu jeu,
 			List<PersonnagePrincipal> personnagesRequis, List<PersonnagePrincipal> personnagesInterdits,
 			List<PersonnageSecondaire> personnagesSecondaires, BossNom bossNom, List<Item> itemsNecessaires,
 			List<Item> itemsDebloques, boolean isRepetable) {
@@ -100,7 +100,7 @@ public class Mission implements Serializable {
 		this.missionType = type;
 		this.difficulty = difficulty;
 		this.ennemisType = typeEnnemis;
-		this.jeux = jeux;
+		this.jeu = jeu;
 		this.personnagesRequis = personnagesRequis;
 		this.personnagesInterdits = personnagesInterdits;
 		this.personnagesSecondaires = personnagesSecondaires;
@@ -240,11 +240,11 @@ public class Mission implements Serializable {
 		this.missionType = type;
 	}
 
-	public MissionDifficulty getDifficulty() {
+	public Difficulte getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(MissionDifficulty difficulty) {
+	public void setDifficulty(Difficulte difficulty) {
 		this.difficulty = difficulty;
 	}
 
@@ -356,9 +356,9 @@ public class Mission implements Serializable {
 	public void setDejaPresentee(boolean isDejaPresente) {
 		this.isDejaPresentee = isDejaPresente;
 	}
-
-	public List<NomJeu> getJeux() {
-		return jeux;
+	
+	public NomJeu getJeu() {
+		return jeu;
 	}
 
 	public int getNombreEssai() {

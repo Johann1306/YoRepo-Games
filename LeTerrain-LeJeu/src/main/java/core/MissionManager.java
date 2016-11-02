@@ -17,7 +17,7 @@ import modele.bonus.Bonus;
 import modele.item.Item;
 import modele.item.mission.BossNom;
 import modele.item.mission.Mission;
-import modele.item.mission.enums.MissionDifficulty;
+import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.Groupe;
@@ -36,7 +36,7 @@ public class MissionManager implements Serializable  {
 	private List<Mission> missionsTerminees;
 	private int id = 0;
 
-	public void initialise(MissionDifficulty difficultePartie) {
+	public void initialise(Difficulte difficultePartie) {
 
 		missions = new ArrayList<Mission>();
 		missionsDisponibles = new ArrayList<Mission>();
@@ -84,29 +84,22 @@ public class MissionManager implements Serializable  {
 		Bonus bonus1 = bonus.get(1);
 		Bonus malus1 = bonus.get(2);
 		
-		// Jeux
-		List<NomJeu> jeux = new ArrayList<NomJeu>();
-		jeux.add(NomJeu.JEU_COMBAT);
-		jeux.add(NomJeu.JEU_COMBAT);
-		jeux.add(NomJeu.JEU_COMBAT);
-		
-					
 //		Mission m1 = new Mission(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, lieu, chanceVictoire, conditionVictoire, conditionDefaite, objectif, gain, perte, gainMax, perteMax, date, type, difficulty, personnagesRequis, personnagesInterdits, personnagesSecondaires, itemsNecessaires, itemsDebloques, isRepetable)
-		Mission mission1 = new Mission(incrementId(), "Premier Perso", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, MissionDifficulty.FACILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission2 = new Mission(incrementId(), "mission facile", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, MissionDifficulty.FACILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission3 = new Mission(incrementId(), "mission normal", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.NORMAL, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission4 = new Mission(incrementId(), "mission difficile", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, MissionDifficulty.DIFFICILE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission5 = new Mission(incrementId(), "mission heroique", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, MissionDifficulty.HEROIQUE, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission6 = new Mission(incrementId(), "mission6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission7 = new Mission(incrementId(), "mission7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission8 = new Mission(incrementId(), "mission8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
-		Mission mission9 = new Mission(incrementId(), "mission9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission10 = new Mission(incrementId(), "mission10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission11 = new Mission(incrementId(), "mission11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission12 = new Mission(incrementId(), "mission12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission13 = new Mission(incrementId(), "mission13", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission14 = new Mission(incrementId(), "mission14", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
-		Mission mission15 = new Mission(incrementId(), "mission15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, jeux, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission1 = new Mission(incrementId(), "Premier Perso", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission2 = new Mission(incrementId(), "mission facile", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2, MissionType.PRINCIPAL, Difficulte.FACILE, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission3 = new Mission(incrementId(), "mission normal", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, Difficulte.NORMAL, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission4 = new Mission(incrementId(), "mission difficile", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, Difficulte.DIFFICILE, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission5 = new Mission(incrementId(), "mission heroique", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, Difficulte.HEROIQUE, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission6 = new Mission(incrementId(), "mission6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission7 = new Mission(incrementId(), "mission7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission8 = new Mission(incrementId(), "mission8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), false);
+		Mission mission9 = new Mission(incrementId(), "mission9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission10 = new Mission(incrementId(), "mission10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission11 = new Mission(incrementId(), "mission11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission12 = new Mission(incrementId(), "mission12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission13 = new Mission(incrementId(), "mission13", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission14 = new Mission(incrementId(), "mission14", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
+		Mission mission15 = new Mission(incrementId(), "mission15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, null,  70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.MINIJEU, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), true);
 		
 		// Ajout a la liste
 		missions.add(mission1);
@@ -243,12 +236,11 @@ public class MissionManager implements Serializable  {
 	}
 	
 	public void lanceMission(Mission mission) {
-		// Choix aleatoire du jeu
-		List<NomJeu> jeux = mission.getJeux();
-		Jeu randomJeu = RandomManager.getRandomJeu(jeux);
 		
 		// Lancement du jeu
-		JeuManager.lanceJeu(randomJeu, mission);
+		JeuManager jeuManager = MenuPrincipal.getMainFrame().getCoreManager().getJeuManager();
+		Jeu jeu = jeuManager.getJeu(mission.getJeu());
+		JeuManager.lanceJeu(jeu, mission);
 	}
 	
 	
