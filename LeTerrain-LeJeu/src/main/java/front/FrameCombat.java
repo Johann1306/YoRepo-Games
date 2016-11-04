@@ -1082,7 +1082,7 @@ public class FrameCombat extends FrameJeu {
 		// Animation cible de haut en bas
 		animationCible(lanceur, score, cibles);
 
-		// TODO son/image degats si critique true/false si bouclier si esquive
+		// TODO son/image degats si critique true/false si bouclier si esquive si stun si taunt
 		// si degats
 
 		// Pour chaque cible
@@ -1319,6 +1319,7 @@ public class FrameCombat extends FrameJeu {
 
 						// Si Esquive
 						if (random < chanceEsquive) {
+							MusiqueManager.playSon("sonParDefaut/defautEsquive.mp3");
 							JLabel labelEsquive = new JLabel(cible.getPrenom() + " a esquivé l'attaque de "
 									+ lanceur.getPrenom() + " avec (" + chanceEsquive + "%) de chance.");
 							panelInfosCombat.add(labelEsquive, 0);
@@ -1366,6 +1367,7 @@ public class FrameCombat extends FrameJeu {
 									}
 								}
 								// Message Info Combat ennemi mort
+								MusiqueManager.playSon("sonParDefaut/defautMort.mp3");
 								JLabel labelMort = new JLabel(
 										lanceur.getPrenom() + " a tué " + cible.getPrenom() + ".");
 								// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
