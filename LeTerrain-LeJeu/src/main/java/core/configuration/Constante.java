@@ -34,7 +34,8 @@ public class Constante {
 	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
 	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
 	public static final int PANEL_ITEMS_COMBAT_LARGEUR = 95;
-	public static final int PANEL_INFO_PERSO_LARGEUR = 100;
+	public static final int PANEL_INFO_PERSO_LARGEUR = 200;
+	public static final int PANEL_INFO_PERSO_HAUTEUR = 25;
 
 	// FONT
 	public static final Font PRESS_START_FONT_FRAMECOMBAT_INFO = new Font("Press Start", Font.PLAIN, 8);
@@ -54,8 +55,6 @@ public class Constante {
 	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
 	public static final double QUIZZ_MAX_TEMPS = 10.00;
-
-
 
 
 

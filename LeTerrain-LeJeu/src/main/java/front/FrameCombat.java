@@ -4,13 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Menu;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.swing.AbstractButton;
@@ -19,6 +23,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -27,19 +32,24 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 import core.ImageManager;
 import core.MusiqueManager;
+import core.PersonnageManager;
 import core.RandomManager;
 import core.VideoManager;
 import core.configuration.Constante;
+import modele.competence.Competence;
+import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.media.audio.Musique;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
 import modele.item.personnage.Groupe;
+import modele.item.personnage.PersoClasse;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.Personnage;
 import modele.item.personnage.PersonnageBoss;
@@ -77,6 +87,7 @@ public class FrameCombat extends FrameJeu {
 	private List<JButton> boutonsEnnemis = null;
 	private List<JButton> boutonsAmis = null;
 	private List<PersonnageEnnemi> ennemisVivants = null;
+	private List<PersonnageEnnemi> ennemisPresents = null;
 	private List<PersonnagePrincipal> amisVivants = null;
 	private List<PersonnagePrincipal> amisPresents = null;
 
@@ -299,28 +310,38 @@ public class FrameCombat extends FrameJeu {
 		BoxLayout boxlayoutEnnemis = new BoxLayout(panelEnnemis, BoxLayout.Y_AXIS);
 		panelEnnemis.setLayout(boxlayoutEnnemis);
 
-		// Gestion de la difficulte
-		int nombreEnnemis = 1;
-		if (mission.getMissionType() == MissionType.BOSS) {
-			nombreEnnemis = 0;
-		}
-		if (mission.getDifficulty() == Difficulte.FACILE) {
-			nombreEnnemis = nombreEnnemis + 2;
-		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-			nombreEnnemis = nombreEnnemis + 4;
-		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-			nombreEnnemis = nombreEnnemis + 5;
-		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-			nombreEnnemis = nombreEnnemis + 7;
+		// Gestion du nombre d'ennemis en fonction de la difficulte et du nombre
+		// de joueurs vivants
+		// TODO difficulte generale + difficulte mission ? ou pas?
+		Difficulte difficulteMission = mission.getDifficulty();
+		int nombreJoueurs = amisVivants.size();
+		int nombreEnnemis = nombreJoueurs;
+		if (difficulteMission == Difficulte.FACILE) {
+			nombreEnnemis = nombreEnnemis + RandomManager.random(0, 1);
+		} else if (difficulteMission == Difficulte.NORMAL) {
+			nombreEnnemis = nombreEnnemis + RandomManager.random(1, 2);
+		} else if (difficulteMission == Difficulte.DIFFICILE) {
+			nombreEnnemis = nombreEnnemis + RandomManager.random(2, 3);
+		} else if (difficulteMission == Difficulte.HEROIQUE) {
+			nombreEnnemis = nombreEnnemis + RandomManager.random(3, 4);
 		}
 
+		// 8 ennemis max
+		if (nombreEnnemis > 8) {
+			nombreEnnemis = 8;
+		}
+		if (mission.getMissionType() == MissionType.BOSS) {
+			nombreEnnemis = 7;
+		}
 		// Gestion du type d ennemis / BOSS / type de mission
 		boutonsEnnemis = new ArrayList<JButton>();
 		ennemisVivants = new ArrayList<PersonnageEnnemi>();
+		ennemisPresents = new ArrayList<PersonnageEnnemi>();
+		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
 		if (mission.getMissionType() == MissionType.BOSS) {
-			PersonnageBoss boss = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
-					.getPersonnageBossByNom(mission.getBossNom());
+			PersonnageBoss boss = personnageManager.getPersonnageBossByNom(mission.getBossNom());
 			ennemisVivants.add(boss);
+			ennemisPresents.add(boss);
 			ImageIcon photoBoss = ImageManager.resizeImage(boss.getPhotoPrincipal(),
 					Constante.PERSO_IMAGE_DIMENSION_64_64);
 			JButton boutonBoss = new JButton(photoBoss);
@@ -332,10 +353,20 @@ public class FrameCombat extends FrameJeu {
 			boutonsEnnemis.add(boutonBoss);
 		}
 
+		// On recupere le niveau du meilleur sort des joueurs (Pour augmenter la
+		// difficulté des ennemis au fur et a mesure de la progression)
+		int niveauSorts = personnageManager.getBestNiveauSorts();
+
+		// Choix des classes en fonction du nombre d'ennemis et de la difficulté
+		// (mission/generale)
+		List<PersoClasse> classes = choixDesClassesEnnemi(nombreEnnemis, difficulteMission);
+
+		// Creation des personnages ennemis
 		for (int i = 1; i <= nombreEnnemis; i++) {
-			PersonnageEnnemi ennemi = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
-					.createPersonnageEnnemi(mission, i);
+			PersoClasse classe = classes.get(i - 1);
+			PersonnageEnnemi ennemi = personnageManager.createPersonnageEnnemi(mission, i, niveauSorts, classe);
 			ennemisVivants.add(ennemi);
+			ennemisPresents.add(ennemi);
 			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
 			boutonEnnemi.setName(ennemi.getNom());
 			boutonEnnemi.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
@@ -403,6 +434,132 @@ public class FrameCombat extends FrameJeu {
 
 		this.setContentPane(content);
 		this.setVisible(true);
+	}
+
+	private List<PersoClasse> choixDesClassesEnnemi(int nombreEnnemis, Difficulte difficulteMission) {
+		// TODO en fonction de la difficulte de la mission
+		// TODO en fonction de la difficulte de la partie ausssi ?
+		// Difficulte difficultePartie =
+		// MenuPrincipal.getMainFrame().getCoreManager().getDifficultePartie();
+		List<PersoClasse> classes = new ArrayList<PersoClasse>();
+		if (nombreEnnemis == 8) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.BARDE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 7) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.BARDE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 6) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.BARDE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 5) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.BARDE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 4) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			classes.add(PersoClasse.DPS);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 3) {
+			classes.add(PersoClasse.TANK);
+			classes.add(PersoClasse.HEALER);
+			classes.add(PersoClasse.MAGE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 2) {
+			classes.add(PersoClasse.DPS);
+			classes.add(PersoClasse.MAGE);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		} else if (nombreEnnemis == 1) {
+			classes.add(PersoClasse.DPS);
+			if (difficulteMission == Difficulte.FACILE) {
+
+			} else if (difficulteMission == Difficulte.NORMAL) {
+
+			} else if (difficulteMission == Difficulte.DIFFICILE) {
+
+			} else if (difficulteMission == Difficulte.HEROIQUE) {
+
+			}
+		}
+		return classes;
 	}
 
 	private void buildPanelActions(PersoPrenom prenom) {
@@ -555,7 +712,8 @@ public class FrameCombat extends FrameJeu {
 						labelTimer.setText(String.format("%1$,.2f", new Double(0.0)));
 						timerJoueurs.stop();
 					}
-					// TODO remettre des trucs a zero ??? + reinit timer a
+					// TODO remettre des trucs a zero ??? + PROLEME reinit timer
+					// a
 					// tempsMax
 					lanceTourEnnemis();
 				}
@@ -897,60 +1055,11 @@ public class FrameCombat extends FrameJeu {
 			actionCombat.setProgression(actionCombat.getProgression() + 1);
 		} else {
 			// PersonnageEnnemi
+			PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
 
-			// IA :Determination de la(les) cible(s)
-			// cibles.clear();
-
-
-			cibles = new ArrayList<Personnage>();
-			// TODO si lanceur taunt
-			Map<Personnage, Integer> tauntBy = lanceur.getTauntBy();
-			if (!tauntBy.isEmpty()) {
-				Object[] persos = tauntBy.keySet().toArray();
-				Personnage persoCible = (Personnage) persos[0];
-				cibles.add(persoCible);
-				int nbTaunt = tauntBy.get(persoCible);
-				tauntBy.remove(persoCible);
-				if (nbTaunt > 1) {
-					tauntBy.put(persoCible, nbTaunt -1);
-				}
-			} else if (actionCombat.getCibleType() == CibleType.ENNEMI) {
-				// TODO cible en fonction de la difficulte aleatoire, aleatoire,
-				// moins de vie, healer-moins de vie
-
-				// cible aleatoire
-				System.out.println("Persos presents : " + amisPresents.size());
-				System.out.println("Persos vivants : " + amisVivants.size());
-				int randomPerso = 0;
-				if (!amisVivants.isEmpty()) {
-					randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-				}
-				Personnage cible = amisVivants.get(randomPerso);
-				// TODO meilleurCible possible (moins de vie, healer)
-				cibles.add(cible);
-			} else if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
-				cibles.addAll(amisVivants);
-			} else if (actionCombat.getCibleType() == CibleType.ALLIE) {
-				// TODO cible en fonction de la difficulte aleatoire, aleatoire,
-				// moins de vie, healer-moins de vie
-				// cible aleatoire
-				System.out.println("Persos presents : " + amisVivants.size());
-				int randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-				Personnage cible = ennemisVivants.get(randomPerso);
-				// TODO meilleurCible possible (moins de vie, healer)
-				cibles.add(cible);
-			} else if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
-				cibles.addAll(ennemisVivants);
-			} else if (actionCombat.getCibleType() == CibleType.PERSO) {
-				cibles.add(lanceur);
-			} else if (actionCombat.getCibleType() == CibleType.TOUS) {
-				cibles.addAll(ennemisVivants);
-				cibles.addAll(amisVivants);
-			}
+			// IA : Choix de la(les) cible(s)
+			cibles = choixDeLaCible(lanceur, actionCombat, personnageManager);
 		}
-
-		// TODO gestion particuliere rez / stun / taunt / esquive / reflect
-		// (score,critique)
 
 		// Calcul du score
 		int score = -1;
@@ -1082,7 +1191,8 @@ public class FrameCombat extends FrameJeu {
 		// Animation cible de haut en bas
 		animationCible(lanceur, score, cibles);
 
-		// TODO son/image degats si critique true/false si bouclier si esquive si stun si taunt
+		// TODO son/image degats si critique true/false si bouclier si esquive
+		// si stun si taunt
 		// si degats
 
 		// Pour chaque cible
@@ -1268,7 +1378,7 @@ public class FrameCombat extends FrameJeu {
 				else {
 
 					System.out.println("Cible avant degats : " + cible.toString());
-					
+
 					// Si Absorption Vie
 					if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO
 							|| actionCombat.getSortType() == SortType.ABSORPTION_VIE_MULTI) {
@@ -1286,14 +1396,14 @@ public class FrameCombat extends FrameJeu {
 						if (cible.getBouclier() < 0) {
 							cible.setBouclier(0);
 						}
-						JLabel labelEsquive = new JLabel(cible.getPrenom() + " a absorbé les degats avec son bouclier.");
+						JLabel labelEsquive = new JLabel(
+								cible.getPrenom() + " a absorbé les degats avec son bouclier.");
 						panelInfosCombat.add(labelEsquive, 0);
 						revalidate();
 					}
 
 					// Sinon la cible essaye d'esquiver
 					else {
-
 
 						// Gestion de l Esquive
 
@@ -1344,11 +1454,29 @@ public class FrameCombat extends FrameJeu {
 							// On enleve de la vie a la cible
 							cible.setVie(cible.getVie() - degatsReels);
 
-							// Gestion vie/mort de l'ennemi
+							// Gestion vie/mort de l'ennemi/ami
 							// TODO gerer mort si renvoi degats au bon endroit
 							if (cible.getVie() <= 0) {
-								cible.setVie(0);
 								cible.setMort(true);
+								// La cible perd sa vie, son bouclier, son mana, ses charges, ses stun, ses esquives et ses taunt 
+								cible.setVie(0);
+								cible.setBouclier(0);
+								cible.setMana(0);
+								cible.setNombreCharge(0);
+								cible.setNombreBloque(0);
+								cible.setNombreEsquive(0);
+								cible.getTauntBy().clear();
+								// On detaunt les cibles taunt par le mort
+								for (Personnage perso : ennemisVivants) {
+									if(perso.getTauntBy().containsKey(cible)){
+										perso.getTauntBy().remove(cible);
+									}
+								}
+								for (Personnage perso : amisVivants) {
+									if(perso.getTauntBy().containsKey(cible)){
+										perso.getTauntBy().remove(cible);
+									}
+								}
 
 								// Grise le bouton du perso
 								if (lanceur instanceof PersonnagePrincipal) {
@@ -1445,6 +1573,168 @@ public class FrameCombat extends FrameJeu {
 		// Refresh panelCentre vie/mana/charge/bouclier
 		buildPanelCentre();
 
+	}
+
+	private List<Personnage> choixDeLaCible(Personnage lanceur, ActionCombat actionCombat,
+			PersonnageManager personnageManager) {
+
+		List<Personnage> cibles = new ArrayList<Personnage>();
+
+		// Decremente le taunt si taunt
+		Map<Personnage, Integer> tauntBy = lanceur.getTauntBy();
+		if (!tauntBy.isEmpty()) {
+			Object[] persos = tauntBy.keySet().toArray();
+			Personnage persoCible = (Personnage) persos[0];
+			// TODO Si le taunteur est mort
+			cibles.add(persoCible);
+			int nbTaunt = tauntBy.get(persoCible);
+			tauntBy.remove(persoCible);
+			if (nbTaunt > 1) {
+				tauntBy.put(persoCible, nbTaunt - 1);
+			}
+		} else if (actionCombat.getCibleType() == CibleType.ENNEMI) {
+			// IA : Choix de la cible en fonction de la difficulte
+
+			// FACILE => cible aleatoire
+			if (mission.getDifficulty() == Difficulte.FACILE) {
+				// cible aleatoire
+				int randomPerso = 0;
+				if (!amisVivants.isEmpty()) {
+					randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+				}
+				Personnage cible = amisVivants.get(randomPerso);
+				cibles.add(cible);
+			}
+			// NORMAL => cible moins de vie / aleatoire
+			else if (mission.getDifficulty() == Difficulte.NORMAL) {
+				int random = RandomManager.random0_100();
+				if (random < 50) {
+					// Cible moins de vie
+					Personnage meilleurCible = null;
+					int vieMin = 10000;
+					for (Personnage cible : amisVivants) {
+						if (cible.getVie() < vieMin) {
+							vieMin = cible.getVie();
+							meilleurCible = cible;
+						}
+					}
+					cibles.add(meilleurCible);
+				} else {
+					// Cible aleatoire
+					int randomPerso = 0;
+					if (!amisVivants.isEmpty()) {
+						randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+					}
+					Personnage cible = amisVivants.get(randomPerso);
+					cibles.add(cible);
+				}
+			}
+			// DIFFICILE => cible moins de vie / healer / aleatoire
+			else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+				int random = RandomManager.random0_100();
+				if (random < 30) {
+					// Cible moins de vie
+					Personnage meilleurCible = null;
+					int vieMin = 10000;
+					for (Personnage cible : amisVivants) {
+						if (cible.getVie() < vieMin) {
+							vieMin = cible.getVie();
+							meilleurCible = cible;
+						}
+					}
+					cibles.add(meilleurCible);
+				} else if (random > 60) {
+					// Cible aleatoire
+					int randomPerso = 0;
+					if (!amisVivants.isEmpty()) {
+						randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+					}
+					Personnage cible = amisVivants.get(randomPerso);
+					cibles.add(cible);
+				} else {
+					// TODO cible healer (celui qui a le plus d'inte)
+					PersonnagePrincipal perso = personnageManager.getBestPersoVivant(PersoStat.INTELLIGENCE);
+					cibles.add(perso);
+				}
+			}
+			// HEROIQUE => cible moins de vie / healer
+			else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
+				int random = RandomManager.random0_100();
+				if (random < 50) {
+					// Cible moins de vie
+					Personnage meilleurCible = null;
+					int vieMin = 10000;
+					for (Personnage cible : amisVivants) {
+						if (cible.getVie() < vieMin) {
+							vieMin = cible.getVie();
+							meilleurCible = cible;
+						}
+					}
+					cibles.add(meilleurCible);
+				} else {
+					// TODO cible healer (celui qui a le plus d'inte)
+					PersonnagePrincipal perso = personnageManager.getBestPersoVivant(PersoStat.INTELLIGENCE);
+					cibles.add(perso);
+				}
+			}
+
+		} else if (actionCombat.getCibleType() == CibleType.ALLIE) {
+			// TODO cible en fonction de la difficulte aleatoire, aleatoire,
+			// moins de vie, healer-moins de vie
+			// cible aleatoire
+			if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO
+					|| actionCombat.getSortType() == SortType.BOUCLIER_MONO) {
+				// Cible moins de vie
+				Personnage meilleurCible = null;
+				int vieMin = 10000;
+				for (Personnage cible : ennemisVivants) {
+					if (cible.getVie() < vieMin) {
+						vieMin = cible.getVie();
+						meilleurCible = cible;
+					}
+				}
+				cibles.add(meilleurCible);
+			} else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO) {
+				// Cible moins de mana
+				Personnage meilleurCible = null;
+				int manaMin = 10000;
+				for (Personnage cible : ennemisVivants) {
+					if (cible.getMana() < manaMin) {
+						manaMin = cible.getMana();
+						meilleurCible = cible;
+					}
+				}
+				cibles.add(meilleurCible);
+			} else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO) {
+				// Cible morte aleatoire (+ d'inte)
+				Personnage meilleurCible = null;
+				// Pour chaque amis morts
+				List<Personnage> morts = new ArrayList<Personnage>();
+				for (Personnage cible : ennemisPresents) {
+					if (cible.isMort()) {
+						morts.add(cible);
+					}
+				}
+				// On prend celui qui a le plus d'intelligence
+				meilleurCible = personnageManager.getBestStatPersoMorts(PersoStat.INTELLIGENCE, morts);
+				cibles.add(meilleurCible);
+			} else {
+				int randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+				Personnage cible = ennemisVivants.get(randomPerso);
+				// TODO meilleurCible possible (moins de vie, healer)
+				cibles.add(cible);
+			}
+		} else if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
+			cibles.addAll(amisVivants);
+		} else if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
+			cibles.addAll(ennemisVivants);
+		} else if (actionCombat.getCibleType() == CibleType.PERSO) {
+			cibles.add(lanceur);
+		} else if (actionCombat.getCibleType() == CibleType.TOUS) {
+			cibles.addAll(ennemisVivants);
+			cibles.addAll(amisVivants);
+		}
+		return cibles;
 	}
 
 	private JLabel getMessage(Personnage perso, ActionCombat actionCombat, int score, List<Personnage> cibles,
@@ -1654,7 +1944,7 @@ public class FrameCombat extends FrameJeu {
 		VideoManager.hideAndStop();
 		MusiqueManager.stop();
 		MusiqueManager.startPlayListEnBoucle(mission);
-		
+
 		JOptionPane.showMessageDialog(this, "Debut du combat");
 
 		// -- TODO Gestion IA
@@ -1663,7 +1953,7 @@ public class FrameCombat extends FrameJeu {
 
 	// Fin du jeu
 	private void stop(Mission mission, boolean win) {
-		
+
 		MusiqueManager.stopPlaylistEnBoucle();
 
 		// Remise a zero pour prochain combat (duplique avec lancePartie())
@@ -1774,7 +2064,12 @@ public class FrameCombat extends FrameJeu {
 		// Initiative : quelle equipe commence? basé sur une competence + random
 		// TODO initiative basé sur une competence
 		boolean initiative = false;
-		int random = RandomManager.random0_100();
+		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
+		int agiliteMax = personnageManager.getBestStatPersoVivant(PersoStat.AGILITE) / 3;
+		int rapiditeMax = personnageManager.getBestStatPersoVivant(PersoStat.RAPIDITE) / 3;
+		int chanceMax = personnageManager.getBestStatPersoVivant(PersoStat.LUCK) / 3;
+		int max = agiliteMax + rapiditeMax + chanceMax;
+		int random = RandomManager.random(100 - max, 100);
 		int chanceInitiative = 0;
 		int nombreJoueurs = amisVivants.size();
 
@@ -1854,41 +2149,163 @@ public class FrameCombat extends FrameJeu {
 	}
 
 	private ActionCombat selectionneAttaqueEnnemi(PersonnageEnnemi ennemi) {
-		
+
+		// TODO IA choix de l'attaque en fonction de la difficulte et de la
+		// classe
+		// TODO gestion choix quand plusieurs attaque dispo (systeme de score?)
+		// essaie de rez
+		// essaie de heal/mana/bouclier
+		// essaie de tuer
+
 		List<ActionCombat> actionsCombat = ennemi.getActionsCombat();
 		ActionCombat action = null;
-		ActionCombat meilleurAction = null;
 		ActionCombat actionDeBase = null;
+		Map<ActionCombat, Integer> actionsScores = new HashMap<ActionCombat, Integer>();
+
 		for (ActionCombat actionCombat : actionsCombat) {
 			boolean sortLancable = testConsommationEnergieEnnemi(ennemi, actionCombat);
 			if (sortLancable) {
-				if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL) {
-					meilleurAction = actionCombat;
-					break;
+				// Gestion par priorite
+				if (actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
+					// Si il y a au moins deux mort
+					if (ennemisVivants.size() < ennemisPresents.size() - 2) {
+						actionsScores.put(actionCombat, 100);
+					}
+				} else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO) {
+					// Si il y a au moins un mort
+					if (ennemisVivants.size() != ennemisPresents.size()) {
+						actionsScores.put(actionCombat, 95);
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_VIE_MULTI) {
+					int count = 0;
+					for (Personnage perso : ennemisVivants) {
+						// Si au moins deux des ennemis ont moins de la moitie
+						// de leur vie
+						if ((perso.getVie() < (ennemi.getVieMax() / 2))) {
+							count = count++;
+							if (count > 1) {
+								actionsScores.put(actionCombat, 90);
+							}
+						}
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_VIE_PERSO) {
+					// Si le lanceur a moins de la moitie de sa vie
+					if (ennemi.getVie() < (ennemi.getVieMax() / 2)) {
+						actionsScores.put(actionCombat, 85);
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO) {
+					for (Personnage perso : ennemisVivants) {
+						// Si un des ennemis a moins de la moitie de sa vie
+						if (perso.getVie() < (ennemi.getVieMax() / 2)) {
+							actionsScores.put(actionCombat, 80);
+						}
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
+					int count = 0;
+					for (Personnage perso : ennemisVivants) {
+						// Si au moins deux des ennemis ont moins de la moitie
+						// de leur mana
+						if (perso.getMana() < (ennemi.getManaMax() / 2)) {
+							count = count++;
+							if (count > 1) {
+								actionsScores.put(actionCombat, 75);
+							}
+						}
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_MANA_PERSO) {
+					// Si le lanceur a moins de la moitie de son mana
+					if (ennemi.getMana() < (ennemi.getManaMax() / 2)) {
+						actionsScores.put(actionCombat, 70);
+					}
+				} else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO) {
+					for (Personnage perso : ennemisVivants) {
+						// Si un des ennemis a moins de la moitie de son mana
+						if (perso.getMana() < (ennemi.getManaMax() / 2)) {
+							actionsScores.put(actionCombat, 65);
+						}
+					}
+				} else if (actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
+					int count = 0;
+					for (Personnage perso : ennemisVivants) {
+						// Si au moins deux des ennemis n'ont pas de bouclier
+						if (perso.getBouclier() == 0) {
+							count = count++;
+							if (count > 1) {
+								actionsScores.put(actionCombat, 60);
+							}
+						}
+					}
+				} else if (actionCombat.getSortType() == SortType.BOUCLIER_PERSO) {
+					// Si le lanceur n'a pas de bouclier
+					if (ennemi.getBouclier() == 0) {
+						actionsScores.put(actionCombat, 55);
+					}
+				} else if (actionCombat.getSortType() == SortType.BOUCLIER_MONO) {
+					for (Personnage perso : ennemisVivants) {
+						// Si un des ennemis n'a pas de bouclier
+						if (perso.getBouclier() == 0) {
+							actionsScores.put(actionCombat, 50);
+						}
+					}
+					// TODO else if les autres sorts
+				} else if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL) {
+					actionsScores.put(actionCombat, 95);
 				} else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR) {
-					meilleurAction = actionCombat;
+					actionsScores.put(actionCombat, 50);
 				} else if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
-					meilleurAction = actionCombat;
+					actionsScores.put(actionCombat, 50);
 				} else if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE) {
-					actionDeBase = actionCombat;
+					actionsScores.put(actionCombat, 40);
 				}
 			}
 		}
 
-		// Si on peux lancer un sort avec consommation, on le fait
-		if (meilleurAction == null) {
-			action = actionDeBase;
-		} else {
-			action = meilleurAction;
-		}
 
 		// TODO Si lanceur est Taunt
 		if (!ennemi.getTauntBy().isEmpty()) {
-			// limité a un sort mono Ennemi
-			// TODO plus de choix 
-			action = actionDeBase;
+			// limité a des sort mono Ennemi
+			triActions(actionsScores);
+			action = getBestActionByScore(action, actionsScores);
+
+		} else {
+			// Random parmis toutes les actions avec des coeff 
+			action = getBestActionByScore(action, actionsScores);
 		}
 
+		return action;
+	}
+
+	private void triActions(Map<ActionCombat, Integer> actionsScores) {
+		Map<ActionCombat, Integer> temp = new HashMap<ActionCombat, Integer>(actionsScores);
+		Set<ActionCombat> actions = temp.keySet();
+		for (ActionCombat action : actions) {
+			if (action.getCibleType() != CibleType.ENNEMI) {
+				actionsScores.remove(action);
+			}
+		}
+	}
+
+	private ActionCombat getBestActionByScore(ActionCombat action, Map<ActionCombat, Integer> actionsScores) {
+		Set<Entry<ActionCombat, Integer>> entrySet = actionsScores.entrySet();
+		int meilleurScore = 0;
+		ActionCombat meilleurAction = null;
+		while (action == null) {
+			for (Entry<ActionCombat, Integer> entry : entrySet) {
+				if (entry.getValue() > meilleurScore) {
+					meilleurScore = entry.getValue();
+					meilleurAction = entry.getKey();
+				}
+			}
+			int random = RandomManager.random(0, 100);
+			if (random < meilleurScore) {
+				action = meilleurAction;
+			} else {
+				entrySet.remove(meilleurAction);
+				if (entrySet.isEmpty()) {
+					action = meilleurAction;
+				}
+			}
+		}
 		return action;
 	}
 
@@ -1913,7 +2330,7 @@ public class FrameCombat extends FrameJeu {
 	private void buildPanelCentre() {
 
 		// TODO barres pleines
-		
+
 		panelCentre.removeAll();
 
 		BoxLayout boxlayoutCombat = new BoxLayout(panelCentre, BoxLayout.Y_AXIS);
@@ -1955,22 +2372,128 @@ public class FrameCombat extends FrameJeu {
 		JPanel panelPerso = new JPanel();
 		BoxLayout boxlayout = new BoxLayout(panelPerso, BoxLayout.Y_AXIS);
 		panelPerso.setLayout(boxlayout);
-		int largeur = Constante.PANEL_INFO_PERSO_LARGEUR;
-		// panelPerso.setMinimumSize(new Dimension(largeur, 200));
 
-		// Largeur 100
-		JPanel barreCharge = new JPanel();
-		barreCharge.setBackground(Color.YELLOW);
-		barreCharge.add(new JLabel(perso.getNombreCharge() + "/" + perso.getNombreChargeMax()));
-		JPanel barreMana = new JPanel();
-		barreMana.setBackground(Color.BLUE);
-		barreMana.add(new JLabel(perso.getMana() + "/" + perso.getManaMax()));
-		JPanel barreBouclier = new JPanel();
-		barreBouclier.setBackground(Color.WHITE);
-		barreBouclier.add(new JLabel(String.valueOf(perso.getBouclier())));
-		JPanel barreVie = new JPanel();
-		barreVie.setBackground(Color.RED);
-		barreVie.add(new JLabel(perso.getVie() + "/" + perso.getVieMax()));
+		// Largeur des barres 200
+		int largeur = Constante.PANEL_INFO_PERSO_LARGEUR;
+		int hauteur = Constante.PANEL_INFO_PERSO_HAUTEUR;
+
+		// Barre de Charge
+		JLayeredPane barreCharge = new JLayeredPane();
+		barreCharge.setLayout(new LayeredLayoutManager());
+
+		JPanel barreChargeCouleur = new JPanel();
+		barreChargeCouleur.setBackground(Color.MAGENTA);
+		barreChargeCouleur.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		int largeurCharge = (largeur * perso.getNombreCharge()) / perso.getNombreChargeMax();
+		barreChargeCouleur.setMaximumSize(new Dimension(largeurCharge, hauteur));
+
+		JPanel barresCharge = new JPanel();
+		barresCharge.setLayout(new BoxLayout(barresCharge, BoxLayout.X_AXIS));
+		barresCharge.setBackground(Color.BLACK);
+		barresCharge.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		barresCharge.add(barreChargeCouleur);
+		barreCharge.add(barresCharge, Integer.valueOf(1));
+
+		JLabel labelCharge = new JLabel(perso.getNombreCharge() + "/" + perso.getNombreChargeMax());
+		labelCharge.setHorizontalAlignment(SwingConstants.CENTER);
+		labelCharge.setVerticalAlignment(SwingConstants.CENTER);
+		labelCharge.setForeground(Color.PINK);
+		barreCharge.add(labelCharge, Integer.valueOf(5));
+
+		barreCharge.setPreferredSize(new Dimension(largeur, hauteur));
+
+		// Barre de Mana
+		JLayeredPane barreMana = new JLayeredPane();
+		barreMana.setLayout(new LayeredLayoutManager());
+
+		JPanel barreManaCouleur = new JPanel();
+		barreManaCouleur.setBackground(Color.BLUE);
+		barreManaCouleur.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		int largeurMana = (largeur * perso.getMana()) / perso.getManaMax();
+		barreManaCouleur.setMaximumSize(new Dimension(largeurMana, hauteur));
+
+		JPanel barresMana = new JPanel();
+		barresMana.setLayout(new BoxLayout(barresMana, BoxLayout.X_AXIS));
+		barresMana.setBackground(Color.BLACK);
+		barresMana.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		barresMana.add(barreManaCouleur);
+		barreMana.add(barresMana, Integer.valueOf(1));
+
+		JLabel labelMana = new JLabel(perso.getMana() + "/" + perso.getManaMax());
+		labelMana.setHorizontalAlignment(SwingConstants.CENTER);
+		labelMana.setVerticalAlignment(SwingConstants.CENTER);
+		labelMana.setForeground(Color.CYAN);
+		barreMana.add(labelMana, Integer.valueOf(5));
+
+		barreMana.setPreferredSize(new Dimension(largeur, hauteur));
+
+		// Barre de Bouclier
+		JLayeredPane barreBouclier = new JLayeredPane();
+		barreBouclier.setLayout(new LayeredLayoutManager());
+
+		JPanel barreBouclierCouleur = new JPanel();
+		barreBouclierCouleur.setBackground(Color.CYAN);
+		barreBouclierCouleur.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		int largeurBouclier = (largeur * perso.getBouclier()) / perso.getVieMax();
+		barreBouclierCouleur.setMaximumSize(new Dimension(largeurBouclier, hauteur));
+
+		JPanel barresBouclier = new JPanel();
+		barresBouclier.setLayout(new BoxLayout(barresBouclier, BoxLayout.X_AXIS));
+		barresBouclier.setBackground(Color.BLACK);
+		barresBouclier.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		barresBouclier.add(barreBouclierCouleur);
+		barreBouclier.add(barresBouclier, Integer.valueOf(1));
+
+		JLabel labelBouclier = new JLabel(perso.getBouclier() + "");
+		labelBouclier.setHorizontalAlignment(SwingConstants.CENTER);
+		labelBouclier.setVerticalAlignment(SwingConstants.CENTER);
+		labelBouclier.setForeground(Color.WHITE);
+		barreBouclier.add(labelBouclier, Integer.valueOf(5));
+
+		barreBouclier.setPreferredSize(new Dimension(largeur, hauteur));
+
+		// Barre de Vie
+		JLayeredPane barreVie = new JLayeredPane();
+		barreVie.setLayout(new LayeredLayoutManager());
+
+		// Couleur en fonction de la vie
+		JPanel barreVieCouleur = new JPanel();
+		// Si full life
+		if (perso.getVie() == perso.getVieMax()) {
+			barreVieCouleur.setBackground(new Color(0, 255, 0));
+		}
+		// Si plus de la moitie de la vie
+		else if (perso.getVie() > (perso.getVieMax() / 2)) {
+			// red entre 0 et 255
+			int red = 255 - ((perso.getVie() * (255 / 2)) / (perso.getVieMax()));
+			barreVieCouleur.setBackground(new Color(red, 255, 0));
+		}
+		// Si moins de la moitie de la vie
+		else {
+			// green entre 255 et 0
+			int green = (perso.getVie() * (255 * 2)) / (perso.getVieMax());
+			barreVieCouleur.setBackground(new Color(255, green, 0));
+		}
+		barreVieCouleur.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		int largeurVie = (largeur * perso.getVie()) / perso.getVieMax();
+		barreVieCouleur.setMaximumSize(new Dimension(largeurVie, hauteur));
+
+		JPanel barresVie = new JPanel();
+		barresVie.setLayout(new BoxLayout(barresVie, BoxLayout.X_AXIS));
+		barresVie.setBackground(Color.BLACK);
+		barresVie.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		barresVie.add(barreVieCouleur);
+		barreVie.add(barresVie, Integer.valueOf(1));
+
+		JLabel labelVie = new JLabel(perso.getVie() + "/" + perso.getVieMax());
+		labelVie.setHorizontalAlignment(SwingConstants.CENTER);
+		labelVie.setVerticalAlignment(SwingConstants.CENTER);
+		labelVie.setForeground(Color.YELLOW);
+		barreVie.add(labelVie, Integer.valueOf(5));
+
+		barreVie.setPreferredSize(new Dimension(largeur, hauteur));
+
+		// Barre de Personnage/Nom
 		JPanel barrePersonnage = new JPanel();
 		barrePersonnage.add(new JLabel(perso.getPrenom()));
 

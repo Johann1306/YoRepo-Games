@@ -188,16 +188,16 @@ public class FrameFoot extends FrameJeu {
 		adversaires = new ArrayList<Personnage>();
 
 		for (int i = 1; i <= boutonsAmis.size(); i++) {
-			PersonnageEnnemi ennemi = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
-					.createPersonnageEnnemi(mission, i);
-			adversaires.add(ennemi);
-			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
-			boutonEnnemi.setName(ennemi.getNom());
-			boutonEnnemi.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
-			boutonEnnemi.setToolTipText(boutonEnnemi.getName());
-			boutonEnnemi.setFocusable(false);
-			panelEnnemis.add(boutonEnnemi);
-			boutonsAdversaires.add(boutonEnnemi);
+//			PersonnageEnnemi ennemi = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
+//					.createPersonnageEnnemi(mission, i);
+//			adversaires.add(ennemi);
+//			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
+//			boutonEnnemi.setName(ennemi.getNom());
+//			boutonEnnemi.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
+//			boutonEnnemi.setToolTipText(boutonEnnemi.getName());
+//			boutonEnnemi.setFocusable(false);
+//			panelEnnemis.add(boutonEnnemi);
+//			boutonsAdversaires.add(boutonEnnemi);
 		}
 
 		panelEst.add(panelEnnemis);
