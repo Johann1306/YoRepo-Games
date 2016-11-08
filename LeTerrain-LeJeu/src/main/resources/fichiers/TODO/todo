@@ -1,19 +1,18 @@
 TODO :
 
 Priorités :
-
+- Problemes dernier joueur ami qui ne veux pas mourir tout de suite (apres un rez multi) les morts se refaisaient tuer plusieurs fois : problemes de cibles? (Fix suffisant? : detaunt quand taunteur mort)
+- Problemes Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé tous les tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 
 Problemes : 
-- Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ???)
+- Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???)
 - (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
-- mission premier Perso qui n'apparait pas quand spam Entree
-- Quand fin du jeu (all persos morts) => Nullpointer apres fermeture de la MainFrame.dispose
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
 
 Indispensables:
 - FrameFoot
 - Centrer PanelCentre on click milieu du scroll 
-- Ajouter Scroller au PanelCentre 
+- Ajouter Scroller clickable au PanelCentre 
 - Fiche perso evolutive
 - Gerer les Carte, Lieu, POI (+deplacement/click souris dans le Panel Centre)
 - Menu principal + Intro + enchainement premiere mission + choix personnage
@@ -41,8 +40,6 @@ Optionnelles:
 - gerer la possibilité d'ajouter du contenu
 - jar executable en double clic au lieu de ligne de commande
 - Gestion IA frameCombat
-- Gestion Barre de vie / mana / charge / bouclier dans frameCombat
-- gerer les boss / combats
 - gerer la partie foot
 - Gestion de tous les parametres de Mission
 - Panel Image pour les photos/images associés 
@@ -55,7 +52,7 @@ Optionnelles:
 Bonus :
 
 - gerer la fin des missions et evenements + feuille de stats fin du jeu (temps, %victoire/%defaite, meilleur temps/score par missions, bonus gagnés, ennemies tués, ...)
-- gerer partie achievements/deloques =>(Persos, items, missions, evenements, Musique, Videos, Jeux, Dessin animé)
+- gerer partie achievements/deloques =>(Persos, items, missions, evenements, Musique, Videos, Jeux, Dessin animé, cartes magic/dbz)
 - Panel Dialogue
 - Ajouter image dans panel MP3
 - Animation (Yeux, bouche, sourcils) du PanelPersonnage
