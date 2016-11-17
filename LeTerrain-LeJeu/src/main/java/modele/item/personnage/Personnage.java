@@ -1,12 +1,14 @@
 package modele.item.personnage;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
 
+import core.BonusManager;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.personnage.action.ActionCombat;
@@ -34,6 +36,7 @@ public class Personnage implements Serializable {
 	private List<ImageIcon> photos;
 	private List<ActionCombat> actionsCombat;
 	private Competence competence;
+	private Map<Personnage, Aura> auras;
 
 	private boolean mort = false;
 	private boolean aDejaJoue = false;
@@ -46,6 +49,7 @@ public class Personnage implements Serializable {
 	public Personnage(String prenom, String nom) {
 		this.prenom = prenom;
 		this.nom = nom;
+		this.auras = new HashMap<Personnage, Aura>();
 	}
 
 	public String getNom() {
@@ -252,11 +256,11 @@ public class Personnage implements Serializable {
 	public String toString() {
 		return "Personnage [nom=" + nom + ", prenom=" + prenom + ", mort=" + mort + ", vie=" + vie + "/" + vieMax
 				+ ", mana=" + mana + "/" + manaMax + ", charges=" + nombreCharge + "/" + nombreChargeMax
-				+ ", vitesseCharge=" + vitesseCharge + ", bouclier=" + bouclier + ", esquive=" + nombreEsquive + "(" + niveauEsquive + "/" + niveauEsquiveMax + ")" + ", surnomPrincipal=" + surnomPrincipal
-				+ ", surnoms=" + surnoms + ", particularitesPhysique=" + particularitesPhysique
-				+ ", particularitesSocial=" + particularitesSocial + ", phrasesPerso=" + phrasesPerso
-				+ ", photoPrincipal=" + photoPrincipal + ", photos=" + photos + ", actionsCombat=" + actionsCombat
-				+ "]";
+				+ ", vitesseCharge=" + vitesseCharge + ", bouclier=" + bouclier + ", esquive=" + nombreEsquive + "("
+				+ niveauEsquive + "/" + niveauEsquiveMax + ")" + ", surnomPrincipal=" + surnomPrincipal + ", surnoms="
+				+ surnoms + ", particularitesPhysique=" + particularitesPhysique + ", particularitesSocial="
+				+ particularitesSocial + ", phrasesPerso=" + phrasesPerso + ", photoPrincipal=" + photoPrincipal
+				+ ", photos=" + photos + ", actionsCombat=" + actionsCombat + "]";
 	}
 
 	public void ajouteUneCharge() {
@@ -267,6 +271,66 @@ public class Personnage implements Serializable {
 
 	public Map<Personnage, Integer> getTauntBy() {
 		return tauntBy;
+	}
+
+	public Map<Personnage, Aura> getAuras() {
+		return auras;
+	}
+
+	public void setAuras(Map<Personnage, Aura> auras) {
+		this.auras = auras;
+	}
+
+	public void enleveAuras() {
+		// Pour chaque Aura
+		for (Aura aura : auras.values()) {
+			int valeurAjoutee = aura.getValeurAjoutee();
+			PersoStat stat = aura.getStat();
+			Map<PersoStat, Integer> stats = competence.getStats();
+			Integer valeurDeBase = stats.get(stat);
+			// On retire la valeur de l'aura pour la stat donne
+			stats.put(stat, valeurDeBase - valeurAjoutee);
+		}
+		// On nettoie la map
+		auras.clear();
+	}
+
+	private void enleveAura(Personnage lanceur) {
+		Aura aura = auras.get(lanceur);
+		int valeurAjoutee = aura.getValeurAjoutee();
+		PersoStat stat = aura.getStat();
+		Map<PersoStat, Integer> stats = competence.getStats();
+		Integer valeurDeBase = stats.get(stat);
+		// On retire la valeur de l'aura pour la stat donne
+		stats.put(stat, valeurDeBase - valeurAjoutee);		
+		auras.remove(lanceur);
+	}
+	
+	public void ajouteAura(Personnage lanceur, Aura aura) {
+
+		// Si la cible a deja une aura sur cette stat
+		if (auras.containsKey(lanceur)) {
+			// On enleve l'ancienne aura
+			enleveAura(lanceur);
+		}
+		// On ajoute la valeur de l'aura a la stat donne
+		int valeurAAjouter = aura.getValeur();
+		PersoStat statAModifier = aura.getStat();
+		Map<PersoStat, Integer> stats = competence.getStats();
+		Integer valeurDeBase = stats.get(statAModifier);
+		int nouvelleValeur = valeurDeBase + valeurAAjouter;
+		// On plafonne a 100
+		if (nouvelleValeur > 100) {
+			int valeurAjoutee = 100 - valeurDeBase;
+			aura.setValeurAjoutee(valeurAjoutee);
+			nouvelleValeur = 100;
+		} else {
+			aura.setValeurAjoutee(valeurAAjouter);
+		}
+		stats.put(statAModifier, nouvelleValeur);
+
+		// On ajoute le lanceur et l'aura a la map
+		auras.put(lanceur, aura);
 	}
 
 

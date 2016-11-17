@@ -1,11 +1,12 @@
 TODO :
 
 Priorités :
-- Problemes dernier joueur ami qui ne veux pas mourir tout de suite (apres un rez multi) les morts se refaisaient tuer plusieurs fois : problemes de cibles? (Fix suffisant? : detaunt quand taunteur mort)
-- Problemes Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé tous les tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
+- Probleme des missions mal distribué aux perso
+- stun/provocation esquivables ?
+- Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 
 Problemes : 
-- Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???)
+- Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???) non reproductible mais recurrent
 - (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
 
