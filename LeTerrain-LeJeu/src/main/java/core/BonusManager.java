@@ -91,7 +91,8 @@ public class BonusManager implements Serializable {
 	
 	public static void distribueBonus(Groupe groupe, Bonus bonus) {
 		for (PersonnagePrincipal perso : groupe.getPersos()) {
-			if (bonus.getBonusMap().containsKey(perso.getPrenom())) {
+			// On distribue le bonus si le perso est deja dans le groupe et qu'il est vivant 
+			if (bonus.getBonusMap().containsKey(perso.getPrenom()) && perso.isDejaPresente() && !perso.isMort()) {
 				perso.addCompetences(bonus.getBonusMap().get(perso.getPrenom()));
 			}
 		}

@@ -57,7 +57,7 @@ public class QuizzManager implements Serializable {
 
 		String imagePath3 = "image/enigme/ali.png";
 		String videoPath3 = "video/Trololo.mp4";
-		String question3 = "Qui a decouvert l'Amerique ?";
+		String question3 = "Qui a découvert l'Amerique ?";
 		Reponse reponse31 = new Reponse("Gerard Depardieu", false);
 		Reponse reponse32 = new Reponse("Amerigo Vespuci", true);
 		Reponse reponse33 = new Reponse("Christophe Colomb", false);
@@ -68,6 +68,30 @@ public class QuizzManager implements Serializable {
 		reponsesPossibles3.add(reponse33);
 		reponsesPossibles3.add(reponse34);
 		String infoReponse3 = "D'ou le nom Amerique";
+		
+		// MATH
+		// Laquelle de ces affirmations est vraie? Une soustraction peut donner un nombre positif, Une racine carré peut être négative, Deux droites parallèles peuvent se croiser, Un nombre peut être divisé par 0 (En effet : 7-2 = 5)   
+		
+		// Faim / Soif / Sante / Richesses
+		// En 2016, quel pourcentage de la population mondiale détient la moitié des richesses de la planete? : 50%, 60%, 10%, 1% (18,5 millions de foyers detiennent 47% de la richesse en revenus, dépôts bancaires ou titres boursiers. Les 62 personnes les plus riches detiennent plus que les 3,5 milliards les plus pauvres(62/3 500 000 000))
+		
+		// Politique
+		// Quelle personnalité est presente sur la pochette de l'albulm des Beatlles ()? Aleister Crowley
+		
+		// Ecologie
+		
+		// Energies
+		
+		// Guerres
+		// Nombre d'années des etats unis en paix (7/200)
+		// Nombre de pays ou les etats unis sont implanté militairement =~150
+		
+		
+		
+		// Decouvertes
+		// Tesla
+		// Homme
+		//
 		
 		enigmesInconnus.add(new Enigme(imagePath1, videoPath1, question1, reponsesPossibles1, infoReponse1, TypeEnigme.ECOLE));
 		enigmesInconnus.add(new Enigme(imagePath2, videoPath2, question2, reponsesPossibles2, infoReponse2, TypeEnigme.PERSO));

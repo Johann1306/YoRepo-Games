@@ -41,22 +41,26 @@ public class ActionCombatManager implements Serializable {
 		List<String> videoPaths = new ArrayList<String>();
 		videoPaths.add("video/Trololo.mp4");
 		
-		boolean disponible = true;
-
-		int niveau_1 = 1;
+		// TODO remettre niveau_1 a 1
+		int niveau_1 = 10;
 		int niveauMax_10 = 10;
 		int progression = 0;
+		boolean disponible = true;
 		
-		// Johann
+		// TODO mettre des sorts en fonction de la stat principal du perso
+		// TODO restreindre le nombre de sort par perso en fonction de la classe
+		// TODO noms et sons de sort specifiques
+		
+		// Johann (Chance)
 		ActionCombat johannAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Johann);
 		ActionCombat johannAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Johann);
 		ActionCombat johannDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Johann);
 		ActionCombat johannDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Johann);
 		ActionCombat johannDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Johann);
 		ActionCombat johannDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Johann);
-		ActionCombat johannDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Johann);
-		ActionCombat johannDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Johann);
-		ActionCombat johannDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Johann);
+		ActionCombat johannDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.LUCK, SortType.AURA_PERSO, PersoPrenom.Johann);
+		ActionCombat johannDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.LUCK, SortType.AURA_MONO, PersoPrenom.Johann);
+		ActionCombat johannDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.AURA_MULTI, PersoPrenom.Johann);
 		ActionCombat johannDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Johann);
 		ActionCombat johannSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Johann);
 		ActionCombat johannSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Johann);
@@ -79,16 +83,16 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat johannSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Johann);
 		ActionCombat johannSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Johann);
 		
-		// Nicolas
+		// Nicolas (Exploit)
 		ActionCombat nicolasAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Nicolas);
 		ActionCombat nicolasAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Nicolas);
 		ActionCombat nicolasDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Nicolas);
 		ActionCombat nicolasDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Nicolas);
 		ActionCombat nicolasDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Nicolas);
-		ActionCombat nicolasDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Nicolas);
-		ActionCombat nicolasDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Nicolas);
-		ActionCombat nicolasDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Nicolas);
+		ActionCombat nicolasDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.AURA_PERSO, PersoPrenom.Nicolas);
+		ActionCombat nicolasDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.EXPLOIT, SortType.AURA_MONO, PersoPrenom.Nicolas);
+		ActionCombat nicolasDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.EXPLOIT, SortType.AURA_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Nicolas);
@@ -104,23 +108,23 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat nicolasSort12 = new ActionCombat(incrementId(), "Brulure Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.BRULURE_MANA_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort13 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort14 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, PersoPrenom.Nicolas);
-		ActionCombat nicolasSort15 = new ActionCombat(incrementId(), "Taunt Mono", "abc", imagePaths, sonREZ, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Nicolas);
+		ActionCombat nicolasSort15 = new ActionCombat(incrementId(), "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort16 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.TAUNT_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort17 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Nicolas);
 		ActionCombat nicolasSort18 = new ActionCombat(incrementId(), "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Nicolas);
 		ActionCombat nicolasSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Nicolas);
 	
-		// Pierre
+		// Pierre (Agilite)
 		ActionCombat pierreAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Pierre);
 		ActionCombat pierreAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Pierre);
 		ActionCombat pierreDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Pierre);
 		ActionCombat pierreDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Pierre);
 		ActionCombat pierreDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Pierre);
-		ActionCombat pierreDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Pierre);
-		ActionCombat pierreDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Pierre);
-		ActionCombat pierreDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Pierre);
+		ActionCombat pierreDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.AURA_PERSO, PersoPrenom.Pierre);
+		ActionCombat pierreDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.AGILITE, SortType.AURA_MONO, PersoPrenom.Pierre);
+		ActionCombat pierreDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.AGILITE, SortType.AURA_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Pierre);
 		ActionCombat pierreSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Pierre);
 		ActionCombat pierreSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Pierre);
@@ -136,23 +140,23 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat pierreSort12 = new ActionCombat(incrementId(), "Brulure Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.BRULURE_MANA_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreSort13 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, PersoPrenom.Pierre);
 		ActionCombat pierreSort14 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, PersoPrenom.Pierre);
-		ActionCombat pierreSort15 = new ActionCombat(incrementId(), "Taunt Mono", "abc", imagePaths, sonREZ, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Pierre);
+		ActionCombat pierreSort15 = new ActionCombat(incrementId(), "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Pierre);
 		ActionCombat pierreSort16 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.TAUNT_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreSort17 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Pierre);
 		ActionCombat pierreSort18 = new ActionCombat(incrementId(), "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Pierre);
 		ActionCombat pierreSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Pierre);
 	
-		// Yannick
+		// Yannick (Robustesse)
 		ActionCombat yannickAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Yannick);
 		ActionCombat yannickAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Yannick);
 		ActionCombat yannickDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Yannick);
 		ActionCombat yannickDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Yannick);
 		ActionCombat yannickDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Yannick);
 		ActionCombat yannickDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Yannick);
-		ActionCombat yannickDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Yannick);
-		ActionCombat yannickDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Yannick);
-		ActionCombat yannickDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Yannick);
+		ActionCombat yannickDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.AURA_PERSO, PersoPrenom.Yannick);
+		ActionCombat yannickDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.AURA_MONO, PersoPrenom.Yannick);
+		ActionCombat yannickDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RESISTANCE, SortType.AURA_MULTI, PersoPrenom.Yannick);
 		ActionCombat yannickDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Yannick);
 		ActionCombat yannickSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Yannick);
 		ActionCombat yannickSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Yannick);
@@ -175,16 +179,16 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat yannickSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Yannick);
 		ActionCombat yannickSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Yannick);
 	
-		// Thomas
+		// Thomas (Intelligence)
 		ActionCombat thomasAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Thomas);
 		ActionCombat thomasAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Thomas);
 		ActionCombat thomasDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Thomas);
 		ActionCombat thomasDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Thomas);
 		ActionCombat thomasDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Thomas);
 		ActionCombat thomasDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Thomas);
-		ActionCombat thomasDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Thomas);
-		ActionCombat thomasDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Thomas);
-		ActionCombat thomasDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Thomas);
+		ActionCombat thomasDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.AURA_PERSO, PersoPrenom.Thomas);
+		ActionCombat thomasDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.AURA_MONO, PersoPrenom.Thomas);
+		ActionCombat thomasDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.AURA_MULTI, PersoPrenom.Thomas);
 		ActionCombat thomasDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Thomas);
 		ActionCombat thomasSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Thomas);
 		ActionCombat thomasSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Thomas);
@@ -207,7 +211,7 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat thomasSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Thomas);
 		ActionCombat thomasSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Thomas);
 	
-		// Guillaume
+		// Guillaume (Technique)
 		ActionCombat guillaumeAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Guillaume);
 		ActionCombat guillaumeAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
 		ActionCombat guillaumeDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Guillaume);
@@ -239,16 +243,16 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat guillaumeSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
 		ActionCombat guillaumeSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Guillaume);
 	
-		// Ali
+		// Ali (Vitesse)
 		ActionCombat aliAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Ali);
 		ActionCombat aliAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
 		ActionCombat aliDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Ali);
 		ActionCombat aliDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Ali);
 		ActionCombat aliDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Ali);
 		ActionCombat aliDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Ali);
-		ActionCombat aliDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Ali);
-		ActionCombat aliDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Ali);
-		ActionCombat aliDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Ali);
+		ActionCombat aliDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.AURA_PERSO, PersoPrenom.Ali);
+		ActionCombat aliDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.AURA_MONO, PersoPrenom.Ali);
+		ActionCombat aliDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, PersoPrenom.Ali);
 		ActionCombat aliDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Ali);
 		ActionCombat aliSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Ali);
 		ActionCombat aliSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Ali);
@@ -271,16 +275,16 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat aliSpecial1 = new ActionCombat(incrementId(), "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
 		ActionCombat aliSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Ali);
 	
-		// Jonathan
+		// Jonathan (Endurance)
 		ActionCombat jonathanAttaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Jonathan);
 		ActionCombat jonathanAttaque2 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense1 = new ActionCombat(incrementId(), "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense3 = new ActionCombat(incrementId(), "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense4 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Jonathan);
-		ActionCombat jonathanDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Jonathan);
-		ActionCombat jonathanDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Jonathan);
-		ActionCombat jonathanDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
+		ActionCombat jonathanDefense5 = new ActionCombat(incrementId(), "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.AURA_PERSO, PersoPrenom.Jonathan);
+		ActionCombat jonathanDefense6 = new ActionCombat(incrementId(), "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.ENDURANCE, SortType.AURA_MONO, PersoPrenom.Jonathan);
+		ActionCombat jonathanDefense7 = new ActionCombat(incrementId(), "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense8 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Jonathan);
 		ActionCombat jonathanSort1 = new ActionCombat(incrementId(), "Regen Vie Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Jonathan);
 		ActionCombat jonathanSort2= new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Jonathan);
@@ -304,20 +308,14 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat jonathanSpecial2 = new ActionCombat(incrementId(), "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Jonathan);
 		
 		//////////////////// ENNEMIS ///////////////////////
-		int niveauSort = 0;
+		int niveauSort = 1;
 		int niveauMaxSort = 10;
-		if (difficultePartie == Difficulte.FACILE) {
-			niveauSort = 1;
-		} else if (difficultePartie == Difficulte.NORMAL) {
-			niveauSort = 3;
-		} else if (difficultePartie == Difficulte.DIFFICILE) {
-			niveauSort = 6;
-		} else if (difficultePartie == Difficulte.HEROIQUE) {
-			niveauSort = 10;
-		}
 		
 		// Boss1
-		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "Attaque 1", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+	
+		// Gitans
 		
 		// Ennemi Gitan Tank
 		ActionCombat gitanTankAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
@@ -328,12 +326,12 @@ public class ActionCombatManager implements Serializable {
 
 		// Ennemi Gitan Healer
 		ActionCombat gitanHealerAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat gitanHealerDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.BOUCLIER_MULTI, null);
+		ActionCombat gitanHealerDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.BOUCLIER_MULTI, null);
 		ActionCombat gitanHealerSort1 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, null);
 		ActionCombat gitanHealerSort2 = new ActionCombat(incrementId(), "Regen Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, null);
-		ActionCombat gitanHealerSort3 = new ActionCombat(incrementId(), "Resurection Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, null);
+		ActionCombat gitanHealerSort3 = new ActionCombat(incrementId(), "Resurection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, null);
 		ActionCombat gitanHealerSpecial1 = new ActionCombat(incrementId(), "Regen Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, null);
-		ActionCombat gitanHealerSpecial2 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, null);
+		ActionCombat gitanHealerSpecial2 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, null);
 
 		// Ennemi Gitan DPS
 		ActionCombat gitanDpsAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
@@ -344,7 +342,7 @@ public class ActionCombatManager implements Serializable {
 
 		// Ennemi Gitan Mage
 		ActionCombat gitanMageAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat gitanMageDefense1 = new ActionCombat(incrementId(), "Bouclier perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat gitanMageDefense1 = new ActionCombat(incrementId(), "Bouclier perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.BOUCLIER_PERSO, null);
 		ActionCombat gitanMageDefense2 = new ActionCombat(incrementId(), "Regen Mana perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_PERSO, null);
 		ActionCombat gitanMageSort1 = new ActionCombat(incrementId(), "Absorption Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, null);
 		ActionCombat gitanMageSort2 = new ActionCombat(incrementId(), "Absorption Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, null);
@@ -354,13 +352,144 @@ public class ActionCombatManager implements Serializable {
 
 		// Ennemi Gitan Barde
 		ActionCombat gitanBardeAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat gitanBardeDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.BOUCLIER_MULTI, null);
+		ActionCombat gitanBardeDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.BOUCLIER_MULTI, null);
 		ActionCombat gitanBardeSort1 = new ActionCombat(incrementId(), "Regen Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.REGEN_MANA_MULTI, null);
 		ActionCombat gitanBardeSort2 = new ActionCombat(incrementId(), "Absorption Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.ABSORPTION_VIE_MULTI, null);
 		ActionCombat gitanBardeSort3 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.REGEN_VIE_MONO, null);
 		ActionCombat gitanBardeSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.TAUNT_MULTI, null);
-		ActionCombat gitanBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
+		ActionCombat gitanBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
 
+		// Arabes
+		
+		// Ennemi Arabe Tank
+		ActionCombat arabeTankAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeTankDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.ESQUIVE, null);
+		ActionCombat arabeTankDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat arabeTankSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.NERVOSITE, SortType.STUN_MONO, null);
+		ActionCombat arabeTankSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.NERVOSITE, SortType.TAUNT_MULTI, null);
+
+		// Ennemi Arabe Healer
+		ActionCombat arabeHealerAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeHealerDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.BOUCLIER_MULTI, null);
+		ActionCombat arabeHealerSort1 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, null);
+		ActionCombat arabeHealerSort2 = new ActionCombat(incrementId(), "Regen Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, null);
+		ActionCombat arabeHealerSort3 = new ActionCombat(incrementId(), "Resurection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, null);
+		ActionCombat arabeHealerSpecial1 = new ActionCombat(incrementId(), "Regen Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, null);
+		ActionCombat arabeHealerSpecial2 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, null);
+
+		// Ennemi Arabe DPS
+		ActionCombat arabeDpsAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeDpsAttaque2= new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+		ActionCombat arabeDpsDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.ESQUIVE, null);
+		ActionCombat arabeDpsSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.EXPLOIT, SortType.STUN_MONO, null);
+		ActionCombat arabeDpsSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+
+		// Ennemi Arabe Mage
+		ActionCombat arabeMageAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeMageDefense1 = new ActionCombat(incrementId(), "Bouclier perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat arabeMageDefense2 = new ActionCombat(incrementId(), "Regen Mana perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_PERSO, null);
+		ActionCombat arabeMageSort1 = new ActionCombat(incrementId(), "Absorption Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, null);
+		ActionCombat arabeMageSort2 = new ActionCombat(incrementId(), "Absorption Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, null);
+		ActionCombat arabeMageSort3 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeMageSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.DEGATS_MULTI, null);
+		ActionCombat arabeMageSpecial2 = new ActionCombat(incrementId(), "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.STUN_MULTI, null);
+
+		// Ennemi Arabe Barde
+		ActionCombat arabeBardeAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat arabeBardeDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.BOUCLIER_MULTI, null);
+		ActionCombat arabeBardeSort1 = new ActionCombat(incrementId(), "Regen Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.REGEN_MANA_MULTI, null);
+		ActionCombat arabeBardeSort2 = new ActionCombat(incrementId(), "Absorption Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.ABSORPTION_VIE_MULTI, null);
+		ActionCombat arabeBardeSort3 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.REGEN_VIE_MONO, null);
+		ActionCombat arabeBardeSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.TAUNT_MULTI, null);
+		ActionCombat arabeBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
+
+		// Noirs
+		
+		// Ennemi Noir Tank
+		ActionCombat noirTankAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat noirTankDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.ESQUIVE, null);
+		ActionCombat noirTankDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat noirTankSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.NERVOSITE, SortType.STUN_MONO, null);
+		ActionCombat noirTankSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.NERVOSITE, SortType.TAUNT_MULTI, null);
+
+		// Ennemi Noir Healer
+		ActionCombat noirHealerAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat noirHealerDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.BOUCLIER_MULTI, null);
+		ActionCombat noirHealerSort1 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, null);
+		ActionCombat noirHealerSort2 = new ActionCombat(incrementId(), "Regen Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, null);
+		ActionCombat noirHealerSort3 = new ActionCombat(incrementId(), "Resurection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, null);
+		ActionCombat noirHealerSpecial1 = new ActionCombat(incrementId(), "Regen Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, null);
+		ActionCombat noirHealerSpecial2 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, null);
+
+		// Ennemi Noir DPS
+		ActionCombat noirDpsAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat noirDpsAttaque2= new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+		ActionCombat noirDpsDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.ESQUIVE, null);
+		ActionCombat noirDpsSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.EXPLOIT, SortType.STUN_MONO, null);
+		ActionCombat noirDpsSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+
+		// Ennemi Noir Mage
+		ActionCombat noirMageAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat noirMageDefense1 = new ActionCombat(incrementId(), "Bouclier perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat noirMageDefense2 = new ActionCombat(incrementId(), "Regen Mana perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_PERSO, null);
+		ActionCombat noirMageSort1 = new ActionCombat(incrementId(), "Absorption Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, null);
+		ActionCombat noirMageSort2 = new ActionCombat(incrementId(), "Absorption Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, null);
+		ActionCombat noirMageSort3 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.DEGATS_MONO, null);
+		ActionCombat noirMageSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.DEGATS_MULTI, null);
+		ActionCombat noirMageSpecial2 = new ActionCombat(incrementId(), "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.STUN_MULTI, null);
+
+		// Ennemi Noir Barde
+		ActionCombat noirBardeAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat noirBardeDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.BOUCLIER_MULTI, null);
+		ActionCombat noirBardeSort1 = new ActionCombat(incrementId(), "Regen Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.REGEN_MANA_MULTI, null);
+		ActionCombat noirBardeSort2 = new ActionCombat(incrementId(), "Absorption Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.ABSORPTION_VIE_MULTI, null);
+		ActionCombat noirBardeSort3 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.REGEN_VIE_MONO, null);
+		ActionCombat noirBardeSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.TAUNT_MULTI, null);
+		ActionCombat noirBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
+
+		// Handicapes
+		
+		// Ennemi Handicape Tank
+		ActionCombat handicapeTankAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeTankDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.ESQUIVE, null);
+		ActionCombat handicapeTankDefense2 = new ActionCombat(incrementId(), "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat handicapeTankSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.NERVOSITE, SortType.STUN_MONO, null);
+		ActionCombat handicapeTankSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.NERVOSITE, SortType.TAUNT_MULTI, null);
+
+		// Ennemi Handicape Healer
+		ActionCombat handicapeHealerAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeHealerDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.BOUCLIER_MULTI, null);
+		ActionCombat handicapeHealerSort1 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, null);
+		ActionCombat handicapeHealerSort2 = new ActionCombat(incrementId(), "Regen Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, null);
+		ActionCombat handicapeHealerSort3 = new ActionCombat(incrementId(), "Resurection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, null);
+		ActionCombat handicapeHealerSpecial1 = new ActionCombat(incrementId(), "Regen Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, null);
+		ActionCombat handicapeHealerSpecial2 = new ActionCombat(incrementId(), "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, null);
+
+		// Ennemi Handicape DPS
+		ActionCombat handicapeDpsAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeDpsAttaque2= new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+		ActionCombat handicapeDpsDefense1 = new ActionCombat(incrementId(), "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.ESQUIVE, null);
+		ActionCombat handicapeDpsSort1 = new ActionCombat(incrementId(), "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.EXPLOIT, SortType.STUN_MONO, null);
+		ActionCombat handicapeDpsSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, null);
+
+		// Ennemi Handicape Mage
+		ActionCombat handicapeMageAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeMageDefense1 = new ActionCombat(incrementId(), "Bouclier perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.BOUCLIER_PERSO, null);
+		ActionCombat handicapeMageDefense2 = new ActionCombat(incrementId(), "Regen Mana perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_PERSO, null);
+		ActionCombat handicapeMageSort1 = new ActionCombat(incrementId(), "Absorption Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, null);
+		ActionCombat handicapeMageSort2 = new ActionCombat(incrementId(), "Absorption Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, null);
+		ActionCombat handicapeMageSort3 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeMageSpecial1 = new ActionCombat(incrementId(), "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.DEGATS_MULTI, null);
+		ActionCombat handicapeMageSpecial2 = new ActionCombat(incrementId(), "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.STUN_MULTI, null);
+
+		// Ennemi Handicape Barde
+		ActionCombat handicapeBardeAttaque1= new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat handicapeBardeDefense1 = new ActionCombat(incrementId(), "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.BOUCLIER_MULTI, null);
+		ActionCombat handicapeBardeSort1 = new ActionCombat(incrementId(), "Regen Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.REGEN_MANA_MULTI, null);
+		ActionCombat handicapeBardeSort2 = new ActionCombat(incrementId(), "Absorption Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.ABSORPTION_VIE_MULTI, null);
+		ActionCombat handicapeBardeSort3 = new ActionCombat(incrementId(), "Regen Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.REGEN_VIE_MONO, null);
+		ActionCombat handicapeBardeSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.TAUNT_MULTI, null);
+		ActionCombat handicapeBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
 		
 		// Ennemi Noir
 		// la mer noire
@@ -381,6 +510,24 @@ public class ActionCombatManager implements Serializable {
 		List<ActionCombat> gitanDpsActions = new ArrayList<ActionCombat>();
 		List<ActionCombat> gitanMageActions = new ArrayList<ActionCombat>();
 		List<ActionCombat> gitanBardeActions = new ArrayList<ActionCombat>();
+		
+		List<ActionCombat> arabeTankActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> arabeHealerActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> arabeDpsActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> arabeMageActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> arabeBardeActions = new ArrayList<ActionCombat>();
+		
+		List<ActionCombat> noirTankActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> noirHealerActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> noirDpsActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> noirMageActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> noirBardeActions = new ArrayList<ActionCombat>();
+		
+		List<ActionCombat> handicapeTankActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> handicapeHealerActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> handicapeDpsActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> handicapeMageActions = new ArrayList<ActionCombat>();
+		List<ActionCombat> handicapeBardeActions = new ArrayList<ActionCombat>();
 		
 		johannActions.add(johannAttaque1);
 		johannActions.add(johannAttaque2);
@@ -631,6 +778,7 @@ public class ActionCombatManager implements Serializable {
 		jonathanActions.add(jonathanSpecial2);
 		
 		boss1Actions.add(boss1Attaque1);
+		boss1Actions.add(boss1Attaque2);
 
 		gitanTankActions.add(gitanTankAttaque1);
 		gitanTankActions.add(gitanTankDefense1);
@@ -669,6 +817,117 @@ public class ActionCombatManager implements Serializable {
 		gitanBardeActions.add(gitanBardeSpecial1);
 		gitanBardeActions.add(gitanBardeSpecial2);
 		
+		arabeTankActions.add(arabeTankAttaque1);
+		arabeTankActions.add(arabeTankDefense1);
+		arabeTankActions.add(arabeTankDefense2);
+		arabeTankActions.add(arabeTankSort1);
+		arabeTankActions.add(arabeTankSpecial1);
+
+		arabeHealerActions.add(arabeHealerAttaque1);
+		arabeHealerActions.add(arabeHealerDefense1);
+		arabeHealerActions.add(arabeHealerSort1);
+		arabeHealerActions.add(arabeHealerSort2);
+		arabeHealerActions.add(arabeHealerSort3);
+		arabeHealerActions.add(arabeHealerSpecial1);
+		arabeHealerActions.add(arabeHealerSpecial2);
+		
+		arabeDpsActions.add(arabeDpsAttaque1);
+		arabeDpsActions.add(arabeDpsAttaque2);
+		arabeDpsActions.add(arabeDpsDefense1);
+		arabeDpsActions.add(arabeDpsSort1);
+		arabeDpsActions.add(arabeDpsSpecial1);
+		
+		arabeMageActions.add(arabeMageAttaque1);
+		arabeMageActions.add(arabeMageDefense1);
+		arabeMageActions.add(arabeMageDefense2);
+		arabeMageActions.add(arabeMageSort1);
+		arabeMageActions.add(arabeMageSort2);
+		arabeMageActions.add(arabeMageSort3);
+		arabeMageActions.add(arabeMageSpecial1);
+		arabeMageActions.add(arabeMageSpecial2);
+		
+		arabeBardeActions.add(arabeBardeAttaque1);
+		arabeBardeActions.add(arabeBardeDefense1);
+		arabeBardeActions.add(arabeBardeSort1);
+		arabeBardeActions.add(arabeBardeSort2);
+		arabeBardeActions.add(arabeBardeSort3);
+		arabeBardeActions.add(arabeBardeSpecial1);
+		arabeBardeActions.add(arabeBardeSpecial2);
+		
+		noirTankActions.add(noirTankAttaque1);
+		noirTankActions.add(noirTankDefense1);
+		noirTankActions.add(noirTankDefense2);
+		noirTankActions.add(noirTankSort1);
+		noirTankActions.add(noirTankSpecial1);
+
+		noirHealerActions.add(noirHealerAttaque1);
+		noirHealerActions.add(noirHealerDefense1);
+		noirHealerActions.add(noirHealerSort1);
+		noirHealerActions.add(noirHealerSort2);
+		noirHealerActions.add(noirHealerSort3);
+		noirHealerActions.add(noirHealerSpecial1);
+		noirHealerActions.add(noirHealerSpecial2);
+		
+		noirDpsActions.add(noirDpsAttaque1);
+		noirDpsActions.add(noirDpsAttaque2);
+		noirDpsActions.add(noirDpsDefense1);
+		noirDpsActions.add(noirDpsSort1);
+		noirDpsActions.add(noirDpsSpecial1);
+		
+		noirMageActions.add(noirMageAttaque1);
+		noirMageActions.add(noirMageDefense1);
+		noirMageActions.add(noirMageDefense2);
+		noirMageActions.add(noirMageSort1);
+		noirMageActions.add(noirMageSort2);
+		noirMageActions.add(noirMageSort3);
+		noirMageActions.add(noirMageSpecial1);
+		noirMageActions.add(noirMageSpecial2);
+		
+		noirBardeActions.add(noirBardeAttaque1);
+		noirBardeActions.add(noirBardeDefense1);
+		noirBardeActions.add(noirBardeSort1);
+		noirBardeActions.add(noirBardeSort2);
+		noirBardeActions.add(noirBardeSort3);
+		noirBardeActions.add(noirBardeSpecial1);
+		noirBardeActions.add(noirBardeSpecial2);
+		
+		handicapeTankActions.add(handicapeTankAttaque1);
+		handicapeTankActions.add(handicapeTankDefense1);
+		handicapeTankActions.add(handicapeTankDefense2);
+		handicapeTankActions.add(handicapeTankSort1);
+		handicapeTankActions.add(handicapeTankSpecial1);
+
+		handicapeHealerActions.add(handicapeHealerAttaque1);
+		handicapeHealerActions.add(handicapeHealerDefense1);
+		handicapeHealerActions.add(handicapeHealerSort1);
+		handicapeHealerActions.add(handicapeHealerSort2);
+		handicapeHealerActions.add(handicapeHealerSort3);
+		handicapeHealerActions.add(handicapeHealerSpecial1);
+		handicapeHealerActions.add(handicapeHealerSpecial2);
+		
+		handicapeDpsActions.add(handicapeDpsAttaque1);
+		handicapeDpsActions.add(handicapeDpsAttaque2);
+		handicapeDpsActions.add(handicapeDpsDefense1);
+		handicapeDpsActions.add(handicapeDpsSort1);
+		handicapeDpsActions.add(handicapeDpsSpecial1);
+		
+		handicapeMageActions.add(handicapeMageAttaque1);
+		handicapeMageActions.add(handicapeMageDefense1);
+		handicapeMageActions.add(handicapeMageDefense2);
+		handicapeMageActions.add(handicapeMageSort1);
+		handicapeMageActions.add(handicapeMageSort2);
+		handicapeMageActions.add(handicapeMageSort3);
+		handicapeMageActions.add(handicapeMageSpecial1);
+		handicapeMageActions.add(handicapeMageSpecial2);
+		
+		handicapeBardeActions.add(handicapeBardeAttaque1);
+		handicapeBardeActions.add(handicapeBardeDefense1);
+		handicapeBardeActions.add(handicapeBardeSort1);
+		handicapeBardeActions.add(handicapeBardeSort2);
+		handicapeBardeActions.add(handicapeBardeSort3);
+		handicapeBardeActions.add(handicapeBardeSpecial1);
+		handicapeBardeActions.add(handicapeBardeSpecial2);
+		
 		actionsByPerso.put(PersoPrenom.Johann.name(), johannActions);
 		actionsByPerso.put(PersoPrenom.Nicolas.name(), nicolasActions);
 		actionsByPerso.put(PersoPrenom.Pierre.name(), pierreActions);
@@ -685,6 +944,24 @@ public class ActionCombatManager implements Serializable {
 		actionsByPerso.put(EnnemiType.GITANS.name() + PersoClasse.DPS.name(), gitanDpsActions);
 		actionsByPerso.put(EnnemiType.GITANS.name() + PersoClasse.MAGE.name(), gitanMageActions);
 		actionsByPerso.put(EnnemiType.GITANS.name() + PersoClasse.BARDE.name(), gitanBardeActions);
+		
+		actionsByPerso.put(EnnemiType.ARABES.name() + PersoClasse.TANK.name(), arabeTankActions);
+		actionsByPerso.put(EnnemiType.ARABES.name() + PersoClasse.HEALER.name(), arabeHealerActions);
+		actionsByPerso.put(EnnemiType.ARABES.name() + PersoClasse.DPS.name(), arabeDpsActions);
+		actionsByPerso.put(EnnemiType.ARABES.name() + PersoClasse.MAGE.name(), arabeMageActions);
+		actionsByPerso.put(EnnemiType.ARABES.name() + PersoClasse.BARDE.name(), arabeBardeActions);
+		
+		actionsByPerso.put(EnnemiType.NOIRS.name() + PersoClasse.TANK.name(), noirTankActions);
+		actionsByPerso.put(EnnemiType.NOIRS.name() + PersoClasse.HEALER.name(), noirHealerActions);
+		actionsByPerso.put(EnnemiType.NOIRS.name() + PersoClasse.DPS.name(), noirDpsActions);
+		actionsByPerso.put(EnnemiType.NOIRS.name() + PersoClasse.MAGE.name(), noirMageActions);
+		actionsByPerso.put(EnnemiType.NOIRS.name() + PersoClasse.BARDE.name(), noirBardeActions);
+		
+		actionsByPerso.put(EnnemiType.HANDICAPES.name() + PersoClasse.TANK.name(), handicapeTankActions);
+		actionsByPerso.put(EnnemiType.HANDICAPES.name() + PersoClasse.HEALER.name(), handicapeHealerActions);
+		actionsByPerso.put(EnnemiType.HANDICAPES.name() + PersoClasse.DPS.name(), handicapeDpsActions);
+		actionsByPerso.put(EnnemiType.HANDICAPES.name() + PersoClasse.MAGE.name(), handicapeMageActions);
+		actionsByPerso.put(EnnemiType.HANDICAPES.name() + PersoClasse.BARDE.name(), handicapeBardeActions);
 	}
 
 	public List<ActionCombat> getActionsCombat(String personnageNom) {

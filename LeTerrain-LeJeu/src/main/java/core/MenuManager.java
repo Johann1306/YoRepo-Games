@@ -53,6 +53,11 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
+				VideoManager.hideAndStop();
 				MainFrame mainFrame = new MainFrame(Difficulte.FACILE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
@@ -63,6 +68,11 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
+				VideoManager.hideAndStop();
 				MainFrame mainFrame = new MainFrame(Difficulte.NORMAL);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
@@ -73,6 +83,11 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
+				VideoManager.hideAndStop();
 				MainFrame mainFrame = new MainFrame(Difficulte.DIFFICILE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();
@@ -83,6 +98,11 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+				if (oldMainFrame != null) {
+					oldMainFrame.dispose();
+				}
+				VideoManager.hideAndStop();
 				MainFrame mainFrame = new MainFrame(Difficulte.HEROIQUE);
 				MenuPrincipal.setMainFrame(mainFrame);
 				mainFrame.startMainFrame();

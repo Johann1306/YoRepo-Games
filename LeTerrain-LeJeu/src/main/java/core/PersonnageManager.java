@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.ImageIcon;
 
@@ -59,54 +60,64 @@ public class PersonnageManager implements Serializable {
 		ImageIcon iconGuillaume = FenetrePrincipal.getImageIcon("image/guillaume.png");
 		ImageIcon iconJonathan = FenetrePrincipal.getImageIcon("image/jonathan.png");
 
+		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
+		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, "Yo",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Johann, true), new Competence(PersoPrenom.Johann, true), true);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, "Nico",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Nicolas, true), new Competence(PersoPrenom.Nicolas, true), true);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, "Pip",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Pierre, true), new Competence(PersoPrenom.Pierre, true), true);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, "Darm",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Thomas, true), new Competence(PersoPrenom.Thomas, true), true);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, "Ya",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Yannick, true), new Competence(PersoPrenom.Yannick, true), true);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, "Ali",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Ali, true), new Competence(PersoPrenom.Ali, true), true);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, "Guy",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Guillaume, true), new Competence(PersoPrenom.Guillaume, true), true);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, "Russ",
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null, new Competence(), true);
+				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new Competence(PersoPrenom.Jonathan, true), new Competence(PersoPrenom.Jonathan, true), true);
 
 		leGroupe.ajoutePerso(johann);
 		leGroupe.ajoutePerso(nicolas);
@@ -134,41 +145,41 @@ public class PersonnageManager implements Serializable {
 		ImageIcon photoBoss = FenetrePrincipal.getImageIcon("image/guillaume.png");
 
 		List<ImageIcon> photos = new ArrayList<ImageIcon>();
-		// TODO en fonction de la difficulte
 
 		int vieMax = 1000;
 		int manaMax = 200;
 		int chargeMax = 10;
 
-		// Competences pour les BOSS en fonction de la difficulte
-		Competence competence = null;
-
-		// En fonction difficulte Partie
 		if (difficultePartie == Difficulte.FACILE) {
 			vieMax = 500;
-			manaMax = 100;
+			manaMax = 50;
 			chargeMax = 3;
-			competence = new Competence(25);
 		} else if (difficultePartie == Difficulte.NORMAL) {
 			vieMax = 650;
-			manaMax = 150;
+			manaMax = 100;
 			chargeMax = 5;
-			competence = new Competence(50);
 		} else if (difficultePartie == Difficulte.DIFFICILE) {
 			vieMax = 850;
 			manaMax = 150;
 			chargeMax = 7;
-			competence = new Competence(75);
 		} else if (difficultePartie == Difficulte.HEROIQUE) {
 			vieMax = 1000;
 			manaMax = 200;
 			chargeMax = 10;
-			competence = new Competence(100);
 		}
+
+		// TODO mieux
+		Set<PersoStat> stats = johann.getCompetence().getStats().keySet();
+		List<PersoStat> statsParType = new ArrayList<PersoStat>(stats);
+		List<PersoStat> statsParClasse = new ArrayList<PersoStat>(stats);
+
+		// Choix des competences pour les BOSS par difficulte, type et classe
+		Competence competence = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
 
 		// ActionsCombat du BOSS
 		List<ActionCombat> actionsCombat = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
 
+		// Creation du BOSS
 		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat,
 				competence);
@@ -231,7 +242,7 @@ public class PersonnageManager implements Serializable {
 			nom = "Ennemi Gitan " + numero + "(" + classe.name() + ")";
 			phrasesPerso.add("Hey Gadjo!");
 			phrasesPerso.add("Mange tes maures!");
-			phrasesPerso.add("Ca c'est mon cousin!");
+			phrasesPerso.add("Ca c'est mon cousin! Viens mon cousin!");
 			phrasesPerso.add("T'inquietes pas que je sais l'en faire du vélo mon copain!");
 			phrasesPerso.add("J'te met un coup d'botte dans les couilles, tu décolles jusqu'à la lune!");
 			phrasesPerso.add("J'ai pris v'la l'pavée!");
@@ -239,7 +250,7 @@ public class PersonnageManager implements Serializable {
 			particularitesSocial.add("Ne sait ni lire, ni ecrire.");
 			particularitesSocial.add("Nomade.");
 			particularitesSocial.add("Se marie qu'avec des gitans.");
-			particularitesSocial.add("Appelle les autres gitans : mes cousins.");
+			particularitesSocial.add("Appelle les autres gitans : mon cousin.");
 		}
 		// ARABES
 		else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
@@ -272,7 +283,8 @@ public class PersonnageManager implements Serializable {
 			nom = "Ennemi Noir " + numero + "(" + classe.name() + ")";
 			phrasesPerso.add("Hey Garçon!");
 			particularitesPhysique.add("Tchip");
-			particularitesPhysique.add("A le rythme dans la peau, une grosse bite, sent fort et possede une piste d'athletisme dans son jardin.");
+			particularitesPhysique.add(
+					"A le rythme dans la peau, une grosse bite, sent fort et possede une piste d'athletisme dans son jardin. (M.Delneuf)");
 			particularitesPhysique.add("Parle en verlan.");
 			particularitesPhysique.add("Porte un jogging, une casquette et des baskets.");
 			particularitesSocial.add("Se deplace uniquement en groupe.");
@@ -370,32 +382,42 @@ public class PersonnageManager implements Serializable {
 		// TODO IMPORTANT Difficulté croissante : Competences en fonction de
 		// l'avancement du jeu (par rapport au niveau du meilleur sort du
 		// groupe?)
-		int vieMax = 0;
-		int manaMax = 0;
-		int chargeMax = 0;
+		int vieMax;
+		int manaMax;
+		int chargeMax;
+
+		// Choix des competences par difficulte, type et classe
+		Competence competence = choixDesCompetences(mission.getDifficulty(), statsParType, statsParClasse);
+
+		// Vie Mana Charge
+		vieMax = competence.getEndurance() * 10;
+		manaMax = competence.getIntelligence();
+		chargeMax = competence.getNervosite() / 20;
+
+		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique,
+				particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis(),
+				competence);
+
+		return ennemi;
+	}
+
+	private Competence choixDesCompetences(Difficulte difficulte, List<PersoStat> statsParType,
+			List<PersoStat> statsParClasse) {
+
+		int valeurParDifficulte = 25;
 		Competence competence = null;
 
-		if (mission.getDifficulty() == Difficulte.FACILE) {
-			vieMax = 20;
-			manaMax = 20;
-			chargeMax = 1;
-			competence = new Competence(25);
-		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-			vieMax = 30;
-			manaMax = 30;
-			chargeMax = 2;
-			competence = new Competence(50);
-		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-			vieMax = 40;
-			manaMax = 40;
-			chargeMax = 3;
-			competence = new Competence(75);
-		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-			vieMax = 50;
-			manaMax = 50;
-			chargeMax = 5;
-			competence = new Competence(100);
+		competence = new Competence(25);
+		if (difficulte == Difficulte.FACILE) {
+			valeurParDifficulte = 25;
+		} else if (difficulte == Difficulte.NORMAL) {
+			valeurParDifficulte = 50;
+		} else if (difficulte == Difficulte.DIFFICILE) {
+			valeurParDifficulte = 75;
+		} else if (difficulte == Difficulte.HEROIQUE) {
+			valeurParDifficulte = 100;
 		}
+
 		// Met les competences de type et de classe au meme niveau que la
 		// competence max du groupe (progression de la difficulté)
 		Map<PersoStat, Integer> stats = competence.getStats();
@@ -405,6 +427,9 @@ public class PersonnageManager implements Serializable {
 			if (stats.get(statParType) < valeurStatParType) {
 				stats.put(statParType, valeurStatParType);
 			}
+			if (stats.get(statParType) < valeurParDifficulte) {
+				stats.put(statParType, valeurParDifficulte);
+			}
 		}
 		// Meilleurs stats par classe
 		for (PersoStat statParClasse : statsParClasse) {
@@ -412,13 +437,11 @@ public class PersonnageManager implements Serializable {
 			if (stats.get(statParClasse) < valeurStatParClasse) {
 				stats.put(statParClasse, valeurStatParClasse);
 			}
+			if (stats.get(statParClasse) < valeurParDifficulte) {
+				stats.put(statParClasse, valeurParDifficulte);
+			}
 		}
-
-		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique,
-				particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis(),
-				competence);
-
-		return ennemi;
+		return competence;
 	}
 
 	public List<PersonnagePrincipal> getPersoVivants() {

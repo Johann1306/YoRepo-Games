@@ -2,7 +2,6 @@
 package modele.item.personnage;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,12 +39,13 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private Location location;
 	public boolean isDejaPresente;
 	private boolean available;
-
+	private Competence competenceMax;
+	
 	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
-			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence,
+			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence, Competence competenceMax,
 			boolean available) {
 		super(prenomPerso.name(), nomFamille.name());
 		this.nomFamille = nomFamille;
@@ -70,6 +70,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		// TODO : location/domicile a setter plus tard (apres intialisation du coreManager)
 		this.location = null;
 		this.setCompetence(competence);
+		this.setCompetenceMax(competenceMax);
 		this.isDejaPresente = false;
 		this.available = available;
 //		this.setVieMax(competence.getEndurance()); // max vie = 100
@@ -100,6 +101,13 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 					Integer valeurStat = statsPerso.get(stat);
 					Integer valeurAAJouter = map.get(stat);
 					Integer valeurModifie = valeurStat + valeurAAJouter;
+					Integer valeurMax = competenceMax.getStats().get(stat);
+					
+					// On plafonne les competences a la valeur max du perso
+					if (valeurModifie > valeurMax) {
+						valeurModifie = valeurMax;
+					}
+					
 					// On met a jour les stats du perso
 					statsPerso.put(stat, valeurModifie);				
 				}
@@ -197,6 +205,14 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
+	}
+
+	public Competence getCompetenceMax() {
+		return competenceMax;
+	}
+
+	public void setCompetenceMax(Competence competenceMax) {
+		this.competenceMax = competenceMax;
 	}
 
 }
