@@ -31,7 +31,8 @@ public class Carte extends Item implements Serializable {
 			if (lieu.isDisponible()) {
 				String proprio = lieu.getProprietaire().name();
 				// Lieux du perso + lieux du groupe
-				if (proprio.equals(nom) || proprio.equals(PersoPrenom.GROUPE.name())) {
+				// TODO affiche tous les lieux dispo pour tous les perso (comme pour le groupe)
+				if (proprio.equals(nom) || proprio.equals(PersoPrenom.GROUPE.name()) || nom.equals(PersoPrenom.GROUPE.name())) {
 					lieuxDisponiblesByPerso.add(lieu);
 				}
 			}

@@ -1,12 +1,10 @@
 package core;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,15 +13,19 @@ import javax.swing.JOptionPane;
 import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
+import front.PanelCentre;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnagePrincipal;
 
 public class MenuManager extends JMenuBar implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private JMenu action;
-
+//	private JMenu action;
+	private JMenu menuFichePerso;
+	private boolean premiereFois = true;
+	
 	public void initialise() {
 
 		JMenu menuFichier = new JMenu("Fichier");
@@ -35,79 +37,74 @@ public class MenuManager extends JMenuBar implements Serializable {
 		JMenuItem menuCharger = new JMenuItem("Charger la derniere partie sauvegardee");
 		JMenuItem menuSauvegarder = new JMenuItem("Sauvegarder la partie en cours");
 		JMenuItem menuQuitter = new JMenuItem("Quitter");
-		action = new JMenu("Action...");
-//		JMenu aller = new JMenu("Aller...");
-//		JMenu chezJohann = new JMenu("chez Johann...");
-//		JMenuItem piedJohann = new JMenuItem("a pied.");
-//		piedJohann.setVisible(false);
-//		JMenu chezNicolas = new JMenu("chez Nicolas...");
-//		JMenuItem piedNicolas = new JMenuItem("a pied.");
-//		JMenu chezPierre = new JMenu("chez Pierre...");
-//		JMenuItem piedPierre = new JMenuItem("a pied.");
-//		JMenu chezThomas = new JMenu("chez Thomas...");
-//		JMenuItem piedThomas = new JMenuItem("a pied.");
-//		JMenu chezYannick = new JMenu("chez Yannick...");
-//		JMenuItem piedYannick = new JMenuItem("a pied.");
+		menuFichePerso = new JMenu("Fiche Perso");
+		//action = new JMenu("Action...");
+		
+		// TODO Fiche perso uniquement pour les persos deja presentes
+		if (!premiereFois) {
+			refreshMenuFichePerso();
+			premiereFois = false;
+		}
 
-		menuFacile.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
-				if (oldMainFrame != null) {
-					oldMainFrame.dispose();
-				}
-				VideoManager.hideAndStop();
-				MainFrame mainFrame = new MainFrame(Difficulte.FACILE);
-				MenuPrincipal.setMainFrame(mainFrame);
-				mainFrame.startMainFrame();
-			}
-		});
-
-		menuNormal.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
-				if (oldMainFrame != null) {
-					oldMainFrame.dispose();
-				}
-				VideoManager.hideAndStop();
-				MainFrame mainFrame = new MainFrame(Difficulte.NORMAL);
-				MenuPrincipal.setMainFrame(mainFrame);
-				mainFrame.startMainFrame();
-			}
-		});
-
-		menuDifficile.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
-				if (oldMainFrame != null) {
-					oldMainFrame.dispose();
-				}
-				VideoManager.hideAndStop();
-				MainFrame mainFrame = new MainFrame(Difficulte.DIFFICILE);
-				MenuPrincipal.setMainFrame(mainFrame);
-				mainFrame.startMainFrame();
-			}
-		});
-
-		menuHeroique.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
-				if (oldMainFrame != null) {
-					oldMainFrame.dispose();
-				}
-				VideoManager.hideAndStop();
-				MainFrame mainFrame = new MainFrame(Difficulte.HEROIQUE);
-				MenuPrincipal.setMainFrame(mainFrame);
-				mainFrame.startMainFrame();
-			}
-		});
+//		menuFacile.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+//				if (oldMainFrame != null) {
+//					oldMainFrame.dispose();
+//				}
+//				VideoManager.hideAndStop();
+//				MainFrame mainFrame = new MainFrame(Difficulte.FACILE);
+//				MenuPrincipal.setMainFrame(mainFrame);
+//				mainFrame.startMainFrame();
+//			}
+//		});
+//
+//		menuNormal.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+//				if (oldMainFrame != null) {
+//					oldMainFrame.dispose();
+//				}
+//				VideoManager.hideAndStop();
+//				MainFrame mainFrame = new MainFrame(Difficulte.NORMAL);
+//				MenuPrincipal.setMainFrame(mainFrame);
+//				mainFrame.startMainFrame();
+//			}
+//		});
+//
+//		menuDifficile.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+//				if (oldMainFrame != null) {
+//					oldMainFrame.dispose();
+//				}
+//				VideoManager.hideAndStop();
+//				MainFrame mainFrame = new MainFrame(Difficulte.DIFFICILE);
+//				MenuPrincipal.setMainFrame(mainFrame);
+//				mainFrame.startMainFrame();
+//			}
+//		});
+//
+//		menuHeroique.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+//				if (oldMainFrame != null) {
+//					oldMainFrame.dispose();
+//				}
+//				VideoManager.hideAndStop();
+//				MainFrame mainFrame = new MainFrame(Difficulte.HEROIQUE);
+//				MenuPrincipal.setMainFrame(mainFrame);
+//				mainFrame.startMainFrame();
+//			}
+//		});
 
 		menuCharger.addActionListener(new ActionListener() {
 
@@ -122,6 +119,7 @@ public class MenuManager extends JMenuBar implements Serializable {
 				MenuPrincipal.setMainFrame(load);
 				load.startMainFrame();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
+				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 				JOptionPane.showMessageDialog(menuCharger.getParent().getParent(), "Chargement Réussi!");
 			}
 		});
@@ -165,7 +163,8 @@ public class MenuManager extends JMenuBar implements Serializable {
 		menuFichier.add(menuCharger);
 		menuFichier.add(menuSauvegarder);
 		menuFichier.add(menuQuitter);
-		this.add(action);
+//		this.add(action);
+		this.add(menuFichePerso);
 //		action.add(aller);
 //		aller.add(chezJohann);
 //		chezJohann.add(piedJohann);
@@ -183,36 +182,57 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 	}
 
-	public void lanceRefreshMenu() {
-		JLayeredPane panelShowing = MainFrame.getPanelCentre().getPanelShowing();
-		if (panelShowing.getName().contains(PersoPrenom.Johann.name())) {
-			action.setForeground(Color.BLUE);
-			refreshMenuParPerso(action, PersoPrenom.Johann);
-		} else if (panelShowing.getName().contains(PersoPrenom.Pierre.name())) {
-			action.setForeground(Color.GREEN);
-			refreshMenuParPerso(action, PersoPrenom.Pierre);
-		} else if (panelShowing.getName().contains(PersoPrenom.Thomas.name())) {
-			action.setForeground(Color.RED);
-			refreshMenuParPerso(action, PersoPrenom.Thomas);
-		} else if (panelShowing.getName().contains(PersoPrenom.Yannick.name())) {
-			action.setForeground(Color.MAGENTA);
-			refreshMenuParPerso(action, PersoPrenom.Yannick);
-		} else if (panelShowing.getName().contains(PersoPrenom.Nicolas.name())) {
-			action.setForeground(Color.YELLOW);
-			refreshMenuParPerso(action, PersoPrenom.Nicolas);
-		} else if (panelShowing.getName().contains(PersoPrenom.Ali.name())) {
-			action.setForeground(Color.PINK);
-			refreshMenuParPerso(action, PersoPrenom.Ali);
-		} else if (panelShowing.getName().contains(PersoPrenom.Guillaume.name())) {
-			action.setForeground(Color.ORANGE);
-			refreshMenuParPerso(action, PersoPrenom.Guillaume);
-		} else if (panelShowing.getName().contains(PersoPrenom.Jonathan.name())) {
-			action.setForeground(Color.CYAN);
-			refreshMenuParPerso(action, PersoPrenom.Jonathan);
-		} else if (panelShowing.getName().contains(PersoPrenom.GROUPE.name())) {
-			action.setForeground(Color.WHITE);
-			refreshMenuParPerso(action, PersoPrenom.GROUPE);
+	private void refreshMenuFichePerso() {
+		menuFichePerso.removeAll();
+		List<PersonnagePrincipal> persosDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoDejaPresentes();
+		
+		for (PersonnagePrincipal perso : persosDejaPresentes) {
+			JMenuItem item = new JMenuItem("Fiche de " + perso.getPrenom());
+			item.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO : Affichage fiche perso
+					PanelCentre panelCentre = MainFrame.getPanelCentre();
+					panelCentre.afficheFichePerso(perso.getPrenom());
+				}
+			});
+			menuFichePerso.add(item);
 		}
+	}
+
+	public void lanceRefreshMenu() {
+		refreshMenuFichePerso();
+
+//		JLayeredPane panelShowing = MainFrame.getPanelCentre().getPanelShowing();
+//		if (panelShowing.getName().contains(PersoPrenom.Johann.name())) {
+//			action.setForeground(Color.BLUE);
+//			refreshMenuParPerso(action, PersoPrenom.Johann);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Pierre.name())) {
+//			action.setForeground(Color.GREEN);
+//			refreshMenuParPerso(action, PersoPrenom.Pierre);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Thomas.name())) {
+//			action.setForeground(Color.RED);
+//			refreshMenuParPerso(action, PersoPrenom.Thomas);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Yannick.name())) {
+//			action.setForeground(Color.MAGENTA);
+//			refreshMenuParPerso(action, PersoPrenom.Yannick);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Nicolas.name())) {
+//			action.setForeground(Color.YELLOW);
+//			refreshMenuParPerso(action, PersoPrenom.Nicolas);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Ali.name())) {
+//			action.setForeground(Color.PINK);
+//			refreshMenuParPerso(action, PersoPrenom.Ali);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Guillaume.name())) {
+//			action.setForeground(Color.ORANGE);
+//			refreshMenuParPerso(action, PersoPrenom.Guillaume);
+//		} else if (panelShowing.getName().contains(PersoPrenom.Jonathan.name())) {
+//			action.setForeground(Color.CYAN);
+//			refreshMenuParPerso(action, PersoPrenom.Jonathan);
+//		} else if (panelShowing.getName().contains(PersoPrenom.GROUPE.name())) {
+//			action.setForeground(Color.WHITE);
+//			refreshMenuParPerso(action, PersoPrenom.GROUPE);
+//		}
 	}
 
 	private void refreshMenuParPerso(JMenu action, PersoPrenom persoPrenom) {

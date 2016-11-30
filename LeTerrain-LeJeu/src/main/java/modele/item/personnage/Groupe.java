@@ -37,6 +37,17 @@ public class Groupe implements Serializable {
 		}
 		return persosDejaPresentes;
 	}
+	
+
+	public List<PersonnagePrincipal> getPersosDejaPresentes() {
+		List<PersonnagePrincipal> persosDejaPresentes = new ArrayList<PersonnagePrincipal>();
+		for (PersonnagePrincipal personnagePrincipal : leGroupe) {
+			if (personnagePrincipal.isDejaPresente()) {
+				persosDejaPresentes.add(personnagePrincipal);
+			}
+		}
+		return persosDejaPresentes;
+	}
 
 	public PersonnagePrincipal getPersoByNom(PersoPrenom prenom) {
 		for (PersonnagePrincipal perso : leGroupe)
@@ -62,7 +73,5 @@ public class Groupe implements Serializable {
 		leGroupe.remove(perso);
 		return perso;
 	}
-
-
 
 }

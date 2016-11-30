@@ -1,19 +1,19 @@
 package modele.item.personnage;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
 
-import core.BonusManager;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
+import modele.item.Item;
+import modele.item.ItemType;
 import modele.item.personnage.action.ActionCombat;
 
-public class Personnage implements Serializable {
+public class Personnage extends Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,8 @@ public class Personnage implements Serializable {
 	private int nombreBloque = 0;
 	private Map<Personnage, Integer> tauntBy = new HashMap<Personnage, Integer>();
 
-	public Personnage(String prenom, String nom) {
+	public Personnage(String prenom, String nom, boolean disponible) {
+		super(0, prenom, "informations", null, null, null, PersoPrenom.GROUPE, ItemType.PERSONNAGE, disponible);
 		this.prenom = prenom;
 		this.nom = nom;
 		this.auras = new HashMap<Personnage, Aura>();

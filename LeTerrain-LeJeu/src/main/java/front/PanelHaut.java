@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import core.DateManager;
@@ -22,6 +24,10 @@ public class PanelHaut extends JPanel {
 
 	private JLabel labelDate = null;
 	
+	public JLabel getLabelDate() {
+		return labelDate;
+	}
+
 	public void generePanelHaut() {
 
 		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.X_AXIS);
@@ -109,10 +115,30 @@ public class PanelHaut extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
+				DateManager dateManager = MenuPrincipal.getMainFrame().getCoreManager().getDateManager();
+				dateManager.passeUneHeure();
+				
+				if (dateManager.getDateCourante().getHours() == 22) {
+					// dodo a 22h
+					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().playSonEvenement("musique/dodo/310-SecretOfMana-close-your-eyelids.mp3");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonne nuit les petits",	"C'est l'heure de faire dodo", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemNuit.mp3"));
+					while (dateManager.getDateCourante().getHours() != 7) {
+						dateManager.passeUneHeure();						
+					}
+					
+					// TODO NUIT (regen vie/mana et perte bouclier/charge)
+					MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+					
+					// TODO Missions quotidiennes ??
+					
+					// Reveil a 7h
+					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().playSonEvenement("musique/reveil/32-Zelda-hyrule-field-morning-theme.mp3");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonjour madame", "C'est l'heure de se reveiller", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemJour.mp3"));
+				}
+
 				// Refresh du panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
-//				PanelPersonnage.refreshPanelPersonnage();
+				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 				missionManager.refreshMissionsAPresenter();
 			}
 		});
@@ -137,29 +163,37 @@ public class PanelHaut extends JPanel {
 					if (nextMission == null && nextEvenement != null) {
 						System.out.println("Fin des missions avec date");
 						while (!nextEvenement.estDisponibleAPresenter()) {
-							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
+							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
+								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+							}
 						}
 						boutonPasserNext.setEnabled(true);
 					} else if (nextEvenement == null && nextMission != null){
 						System.out.println("Fin des evenements");
 						while (!nextMission.estDisponibleAPresenter()) {
-							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
+							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
+								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+							}
 						}
 						boutonPasserNext.setEnabled(true);
 						
 					} else if (nextEvenement == null && nextMission == null) {
 						System.out.println("Fin des missions avec date et des evenements");
-						
 					} else {
 						while (!nextEvenement.estDisponibleAPresenter() && !nextMission.estDisponibleAPresenter()) {
-							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure(labelDate);
+							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
+							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
+								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+							}
 						}
 						boutonPasserNext.setEnabled(true);
 					}
 				}
 				// Refresh des panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
-//				PanelPersonnage.refreshPanelPersonnage();
+				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 				missionManager.refreshMissionsAPresenter();
 			}
 		});

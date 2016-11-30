@@ -7,6 +7,7 @@ import java.awt.Font;
 public class Constante {
 	
 	public static final Dimension PERSO_IMAGE_DIMENSION_64_64 = new Dimension(64, 64);
+	public static final Dimension PERSO_IMAGE_DIMENSION_50_50 = new Dimension(50, 50);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
 	
 	public static final int MAX_EVENEMENTS_AFFICHES = 10;
@@ -20,6 +21,7 @@ public class Constante {
 	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
 	public static final Dimension BOUTON_MISSIONS_DIMENSION = new Dimension(300,50); // pas exact
+	public static final Dimension BOUTON_LIEU_DIMENSION = new Dimension(500,50);
 
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire TODO mieux
 	public static final int PANEL_GAUCHE_LARGEUR = 180;

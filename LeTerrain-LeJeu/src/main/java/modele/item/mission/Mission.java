@@ -65,6 +65,7 @@ public class Mission implements Serializable {
 	private BossNom bossNom;
 	private List<Item> itemsNecessaires;
 	private List<Item> itemsDebloques;
+	private int lieuDebloque;
 	private boolean isDisponible = false;
 	private boolean isRepetable = false;
 	private boolean isDejaFaite = false;
@@ -78,7 +79,7 @@ public class Mission implements Serializable {
 			MissionType type, Difficulte difficulty, EnnemiType typeEnnemis, NomJeu jeu,
 			List<PersonnagePrincipal> personnagesRequis, List<PersonnagePrincipal> personnagesInterdits,
 			List<PersonnageSecondaire> personnagesSecondaires, BossNom bossNom, List<Item> itemsNecessaires,
-			List<Item> itemsDebloques, boolean isRepetable) {
+			List<Item> itemsDebloques, int lieuDebloque, boolean isRepetable) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -107,6 +108,7 @@ public class Mission implements Serializable {
 		this.bossNom = bossNom;
 		this.itemsNecessaires = itemsNecessaires;
 		this.itemsDebloques = itemsDebloques;
+		this.setLieuDebloque(lieuDebloque);
 		this.isRepetable = isRepetable;
 		this.nombreEssai = 0;
 		this.nombreWin = 0;
@@ -383,6 +385,14 @@ public class Mission implements Serializable {
 
 	public BossNom getBossNom() {
 		return this.bossNom;
+	}
+
+	public int getLieuDebloque() {
+		return lieuDebloque;
+	}
+
+	public void setLieuDebloque(int lieuDebloque) {
+		this.lieuDebloque = lieuDebloque;
 	}
 
 }

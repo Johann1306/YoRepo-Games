@@ -2,6 +2,7 @@
 package modele.item.personnage;
 
 import java.awt.Color;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,8 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private PersoPrenom prenomPerso;
 	private String surnomPrincipal;
 	private List<String> surnoms;
+	private Date dateNaissance;
+	private String origines;
 	private List<ImageIcon> photos;
 	private Color couleur;
 	
@@ -38,20 +41,21 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private Lieu domicile;
 	private Location location;
 	public boolean isDejaPresente;
-	private boolean available;
 	private Competence competenceMax;
 	
-	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms,
+	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms, Date dateNaissance, String origines,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence, Competence competenceMax,
-			boolean available) {
-		super(prenomPerso.name(), nomFamille.name());
+			boolean disponible) {
+		super(prenomPerso.name(), nomFamille.name(), disponible);
 		this.nomFamille = nomFamille;
 		this.prenomPerso = prenomPerso;
 		this.surnomPrincipal = surnomPrincipal;
 		this.surnoms = surnoms;
+		this.dateNaissance = dateNaissance;
+		this.origines = origines;
 		this.setParticularitesPhysique(particularitesPhysique);
 		this.setParticularitesSocial(particularitesSocial);
 		this.setPhrasesPerso(phrasesPerso);
@@ -72,9 +76,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setCompetence(competence);
 		this.setCompetenceMax(competenceMax);
 		this.isDejaPresente = false;
-		this.available = available;
-//		this.setVieMax(competence.getEndurance()); // max vie = 100
-//		this.setVie(competence.getEndurance());
+		this.setDisponible(disponible);
 		this.setVieMax(competence.getEndurance()*10); // max vie = 1000
 		this.setVie(competence.getEndurance()*10);
 		this.setManaMax(competence.getIntelligence());
@@ -166,13 +168,9 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public Lieu getDomicile() {
 		return domicile;
 	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public void setAvailable(boolean available) {
-		this.available = available;
+	
+	public void setDomicile(Lieu domicile) {
+		this.domicile = domicile;
 	}
 
 	public boolean isDejaPresente() {
@@ -213,6 +211,14 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 
 	public void setCompetenceMax(Competence competenceMax) {
 		this.competenceMax = competenceMax;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public String getOrigines() {
+		return origines;
 	}
 
 }

@@ -140,9 +140,9 @@ public class MainFrame extends JFrame {
 
 	}
 	
-//	public static PanelCentre getPanelHaut(){
-//		return panelHaut;
-//	}
+	public static PanelHaut getPanelHaut(){
+		return panelHaut;
+	}
 //	
 //	public static PanelCentre getPanelGauche(){
 //		return panelGauche;

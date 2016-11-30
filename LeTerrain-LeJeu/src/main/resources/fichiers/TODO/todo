@@ -1,7 +1,8 @@
 TODO :
 
 Priorités :
-- Probleme des missions mal distribué aux perso
+- Problemes quand spam bouton suivant => fin des evenements et plantage => boucle while 
+- Probleme des missions mal distribué aux perso => conf
 - stun/provocation esquivables ?
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 
