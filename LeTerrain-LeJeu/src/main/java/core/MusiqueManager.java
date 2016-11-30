@@ -269,8 +269,8 @@ public class MusiqueManager implements Serializable {
 			public void run() {
 				try {
 					for (String sonPath : sonPaths) {
-						// Pause 1s entre 2 musiques
-							Thread.sleep(1000);
+						// Pause 500ms entre 2 musiques
+							Thread.sleep(500);
 							if (applicationMenuPrincipal == null) {
 								applicationMenuPrincipal = new Sound(sonPath);
 								applicationMenuPrincipal.play();

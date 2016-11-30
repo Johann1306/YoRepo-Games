@@ -10,16 +10,19 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import core.LieuManager;
+import core.MissionManager;
 import core.MusiqueManager;
+import core.PersonnageManager;
 import core.SauvegardeManager;
 import core.configuration.Constante;
 import modele.item.mission.enums.Difficulte;
+import modele.item.personnage.PersoPrenom;
 
 public class MenuPrincipal extends JPanel {
 	
@@ -299,6 +302,7 @@ public class MenuPrincipal extends JPanel {
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
+				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 			}
 		});
 		boutonLoad.addActionListener(new ActionListener() {
@@ -316,6 +320,7 @@ public class MenuPrincipal extends JPanel {
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
+				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 			}
 		});
 		boutonEdit.addActionListener(new ActionListener() {
@@ -571,17 +576,53 @@ public class MenuPrincipal extends JPanel {
 		FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 		fenetrePrincipal.hide();
 //		parent.show();
+		
+		// Choix du perso principal
+		PersonnageManager personnageManager = mainFrame.getCoreManager().getPersonnageManager();
+		MissionManager missionManager = mainFrame.getCoreManager().getMissionManager();
+		LieuManager lieuManager = mainFrame.getCoreManager().getLieuManager();
+		int valeur = JOptionPane.showOptionDialog(getParent(), "Choisis ton héro principal",
+				"C'est parti!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"),
+				new String[] {"Johann", "Nicolas", "Pierre", "Thomas", "Yannick"}, 
+				"default");
+		System.out.println(valeur);
+		if (valeur == 0) {
+			personnageManager.setPersonnagePrincipal(PersoPrenom.Johann);
+			personnageManager.getPersoByPrenom(PersoPrenom.Johann).setDisponible(true);
+			missionManager.getMissionById(101).setDejaFaite(true);
+			missionManager.distribueRecompenses(missionManager.getMissionById(101), true);
+		} else if (valeur == 1) {
+			personnageManager.setPersonnagePrincipal(PersoPrenom.Nicolas);
+			personnageManager.getPersoByPrenom(PersoPrenom.Nicolas).setDisponible(true);
+			missionManager.getMissionById(103).setDejaFaite(true);
+			missionManager.distribueRecompenses(missionManager.getMissionById(103), true);
+		} else if (valeur == 2) {
+			personnageManager.setPersonnagePrincipal(PersoPrenom.Pierre);
+			personnageManager.getPersoByPrenom(PersoPrenom.Pierre).setDisponible(true);
+			missionManager.getMissionById(102).setDejaFaite(true);
+			missionManager.distribueRecompenses(missionManager.getMissionById(102), true);
+		} else if (valeur == 3) {
+			personnageManager.setPersonnagePrincipal(PersoPrenom.Thomas);
+			personnageManager.getPersoByPrenom(PersoPrenom.Thomas).setDisponible(true);
+			missionManager.getMissionById(105).setDejaFaite(true);
+			missionManager.distribueRecompenses(missionManager.getMissionById(105), true);
+		} else if (valeur == 4) {
+			personnageManager.setPersonnagePrincipal(PersoPrenom.Yannick);
+			personnageManager.getPersoByPrenom(PersoPrenom.Yannick).setDisponible(true);
+			missionManager.getMissionById(104).setDejaFaite(true);
+			missionManager.distribueRecompenses(missionManager.getMissionById(104), true);
+		} 
+		// On Debloque l'école des le debut
+		lieuManager.getLieuById(9).setDisponible(true);
+		mainFrame.getPanelPersonnage().refreshArriveePersonnage();
 	}
 
 	public void demandeConfirmationQuitter() {
 		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sûr de vouloir t'arreter maintenant?",
 				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"),
-				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, // this
-																									// is
-																									// the
-																									// array
-				"default");
+				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, "default");
 		System.out.println(confirme);
 		if (confirme == 0) {
 			System.exit(0);

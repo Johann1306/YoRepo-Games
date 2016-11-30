@@ -47,15 +47,15 @@ public class CoreManager implements Serializable {
 
 		bonusManager = new BonusManager();
 		bonusManager.initialise();
-
-		missionManager = new MissionManager();
-		missionManager.initialise(difficultePartie);
 		
 		actionCombatManager = new ActionCombatManager();
 		actionCombatManager.initialise(difficultePartie);
 
 		personnageManager = new PersonnageManager();
 		personnageManager.initialise(actionCombatManager, difficultePartie);
+
+		missionManager = new MissionManager();
+		missionManager.initialise(difficultePartie, actionCombatManager, personnageManager);
 
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
@@ -71,15 +71,13 @@ public class CoreManager implements Serializable {
 		poiManager.initialise(missionManager);
 		
 		lieuManager = new LieuManager();
-		lieuManager.initialise(poiManager);
+		lieuManager.initialise(poiManager, personnageManager);
 		
 		carteManager = new CarteManager();
 		carteManager.initialise(lieuManager);
 		
 		quizzManager = new QuizzManager();
 		quizzManager.initialise();
-
-
 	}
 
 	public MenuManager getMenuManager() {

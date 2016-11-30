@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLayeredPane;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -239,7 +239,7 @@ public class PanelPersonnage extends JPanel {
 		if (leGroupe != null) {
 			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
 //				System.out.println(perso.getCompetence().toString());
-				if (perso.isAvailable()) {
+				if (perso.isDisponible()) {
 					// presentation du perso
 					if ( boutons != null ) {
 						for (JButton bouton : boutons) {
@@ -252,9 +252,10 @@ public class PanelPersonnage extends JPanel {
 									MusiqueManager.playSon("sonParDefaut/312-SecretOfMana-ally-joins.mp3");
 									// affichage du panneau arrivee
 									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
-									// TODO : Affichage fiche perso
-									
 									perso.setDejaPresente(true);
+
+									// TODO : Affichage fiche perso
+									MainFrame.getPanelCentre().afficheFichePerso(perso.getPrenomPerso().name());
 								}
 							} 
 						}
@@ -272,7 +273,7 @@ public class PanelPersonnage extends JPanel {
 		PersonnageManager personnageManager = coreManager.getPersonnageManager();
 		Groupe leGroupe = personnageManager.getLeGroupe();
 		if (leGroupe != null) {
-			for (PersonnagePrincipal perso : leGroupe.getPersos()) {
+			for (PersonnagePrincipal perso : leGroupe.getPersosDejaPresentes()) {
 				if (perso.isMort()) {
 					if ( boutons != null ) {
 						for (JButton bouton : boutons) {
@@ -283,6 +284,14 @@ public class PanelPersonnage extends JPanel {
 						}
 					}
 				} else {
+					if ( boutons != null ) {
+						for (JButton bouton : boutons) {
+							if (bouton.getName().equals(perso.getPrenom())) {
+								// On degrise le bouton du perso
+								bouton.setEnabled(true);
+							} 
+						}
+					}
 					finDuJeu = false;
 				}
 			}
@@ -305,7 +314,7 @@ public class PanelPersonnage extends JPanel {
 				MenuPrincipal.getMainFrame().dispose();
 				VideoManager.hideAndStop();
 			} 
-			// Sinon on continue en reaffichant le panel d'un perso vivant
+			// Sinon on continue en reaffichant le panel d'un perso vivant // ou toujours le panel groupe ???
 			else {
 				
 				// On recupere le perso du panel courant
@@ -314,18 +323,24 @@ public class PanelPersonnage extends JPanel {
 				String prenom = panelCentre.getPanelShowing().getName();
 				
 				// Si il est mort, on affiche le panel d'un perso vivant
-				PersonnagePrincipal perso = personnageManager.getPersoByPrenom(prenom);
-				
-				if (perso.isMort()) {
-					List<PersonnagePrincipal> persoVivants = personnageManager.getPersoVivants();
-					PersonnagePrincipal persoVivant = persoVivants.get(0);
-					CardLayout cardLayout = panelCentre.getCardLayout();
-					cardLayout.show(panelCentre, persoVivant.getPrenom());
-					panelBas.refreshPanelBas(persoVivant.getPrenomPerso());			
-					coreManager.getMenuManager().lanceRefreshMenu();
+				System.out.println("PANEL_SHOWING : " + prenom);
+				// TODO Nullpointer gestion si panel groupe
+				CardLayout cardLayout = panelCentre.getCardLayout();
+				if (!prenom.equals(PersoPrenom.GROUPE.name())) {
+					PersonnagePrincipal perso = personnageManager.getPersoByPrenom(prenom);
+					
+					if (perso.isMort()) {
+						List<PersonnagePrincipal> persoVivants = personnageManager.getPersoVivants();
+						PersonnagePrincipal persoVivant = persoVivants.get(0);
+						cardLayout.show(panelCentre, persoVivant.getPrenom());
+						panelBas.refreshPanelBas(persoVivant.getPrenomPerso());			
+					}
+				} else {
+					cardLayout.show(panelCentre, prenom);
+					panelBas.refreshPanelBas(PersoPrenom.GROUPE);			
 				}
+				coreManager.getMenuManager().lanceRefreshMenu();
 			}
 		}
-		
 	}
 }

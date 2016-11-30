@@ -3,11 +3,16 @@ package front;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Menu;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -16,11 +21,15 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import core.ImageManager;
+import core.PersonnageManager;
 import core.configuration.Constante;
 import modele.item.carte.Carte;
 import modele.item.lieu.Lieu;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnageBoss;
+import modele.item.personnage.PersonnagePrincipal;
 import modele.item.poi.Poi;
+import modele.location.Location;
 
 public class PanelCentre extends JPanel {
 
@@ -113,6 +122,7 @@ public class PanelCentre extends JPanel {
 		cardLayout.addLayoutComponent(panelGroupe, panelGroupe.getName());
 
 		this.setLayout(cardLayout);
+		this.add(panelGroupe);
 		this.add(panelJohann);
 		this.add(panelNicolas);
 		this.add(panelPierre);
@@ -121,7 +131,6 @@ public class PanelCentre extends JPanel {
 		this.add(panelAli);
 		this.add(panelGuillaume);
 		this.add(panelJonathan);
-		this.add(panelGroupe);
 	}
 
 	// Construit l'enchainement de map/lieu/poi/missions/jeux pour un panel perso
@@ -136,6 +145,7 @@ public class PanelCentre extends JPanel {
 		// On recupere les lieux disponibles pour cette carte
 		// TODO : JLabel nom de lieu 
 		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
+		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
 		for (Lieu lieu : lieuxPersoGroupe) {
 			// Affiche le nombre de nouvelles missions sur ce lieu
 			int nbMissionsLieu = 0;
@@ -149,10 +159,14 @@ public class PanelCentre extends JPanel {
 				bouton = new JButton(lieu.getNom() + " (" + nbMissionsLieu + ")");
 			}
 			bouton.setFont(Constante.PRESS_START_FONT);
+			
 			JPanel panelBouton = new JPanel();
 			panelBouton.setLocation(lieu.getPosition());
 			panelBouton.add(bouton);
 			panelBouton.setOpaque(false);
+//			panelBouton.setBorder(BorderFactory.createLineBorder(Color.GREEN, 10, true));
+			BoxLayout boxlayoutBouton = new BoxLayout(panelBouton, BoxLayout.Y_AXIS);
+			panelBouton.setLayout(boxlayoutBouton);
 			
 			// Si Clic sur un lieu de la carte
 			bouton.addActionListener(new ActionListener() {
@@ -160,6 +174,18 @@ public class PanelCentre extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					// TODO evenement aleatoire quand deplacement lieu
 					System.out.println("- evenement aleatoire quand deplacement lieu");
+					
+					// Deplacement du perso ou du groupe
+					if (panel.getName() == PersoPrenom.GROUPE.name()) {
+						List<PersonnagePrincipal> persos = personnageManager.getPersoVivantsEtDejaPresentes();
+						for (PersonnagePrincipal personnagePrincipal : persos) {
+							personnagePrincipal.setLocation(new Location(lieu, lieu.getPosition()));
+						}
+					} else {
+						PersonnagePrincipal persoCourant = personnageManager.getPersoByPrenom(panel.getName());
+						persoCourant.setLocation(new Location(lieu, lieu.getPosition()));
+					}
+					
 					panel.removeAll();
 					for (Poi poi : lieu.getPois()) {
 						// Affiche le nombre de nouvelles missions sur ce lieu
@@ -171,10 +197,13 @@ public class PanelCentre extends JPanel {
 							bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
 						}
 						bouton.setFont(Constante.PRESS_START_FONT);
+						// TODO taille bouton unique (minimum)
+//						bouton.setMaximumSize(Constante.BOUTON_LIEU_DIMENSION);
 						JPanel panelBouton = new JPanel();
 						panelBouton.setLocation(poi.getPoint());
 						panelBouton.add(bouton);
 						panelBouton.setOpaque(false);
+						panelBouton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 10, true));
 						
 						// Si Clic sur un Poi
 						bouton.addActionListener(new ActionListener() {
@@ -205,10 +234,67 @@ public class PanelCentre extends JPanel {
 					revalidate();
 				}
 			});
-			panel.add(panelBouton, Integer.valueOf(2));
+			panel.add(panelBouton, Integer.valueOf(10));
 		}
+
+		// On ajoute l'image du perso a sa position
+		PersonnagePrincipal perso = personnageManager.getPersoByPrenom(panel.getName());
+		// TODO si perso null, c'est que c'est le persoGroupe => afficher alors tous les persos sur la map
+		if (perso != null) {
+			// TODO icone ronde
+			JPanel panelPerso = new JPanel();
+			BoxLayout boxlayoutPerso = new BoxLayout(panelPerso, BoxLayout.Y_AXIS);
+			panelPerso.setLayout(boxlayoutPerso);
+//			panelPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+			Point coordonnees = perso.getLocation().getCoordonnees();
+			// TODO On deplace l'image au dessus du bouton lieu
+			Point decalage = new Point(); 
+			decalage.setLocation(coordonnees.getX(), coordonnees.getY() - Constante.PERSO_IMAGE_DIMENSION_50_50.getHeight() -6 );
+			panelPerso.setLocation(decalage);
+			panelPerso.setOpaque(false);
+			
+			ImageIcon photo = perso.getPhotoPrincipal();
+			ImageIcon resizeImage = ImageManager.resizeImage(photo, Constante.PERSO_IMAGE_DIMENSION_50_50);
+			JLabel labelPerso = new JLabel(resizeImage);
+			labelPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+			panelPerso.add(labelPerso);
+			
+			panel.add(panelPerso, Integer.valueOf(5));
+		} else {
+			// Panel groupe : On affiche tous les persos a leur positions
+			List<Point> points = new ArrayList<Point>();
+			for (PersonnagePrincipal persoP : personnageManager.getPersoVivantsEtDejaPresentes()) {
+				// TODO icone ronde /  duplication de batard
+				// TODO quand plusieurs persos au meme endroit
+				JPanel panelPerso = new JPanel();
+				BoxLayout boxlayoutPerso = new BoxLayout(panelPerso, BoxLayout.Y_AXIS);
+				panelPerso.setLayout(boxlayoutPerso);
+//				panelPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+				Point coordonnees = persoP.getLocation().getCoordonnees();
+				// On deplace l'image au dessus du bouton lieu
+				Point decalage = new Point();
+				decalage.setLocation(coordonnees.getX(), coordonnees.getY() - Constante.PERSO_IMAGE_DIMENSION_50_50.getHeight() -6 );
+				while (points.contains(decalage)) {
+					decalage.setLocation(decalage.x + Constante.PERSO_IMAGE_DIMENSION_50_50.getWidth() + 3 , decalage.y);
+				}
+				points.add(decalage);
+				panelPerso.setLocation(decalage);
+				panelPerso.setOpaque(false);
+				
+				ImageIcon photo = persoP.getPhotoPrincipal();
+				ImageIcon resizeImage = ImageManager.resizeImage(photo, Constante.PERSO_IMAGE_DIMENSION_50_50);
+				JLabel labelPerso = new JLabel(resizeImage);
+				labelPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+				panelPerso.add(labelPerso);
+				
+				panel.add(panelPerso, Integer.valueOf(5));
+			}
+		}
+		
+		// On ajoute la carte au panel
 		panel.add(labelCarte, Integer.valueOf(1));
 		revalidate();
+		
 		// TODO
 //		panel.setSize(new Dimension(labelCarte.getWidth(), labelCarte.getHeight()));
 		// TODO : contour couleur autour du panel centre
@@ -270,5 +356,16 @@ public class PanelCentre extends JPanel {
 		// TODO refresh uniquement le nom des boutons du panel courant
 		buildPanelPerso(getPanelShowing());
 		this.revalidate();
+	}
+
+	public void afficheFichePerso(String prenomPerso) {
+		buildFichePerso(prenomPerso);
+		this.revalidate();
+	}
+
+	private void buildFichePerso(String prenomPerso) {
+		JLayeredPane panel = getPanelShowing();
+		panel.removeAll();
+		panel.add(new PanelFichePerso(prenomPerso));		
 	}
 }

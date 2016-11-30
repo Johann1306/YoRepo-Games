@@ -44,6 +44,7 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageSecondaire> personnagesSecondaires;
 	private List<PersonnageBoss> personnagesBoss;
 	private List<PersonnageEnnemi> personnagesEnnemis;
+	private PersoPrenom personnagePrincipal;
 
 	public void initialise(ActionCombatManager actionCombatManager, Difficulte difficultePartie) {
 
@@ -63,61 +64,61 @@ public class PersonnageManager implements Serializable {
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, "Yo",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 6, 13, 9, 0, 0), "Tchécoslovaques", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Johann, true), new Competence(PersoPrenom.Johann, true), true);
+				new Competence(PersoPrenom.Johann, true), new Competence(PersoPrenom.Johann, true), false);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, "Nico",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 7, 9, 0, 0), "Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Nicolas, true), new Competence(PersoPrenom.Nicolas, true), true);
+				new Competence(PersoPrenom.Nicolas, true), new Competence(PersoPrenom.Nicolas, true), false);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, "Pip",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 8, 4, 9, 0, 0), "Françaises à grosses bites", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Pierre, true), new Competence(PersoPrenom.Pierre, true), true);
+				new Competence(PersoPrenom.Pierre, true), new Competence(PersoPrenom.Pierre, true), false);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, "Darm",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 5, 9, 0, 0), "Judéo-Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Thomas, true), new Competence(PersoPrenom.Thomas, true), true);
+				new Competence(PersoPrenom.Thomas, true), new Competence(PersoPrenom.Thomas, true), false);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, "Ya",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 4, 14, 9, 0, 0), "Françaises florales", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Yannick, true), new Competence(PersoPrenom.Yannick, true), true);
+				new Competence(PersoPrenom.Yannick, true), new Competence(PersoPrenom.Yannick, true), false);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, "Ali",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 7, 1, 9, 0, 0), "Pakistanaises", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Ali, true), new Competence(PersoPrenom.Ali, true), true);
+				new Competence(PersoPrenom.Ali, true), new Competence(PersoPrenom.Ali, true), false);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, "Guy",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 1, 11, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Guillaume, true), new Competence(PersoPrenom.Guillaume, true), true);
+				new Competence(PersoPrenom.Guillaume, true), new Competence(PersoPrenom.Guillaume, true), false);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, "Russ",
-				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, 5, 19, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
-				new Competence(PersoPrenom.Jonathan, true), new Competence(PersoPrenom.Jonathan, true), true);
+				new Competence(PersoPrenom.Jonathan, true), new Competence(PersoPrenom.Jonathan, true), false);
 
 		leGroupe.ajoutePerso(johann);
 		leGroupe.ajoutePerso(nicolas);
@@ -453,6 +454,38 @@ public class PersonnageManager implements Serializable {
 		}
 		return persosVivants;
 	}
+	
+
+	public List<PersonnagePrincipal> getPersoDejaPresentes() {
+		List<PersonnagePrincipal> persosDejaPresentes = new ArrayList<PersonnagePrincipal>();
+		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			if (personnage.isDejaPresente()) {
+				persosDejaPresentes.add(personnage);
+			}
+		}
+		return persosDejaPresentes;
+	}
+	
+	public List<PersoPrenom> getPersoPrenomDejaPresentes() {
+		List<PersoPrenom> persosPrenomDejaPresentes = new ArrayList<PersoPrenom>();
+		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			if (personnage.isDejaPresente()) {
+				persosPrenomDejaPresentes.add(personnage.getPrenomPerso());
+			}
+		}
+		return persosPrenomDejaPresentes;
+	}
+
+	
+	public List<PersonnagePrincipal> getPersoVivantsEtDejaPresentes() {
+		List<PersonnagePrincipal> persosVivantsEtDejaPresentes = new ArrayList<PersonnagePrincipal>();
+		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			if (!personnage.isMort() && personnage.isDejaPresente()) {
+				persosVivantsEtDejaPresentes.add(personnage);
+			}
+		}
+		return persosVivantsEtDejaPresentes;
+	}
 
 	public int getBestStatPersoVivant(PersoStat stat) {
 		int max = 0;
@@ -502,6 +535,35 @@ public class PersonnageManager implements Serializable {
 			}
 		}
 		return perso;
+	}
+
+	public PersoPrenom getPersonnagePrincipal() {
+		return personnagePrincipal;
+	}
+
+	public void setPersonnagePrincipal(PersoPrenom personnagePrincipal) {
+		this.personnagePrincipal = personnagePrincipal;
+	}
+
+	public void regenerationNuit() {
+		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			if (personnage.isMort()) {
+				// On ressucite les morts
+				personnage.setMort(false);
+			}
+			personnage.setVieMax(personnage.getCompetence().getEndurance()*10);
+			personnage.setVie(personnage.getVieMax());
+			personnage.setManaMax(personnage.getCompetence().getIntelligence());
+			personnage.setMana(personnage.getManaMax());
+			personnage.setBouclier(0);
+			personnage.setNombreCharge(0);
+			personnage.setNombreChargeMax(personnage.getCompetence().getNervosite()/20);
+			// Inutile normalement
+			personnage.getAuras().clear();
+			
+			
+			
+		}
 	}
 
 }

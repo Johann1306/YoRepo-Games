@@ -33,8 +33,6 @@ public class JeuCombat extends Jeu implements Serializable {
 		String conditionVictoire = mission.getConditionVictoire();
 		List<Item> itemsDebloques = mission.getItemsDebloques();
 		
-		boolean win = false;
-
 		// Frame Combat
 		FrameCombat frameCombat = new FrameCombat(groupe, mission);
 		frameCombat.start();

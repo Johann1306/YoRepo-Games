@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javax.swing.JLabel;
 
+import front.MenuPrincipal;
 import modele.evenement.Evenement;
 
 public class DateManager implements Serializable {
@@ -34,9 +35,9 @@ public class DateManager implements Serializable {
 		return date;
 	}
 	
-	public void passeUneHeure(JLabel labelDate) {
+	public void passeUneHeure() {
 		dateCourante.setHours(dateCourante.getHours()+1);
-		labelDate.setText(getDateCouranteFormateeUpperCase());
+		MenuPrincipal.getMainFrame().getPanelHaut().getLabelDate().setText(getDateCouranteFormateeUpperCase());
 	}
 	
 	public void passeUneJournee(JLabel labelDate) {

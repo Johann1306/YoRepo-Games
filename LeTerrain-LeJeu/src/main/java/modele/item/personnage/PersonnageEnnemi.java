@@ -19,12 +19,12 @@ public class PersonnageEnnemi extends Personnage {
 	public PersonnageEnnemi(String nom, int vieMax, int manaMax, int chargeMax, List<String> particularitesPhysique,
 			List<String> particularitesSocial, List<String> phrasesPerso, ImageIcon photoPrincipal,
 			List<ImageIcon> photos, List<ActionCombat> actionsCombat, EnnemiType ennemiType, Competence competence) {
-		super(nom, nom);
+		super(nom, nom, true);
 		this.setVieMax(vieMax);
 		this.setVie(vieMax);
 		this.setManaMax(manaMax);
 		this.setMana(manaMax);
-		this.setNombreChargeMax(chargeMax);
+		this.setNombreChargeMax(competence.getNervosite()/20);
 		this.setNombreCharge(0);
 		this.setBouclier(0);
 		this.setVitesseCharge(50);
