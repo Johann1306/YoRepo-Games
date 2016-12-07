@@ -289,7 +289,7 @@ public class MusiqueManager implements Serializable {
 		}
 	}
 
-	public static void stop() {
+	public static void stopAll() {
 		try {
 			if (applicationMenuPrincipal != null) {
 				applicationMenuPrincipal.stop();

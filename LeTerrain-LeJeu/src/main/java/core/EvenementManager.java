@@ -91,7 +91,7 @@ public class EvenementManager implements Serializable {
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 14, 0, 0);
 		List<Item> itemsDebloques3 = new ArrayList<Item>();
 
-		Evenement test3 = new Evenement(titre3, informations3, path3, sonPath1, videoPath1, type3, date3, itemsDebloques3);
+		Evenement test3 = new Evenement(titre3, informations3, path3, sonPath1, videoPath1, type3, date3, null);
 		
 		String titre4 = "testEvent4";
 		String informations4 = "infosEvent4";
@@ -158,21 +158,25 @@ public class EvenementManager implements Serializable {
 				// Debloquer les items a debloquer 
 				List<Item> itemsDebloques = evenement.getItemsDebloques();
 				for (Item item : itemsDebloques) {
+					if (item != null) {
 					
-					// TODO get(0)
-					// Lancer le son ou la musique associe a l item
-					MusiqueManager.playSonItem(item.getSonPath().get(0));
+						// Lancer le son ou la musique associe a l item
+						MusiqueManager.playSonItem("sonParDefaut/09-Zelda-small-item-catch.mp3");
+							
+						// TODO get(0)
+						// Lancer la video associe a l item
+						if (item.getVideoPaths() != null) {
+							VideoManager.play(item.getVideoPaths().get(0));
+						}
 						
-					// Lancer la video associe a l item
-					VideoManager.play(item.getVideoPaths().get(0));
-					
-					// Afficher JDialog pour l item
-					ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
-					if (itemImage.getIconWidth() == -1) {
-						itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
+						// Afficher JDialog pour l item
+						ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
+						if (itemImage.getIconWidth() == -1) {
+							itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
+						}
+						JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
+						item.setDisponible(true);
 					}
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
-					item.setDisponible(true);
 				}
 			} 
 		}

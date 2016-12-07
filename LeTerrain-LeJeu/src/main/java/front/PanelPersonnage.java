@@ -295,7 +295,7 @@ public class PanelPersonnage extends JPanel {
 					finDuJeu = false;
 				}
 			}
-			// Fin du Jeu (Tous les persos sont morts)
+			// TODO Fin du Jeu (Tous les persos sont morts)
 			if (finDuJeu) {
 				System.out.println("GAME OVER");
 				

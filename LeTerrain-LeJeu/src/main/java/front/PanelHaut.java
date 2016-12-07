@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import core.DateManager;
 import core.EvenementManager;
 import core.MissionManager;
+import core.MusiqueManager;
 import core.configuration.Constante;
 import modele.evenement.Evenement;
 import modele.item.mission.Mission;
@@ -120,19 +121,22 @@ public class PanelHaut extends JPanel {
 				
 				if (dateManager.getDateCourante().getHours() == 22) {
 					// dodo a 22h
-					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().playSonEvenement("musique/dodo/310-SecretOfMana-close-your-eyelids.mp3");
+
+					// TODO NUIT (regen vie/mana et perte bouclier/charge)
+					MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+					
+					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager();
+					MusiqueManager.playSonEvenement("musique/dodo/310-SecretOfMana-close-your-eyelids.mp3");
 					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonne nuit les petits",	"C'est l'heure de faire dodo", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemNuit.mp3"));
 					while (dateManager.getDateCourante().getHours() != 7) {
 						dateManager.passeUneHeure();						
 					}
 					
-					// TODO NUIT (regen vie/mana et perte bouclier/charge)
-					MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+					// TODO Gestion Missions quotidiennes ??
 					
-					// TODO Missions quotidiennes ??
-					
+					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager();
 					// Reveil a 7h
-					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().playSonEvenement("musique/reveil/32-Zelda-hyrule-field-morning-theme.mp3");
+					MusiqueManager.playSonEvenement("musique/reveil/32-Zelda-hyrule-field-morning-theme.mp3");
 					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonjour madame", "C'est l'heure de se reveiller", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemJour.mp3"));
 				}
 
@@ -207,8 +211,8 @@ public class PanelHaut extends JPanel {
 		boutonPasserNext.setFont(Constante.PRESS_START_FONT);
 		
 		// Ajout au panel
-		this.add(labelTempsPasseDansLeJeu);
 		panelDate.add(labelDate);
+		this.add(labelTempsPasseDansLeJeu);
 		this.add(panelDate);
 		this.add(labelDifficulte);
 		this.add(labelAvancement);

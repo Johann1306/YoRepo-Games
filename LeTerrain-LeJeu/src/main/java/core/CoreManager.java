@@ -55,7 +55,7 @@ public class CoreManager implements Serializable {
 		personnageManager.initialise(actionCombatManager, difficultePartie);
 
 		missionManager = new MissionManager();
-		missionManager.initialise(difficultePartie, actionCombatManager, personnageManager);
+		missionManager.initialise(difficultePartie, actionCombatManager, personnageManager, itemManager);
 
 		// Sans ordre
 		musiqueManager = new MusiqueManager();
