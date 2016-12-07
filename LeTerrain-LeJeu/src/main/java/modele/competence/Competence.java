@@ -15,27 +15,31 @@ public class Competence implements Serializable {
 	public Competence() {
 
 		stats = new HashMap<PersoStat, Integer>();
-		
-//			normal 		/	 jeu de foot			/	 jeu de combat					/	jeu de Quizz
-//		-Luck			/Liberte Creative-Chance	/Chance de critique					/
-//		-Exploit		/Attaque-Tir				/Degats critique					/
-//		-Technique		/Technique					/Degats min							/
-//		-Endurance		/Energie-Endurance			/Vie max							/
-//		-Rapidite		/Reactivite-Vitesse			/Vitesse de recuperation stun		/
-//		-Resistance		/Robustesse-Defense			/Reduction Degats					/
-//		-Agilite		/Acceleration-Agilite		/chance d'esquive							/
-//		-Intelligence	/Instinct					/Mana max							/
-//		-Nervosite		/Nervosite					/Nombre de charge max				/
-		
-		stats.put(PersoStat.LUCK, 50);			// min 3 => chance de crit min = chance/3 / esquive 10%	(/3)
-		stats.put(PersoStat.EXPLOIT, 50);		// min 20 => degats crit min = expl/20					(/20)
-		stats.put(PersoStat.TECHNIQUE, 50);		// min 2 => degats min = agi/2 							(/2)
-		stats.put(PersoStat.ENDURANCE, 50);		// vie Max = endu*10									(*10)
-		stats.put(PersoStat.RAPIDITE, 50);		// esquive 10%
-		stats.put(PersoStat.RESISTANCE, 50);	// min 0 (conseille 20) => reduction degats max = -80% 	(-20)
-		stats.put(PersoStat.AGILITE, 50);		// esquive 10%
-		stats.put(PersoStat.INTELLIGENCE, 50);	// mana max = inte
-		stats.put(PersoStat.NERVOSITE, 50);		// min 25 => nombre charge max = 5
+
+		// normal / jeu de foot / jeu de combat / jeu de Quizz
+		// -Luck /Liberte Creative-Chance /Chance de critique /
+		// -Exploit /Attaque-Tir /Degats critique /
+		// -Technique /Technique /Degats min /
+		// -Endurance /Energie-Endurance /Vie max /
+		// -Rapidite /Reactivite-Vitesse /Vitesse de recuperation stun /
+		// -Resistance /Robustesse-Defense /Reduction Degats /
+		// -Agilite /Acceleration-Agilite /chance d'esquive /
+		// -Intelligence /Instinct /Mana max /
+		// -Nervosite /Nervosite /Nombre de charge max /
+
+		stats.put(PersoStat.LUCK, 50); // min 3 => chance de crit min = chance/3
+										// / esquive 10% (/3)
+		stats.put(PersoStat.EXPLOIT, 50); // min 20 => degats crit min = expl/20
+											// (/20)
+		stats.put(PersoStat.TECHNIQUE, 50); // min 2 => degats min = agi/2 (/2)
+		stats.put(PersoStat.ENDURANCE, 50); // vie Max = endu*10 (*10)
+		stats.put(PersoStat.RAPIDITE, 50); // esquive 10%
+		stats.put(PersoStat.RESISTANCE, 50); // min 0 (conseille 20) =>
+												// reduction degats max = -80%
+												// (-20)
+		stats.put(PersoStat.AGILITE, 50); // esquive 10%
+		stats.put(PersoStat.INTELLIGENCE, 50); // mana max = inte
+		stats.put(PersoStat.NERVOSITE, 50); // min 25 => nombre charge max = 5
 	}
 
 	public Competence(int valeur) {

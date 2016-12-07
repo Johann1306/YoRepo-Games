@@ -598,24 +598,30 @@ public class FrameCombat extends FrameJeu {
 			panelMenu.setMaximumSize(new Dimension(Constante.PANEL_ACTION_PERSO_LARGEUR, 30));
 
 			// Gestion info stat
-			// TODO faire une methode generique comme au debut plutot que gestionLabel()
+			// TODO faire une methode generique comme au debut plutot que
+			// gestionLabel()
 			JLabel labelAgilite = new JLabel(PersoStat.AGILITE.name() + " : " + perso.getCompetence().getAgilite());
 			gestionLabel(perso, labelAgilite, PersoStat.AGILITE);
-			JLabel labelEndurance = new JLabel(PersoStat.ENDURANCE.name() + " : " + perso.getCompetence().getEndurance());
+			JLabel labelEndurance = new JLabel(
+					PersoStat.ENDURANCE.name() + " : " + perso.getCompetence().getEndurance());
 			gestionLabel(perso, labelEndurance, PersoStat.ENDURANCE);
 			JLabel labelExploit = new JLabel(PersoStat.EXPLOIT.name() + " : " + perso.getCompetence().getExploit());
 			gestionLabel(perso, labelExploit, PersoStat.EXPLOIT);
-			JLabel labelIntelligence = new JLabel(PersoStat.INTELLIGENCE.name() + " : " + perso.getCompetence().getIntelligence());
+			JLabel labelIntelligence = new JLabel(
+					PersoStat.INTELLIGENCE.name() + " : " + perso.getCompetence().getIntelligence());
 			gestionLabel(perso, labelIntelligence, PersoStat.INTELLIGENCE);
 			JLabel labelChance = new JLabel(PersoStat.LUCK.name() + " : " + perso.getCompetence().getLuck());
 			gestionLabel(perso, labelChance, PersoStat.LUCK);
-			JLabel labelNervosite = new JLabel(PersoStat.NERVOSITE.name() + " : " + perso.getCompetence().getNervosite());
+			JLabel labelNervosite = new JLabel(
+					PersoStat.NERVOSITE.name() + " : " + perso.getCompetence().getNervosite());
 			gestionLabel(perso, labelNervosite, PersoStat.NERVOSITE);
 			JLabel labelRapidite = new JLabel(PersoStat.RAPIDITE.name() + " : " + perso.getCompetence().getRapidite());
 			gestionLabel(perso, labelRapidite, PersoStat.RAPIDITE);
-			JLabel labelResistance = new JLabel(PersoStat.RESISTANCE.name() + " : " + perso.getCompetence().getResistance());
+			JLabel labelResistance = new JLabel(
+					PersoStat.RESISTANCE.name() + " : " + perso.getCompetence().getResistance());
 			gestionLabel(perso, labelResistance, PersoStat.RESISTANCE);
-			JLabel labelTechnique = new JLabel(PersoStat.TECHNIQUE.name() + " : " + perso.getCompetence().getTechnique());
+			JLabel labelTechnique = new JLabel(
+					PersoStat.TECHNIQUE.name() + " : " + perso.getCompetence().getTechnique());
 			gestionLabel(perso, labelTechnique, PersoStat.TECHNIQUE);
 
 			panelBoutonsPerso.add(labelAgilite);
@@ -1206,9 +1212,8 @@ public class FrameCombat extends FrameJeu {
 
 		// TODO faire mieux ou pas/ a un autre endroit : Gestion specifique pour message
 		// Aura
-		if (actionCombat.getSortType() == SortType.AURA_PERSO 
-			|| actionCombat.getSortType() == SortType.AURA_MONO
-			|| actionCombat.getSortType() == SortType.AURA_MULTI) {
+		if (actionCombat.getSortType() == SortType.AURA_PERSO || actionCombat.getSortType() == SortType.AURA_MONO
+				|| actionCombat.getSortType() == SortType.AURA_MULTI) {
 			int valeurAAjouter = 0;
 			if (isCritique) {
 				valeurAAjouter = actionCombat.getNiveau() * 4;
@@ -1297,7 +1302,8 @@ public class FrameCombat extends FrameJeu {
 						cible.setVie(
 								cible.getVieMax() / ((actionCombat.getNiveauMax() + 1) - actionCombat.getNiveau()));
 					}
-					cible.setNombreCharge(-1);	// FIX probleme apres rez multi, tous les persos full charge
+					cible.setNombreCharge(-1); // FIX probleme apres rez multi,
+												// tous les persos full charge
 					cible.setMort(false);
 					cible.setaDejaJoue(true);
 					// Reactive le bouton du perso regenere
@@ -2244,7 +2250,8 @@ public class FrameCombat extends FrameJeu {
 		ActionCombat action = null;
 		Map<ActionCombat, Integer> actionsScores = new HashMap<ActionCombat, Integer>();
 
-		// Gestion difficulte IA (handicap sur les chances d'un sort a etre choisi)
+		// Gestion difficulte IA (handicap sur les chances d'un sort a etre
+		// choisi)
 		int handicap = 0;
 		if (mission.getDifficulty() == Difficulte.FACILE) {
 			handicap = 30;
@@ -2672,8 +2679,9 @@ public class FrameCombat extends FrameJeu {
 			}
 
 			if (!ennemisVivants.isEmpty() && !amisVivants.isEmpty()) {
-				
-				// TODO gestion fuite de l'ennemi si nombre inferieur (1/4, 2/6, 3/8)
+
+				// TODO gestion fuite de l'ennemi si nombre inferieur (1/4, 2/6,
+				// 3/8)
 				// et qu'il n'y a pas de REZeur
 				// et que ce n'est pas une mission boss
 				// et fonction de la difficulte
