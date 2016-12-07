@@ -33,6 +33,7 @@ public class Personnage extends Item implements Serializable {
 	private List<String> particularitesSocial;
 	private List<String> phrasesPerso;
 	private ImageIcon photoPrincipal;
+	private ImageIcon photoCombat;
 	private List<ImageIcon> photos;
 	private List<ActionCombat> actionsCombat;
 	private Competence competence;
@@ -197,6 +198,14 @@ public class Personnage extends Item implements Serializable {
 		this.photos = photos;
 	}
 
+	public ImageIcon getPhotoCombat() {
+		return photoCombat;
+	}
+
+	public void setPhotoCombat(ImageIcon photoCombat) {
+		this.photoCombat = photoCombat;
+	}
+
 	public List<ActionCombat> getActionsCombat() {
 		return actionsCombat;
 	}
@@ -333,6 +342,5 @@ public class Personnage extends Item implements Serializable {
 		// On ajoute le lanceur et l'aura a la map
 		auras.put(lanceur, aura);
 	}
-
 
 }

@@ -1,6 +1,7 @@
 TODO :
 
 Priorités :
+- Probleme du bouton son combat qui ne demarre plus au deuxieme combat( le random est fait, pas d'exception mais le son ne se lance pas)
 - Problemes quand spam bouton suivant => fin des evenements et plantage => boucle while 
 - Probleme des missions mal distribué aux perso => conf
 - stun/provocation esquivables ?

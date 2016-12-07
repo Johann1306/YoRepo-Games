@@ -106,7 +106,17 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 		// TODO test possibilite d ameliorer l'item
 		System.out.println("Utilise : " + this.getNom());
 		return true;
-		
+	}
+
+	public boolean isConsommable() {
+		boolean isConsommable = false;
+		ItemType typeItem = this.getType();
+		if ((typeItem == ItemType.POTION_VIE_25) || (typeItem == ItemType.POTION_VIE_50) || (typeItem == ItemType.POTION_VIE_75) || (typeItem == ItemType.POTION_VIE_100) || 
+				(typeItem == ItemType.POTION_MANA_25) || (typeItem == ItemType.POTION_MANA_50) || (typeItem == ItemType.POTION_MANA_75) || (typeItem == ItemType.POTION_MANA_100) || 
+				(typeItem == ItemType.POTION_COMBAT)) {
+			isConsommable = true;
+		}
+		return isConsommable;
 	}
 
 

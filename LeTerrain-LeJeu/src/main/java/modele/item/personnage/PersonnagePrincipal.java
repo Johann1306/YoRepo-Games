@@ -37,7 +37,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private List<PersonnageSecondaire> connaissances;
 	private List<Son> sons;
 	private List<Musique> musiques;
-	private List<Item> sac;
+	private Map<Item, Integer> sac;
 	private Lieu domicile;
 	private Location location;
 	public boolean isDejaPresente;
@@ -45,9 +45,9 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	
 	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms, Date dateNaissance, String origines,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
-			ImageIcon photoPrincipal, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
+			ImageIcon photoPrincipal, ImageIcon photoCombat, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
-			List<Son> sons, List<Musique> musiques, List<Item> sac, Lieu domicile, Competence competence, Competence competenceMax,
+			List<Son> sons, List<Musique> musiques, Map<Item, Integer> sac, Lieu domicile, Competence competence, Competence competenceMax,
 			boolean disponible) {
 		super(prenomPerso.name(), nomFamille.name(), disponible);
 		this.nomFamille = nomFamille;
@@ -60,6 +60,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setParticularitesSocial(particularitesSocial);
 		this.setPhrasesPerso(phrasesPerso);
 		this.setPhotoPrincipal(photoPrincipal);
+		this.setPhotoCombat(photoCombat);
 		this.photos = photos;
 		this.couleur = couleur;
 		this.actionsCombat = actionsCombat;
@@ -161,7 +162,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		return musiques;
 	}
 
-	public List<Item> getSac() {
+	public Map<Item, Integer> getSac() {
 		return sac;
 	}
 

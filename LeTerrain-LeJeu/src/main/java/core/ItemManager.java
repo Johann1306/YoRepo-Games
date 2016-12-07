@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.personnage.PersoPrenom;
@@ -25,6 +23,20 @@ public class ItemManager implements Serializable {
 		itemsIndisponibles = new ArrayList<Item>();
 
 		// Chargement des items
+		
+		// Images
+		List<String> imagePathsPopoVie = new ArrayList<String>();
+		String imagePathPopoVie = "image/item/consommable/popoVie.jpg";
+		imagePathsPopoVie.add(imagePathPopoVie);
+
+		List<String> imagePathsPopoMana = new ArrayList<String>();
+		String imagePathPopoMana = "image/item/consommable/popoMana.jpg";
+		imagePathsPopoMana.add(imagePathPopoMana);
+		
+		List<String> imagePathsBonus = new ArrayList<String>();
+		String imagePathBonus = "image/item/consommable/popoBonus.jpg";
+		imagePathsBonus.add(imagePathBonus);
+		
 
 		List<String> imagePaths1 = new ArrayList<String>();
 		String imagePath1 = "image/mp3Player/stop.png";
@@ -37,7 +49,17 @@ public class ItemManager implements Serializable {
 		List<String> imagePaths3 = new ArrayList<String>();
 		String imagePath3 = "image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
-
+		
+		// Sons
+		List<String> sonPathsManger1 = new ArrayList<String>();
+		String sonPathManger1 = "sonParDefaut/manger1.mp3";
+		sonPathsManger1.add(sonPathManger1);
+		
+		List<String> sonPathsBoire1 = new ArrayList<String>();
+		String sonPathBoire1 = "sonParDefaut/manger2.mp3";
+		sonPathsBoire1.add(sonPathBoire1);
+		
+		
 		List<String> sonPaths1 = new ArrayList<String>();
 		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
@@ -50,15 +72,40 @@ public class ItemManager implements Serializable {
 		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 
-		Item item1 = new Item(incrementeId(), "item1", "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, ItemType.CARTE, false);
-		Item item2 = new Item(incrementeId(), "item2", "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas, ItemType.BILLE, false);
-		Item item3 = new Item(incrementeId(), "item3", "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas, ItemType.OBJET_QUETE, false);
-		Item item4 = new Item(incrementeId(), "item4", "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
-		Item item5 = new Item(incrementeId(), "item5", "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
-		Item item6 = new Item(incrementeId(), "item6", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
-		Item item7 = new Item(incrementeId(), "item7", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
-		Item item8 = new Item(incrementeId(), "item8", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
-		Item item9 = new Item(incrementeId(), "item9", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CONSOMMABLE, false);
+		// Consommables Combat
+		
+		// Popo : vie/mana
+		Item popoVie25   = new Item(100, "Potion de vie (25%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_25, false);
+		Item popoVie50   = new Item(101, "Potion de vie (50%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_50, false);
+		Item popoVie75   = new Item(102, "Potion de vie (75%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_75, false);
+		Item popoVie100  = new Item(103, "Potion de vie (100%)",  "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_100, false);
+		Item popoMana25  = new Item(200, "Potion de mana (25%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_25, false);
+		Item popoMana50  = new Item(201, "Potion de mana (50%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_50, false);
+		Item popoMana75  = new Item(202, "Potion de mana (75%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_75, false);
+		Item popoMana100 = new Item(203, "Potion de mana (100%)", "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_100, false);
+		
+		// Bonus competences (+5, +10, +20)
+		Item bonusAgilite1 = new Item(300, "Bonus d'agilité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT, false);
+
+		// Objets de quete (pas d'utilisation)
+		Item cleTerrain = new Item(400, "Clés du terrain", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		
+		// Armes
+		Item mouchoir = new Item(500, "Paquet de mouchoir", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Thomas, ItemType.ARME, false);
+		Item ventoline = new Item(501, "Ventoline", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Pierre, ItemType.ARME, false);
+
+		// Equipements
+		
+		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolor, jeu video pocket, avions en papier, ) 
+		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "Carte de San Goku",  imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "Carte de San Gohan", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Carte de Krilin",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ4 = new Item(904, "Carte DBZ n°4", "Carte de Yamcha",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ5 = new Item(905, "Carte DBZ n°5", "Carte de Picolo",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ6 = new Item(906, "Carte DBZ n°6", "Carte de Vegeta",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ7 = new Item(907, "Carte DBZ n°7", "Carte de Cell",      imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		Item carteDBZ8 = new Item(908, "Carte DBZ n°8", "Carte de Spopovich", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
+		
 		Item item10 = new Item(incrementeId(), "item10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item11 = new Item(incrementeId(), "item11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item12 = new Item(incrementeId(), "item12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
@@ -67,15 +114,22 @@ public class ItemManager implements Serializable {
 		Item item15 = new Item(incrementeId(), "item15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		
 		// Ajout a la liste
-		items.add(item1);
-		items.add(item2);
-		items.add(item3);
-		items.add(item4);
-		items.add(item5);
-		items.add(item6);
-		items.add(item7);
-		items.add(item8);
-		items.add(item9);
+		items.add(popoVie25);
+		items.add(popoVie50);
+		items.add(popoVie75);
+		items.add(popoVie100);
+		items.add(popoMana25);
+		items.add(popoMana50);
+		items.add(popoMana75);
+		items.add(popoMana100);
+		items.add(bonusAgilite1);
+		items.add(cleTerrain);
+		items.add(mouchoir);
+		items.add(ventoline);
+		items.add(carteDBZ1);
+		items.add(carteDBZ2);
+		items.add(carteDBZ3);
+
 		items.add(item10);
 		items.add(item11);
 		items.add(item12);
@@ -99,6 +153,17 @@ public class ItemManager implements Serializable {
 		}
 		return null;
 	}
+	
+
+	public Item getItemById(int id) {
+		for (Item item : items) {
+			if (item.getId() == id) {
+				return item;
+			}
+		}
+		return null;
+	}
+
 
 	
 	public List<Item> getItemsDisponiblesByPerso(PersoPrenom nomPerso) {
@@ -147,11 +212,4 @@ public class ItemManager implements Serializable {
 		return id;
 	}
 
-	public int getTypeItem(Item item) {
-		int type = JOptionPane.PLAIN_MESSAGE;
-		if (item.getType().equals(ItemType.CARTE)) {
-			type = JOptionPane.ERROR_MESSAGE;
-		}
-		return type;
-	}
 }

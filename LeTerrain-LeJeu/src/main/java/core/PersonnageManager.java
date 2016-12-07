@@ -3,6 +3,7 @@ package core;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,6 +34,7 @@ import modele.item.personnage.PersonnageEnnemi;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
 import modele.item.personnage.action.ActionCombat;
+import modele.location.Location;
 
 public class PersonnageManager implements Serializable {
 
@@ -61,63 +63,72 @@ public class PersonnageManager implements Serializable {
 		ImageIcon iconGuillaume = FenetrePrincipal.getImageIcon("image/guillaume.png");
 		ImageIcon iconJonathan = FenetrePrincipal.getImageIcon("image/jonathan.png");
 
+		ImageIcon iconCombatNicolas = FenetrePrincipal.getImageIcon("image/nico petit 2.png");
+		ImageIcon iconCombatPierre = FenetrePrincipal.getImageIcon("image/pierre petit 2.png");
+		ImageIcon iconCombatYannick = FenetrePrincipal.getImageIcon("image/yannick petit 2.png");
+		ImageIcon iconCombatThomas = FenetrePrincipal.getImageIcon("image/thomas petit 2.png");
+		ImageIcon iconCombatJohann = FenetrePrincipal.getImageIcon("image/johann petit 2.png");
+		ImageIcon iconCombatAli = FenetrePrincipal.getImageIcon("image/ali 2.png");
+		ImageIcon iconCombatGuillaume = FenetrePrincipal.getImageIcon("image/guillaume 2.png");
+		ImageIcon iconCombatJonathan = FenetrePrincipal.getImageIcon("image/jonathan 2.png");
+
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, "Yo",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 6, 13, 9, 0, 0), "Tchécoslovaques", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconJohann, new ArrayList<ImageIcon>(), Color.BLUE,
+				iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Johann, true), new Competence(PersoPrenom.Johann, true), false);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, "Nico",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 7, 9, 0, 0), "Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
+				iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Nicolas, true), new Competence(PersoPrenom.Nicolas, true), false);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, "Pip",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 8, 4, 9, 0, 0), "Françaises à grosses bites", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconPierre, new ArrayList<ImageIcon>(), Color.GREEN,
+				iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Pierre, true), new Competence(PersoPrenom.Pierre, true), false);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, "Darm",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 5, 9, 0, 0), "Judéo-Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconThomas, new ArrayList<ImageIcon>(), Color.RED,
+				iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Thomas, true), new Competence(PersoPrenom.Thomas, true), false);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, "Ya",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 4, 14, 9, 0, 0), "Françaises florales", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
+				iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Yannick, true), new Competence(PersoPrenom.Yannick, true), false);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, "Ali",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 7, 1, 9, 0, 0), "Pakistanaises", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconAli, new ArrayList<ImageIcon>(), Color.PINK,
+				iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Ali, true), new Competence(PersoPrenom.Ali, true), false);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, "Guy",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 1, 11, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
+				iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Guillaume, true), new Competence(PersoPrenom.Guillaume, true), false);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, "Russ",
 				new ArrayList<String>(), DateManager.genereUneDate(1984, 5, 19, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
+				iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new ArrayList<Item>(), null,
+				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Jonathan, true), new Competence(PersoPrenom.Jonathan, true), false);
 
 		leGroupe.ajoutePerso(johann);
@@ -234,12 +245,25 @@ public class PersonnageManager implements Serializable {
 		String nom = null;
 		List<PersoStat> statsParType = new ArrayList<PersoStat>();
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>();
+		
+		// TODO photos par classe pour Noirs, Handicapes, Gitans, ...
+		
 		// GITANS
 		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
 			statsParType.add(PersoStat.AGILITE);
 			statsParType.add(PersoStat.RESISTANCE);
 			statsParType.add(PersoStat.NERVOSITE);
-			imagePath = "image/ennemi/gitan.png";
+			if (classe == PersoClasse.TANK) {
+				imagePath = "image/ennemi/ennemi_gitan_1.png";
+			} else if ( classe == PersoClasse.HEALER) {
+				imagePath = "image/ennemi/ennemi_gitan_2.png";
+			} else if ( classe == PersoClasse.DPS) {
+				imagePath = "image/ennemi/ennemi_gitan_3.png";
+			} else if ( classe == PersoClasse.MAGE) {
+				imagePath = "image/ennemi/ennemi_gitan_4.png";
+			} else if ( classe == PersoClasse.BARDE) {
+				imagePath = "image/ennemi/ennemi_gitan_5.png";
+			}
 			nom = "Ennemi Gitan " + numero + "(" + classe.name() + ")";
 			phrasesPerso.add("Hey Gadjo!");
 			phrasesPerso.add("Mange tes maures!");
@@ -259,11 +283,21 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.TECHNIQUE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.NERVOSITE);
-			imagePath = "image/ennemi/arabe.png";
-			nom = "Ennemi Arabe " + numero + "(" + classe.name() + ")";
+			if (classe == PersoClasse.TANK) {
+				imagePath = "image/ennemi/ennemi_arabe_3.png";
+			} else if ( classe == PersoClasse.HEALER) {
+				imagePath = "image/ennemi/ennemi_arabe_2.png";
+			} else if ( classe == PersoClasse.DPS) {
+				imagePath = "image/ennemi/ennemi_arabe_5.png";
+			} else if ( classe == PersoClasse.MAGE) {
+				imagePath = "image/ennemi/ennemi_arabe_1.png";
+			} else if ( classe == PersoClasse.BARDE) {
+				imagePath = "image/ennemi/ennemi_arabe_4.png";
+			}
+			nom = "Arabe " + numero + " (" + classe.name() + ")";
 			phrasesPerso.add("Wesh ma gueule!");
 			phrasesPerso.add("Meskine!");
-			phrasesPerso.add("Wesh, t'as pas une garette-ci?");
+			phrasesPerso.add("Wesh, t'as une garette-ci?");
 			phrasesPerso.add("Hey Mademoiselle! Vous êtes trop charmante!");
 			phrasesPerso.add("Wesh ma gueule!");
 			phrasesPerso.add("Naal dine oumouk!");
@@ -280,7 +314,17 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.ENDURANCE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.EXPLOIT);
-			imagePath = "image/ennemi/noir.png";
+			if (classe == PersoClasse.TANK) {
+				imagePath = "image/ennemi/ennemi_noir_1.png";
+			} else if ( classe == PersoClasse.HEALER) {
+				imagePath = "image/ennemi/ennemi_noir_2.png";
+			} else if ( classe == PersoClasse.DPS) {
+				imagePath = "image/ennemi/ennemi_noir_3.png";
+			} else if ( classe == PersoClasse.MAGE) {
+				imagePath = "image/ennemi/ennemi_noir_4.png";
+			} else if ( classe == PersoClasse.BARDE) {
+				imagePath = "image/ennemi/ennemi_noir_5.png";
+			}
 			nom = "Ennemi Noir " + numero + "(" + classe.name() + ")";
 			phrasesPerso.add("Hey Garçon!");
 			particularitesPhysique.add("Tchip");
@@ -297,7 +341,17 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.INTELLIGENCE);
 			statsParType.add(PersoStat.LUCK);
 			statsParType.add(PersoStat.EXPLOIT);
-			imagePath = "image/ennemi/handicape.png";
+			if (classe == PersoClasse.TANK) {
+				imagePath = "image/ennemi/ennemi_handicape_1.png";
+			} else if ( classe == PersoClasse.HEALER) {
+				imagePath = "image/ennemi/ennemi_handicape_2.png";
+			} else if ( classe == PersoClasse.DPS) {
+				imagePath = "image/ennemi/ennemi_handicape_3.png";
+			} else if ( classe == PersoClasse.MAGE) {
+				imagePath = "image/ennemi/ennemi_handicape_4.png";
+			} else if ( classe == PersoClasse.BARDE) {
+				imagePath = "image/ennemi/ennemi_handicape_5.png";
+			}
 			nom = "Ennemi Handicapé " + numero + "(" + classe.name() + ")";
 		}
 		// TODO autres type d'ennemi skin/alqueda/...
@@ -407,6 +461,8 @@ public class PersonnageManager implements Serializable {
 
 		int valeurParDifficulte = 25;
 		Competence competence = null;
+		
+		// TODO virer valeurParDifficulte ??? Tout a 25 ?
 
 		competence = new Competence(25);
 		if (difficulte == Difficulte.FACILE) {
@@ -561,8 +617,8 @@ public class PersonnageManager implements Serializable {
 			// Inutile normalement
 			personnage.getAuras().clear();
 			
-			
-			
+			// Et tout le monde retourne a la base
+			personnage.setLocation(new Location(personnage.getDomicile(), personnage.getDomicile().getPosition()));
 		}
 	}
 

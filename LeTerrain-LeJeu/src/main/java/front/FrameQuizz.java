@@ -145,7 +145,7 @@ public class FrameQuizz extends FrameJeu {
 		MenuPrincipal.getMainFrame().setEnabled(false);
 		MenuPrincipal.getMainFrame().setVisible(false);
 		VideoManager.hideAndStop();
-		MusiqueManager.stop();
+		MusiqueManager.stopAll();
 		JOptionPane.showMessageDialog(this, "Debut du Quizz");
 		timer.start();
 	}
@@ -173,7 +173,7 @@ public class FrameQuizz extends FrameJeu {
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
 		VideoManager.show();
-		MusiqueManager.stop();
+		MusiqueManager.stopAll();
 		
 		// Fin de la mission
 		MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().termineMission(mission, win);

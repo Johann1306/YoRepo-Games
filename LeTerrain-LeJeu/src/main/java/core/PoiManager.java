@@ -71,6 +71,7 @@ public class PoiManager implements Serializable {
 		Mission mission200 = missionManager.getMissionById(200);		
 		Mission mission201 = missionManager.getMissionById(201);		
 		Mission mission202 = missionManager.getMissionById(202);		
+		Mission mission1000 = missionManager.getMissionById(1000);		
 		
 		missionsPoi1.add(mission101);
 		missionsPoi2.add(mission102);
@@ -84,6 +85,7 @@ public class PoiManager implements Serializable {
 		missionsPoi100.add(mission106);
 		missionsPoi100.add(mission107);
 		missionsPoi100.add(mission108);		
+		missionsPoi100.add(mission1000);
 		missionsPoi101.add(mission202);
 		missionsPoi201.add(mission200);
 		

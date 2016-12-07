@@ -5,9 +5,6 @@ import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -84,26 +81,20 @@ public class BoxLayoutWindow {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				back.setBorderPainted(false);
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				back.setBorderPainted(true);
-
 			}
 
 			@Override
@@ -157,26 +148,20 @@ public class BoxLayoutWindow {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				play.setBorderPainted(false);
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				play.setBorderPainted(true);
-
 			}
 
 			@Override
@@ -224,46 +209,34 @@ public class BoxLayoutWindow {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				pause.setBorderPainted(false);
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				pause.setBorderPainted(true);
-
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 		});
 		stop.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -284,7 +257,6 @@ public class BoxLayoutWindow {
 					try {
 						application.stop();
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -295,26 +267,20 @@ public class BoxLayoutWindow {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				next.setBorderPainted(false);
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				next.setBorderPainted(true);
-
 			}
 
 			@Override
