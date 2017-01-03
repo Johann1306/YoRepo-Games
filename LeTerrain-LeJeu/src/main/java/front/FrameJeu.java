@@ -18,7 +18,8 @@ import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 
 public class FrameJeu extends JFrame {
-	private boolean running = true;
+
+	private boolean musiqueRunning = true;
 
 	public JPanel createPanelInfoMission(Mission mission) {
 		JPanel panelInfoMission = new JPanel();
@@ -26,12 +27,12 @@ public class FrameJeu extends JFrame {
 		boutonMusiqueOnOff.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (running) {
+				if (musiqueRunning) {
 					MusiqueManager.stopPlaylistEnBoucle();
-					running = false;
+					musiqueRunning = false;
 				} else {
 					MusiqueManager.startPlayListEnBoucle(mission);
-					running = true;
+					musiqueRunning = true;
 				}
 			}
 		});
@@ -62,4 +63,11 @@ public class FrameJeu extends JFrame {
 		return panelInfoMission;
 	}
 	
+	public boolean isMusiqueRunning() {
+		return musiqueRunning;
+	}
+
+	public void setMusiqueRunning(boolean musiqueRunning) {
+		this.musiqueRunning = musiqueRunning;
+	}
 }

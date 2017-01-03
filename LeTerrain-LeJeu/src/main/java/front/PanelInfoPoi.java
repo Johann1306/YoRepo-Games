@@ -46,8 +46,8 @@ public class PanelInfoPoi extends JPanel {
 		// Panel Nord : Poi
 		JLabel labelNomPoi = new JLabel(poi.getNom());
 		JLabel labelInfoPoi = new JLabel(poi.getInformations());
-		labelNomPoi.setFont(Constante.PRESS_START_FONT_TITRE);
-		labelInfoPoi.setFont(Constante.PRESS_START_FONT);
+		labelNomPoi.setFont(Constante.ZELDA_FONT_TITRE);
+		labelInfoPoi.setFont(Constante.ZELDA_FONT);
 		panelNord.add(labelNomPoi);
 		panelNord.add(labelInfoPoi);
 		System.out.println(this.getMaximumSize());
@@ -60,7 +60,7 @@ public class PanelInfoPoi extends JPanel {
 			if (mission != null) {
 				if (mission.isDisponible() && (!mission.isDejaFaite() || mission.isRepetable())) {
 					JButton bouton = new JButton(mission.getNom());
-					bouton.setFont(Constante.PRESS_START_FONT_MENU);
+					bouton.setFont(Constante.ZELDA_FONT_MENU);
 					if (mission.isRepetable()) {
 						bouton.setBackground(Constante.COULEUR_MISSION_REPETABLE);
 					} else if (mission.getMissionType().equals(MissionType.PRINCIPAL)) {
@@ -139,7 +139,7 @@ public class PanelInfoPoi extends JPanel {
 
 							// Bouton lancer mission
 							JButton boutonMission = new JButton("START");
-							boutonMission.setFont(Constante.PRESS_START_FONT);
+							boutonMission.setFont(Constante.ZELDA_FONT);
 							boutonMission.addActionListener(new ActionListener() {
 
 								@Override

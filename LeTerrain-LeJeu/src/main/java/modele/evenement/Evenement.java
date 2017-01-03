@@ -34,15 +34,11 @@ public class Evenement implements Serializable {
 	}
 
 	public boolean estDisponibleAPresenter() {
-		if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date) && !isDejaPresente) {
-			return true;
-		}
-		if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estAvantLaDateCourrante(date) && !isDejaPresente) {
-			return true;
-			
-		} else {
-			return false;
-		}
+		boolean disponible = false;
+		if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(date) <= 0 && !isDejaPresente) {
+			disponible = true;
+		} 
+		return disponible;
 	}
 	
 	public String getTitre() {

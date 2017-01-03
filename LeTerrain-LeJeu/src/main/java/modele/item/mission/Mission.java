@@ -342,13 +342,12 @@ public class Mission implements Serializable {
 		}
 		// dispo date
 		if (date != null) {
-			if (!MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estEgaleALaDateCourante(date)
-					|| !MenuPrincipal.getMainFrame().getCoreManager().getDateManager().estApresLaDateCourrante(date)) {
+			if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(date) > 0) {
 				return false;
 			}
 		}
 		isDisponible = true;
-		return isDisponible;
+		return true;
 	}
 
 	public boolean isDejaPresentee() {

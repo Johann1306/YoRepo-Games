@@ -39,7 +39,7 @@ public class PanelHaut extends JPanel {
 		
 		// label temps passe dans le jeu
 		JLabel labelTempsPasseDansLeJeu = new JLabel("0");
-		labelTempsPasseDansLeJeu.setFont(Constante.PRESS_START_FONT);
+		labelTempsPasseDansLeJeu.setFont(Constante.ZELDA_FONT);
 		long currentTimeMillis = System.currentTimeMillis();
 		long debutTimeMillis = currentTimeMillis;
 		Date timer = new Date(currentTimeMillis - debutTimeMillis);
@@ -162,7 +162,7 @@ public class PanelHaut extends JPanel {
 				} else {
 					Evenement nextEvenement = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getNextEvenement();
 					
-					Mission nextMission = missionManager.getNextMissionAvecDate();
+					Mission nextMission = missionManager.getNextMissionAvecDateEtItemsDisponibles();
 					boutonPasserNext.setEnabled(false);
 					if (nextMission == null && nextEvenement != null) {
 						System.out.println("Fin des missions avec date");
@@ -175,6 +175,7 @@ public class PanelHaut extends JPanel {
 						boutonPasserNext.setEnabled(true);
 					} else if (nextEvenement == null && nextMission != null){
 						System.out.println("Fin des evenements");
+						// TODO probleme boucle infini : missions necessitants items
 						while (!nextMission.estDisponibleAPresenter()) {
 							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
 							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
@@ -203,12 +204,12 @@ public class PanelHaut extends JPanel {
 		});
 		
 		// Font
-		labelDifficulte.setFont(Constante.PRESS_START_FONT);
-		labelAvancement.setFont(Constante.PRESS_START_FONT);
-		labelDate.setFont(Constante.PRESS_START_FONT);
+		labelDifficulte.setFont(Constante.ZELDA_FONT);
+		labelAvancement.setFont(Constante.ZELDA_FONT);
+		labelDate.setFont(Constante.ZELDA_FONT);
 		labelDate.setForeground(Color.WHITE);
-		boutonPasser.setFont(Constante.PRESS_START_FONT);
-		boutonPasserNext.setFont(Constante.PRESS_START_FONT);
+		boutonPasser.setFont(Constante.ZELDA_FONT);
+		boutonPasserNext.setFont(Constante.ZELDA_FONT);
 		
 		// Ajout au panel
 		panelDate.add(labelDate);

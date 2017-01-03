@@ -225,16 +225,16 @@ public class Competence implements Serializable {
 				stats.put(PersoStat.INTELLIGENCE, 25);
 				stats.put(PersoStat.NERVOSITE, 40);
 			} else if (prenom == PersoPrenom.Jonathan) {
-				// Jonathan stats max
-				stats.put(PersoStat.LUCK, 50);
-				stats.put(PersoStat.EXPLOIT, 90);
-				stats.put(PersoStat.TECHNIQUE, 70);
-				stats.put(PersoStat.ENDURANCE, 100);
-				stats.put(PersoStat.RAPIDITE, 70);
-				stats.put(PersoStat.RESISTANCE, 90);
-				stats.put(PersoStat.AGILITE, 30);
-				stats.put(PersoStat.INTELLIGENCE, 40);
-				stats.put(PersoStat.NERVOSITE, 100);
+				// Jonathan stats max -10
+				stats.put(PersoStat.LUCK, 40);
+				stats.put(PersoStat.EXPLOIT, 80);
+				stats.put(PersoStat.TECHNIQUE, 60);
+				stats.put(PersoStat.ENDURANCE, 90);
+				stats.put(PersoStat.RAPIDITE, 60);
+				stats.put(PersoStat.RESISTANCE, 80);
+				stats.put(PersoStat.AGILITE, 25);
+				stats.put(PersoStat.INTELLIGENCE, 30);
+				stats.put(PersoStat.NERVOSITE, 90);
 			}
 		}
 	}

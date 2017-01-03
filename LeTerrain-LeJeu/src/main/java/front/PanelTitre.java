@@ -13,7 +13,7 @@ public class PanelTitre extends JPanel {
 	
 	public PanelTitre() {
 		JLabel titre = new JLabel("LE TERRAIN");
-		titre.setFont(Constante.PRESS_START_FONT_TITRE);
+		titre.setFont(Constante.MARIO_FONT_TITRE);
 		titre.setForeground(Color.WHITE);
 		this.add(titre);
 	}

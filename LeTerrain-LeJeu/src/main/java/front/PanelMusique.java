@@ -365,7 +365,7 @@ public class PanelMusique extends JPanel {
 		JPanel panelTitle = new JPanel();
 		panelTitle.setBackground(Color.BLACK);
 		jTitre = new JLabel("Titre");
-		jTitre.setFont(Constante.PRESS_START_FONT);
+		jTitre.setFont(Constante.ZELDA_FONT);
 		jTitre.setForeground(Color.RED);
 		panelTitle.add(jTitre);
 
