@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import core.EvenementManager;
+import core.ImageManager;
 import core.ItemManager;
 import core.configuration.Constante;
 import modele.evenement.Evenement;
@@ -63,13 +65,13 @@ public class PanelBas extends JPanel {
 		// TODO : refresh sans removeAll()
 		
 		// Refresh Evenements
-		refreshPanelEvenements();
+		refreshAffichagePanelEvenements();
 
 		// Refresh Items
 		refreshPanelInventaire(nom);
 	}
 
-	private void refreshPanelEvenements() {
+	private void refreshAffichagePanelEvenements() {
 		
 		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles());
 		panelEvenement.removeAll();
@@ -83,7 +85,7 @@ public class PanelBas extends JPanel {
 		for (Evenement evenement : evenementsDisponibles) {
 			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
 			labelEvenement.setForeground(Color.WHITE);
-			labelEvenement.setFont(Constante.PRESS_START_FONT);
+			labelEvenement.setFont(Constante.ZELDA_FONT);
 			panelEvenement.add(labelEvenement);
 		}
 	}
@@ -96,7 +98,19 @@ public class PanelBas extends JPanel {
 		BoxLayout boxLayout = new BoxLayout(panelVertical, BoxLayout.Y_AXIS);
 		panelVertical.setLayout(boxLayout);
 		
+		// On affiche les objets de quetes du perso ou du groupe
 		List<Item> items = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsDisponiblesByPerso(nom);
+		
+		// On affiche les consommables du perso
+		if (nom != PersoPrenom.GROUPE) {
+			Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(nom).getSac();
+			for (Item item : sac.keySet()) {
+				if (sac.get(item) > 0) {
+					items.add(item);
+				}
+			}
+		}
+		
 		int compteur = 0;
 		JPanel panelHorizontal = new JPanel();
 		panelVertical.add(panelHorizontal);
@@ -121,7 +135,9 @@ public class PanelBas extends JPanel {
 
 	private void createItemBouton(JPanel panelHorizontal, Item item) {
 		ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
-		JButton boutonItem = new JButton(image);
+		ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.ITEM_TAILLE_DIMENSION);
+		JButton boutonItem = new JButton(resizeImage);
+		boutonItem.setToolTipText(item.getNom() + " : " + item.getInformations());
 		boutonItem.setPreferredSize(Constante.ITEM_TAILLE_DIMENSION);
 		panelHorizontal.add(boutonItem);
 	}

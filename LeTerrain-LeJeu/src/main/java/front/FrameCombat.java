@@ -81,6 +81,7 @@ public class FrameCombat extends FrameJeu {
 	private JButton boutonJonathan = null;
 
 	private Item itemSelectionne = null;
+	private PersoPrenom proprietaireItem = null;
 	private JPanel panelInfosCombat = null;
 	private List<JButton> boutonsEnnemis = null;
 	private List<JButton> boutonsAmis = null;
@@ -565,11 +566,11 @@ public class FrameCombat extends FrameJeu {
 		PersonnagePrincipal perso = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager()
 				.getPersoByPrenom(prenom);
 
+		gestionItemSelectionne(prenom);
+
 		// On construit le panel uniquement si le perso n a pas encore joue ce
 		// tour ci et qu'il n'est pas bloqué
 		if (!perso.isaDejaJoue() && perso.getNombreBloque() == 0) {
-
-			manageItemSelectionne(prenom);
 
 			// TODO : mieux que removeAll()
 			panelActions.removeAll();
@@ -667,11 +668,6 @@ public class FrameCombat extends FrameJeu {
 			BoxLayout boxlayoutItemsCombat = new BoxLayout(panelItemsCombat, BoxLayout.Y_AXIS);
 			panelItemsCombat.setLayout(boxlayoutItemsCombat);
 			
-			// TODO map<item, nb> itemParPerso
-
-//			List<Item> itemsPerso = MenuPrincipal.getMainFrame().getCoreManager().getItemManager()
-//					.getItemsDisponiblesByPerso(prenom);
-			
 			// On affiche les objets consommables du joueur (+ objets groupe ?)
 			Map<Item, Integer> sac = perso.getSac();
 			
@@ -684,6 +680,7 @@ public class FrameCombat extends FrameJeu {
 						ImageIcon imageItem = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 						ImageIcon resizeImage2 = ImageManager.resizeImage(imageItem, Constante.ITEM_CONSOMMABLE_DIMENSION);
 						JButton boutonItem = new JButton(resizeImage2);
+						boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")");
 						boutonItem.setPreferredSize(new Dimension(resizeImage2.getIconWidth(), resizeImage2.getIconHeight()));
 						// TODO afficher le nombre d'items si >1 (popup?)
 		
@@ -692,11 +689,10 @@ public class FrameCombat extends FrameJeu {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								itemSelectionne = item;
+								proprietaireItem = perso.getPrenomPerso();
 								// TODO panelPerso en surbrillance
 								panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
-								// TODO changer l icone de la souris jusqu a ce que l
-								// item
-								// soit utilise
+								// TODO changer l icone de la souris jusqu a ce que l item soit utilise
 							}
 						});
 						panelItemsCombat.add(boutonItem);
@@ -1576,9 +1572,9 @@ public class FrameCombat extends FrameJeu {
 								MusiqueManager.playSon("sonParDefaut/defautMort.mp3");
 								JLabel labelMort = new JLabel(
 										lanceur.getPrenom() + " a tué " + cible.getPrenom() + ".");
-								// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+								labelMort.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
 								labelMort.setForeground(Color.RED);
-								// label.setForeground(perso.getCouleur());
+								//labelMort.setForeground(lanceur.getCouleur());
 								panelInfosCombat.add(labelMort, 0);
 								revalidate();
 
@@ -1622,6 +1618,11 @@ public class FrameCombat extends FrameJeu {
 
 		}
 
+		refreshFinTourJoueur(lanceur);
+
+	}
+
+	private void refreshFinTourJoueur(Personnage lanceur) {
 		if (lanceur instanceof PersonnagePrincipal) {
 			// gestion une action par perso par tour
 			lanceur.setaDejaJoue(true);
@@ -1653,7 +1654,6 @@ public class FrameCombat extends FrameJeu {
 
 		// Refresh panelCentre vie/mana/charge/bouclier
 		buildPanelCentre();
-
 	}
 
 	private List<Personnage> choixDeLaCible(Personnage lanceur, ActionCombat actionCombat,
@@ -2005,7 +2005,7 @@ public class FrameCombat extends FrameJeu {
 			label.setText("(CRITIQUE) " + label.getText());
 		}
 
-		// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+		label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
 		// label.setForeground(perso.getCouleur());
 		return label;
 	}
@@ -2038,7 +2038,9 @@ public class FrameCombat extends FrameJeu {
 	// Fin du jeu
 	private void stop(Mission mission, boolean win) {
 
+		// Eteint la musique de combat
 		MusiqueManager.stopPlaylistEnBoucle();
+		setMusiqueRunning(false);
 
 		// Remise a zero pour prochain combat (duplique avec lancePartie())
 		for (PersonnagePrincipal ami : amisPresents) {
@@ -2097,7 +2099,7 @@ public class FrameCombat extends FrameJeu {
 					JOptionPane.showMessageDialog(this,
 							"Le sort de " + actionCombat.getProprietaire().name() + " : '" + actionCombat.getNom()
 									+ "' a progressé d'un niveau ! (" + actionCombat.getNiveau() + ")",
-							"Progression d'un sort", 0, new ImageIcon(actionCombat.getImagePath().get(0)));
+							"Progression d'un sort", 0, FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)));
 				} else {
 					// TODO Si item au niveau Max
 				}
@@ -2109,7 +2111,7 @@ public class FrameCombat extends FrameJeu {
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
 		VideoManager.show();
-		MusiqueManager.stopAll();
+//		MusiqueManager.stopAll();
 
 		// Fin de la mission
 		MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().termineMission(mission, win);
@@ -2122,30 +2124,149 @@ public class FrameCombat extends FrameJeu {
 		this.setLocation(x, y);
 	}
 
-	private void manageItemSelectionne(PersoPrenom prenom) {
+	private void gestionItemSelectionne(PersoPrenom prenomCible) {
 		if (itemSelectionne != null) {
 			int reponse = JOptionPane.showConfirmDialog(this,
-					"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenom.name() + "?");
+					"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenomCible.name() + "?");
 			if (reponse == 0) {
 				// OUI
-				boolean itemConsomme = itemSelectionne.consommeItem();
-				if (itemConsomme) {
-					JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
-					JLabel label = new JLabel(prenom.name() + " consomme " + itemSelectionne.getNom() + ".");
-					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
-					panelInfosCombat.add(label, 0);
-					// TODO setDisponible(false)? ou etat consomme?
-					// TODO modifier stats en fonction de l'item
-					itemSelectionne.setDisponible(false);
-
-				} else {
-					JOptionPane.showMessageDialog(this,
-							"L'item : " + itemSelectionne.getNom() + " n'a pas pu etre consomme : raison");
+				
+				PersonnagePrincipal persoCible = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenomCible);
+				PersonnagePrincipal persoLanceur = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(proprietaireItem);
+				if (itemSelectionne.getType() == ItemType.POTION_VIE_25) {
+					int vie = persoCible.getVie() + ((persoCible.getVieMax()*25)/100);
+					if (vie > persoCible.getVieMax()) {
+						vie = persoCible.getVieMax();
+					}
+					persoCible.setVie(vie);					
+				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_50) {
+					int vie = persoCible.getVie() + ((persoCible.getVieMax()*50)/100);
+					if (vie > persoCible.getVieMax()) {
+						vie = persoCible.getVieMax();
+					}
+					persoCible.setVie(vie);	
+				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_75) {
+					int vie = persoCible.getVie() + ((persoCible.getVieMax()*75)/100);
+					if (vie > persoCible.getVieMax()) {
+						vie = persoCible.getVieMax();
+					}
+					persoCible.setVie(vie);	
+				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_100) {
+					persoCible.setVie(persoCible.getVieMax());	
+					
+				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_25) {
+					int mana = persoCible.getMana() + ((persoCible.getManaMax()*25)/100);
+					if (mana > persoCible.getManaMax()) {
+						mana = persoCible.getManaMax();
+					}
+					persoCible.setMana(mana);	
+				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_50) {
+					int mana = persoCible.getMana() + ((persoCible.getManaMax()*50)/100);
+					if (mana > persoCible.getManaMax()) {
+						mana = persoCible.getManaMax();
+					}
+					persoCible.setMana(mana);	
+				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_75) {
+					int mana = persoCible.getMana() + ((persoCible.getManaMax()*75)/100);
+					if (mana > persoCible.getManaMax()) {
+						mana = persoCible.getManaMax();
+					}
+					persoCible.setMana(mana);	
+				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_100) {
+					persoCible.setMana(persoCible.getManaMax());	
+					
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_5) {
+					persoCible.addCompetences(PersoStat.LUCK, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_10) {
+					persoCible.addCompetences(PersoStat.LUCK, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_20) {
+					persoCible.addCompetences(PersoStat.LUCK, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_5) {
+					persoCible.addCompetences(PersoStat.EXPLOIT, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_10) {
+					persoCible.addCompetences(PersoStat.EXPLOIT, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_20) {
+					persoCible.addCompetences(PersoStat.EXPLOIT, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_5) {
+					persoCible.addCompetences(PersoStat.TECHNIQUE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_10) {
+					persoCible.addCompetences(PersoStat.TECHNIQUE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_20) {
+					persoCible.addCompetences(PersoStat.TECHNIQUE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_5) {
+					persoCible.addCompetences(PersoStat.ENDURANCE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_10) {
+					persoCible.addCompetences(PersoStat.ENDURANCE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_20) {
+					persoCible.addCompetences(PersoStat.ENDURANCE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_5) {
+					persoCible.addCompetences(PersoStat.RAPIDITE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_10) {
+					persoCible.addCompetences(PersoStat.RAPIDITE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_20) {
+					persoCible.addCompetences(PersoStat.RAPIDITE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_5) {
+					persoCible.addCompetences(PersoStat.RESISTANCE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_10) {
+					persoCible.addCompetences(PersoStat.RESISTANCE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_20) {
+					persoCible.addCompetences(PersoStat.RESISTANCE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_5) {
+					persoCible.addCompetences(PersoStat.AGILITE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_10) {
+					persoCible.addCompetences(PersoStat.AGILITE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_20) {
+					persoCible.addCompetences(PersoStat.AGILITE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_5) {
+					persoCible.addCompetences(PersoStat.INTELLIGENCE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_10) {
+					persoCible.addCompetences(PersoStat.INTELLIGENCE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_20) {
+					persoCible.addCompetences(PersoStat.INTELLIGENCE, 20);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_5) {
+					persoCible.addCompetences(PersoStat.NERVOSITE, 5);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_10) {
+					persoCible.addCompetences(PersoStat.NERVOSITE, 10);
+				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_20) {
+					persoCible.addCompetences(PersoStat.NERVOSITE, 20);
 				}
+				
+				// TODO decremente l'item dans le sac du perso qui a utilisé l'item
+				int valeur = persoLanceur.getSac().get(itemSelectionne);
+				persoLanceur.getSac().put(itemSelectionne, valeur -1);
+				
+				JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
+				JLabel label = new JLabel(prenomCible.name() + " consomme " + itemSelectionne.getNom() + ".");
+				label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
+				panelInfosCombat.add(label, 0);
+				itemSelectionne = null;
+				
+				// Fin du tour du joueur (1 popo par tour par joueur)
+				// FIXME probleme quand lanceur = cible la deuxieme fois, le focus reste sur le lanceur au lieu de switcher sur un autre joueur => ok?
+				// FIXME probleme cible de la popo non selectionnable (alors que vivante) => ok?
+				refreshFinTourJoueur(persoLanceur);
+
+				
+//				boolean itemConsomme = itemSelectionne.consommeItem();
+//				if (itemConsomme) {
+//					JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
+//					JLabel label = new JLabel(prenom.name() + " consomme " + itemSelectionne.getNom() + ".");
+//					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+//					panelInfosCombat.add(label, 0);
+//					// TODO setDisponible(false)? ou etat consomme?
+//					// TODO modifier stats en fonction de l'item
+//					itemSelectionne.setDisponible(false);
+//
+//				} else {
+//					JOptionPane.showMessageDialog(this,
+//							"L'item : " + itemSelectionne.getNom() + " n'a pas pu etre consomme : raison");
+//				}
 			}
 			// TODO : remettre curseur souris normal
 			panelOuest.setBorder(null);
 			itemSelectionne = null;
+			
+			// TODO refresh panelCombat et panelAction
 		}
 	}
 
@@ -2228,13 +2349,16 @@ public class FrameCombat extends FrameJeu {
 				}
 			}
 		}
-
-		// lance tour ennemis
-		JOptionPane.showMessageDialog(this, "Tour des ennemis");
-
-		timerEnnemis = new Timer(1000, new MyEnnemiActionListener());
-		timerEnnemis.setInitialDelay(100);
-		timerEnnemis.start();
+		
+		// Si il y a des ennemis vivants
+		if (!ennemisVivants.isEmpty()) {
+			// On lance tour ennemis
+			JOptionPane.showMessageDialog(this, "Tour des ennemis");
+	
+			timerEnnemis = new Timer(1000, new MyEnnemiActionListener());
+			timerEnnemis.setInitialDelay(100);
+			timerEnnemis.start();
+		}
 	}
 
 	private ActionCombat choixDuSortEnnemi(PersonnageEnnemi ennemi) {
@@ -2512,7 +2636,7 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		labelTimer = new JLabel("OO");
-		labelTimer.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+		labelTimer.setFont(Constante.ZELDA_FONT_MENU_SELECTED);
 
 		panelCentre.add(panelAdversaires);
 		panelCentre.add(labelTimer);

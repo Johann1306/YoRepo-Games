@@ -158,7 +158,7 @@ public class PanelCentre extends JPanel {
 			} else {
 				bouton = new JButton(lieu.getNom() + " (" + nbMissionsLieu + ")");
 			}
-			bouton.setFont(Constante.PRESS_START_FONT);
+			bouton.setFont(Constante.SIMPSON_FONT);
 			
 			JPanel panelBouton = new JPanel();
 			panelBouton.setLocation(lieu.getPosition());
@@ -196,7 +196,7 @@ public class PanelCentre extends JPanel {
 						} else {
 							bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
 						}
-						bouton.setFont(Constante.PRESS_START_FONT);
+						bouton.setFont(Constante.SIMPSON_FONT);
 						// TODO taille bouton unique (minimum)
 //						bouton.setMaximumSize(Constante.BOUTON_LIEU_DIMENSION);
 						JPanel panelBouton = new JPanel();
@@ -303,7 +303,7 @@ public class PanelCentre extends JPanel {
 
 	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
 		JButton boutonCarte = new JButton("Retour Carte");
-		boutonCarte.setFont(Constante.PRESS_START_FONT);
+		boutonCarte.setFont(Constante.SIMPSON_FONT);
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

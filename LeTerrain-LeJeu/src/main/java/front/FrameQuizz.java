@@ -63,7 +63,7 @@ public class FrameQuizz extends FrameJeu {
 		String question = enigme.getQuestion();
 		JTextField field = new JTextField(question);
 		field.setEditable(false);
-		field.setFont(Constante.PRESS_START_FONT_MENU);
+		field.setFont(Constante.ZELDA_FONT_MENU);
 		panelQuestion.add(field);
 		
 		// Panel Reponses possibles
@@ -103,7 +103,7 @@ public class FrameQuizz extends FrameJeu {
 		double maxTime = Constante.QUIZZ_MAX_TEMPS;
 		JPanel panelTimer = new JPanel();
 		labelTimer = new JLabel(String.valueOf(maxTime));
-		labelTimer.setFont(Constante.PRESS_START_FONT_TITRE);
+		labelTimer.setFont(Constante.ZELDA_FONT_TITRE);
 		labelTimer.setBackground(Color.BLACK);
 		timer = new Timer(10, new MyTimerActionListener(maxTime));
 		panelTimer.add(labelTimer);

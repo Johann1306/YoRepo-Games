@@ -408,7 +408,7 @@ public class WindowMP3WithTitlesScrolling {
 		panelTitle.setBackground(Color.BLACK);
 //		frame.add(panelTitre, BorderLayout.NORTH);
 		jTitre = new JLabel("Titre");
-		jTitre.setFont(Constante.PRESS_START_FONT);
+		jTitre.setFont(Constante.ZELDA_FONT);
 //		jTitre.
 		panelTitle.add(jTitre);
 		panelTitle.setBackground(Color.BLACK);

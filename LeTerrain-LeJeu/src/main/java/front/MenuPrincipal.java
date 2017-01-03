@@ -46,13 +46,13 @@ public class MenuPrincipal extends JPanel {
 		JButton boutonScore = new JButton("Score");
 		boutonQuit = new JButton("Quitter");
 
-		boutonNew.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonContinue.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonLoad.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonEdit.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonJeux.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonScore.setFont(Constante.PRESS_START_FONT_MENU);
-		boutonQuit.setFont(Constante.PRESS_START_FONT_MENU);
+		boutonNew.setFont(Constante.MARIO_FONT_MENU);
+		boutonContinue.setFont(Constante.MARIO_FONT_MENU);
+		boutonLoad.setFont(Constante.MARIO_FONT_MENU);
+		boutonEdit.setFont(Constante.MARIO_FONT_MENU);
+		boutonJeux.setFont(Constante.MARIO_FONT_MENU);
+		boutonScore.setFont(Constante.MARIO_FONT_MENU);
+		boutonQuit.setFont(Constante.MARIO_FONT_MENU);
 
 		boutonNew.setBackground(Color.BLACK);
 		boutonContinue.setBackground(Color.BLACK);
@@ -118,10 +118,10 @@ public class MenuPrincipal extends JPanel {
 				JButton boutonDifficile = new JButton(Difficulte.DIFFICILE.name());
 				JButton boutonHeroique = new JButton(Difficulte.HEROIQUE.name());
 				
-				boutonFacile.setFont(Constante.PRESS_START_FONT_MENU);
-				boutonNormal.setFont(Constante.PRESS_START_FONT_MENU);
-				boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU);
-				boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonFacile.setFont(Constante.MARIO_FONT_MENU);
+				boutonNormal.setFont(Constante.MARIO_FONT_MENU);
+				boutonDifficile.setFont(Constante.MARIO_FONT_MENU);
+				boutonHeroique.setFont(Constante.MARIO_FONT_MENU);
 				
 				boutonFacile.setBackground(Color.BLACK);
 				boutonNormal.setBackground(Color.BLACK);
@@ -186,13 +186,13 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseExited(MouseEvent e) {
-						boutonFacile.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonFacile.setFont(Constante.MARIO_FONT_MENU);
 						boutonFacile.setBorder(null);
 					}
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonFacile.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonFacile.setFont(Constante.MARIO_FONT_MENU_2);
 						boutonFacile.setBorder(BORDER);
 					}
 
@@ -212,13 +212,13 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseExited(MouseEvent e) {
-						boutonNormal.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonNormal.setFont(Constante.MARIO_FONT_MENU);
 						boutonNormal.setBorder(null);
 					}
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonNormal.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonNormal.setFont(Constante.MARIO_FONT_MENU_2);
 						boutonNormal.setBorder(BORDER);
 					}
 
@@ -238,13 +238,13 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseExited(MouseEvent e) {
-						boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonDifficile.setFont(Constante.MARIO_FONT_MENU);
 						boutonDifficile.setBorder(null);
 					}
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonDifficile.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonDifficile.setFont(Constante.MARIO_FONT_MENU_2);
 						boutonDifficile.setBorder(BORDER);
 					}
 
@@ -264,13 +264,13 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseExited(MouseEvent e) {
-						boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU);
+						boutonHeroique.setFont(Constante.MARIO_FONT_MENU);
 						boutonHeroique.setBorder(null);
 					}
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonHeroique.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+						boutonHeroique.setFont(Constante.MARIO_FONT_MENU_2);
 						boutonHeroique.setBorder(BORDER);
 					}
 
@@ -376,13 +376,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonNew.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonNew.setFont(Constante.MARIO_FONT_MENU);
 				boutonNew.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonNew.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonNew.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonNew.setBorder(BORDER);
 			}
 
@@ -402,13 +402,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonContinue.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonContinue.setFont(Constante.MARIO_FONT_MENU);
 				boutonContinue.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonContinue.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonContinue.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonContinue.setBorder(BORDER);
 			}
 
@@ -428,13 +428,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonLoad.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonLoad.setFont(Constante.MARIO_FONT_MENU);
 				boutonLoad.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonLoad.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonLoad.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonLoad.setBorder(BORDER);
 			}
 
@@ -454,13 +454,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonEdit.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonEdit.setFont(Constante.MARIO_FONT_MENU);
 				boutonEdit.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonEdit.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonEdit.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonEdit.setBorder(BORDER);
 			}
 
@@ -480,13 +480,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonJeux.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonJeux.setFont(Constante.MARIO_FONT_MENU);
 				boutonJeux.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonJeux.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonJeux.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonJeux.setBorder(BORDER);
 			}
 
@@ -506,13 +506,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonScore.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonScore.setFont(Constante.MARIO_FONT_MENU);
 				boutonScore.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonScore.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonScore.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonScore.setBorder(BORDER);
 			}
 
@@ -532,13 +532,13 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				boutonQuit.setFont(Constante.PRESS_START_FONT_MENU);
+				boutonQuit.setFont(Constante.MARIO_FONT_MENU);
 				boutonQuit.setBorder(null);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonQuit.setFont(Constante.PRESS_START_FONT_MENU_SELECTED);
+				boutonQuit.setFont(Constante.MARIO_FONT_MENU_2);
 				boutonQuit.setBorder(BORDER);
 			}
 

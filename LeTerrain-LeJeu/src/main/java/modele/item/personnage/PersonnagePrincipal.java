@@ -2,15 +2,20 @@
 package modele.item.personnage;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
+import front.MainFrame;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.Item;
+import modele.item.ItemType;
 import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
@@ -88,36 +93,6 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setBouclier(0);
 	}
 
-	public void addCompetences(Map<PersoStat, Integer> map) {
-		
-		if (map != null) {
-			// On recupere les stats du perso
-			Map<PersoStat, Integer> statsPerso = getCompetence().getStats();
-			
-			// Pour chaque stat
-			for (PersoStat stat : statsPerso.keySet()) {
-				
-				// Si cette stat est modifiee
-				if (map.containsKey(stat)) {
-					
-					// On la modifie
-					Integer valeurStat = statsPerso.get(stat);
-					Integer valeurAAJouter = map.get(stat);
-					Integer valeurModifie = valeurStat + valeurAAJouter;
-					Integer valeurMax = competenceMax.getStats().get(stat);
-					
-					// On plafonne les competences a la valeur max du perso
-					if (valeurModifie > valeurMax) {
-						valeurModifie = valeurMax;
-					}
-					
-					// On met a jour les stats du perso
-					statsPerso.put(stat, valeurModifie);				
-				}
-			}
-		}
-	}
-	
 	public PersoNom getNomFamille() {
 		return nomFamille;
 	}
@@ -221,5 +196,61 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public String getOrigines() {
 		return origines;
 	}
+
+	public void addCompetences(Map<PersoStat, Integer> map) {
+		
+		if (map != null) {
+			// On recupere les stats du perso
+			Map<PersoStat, Integer> statsPerso = getCompetence().getStats();
+			
+			// Pour chaque stat
+			for (PersoStat stat : statsPerso.keySet()) {
+				
+				// Si cette stat est modifiee
+				if (map.containsKey(stat)) {
+					
+					// On la modifie
+					Integer valeurStat = statsPerso.get(stat);
+					Integer valeurAAJouter = map.get(stat);
+					Integer valeurModifie = valeurStat + valeurAAJouter;
+					Integer valeurMax = competenceMax.getStats().get(stat);
+					
+					if (valeurStat == valeurMax) {
+						// TODO prevenir le joueur si la stat est deja au max
+					}
+					
+					// On plafonne les competences a la valeur max du perso
+					if (valeurModifie > valeurMax) {
+						// TODO prevenir le joueur si la stat arrive au max
+						valeurModifie = valeurMax;
+					}
+					// TODO affichage info bonus
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), this.getPrenom()
+							+ " a gagné : " + (valeurModifie - valeurStat) + " point(s) de " + stat.name(), "Points de competences gagnés", 0, this.getPhotoPrincipal());
+					
+					// On met a jour les stats du perso
+					statsPerso.put(stat, valeurModifie);	
+					
+				}
+			}
+		}
+	}
+	
+	public void addCompetences(PersoStat stat, int valeur) {
+		Map<PersoStat, Integer> statsPerso = new HashMap<PersoStat, Integer>();
+		statsPerso.put(stat, valeur);
+		addCompetences(statsPerso);
+	}
+
+
+	public List<ActionCombat> getActionsCombatDisponibles() {
+			List<ActionCombat> actionsCombatDispo = new ArrayList<ActionCombat>();
+			for (ActionCombat action : actionsCombat) {
+				if (action.isDisponible()) {
+					actionsCombatDispo.add(action);
+				}
+			}
+			return actionsCombatDispo;
+		}
 
 }

@@ -1,9 +1,9 @@
 TODO :
 
 Priorités :
-- Probleme du bouton son combat qui ne demarre plus au deuxieme combat( le random est fait, pas d'exception mais le son ne se lance pas)
-- Problemes quand spam bouton suivant => fin des evenements et plantage => boucle while 
-- Probleme des missions mal distribué aux perso => conf
+- Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false)
+- Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats)
+- Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
 - stun/provocation esquivables ?
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 

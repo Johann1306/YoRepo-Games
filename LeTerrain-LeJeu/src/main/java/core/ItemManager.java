@@ -37,6 +37,21 @@ public class ItemManager implements Serializable {
 		String imagePathBonus = "image/item/consommable/popoBonus.jpg";
 		imagePathsBonus.add(imagePathBonus);
 		
+		
+		List<String> imagePathsdiehard3VHS = new ArrayList<String>();
+		String imagePathVHS = "image/film/diehard3_VHS.jpg";
+		imagePathsdiehard3VHS.add(imagePathVHS);
+		
+		
+		List<String> imagePathsCles = new ArrayList<String>();
+		String imagePathCles = "image/item/quete/cles.png";
+		imagePathsCles.add(imagePathCles);
+		
+		List<String> imagePathsGraisse = new ArrayList<String>();
+		String imagePathGraisse = "image/item/quete/graisseATraire.jpg";
+		imagePathsGraisse.add(imagePathGraisse);
+		
+		
 
 		List<String> imagePaths1 = new ArrayList<String>();
 		String imagePath1 = "image/mp3Player/stop.png";
@@ -54,6 +69,10 @@ public class ItemManager implements Serializable {
 		List<String> sonPathsManger1 = new ArrayList<String>();
 		String sonPathManger1 = "sonParDefaut/manger1.mp3";
 		sonPathsManger1.add(sonPathManger1);
+		
+		List<String> sonPathsdiehard3 = new ArrayList<String>();
+		String sonPathdiehard3 = "son/film/diehard3.mp3";
+		sonPathsdiehard3.add(sonPathdiehard3);
 		
 		List<String> sonPathsBoire1 = new ArrayList<String>();
 		String sonPathBoire1 = "sonParDefaut/manger2.mp3";
@@ -85,10 +104,42 @@ public class ItemManager implements Serializable {
 		Item popoMana100 = new Item(203, "Potion de mana (100%)", "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_100, false);
 		
 		// Bonus competences (+5, +10, +20)
-		Item bonusAgilite1 = new Item(300, "Bonus d'agilité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT, false);
+		Item bonusChance5 = 	   new Item(300, "Bonus de chance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_5, false);
+		Item bonusChance10 =       new Item(301, "Bonus de chance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_10, false);
+		Item bonusChance20 =       new Item(302, "Bonus de chance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_20, false);
+		Item bonusExploit5 =       new Item(303, "Bonus d'exploit (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_5, false);
+		Item bonusExploit10 =      new Item(304, "Bonus d'exploit (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_10, false);
+		Item bonusExploit20 =      new Item(305, "Bonus d'exploit (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_20, false);
+		Item bonusTechnique5 =     new Item(306, "Bonus de technique (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_5, false);
+		Item bonusTechnique10 =    new Item(307, "Bonus de technique (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_10, false);
+		Item bonusTechnique20 =    new Item(308, "Bonus de technique (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_20, false);
+		Item bonusEndurance5 =     new Item(309, "Bonus d'endurance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_5, false);
+		Item bonusEndurance10 =    new Item(310, "Bonus d'endurance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_10, false);
+		Item bonusEndurance20 =    new Item(311, "Bonus d'endurance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_20, false);
+		Item bonusRapidite5 =      new Item(312, "Bonus de rapidité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_5, false);
+		Item bonusRapidite10 =     new Item(313, "Bonus de rapidité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_10, false);
+		Item bonusRapidite20 =     new Item(314, "Bonus de rapidité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_20, false);
+		Item bonusResistance5 =    new Item(315, "Bonus de resistance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_5, false);
+		Item bonusResistance10 =   new Item(316, "Bonus de resistance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_10, false);
+		Item bonusResistance20 =   new Item(317, "Bonus de resistance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_20, false);
+		Item bonusAgilite5 =       new Item(318, "Bonus d'agilité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_5, false);
+		Item bonusAgilite10 = 	   new Item(319, "Bonus d'agilité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_10, false);
+		Item bonusAgilite20 = 	   new Item(320, "Bonus d'agilité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_20, false);
+		Item bonusIntelligence5 =  new Item(321, "Bonus d'intelligence (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_5, false);
+		Item bonusIntelligence10 = new Item(322, "Bonus d'intelligence (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_10, false);
+		Item bonusIntelligence20 = new Item(323, "Bonus d'intelligence (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_20, false);
+		Item bonusNervosite5 = 	   new Item(324, "Bonus de nervosité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_5, false);
+		Item bonusNervosite10 =    new Item(325, "Bonus de nervosité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_10, false);
+		Item bonusNervosite20 =    new Item(326, "Bonus de nervosité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_20, false);
 
 		// Objets de quete (pas d'utilisation)
-		Item cleTerrain = new Item(400, "Clés du terrain", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		Item cleTerrain = new Item(400, "Clés du terrain", "info2", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		Item graisse = new Item(401, "Graisse à traire", "info2", imagePathsGraisse, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
+		
+		// Films
+		Item VHS_diehard3 = new Item(600, "VHS - Die Hard 3", "", imagePathsdiehard3VHS, sonPathsdiehard3, null, PersoPrenom.GROUPE, ItemType.FILM, false);
+		
+		// Objets evenements
 		
 		// Armes
 		Item mouchoir = new Item(500, "Paquet de mouchoir", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Thomas, ItemType.ARME, false);
@@ -96,7 +147,9 @@ public class ItemManager implements Serializable {
 
 		// Equipements
 		
-		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolor, jeu video pocket, avions en papier, ) 
+		// Objets sort (REZ, damage, casse bouclier)
+		
+		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolore, jeu video pocket, avions en papier, ) 
 		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "Carte de San Goku",  imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "Carte de San Gohan", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Carte de Krilin",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
@@ -122,10 +175,40 @@ public class ItemManager implements Serializable {
 		items.add(popoMana50);
 		items.add(popoMana75);
 		items.add(popoMana100);
-		items.add(bonusAgilite1);
+		items.add(bonusChance5);
+		items.add(bonusChance10);
+		items.add(bonusChance20);
+		items.add(bonusExploit5);
+		items.add(bonusExploit10);
+		items.add(bonusExploit20);
+		items.add(bonusTechnique5);
+		items.add(bonusTechnique10);
+		items.add(bonusTechnique20);
+		items.add(bonusEndurance5);
+		items.add(bonusEndurance10);
+		items.add(bonusEndurance20);
+		items.add(bonusRapidite5);
+		items.add(bonusRapidite10);
+		items.add(bonusRapidite20);
+		items.add(bonusResistance5);
+		items.add(bonusResistance10);
+		items.add(bonusResistance20);
+		items.add(bonusAgilite5);
+		items.add(bonusAgilite10);
+		items.add(bonusAgilite20);
+		items.add(bonusIntelligence5);
+		items.add(bonusIntelligence10);
+		items.add(bonusIntelligence20);
+		items.add(bonusNervosite5);
+		items.add(bonusNervosite10);
+		items.add(bonusNervosite20);
+		
 		items.add(cleTerrain);
+		items.add(graisse);
+		items.add(VHS_diehard3);
 		items.add(mouchoir);
 		items.add(ventoline);
+		
 		items.add(carteDBZ1);
 		items.add(carteDBZ2);
 		items.add(carteDBZ3);
@@ -154,7 +237,6 @@ public class ItemManager implements Serializable {
 		return null;
 	}
 	
-
 	public Item getItemById(int id) {
 		for (Item item : items) {
 			if (item.getId() == id) {
@@ -164,8 +246,6 @@ public class ItemManager implements Serializable {
 		return null;
 	}
 
-
-	
 	public List<Item> getItemsDisponiblesByPerso(PersoPrenom nomPerso) {
 		List<Item> itemPerso = new ArrayList<Item>();
 		for (Item item : items) {

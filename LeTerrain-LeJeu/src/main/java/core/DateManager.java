@@ -55,23 +55,23 @@ public class DateManager implements Serializable {
 		labelDate.setText(getDateCouranteFormateeUpperCase());
 	}
 	
-	public boolean estApresLaDateCourrante(Date date) {
-		return dateCourante.before(date);
-	}
-	
-	public boolean estAvantLaDateCourrante(Date date) {
-		return dateCourante.after(date);
-	}
-
-	public boolean estEgaleALaDateCourante(Date date) {
-		if ((dateCourante.getYear() == date.getYear())
-				&& (dateCourante.getMonth() == date.getMonth())
-				&& (dateCourante.getDay() == date.getDay())
-				&& (dateCourante.getHours() == date.getHours())) {
-			return true;
-		}
-		return false;
-	}
+//	public boolean estApresLaDateCourrante(Date date) {
+//		return dateCourante.before(date);
+//	}
+//	
+//	public boolean estAvantLaDateCourrante(Date date) {
+//		return dateCourante.after(date);
+//	}
+//
+//	public boolean estEgaleALaDateCourante(Date date) {
+//		if ((dateCourante.getYear() == date.getYear())
+//				&& (dateCourante.getMonth() == date.getMonth())
+//				&& (dateCourante.getDay() == date.getDay())
+//				&& (dateCourante.getHours() == date.getHours())) {
+//			return true;
+//		}
+//		return false;
+//	}
 	
 	public long compare(Date date) {
 		long dateCourante = this.dateCourante.getTime();

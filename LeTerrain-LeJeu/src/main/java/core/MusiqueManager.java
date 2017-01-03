@@ -217,51 +217,6 @@ public class MusiqueManager implements Serializable {
 
 	}
 
-	public static void playPlaylistEnBoucle(List<String> sonPaths) {
-		Thread t = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					// Boucle infini
-					while (!stopped) {
-						for (String sonPath : sonPaths) {
-							System.out.println("Play : " + sonPath);
-							// Pause 1s entre 2 musiques
-							if (!stopped) {
-								Thread.sleep(1000);
-								if (applicationMenuPrincipal == null) {
-									applicationMenuPrincipal = new Sound(sonPath);
-									applicationMenuPrincipal.play();
-								} else {
-									applicationMenuPrincipal = new Sound(sonPath);
-									applicationMenuPrincipal.play();
-								}
-							}
-						}
-					}
-					stopped = false;
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		if (!t.isAlive()) {
-			t.start();
-		}
-	}
-	
-	public static void stopPlaylistEnBoucle() {
-		try {
-			if (applicationMenuPrincipal != null) {
-				applicationMenuPrincipal.stop();
-			}
-			stopped = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public static void playPlaylist(List<String> sonPaths) {
 		Thread t = new Thread(new Runnable() {
 
@@ -333,6 +288,7 @@ public class MusiqueManager implements Serializable {
 	}
 
 	public static void startPlayListEnBoucle(Mission mission) {
+		System.out.println("startPlayListEnBoucle()");
 		if (mission.getJeu() == NomJeu.JEU_COMBAT) {
 			// Lance une liste de musique de combat aleatoire
 			List<Musique> musiquesCombat = MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().getMusiquesCombat();
@@ -347,5 +303,53 @@ public class MusiqueManager implements Serializable {
 			playPlaylistEnBoucle(sonPaths);
 		}
 	}
+	
+	public static void playPlaylistEnBoucle(List<String> sonPaths) {
+		System.out.println("playPlaylistEnBoucle()");
 
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					// Boucle infini
+					// TODO probleme quand stopped = true au deuxieme combat => musique ne demarre pas car true
+					System.out.println("STOPPED : " + stopped);
+					while (!stopped) {
+						for (String sonPath : sonPaths) {
+							System.out.println("Play : " + sonPath);
+							// Pause 1s entre 2 musiques
+							if (!stopped) {
+								Thread.sleep(500);
+								if (applicationMenuPrincipal == null) {
+									applicationMenuPrincipal = new Sound(sonPath);
+									applicationMenuPrincipal.play();
+								} else {
+									applicationMenuPrincipal = new Sound(sonPath);
+									applicationMenuPrincipal.play();
+								}
+							}
+						}
+					}
+					stopped = false;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		if (!t.isAlive()) {
+			t.start();
+		}
+	}
+	
+	public static void stopPlaylistEnBoucle() {
+		try {
+			if (applicationMenuPrincipal != null) {
+				applicationMenuPrincipal.stop();
+			}
+			stopped = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

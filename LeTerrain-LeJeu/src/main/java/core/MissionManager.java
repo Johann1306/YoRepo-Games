@@ -1,7 +1,6 @@
 package core;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +15,6 @@ import front.MainFrame;
 import front.MenuPrincipal;
 import modele.bonus.Bonus;
 import modele.item.Item;
-import modele.item.ItemType;
 import modele.item.lieu.Lieu;
 import modele.item.mission.BossNom;
 import modele.item.mission.Mission;
@@ -38,7 +36,7 @@ public class MissionManager implements Serializable {
 	private List<Mission> missionsIndisponibles;
 	private List<Mission> missionsJouables;
 	private List<Mission> missionsTerminees;
-	private int id = 0;
+//	private int id = 0;
 
 	public void initialise(Difficulte difficultePartie, ActionCombatManager actionCombatManager,
 			PersonnageManager personnageManager, ItemManager itemManager) {
@@ -53,7 +51,7 @@ public class MissionManager implements Serializable {
 
 		// Images
 		List<String> imagePaths1 = new ArrayList<String>();
-		String imagePath1 = "image/mp3Player/stop.png";
+		String imagePath1 = "image/defaut/defautItemMission.jpg";
 		imagePaths1.add(imagePath1);
 
 		List<String> imagePaths2 = new ArrayList<String>();
@@ -65,6 +63,10 @@ public class MissionManager implements Serializable {
 		imagePaths3.add(imagePath3);
 
 		// Sons
+		List<String> sonPathsFilm = new ArrayList<String>();
+		String sonPathFilm = "sonParDefaut/film.mp3";
+		sonPathsFilm.add(sonPathFilm);
+		
 		List<String> sonPaths1 = new ArrayList<String>();
 		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
 		sonPaths1.add(sonPath1);
@@ -83,16 +85,68 @@ public class MissionManager implements Serializable {
 		Date date2 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 17, 00, 00);
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 4, 9, 00, 00);
 		Date dateNull = null;
+		
 		Date dateCleTerrain = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 4, 9, 00, 00);
 		Date dateRencontreAli = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 5, 9, 00, 00);
 		Date dateRencontreGuy = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 6, 9, 00, 00);
-		Date dateRencontreJo = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 7, 9, 00, 00);
+		Date dateRencontreJo = DateManager.genereUneDate(1999, Calendar.SEPTEMBER, 7, 14, 00, 00);
+		Date dateAchatRequins = DateManager.genereUneDate(1999, Calendar.DECEMBER, 25, 9, 00, 00);
+		Date dateAchatPunto = DateManager.genereUneDate(2001, Calendar.MAY, 19, 14, 00, 00);
+		Date dateTrilogie = DateManager.genereUneDate(1999, Calendar.DECEMBER, 6, 21, 00, 00);
 
+		Date date304 = DateManager.genereUneDate(2000, Calendar.MAY, 7, 14, 00, 00);
+		Date date305 = DateManager.genereUneDate(2000, Calendar.JUNE, 7, 14, 00, 00);
+		Date date308 = DateManager.genereUneDate(2000, Calendar.JANUARY, 7, 14, 00, 00);
+		Date date310 = DateManager.genereUneDate(1999, Calendar.OCTOBER, 7, 14, 00, 00);
+
+		
 		// Bonus
-		List<Bonus> bonus = BonusManager.getAllBonus();
-		Bonus bonusVide = bonus.get(0);
-		Bonus bonus1 = bonus.get(1);
-		Bonus malus1 = bonus.get(2);
+		Bonus bonusVide = BonusManager.getBonusById(0);
+		Bonus bonusPiscine = BonusManager.getBonusById(10);
+		Bonus bonusFoot = BonusManager.getBonusById(20);
+
+
+		
+		// Items a debloquer
+		// Consommables
+		Item popoVie25 = itemManager.getItemById(100);
+		Item popoVie50 = itemManager.getItemById(101);
+		Item popoVie75 = itemManager.getItemById(102);
+		Item popoVie100 = itemManager.getItemById(103);
+		Item popoMana25 = itemManager.getItemById(200);
+		Item popoMana50 = itemManager.getItemById(201);
+		Item popoMana75 = itemManager.getItemById(202);
+		Item popoMana100 = itemManager.getItemById(203);
+		Item bonusChance5 = itemManager.getItemById(300);
+		Item bonusChance10 = itemManager.getItemById(301);
+		Item bonusChance20 = itemManager.getItemById(302);
+		Item bonusExploit5 = itemManager.getItemById(303);
+		Item bonusExploit10 = itemManager.getItemById(304);
+		Item bonusExploit20 = itemManager.getItemById(305);
+		Item bonusTechnique5 = itemManager.getItemById(306);
+		Item bonusTechnique10 = itemManager.getItemById(307);
+		Item bonusTechnique20 = itemManager.getItemById(308);
+		Item bonusEndurance5 = itemManager.getItemById(309);
+		Item bonusEndurance10 = itemManager.getItemById(310);
+		Item bonusEndurance20 = itemManager.getItemById(311);
+		Item bonusRapidite5 = itemManager.getItemById(312);
+		Item bonusRapidite10 = itemManager.getItemById(313);
+		Item bonusRapidite20 = itemManager.getItemById(314);
+		Item bonusResistance5 = itemManager.getItemById(315);
+		Item bonusResistance10 = itemManager.getItemById(316);
+		Item bonusResistance20 = itemManager.getItemById(317);
+		Item bonusAgilite5 = itemManager.getItemById(318);
+		Item bonusAgilite10 = itemManager.getItemById(319);
+		Item bonusAgilite20 = itemManager.getItemById(320);
+		Item bonusIntelligence5 = itemManager.getItemById(321);
+		Item bonusIntelligence10 = itemManager.getItemById(322);
+		Item bonusIntelligence20 = itemManager.getItemById(323);
+		Item bonusNervosite5 = itemManager.getItemById(324);
+		Item bonusNervosite10 = itemManager.getItemById(325);
+		Item bonusNervosite20 = itemManager.getItemById(326);
+
+		Item clesDuTerrain = itemManager.getItemById(400);
+		Item graisseATraire = itemManager.getItemById(401);
 
 		// Items necessaires
 
@@ -104,58 +158,118 @@ public class MissionManager implements Serializable {
 		itemsNecessairesMission106.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
 		itemsNecessairesMission106.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
 
-		// Items a debloquer
-		// Consommables
-		Item popoVie25 = itemManager.getItemById(100);
-		Item popoVie50 = itemManager.getItemById(101);
-		Item popoVie75 = itemManager.getItemById(102);
-		Item popoVie100 = itemManager.getItemById(103);
-		Item popoMana25 = itemManager.getItemById(200);
-		Item popoMana50 = itemManager.getItemById(201);
-		Item popoMana75 = itemManager.getItemById(202);
-		Item popoMana100 = itemManager.getItemById(203);
+		// Mission 300
+		List<Item> itemsNecessairesMission300 = new ArrayList<Item>();
+		itemsNecessairesMission300.add(itemManager.getItemById(600));
+		itemsNecessairesMission300.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
+		
+		// Mission 306
+		List<Item> itemsNecessairesMission306 = new ArrayList<Item>();
+		itemsNecessairesMission306.add(graisseATraire);
+		itemsNecessairesMission306.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
+
+		// Mission Terrain
+		List<Item> itemsNecessairesMissionTerrain = new ArrayList<Item>();
+		itemsNecessairesMissionTerrain.add(clesDuTerrain);
+
+		// Mission Russ
+		List<Item> itemsNecessairesMissionRuss = new ArrayList<Item>();
+		itemsNecessairesMissionRuss.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
+
+		// TODO item potion de combat (rez, degats, stunt, taunt)
 
 		// Mission 101
 		List<Item> itemsDebloquesMission101 = new ArrayList<Item>();
 		itemsDebloquesMission101.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
 		itemsDebloquesMission101.add(popoVie25);
 		itemsDebloquesMission101.add(popoMana25);
+		itemsDebloquesMission101.add(bonusChance5);
 		// Mission 102
 		List<Item> itemsDebloquesMission102 = new ArrayList<Item>();
 		itemsDebloquesMission102.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
 		itemsDebloquesMission102.add(popoVie25);
 		itemsDebloquesMission102.add(popoMana25);
+		itemsDebloquesMission102.add(bonusRapidite5);
+
 		// Mission 103
 		List<Item> itemsDebloquesMission103 = new ArrayList<Item>();
 		itemsDebloquesMission103.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
 		itemsDebloquesMission103.add(popoVie25);
 		itemsDebloquesMission103.add(popoMana25);
+		itemsDebloquesMission103.add(bonusExploit5);
 		// Mission 104
 		List<Item> itemsDebloquesMission104 = new ArrayList<Item>();
 		itemsDebloquesMission104.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
 		itemsDebloquesMission104.add(popoVie25);
 		itemsDebloquesMission104.add(popoMana25);
+		itemsDebloquesMission104.add(bonusResistance5);
 		// Mission 105
 		List<Item> itemsDebloquesMission105 = new ArrayList<Item>();
 		itemsDebloquesMission105.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
 		itemsDebloquesMission105.add(popoVie25);
 		itemsDebloquesMission105.add(popoMana25);
+		itemsDebloquesMission105.add(bonusIntelligence5);
 		// Mission 106
 		List<Item> itemsDebloquesMission106 = new ArrayList<Item>();
 		itemsDebloquesMission106.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
 		itemsDebloquesMission106.add(popoVie50);
 		itemsDebloquesMission106.add(popoMana50);
+		itemsDebloquesMission106.add(bonusAgilite10);
 		// Mission 107
 		List<Item> itemsDebloquesMission107 = new ArrayList<Item>();
 		itemsDebloquesMission107.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
 		itemsDebloquesMission104.add(popoVie75);
 		itemsDebloquesMission104.add(popoMana75);
+		itemsDebloquesMission104.add(bonusTechnique10);
 		// Mission 108
 		List<Item> itemsDebloquesMission108 = new ArrayList<Item>();
 		itemsDebloquesMission108.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
 		itemsDebloquesMission108.add(popoVie100);
 		itemsDebloquesMission108.add(popoMana100);
+		itemsDebloquesMission108.add(bonusEndurance20);
+		itemsDebloquesMission108.add(bonusNervosite20);
 
+		// Mission 200
+		List<Item> itemsDebloquesMission200 = new ArrayList<Item>();
+		itemsDebloquesMission200.add(clesDuTerrain);
+
+		// Mission 300
+		List<Item> itemsDebloquesMission300 = new ArrayList<Item>();
+		itemsDebloquesMission300.add(actionCombatManager.getActionById(846));
+
+		// Mission 301
+		List<Item> itemsDebloquesMission301 = new ArrayList<Item>();
+		itemsDebloquesMission301.add(actionCombatManager.getActionById(848));
+
+		// Mission 302
+		List<Item> itemsDebloquesMission302 = new ArrayList<Item>();
+		itemsDebloquesMission302.add(actionCombatManager.getActionById(847));
+		
+		// Mission 305
+		List<Item> itemsDebloquesMission305 = new ArrayList<Item>();
+		itemsDebloquesMission305.add(graisseATraire);
+		
+		// Mission 306
+		List<Item> itemsDebloquesMission306 = new ArrayList<Item>();
+		itemsDebloquesMission306.add(actionCombatManager.getActionById(842));
+		
+		// Mission 307
+		List<Item> itemsDebloquesMission307 = new ArrayList<Item>();
+		itemsDebloquesMission307.add(actionCombatManager.getActionById(836));
+
+		// Mission 308
+		List<Item> itemsDebloquesMission308 = new ArrayList<Item>();
+		itemsDebloquesMission308.add(actionCombatManager.getActionById(818));
+		
+		// Mission 309
+		List<Item> itemsDebloquesMission309 = new ArrayList<Item>();
+		itemsDebloquesMission309.add(actionCombatManager.getActionById(817));
+
+		// Mission 310
+		List<Item> itemsDebloquesMission310 = new ArrayList<Item>();
+		itemsDebloquesMission310.add(actionCombatManager.getActionById(812));
+
+		
 		// Mission 18
 		List<Item> itemsDebloquesMission18 = new ArrayList<Item>();
 		ActionCombat action1 = actionCombatManager.getActionById(181);
@@ -206,12 +320,33 @@ public class MissionManager implements Serializable {
 
 		// MISSIONS TERRAIN
 		// Deblocage du lieu : Terrain
-		Mission mission200 = new Mission(200, "Avoir les clés du terrain", "Avoir un accès illimité au terrain", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateCleTerrain, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM,	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 10, false);
-		Mission mission201 = new Mission(201, "Jouer au foot", "Se dépenser sans compter", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonus1, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
-		Mission mission202 = new Mission(202, "Fumer un pet", "Le Bedo, c'est de la merde", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonus1, bonusVide, 1, 1, dateNull,	MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission200 = new Mission(200, "Le terrain, gratuit et illimité", "Avoir les clés du terrain", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateCleTerrain, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM,	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), itemsDebloquesMission200, 10, false);
+		Mission mission201 = new Mission(201, "Se dépenser sans compter", "Jouer au foot", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTerrain, new ArrayList<Item>(), 0, true);
+		Mission mission202 = new Mission(202, "Le Bedo, c'est de la merde", "Fumer un pet", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,	MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTerrain, new ArrayList<Item>(), 0, false);
 
+		// MISSIONS ACTION COMBAT
+		
+		// RUSS
+		// TODO verifier : date + objet requis => ???
+		Mission mission300 = new Mission(300, "Une journée en enfer", "Regarder le film - Die Hard 3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission300, itemsDebloquesMission300, 0, false);
+		Mission mission301 = new Mission(301, "Pompes de racaille", "Acheter des requins", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAchatRequins, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission301, 0, false);
+		Mission mission302 = new Mission(302, "Fiat Punto : Un poing c'est tout", "Acheter une Punto", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAchatPunto, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission302, 0, false);
+		Mission mission303 = new Mission(303, "Comme un poisson dans l'eau", "Aller à la piscine", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusPiscine, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, new ArrayList<Item>(), 0, true);
+		Mission mission304 = new Mission(304, "Epilation désopilante", "Se raser intégralement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date304, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, new ArrayList<Item>(), 0, false);
+		Mission mission305 = new Mission(305, "Prise en main des mamelles", "Acheter de la graisse à traire", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date305, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission305, 0, false);
+		Mission mission306 = new Mission(306, "Bronzage extreme", "Prendre un coup de soleil", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission306, itemsDebloquesMission306, 0, false);
+		Mission mission307 = new Mission(307, "Peau de caméléon", "S'entretenir l'épiderme", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission306, itemsDebloquesMission307, 0, false);
+		Mission mission308 = new Mission(308, "Vibreur silencieux", "Ne pas répondre au GSM", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date308, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission308, 0, false);
+		Mission mission309 = new Mission(309, "La Trilogie du Samedi", "Regarder la trilogie du samedi sur M6", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateTrilogie, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission309, 0, false);
+		Mission mission310 = new Mission(310, "Torse poil", "Se regarder dans un miroir", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date310, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission310, 0, false);
+					
+		// MISSIONS REPETABLES BONUS
+		
 		// MISSIONS DATE FIXE
 
+		// MISSIONS EVENEMENTS
+		
+		
 		// MISSIONS ACHAT
 		// LES DHALLIAS
 		// JAFAR
@@ -226,22 +361,22 @@ public class MissionManager implements Serializable {
 		Mission mission1001 = new Mission(1001, "Boss Yo", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,	MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
 		// MISSIONS NICO
-		Mission mission1002 = new Mission(1002, "Boss Nico", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS2, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1002 = new Mission(1002, "Boss Nico", "Lara Croft", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS2, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
 		// MISSIONS PIP
-		Mission mission1003 = new Mission(1003, "Boss Pip", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS3, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1003 = new Mission(1003, "Boss Pip", "Dumbo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS3, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 
 		// MISSIONS TOM
-		Mission mission1004 = new Mission(1004, "Boss Tom", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS4, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1004 = new Mission(1004, "Boss Tom", "Hitler", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS4, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 
 		// MISSIONS YA
-		Mission mission1005 = new Mission(1005, "Boss Ya", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS5, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1005 = new Mission(1005, "Boss Ya", "Kurt Skywalker", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS5, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 
 		// MISSIONS ALI
-		Mission mission1006 = new Mission(1006, "Boss Ali", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS6, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1006 = new Mission(1006, "Boss Ali", "Mickael Jackson", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS6, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 
 		// MISSIONS GUY
-		Mission mission1007 = new Mission(1007, "Boss Guy", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS7, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1007 = new Mission(1007, "Boss Guy", "Al Pacino", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS7, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 
 		// MISSIONS RUSS
 		Mission mission1008 = new Mission(1008, "Boss Russ", "Père de Yo", imagePaths1, sonPaths1, videoPaths1,	PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,	MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS8, new ArrayList<Item>(), new ArrayList<Item>(), 0,	false);
@@ -249,188 +384,24 @@ public class MissionManager implements Serializable {
 		// MISSION FINAL
 		// TODO faire dependre la mission final de toutes les missions boss
 		// TODO (TOUS LES BOSS)
-		Mission mission1000 = new Mission(1000, "Mission Final", "Il y a une fin à tout!", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1000 = new Mission(1000, "Mission Final", "La fin justifie les moyens", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
 		
 		
 		// TEST
-		Mission mission900 = new Mission(900, "Premier Combat", "Combat tests dispo des le debut", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission900 = new Mission(900, "Premier Combat", "Combat tests dispo des le debut", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
 		// MISSION DEBLOQUEE PAR ITEMS
-		Mission mission901 = new Mission(901, "Les perfs", "Battre la classe de perfectionnement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonus1, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission106, new ArrayList<Item>(), 0, false);
+		Mission mission901 = new Mission(901, "Les perfs", "Battre la classe de perfectionnement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission106, new ArrayList<Item>(), 0, false);
 
 		// MISSION DEBLOQUEE PAR DATE
-		Mission mission902 = new Mission(902, "J+1", "                                          ", imagePaths1,	sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonus1, bonusVide, 1, 1, date3, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, true);
+		Mission mission902 = new Mission(902, "J+1", "                                          ", imagePaths1,	sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date3, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, true);
 
 		// MISSION DEBLOQUE ACTION_COMBAT
 
 		// Missions repetables => recompenses aleatoires (popo, fric, bonus leger)
 
-		// Mission mission1 = new Mission(incrementId(), "Premier Perso",
-		// "info1", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE,
-		// null, 70, "", "", "objectif1", bonus1, bonusVide, 1, 1, date1,
-		// MissionType.BOSS, Difficulte.FACILE, EnnemiType.GITANS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission2 = new Mission(incrementId(), "gitans facile",
-		// "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas,
-		// null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2,
-		// MissionType.BOSS, Difficulte.FACILE, EnnemiType.GITANS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), true);
-		// Mission mission3 = new Mission(incrementId(), "gitans normal",
-		// "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.NORMAL, EnnemiType.GITANS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission4 = new Mission(incrementId(), "gitans difficile",
-		// "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.DIFFICILE, EnnemiType.GITANS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission5 = new Mission(incrementId(), "gitans heroique",
-		// "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.HEROIQUE, EnnemiType.GITANS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission6 = new Mission(incrementId(), "arabes facile",
-		// "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas,
-		// null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2,
-		// MissionType.BOSS, Difficulte.FACILE, EnnemiType.ARABES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), true);
-		// Mission mission7 = new Mission(incrementId(), "arabes normal",
-		// "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.NORMAL, EnnemiType.ARABES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission8 = new Mission(incrementId(), "arabes difficile",
-		// "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.DIFFICILE, EnnemiType.ARABES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission9 = new Mission(incrementId(), "arabes heroique",
-		// "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.HEROIQUE, EnnemiType.ARABES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission10 = new Mission(incrementId(), "noirs facile",
-		// "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas,
-		// null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2,
-		// MissionType.BOSS, Difficulte.FACILE, EnnemiType.NOIRS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), true);
-		// Mission mission11 = new Mission(incrementId(), "noirs normal",
-		// "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.NORMAL, EnnemiType.NOIRS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission12 = new Mission(incrementId(), "noirs difficile",
-		// "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.DIFFICILE, EnnemiType.NOIRS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission13 = new Mission(incrementId(), "noirs heroique",
-		// "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.BOSS, Difficulte.HEROIQUE, EnnemiType.NOIRS,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new
-		// ArrayList<Item>(), new ArrayList<Item>(), false);
-		// Mission mission14 = new Mission(incrementId(), "handi facile",
-		// "info2", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Nicolas,
-		// null, 70, "", "", "objectif1", bonusVide, malus1, 1, 1, date2,
-		// MissionType.PRINCIPAL, Difficulte.FACILE, EnnemiType.HANDICAPES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new
-		// ArrayList<Item>(), true);
-		// Mission mission15 = new Mission(incrementId(), "handi normal",
-		// "info3", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.Thomas,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.PRINCIPAL, Difficulte.NORMAL, EnnemiType.HANDICAPES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new
-		// ArrayList<Item>(), false);
-		// Mission mission16 = new Mission(incrementId(), "handi difficile",
-		// "info4", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.Yannick,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.PRINCIPAL, Difficulte.DIFFICILE, EnnemiType.HANDICAPES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new
-		// ArrayList<Item>(), false);
-		// Mission mission17 = new Mission(incrementId(), "handi heroique",
-		// "info3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE,
-		// null, 70, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,
-		// MissionType.PRINCIPAL, Difficulte.HEROIQUE, EnnemiType.HANDICAPES,
-		// NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new
-		// ArrayList<Item>(), false);
-		// Mission mission18 = new Mission(incrementId(), "Debloque les multis
-		// speciaux", "info3", imagePaths1, sonPaths1, videoPaths1,
-		// PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide,
-		// bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL,
-		// Difficulte.HEROIQUE, EnnemiType.HANDICAPES, NomJeu.JEU_RANDOM, new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnagePrincipal>(), new
-		// ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(),
-		// itemsDebloquesMission18, false);
-
 		// Ajout a la liste
-		// missions.add(mission1);
-		// missions.add(mission2);
-		// missions.add(mission3);
-		// missions.add(mission4);
-		// missions.add(mission5);
-		// missions.add(mission6);
-		// missions.add(mission7);
-		// missions.add(mission8);
-		// missions.add(mission9);
-		// missions.add(mission10);
-		// missions.add(mission11);
-		// missions.add(mission12);
-		// missions.add(mission13);
-		// missions.add(mission14);
-		// missions.add(mission15);
-		// missions.add(mission16);
-		// missions.add(mission17);
-		// missions.add(mission18);
 		missions.add(mission101);
 		missions.add(mission102);
 		missions.add(mission103);
@@ -442,6 +413,18 @@ public class MissionManager implements Serializable {
 		missions.add(mission200);
 		missions.add(mission201);
 		missions.add(mission202);
+
+		missions.add(mission300);
+		missions.add(mission301);
+		missions.add(mission302);
+		missions.add(mission303);
+		missions.add(mission304);
+		missions.add(mission305);
+		missions.add(mission306);
+		missions.add(mission307);
+		missions.add(mission308);
+		missions.add(mission309);
+		missions.add(mission310);
 
 		missions.add(mission900);
 		missions.add(mission901);
@@ -554,15 +537,15 @@ public class MissionManager implements Serializable {
 
 				// Afficher JDialog pour la mission
 				int type = getTypeMission(mission);
-				ImageIcon image = new ImageIcon(mission.getImagePaths().get(0));
+				ImageIcon image = FenetrePrincipal.getImageIcon(mission.getImagePaths().get(0));
 				// Si il n y a pas d image, on retourne l icone par defaut d une
 				// mission
 				if (image.getIconWidth() == -1) {
-					image = new ImageIcon("image/defaut/defautMission.png");
+					image =  FenetrePrincipal.getImageIcon("image/defaut/defautItemMission.jpg");
 				}
+				ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.PERSO_IMAGE_DIMENSION_180_180);
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(),
-						mission.getInformations() + "/nMission debloquée pour " + mission.getProprietaire().name(),
-						mission.getNom(), type, image);
+						mission.getNom() + " : " + mission.getInformations(),"Mission debloquée pour " + mission.getProprietaire().name(), type, resizeImage);
 
 				refreshMissions();
 			}
@@ -588,7 +571,7 @@ public class MissionManager implements Serializable {
 			mission.setDejaFaite(true);
 			// Message mission win
 			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Mission réussie!", mission.getNom(),
-					0, new ImageIcon(mission.getImagePaths().get(0)));
+					0, FenetrePrincipal.getImageIcon(mission.getImagePaths().get(0)));
 			// TODO : Ajouter un son de victoire
 			if (!mission.isRepetable()) {
 				mission.setNombreWin(1);
@@ -643,7 +626,7 @@ public class MissionManager implements Serializable {
 			// Si loose
 		} else {
 			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Mission échouée!", mission.getNom(),
-					1, new ImageIcon(mission.getImagePaths().get(0)));
+					1, FenetrePrincipal.getImageIcon(mission.getImagePaths().get(0)));
 			// TODO : Ajouter un son de defaite
 			mission.setNombreEssai(mission.getNombreEssai() + 1);
 			distribueRecompenses(mission, false);
@@ -664,15 +647,23 @@ public class MissionManager implements Serializable {
 
 	}
 
-	public Mission getNextMissionAvecDate() {
+	public Mission getNextMissionAvecDateEtItemsDisponibles() {
 		Mission nextMission = null;
 		List<Mission> missionsIndisponibles = getMissionsIndisponiblesAvecDate();
-		long minDiff = 1000000000;
+		long minDiff = 10000000000000000L;
 		for (Mission mission : missionsIndisponibles) {
-			long diff = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(mission.getDate());
-			if (diff < minDiff) {
-				minDiff = diff;
-				nextMission = mission;
+			boolean itemsDisponibles = true;
+			for (Item item : mission.getItemsNecessaires()) {
+				if (!item.isDisponible()) {
+					itemsDisponibles = false;
+				}
+			}
+			if (itemsDisponibles) {
+				long diff = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(mission.getDate());
+				if (diff < minDiff) {
+					minDiff = diff;
+					nextMission = mission;
+				}
 			}
 		}
 		return nextMission;
@@ -717,10 +708,10 @@ public class MissionManager implements Serializable {
 		}
 	}
 
-	private int incrementId() {
-		id = id + 1;
-		return id;
-	}
+//	private int incrementId() {
+//		id = id + 1;
+//		return id;
+//	}
 
 	public void distribueRecompenses(Mission mission, boolean win) {
 		

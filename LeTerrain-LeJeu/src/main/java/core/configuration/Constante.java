@@ -40,11 +40,15 @@ public class Constante {
 	public static final int PANEL_INFO_PERSO_HAUTEUR = 25;
 
 	// FONT
-	public static final Font PRESS_START_FONT_FRAMECOMBAT_INFO = new Font("Press Start", Font.PLAIN, 8);
-	public static final Font PRESS_START_FONT = new Font("Press Start", Font.PLAIN, 10);
-	public static final Font PRESS_START_FONT_MENU = new Font("Press Start", Font.PLAIN, 20);
-	public static final Font PRESS_START_FONT_MENU_SELECTED = new Font("Press Start", Font.PLAIN, 23);
-	public static final Font PRESS_START_FONT_TITRE = new Font("Press Start", Font.PLAIN, 30);
+	public static final Font ZELDA_FONT_FRAMECOMBAT_INFO = new Font("Triforce", Font.PLAIN, 15);
+	public static final Font ZELDA_FONT = new Font("Triforce", Font.PLAIN, 20);
+	public static final Font SIMPSON_FONT = new Font("Simpsonfont", Font.PLAIN, 15);
+	public static final Font ZELDA_FONT_MENU = new Font("Triforce", Font.PLAIN, 20);
+	public static final Font ZELDA_FONT_MENU_SELECTED = new Font("Triforce", Font.PLAIN, 23);
+	public static final Font ZELDA_FONT_TITRE = new Font("Triforce", Font.PLAIN, 30);
+	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 50);
+	public static final Font MARIO_FONT_MENU = new Font("Super Mario Bros.", Font.PLAIN, 20);
+	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 20);
 	
 	public static final String SYMBOLE_PASSER_NEXT = ">>";
 

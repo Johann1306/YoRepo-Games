@@ -279,7 +279,7 @@ public class FrameFoot extends FrameJeu {
 				if (itemConsomme) {
 					JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
 					JLabel label = new JLabel(prenom.name() + " consomme " + itemSelectionne.getNom() + ".");
-					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
+					label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
 					panelInfosCombat.add(label, 0);
 					// TODO setDisponible(false)? ou etat consomme?
 					itemSelectionne.setDisponible(false);

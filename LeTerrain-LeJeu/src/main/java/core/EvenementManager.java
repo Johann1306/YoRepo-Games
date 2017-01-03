@@ -38,7 +38,9 @@ public class EvenementManager implements Serializable {
 		String informations1 = "infosEvent1troooooooooooooooooooooooooooooooooooooooooooplong";
 		String path1 = "image/defaut/defautEvenement.png";
 		String sonPath1 = "sonParDefaut/314-SecretOfMana-got-an-item.mp3";
+		String sonPathNull = null;
 		String videoPath1 = "video/Trololo.mp4";
+		String videoPathNull = null;
 		EvenementTheme type1 = EvenementTheme.ANNIVERSAIRE;
 		Date date1 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 10, 0, 0);
 
@@ -49,8 +51,7 @@ public class EvenementManager implements Serializable {
 		itemsDebloques1.add(item2);
 //		ItemManager.addItem() // ???
 
-		Evenement test1 = new Evenement(titre1, informations1, path1, sonPath1, videoPath1, type1, date1, itemsDebloques1);
-
+	
 		String titre2 = "testEvent2";
 		String informations2 = "infosEvent2";
 		String path2 = "image/defaut/defautEvenement.png";
@@ -81,8 +82,6 @@ public class EvenementManager implements Serializable {
 		itemsDebloques2.add(item14);
 		itemsDebloques2.add(item15);
 
-		Evenement test2 = new Evenement(titre2, informations2, path2, sonPath1, videoPath1, type2, date2, itemsDebloques2);
-
 		String titre3 = "testEvent3";
 		String informations3 = "infosEvent3";
 		String path3 = "image/defaut/defautEvenement.png";
@@ -91,8 +90,6 @@ public class EvenementManager implements Serializable {
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 3, 14, 0, 0);
 		List<Item> itemsDebloques3 = new ArrayList<Item>();
 
-		Evenement test3 = new Evenement(titre3, informations3, path3, sonPath1, videoPath1, type3, date3, null);
-		
 		String titre4 = "testEvent4";
 		String informations4 = "infosEvent4";
 		String path4 = "image/defaut/defautEvenement.png";
@@ -105,14 +102,43 @@ public class EvenementManager implements Serializable {
 		itemsDebloques4.add(item4);
 		itemsDebloques4.add(item5);
 
-		Evenement test4 = new Evenement(titre4, informations4, path4, sonPath1, videoPath1, type4, date4, itemsDebloques4);
+		
+		////////////
+		
+		List<Item> itemsDebloquesFilm1 = new ArrayList<Item>();
+		itemsDebloquesFilm1.add(itemManager.getItemById(600));
+		
+		
+		// Evenements datés
+		
+		// Films/Series/Emissions/DessinsAnimes/
+//		Evenement film1 = new Evenement("Die Hard 3", "", "image/film/diehard3.jpg", "son/film/diehard3.mp3", videoPathNull, EvenementTheme.SORTIE_FILM, DateManager.genereUneDate(1995, Calendar.MAY, 15, 14, 0, 0), itemsDebloquesFilm1);
+		Evenement film1 = new Evenement("Die Hard 3", "", "image/film/diehard3.jpg", "son/film/diehard3.mp3", videoPathNull, EvenementTheme.SORTIE_FILM, DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 3, 14, 0, 0), itemsDebloquesFilm1);
+		Evenement emission1 = new Evenement("La Trilogie du Samedi", "", "image/emission/trilogieSamedi.jpg", sonPathNull, videoPathNull, EvenementTheme.SORTIE_EMISSION, DateManager.genereUneDate(1997, Calendar.DECEMBER, 6, 21, 0, 0), null);
+
+		// Objets
+		Evenement sortieRequins = new Evenement("Nike Air Max Plus TN", "", "image/actionCombat/nikeRequin.jpg", sonPathNull, videoPathNull, EvenementTheme.SORTIE_OBJET, DateManager.genereUneDate(1998, Calendar.JANUARY, 15, 9, 0, 0), null);
+		
+		// Evenements importants
+		Evenement septembre911 = new Evenement("Attaque du World Trade Center", "", "image/actionCombat/nikeRequin.jpg", sonPathNull, videoPathNull, EvenementTheme.HISTOIRE, DateManager.genereUneDate(2001, Calendar.SEPTEMBER, 11, 9, 0, 0), null);
+		
+		Evenement test1 = new Evenement(titre1, informations1, path1, sonPath1, videoPathNull, type1, date1, itemsDebloques1);
+		Evenement test2 = new Evenement(titre2, informations2, path2, sonPath1, videoPathNull, type2, date2, itemsDebloques2);
+		Evenement test3 = new Evenement(titre3, informations3, path3, sonPath1, videoPathNull, type3, date3, null);
+		Evenement test4 = new Evenement(titre4, informations4, path4, sonPath1, videoPathNull, type4, date4, itemsDebloques4);
 		
 		// Ajout a la liste
+		evenements.add(film1);
+		evenements.add(emission1);
+		evenements.add(sortieRequins);
+		evenements.add(septembre911);
+		
 		evenements.add(test1);
 		evenements.add(test2);
 		evenements.add(test3);
 		evenements.add(test4);
 
+		// Tous les evenements sont indisponibles au depart
 		evenementsIndisponibles.addAll(evenements);
 
 	}
@@ -141,10 +167,14 @@ public class EvenementManager implements Serializable {
 				evenement.setDejaPresente(true);
 
 				// Lancer le son ou la musique associe a l evenement
-				MusiqueManager.playSonEvenement(evenement.getSonPath());
+				if (evenement.getSonPath() != null) {
+					MusiqueManager.playSonEvenement(evenement.getSonPath());
+				}
 				
 				// Lancer la video associe a l evenement
-				VideoManager.play(evenement.getVideoPath());
+				if (evenement.getVideoPath() != null) {
+					VideoManager.play(evenement.getVideoPath());
+				}
 				
 				// Afficher JDialog pour l evenement
 				int type = getTypeEvenement(evenement);
@@ -157,25 +187,27 @@ public class EvenementManager implements Serializable {
 				
 				// Debloquer les items a debloquer 
 				List<Item> itemsDebloques = evenement.getItemsDebloques();
-				for (Item item : itemsDebloques) {
-					if (item != null) {
-					
-						// Lancer le son ou la musique associe a l item
-						MusiqueManager.playSonItem("sonParDefaut/09-Zelda-small-item-catch.mp3");
-							
-						// TODO get(0)
-						// Lancer la video associe a l item
-						if (item.getVideoPaths() != null) {
-							VideoManager.play(item.getVideoPaths().get(0));
-						}
+				if (itemsDebloques != null) {
+					for (Item item : itemsDebloques) {
+						if (item != null) {
 						
-						// Afficher JDialog pour l item
-						ImageIcon itemImage = new ImageIcon(item.getImagePath().get(0));
-						if (itemImage.getIconWidth() == -1) {
-							itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
+							// Lancer le son ou la musique associe a l item
+							MusiqueManager.playSonItem("sonParDefaut/09-Zelda-small-item-catch.mp3");
+								
+							// TODO get(0)
+							// Lancer la video associe a l item
+							if (item.getVideoPaths() != null) {
+								VideoManager.play(item.getVideoPaths().get(0));
+							}
+							
+							// Afficher JDialog pour l item
+							ImageIcon itemImage = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
+							if (itemImage.getIconWidth() == -1) {
+								itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
+							}
+							JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
+							item.setDisponible(true);
 						}
-						JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
-						item.setDisponible(true);
 					}
 				}
 			} 
@@ -187,7 +219,7 @@ public class EvenementManager implements Serializable {
 	public Evenement getNextEvenement() {
 		Evenement nextEvenement = null;
 		List<Evenement> evenementsIndisponibles = getEvenementsIndisponibles();
-		long minDiff = 1000000000;
+		long minDiff = 10000000000000000L;
 		for (Evenement evenement : evenementsIndisponibles) {
 			long diff = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().compare(evenement.getDate());
 			if (diff < minDiff ) {
