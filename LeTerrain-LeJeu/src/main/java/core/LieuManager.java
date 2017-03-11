@@ -47,6 +47,7 @@ public class LieuManager implements Serializable {
 		List<Poi> pois6 = new ArrayList<Poi>();
 		List<Poi> pois7 = new ArrayList<Poi>();
 		List<Poi> pois8 = new ArrayList<Poi>();
+		
 		Poi poiEcole1 = poiManager.getPoisById(1);
 		Poi poiEcole2 = poiManager.getPoisById(2);
 		Poi poiEcole3 = poiManager.getPoisById(3);
@@ -62,6 +63,9 @@ public class LieuManager implements Serializable {
 		Poi poiChezRuss_portail = poiManager.getPoisById(1001);
 		Poi poiChezRuss_jardin = poiManager.getPoisById(1002);
 		Poi poiChezRuss_salleDeBain = poiManager.getPoisById(1003);
+		
+		Poi poiChezGuy_portail = poiManager.getPoisById(1100);
+		Poi poiChezGuy_salon = poiManager.getPoisById(1101);
 
 		List<Poi> poisEcole = new ArrayList<Poi>();
 		List<Poi> poisTerrain = new ArrayList<Poi>();
@@ -86,6 +90,8 @@ public class LieuManager implements Serializable {
 		poisChezRuss.add(poiChezRuss_portail);
 		poisChezRuss.add(poiChezRuss_jardin);
 		poisChezRuss.add(poiChezRuss_salleDeBain);
+		poisChezGuy.add(poiChezGuy_portail);
+		poisChezGuy.add(poiChezGuy_salon);
 		
 		// (X,Y) en partant du haut-gauche
 		// Pour une Map (2000 x 1000)

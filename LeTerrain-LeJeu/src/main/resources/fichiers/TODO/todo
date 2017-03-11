@@ -2,12 +2,14 @@ TODO :
 
 Priorités :
 - Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false)
-- Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats)
 - Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
+- Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats)
 - stun/provocation esquivables ?
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 
 Problemes : 
+- Probleme affichage auras dans la fenetre des persos en combat (!= en fonction des persos ???)
+- Probleme missions date bouton disable (si date ok mais perso necessaire ko) =>> correction moyenne a verifier
 - Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???) non reproductible mais recurrent
 - (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()

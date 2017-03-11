@@ -111,11 +111,21 @@ public class PanelHaut extends JPanel {
 		
 		
 		// bouton passer
+		JButton boutonPasserNext = new JButton(Constante.SYMBOLE_PASSER_NEXT);
 		JButton boutonPasser = new JButton("PASSER");
 		boutonPasser.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				// Raffraichissement bouton passer Next
+				// TODO : probleme passe toujours dans le else
+				if (MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsIndisponibles().isEmpty() && missionManager.getMissionsNonPresentees().isEmpty()) {
+					boutonPasserNext.setEnabled(false);
+				} else {
+					boutonPasserNext.setEnabled(true);
+				}
+				
 				DateManager dateManager = MenuPrincipal.getMainFrame().getCoreManager().getDateManager();
 				dateManager.passeUneHeure();
 				
@@ -148,7 +158,6 @@ public class PanelHaut extends JPanel {
 		});
 
 		// bouton passer jusqu'au prochain evenement ou la prochaine mission
-		JButton boutonPasserNext = new JButton(Constante.SYMBOLE_PASSER_NEXT);
 		boutonPasserNext.addActionListener(new ActionListener() {
 			
 			// TODO : gestion de la fin des evenements et des missions
