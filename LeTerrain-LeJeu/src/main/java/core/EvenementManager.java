@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import core.configuration.Constante;
 import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
@@ -120,7 +121,7 @@ public class EvenementManager implements Serializable {
 		Evenement sortieRequins = new Evenement("Nike Air Max Plus TN", "", "image/actionCombat/nikeRequin.jpg", sonPathNull, videoPathNull, EvenementTheme.SORTIE_OBJET, DateManager.genereUneDate(1998, Calendar.JANUARY, 15, 9, 0, 0), null);
 		
 		// Evenements importants
-		Evenement septembre911 = new Evenement("Attaque du World Trade Center", "", "image/actionCombat/nikeRequin.jpg", sonPathNull, videoPathNull, EvenementTheme.HISTOIRE, DateManager.genereUneDate(2001, Calendar.SEPTEMBER, 11, 9, 0, 0), null);
+		Evenement septembre911 = new Evenement("Attaques du World Trade Center", "", "image/evenement/911.jpg", sonPathNull, videoPathNull, EvenementTheme.HISTOIRE, DateManager.genereUneDate(2001, Calendar.SEPTEMBER, 11, 9, 0, 0), null);
 		
 		Evenement test1 = new Evenement(titre1, informations1, path1, sonPath1, videoPathNull, type1, date1, itemsDebloques1);
 		Evenement test2 = new Evenement(titre2, informations2, path2, sonPath1, videoPathNull, type2, date2, itemsDebloques2);
@@ -205,7 +206,8 @@ public class EvenementManager implements Serializable {
 							if (itemImage.getIconWidth() == -1) {
 								itemImage = FenetrePrincipal.getImageIcon("image/defaut/defautItem.png");
 							}
-							JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, itemImage);
+							ImageIcon resizeImage = ImageManager.resizeImage(itemImage, Constante.PERSO_IMAGE_DIMENSION_180_180);
+							JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), item.getInformations(), item.getNom(), type, resizeImage);
 							item.setDisponible(true);
 						}
 					}

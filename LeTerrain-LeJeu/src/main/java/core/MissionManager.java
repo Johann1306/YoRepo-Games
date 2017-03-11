@@ -86,19 +86,31 @@ public class MissionManager implements Serializable {
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 4, 9, 00, 00);
 		Date dateNull = null;
 		
-		Date dateCleTerrain = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 4, 9, 00, 00);
-		Date dateRencontreAli = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 5, 9, 00, 00);
-		Date dateRencontreGuy = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 6, 9, 00, 00);
+		Date dateCleTerrain = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 1, 9, 00, 00);
+	
+		Date dateRencontreAli = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 7, 14, 00, 00);
+		Date dateRencontreGuy = DateManager.genereUneDate(1997, Calendar.SEPTEMBER, 7, 14, 00, 00);
 		Date dateRencontreJo = DateManager.genereUneDate(1999, Calendar.SEPTEMBER, 7, 14, 00, 00);
+		
+		Date dateTrilogie = DateManager.genereUneDate(1999, Calendar.DECEMBER, 6, 21, 00, 00);
 		Date dateAchatRequins = DateManager.genereUneDate(1999, Calendar.DECEMBER, 25, 9, 00, 00);
 		Date dateAchatPunto = DateManager.genereUneDate(2001, Calendar.MAY, 19, 14, 00, 00);
-		Date dateTrilogie = DateManager.genereUneDate(1999, Calendar.DECEMBER, 6, 21, 00, 00);
 
+		Date dateAzopardi = DateManager.genereUneDate(2001, Calendar.AUGUST, 19, 19, 00, 00);
+		Date dateAchatDoudoune = DateManager.genereUneDate(1999, Calendar.DECEMBER, 25, 10, 00, 00);
+		Date dateJonglerettes = DateManager.genereUneDate(1998, Calendar.JUNE, 7, 14, 00, 00);
+		Date dateGuyApart = DateManager.genereUneDate(2001, Calendar.JUNE, 21, 14, 00, 00);
+		Date dateFacebook = DateManager.genereUneDate(2004, Calendar.MARCH, 1, 14, 00, 00);
+		Date dateEscargot = DateManager.genereUneDate(2002, Calendar.JUNE, 18, 19, 00, 00);
+		Date dateIngurgite = DateManager.genereUneDate(2001, Calendar.JULY, 18, 19, 00, 00);
+		Date dateBite = DateManager.genereUneDate(2010, Calendar.MAY, 1, 19, 00, 00);
+		
+		Date date310 = DateManager.genereUneDate(1999, Calendar.OCTOBER, 7, 14, 00, 00);
+		Date date308 = DateManager.genereUneDate(2000, Calendar.JANUARY, 7, 14, 00, 00);
 		Date date304 = DateManager.genereUneDate(2000, Calendar.MAY, 7, 14, 00, 00);
 		Date date305 = DateManager.genereUneDate(2000, Calendar.JUNE, 7, 14, 00, 00);
-		Date date308 = DateManager.genereUneDate(2000, Calendar.JANUARY, 7, 14, 00, 00);
-		Date date310 = DateManager.genereUneDate(1999, Calendar.OCTOBER, 7, 14, 00, 00);
 
+		
 		
 		// Bonus
 		Bonus bonusVide = BonusManager.getBonusById(0);
@@ -176,6 +188,11 @@ public class MissionManager implements Serializable {
 		List<Item> itemsNecessairesMissionRuss = new ArrayList<Item>();
 		itemsNecessairesMissionRuss.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
 
+		// Mission Guy
+		List<Item> itemsNecessairesMissionGuy = new ArrayList<Item>();
+		itemsNecessairesMissionGuy.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
+		
+		
 		// TODO item potion de combat (rez, degats, stunt, taunt)
 
 		// Mission 101
@@ -268,42 +285,38 @@ public class MissionManager implements Serializable {
 		// Mission 310
 		List<Item> itemsDebloquesMission310 = new ArrayList<Item>();
 		itemsDebloquesMission310.add(actionCombatManager.getActionById(812));
-
 		
-		// Mission 18
-		List<Item> itemsDebloquesMission18 = new ArrayList<Item>();
-		ActionCombat action1 = actionCombatManager.getActionById(181);
-		ActionCombat action2 = actionCombatManager.getActionById(182);
-		ActionCombat action3 = actionCombatManager.getActionById(281);
-		ActionCombat action4 = actionCombatManager.getActionById(282);
-		ActionCombat action5 = actionCombatManager.getActionById(381);
-		ActionCombat action6 = actionCombatManager.getActionById(382);
-		ActionCombat action7 = actionCombatManager.getActionById(481);
-		ActionCombat action8 = actionCombatManager.getActionById(482);
-		ActionCombat action9 = actionCombatManager.getActionById(581);
-		ActionCombat action10 = actionCombatManager.getActionById(582);
-		ActionCombat action11 = actionCombatManager.getActionById(681);
-		ActionCombat action12 = actionCombatManager.getActionById(682);
-		ActionCombat action13 = actionCombatManager.getActionById(781);
-		ActionCombat action14 = actionCombatManager.getActionById(782);
-		ActionCombat action15 = actionCombatManager.getActionById(881);
-		ActionCombat action16 = actionCombatManager.getActionById(882);
-		itemsDebloquesMission18.add(action1);
-		itemsDebloquesMission18.add(action2);
-		itemsDebloquesMission18.add(action3);
-		itemsDebloquesMission18.add(action4);
-		itemsDebloquesMission18.add(action5);
-		itemsDebloquesMission18.add(action6);
-		itemsDebloquesMission18.add(action7);
-		itemsDebloquesMission18.add(action8);
-		itemsDebloquesMission18.add(action9);
-		itemsDebloquesMission18.add(action10);
-		itemsDebloquesMission18.add(action11);
-		itemsDebloquesMission18.add(action12);
-		itemsDebloquesMission18.add(action13);
-		itemsDebloquesMission18.add(action14);
-		itemsDebloquesMission18.add(action15);
-		itemsDebloquesMission18.add(action16);
+		// Mission 400
+		List<Item> itemsDebloquesMission400 = new ArrayList<Item>();
+		itemsDebloquesMission400.add(actionCombatManager.getActionById(612));
+		
+		// Mission 401
+		List<Item> itemsDebloquesMission401 = new ArrayList<Item>();
+		itemsDebloquesMission401.add(actionCombatManager.getActionById(613));
+		
+		// Mission 402
+		List<Item> itemsDebloquesMission402 = new ArrayList<Item>();
+		itemsDebloquesMission402.add(actionCombatManager.getActionById(617));
+
+		// Mission 403
+		List<Item> itemsDebloquesMission403 = new ArrayList<Item>();
+		itemsDebloquesMission403.add(actionCombatManager.getActionById(631));
+		
+		// Mission 404
+		List<Item> itemsDebloquesMission404 = new ArrayList<Item>();
+		itemsDebloquesMission404.add(actionCombatManager.getActionById(634));
+
+		// Mission 405
+		List<Item> itemsDebloquesMission405 = new ArrayList<Item>();
+		itemsDebloquesMission405.add(actionCombatManager.getActionById(636));
+		
+		// Mission 406
+		List<Item> itemsDebloquesMission406 = new ArrayList<Item>();
+		itemsDebloquesMission406.add(actionCombatManager.getActionById(640));
+
+		// Mission 407
+		List<Item> itemsDebloquesMission407 = new ArrayList<Item>();
+		itemsDebloquesMission407.add(actionCombatManager.getActionById(648));
 
 		// MISSIONS PRINCIPAL
 		// Deblocages des persos et domiciles
@@ -326,7 +339,7 @@ public class MissionManager implements Serializable {
 
 		// MISSIONS ACTION COMBAT
 		
-		// RUSS
+		// Sorts RUSS
 		// TODO verifier : date + objet requis => ???
 		Mission mission300 = new Mission(300, "Une journée en enfer", "Regarder le film - Die Hard 3", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission300, itemsDebloquesMission300, 0, false);
 		Mission mission301 = new Mission(301, "Pompes de racaille", "Acheter des requins", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAchatRequins, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission301, 0, false);
@@ -339,7 +352,19 @@ public class MissionManager implements Serializable {
 		Mission mission308 = new Mission(308, "Vibreur silencieux", "Ne pas répondre au GSM", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date308, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission308, 0, false);
 		Mission mission309 = new Mission(309, "La Trilogie du Samedi", "Regarder la trilogie du samedi sur M6", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateTrilogie, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission309, 0, false);
 		Mission mission310 = new Mission(310, "Torse poil", "Se regarder dans un miroir", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date310, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMission310, 0, false);
-					
+		// TODO mission pasteque
+		
+		// Sorts GUY
+		Mission mission400 = new Mission(400, "Le calme après la tempête", "Survivre à une grosse soirée", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAzopardi, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission400, 0, false);
+		Mission mission401 = new Mission(401, "Au top de la mode", "Acheter un vêtement qui protégera son porteur", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAchatDoudoune, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission401, 0, false);
+		Mission mission402 = new Mission(402, "La ronde des jonglerettes", "Trouver un moyen d'ameliorer la technique de ses alliés", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateJonglerettes, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission402, 0, false);
+		Mission mission403 = new Mission(403, "GuiHam Burger", "Trouver une recette saine et équilibrée pour se nourrir quotidiennement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateGuyApart, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission403, 0, false);
+		Mission mission404 = new Mission(404, "Réseaux sociaux anonymes", "Trouver un moyen d'avoir plein d'amies sur facebook", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateFacebook, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission404, 0, false);
+		Mission mission405 = new Mission(405, "Repos chamanique", "Faire une petite sieste en soirée, le temps de retrouver ses esprits", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateEscargot, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission405, 0, false);
+		Mission mission406 = new Mission(406, "Gorge profonde", "Boire comme un trou pour être immunisé contre le vomissement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateIngurgite, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission406, 0, false);
+		Mission mission407 = new Mission(407, "Le dauphin, la baleine, et l'éléphant", "Trouver un moyen de focaliser l'attention sur vous, tout en prenant du bon temps dans le jacuzzi", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBite, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMission407, 0, false);
+
+		
 		// MISSIONS REPETABLES BONUS
 		
 		// MISSIONS DATE FIXE
@@ -425,7 +450,16 @@ public class MissionManager implements Serializable {
 		missions.add(mission308);
 		missions.add(mission309);
 		missions.add(mission310);
-
+		
+		missions.add(mission400);
+		missions.add(mission401);
+		missions.add(mission402);
+		missions.add(mission403);
+		missions.add(mission404);
+		missions.add(mission405);
+		missions.add(mission406);
+		missions.add(mission407);
+		
 		missions.add(mission900);
 		missions.add(mission901);
 		missions.add(mission902);
