@@ -62,26 +62,8 @@ public class EvenementManager implements Serializable {
 		List<Item> itemsDebloques2 = new ArrayList<Item>();
 		Item item3 = itemManager.getItemByNom("item3");
 		Item item6 = itemManager.getItemByNom("item6");
-		Item item7 = itemManager.getItemByNom("item7");
-		Item item8 = itemManager.getItemByNom("item8");
-		Item item9 = itemManager.getItemByNom("item9");
-		Item item10 = itemManager.getItemByNom("item10");
-		Item item11 = itemManager.getItemByNom("item11");
-		Item item12 = itemManager.getItemByNom("item12");
-		Item item13 = itemManager.getItemByNom("item13");
-		Item item14 = itemManager.getItemByNom("item14");
-		Item item15 = itemManager.getItemByNom("item15");
 		itemsDebloques2.add(item3);
 		itemsDebloques2.add(item6);
-		itemsDebloques2.add(item7);
-		itemsDebloques2.add(item8);
-		itemsDebloques2.add(item9);
-		itemsDebloques2.add(item10);
-		itemsDebloques2.add(item11);
-		itemsDebloques2.add(item12);
-		itemsDebloques2.add(item13);
-		itemsDebloques2.add(item14);
-		itemsDebloques2.add(item15);
 
 		String titre3 = "testEvent3";
 		String informations3 = "infosEvent3";
