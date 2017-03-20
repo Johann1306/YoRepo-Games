@@ -54,11 +54,11 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths847 = new ArrayList<String>();
 		imagePaths847.add("image/actionCombat/fiatPunto.jpg");
 
+		// TODO image special tous les persos
 		List<String> imagePaths848 = new ArrayList<String>();
 		imagePaths848.add("image/actionCombat/nikeRequins.jpg");
 
 		// Guy
-		// TODO bonnes images
 		List<String> imagePaths612 = new ArrayList<String>();
 		imagePaths612.add("image/actionCombat/waterloo.jpg");
 
@@ -85,6 +85,34 @@ public class ActionCombatManager implements Serializable {
 		
 		List<String> imagePaths681 = new ArrayList<String>();
 		imagePaths681.add("image/actionCombat/nikeRequins.jpg");
+		
+		// Ali
+		List<String> imagePaths712 = new ArrayList<String>();
+		imagePaths712.add("image/actionCombat/cascade.jpg");
+
+		List<String> imagePaths717 = new ArrayList<String>();
+		imagePaths717.add("image/actionCombat/aladin.jpg");
+		
+		List<String> imagePaths718 = new ArrayList<String>();
+		imagePaths718.add("image/actionCombat/soirees.jpg");
+		
+		List<String> imagePaths731 = new ArrayList<String>();
+		imagePaths731.add("image/actionCombat/teton.jpg");
+		
+		List<String> imagePaths742 = new ArrayList<String>();
+		imagePaths742.add("image/actionCombat/lacrymo.jpg");
+
+		List<String> imagePaths743 = new ArrayList<String>();
+		imagePaths743.add("image/actionCombat/healWorld.jpg");
+
+		List<String> imagePaths746 = new ArrayList<String>();
+		imagePaths746.add("image/actionCombat/culCoince.jpeg");
+
+		List<String> imagePaths747 = new ArrayList<String>();
+		imagePaths747.add("image/actionCombat/crochePied.jpg");
+		
+		List<String> imagePaths781 = new ArrayList<String>();
+		imagePaths781.add("image/actionCombat/nikeRequins.jpg");
 		
 		String sonAttaque = "sonParDefaut/defautAttaque.mp3";
 		String sonAttaqueCritique = "sonParDefaut/defautAttaqueCritique.mp3";
@@ -276,36 +304,36 @@ public class ActionCombatManager implements Serializable {
 	
 		// Ali (Vitesse)
 		// TODO sort niveau elevee(5?) car arrivée tardive
-		ActionCombat aliAttaque1 = new ActionCombat(701, "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Ali);
-		ActionCombat aliAttaque2 = new ActionCombat(702, "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
-		ActionCombat aliDefense1 = new ActionCombat(711, "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Ali);
-		ActionCombat aliDefense2 = new ActionCombat(712, "Bouclier Perso", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.BOUCLIER_PERSO, PersoPrenom.Ali);
-		ActionCombat aliDefense3 = new ActionCombat(713, "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RESISTANCE, SortType.BOUCLIER_MONO, PersoPrenom.Ali);
-		ActionCombat aliDefense4 = new ActionCombat(714, "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Ali);
-		ActionCombat aliDefense5 = new ActionCombat(715, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.AURA_PERSO, PersoPrenom.Ali);
-		ActionCombat aliDefense6 = new ActionCombat(716, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.AURA_MONO, PersoPrenom.Ali);
-		ActionCombat aliDefense7 = new ActionCombat(717, "Aura Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, PersoPrenom.Ali);
-		ActionCombat aliDefense8 = new ActionCombat(718, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Ali);
-		ActionCombat aliSort1 = new ActionCombat(731, "Regen Vie Perso", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Ali);
-		ActionCombat aliSort2 = new ActionCombat(732, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort3 = new ActionCombat(733, "Regen Vie Multi", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort4 = new ActionCombat(734, "Absorb Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort5 = new ActionCombat(735, "Absorb Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort6 = new ActionCombat(736, "Regen Mana Perso", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_PERSO, PersoPrenom.Ali);
-		ActionCombat aliSort7 = new ActionCombat(737, "Regen Mana Mono", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort8 = new ActionCombat(738, "Regen Mana Multi", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort9 = new ActionCombat(739, "Absorb Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort10 = new ActionCombat(740, "Absorb Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort11 = new ActionCombat(741, "Brulure Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.BRULURE_MANA_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort12 = new ActionCombat(742, "Brulure Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.BRULURE_MANA_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort13 = new ActionCombat(743, "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort14 = new ActionCombat(744, "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort15 = new ActionCombat(745, "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort16 = new ActionCombat(746, "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.TAUNT_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSort17 = new ActionCombat(747, "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Ali);
-		ActionCombat aliSort18 = new ActionCombat(748, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSpecial1 = new ActionCombat(781, "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
-		ActionCombat aliSpecial2 = new ActionCombat(782, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Ali);
+		ActionCombat aliAttaque1 = new ActionCombat(701, "(Degats Mono) Taxeur fou", "Met autant de claques qu'il taxera de cigarettes dans sa vie à l'ennemi", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_5, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Ali);
+//		ActionCombat aliAttaque2 = new ActionCombat(702, "Degats Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliDefense1 = new ActionCombat(711, "Renvoi degats Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.RENVOI_DEGATS_PERSO, PersoPrenom.Ali);
+		ActionCombat aliDefense2 = new ActionCombat(712, "(Bouclier Perso) Pilote de l'extrême", "Se protege grace à son experience en conduite terroriste multirécidiviste multisupport", imagePaths712, sonBouclier, sonBouclierCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.BOUCLIER_PERSO, PersoPrenom.Ali);
+//		ActionCombat aliDefense3 = new ActionCombat(713, "Bouclier Mono", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.BOUCLIER_MONO, PersoPrenom.Ali);
+//		ActionCombat aliDefense4 = new ActionCombat(714, "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.BOUCLIER_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliDefense5 = new ActionCombat(715, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.AURA_PERSO, PersoPrenom.Ali);
+//		ActionCombat aliDefense6 = new ActionCombat(716, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.AURA_MONO, PersoPrenom.Ali);
+		ActionCombat aliDefense7 = new ActionCombat(717, "(Aura Multi) Pas vu, pas pri-ka", "Invoque une aura qui augmente la Rapidité et la dextérité de ses alliés", imagePaths717, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, PersoPrenom.Ali);
+		ActionCombat aliDefense8 = new ActionCombat(718, "(Esquive) Ali doudou", "Esquive les anniversaires et ne vient plus aux soirées", imagePaths718, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.ESQUIVE, PersoPrenom.Ali);
+		ActionCombat aliSort1 = new ActionCombat(731, "(Regen Vie Perso) Ice Pedoula Challenge", "Se régénère en se caressant sensuellement les tétons avec un glaçon", imagePaths731, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.RAPIDITE, SortType.REGEN_VIE_PERSO, PersoPrenom.Ali);
+//		ActionCombat aliSort2 = new ActionCombat(732, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.REGEN_VIE_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort3 = new ActionCombat(733, "Regen Vie Multi", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.REGEN_VIE_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSort4 = new ActionCombat(734, "Absorb Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.ABSORPTION_VIE_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort5 = new ActionCombat(735, "Absorb Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.ABSORPTION_VIE_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSort6 = new ActionCombat(736, "Regen Mana Perso", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.RAPIDITE, SortType.REGEN_MANA_PERSO, PersoPrenom.Ali);
+//		ActionCombat aliSort7 = new ActionCombat(737, "Regen Mana Mono", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.REGEN_MANA_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort8 = new ActionCombat(738, "Regen Mana Multi", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.REGEN_MANA_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSort9 = new ActionCombat(739, "Absorb Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.ABSORPTION_MANA_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort10 = new ActionCombat(740, "Absorb Mana Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.ABSORPTION_MANA_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSort11 = new ActionCombat(741, "Brulure Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.BRULURE_MANA_MONO, PersoPrenom.Ali);
+		ActionCombat aliSort12 = new ActionCombat(742, "(Brulure Mana Multi) Plein les yeux", "Tire un coup de pistolet lacrymogène en intérieur pour bruler les yeux de ses ennemis", imagePaths742, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.BRULURE_MANA_MULTI, PersoPrenom.Ali);
+		ActionCombat aliSort13 = new ActionCombat(743, "(Resurrection Mono) Le chant de sucre rouge", "Redonne la vie à un allié en chantant et en mélangeant quelques épices en référence au sang versé dans les champs de canne à sucre", imagePaths743, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.RESURRECTION_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort14 = new ActionCombat(744, "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.RESURRECTION_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSort15 = new ActionCombat(745, "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.TAUNT_MONO, PersoPrenom.Ali);
+		ActionCombat aliSort16 = new ActionCombat(746, "(Taunt Multi) Pris au piège", "Se coince dans une grille et baisse son froc pour provoquer les ennemis", imagePaths746, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.TAUNT_MULTI, PersoPrenom.Ali);
+		ActionCombat aliSort17 = new ActionCombat(747, "(Stun Mono) Croche-mensonge", "Bloque l'ennemi avec ses jambes pour lui frotter son sexe sur le corps", imagePaths747, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.STUN_MONO, PersoPrenom.Ali);
+//		ActionCombat aliSort18 = new ActionCombat(748, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.STUN_MULTI, PersoPrenom.Ali);
+		ActionCombat aliSpecial1 = new ActionCombat(781, "(Degats Multi) Ali! Ali!", "Profite de l'engouement général pour se donner en spectacle bollywoodien et infliger des dégats aux ennemis", imagePaths781, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
+//		ActionCombat aliSpecial2 = new ActionCombat(782, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.RAPIDITE, SortType.DEGATS_ALL, PersoPrenom.Ali);
 		
 		// Guillaume (Technique)
 		// TODO sort niveau elevee(6?) car arrivée tardive
@@ -319,7 +347,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat guillaumeDefense6 = new ActionCombat(616, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Guillaume);
 		ActionCombat guillaumeDefense7 = new ActionCombat(617, "(Aura Multi) Tu m'as fait bander", "Glorifie ses alliés pour augmenter leur Technique", imagePaths617, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeDefense8 = new ActionCombat(618, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Guillaume);
-		ActionCombat guillaumeSort1    = new ActionCombat(631, "(Regen Vie Perso) Pizza mayo sandwich", "Se régénére en ingurgitant une composition personelle de mets savoureux", imagePaths631, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.REGEN_VIE_PERSO, PersoPrenom.Guillaume);
+		ActionCombat guillaumeSort1    = new ActionCombat(631, "(Regen Vie Perso) Pizza mayo sandwich", "Se régénère en ingurgitant une composition personelle de mets savoureux", imagePaths631, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.REGEN_VIE_PERSO, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSort2    = new ActionCombat(632, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSort3    = new ActionCombat(633, "Regen Vie Multi", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, PersoPrenom.Guillaume);
 		ActionCombat guillaumeSort4    = new ActionCombat(634, "(Absorb Vie Mono) Guillaume Froissard", "Penetre analogiquement le corps de qu'en'qu'in d'autre pour lui sucer sa vie", imagePaths634, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.ABSORPTION_VIE_MONO, PersoPrenom.Guillaume);
@@ -337,7 +365,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat guillaumeSort16   = new ActionCombat(646, "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.TAUNT_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSort17   = new ActionCombat(647, "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Guillaume);
 		ActionCombat guillaumeSort18   = new ActionCombat(648, "(Stun Multi) Vous voulez voir mon cul?", "Emet une hypothèse embarrassante pour attirer l'attention puis effectue une action encore plus salace pour surprendre et bloquer les ennemis", imagePaths648, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Guillaume);
-		ActionCombat guillaumeSpecial1 = new ActionCombat(681, "(Degats Multi) Moi, je ne crache pas dans les verres", "Utilise une expression qui n'existe pas dans un contexte inaprorié pour infliger des dégats pendant que l'ennemi reste perplexe", imagePaths681, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
+		ActionCombat guillaumeSpecial1 = new ActionCombat(681, "(Degats Multi) Moi, je ne crache pas dans les verres", "Utilise une expression qui n'existe pas dans un contexte inaprorié pour infliger des dégats pendant que les ennemis restent perplexe", imagePaths681, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSpecial2 = new ActionCombat(682, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Guillaume);
 	
 		// Jonathan (Endurance) 
@@ -351,14 +379,14 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat jonathanDefense4 = new ActionCombat(814, "Bouclier Multi", "abc", imagePaths, sonBouclier, sonBouclierCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.BOUCLIER_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanDefense5 = new ActionCombat(815, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.AURA_PERSO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanDefense6 = new ActionCombat(816, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.ENDURANCE, SortType.AURA_MONO, PersoPrenom.Jonathan);
-		ActionCombat jonathanDefense7 = new ActionCombat(817, "(Aura Multi) Le Triathlon du samedi", "Invoque une aura d'Endurance physique et audiovisuelle", imagePaths817, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
+		ActionCombat jonathanDefense7 = new ActionCombat(817, "(Aura Multi) Le Triathlon du samedi", "Invoque une aura d'Endurance physique et audiovisuelle pour ses alliés", imagePaths817, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
 		ActionCombat jonathanDefense8 = new ActionCombat(818, "(Esquive) La technique de l'Autroych", "Reste injoignable pendant une durée indeterminée", imagePaths818, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.ESQUIVE, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort1    = new ActionCombat(831, "Regen Vie Perso", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort2    = new ActionCombat(832, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort3    = new ActionCombat(833, "Regen Vie Multi", "La pizza de Gino", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort4    = new ActionCombat(834, "Absorb Vie Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MONO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort5    = new ActionCombat(835, "Absorb Vie Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.ABSORPTION_VIE_MULTI, PersoPrenom.Jonathan);
-		ActionCombat jonathanSort6    = new ActionCombat(836, "(Regen Mana Perso) C'est bon pour la peau", "Se régénére en s'éclaboussant de creme blanche, de gel visqueux et de graisse à traire", imagePaths836, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.ENDURANCE, SortType.REGEN_MANA_PERSO, PersoPrenom.Jonathan);
+		ActionCombat jonathanSort6    = new ActionCombat(836, "(Regen Mana Perso) C'est bon pour la peau", "Se régénère en s'éclaboussant de creme blanche, de gel visqueux et de graisse à traire", imagePaths836, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.ENDURANCE, SortType.REGEN_MANA_PERSO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort7    = new ActionCombat(837, "Regen Mana Mono", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MONO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort8    = new ActionCombat(838, "Regen Mana Multi", "abc", imagePaths, sonRegenMana, sonRegenManaCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.REGEN_MANA_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort9    = new ActionCombat(839, "Absorb Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.INTELLIGENCE, SortType.ABSORPTION_MANA_MONO, PersoPrenom.Jonathan);
@@ -754,35 +782,35 @@ public class ActionCombatManager implements Serializable {
 		yannickActions.add(yannickSpecial2);
 		
 		aliActions.add(aliAttaque1);
-		aliActions.add(aliAttaque2);
-		aliActions.add(aliDefense1);
+//		aliActions.add(aliAttaque2);
+//		aliActions.add(aliDefense1);
 		aliActions.add(aliDefense2);
-		aliActions.add(aliDefense3);
-		aliActions.add(aliDefense4);
-		aliActions.add(aliDefense5);
-		aliActions.add(aliDefense6);
+//		aliActions.add(aliDefense3);
+//		aliActions.add(aliDefense4);
+//		aliActions.add(aliDefense5);
+//		aliActions.add(aliDefense6);
 		aliActions.add(aliDefense7);
 		aliActions.add(aliDefense8);
 		aliActions.add(aliSort1);
-		aliActions.add(aliSort2);
-		aliActions.add(aliSort3);
-		aliActions.add(aliSort4);
-		aliActions.add(aliSort5);
-		aliActions.add(aliSort6);
-		aliActions.add(aliSort7);
-		aliActions.add(aliSort8);
-		aliActions.add(aliSort9);
-		aliActions.add(aliSort10);
-		aliActions.add(aliSort11);
+//		aliActions.add(aliSort2);
+//		aliActions.add(aliSort3);
+//		aliActions.add(aliSort4);
+//		aliActions.add(aliSort5);
+//		aliActions.add(aliSort6);
+//		aliActions.add(aliSort7);
+//		aliActions.add(aliSort8);
+//		aliActions.add(aliSort9);
+//		aliActions.add(aliSort10);
+//		aliActions.add(aliSort11);
 		aliActions.add(aliSort12);
 		aliActions.add(aliSort13);
-		aliActions.add(aliSort14);
-		aliActions.add(aliSort15);
+//		aliActions.add(aliSort14);
+//		aliActions.add(aliSort15);
 		aliActions.add(aliSort16);
 		aliActions.add(aliSort17);
-		aliActions.add(aliSort18);
+//		aliActions.add(aliSort18);
 		aliActions.add(aliSpecial1);
-		aliActions.add(aliSpecial2);
+//		aliActions.add(aliSpecial2);
 		
 		guillaumeActions.add(guillaumeAttaque1);
 //		guillaumeActions.add(guillaumeAttaque2);
