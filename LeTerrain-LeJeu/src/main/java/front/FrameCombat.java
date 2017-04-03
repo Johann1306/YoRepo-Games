@@ -459,6 +459,7 @@ public class FrameCombat extends FrameJeu {
 			} else if (difficulteMission == Difficulte.HEROIQUE) {
 
 			}
+			// peut etre une Mission boss (7 + boss)
 		} else if (nombreEnnemis == 7) {
 			classes.add(PersoClasse.TANK);
 			classes.add(PersoClasse.TANK);
@@ -522,43 +523,94 @@ public class FrameCombat extends FrameJeu {
 
 			}
 		} else if (nombreEnnemis == 3) {
-			classes.add(PersoClasse.TANK);
-			classes.add(PersoClasse.HEALER);
-			classes.add(PersoClasse.MAGE);
+			List<PersoClasse> persoClasses = new ArrayList<>();			
 			if (difficulteMission == Difficulte.FACILE) {
-
+				classes.add(PersoClasse.DPS);
+				classes.add(PersoClasse.MAGE);
+				classes.add(PersoClasse.BARDE);
 			} else if (difficulteMission == Difficulte.NORMAL) {
-
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.BARDE);
+				persoClasses.add(PersoClasse.TANK);
+				classes.add(randomClasses(persoClasses));
+				classes.add(PersoClasse.DPS);
+				classes.add(PersoClasse.MAGE);
 			} else if (difficulteMission == Difficulte.DIFFICILE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				persoClasses.add(PersoClasse.TANK);
+				classes.add(randomClasses(persoClasses));
+				classes.add(randomClasses(persoClasses));
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.HEROIQUE) {
-
+				classes.add(PersoClasse.TANK);
+				classes.add(PersoClasse.HEALER);
+				classes.add(PersoClasse.BARDE);
 			}
 		} else if (nombreEnnemis == 2) {
-			classes.add(PersoClasse.DPS);
-			classes.add(PersoClasse.MAGE);
+			List<PersoClasse> persoClasses = new ArrayList<>();
 			if (difficulteMission == Difficulte.FACILE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				classes.add(randomClasses(persoClasses));
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.NORMAL) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				classes.add(randomClasses(persoClasses));
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.DIFFICILE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				persoClasses.add(PersoClasse.TANK);
+				classes.add(randomClasses(persoClasses));
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.HEROIQUE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				classes.add(randomClasses(persoClasses));
+				classes.add(PersoClasse.TANK);
 			}
 		} else if (nombreEnnemis == 1) {
-			classes.add(PersoClasse.DPS);
+			List<PersoClasse> persoClasses = new ArrayList<>();
 			if (difficulteMission == Difficulte.FACILE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.NORMAL) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.DIFFICILE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.TANK);
+				classes.add(randomClasses(persoClasses));
 			} else if (difficulteMission == Difficulte.HEROIQUE) {
-
+				persoClasses.add(PersoClasse.DPS);
+				persoClasses.add(PersoClasse.MAGE);
+				persoClasses.add(PersoClasse.BARDE);
+				persoClasses.add(PersoClasse.HEALER);
+				persoClasses.add(PersoClasse.TANK);
+				classes.add(randomClasses(persoClasses));
 			}
 		}
 		return classes;
+	}
+
+	private PersoClasse randomClasses(List<PersoClasse> persoClasses) {
+		int index = RandomManager.random(0, persoClasses.size());
+		return persoClasses.get(index);
 	}
 
 	private void buildPanelActions(PersoPrenom prenom) {
@@ -753,9 +805,8 @@ public class FrameCombat extends FrameJeu {
 						labelTimer.setText(String.format("%1$,.2f", new Double(0.0)));
 						timerJoueurs.stop();
 					}
-					// TODO remettre des trucs a zero ??? + PROLEME reinit timer
-					// a
-					// tempsMax
+					// TODO remettre des trucs a zero ??? 
+					// + PROLEME reinit timer a tempsMax
 					lanceTourEnnemis();
 				}
 			});
@@ -1143,7 +1194,7 @@ public class FrameCombat extends FrameJeu {
 			isCritique = true;
 		}
 
-		// score en fonction du niveau du sort : max = x5
+		// score en fonction du niveau du sort : max = 5
 		niveau = actionCombat.getNiveau();
 		if (niveau > 1) {
 			niveau = niveau / 2;
@@ -1191,11 +1242,24 @@ public class FrameCombat extends FrameJeu {
 
 		// Calcul du score
 		score = (RandomManager.random(min, max) * multiplicateurDegat) / nombreCibles;
-
+		
+		// Reduction de la difficulte globale
+		if (!(lanceur instanceof PersonnagePrincipal)) {
+			if (mission.getDifficulty() == Difficulte.FACILE) {
+				score = score / 4;
+			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
+				score = score / 3;
+			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+				score = score / 2;
+			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
+				score = score / 1;
+			}
+		}
+		
 		// TODO fail score = 0 chance de raté 10% max - 1% min
 		if (score == 0) {
 		}
-
+		
 		// Animation lanceur de gauche a droite
 		animationLanceur(lanceur, score, cibles);
 
@@ -1511,9 +1575,9 @@ public class FrameCombat extends FrameJeu {
 						// Si Esquive ratee : on retire de la vie a la cible
 						else {
 							// Reduction degats en fonction de la resistance :
-							// max -80% degats
-							// TODO (50% max ?)
-							int reductionDegats = cible.getCompetence().getResistance() - 20;
+							// max -60% degats
+							// TODO (40% max ?)
+							int reductionDegats = cible.getCompetence().getResistance() - 40;
 							if (reductionDegats < 0) {
 								reductionDegats = 0;
 							}
