@@ -60,9 +60,8 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths544 = new ArrayList<String>();
 		imagePaths544.add("image/actionCombat/messmer.jpg");
 		
-		// TODO
 		List<String> imagePaths581 = new ArrayList<String>();
-		imagePaths581.add("image/actionCombat/nikeRequins.jpg");
+		imagePaths581.add("image/actionCombat/centPatates.jpg");
 		
 		
 		// Guy
@@ -90,9 +89,8 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths648 = new ArrayList<String>();
 		imagePaths648.add("image/actionCombat/piscine.jpg");
 		
-		// TODO
 		List<String> imagePaths681 = new ArrayList<String>();
-		imagePaths681.add("image/actionCombat/nikeRequins.jpg");
+		imagePaths681.add("image/actionCombat/spit.jpg");
 		
 		// Ali
 		List<String> imagePaths712 = new ArrayList<String>();
@@ -119,9 +117,8 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths747 = new ArrayList<String>();
 		imagePaths747.add("image/actionCombat/crochePied.jpg");
 		
-		// TODO
 		List<String> imagePaths781 = new ArrayList<String>();
-		imagePaths781.add("image/actionCombat/nikeRequins.jpg");
+		imagePaths781.add("image/actionCombat/bollywood.jpg");
 		
 		// Russ
 		List<String> imagePaths812 = new ArrayList<String>();
@@ -148,9 +145,8 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths848 = new ArrayList<String>();
 		imagePaths848.add("image/actionCombat/nikeRequins.jpg");
 		
-		// TODO
 		List<String> imagePaths882 = new ArrayList<String>();
-		imagePaths848.add("image/actionCombat/nikeRequins.jpg");
+		imagePaths848.add("image/actionCombat/pasteque.jpg");
 
 		
 		String sonAttaque = "sonParDefaut/defautAttaque.mp3";
@@ -407,7 +403,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat guillaumeSort16   = new ActionCombat(646, "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.TAUNT_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSort17   = new ActionCombat(647, "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Guillaume);
 		ActionCombat guillaumeSort18   = new ActionCombat(648, "(Stun Multi) Vous voulez voir mon cul?", "Emet une hypothèse embarrassante pour attirer l'attention puis effectue une action encore plus salace pour surprendre et bloquer les ennemis", imagePaths648, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Guillaume);
-		// TODO mission associé
+		// TODO mission associé Brasserie Mollard
 		ActionCombat guillaumeSpecial1 = new ActionCombat(681, "(Degats Multi) Moi, je ne crache pas dans les verres", "Utilise une expression qui n'existe pas dans un contexte inaprorié pour infliger des dégats pendant que les ennemis restent perplexe", imagePaths681, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSpecial2 = new ActionCombat(682, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Guillaume);
 	
