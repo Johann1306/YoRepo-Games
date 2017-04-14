@@ -36,6 +36,7 @@ public class VideoManager implements Serializable {
 		lecteur.play("src/main/resources/" + mediaPath);
 
 		// A partir du jar
+		
 		// TODO switcher quand jar
 //		lecteur.play("classes/" + mediaPath);
 
