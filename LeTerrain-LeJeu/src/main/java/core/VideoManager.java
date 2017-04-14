@@ -31,8 +31,13 @@ public class VideoManager implements Serializable {
 //		path = path.replaceAll("file:/C:/Users/Johann/git/YoRepo-Games/LeTerrain-LeJeu/target/", "");
 		System.out.println("Play Video Path : " + path);
 		
-		// TODO probleme lecture a partir du jar
+		// TODO probleme lecture a partir du jar (essayer de gerer les 2 cas)
+		// En local
 		lecteur.play("src/main/resources/" + mediaPath);
+
+		// A partir du jar
+//		lecteur.play("classes/" + mediaPath);
+
 	}
 
 	public static void hideAndStop() {
