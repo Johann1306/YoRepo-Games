@@ -24,7 +24,8 @@ public class MainFrame extends JFrame {
 	private static JPanel panelDroite = new JPanel();
 	private static PanelBas panelBas = new PanelBas();
 	private static PanelPersonnage panelPersonnage;
-	
+	private static JScrollPane scrollPaneCentre;
+
 	private CoreManager coreManager;
 	
 	private static JPanel content = null;
@@ -110,12 +111,15 @@ public class MainFrame extends JFrame {
 		scrollPaneGauche.getViewport().add(panelPersonnage);
 		
 		// ScrollPane Panel Centre
-		JScrollPane scrollPaneCentre = new JScrollPane();
+		scrollPaneCentre = new JScrollPane();
 		// Vitesse de la barre de scroll
 		// TODO : trop rapide
-		JScrollBar jScrollBarCentre = new JScrollBar(1, 5, 5, 0, 10);
-		jScrollBarCentre.setUnitIncrement(50);
-		scrollPaneCentre.setVerticalScrollBar(jScrollBarCentre);
+		JScrollBar jScrollBarCentreVertical = new JScrollBar(1, 5, 5, 0, 10);
+		jScrollBarCentreVertical.setUnitIncrement(50);
+		JScrollBar jScrollBarCentreHorizontal = new JScrollBar(0, 5, 5, 0, 10);
+		jScrollBarCentreHorizontal.setUnitIncrement(50);
+		scrollPaneCentre.setVerticalScrollBar(jScrollBarCentreVertical);
+		scrollPaneCentre.setHorizontalScrollBar(jScrollBarCentreHorizontal);
 		scrollPaneCentre.getViewport().add(panelCentre);
 		
 		// TODO : autoscrolls sur les bords
@@ -168,6 +172,11 @@ public class MainFrame extends JFrame {
 	public CoreManager getCoreManager() {
 		return coreManager;
 	}
+	
+	public static JScrollPane getScrollPaneCentre() {
+		return scrollPaneCentre;
+	}
+
 
 //	@Override
 //	public void keyTyped(KeyEvent e) {

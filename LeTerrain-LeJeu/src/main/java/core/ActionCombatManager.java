@@ -32,6 +32,7 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths = new ArrayList<String>();
 		imagePaths.add("image/defaut/defautActionCombat.png");
 		
+		// TODO image sort de base pour tous les persos
 		// TODO image special tous les persos
 		
 		
@@ -445,12 +446,42 @@ public class ActionCombatManager implements Serializable {
 		//////////////////// ENNEMIS ///////////////////////
 		int niveauSort = 1;
 		int niveauMaxSort = 10;
-		// TODO niveau des sort ennemis/boss en fonction de la difficulte ???
+		// TODO niveau des sort ennemis/boss en fonction de la difficulte / du niveau max des sorts des persos ???
 		
-		// Boss1
+		// TODO nom des sorts boss / sorts specifiques par boss
+		
+		// Boss1 (Yo)
 		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
-	
+
+		// Boss2 (Nico)
+		ActionCombat boss2Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss2Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss3 (Pip)
+		ActionCombat boss3Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss3Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss4 (Tom)
+		ActionCombat boss4Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss4Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss5 (Ya)
+		ActionCombat boss5Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss5Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss6 (Ali)
+		ActionCombat boss6Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss6Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss7 (Guy)
+		ActionCombat boss7Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss7Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
+		// Boss8 (Russ)
+		ActionCombat boss8Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss8Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+
 		// Gitans
 		
 		// Ennemi Gitan Tank
@@ -640,6 +671,13 @@ public class ActionCombatManager implements Serializable {
 		List<ActionCombat> jonathanActions = new ArrayList<ActionCombat>();
 		
 		List<ActionCombat> boss1Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss2Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss3Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss4Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss5Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss6Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss7Actions = new ArrayList<ActionCombat>();
+		List<ActionCombat> boss8Actions = new ArrayList<ActionCombat>();
 		
 		List<ActionCombat> gitanTankActions = new ArrayList<ActionCombat>();
 		List<ActionCombat> gitanHealerActions = new ArrayList<ActionCombat>();
@@ -915,6 +953,27 @@ public class ActionCombatManager implements Serializable {
 		
 		boss1Actions.add(boss1Attaque1);
 		boss1Actions.add(boss1Attaque2);
+		
+		boss2Actions.add(boss2Attaque1);
+		boss2Actions.add(boss2Attaque2);
+		
+		boss3Actions.add(boss3Attaque1);
+		boss3Actions.add(boss3Attaque2);
+		
+		boss4Actions.add(boss4Attaque1);
+		boss4Actions.add(boss4Attaque2);
+		
+		boss5Actions.add(boss5Attaque1);
+		boss5Actions.add(boss5Attaque2);
+		
+		boss6Actions.add(boss6Attaque1);
+		boss6Actions.add(boss6Attaque2);
+		
+		boss7Actions.add(boss7Attaque1);
+		boss7Actions.add(boss7Attaque2);
+		
+		boss8Actions.add(boss8Attaque1);
+		boss8Actions.add(boss8Attaque2);
 
 		gitanTankActions.add(gitanTankAttaque1);
 		gitanTankActions.add(gitanTankDefense1);
@@ -1074,6 +1133,13 @@ public class ActionCombatManager implements Serializable {
 		actionsByPerso.put(PersoPrenom.Jonathan.name(), jonathanActions);
 		
 		actionsByPerso.put(BossNom.BOSS1.name(), boss1Actions);
+		actionsByPerso.put(BossNom.BOSS2.name(), boss2Actions);
+		actionsByPerso.put(BossNom.BOSS3.name(), boss3Actions);
+		actionsByPerso.put(BossNom.BOSS4.name(), boss4Actions);
+		actionsByPerso.put(BossNom.BOSS5.name(), boss5Actions);
+		actionsByPerso.put(BossNom.BOSS6.name(), boss6Actions);
+		actionsByPerso.put(BossNom.BOSS7.name(), boss7Actions);
+		actionsByPerso.put(BossNom.BOSS8.name(), boss8Actions);
 		
 		actionsByPerso.put(EnnemiType.GITANS.name() + PersoClasse.TANK.name(), gitanTankActions);
 		actionsByPerso.put(EnnemiType.GITANS.name() + PersoClasse.HEALER.name(), gitanHealerActions);

@@ -3,7 +3,9 @@ package core;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,10 +49,12 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageBoss> personnagesBoss;
 	private List<PersonnageEnnemi> personnagesEnnemis;
 	private PersoPrenom personnagePrincipal;
+	private Difficulte difficulte = Difficulte.FACILE;
 
 	public void initialise(ActionCombatManager actionCombatManager, Difficulte difficultePartie) {
 
 		leGroupe = new Groupe();
+		difficulte = difficultePartie;
 
 		// Chargement des personnages Principaux
 
@@ -151,13 +155,54 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des Boss
 		personnagesBoss = new ArrayList<PersonnageBoss>();
-		List<String> particularitesPhysique = new ArrayList<String>();
-		List<String> particularitesSocial = new ArrayList<String>();
-		List<String> phrasesPerso = new ArrayList<String>();
-		ImageIcon photoBoss = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		
+		// TODO particularités/phrases par Boss		
+		List<String> particularitesPhysique1 = new ArrayList<String>();
+		List<String> particularitesPhysique2 = new ArrayList<String>();
+		List<String> particularitesPhysique3 = new ArrayList<String>();
+		List<String> particularitesPhysique4 = new ArrayList<String>();
+		List<String> particularitesPhysique5 = new ArrayList<String>();
+		List<String> particularitesPhysique6 = new ArrayList<String>();
+		List<String> particularitesPhysique7 = new ArrayList<String>();
+		List<String> particularitesPhysique8 = new ArrayList<String>();
+		
+		List<String> particularitesSocial1 = new ArrayList<String>();
+		List<String> particularitesSocial2 = new ArrayList<String>();
+		List<String> particularitesSocial3 = new ArrayList<String>();
+		List<String> particularitesSocial4 = new ArrayList<String>();
+		List<String> particularitesSocial5 = new ArrayList<String>();
+		List<String> particularitesSocial6 = new ArrayList<String>();
+		List<String> particularitesSocial7 = new ArrayList<String>();
+		List<String> particularitesSocial8 = new ArrayList<String>();
 
-		List<ImageIcon> photos = new ArrayList<ImageIcon>();
+		List<String> phrasesPerso1 = new ArrayList<String>();
+		List<String> phrasesPerso2 = new ArrayList<String>();
+		List<String> phrasesPerso3 = new ArrayList<String>();
+		List<String> phrasesPerso4 = new ArrayList<String>();
+		List<String> phrasesPerso5 = new ArrayList<String>();
+		List<String> phrasesPerso6 = new ArrayList<String>();
+		List<String> phrasesPerso7 = new ArrayList<String>();
+		List<String> phrasesPerso8 = new ArrayList<String>();
 
+		ImageIcon photoBoss1 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss2 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss3 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss4 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss5 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss6 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss7 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		ImageIcon photoBoss8 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+
+		List<ImageIcon> photos1 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos2 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos3 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos4 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos5 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos6 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos7 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos8 = new ArrayList<ImageIcon>();
+
+		// TODO vie/mana/charge par Boss ??
 		int vieMax = 1000;
 		int manaMax = 200;
 		int chargeMax = 10;
@@ -180,22 +225,66 @@ public class PersonnageManager implements Serializable {
 			chargeMax = 10;
 		}
 
-		// TODO mieux
-		Set<PersoStat> stats = johann.getCompetence().getStats().keySet();
+		// TODO mieux / a verifier (asList)
+//		Set<PersoStat> stats = johann.getCompetence().getStats().keySet();
+		Set<PersoStat> stats = new HashSet<PersoStat>(Arrays.asList(PersoStat.values()));
 		List<PersoStat> statsParType = new ArrayList<PersoStat>(stats);
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>(stats);
-
+		
 		// Choix des competences pour les BOSS par difficulte, type et classe
-		Competence competence = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence1 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence2 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence3 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence4 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence5 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence6 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence7 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence8 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
 
-		// ActionsCombat du BOSS
-		List<ActionCombat> actionsCombat = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
+		// ActionsCombat des BOSS
+		List<ActionCombat> actionsCombat1 = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
+		List<ActionCombat> actionsCombat2 = actionCombatManager.getActionsCombat(BossNom.BOSS2.name());
+		List<ActionCombat> actionsCombat3 = actionCombatManager.getActionsCombat(BossNom.BOSS3.name());
+		List<ActionCombat> actionsCombat4 = actionCombatManager.getActionsCombat(BossNom.BOSS4.name());
+		List<ActionCombat> actionsCombat5 = actionCombatManager.getActionsCombat(BossNom.BOSS5.name());
+		List<ActionCombat> actionsCombat6 = actionCombatManager.getActionsCombat(BossNom.BOSS6.name());
+		List<ActionCombat> actionsCombat7 = actionCombatManager.getActionsCombat(BossNom.BOSS7.name());
+		List<ActionCombat> actionsCombat8 = actionCombatManager.getActionsCombat(BossNom.BOSS8.name());
 
-		// Creation du BOSS
+		// Creation des BOSS
 		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax,
-				particularitesPhysique, particularitesSocial, phrasesPerso, photoBoss, photos, actionsCombat,
-				competence);
+				particularitesPhysique1, particularitesSocial1, phrasesPerso1, photoBoss1, photos1, actionsCombat1,
+				competence1);
+		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique2, particularitesSocial2, phrasesPerso2, photoBoss2, photos2, actionsCombat2,
+				competence2);
+		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique3, particularitesSocial3, phrasesPerso3, photoBoss3, photos3, actionsCombat3,
+				competence3);
+		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique4, particularitesSocial4, phrasesPerso4, photoBoss4, photos4, actionsCombat4,
+				competence4);
+		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique5, particularitesSocial5, phrasesPerso5, photoBoss5, photos5, actionsCombat5,
+				competence5);
+		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique6, particularitesSocial6, phrasesPerso6, photoBoss6, photos6, actionsCombat6,
+				competence6);
+		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique7, particularitesSocial7, phrasesPerso7, photoBoss7, photos7, actionsCombat7,
+				competence7);
+		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.name(), vieMax, manaMax, chargeMax,
+				particularitesPhysique8, particularitesSocial8, phrasesPerso8, photoBoss8, photos8, actionsCombat8,
+				competence8);
+		
 		personnagesBoss.add(boss1);
+		personnagesBoss.add(boss2);
+		personnagesBoss.add(boss3);
+		personnagesBoss.add(boss4);
+		personnagesBoss.add(boss5);
+		personnagesBoss.add(boss6);
+		personnagesBoss.add(boss7);
+		personnagesBoss.add(boss8);
 	}
 
 	public PersonnagePrincipal getPersoByPrenom(PersoPrenom nom) {
@@ -215,6 +304,7 @@ public class PersonnageManager implements Serializable {
 	}
 
 	public List<PersonnageBoss> getPersonnagesBoss() {
+		// TODO Update competences si utilisé 
 		return personnagesBoss;
 	}
 
@@ -227,10 +317,19 @@ public class PersonnageManager implements Serializable {
 			System.out.println("Nom : " + personnageBoss.getNom());
 			System.out.println("Nom : " + bossNom.name());
 			if (personnageBoss.getNom().equals(bossNom.name())) {
+				// Update competences boss en fonction des stats des joueurs
+				updateCompetences(personnageBoss);
 				return personnageBoss;
 			}
 		}
 		return null;
+	}
+
+	private void updateCompetences(Personnage personnage) {
+		Set<PersoStat> stats = new HashSet<PersoStat>(Arrays.asList(PersoStat.values()));
+		List<PersoStat> statsParType = new ArrayList<PersoStat>(stats);
+		List<PersoStat> statsParClasse = new ArrayList<PersoStat>(stats);
+		personnage.setCompetence(choixDesCompetences(difficulte, statsParType, statsParClasse));
 	}
 
 	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int numero, int niveauSorts, PersoClasse classe) {

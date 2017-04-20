@@ -2,12 +2,13 @@ package front;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Menu;
+import java.awt.Cursor;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JViewport;
 
 import core.ImageManager;
 import core.PersonnageManager;
@@ -26,7 +28,6 @@ import core.configuration.Constante;
 import modele.item.carte.Carte;
 import modele.item.lieu.Lieu;
 import modele.item.personnage.PersoPrenom;
-import modele.item.personnage.PersonnageBoss;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.poi.Poi;
 import modele.location.Location;
@@ -43,7 +44,7 @@ public class PanelCentre extends JPanel {
 	private JLayeredPane panelGuillaume = null;
 	private JLayeredPane panelJonathan = null;
 	private JLayeredPane panelGroupe = null;
-
+	 
 	public void generePanelCentre() {
 
 		this.cardLayout = new CardLayout();
@@ -103,13 +104,6 @@ public class PanelCentre extends JPanel {
 		buildPanelPerso(panelAli);
 		buildPanelPerso(panelGuillaume);
 		buildPanelPerso(panelJonathan);
-
-		// TODO : gerer le scroll click
-//		LieuManager lieuManager = MenuPrincipal.getMainFrame().getCoreManager().getLieuManager();
-		// Scroller scrollJohann = new
-		// Scroller(lieuManager.getDomicileByNom(PersoPrenom.JOHANN).getBackgroundPath());
-		// panelJohann.setLayout(new BorderLayout());
-		// panelJohann.add(scrollJohann, BorderLayout.CENTER);
 
 		cardLayout.addLayoutComponent(panelJohann, panelJohann.getName());
 		cardLayout.addLayoutComponent(panelNicolas, panelNicolas.getName());
@@ -230,6 +224,10 @@ public class PanelCentre extends JPanel {
 					ImageIcon resizedImage = ImageManager.resizeImage(imageIcon, Constante.PANEL_CENTRE_DIMENSION);			
 					JLabel background = new JLabel(resizedImage);
 					panel.add(background, Integer.valueOf(1));
+					// Gestion scroll dragged panel centre
+					Moustener moustener = new Moustener(background);
+					MainFrame.getScrollPaneCentre().getViewport().addMouseMotionListener(moustener);
+					MainFrame.getScrollPaneCentre().getViewport().addMouseListener(moustener);
 					cardLayout.show(MainFrame.getPanelCentre(), panel.getName());
 					revalidate();
 				}
@@ -293,6 +291,12 @@ public class PanelCentre extends JPanel {
 		
 		// On ajoute la carte au panel
 		panel.add(labelCarte, Integer.valueOf(1));
+		// Gestion scroll dragged panel centre
+		if (MainFrame.getScrollPaneCentre() != null) {
+			Moustener moustener = new Moustener(labelCarte);
+			MainFrame.getScrollPaneCentre().getViewport().addMouseMotionListener(moustener);
+			MainFrame.getScrollPaneCentre().getViewport().addMouseListener(moustener);
+		}
 		revalidate();
 		
 		// TODO
@@ -367,5 +371,37 @@ public class PanelCentre extends JPanel {
 		JLayeredPane panel = getPanelShowing();
 		panel.removeAll();
 		panel.add(new PanelFichePerso(prenomPerso));		
+	}
+	
+	private class Moustener extends MouseAdapter {
+		
+	    private final Cursor defCursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+	    private final Cursor hndCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+	    private final Point pp = new Point();
+	    private JLabel image;
+
+	    public Moustener(JLabel image) {
+	        this.image = image;
+	    }
+		
+		@Override
+		public void mouseDragged(MouseEvent e) {
+	        JViewport vport = (JViewport)e.getSource();
+	        Point cp = e.getPoint();
+	        Point vp = vport.getViewPosition();
+	        vp.translate(pp.x-cp.x, pp.y-cp.y);
+	        image.scrollRectToVisible(new Rectangle(vp, vport.getSize()));
+	        pp.setLocation(cp);
+		}
+		
+		public void mousePressed(MouseEvent e) {
+	        image.setCursor(hndCursor);
+	        pp.setLocation(e.getPoint());
+	    }
+
+	    public void mouseReleased(MouseEvent e) {
+	        image.setCursor(defCursor);
+	        image.repaint();
+	    }
 	}
 }
