@@ -135,6 +135,14 @@ public class MissionManager implements Serializable {
 		Bonus bonusVide = BonusManager.getBonusById(0);
 		Bonus bonusPiscine = BonusManager.getBonusById(10);
 		Bonus bonusFoot = BonusManager.getBonusById(20);
+		Bonus bonusBoss1 = BonusManager.getBonusById(101);
+		Bonus bonusBoss2 = BonusManager.getBonusById(102);
+		Bonus bonusBoss3 = BonusManager.getBonusById(103);
+		Bonus bonusBoss4 = BonusManager.getBonusById(104);
+		Bonus bonusBoss5 = BonusManager.getBonusById(105);
+		Bonus bonusBoss6 = BonusManager.getBonusById(106);
+		Bonus bonusBoss7 = BonusManager.getBonusById(10);
+		Bonus bonusBoss8 = BonusManager.getBonusById(108);
 
 
 		
@@ -249,6 +257,25 @@ public class MissionManager implements Serializable {
 		List<Item> itemsNecessairesMissionTom = new ArrayList<Item>();
 		itemsNecessairesMissionTom.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
 		
+		// Missions Boss
+		// TODO : verifier que les items debloquer correspondent aux SPECIAL
+		List<Item> itemsNecessairesMissionBoss1 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss1.add(actionCombatManager.getActionById(181));
+		List<Item> itemsNecessairesMissionBoss2 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss2.add(actionCombatManager.getActionById(281));
+		List<Item> itemsNecessairesMissionBoss3 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss3.add(actionCombatManager.getActionById(381));
+		List<Item> itemsNecessairesMissionBoss4 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss4.add(actionCombatManager.getActionById(581));
+		List<Item> itemsNecessairesMissionBoss5 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss5.add(actionCombatManager.getActionById(481));
+		List<Item> itemsNecessairesMissionBoss6 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss6.add(actionCombatManager.getActionById(781));
+		List<Item> itemsNecessairesMissionBoss7 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss7.add(actionCombatManager.getActionById(681));
+		List<Item> itemsNecessairesMissionBoss8 = new ArrayList<Item>();
+		itemsNecessairesMissionBoss8.add(actionCombatManager.getActionById(882));
+		
 		
 		// TODO item potion de combat (rez, degats, stunt, taunt)
 
@@ -264,7 +291,6 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission102.add(popoVie25);
 		itemsDebloquesMission102.add(popoMana25);
 		itemsDebloquesMission102.add(bonusRapidite5);
-
 		// Mission 103
 		List<Item> itemsDebloquesMission103 = new ArrayList<Item>();
 		itemsDebloquesMission103.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
@@ -439,6 +465,54 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission607 = new ArrayList<Item>();
 		itemsDebloquesMission607.add(actionCombatManager.getActionById(544));
 		
+		// Mission 1001
+		List<Item> itemsDebloquesMission1001 = new ArrayList<Item>();
+		itemsDebloquesMission1001.add(bonusChance20);
+		itemsDebloquesMission1001.add(popoVie100);
+		itemsDebloquesMission1001.add(popoMana100);
+		
+		// Mission 1002
+		List<Item> itemsDebloquesMission1002 = new ArrayList<Item>();
+		itemsDebloquesMission1002.add(bonusChance20);
+		itemsDebloquesMission1002.add(popoVie100);
+		itemsDebloquesMission1002.add(popoMana100);
+		
+		// Mission 1003
+		List<Item> itemsDebloquesMission1003 = new ArrayList<Item>();
+		itemsDebloquesMission1003.add(bonusChance20);
+		itemsDebloquesMission1003.add(popoVie100);
+		itemsDebloquesMission1003.add(popoMana100);
+		
+		// Mission 1004
+		List<Item> itemsDebloquesMission1004 = new ArrayList<Item>();
+		itemsDebloquesMission1004.add(bonusChance20);
+		itemsDebloquesMission1004.add(popoVie100);
+		itemsDebloquesMission1004.add(popoMana100);
+		
+		// Mission 1005
+		List<Item> itemsDebloquesMission1005 = new ArrayList<Item>();
+		itemsDebloquesMission1005.add(bonusChance20);
+		itemsDebloquesMission1005.add(popoVie100);
+		itemsDebloquesMission1005.add(popoMana100);
+		
+		// Mission 1006
+		List<Item> itemsDebloquesMission1006 = new ArrayList<Item>();
+		itemsDebloquesMission1006.add(bonusChance20);
+		itemsDebloquesMission1006.add(popoVie100);
+		itemsDebloquesMission1006.add(popoMana100);
+		
+		// Mission 1007
+		List<Item> itemsDebloquesMission1007 = new ArrayList<Item>();
+		itemsDebloquesMission1007.add(bonusChance20);
+		itemsDebloquesMission1007.add(popoVie100);
+		itemsDebloquesMission1007.add(popoMana100);
+		
+		// Mission 1008
+		List<Item> itemsDebloquesMission1008 = new ArrayList<Item>();
+		itemsDebloquesMission1008.add(bonusChance20);
+		itemsDebloquesMission1008.add(popoVie100);
+		itemsDebloquesMission1008.add(popoMana100);
+		
 		// MISSIONS PRINCIPAL
 		// Deblocages des persos et domiciles
 		Mission mission101 = new Mission(101, "Rencontrer Johann", "Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), itemsDebloquesMission101, 1, false);
@@ -525,32 +599,34 @@ public class MissionManager implements Serializable {
 		// MISSION MAISON YO
 		// MISSION MAISON NICO
 
+		// TODO objet debloqués correspondant a la mission boss
+		
 		// MISSIONS YO
-		Mission mission1001 = new Mission(1001, "Boss Yo", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,	MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1001 = new Mission(1001, "Boss Yo", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusBoss1, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, itemsNecessairesMissionBoss1, itemsDebloquesMission1001, 0, false);
 		
 		// MISSIONS NICO
-		Mission mission1002 = new Mission(1002, "Boss Nico", "Lara Croft", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS2, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1002 = new Mission(1002, "Boss Nico", "Lara Croft", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusBoss2, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS2, itemsNecessairesMissionBoss2, itemsDebloquesMission1002, 0, false);
 		
 		// MISSIONS PIP
-		Mission mission1003 = new Mission(1003, "Boss Pip", "Dumbo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS3, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1003 = new Mission(1003, "Boss Pip", "Dumbo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusBoss3, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS3, itemsNecessairesMissionBoss3, itemsDebloquesMission1003, 0, false);
 
 		// MISSIONS TOM
-		Mission mission1004 = new Mission(1004, "Boss Tom", "Hitler", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS4, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1004 = new Mission(1004, "Boss Tom", "Hitler", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusBoss4, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS4, itemsNecessairesMissionBoss4, itemsDebloquesMission1004, 0, false);
 
 		// MISSIONS YA
-		Mission mission1005 = new Mission(1005, "Boss Ya", "Kurt Skywalker", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS5, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1005 = new Mission(1005, "Boss Ya", "Kurt Skywalker", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusBoss5, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS5, itemsNecessairesMissionBoss5, itemsDebloquesMission1005, 0, false);
 
 		// MISSIONS ALI
-		Mission mission1006 = new Mission(1006, "Boss Ali", "Mickael Jackson", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS6, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1006 = new Mission(1006, "Boss Ali", "Mickael Jackson", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusBoss6, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS6, itemsNecessairesMissionBoss6, itemsDebloquesMission1006, 0, false);
 
 		// MISSIONS GUY
-		Mission mission1007 = new Mission(1007, "Boss Guy", "Al Pacino", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS7, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
+		Mission mission1007 = new Mission(1007, "Boss Guy", "Al Pacino", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusBoss7, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.HANDICAPES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS7, itemsNecessairesMissionBoss7, itemsDebloquesMission1007, 0, false);
 
 		// MISSIONS RUSS
-		Mission mission1008 = new Mission(1008, "Boss Russ", "Père de Yo", imagePaths1, sonPaths1, videoPaths1,	PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull,	MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS8, new ArrayList<Item>(), new ArrayList<Item>(), 0,	false);
+		Mission mission1008 = new Mission(1008, "Boss Russ", "...", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusBoss8, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS8, itemsNecessairesMissionBoss8, itemsDebloquesMission1008, 0, false);
 
 		// MISSION FINAL
-		// TODO faire dependre la mission final de toutes les missions boss
+		// TODO faire dependre la mission final de toutes les missions boss (item)
 		// TODO (TOUS LES BOSS)
 		Mission mission1000 = new Mission(1000, "Mission Final", "La fin justifie les moyens", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
@@ -626,6 +702,14 @@ public class MissionManager implements Serializable {
 		missions.add(mission902);
 
 		missions.add(mission1000);
+		missions.add(mission1001);
+		missions.add(mission1002);
+		missions.add(mission1003);
+		missions.add(mission1004);
+		missions.add(mission1005);
+		missions.add(mission1006);
+		missions.add(mission1007);
+		missions.add(mission1008);
 
 		// Refresh Listes
 		triMissions();

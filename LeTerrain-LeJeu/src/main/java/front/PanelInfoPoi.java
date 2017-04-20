@@ -2,28 +2,24 @@ package front;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
+import java.awt.Cursor;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.JViewport;
 
 import core.MissionManager;
-import core.NomJeu;
 import core.configuration.Constante;
-import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionType;
-import modele.item.personnage.PersonnagePrincipal;
-import modele.item.personnage.PersonnageSecondaire;
 import modele.item.poi.Poi;
 
 public class PanelInfoPoi extends JPanel {
@@ -181,6 +177,11 @@ public class PanelInfoPoi extends JPanel {
 		panelNord.setBackground(Color.RED);
 		panelEst.setBackground(Color.BLUE);
 		panelSud.setBackground(Color.GREEN);
+		
+		// Gestion scroll dragged panel centre
+		Moustener moustener = new Moustener(this);
+		MainFrame.getScrollPaneCentre().getViewport().addMouseMotionListener(moustener);
+		MainFrame.getScrollPaneCentre().getViewport().addMouseListener(moustener);
 
 		this.setLayout(new BorderLayout());
 		this.add(panelNord, BorderLayout.NORTH);
@@ -190,4 +191,35 @@ public class PanelInfoPoi extends JPanel {
 		this.add(panelSud, BorderLayout.SOUTH);
 	}
 
+	private class Moustener extends MouseAdapter {
+		
+	    private final Cursor defCursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+	    private final Cursor hndCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+	    private final Point pp = new Point();
+	    private JPanel image;
+
+	    public Moustener(JPanel image) {
+	        this.image = image;
+	    }
+		
+		@Override
+		public void mouseDragged(MouseEvent e) {
+	        JViewport vport = (JViewport)e.getSource();
+	        Point cp = e.getPoint();
+	        Point vp = vport.getViewPosition();
+	        vp.translate(pp.x-cp.x, pp.y-cp.y);
+	        image.scrollRectToVisible(new Rectangle(vp, vport.getSize()));
+	        pp.setLocation(cp);
+		}
+		
+		public void mousePressed(MouseEvent e) {
+	        image.setCursor(hndCursor);
+	        pp.setLocation(e.getPoint());
+	    }
+
+	    public void mouseReleased(MouseEvent e) {
+	        image.setCursor(defCursor);
+	        image.repaint();
+	    }
+	}
 }
