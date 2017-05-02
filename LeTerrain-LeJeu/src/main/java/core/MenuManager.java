@@ -110,7 +110,6 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO : une seule mainframe/ supprimer la precedante
 				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
 				if (oldMainFrame != null) {
 					oldMainFrame.dispose();
@@ -192,7 +191,6 @@ public class MenuManager extends JMenuBar implements Serializable {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO : Affichage fiche perso
 					PanelCentre panelCentre = MainFrame.getPanelCentre();
 					panelCentre.afficheFichePerso(perso.getPrenom());
 				}

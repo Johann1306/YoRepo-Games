@@ -358,6 +358,7 @@ public class BonusManager implements Serializable {
 	}
 	
 	public static void distribueBonus(Groupe groupe, Bonus bonus) {
+		// TODO gestion perte/gain bonus/malus
 		for (PersonnagePrincipal perso : groupe.getPersos()) {
 			// On distribue le bonus si le perso est deja dans le groupe et qu'il est vivant 
 			if (bonus.getBonusMap().containsKey(perso.getPrenomPerso()) && perso.isDejaPresente() && !perso.isMort()) {

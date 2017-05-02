@@ -45,7 +45,7 @@ public class PoiManager implements Serializable {
 		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
 		
-		// TODO
+		// TODO faire toutes les missions
 		List<Mission> allMissions = missionManager.getAllMissions();
 		List<Mission> missionsPoiClasse = new ArrayList<Mission>();
 		List<Mission> missionsPoiCour = new ArrayList<Mission>();

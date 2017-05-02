@@ -15,7 +15,6 @@ import front.MainFrame;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.Item;
-import modele.item.ItemType;
 import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;

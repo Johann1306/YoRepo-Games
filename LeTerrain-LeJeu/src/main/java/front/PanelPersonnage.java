@@ -253,8 +253,7 @@ public class PanelPersonnage extends JPanel {
 									// affichage du panneau arrivee
 									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
 									perso.setDejaPresente(true);
-
-									// TODO : Affichage fiche perso
+									// Affichage fiche perso
 									MainFrame.getPanelCentre().afficheFichePerso(perso.getPrenomPerso().name());
 								}
 							} 

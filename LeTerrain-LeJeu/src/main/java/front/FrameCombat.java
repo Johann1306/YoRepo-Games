@@ -1296,8 +1296,7 @@ public class FrameCombat extends FrameJeu {
 		animationCible(lanceur, score, cibles);
 
 		// TODO son/image degats si critique true/false si bouclier si esquive
-		// si stun si taunt
-		// si degats
+		// si stun si taunt si degats si soin
 
 		// Pour chaque cible
 		for (Personnage cible : cibles) {

@@ -25,7 +25,6 @@ import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
-import modele.item.personnage.action.ActionCombat;
 import modele.jeu.Jeu;
 
 public class MissionManager implements Serializable {
@@ -36,7 +35,6 @@ public class MissionManager implements Serializable {
 	private List<Mission> missionsIndisponibles;
 	private List<Mission> missionsJouables;
 	private List<Mission> missionsTerminees;
-//	private int id = 0;
 
 	public void initialise(Difficulte difficultePartie, ActionCombatManager actionCombatManager,
 			PersonnageManager personnageManager, ItemManager itemManager) {
@@ -600,6 +598,7 @@ public class MissionManager implements Serializable {
 		// MISSION MAISON NICO
 
 		// TODO objet debloqués correspondant a la mission boss
+		// TODO relier les missions boss a des pois
 		
 		// MISSIONS YO
 		Mission mission1001 = new Mission(1001, "Boss Yo", "Père de Yo", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusBoss1, bonusVide, 1, 1, dateNull, MissionType.BOSS, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), BossNom.BOSS1, itemsNecessairesMissionBoss1, itemsDebloquesMission1001, 0, false);
@@ -632,16 +631,16 @@ public class MissionManager implements Serializable {
 		
 		
 		
-		// TEST
+		// TESTS
 		Mission mission900 = new Mission(900, "Premier Combat", "Combat tests dispo des le debut", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, false);
 		
-		// MISSION DEBLOQUEE PAR ITEMS
+		// MISSIONS DEBLOQUEE PAR ITEMS
 		Mission mission901 = new Mission(901, "Les perfs", "Battre la classe de perfectionnement", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission106, new ArrayList<Item>(), 0, false);
 
-		// MISSION DEBLOQUEE PAR DATE
+		// MISSIONS DEBLOQUEE PAR DATE
 		Mission mission902 = new Mission(902, "J+1", "                                          ", imagePaths1,	sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date3, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<Item>(), new ArrayList<Item>(), 0, true);
 
-		// MISSION DEBLOQUE ACTION_COMBAT
+		// MISSIONS PERSO
 
 		// Missions repetables => recompenses aleatoires (popo, fric, bonus leger)
 
@@ -986,11 +985,6 @@ public class MissionManager implements Serializable {
 			}
 		}
 	}
-
-//	private int incrementId() {
-//		id = id + 1;
-//		return id;
-//	}
 
 	public void distribueRecompenses(Mission mission, boolean win) {
 		
