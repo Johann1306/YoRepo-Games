@@ -137,7 +137,6 @@ public class PanelCentre extends JPanel {
 		JLabel labelCarte = new JLabel(resizedImage);
 
 		// On recupere les lieux disponibles pour cette carte
-		// TODO : JLabel nom de lieu 
 		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
 		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
 		for (Lieu lieu : lieuxPersoGroupe) {
@@ -298,11 +297,6 @@ public class PanelCentre extends JPanel {
 			MainFrame.getScrollPaneCentre().getViewport().addMouseListener(moustener);
 		}
 		revalidate();
-		
-		// TODO
-//		panel.setSize(new Dimension(labelCarte.getWidth(), labelCarte.getHeight()));
-		// TODO : contour couleur autour du panel centre
-//		panel.setMaximumSize(new Dimension(imageCarte.getIconWidth() + Constante.ESPACE_PANEL_CENTRE , imageCarte.getIconHeight() + Constante.ESPACE_PANEL_CENTRE));
 	}
 
 	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {

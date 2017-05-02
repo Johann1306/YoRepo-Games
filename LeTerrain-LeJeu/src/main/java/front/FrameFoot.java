@@ -163,7 +163,7 @@ public class FrameFoot extends FrameJeu {
 			persosAmis.add(ali);
 		}
 
-		// TODO
+		// TODO action quand clic perso
 		for (JButton boutonAmi : boutonsAmis) {
 			boutonAmi.addActionListener(new ActionListener() {
 				@Override

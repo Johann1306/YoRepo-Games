@@ -103,6 +103,27 @@ public class DateManager implements Serializable {
 		this.dateCourante = dateCourante;
 	}
 
+	public static String getDateFormatee(Date dateNaissance) {
+		String dateJour = "0";
+		String dateMois = "0";
+		int jour = dateNaissance.getDate();
+		int mois = dateNaissance.getMonth()+1;
+		if (jour<10) {
+			dateJour = dateJour.concat(String.valueOf(jour));
+		} else {
+			dateJour = String.valueOf(jour);
+		}
+		if (mois<10) {
+			dateMois = dateMois.concat(String.valueOf(mois));
+		} else {
+			dateMois = String.valueOf(mois);
+		}
+		
+		String dateFormatee = dateJour + "/" + dateMois + "/19" + dateNaissance.getYear();
+		
+		return dateFormatee;
+	}
+
 	
 //	public static void calculeMaxCaractere() {
 //		DateManager manager = new DateManager();

@@ -5,8 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
 import modele.item.lieu.Lieu;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
@@ -37,15 +35,15 @@ public class LieuManager implements Serializable {
 		List<String> sonPaths = new ArrayList<String>();
 		sonPaths.add(sonIconPath);
 		
-		// TODO 
-		Poi poiEcole1 = poiManager.getPoisById(1);
-		Poi poiEcole2 = poiManager.getPoisById(2);
-		Poi poiEcole3 = poiManager.getPoisById(3);
-		Poi poiEcole4 = poiManager.getPoisById(4);
-		Poi poiEcole5 = poiManager.getPoisById(5);
+		// TODO faire tous les pois
+		Poi poiEcoleClasse = poiManager.getPoisById(1);
+		Poi poiEcoleCour = poiManager.getPoisById(2);
+		Poi poiEcolePreau = poiManager.getPoisById(3);
+		Poi poiEcoleCantine = poiManager.getPoisById(4);
+		Poi poiEcoleSalleLecture = poiManager.getPoisById(5);
 
-		Poi poiTerrain1 = poiManager.getPoisById(100);
-		Poi poiTerrain2 = poiManager.getPoisById(101);
+		Poi poiTerrainCabane = poiManager.getPoisById(100);
+		Poi poiTerrainTerrain = poiManager.getPoisById(101);
 
 		Poi poiChezYo_portail = poiManager.getPoisById(200);
 		Poi poiChezYo_salon = poiManager.getPoisById(201);
@@ -82,13 +80,13 @@ public class LieuManager implements Serializable {
 		List<Poi> poisChezTom = new ArrayList<Poi>();
 		List<Poi> poisChezGuy = new ArrayList<Poi>();
 		
-		poisEcole.add(poiEcole1);
-		poisEcole.add(poiEcole2);
-		poisEcole.add(poiEcole3);
-		poisEcole.add(poiEcole4);
-		poisEcole.add(poiEcole5);
-		poisTerrain.add(poiTerrain1);		
-		poisTerrain.add(poiTerrain2);		
+		poisEcole.add(poiEcoleClasse);
+		poisEcole.add(poiEcoleCour);
+		poisEcole.add(poiEcolePreau);
+		poisEcole.add(poiEcoleCantine);
+		poisEcole.add(poiEcoleSalleLecture);
+		poisTerrain.add(poiTerrainCabane);		
+		poisTerrain.add(poiTerrainTerrain);		
 		poisChezYo.add(poiChezYo_portail);
 		poisChezYo.add(poiChezYo_salon);
 		poisChezYo.add(poiChezYo_garage);
@@ -118,10 +116,10 @@ public class LieuManager implements Serializable {
 		Lieu chezNico = new Lieu(3, "Chez nicolas", "La maison de Nicolas", imagePaths , sonPaths, null, PersoPrenom.Nicolas, new Point(0, 56), "image/lieu/MaisonNicoEtTom.png", poisChezNico, false);
 		Lieu chezYa = new Lieu(4, "Chez yannick", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.Yannick, new Point(500, 300), "image/lieu/MaisonYa.png", poisChezYa, false);
 		Lieu chezTom = new Lieu(5, "Chez thomas", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.Thomas, new Point(200, 300), "image/lieu/MaisonNicoEtTom.png", poisChezTom, false);
-		Lieu chezAli = new Lieu(6, "Chez ali", "La maison de Ali", imagePaths , sonPaths, null, PersoPrenom.Ali, new Point(100, 500), "image/lieu/MaisonYo.png", poisChezAli, false);
+		Lieu chezAli = new Lieu(6, "Chez ali", "La maison d'Ali", imagePaths , sonPaths, null, PersoPrenom.Ali, new Point(100, 500), "image/lieu/MaisonYo.png", poisChezAli, false);
 		Lieu chezGuy = new Lieu(7, "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.Guillaume, new Point(500, 980), "image/lieu/MaisonYo.png", poisChezGuy, false);
 		Lieu chezJo = new Lieu(8, "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.Jonathan, new Point(1800, 950), "image/lieu/MaisonYo.png", poisChezRuss, false);
-		Lieu ecole = new Lieu(9, "A l'ecole", "L'école élémentaire Jules Fery", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(500, 500), "image/lieu/Ecole.png", poisEcole, false);
+		Lieu ecole = new Lieu(9, "L'ecole", "L'école élémentaire Jules Ferry", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(500, 500), "image/lieu/Ecole.png", poisEcole, false);
 		Lieu terrain = new Lieu(10, "Le terrain", "Le site aux moults péripéties", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 800), "image/lieu/Terrain.png", poisTerrain, false);
 				
 		lieux.add(chezYo);

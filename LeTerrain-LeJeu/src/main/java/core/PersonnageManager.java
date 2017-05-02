@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -79,56 +80,56 @@ public class PersonnageManager implements Serializable {
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, "Yo",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 6, 13, 9, 0, 0), "Tchécoslovaques", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), "Tchécoslovaques", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Johann, false), new Competence(PersoPrenom.Johann, true), false);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, "Nico",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 7, 9, 0, 0), "Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), "Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Nicolas, false), new Competence(PersoPrenom.Nicolas, true), false);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, "Pip",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 8, 4, 9, 0, 0), "Françaises à grosses bites", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), "Françaises à grosses bites", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Pierre, false), new Competence(PersoPrenom.Pierre, true), false);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, "Darm",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 9, 5, 9, 0, 0), "Judéo-Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), "Judéo-Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Thomas, false), new Competence(PersoPrenom.Thomas, true), false);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, "Ya",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 4, 14, 9, 0, 0), "Françaises florales", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), "Françaises florales", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Yannick, false), new Competence(PersoPrenom.Yannick, true), false);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, "Ali",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, 7, 1, 9, 0, 0), "Pakistanaises", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), "Pakistanaises", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Ali, false), new Competence(PersoPrenom.Ali, true), false);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, "Guy",
-				new ArrayList<String>(), DateManager.genereUneDate(1982, 1, 11, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Guillaume, false), new Competence(PersoPrenom.Guillaume, true), false);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, "Russ",
-				new ArrayList<String>(), DateManager.genereUneDate(1983, 5, 19, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				new ArrayList<String>(), DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
@@ -146,9 +147,28 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des personnages Secondaires
 		personnagesSecondaires = new ArrayList<PersonnageSecondaire>();
-		PersonnageSecondaire barbara = new PersonnageSecondaire("Barbara", "Stolic");
+		PersonnageSecondaire jonathanMatignon = new PersonnageSecondaire("Jonathan", "Matignon");
+		PersonnageSecondaire ludovicVandeville = new PersonnageSecondaire("Ludovic", "Vandeville");
+		PersonnageSecondaire ludovicDasNeves = new PersonnageSecondaire("Ludovic", "Das neves");
+		PersonnageSecondaire mickaelKaragoz = new PersonnageSecondaire("Mickael", "Karagoz");
+		PersonnageSecondaire georgeCharpentier = new PersonnageSecondaire("George", "Charpentier");
+		PersonnageSecondaire miguelDosSantos = new PersonnageSecondaire("Miguel", "Dos Santos");
+		PersonnageSecondaire jonathanFlama = new PersonnageSecondaire("Jonathan", "Flama");
+		PersonnageSecondaire benjaminBlondel = new PersonnageSecondaire("Benjamin", "Blondel");
+		PersonnageSecondaire geoffreyMartino = new PersonnageSecondaire("Geoffrey", "Martino");
+		
+		PersonnageSecondaire pattyMartino = new PersonnageSecondaire("Patty", "Martino");
+		PersonnageSecondaire barbaraStolic = new PersonnageSecondaire("Barbara", "Stolic");
+		PersonnageSecondaire claireBB = new PersonnageSecondaire("Claire", "Blaque-Belair");
+		PersonnageSecondaire claireJaquet = new PersonnageSecondaire("Claire", "Jaquet");
+		PersonnageSecondaire jacquelineGuinet = new PersonnageSecondaire("Jacqueline", "Guinet");
+		PersonnageSecondaire shanazRicard = new PersonnageSecondaire("Shanaz", "Ricard");
+		PersonnageSecondaire priscillaRemy = new PersonnageSecondaire("Priscilla", "Remy");
+		PersonnageSecondaire judithRosenkrantz = new PersonnageSecondaire("Judith", "Rosenkrantz");
+		PersonnageSecondaire virginieIdjer = new PersonnageSecondaire("Virginie", "Idjer");
+		PersonnageSecondaire sophieLemoulec = new PersonnageSecondaire("Sophie", "Lemoulec");
 
-		personnagesSecondaires.add(barbara);
+		personnagesSecondaires.add(barbaraStolic);
 
 		// Chargement des personnages Ennemis
 		personnagesEnnemis = new ArrayList<PersonnageEnnemi>();
@@ -519,7 +539,7 @@ public class PersonnageManager implements Serializable {
 				.getActionsCombat(mission.getTypeEnnemis().name() + classe.name());
 
 		// Si le niveau du meilleur sort d'un joueur est plus grand que le
-		// niveau de base (1,3,6,10) du sort de l'ennemi
+		// niveau de base (1,3,6,10) du sort de l'ennemi (progression de la difficulte)
 		if (niveauSorts > actionsCombat.get(0).getNiveau()) {
 			for (ActionCombat action : actionsCombat) {
 				action.setNiveau(niveauSorts);
@@ -701,17 +721,19 @@ public class PersonnageManager implements Serializable {
 	}
 
 	public void regenerationNuit() {
-		System.out.println("Regeneration nuit");
+		//System.out.println("Regeneration nuit");
 		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
 			if (personnage.isMort()) {
 				// On ressucite les morts
 				personnage.setMort(false);
 			}
+			// Recalcul des stats en fonction des competences
 			personnage.setVieMax(personnage.getCompetence().getEndurance()*10);
 			personnage.setVie(personnage.getVieMax());
 			personnage.setManaMax(personnage.getCompetence().getIntelligence());
 			personnage.setMana(personnage.getManaMax());
 			personnage.setBouclier(0);
+			// TODO protection si item de defense
 			personnage.setNombreCharge(0);
 			personnage.setNombreChargeMax(personnage.getCompetence().getNervosite()/20);
 			// Inutile normalement

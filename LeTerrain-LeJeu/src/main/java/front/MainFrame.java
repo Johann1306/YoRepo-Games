@@ -45,7 +45,6 @@ public class MainFrame extends JFrame {
 
 	// Chargement Partie
 	public MainFrame(CoreManager manager) {
-		// TODO : virer super ?
 		super();
 		coreManager = manager;
 		MenuManager menuManager = new MenuManager();
@@ -121,9 +120,6 @@ public class MainFrame extends JFrame {
 		scrollPaneCentre.setVerticalScrollBar(jScrollBarCentreVertical);
 		scrollPaneCentre.setHorizontalScrollBar(jScrollBarCentreHorizontal);
 		scrollPaneCentre.getViewport().add(panelCentre);
-		
-		// TODO : autoscrolls sur les bords
-//		scrollPaneCentre.setAutoscrolls(true);
 		
 		// Gestion Panel video
 		

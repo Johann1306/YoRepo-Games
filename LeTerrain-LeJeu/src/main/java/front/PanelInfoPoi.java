@@ -83,6 +83,7 @@ public class PanelInfoPoi extends JPanel {
 							JPanel panelCondDfaite = new JPanel();
 							JPanel panelDifficulte = new JPanel();
 							JPanel panelTypeMission = new JPanel();
+							JPanel panelTypeJeu = new JPanel();
 							JPanel panelNombreEssais = new JPanel();
 							JPanel panelNombreVictoire = new JPanel();
 							JPanel panelDateMission = new JPanel();
@@ -97,6 +98,7 @@ public class PanelInfoPoi extends JPanel {
 							panelCondDfaite.add(new JLabel("Condition de defaite : " + mission.getConditionDefaite()));
 							panelDifficulte.add(new JLabel("Difficulté : " + mission.getDifficulty().name()));
 							panelTypeMission.add(new JLabel("Type de mission : " + mission.getMissionType().name()));
+							panelTypeJeu.add(new JLabel("Type de jeu : " + mission.getJeu().name()));
 							panelNombreEssais.add(new JLabel("Essais : " + mission.getNombreEssai()));
 							panelNombreVictoire.add(new JLabel("Victoires : " + mission.getNombreWin()));
 							panelDateMission.add(new JLabel("Date : " + mission.getDate()));
@@ -110,6 +112,7 @@ public class PanelInfoPoi extends JPanel {
 							panelCentre.add(panelCondDfaite);
 							panelCentre.add(panelDifficulte);
 							panelCentre.add(panelTypeMission);
+							panelCentre.add(panelTypeJeu);
 							panelCentre.add(panelNombreEssais);
 							panelCentre.add(panelNombreVictoire);
 							panelCentre.add(panelDateMission);

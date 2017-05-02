@@ -3,6 +3,7 @@ package front;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
@@ -14,9 +15,9 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JViewport;
 
+import core.DateManager;
 import core.ImageManager;
 import core.configuration.Constante;
 import modele.competence.PersoStat;
@@ -70,13 +71,16 @@ public class PanelFichePerso extends JPanel {
 		
 		JPanel panelVie = new JPanel();
 		JPanel panelMana = new JPanel();
+		panelVie.setBackground(couleur);
+		panelMana.setBackground(couleur);
 		
-		panelVie.add(new JLabel(vie + "/" + vieMax));
-		panelMana.add(new JLabel(mana + "/" + manaMax));
+		panelVie.add(new JLabel("Vie : " + vie + "/" + vieMax));
+		panelMana.add(new JLabel("Mana : " + mana + "/" + manaMax));
 		
 		JPanel panelPhoto = new JPanel();
 		BoxLayout boxlayoutPhoto = new BoxLayout(panelPhoto, BoxLayout.Y_AXIS);
 		panelPhoto.setLayout(boxlayoutPhoto);
+		panelPhoto.setBackground(couleur);
 		
 		panelPhoto.add(labelPhoto);
 		panelPhoto.add(panelVie);
@@ -96,14 +100,27 @@ public class PanelFichePerso extends JPanel {
 		List<PersonnageSecondaire> connaissances = perso.getConnaissances();
 		
 		JPanel panelInfos = new JPanel();
-		BoxLayout boxlayoutInfo = new BoxLayout(panelInfos, BoxLayout.Y_AXIS);
-		panelInfos.setLayout(boxlayoutInfo);
-		
+//		BoxLayout boxlayoutInfo = new BoxLayout(panelInfos, BoxLayout.Y_AXIS);
+//		panelInfos.setLayout(boxlayoutInfo);
+		panelInfos.setLayout(new GridLayout(5, 2));
+			
 		JLabel labelNom = new JLabel(nomFamille.name());
 		JLabel labelPrenom = new JLabel(prenom);
+		JLabel labelSurnom = new JLabel(surnom);
+		JLabel labelNaissance = new JLabel(DateManager.getDateFormatee(dateNaissance));
+		JLabel labelOrigines = new JLabel(origines);
 		
+		panelInfos.add(new JLabel("Nom"));
 		panelInfos.add(labelNom);
+		panelInfos.add(new JLabel("Prenom"));
 		panelInfos.add(labelPrenom);
+		panelInfos.add(new JLabel("Surnom"));
+		panelInfos.add(labelSurnom);
+		panelInfos.add(new JLabel("Naissance"));
+		panelInfos.add(labelNaissance);
+		panelInfos.add(new JLabel("Origines"));
+		panelInfos.add(labelOrigines);
+		panelInfos.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		// Stats
 		JLabel labelLuck = new JLabel(PersoStat.LUCK.name());
@@ -161,31 +178,57 @@ public class PanelFichePerso extends JPanel {
 		panelNervosite.add(labelNervositeValue);
 		
 		JPanel panelStats = new JPanel();
-		BoxLayout boxlayoutStats = new BoxLayout(panelStats, BoxLayout.Y_AXIS);
-		panelStats.setLayout(boxlayoutStats);
+		panelStats.setLayout(new GridLayout(9, 2));
 		
-		panelStats.add(panelLuck);
-		panelStats.add(panelExploit);
-		panelStats.add(panelTechnique);
-		panelStats.add(panelEndurance);
-		panelStats.add(panelResistance);
-		panelStats.add(panelRapidite);
-		panelStats.add(panelAgilite);
-		panelStats.add(panelIntelligence);
-		panelStats.add(panelNervosite);
+		panelStats.add(labelLuck);
+		panelStats.add(labelLuckValue);
+		panelStats.add(labelExploit);
+		panelStats.add(labelExploitValue);
+		panelStats.add(labelTechnique);
+		panelStats.add(labelTechniqueValue);
+		panelStats.add(labelEndurance);
+		panelStats.add(labelEnduranceValue);
+		panelStats.add(labelResistance);
+		panelStats.add(labelResistanceValue);
+		panelStats.add(labelRapidite);
+		panelStats.add(labelRapiditeValue);
+		panelStats.add(labelAgilite);
+		panelStats.add(labelAgiliteValue);
+		panelStats.add(labelIntelligence);
+		panelStats.add(labelIntelligenceValue);
+		panelStats.add(labelNervosite);
+		panelStats.add(labelNervositeValue);
+		panelStats.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+		BoxLayout boxlayoutCentre = new BoxLayout(panelCentre, BoxLayout.Y_AXIS);
+		panelCentre.setLayout(boxlayoutCentre);		
 		
-//		Object[][] donnees =  new Object[perso.getActionsCombatDisponibles().size()][9]; 
-//		int i = 0;
+		JPanel panelFiche = new JPanel();
+		panelFiche.setBackground(couleur);
 		
 		// Actions combat
 		JPanel panelActions = new JPanel();
-		BoxLayout boxlayoutActionsCombat = new BoxLayout(panelActions, BoxLayout.Y_AXIS);
-		panelActions.setLayout(boxlayoutActionsCombat);		
+		panelActions.setLayout(new GridLayout(perso.getActionsCombatDisponibles().size() + 1, 1));	
+		
+		// Entetes
+		JPanel panelEntetes = new JPanel();
+		panelEntetes.setLayout(new GridLayout(1, 9));
+		panelEntetes.add(new JLabel("Image"));
+		panelEntetes.add(new JLabel("Nom"));
+		panelEntetes.add(new JLabel("Info"));
+		panelEntetes.add(new JLabel("Niveau"));
+		panelEntetes.add(new JLabel("Pogression"));
+		panelEntetes.add(new JLabel("Type Cible"));
+		panelEntetes.add(new JLabel("Type Energie"));
+		panelEntetes.add(new JLabel("Type Sort"));
+		panelEntetes.add(new JLabel("Type Stat"));
+		panelEntetes.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		panelActions.add(panelEntetes);
+		
 		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
 			
 			JPanel panelActionCombat = new JPanel();
-			BoxLayout boxlayoutActionCombat = new BoxLayout(panelActionCombat, BoxLayout.X_AXIS);
-			panelActionCombat.setLayout(boxlayoutActionCombat);
+			panelActionCombat.setLayout(new GridLayout(1, 9));
 			
 			JLabel image = new JLabel(ImageManager.resizeImage(FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)), Constante.PERSO_IMAGE_DIMENSION_50_50));
 			JLabel nom = new JLabel(" " + actionCombat.getNom());
@@ -207,38 +250,18 @@ public class PanelFichePerso extends JPanel {
 			panelActionCombat.add(typeSort);
 			panelActionCombat.add(typeStat);
 			
-			panelActions.add(panelActionCombat);
+			panelActionCombat.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			
-//			Object[] donnee = {ImageManager.resizeImage(FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)), Constante.PERSO_IMAGE_DIMENSION_50_50),
-//					actionCombat.getNom(),
-//					actionCombat.getInformations(),
-//					actionCombat.getNiveau() + " / " + actionCombat.getNiveauMax(),
-//					actionCombat.getProgression() + " / " + actionCombat.getNiveau() * 10,
-//					actionCombat.getCibleType().name(),
-//					actionCombat.getEnergieType().name(),
-//					actionCombat.getSortType().name(),
-//					actionCombat.getPersoStat().name()}; 
-//			donnees[i] = donnee;
-//			i++;
+			panelActions.add(panelActionCombat);
 		}
-		
-//        String[] entetes = {"Image", "Nom", "Infos", "Niveau", "Progression", "Cible", "Energie", "Sort", "Stat"};
-// 
-//        JTable tableau = new JTable(donnees, entetes);
-//        tableau.setForeground(Color.WHITE);
-//        tableau.setBackground(couleur);
         
-        panelCentre.add(panelPhoto);
-        panelCentre.add(panelInfos);
-        panelCentre.add(panelStats);
-
-//        BoxLayout boxlayoutSud = new BoxLayout(panelSud, BoxLayout.Y_AXIS);
-//        panelSud.setLayout(boxlayoutSud);		
-// 
-//        panelSud.add(tableau.getTableHeader(), BorderLayout.CENTER);
-//        panelSud.add(tableau, BorderLayout.CENTER);
-		
-		panelSud.add(panelActions);
+		panelFiche.add(panelPhoto);
+		panelFiche.add(panelInfos);
+		panelFiche.add(panelStats);
+		panelFiche.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        panelCentre.add(panelFiche);
+        panelCentre.add(panelActions);
 		
 		panelOuest.setBackground(Color.PINK);
 		panelCentre.setBackground(couleur);
