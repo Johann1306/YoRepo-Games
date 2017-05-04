@@ -65,7 +65,9 @@ public class MainFrame extends JFrame {
 		setSize(1000, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-//      setUndecorated(true);
+		// TODO decommenter
+//		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//		setUndecorated(true);
 		
 //		pack();
 //		setResizable(false);

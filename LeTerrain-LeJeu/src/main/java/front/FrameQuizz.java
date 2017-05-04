@@ -157,9 +157,11 @@ public class FrameQuizz extends FrameJeu {
 		
 		// Message fin du jeu
 		if (win) {
+			// TODO son bonne reponse
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
 			JOptionPane.showMessageDialog(this, "Bonne Réponse !", "Fin du Quizz", 0, icon);
 		} else {
+			// TODO son mauvaise reponse
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
 			JOptionPane.showMessageDialog(this, "Mauvaise Réponse !", "Fin du Quizz", 0, icon);
 		}
