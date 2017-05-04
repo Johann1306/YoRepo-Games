@@ -15,7 +15,6 @@ public class QuizzManager implements Serializable {
 	private List<Enigme> enigmesInconnus;
 	private List<Enigme> enigmesConnus;
 	private List<Enigme> enigmesResolus;
-	private int id = 0;
 
 	public void initialise() {
 
@@ -57,7 +56,7 @@ public class QuizzManager implements Serializable {
 
 		String imagePath3 = "image/enigme/ali.png";
 		String videoPath3 = "video/Trololo.mp4";
-		String question3 = "Qui a découvert l'Amerique ?";
+		String question3 = "Qui a découvert l'Amerique en premier ?";
 		Reponse reponse31 = new Reponse("Gerard Depardieu", false);
 		Reponse reponse32 = new Reponse("Amerigo Vespuci", true);
 		Reponse reponse33 = new Reponse("Christophe Colomb", false);
@@ -129,7 +128,7 @@ public class QuizzManager implements Serializable {
 				enigmesConnus.removeAll(enigmesInconnus);
 			// Si toutes les enigmes ont ete resolus au moins une fois
 			} else {
-				// TODO Achievement TOUTE LES ENIGMES RESOLUS
+				// TODO Achievement TOUTE LES ENIGMES RESOLUS => recompenses
 				System.out.println("Achievement TOUTE LES ENIGMES RESOLUS");
 				// On repose toutes les enigmes
 				enigmesInconnus.addAll(enigmesResolus);

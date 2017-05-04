@@ -228,7 +228,7 @@ public class PanelFichePerso extends JPanel {
 		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
 			
 			JPanel panelActionCombat = new JPanel();
-			panelActionCombat.setLayout(new GridLayout(1, 9));
+			panelActionCombat.setLayout(new GridLayout(1, perso.getActionsCombatDisponibles().size()));
 			
 			JLabel image = new JLabel(ImageManager.resizeImage(FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)), Constante.PERSO_IMAGE_DIMENSION_50_50));
 			JLabel nom = new JLabel(" " + actionCombat.getNom());
@@ -254,6 +254,7 @@ public class PanelFichePerso extends JPanel {
 			
 			panelActions.add(panelActionCombat);
 		}
+//		panelActions.setPreferredSize(panelEntetes.getPreferredSize());
         
 		panelFiche.add(panelPhoto);
 		panelFiche.add(panelInfos);
