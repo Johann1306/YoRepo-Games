@@ -23,6 +23,9 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import com.google.common.base.Strings;
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import core.MusiqueManager;
 import core.configuration.Constante;
 
@@ -170,18 +173,19 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	}
 		
 	public static ImageIcon getImageIcon(final String pathAndFileName) {
+		if (Strings.isNullOrEmpty(pathAndFileName)) {
+			return null;
+		}
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
 	    if (url == null) {
 	    	return null;
 	    }
-		System.out.println(url.getPath());
 		Image image = Toolkit.getDefaultToolkit().getImage(url);
 	    return new ImageIcon(image);
 	}
 	
 	public static URL getURL(final String pathAndFileName) {
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
-		System.out.println(url.getPath());
 	    return url;
 	}
 

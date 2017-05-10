@@ -32,6 +32,7 @@ Indispensables:
 - faire un jar executable avec icone (embarquer les mp4 : ou repertoire a coté) (voir Jsmooth : crée un exe avec icone modifiable qui lance le jar)
 - Gerer l'installation sur un autre poste
 - les TODOs
+- virer les sysout
 - Remplir le contenu (Jeux)
 - gerer la difficulte generale
 - gerer les sons (a la bouche au micro)
