@@ -274,7 +274,7 @@ Series/Films/Emissions/Dessins Animes/Musique de l'epoque :
 			7 a la maison
 			amicalment votre
 			Family Ties (Marty McFly)
-			Arnold et willy
+			3 octobre 1982 : Arnold et Willy
 			Chapeau Melon et bottes de cuir
 			Kojak
 			L'amour du risque
@@ -417,17 +417,15 @@ Dessins Animes (80) :
 				
     1978 : Il etait une fois l'Homme
     7 janvier 1980 : Albator, le corsaire de l'espace
-	1981 : Bouba mon petit ourson
 	1981 : Cocoshaker
 	1981 sur Antenne 2 (Recre A2) : Quick et Flupke
     7 janvier 1981 : Capitaine Flam
     3 octobre 1981 : Ulysse 31
-    21 decembre 1981 : Bouba
+    21 decembre 1981 : Bouba mon petit ourson
 	1982 : Il etait une foise l'Espace
     1982 : Belle et Sebastien
     17 fevrier 1982 : Remi sans famille
     4 mars 1982 : Boule et Bill
-    3 octobre 1982 : Arnold et Willy
 	13 decembre 1982 sur Antenne 2 (Recre A2) : Tom Sawyer
 	27 decembre 1982 sur Antenne 2 (Recre A2) : Les Schtroumpfs
 	1983 : Musclor et Les maetres de leunivers
@@ -452,9 +450,6 @@ Dessins Animes (80) :
 	2 octobre 1985 sur Antenne 2 (Recre A2) : Clementine
     14 octobre 1985 (Salut les Petits Loups !) : Les Bisounours
 	14 octobre 1985 : Les Entrechats
-	1986 : Dragon Ball
-	1986 : Il etait une foise la Vie
-	1986 : Astro le petit robot
 	1986 : Cates Eye
 	1986 : Pingu
 	1986 : Boumbo
@@ -475,6 +470,8 @@ Dessins Animes (80) :
 	1987 : Le Piaf
 	1987 : Les Luxioles
 	1987 : S.O.S Fantemes
+	1987 : L'anglais avec Victor
+	janvier 1987 : Il etait une foise la Vie
 	7 janvier 1987 (Vitamine) : Mon petit poney
 	7 janvier 1987 sur Antenne 2 (Recre A2) : Les Ewoks
 	Mars 1987 : Princesse Sahara
@@ -487,6 +484,7 @@ Dessins Animes (80) :
     31 aoet 1988 (Club Dorothee) : Lamu
     2 janvier 1988 : La Bande e Picsou
 	14 mars 1988 : Diplodo
+	16 mars 1988 : Dragon Ball
     18 mars 1988 : Alf
 	6 avril 1988 (Club Dorothee) : Les chevaliers du zodiaque
 	6 avril 1988 : La Sagesse des Gnomes
@@ -495,19 +493,17 @@ Dessins Animes (80) :
 	5 septembre 1988 sur La Cinq (Youpi ! Leecole est finie) : Olive et Tom
     11 septembre 1988 : Galaxy Express 999
     12 septembre 1988 : Petit Ours Brun
-    1988 : Club Becebege
-	1989 : Pif et Hercule
-	1989 : Denver, le dernier dinosaure
-    23 janvier 1989 : Conan, le fils du futur
+    1988 : Club BCBG
 	11 fevrier 1989 (SameDynamite) : La panthere rose
+	20 mars 1989 : Denver, le dernier dinosaure
 	26 avril 1989 : Dino-Riders
 	11 septembre 1989 : But pour Rudy
 	11 septembre 1989 : Gwendoline
 	12 septembre 1989 : Sous le Signe des Mousquetaires
+	9 octobre 1989 : Pif et Hercule
 	8 novembre 1989 (Club Dorothee) : Le college fou, fou, fou
     11 decembre 1989 : Babar
-    decembre 1989 : Les Simpson
-	L'anglais avec Victor
+    17 decembre 1989 : Les Simpson
 	
 
 
