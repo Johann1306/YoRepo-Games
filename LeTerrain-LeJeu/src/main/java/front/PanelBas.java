@@ -75,8 +75,10 @@ public class PanelBas extends JPanel {
 		
 		List<Evenement> evenementsDisponibles = new LinkedList<Evenement>(MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsDisponibles());
 		panelEvenement.removeAll();
+		panelEvenement.repaint();
 		
 		// Tri les 10 derniers evenements
+		// TODO : Attention ! Problemes d'affichage si MAX_EVENEMENTS_AFFICHES /= 5
 		while (evenementsDisponibles.size() > Constante.MAX_EVENEMENTS_AFFICHES ) {
 			evenementsDisponibles.remove(0); 
 		}

@@ -115,12 +115,29 @@ public class MissionManager implements Serializable {
 		Date dateTortue = DateManager.genereUneDate(1991, Calendar.SEPTEMBER, 5, 12, 0, 0);
 		Date dateScout = DateManager.genereUneDate(1994, Calendar.SEPTEMBER, 5, 14, 00, 00);
 		Date dateColRoulé = DateManager.genereUneDate(1990, Calendar.OCTOBER, 11, 14, 00, 00);
-		Date dateSquat = DateManager.genereUneDate(1995, Calendar.JUNE, 7, 14, 00, 00);
+		Date dateSquat = DateManager.genereUneDate(1997, Calendar.JUNE, 7, 14, 00, 00);
 		Date dateMillenium = DateManager.genereUneDate(1999, Calendar.NOVEMBER, 1, 14, 00, 00);
 		Date dateDrDre = DateManager.genereUneDate(2000, Calendar.JULY, 18, 14, 00, 00);
 		Date datePerfusion = DateManager.genereUneDate(1990, Calendar.NOVEMBER, 11, 14, 00, 00);
 		Date dateSpiritisme = DateManager.genereUneDate(1997, Calendar.JUNE, 25, 14, 00, 00);
-		
+
+		Date datePoker = DateManager.genereUneDate(1998, Calendar.MAY, 20, 14, 00, 00);
+		Date dateGrotte = DateManager.genereUneDate(1996, Calendar.MAY, 18, 14, 00, 00);
+		Date dateEau = DateManager.genereUneDate(1999, Calendar.MAY, 16, 14, 00, 00);
+		Date dateBase = DateManager.genereUneDate(1997, Calendar.DECEMBER, 31, 20, 00, 00);
+		Date dateBuffy = DateManager.genereUneDate(2003, Calendar.OCTOBER, 17, 20, 00, 00);
+		Date dateRomeo = DateManager.genereUneDate(1997, Calendar.APRIL, 9, 20, 00, 00);
+		Date date6eme = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 15, 10, 00, 00);
+		Date dateBalcon = DateManager.genereUneDate(1997, Calendar.JUNE, 15, 21, 00, 00);
+
+		Date dateCa = DateManager.genereUneDate(1993, Calendar.OCTOBER, 16, 21, 00, 00);
+		Date dateNoel = DateManager.genereUneDate(1992, Calendar.DECEMBER, 25, 10, 00, 00);
+		Date dateFlaque = DateManager.genereUneDate(1999, Calendar.JULY, 25, 14, 00, 00);
+		Date dateMole = DateManager.genereUneDate(2000, Calendar.SEPTEMBER, 11, 14, 00, 00);
+		Date dateBranlette = DateManager.genereUneDate(1997, Calendar.JUNE, 30, 14, 00, 00);
+		Date dateRacaille = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 30, 14, 00, 00);
+		Date date2000 = DateManager.genereUneDate(2000, Calendar.JANUARY, 1, 9, 00, 00);
+		Date dateBoysBand = DateManager.genereUneDate(1998, Calendar.MAY, 14, 9, 00, 00);
 		
 		Date date310 = DateManager.genereUneDate(1999, Calendar.OCTOBER, 7, 14, 00, 00);
 		Date date308 = DateManager.genereUneDate(2000, Calendar.JANUARY, 7, 14, 00, 00);
@@ -235,6 +252,42 @@ public class MissionManager implements Serializable {
 		itemsNecessairesMission607.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
 		itemsNecessairesMission607.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
 		
+		// Mission 700
+		List<Item> itemsNecessairesMission700 = new ArrayList<Item>();
+		itemsNecessairesMission700.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission700.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission700.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission700.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission700.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		// Mission 701
+		List<Item> itemsNecessairesMission701 = new ArrayList<Item>();
+		itemsNecessairesMission701.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission701.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission701.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission701.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission701.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		// Mission 702
+		List<Item> itemsNecessairesMission702 = new ArrayList<Item>();
+		itemsNecessairesMission702.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission702.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		
+		// Mission 703
+		List<Item> itemsNecessairesMission703 = new ArrayList<Item>();
+		itemsNecessairesMission703.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission703.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission703.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission703.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission703.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		// Mission 707
+		List<Item> itemsNecessairesMission707 = new ArrayList<Item>();
+		itemsNecessairesMission707.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission707.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission707.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission707.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		
 		// Mission Terrain
 		List<Item> itemsNecessairesMissionTerrain = new ArrayList<Item>();
 		itemsNecessairesMissionTerrain.add(clesDuTerrain);
@@ -254,6 +307,14 @@ public class MissionManager implements Serializable {
 		// Mission Tom
 		List<Item> itemsNecessairesMissionTom = new ArrayList<Item>();
 		itemsNecessairesMissionTom.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		// Mission Ya
+		List<Item> itemsNecessairesMissionYa = new ArrayList<Item>();
+		itemsNecessairesMissionYa.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		
+		// Mission Pip
+		List<Item> itemsNecessairesMissionPip = new ArrayList<Item>();
+		itemsNecessairesMissionPip.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
 		
 		// Missions Boss
 		// TODO : verifier que les items debloquer correspondent aux SPECIAL
@@ -463,6 +524,70 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission607 = new ArrayList<Item>();
 		itemsDebloquesMission607.add(actionCombatManager.getActionById(544));
 		
+		// Mission 700
+		List<Item> itemsDebloquesMission700 = new ArrayList<Item>();
+		itemsDebloquesMission700.add(actionCombatManager.getActionById(412));
+		
+		// Mission 701
+		List<Item> itemsDebloquesMission701 = new ArrayList<Item>();
+		itemsDebloquesMission701.add(actionCombatManager.getActionById(414));
+	
+		// Mission 702
+		List<Item> itemsDebloquesMission702 = new ArrayList<Item>();
+		itemsDebloquesMission702.add(actionCombatManager.getActionById(416));
+		
+		// Mission 703
+		List<Item> itemsDebloquesMission703 = new ArrayList<Item>();
+		itemsDebloquesMission703.add(actionCombatManager.getActionById(417));
+		
+		// Mission 704
+		List<Item> itemsDebloquesMission704 = new ArrayList<Item>();
+		itemsDebloquesMission704.add(actionCombatManager.getActionById(439));
+		
+		// Mission 705
+		List<Item> itemsDebloquesMission705 = new ArrayList<Item>();
+		itemsDebloquesMission705.add(actionCombatManager.getActionById(442));
+		
+		// Mission 706
+		List<Item> itemsDebloquesMission706 = new ArrayList<Item>();
+		itemsDebloquesMission706.add(actionCombatManager.getActionById(446));
+		
+		// Mission 707
+		List<Item> itemsDebloquesMission707 = new ArrayList<Item>();
+		itemsDebloquesMission707.add(actionCombatManager.getActionById(448));
+		
+		// Mission 800
+		List<Item> itemsDebloquesMission800 = new ArrayList<Item>();
+		itemsDebloquesMission800.add(actionCombatManager.getActionById(302));
+		
+		// Mission 801
+		List<Item> itemsDebloquesMission801 = new ArrayList<Item>();
+		itemsDebloquesMission801.add(actionCombatManager.getActionById(313));
+	
+		// Mission 802
+		List<Item> itemsDebloquesMission802 = new ArrayList<Item>();
+		itemsDebloquesMission802.add(actionCombatManager.getActionById(314));
+		
+		// Mission 803
+		List<Item> itemsDebloquesMission803 = new ArrayList<Item>();
+		itemsDebloquesMission803.add(actionCombatManager.getActionById(317));
+		
+		// Mission 804
+		List<Item> itemsDebloquesMission804 = new ArrayList<Item>();
+		itemsDebloquesMission804.add(actionCombatManager.getActionById(334));
+		
+		// Mission 805
+		List<Item> itemsDebloquesMission805 = new ArrayList<Item>();
+		itemsDebloquesMission805.add(actionCombatManager.getActionById(338));
+		
+		// Mission 806
+		List<Item> itemsDebloquesMission806 = new ArrayList<Item>();
+		itemsDebloquesMission806.add(actionCombatManager.getActionById(343));
+		
+		// Mission 807
+		List<Item> itemsDebloquesMission807 = new ArrayList<Item>();
+		itemsDebloquesMission807.add(actionCombatManager.getActionById(346));
+		
 		// Mission 1001
 		List<Item> itemsDebloquesMission1001 = new ArrayList<Item>();
 		itemsDebloquesMission1001.add(bonusChance20);
@@ -580,6 +705,28 @@ public class MissionManager implements Serializable {
 		Mission mission607 = new Mission(607, "Expert en communication", "Faire une séance de spiritisme dans son salon", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateSpiritisme, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission607, itemsDebloquesMission607, 0, false);
 		// TODO mission special
 
+		// Sorts YA
+		Mission mission700 = new Mission(700, "Poker Face", "Ecraser une vogue menthol dans sa main et se brûler sans emotion pour ne pas se faire cramer, alors que c'est cuit", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, datePoker, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission700, itemsDebloquesMission700, 0, false);
+		Mission mission701 = new Mission(701, "Lançage de Pierre", "Résister aux assauts incessants et insistants de ses assistants en persistant et sans se désister", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateGrotte, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission701, itemsDebloquesMission701, 0, false);
+		Mission mission702 = new Mission(702, "Sainte Marie-Jeanne", "Conseiller ses alliés sur les bonnes pratiques de roulage et préciser que boire de l'eau, ca enlève la foncdé", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateEau, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission702, itemsDebloquesMission702, 0, false);
+		Mission mission703 = new Mission(703, "Célébration cyclique", "Participer au premier jour de l'an des familles, à base d'oeuf pourri, de caca et de trace de feu", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBase, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission703, itemsDebloquesMission703, 0, false);
+		Mission mission704 = new Mission(704, "Sexy Buffy", "Regarder l'intégralité des 7 saisons de Buffy sans se branler", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBuffy, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMission704, 0, false);
+		Mission mission705 = new Mission(705, "Romance Romano-Romantique", "Regarder une fois de plus 'Roméo + Juliette' en sachant pertinemment qu'à la fin le Titanic coulera", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateRomeo, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMission705, 0, false);
+		Mission mission706 = new Mission(706, "Ya Nickelback to the future", "Imposer son propre style musical et vestimentaire malgré la pression sociale de la masse", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date6eme, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMission706, 0, false);
+		Mission mission707 = new Mission(707, "A un poil près", "Sortir dans la rue et ramener Yo chez lui avant que sa mère ne l'enferme sur le balcon", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBalcon, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission707, itemsDebloquesMission707, 0, false);
+		// TODO mission special
+		
+		// Sorts PIP
+		Mission mission800 = new Mission(800, "Spray buccal", "Regarder le film 'Il est revenu' et devenir asthmatique temporairement parce que c'est à la mode", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateCa, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission800, 0, false);
+		Mission mission801 = new Mission(801, "Théorie et Pratique", "Recevoir comme cadeaux de noël des vêtements pour être habiller pour l'hiver ainsi qu'une bible et un livre sur l'onanisme", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNoel, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission801, 0, false);
+		Mission mission802 = new Mission(802, "Pierre 'Magic' Bellemarre", "Arrêter de faire des flaques partout en étanchant sa soif et protéger son jeu de carte des intempéries et de soi-même", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateFlaque, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission802, 0, false);
+		Mission mission803 = new Mission(803, "La mole c'est dur", "Valider par l'experience personelle le fait scientifique que certains organes poussent toute la vie", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateMole, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission803, 0, false);
+		Mission mission804 = new Mission(804, "Pierre Paul Ciseau", "Inventer un jeu de main tirant profit des années d'experience et d'entrainement de cette dernière", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBranlette, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission804, 0, false);
+		Mission mission805 = new Mission(805, "Soirée racaille", "Changer de coiffure pour un style moins chevelu et plus chevaleresque et de dress-code pour un style moins orthodoxe et plus racouillu", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateRacaille, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission805, 0, false);
+		Mission mission806 = new Mission(806, "Baise les gens", "Retourner dans le passé pour empêcher ses fils de pute de japanese de se faire secteur-Analisé l'anus du monde", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date2000, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission806, 0, false);
+		Mission mission807 = new Mission(807, "Boys-Band à B-Boys", "Evoluer radicalement de style musical en passant de la merde commerciale française au rap commercial américain comme son frère", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBoysBand, MissionType.PRINCIPAL, difficultePartie, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMission807, 0, false);
+		// TODO mission special
+
 		// MISSIONS REPETABLES BONUS
 		
 		// MISSIONS DATE FIXE
@@ -695,6 +842,24 @@ public class MissionManager implements Serializable {
 		missions.add(mission605);
 		missions.add(mission606);
 		missions.add(mission607);
+		
+		missions.add(mission700);
+		missions.add(mission701);
+		missions.add(mission702);
+		missions.add(mission703);
+		missions.add(mission704);
+		missions.add(mission705);
+		missions.add(mission706);
+		missions.add(mission707);
+		
+		missions.add(mission800);
+		missions.add(mission801);
+		missions.add(mission802);
+		missions.add(mission803);
+		missions.add(mission804);
+		missions.add(mission805);
+		missions.add(mission806);
+		missions.add(mission807);
 		
 		missions.add(mission900);
 		missions.add(mission901);
