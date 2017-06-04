@@ -52,15 +52,13 @@ public class PoiManager implements Serializable {
 		List<Mission> missionsPoiPreau = new ArrayList<Mission>();
 		List<Mission> missionsPoiCantine = new ArrayList<Mission>();
 		List<Mission> missionsPoiLecture = new ArrayList<Mission>();
-		List<Mission> missionsPoi6 = new ArrayList<Mission>();
-		List<Mission> missionsPoi7 = new ArrayList<Mission>();
-		List<Mission> missionsPoi8 = new ArrayList<Mission>();
 		List<Mission> missionsPoi100 = new ArrayList<Mission>();
 		List<Mission> missionsPoi101 = new ArrayList<Mission>();
 		List<Mission> missionsPoi200 = new ArrayList<Mission>();
 		List<Mission> missionsPoi201 = new ArrayList<Mission>();
 		List<Mission> missionsPoi202 = new ArrayList<Mission>();
 		List<Mission> missionsPoi203 = new ArrayList<Mission>();
+		List<Mission> missionsPoi204 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1000 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1001 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1002 = new ArrayList<Mission>();
@@ -72,6 +70,7 @@ public class PoiManager implements Serializable {
 		List<Mission> missionsPoi1300 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1301 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1302 = new ArrayList<Mission>();
+		List<Mission> missionsPoi1303 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1400 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1401 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1402 = new ArrayList<Mission>();		
@@ -95,8 +94,10 @@ public class PoiManager implements Serializable {
 			
 		// Yo
 		missionsPoi201.add(missionManager.getMissionById(200));
+		missionsPoi201.add(missionManager.getMissionById(703));
 		missionsPoi202.add(missionManager.getMissionById(504));
 		missionsPoi203.add(missionManager.getMissionById(507));
+		missionsPoi204.add(missionManager.getMissionById(707));
 		
 		// Russ
 		missionsPoi1000.add(missionManager.getMissionById(300));
@@ -127,7 +128,12 @@ public class PoiManager implements Serializable {
 		missionsPoi1201.add(missionManager.getMissionById(505));
 		
 		// Ya
+		missionsPoi1300.add(missionManager.getMissionById(701));
+		missionsPoi1300.add(missionManager.getMissionById(706));
+		missionsPoi1301.add(missionManager.getMissionById(704));
+		missionsPoi1301.add(missionManager.getMissionById(705));
 		missionsPoi1302.add(missionManager.getMissionById(506));
+		missionsPoi1303.add(missionManager.getMissionById(702));
 		
 		// Tom
 		missionsPoi1400.add(missionManager.getMissionById(601));
@@ -135,6 +141,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1401.add(missionManager.getMissionById(602));
 		missionsPoi1401.add(missionManager.getMissionById(605));
 		missionsPoi1401.add(missionManager.getMissionById(607));
+		missionsPoi1401.add(missionManager.getMissionById(700));
 		missionsPoi1402.add(missionManager.getMissionById(600));
 		missionsPoi1402.add(missionManager.getMissionById(603));
 		
@@ -155,6 +162,7 @@ public class PoiManager implements Serializable {
 		Poi poiChezYo_Salon = new Poi(201, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 200), missionsPoi201);
 		Poi poiChezYo_Garage = new Poi(202, "Garage", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi202);
 		Poi poiChezYo_Chambre = new Poi(203, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 450), missionsPoi203);
+		Poi poiChezYo_Jardin = new Poi(204, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 450), missionsPoi204);
 
 		Poi poiChezRuss_Salon = new Poi(1000, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), missionsPoi1000);
 		Poi poiChezRuss_Portail = new Poi(1001, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1001);
@@ -170,6 +178,7 @@ public class PoiManager implements Serializable {
 		Poi poiChezYa_Portail = new Poi(1300, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1300);
 		Poi poiChezYa_Salon = new Poi(1301, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1301);
 		Poi poiChezYa_Jardin = new Poi(1302, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1302);
+		Poi poiChezYa_Chambre = new Poi(1303, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 600), missionsPoi1303);
 
 		Poi poiChezTom_Portail = new Poi(1400, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1400);
 		Poi poiChezTom_Salon = new Poi(1401, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1401);
@@ -190,10 +199,12 @@ public class PoiManager implements Serializable {
 		pois.add(poiChezYo_Salon);
 		pois.add(poiChezYo_Garage);
 		pois.add(poiChezYo_Chambre);
+		pois.add(poiChezYo_Jardin);
 
 		pois.add(poiChezYa_Portail);
 		pois.add(poiChezYa_Salon);
 		pois.add(poiChezYa_Jardin);
+		pois.add(poiChezYa_Chambre);
 
 		pois.add(poiChezTom_Portail);
 		pois.add(poiChezTom_Salon);

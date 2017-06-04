@@ -15,11 +15,10 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JViewport;
 
 import core.DateManager;
-import core.ImageManager;
-import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersonnagePrincipal;
@@ -223,46 +222,78 @@ public class PanelFichePerso extends JPanel {
 		panelEntetes.add(new JLabel("Type Sort"));
 		panelEntetes.add(new JLabel("Type Stat"));
 		panelEntetes.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		panelActions.add(panelEntetes);
-		
-		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
-			
-			JPanel panelActionCombat = new JPanel();
-			panelActionCombat.setLayout(new GridLayout(1, perso.getActionsCombatDisponibles().size()));
-			
-			JLabel image = new JLabel(ImageManager.resizeImage(FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)), Constante.PERSO_IMAGE_DIMENSION_50_50));
-			JLabel nom = new JLabel(" " + actionCombat.getNom());
-			JLabel info = new JLabel(" " + actionCombat.getInformations());
-			JLabel niveau = new JLabel(" " + actionCombat.getNiveau() + " / " + actionCombat.getNiveauMax());
-			JLabel progression = new JLabel(" " + actionCombat.getProgression() + " / " + actionCombat.getNiveau() * 10);
-			JLabel typeCible = new JLabel(" " + actionCombat.getCibleType().name());
-			JLabel typeEnergie = new JLabel(" " + actionCombat.getEnergieType().name());
-			JLabel typeSort = new JLabel(" " + actionCombat.getSortType().name());
-			JLabel typeStat = new JLabel(" " + actionCombat.getPersoStat().name());
-			
-			panelActionCombat.add(image);
-			panelActionCombat.add(nom);
-			panelActionCombat.add(info);
-			panelActionCombat.add(niveau);
-			panelActionCombat.add(progression);
-			panelActionCombat.add(typeCible);
-			panelActionCombat.add(typeEnergie);
-			panelActionCombat.add(typeSort);
-			panelActionCombat.add(typeStat);
-			
-			panelActionCombat.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			
-			panelActions.add(panelActionCombat);
-		}
+//		panelActions.add(panelEntetes);
+//		
+//		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
+//			
+//			JPanel panelActionCombat = new JPanel();
+//			panelActionCombat.setLayout(new GridLayout(1, perso.getActionsCombatDisponibles().size()));
+//			
+//			JLabel image = new JLabel(ImageManager.resizeImage(FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)), Constante.PERSO_IMAGE_DIMENSION_50_50));
+//			JLabel nom = new JLabel(" " + actionCombat.getNom());
+//			JLabel info = new JLabel(" " + actionCombat.getInformations());
+//			JLabel niveau = new JLabel(" " + actionCombat.getNiveau() + " / " + actionCombat.getNiveauMax());
+//			JLabel progression = new JLabel(" " + actionCombat.getProgression() + " / " + actionCombat.getNiveau() * 10);
+//			JLabel typeCible = new JLabel(" " + actionCombat.getCibleType().name());
+//			JLabel typeEnergie = new JLabel(" " + actionCombat.getEnergieType().name());
+//			JLabel typeSort = new JLabel(" " + actionCombat.getSortType().name());
+//			JLabel typeStat = new JLabel(" " + actionCombat.getPersoStat().name());
+//			
+//			panelActionCombat.add(image);
+//			panelActionCombat.add(nom);
+//			panelActionCombat.add(info);
+//			panelActionCombat.add(niveau);
+//			panelActionCombat.add(progression);
+//			panelActionCombat.add(typeCible);
+//			panelActionCombat.add(typeEnergie);
+//			panelActionCombat.add(typeSort);
+//			panelActionCombat.add(typeStat);
+//			
+//			panelActionCombat.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//			
+//			panelActions.add(panelActionCombat);
+//		}
 //		panelActions.setPreferredSize(panelEntetes.getPreferredSize());
-        
+		
+		String[] entetes = {"Image", "Nom", "Info", "Niveau", "Pogression", "Type Cible", "Type Energie", "Type Sort", "Type Stat"};
+
+		Object[][] donnees = new Object[perso.getActionsCombatDisponibles().size()][9];
+		int i = 0;
+		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
+			donnees[i][0] = actionCombat.getImagePath().get(0);
+			donnees[i][1] = actionCombat.getNom();
+			donnees[i][2] = actionCombat.getInformations();
+			donnees[i][3] = actionCombat.getNiveau() + " / " + actionCombat.getNiveauMax();
+			donnees[i][4] = actionCombat.getProgression() + " / " + actionCombat.getNiveau() * 10;
+			donnees[i][5] = actionCombat.getCibleType().name();
+			donnees[i][6] = actionCombat.getEnergieType().name();
+			donnees[i][7] = actionCombat.getSortType().name();
+			donnees[i][8] = actionCombat.getPersoStat().name();			
+			i++;
+		}
+		
+		JTable tableau = new JTable(donnees, entetes);
+		tableau.setRowHeight(40);;
+		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		tableau.getColumnModel().getColumn(0).setCellRenderer(new ImageCellRenderer());
+		tableau.getColumnModel().getColumn(0).setMaxWidth(45);
+		tableau.getColumnModel().getColumn(1).setMaxWidth(350);
+		tableau.getColumnModel().getColumn(2).setMaxWidth(800);
+		tableau.getColumnModel().getColumn(3).setMaxWidth(60);
+		tableau.getColumnModel().getColumn(4).setMaxWidth(60);
+		tableau.getColumnModel().getColumn(5).setMaxWidth(120);
+		tableau.getColumnModel().getColumn(6).setMaxWidth(120);
+		tableau.getColumnModel().getColumn(7).setMaxWidth(170);
+		tableau.getColumnModel().getColumn(8).setMaxWidth(100);
+		
 		panelFiche.add(panelPhoto);
 		panelFiche.add(panelInfos);
 		panelFiche.add(panelStats);
-		panelFiche.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
         panelCentre.add(panelFiche);
-        panelCentre.add(panelActions);
+//        panelCentre.add(panelActions);
+        panelCentre.add(tableau.getTableHeader());
+        panelCentre.add(tableau);
 		
 		panelOuest.setBackground(Color.PINK);
 		panelCentre.setBackground(couleur);

@@ -49,6 +49,7 @@ public class LieuManager implements Serializable {
 		Poi poiChezYo_salon = poiManager.getPoisById(201);
 		Poi poiChezYo_garage = poiManager.getPoisById(202);
 		Poi poiChezYo_chambre = poiManager.getPoisById(203);
+		Poi poiChezYo_jardin = poiManager.getPoisById(204);
 
 		Poi poiChezRuss_salon = poiManager.getPoisById(1000);
 		Poi poiChezRuss_portail = poiManager.getPoisById(1001);
@@ -64,6 +65,7 @@ public class LieuManager implements Serializable {
 		Poi poiChezYa_portail = poiManager.getPoisById(1300);
 		Poi poiChezYa_salon = poiManager.getPoisById(1301);
 		Poi poiChezYa_jardin = poiManager.getPoisById(1302);
+		Poi poiChezYa_chambre = poiManager.getPoisById(1303);
 		
 		Poi poiChezTom_portail = poiManager.getPoisById(1400);
 		Poi poiChezTom_salon = poiManager.getPoisById(1401);
@@ -91,6 +93,7 @@ public class LieuManager implements Serializable {
 		poisChezYo.add(poiChezYo_salon);
 		poisChezYo.add(poiChezYo_garage);
 		poisChezYo.add(poiChezYo_chambre);
+		poisChezYo.add(poiChezYo_jardin);
 		poisChezRuss.add(poiChezRuss_portail);
 		poisChezRuss.add(poiChezRuss_salon);
 		poisChezRuss.add(poiChezRuss_jardin);
@@ -102,6 +105,7 @@ public class LieuManager implements Serializable {
 		poisChezYa.add(poiChezYa_portail);
 		poisChezYa.add(poiChezYa_salon);
 		poisChezYa.add(poiChezYa_jardin);
+		poisChezYa.add(poiChezYa_chambre);
 		poisChezTom.add(poiChezTom_portail);
 		poisChezTom.add(poiChezTom_salon);
 		poisChezTom.add(poiChezTom_jardin);
