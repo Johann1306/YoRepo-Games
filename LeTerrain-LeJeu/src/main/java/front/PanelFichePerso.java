@@ -210,18 +210,18 @@ public class PanelFichePerso extends JPanel {
 		panelActions.setLayout(new GridLayout(perso.getActionsCombatDisponibles().size() + 1, 1));	
 		
 		// Entetes
-		JPanel panelEntetes = new JPanel();
-		panelEntetes.setLayout(new GridLayout(1, 9));
-		panelEntetes.add(new JLabel("Image"));
-		panelEntetes.add(new JLabel("Nom"));
-		panelEntetes.add(new JLabel("Info"));
-		panelEntetes.add(new JLabel("Niveau"));
-		panelEntetes.add(new JLabel("Pogression"));
-		panelEntetes.add(new JLabel("Type Cible"));
-		panelEntetes.add(new JLabel("Type Energie"));
-		panelEntetes.add(new JLabel("Type Sort"));
-		panelEntetes.add(new JLabel("Type Stat"));
-		panelEntetes.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//		JPanel panelEntetes = new JPanel();
+//		panelEntetes.setLayout(new GridLayout(1, 9));
+//		panelEntetes.add(new JLabel("Image"));
+//		panelEntetes.add(new JLabel("Nom"));
+//		panelEntetes.add(new JLabel("Info"));
+//		panelEntetes.add(new JLabel("Niveau"));
+//		panelEntetes.add(new JLabel("Pogression"));
+//		panelEntetes.add(new JLabel("Type Cible"));
+//		panelEntetes.add(new JLabel("Type Energie"));
+//		panelEntetes.add(new JLabel("Type Sort"));
+//		panelEntetes.add(new JLabel("Type Stat"));
+//		panelEntetes.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 //		panelActions.add(panelEntetes);
 //		
 //		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
@@ -273,12 +273,12 @@ public class PanelFichePerso extends JPanel {
 		}
 		
 		JTable tableau = new JTable(donnees, entetes);
-		tableau.setRowHeight(40);;
+		tableau.setRowHeight(50);;
 		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		tableau.getColumnModel().getColumn(0).setCellRenderer(new ImageCellRenderer());
-		tableau.getColumnModel().getColumn(0).setMaxWidth(45);
+		tableau.getColumnModel().getColumn(0).setCellRenderer(new MyImageCellRenderer());
+		tableau.getColumnModel().getColumn(0).setMaxWidth(50);
 		tableau.getColumnModel().getColumn(1).setMaxWidth(350);
-		tableau.getColumnModel().getColumn(2).setMaxWidth(800);
+		tableau.getColumnModel().getColumn(2).setMaxWidth(960);
 		tableau.getColumnModel().getColumn(3).setMaxWidth(60);
 		tableau.getColumnModel().getColumn(4).setMaxWidth(60);
 		tableau.getColumnModel().getColumn(5).setMaxWidth(120);

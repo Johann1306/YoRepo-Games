@@ -6,6 +6,7 @@ Priorités :
 - Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats) => degats ennemis /4
 
 Problemes Graves: 
+- Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
 - Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false)
 - Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
 - Probleme affichage auras dans la fenetre des persos en combat (!= en fonction des persos ???)
@@ -52,6 +53,8 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- message d'information en debut de combat/de match pour indiquer a quoi correspondent les caracteristiques pour ce jeu
+- Message de prevention (attention le contenu de ce jeu peut ne pas être approprié à tous les ages, toutes les sensibilités et tous les sexes, une equipe de developpement multi-confessions et multi-culturelles, toute ressemblance avec des personnages réels est fortuite
 - ajouter sons mort par perso
 - faire un proxy pour ne pas recharger les images a chaque fois
 - stun/provocation esquivables ? ou pas?

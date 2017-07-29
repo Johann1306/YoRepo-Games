@@ -26,13 +26,13 @@ Phrases de merde :
 	
 	
 Actions : 
-appeler chez nico : sa mere repond
-appeler chez pierre : son pere repond
-appeler chez thomas : son frere repond
+appeler chez nico : sa mere repond (Nicolaaaas Telefono)
+appeler chez pierre : son pere repond	(Pieeeeerre, mes pantoufles)
+appeler chez thomas : son frere repond (c'est trop tard enculé)
 appeler chez ali : sa mere repond 
-appeler chez johann : son pere repond 
-appeler chez Ya : dark vador repond
-appeler chez Guillaume : ali repond
+appeler chez johann : son pere repond (Johann, malaxe moi les couilles)
+appeler chez Ya : dark vador repond 
+appeler chez Guillaume : ali repond 
 appeler chez russ : cheval chat chien poule vache moto cross
 + actions : demander de venir / rejoindre / aller ensemble
 
@@ -208,12 +208,12 @@ Jeu :	a la deli delo
 		
 		
 
-	Jeu de mains :	 je suis capitaine capitaine d'un navire, 
+	Jeu de mains :	 je suis capitaine capitaine d'un navire, je suis capitaine capitaine d'un bateau , (deli delo), plonger dans l'eau, remonter a bord
 			dans ma maison sous terre, omawe, omawe, hotel hotel au wistiti, hotel hotel au wistiti, one two three,
-			j'appuie sur le bouton, je prsse les citrons, je tourne la manivelle et voici mon caramelle	
+			j'appuie sur le bouton, je presse les citrons, je tourne la manivelle et voici mon caramelle	
 			
 	Jeu de ronde : 	un samedi soir je dit a ma mere, voulez vous savoir le garcon que j'aime, c'est un jeune garcon a qui j'ai donne mon nom, j'ai donne mon nom a ,
-			le fromage est battu , le fromage est battu hohe hohe hohe le fromage est battu, le fermier prend sa femme
+			le fromage est battu , le fromage est battu hohe hohe hohe le fromage est battu, le fermier prend sa femme, le femme prend son enfant, enfant prend la nounou, la nounou prend le chat, le chat la souris le fromage
 
 Expressions de l'epoque :
 	Misquine
@@ -225,7 +225,7 @@ Expressions de l'epoque :
 	Ils m'en mangent tellement qu'il veut plus m'en manger
 	
 Objets de l'epoque :
-	Waikiki, nounours kiki, pipas, pot de colle,  fido dido
+	Waikiki, nounours kiki, pipas, pot de colle, fido dido
 	magnetoscope, minitel, vynile, cassette VHS, disquette 4 pouces, cassette audio, lecteur de casette audio, walkman, laser disk, polaroid, montre casio, tamtam, amstrad, neo geo
 	Une banane a la ceinture, une cagoule, un k-way, bombers schott, t-Shirt lc. waikiki, jogging a pression adidas, basket Fila, nike air, gants magique
 	Magic troll, les totoches, les babies, Polly Pocket et Mighty Mask, les popples, les tamagoshi, skip it, la pogo ball
@@ -564,6 +564,12 @@ top 5/année
 Musique 80:
 
 Musique 90:
+
+Films 90 :
+- Ninja Kids
+- Les Goonies
+- L'histoire sans fin
+- Junior le Terrible
 
 Historique de l'evolution des jeux video :
 	- Arrivee de la sauvegarde dans les jeux
