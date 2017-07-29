@@ -52,6 +52,8 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- message d'information en debut de combat/de match pour indiquer a quoi correspondent les caracteristiques pour ce jeu
+- Message de prevention (attention le contenu de ce jeu peut ne pas être approprié à tous les ages, toutes les sensibilités et tous les sexes, une equipe de developpement multi-confessions et multi-culturelles, toute ressemblance avec des personnages réels est fortuite
 - ajouter sons mort par perso
 - faire un proxy pour ne pas recharger les images a chaque fois
 - stun/provocation esquivables ? ou pas?
