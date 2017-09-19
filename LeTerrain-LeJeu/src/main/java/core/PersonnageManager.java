@@ -418,7 +418,6 @@ public class PersonnageManager implements Serializable {
 			phrasesPerso.add("Meskine!");
 			phrasesPerso.add("Wesh, t'as une garette-ci?");
 			phrasesPerso.add("Hey Mademoiselle! Vous êtes trop charmante!");
-			phrasesPerso.add("Wesh ma gueule!");
 			phrasesPerso.add("Naal dine oumouk!");
 			phrasesPerso.add("Naal din bebek!");
 			particularitesPhysique.add("Parle en verlan.");
@@ -623,7 +622,7 @@ public class PersonnageManager implements Serializable {
 	public List<PersonnagePrincipal> getPersoVivants() {
 		List<PersonnagePrincipal> persosVivants = new ArrayList<PersonnagePrincipal>();
 		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
-			if (!personnage.isMort()) {
+			if (!personnage.isMort() && personnage.isDejaPresente()) {
 				persosVivants.add(personnage);
 			}
 		}
