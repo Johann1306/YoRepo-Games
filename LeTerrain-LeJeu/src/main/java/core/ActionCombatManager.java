@@ -198,7 +198,7 @@ public class ActionCombatManager implements Serializable {
 		imagePaths712.add("image/actionCombat/cascade.jpg");
 
 		List<String> imagePaths717 = new ArrayList<String>();
-		imagePaths717.add("image/actionCombat/aladin.jpg");
+		imagePaths717.add("image/actionCombat/aladdin.jpg");
 		
 		List<String> imagePaths718 = new ArrayList<String>();
 		imagePaths718.add("image/actionCombat/soirees.jpg");
@@ -553,7 +553,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat jonathanSort13   = new ActionCombat(843, "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MONO, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort14   = new ActionCombat(844, "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.RESURRECTION_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort15   = new ActionCombat(845, "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.TAUNT_MONO, PersoPrenom.Jonathan);
-		ActionCombat jonathanSort16   = new ActionCombat(846, "(Taunt Multi) I hate Niggers", "Met une pancarte raciste sur lui pour provoquer les ennemis", imagePaths846, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.ENDURANCE, SortType.TAUNT_MULTI, PersoPrenom.Jonathan);
+		ActionCombat jonathanSort16   = new ActionCombat(846, "(Taunt Multi) La mer noire", "Met une pancarte raciste sur lui pour provoquer les ennemis", imagePaths846, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.ENDURANCE, SortType.TAUNT_MULTI, PersoPrenom.Jonathan);
 		ActionCombat jonathanSort17   = new ActionCombat(847, "(Stun Mono) Pilote nerveux (Rush Hour)", "Sort de sa Punto ou gueule dans son retro pour impressioner un ennemi et le bloquer", imagePaths847, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.NERVOSITE, SortType.STUN_MONO, PersoPrenom.Jonathan);
 		ActionCombat jonathanSort18   = new ActionCombat(848, "(Stun Multi) Requins et veste fluorescente", "Met son accoutrement aux couleurs flashy pour éblouir les ennemis et les bloquer", imagePaths848, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.ENDURANCE, SortType.STUN_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSpecial1 = new ActionCombat(881, "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Jonathan);
