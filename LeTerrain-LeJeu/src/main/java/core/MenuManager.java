@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -38,6 +39,10 @@ public class MenuManager extends JMenuBar implements Serializable {
 		JMenuItem menuSauvegarder = new JMenuItem("Sauvegarder la partie en cours");
 		JMenuItem menuQuitter = new JMenuItem("Quitter");
 		menuFichePerso = new JMenu("Fiche Perso");
+		JMenu menuOptions = new JMenu("Options");
+		// TODO a supprimer
+		JCheckBoxMenuItem menuEvenments = new JCheckBoxMenuItem("Afficher les événements");
+		menuEvenments.setSelected(true);
 		//action = new JMenu("Action...");
 		
 		// TODO Fiche perso uniquement pour les persos deja presentes
@@ -152,6 +157,19 @@ public class MenuManager extends JMenuBar implements Serializable {
 				}
 			}
 		});
+		
+		menuEvenments.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (menuEvenments.isSelected()) {
+					MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().setEvenementsActives(true);
+				} else {
+					MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().setEvenementsActives(false);
+				}
+
+			}
+		});
 
 		this.add(menuFichier);
 		menuStart.add(menuFacile);
@@ -164,6 +182,8 @@ public class MenuManager extends JMenuBar implements Serializable {
 		menuFichier.add(menuQuitter);
 //		this.add(action);
 		this.add(menuFichePerso);
+		this.add(menuOptions);
+		menuOptions.add(menuEvenments);
 //		action.add(aller);
 //		aller.add(chezJohann);
 //		chezJohann.add(piedJohann);
