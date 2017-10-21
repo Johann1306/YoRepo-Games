@@ -26,6 +26,7 @@ public class EvenementManager implements Serializable {
 	private List<Evenement> evenements;
 	private List<Evenement> evenementsDisponibles;
 	private List<Evenement> evenementsIndisponibles;
+	private boolean evenementsActives = true;
 
 	public void initialise(ItemManager itemManager) {
 		
@@ -132,7 +133,7 @@ public class EvenementManager implements Serializable {
 		Evenement da27 = new Evenement("La Bande à Dingo", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1993, Calendar.MARCH, 1, 10, 0, 0), null);
 		Evenement da28 = new Evenement("Sailor Moon", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1993, Calendar.MAY, 1, 10, 0, 0), null);
 		Evenement da29 = new Evenement("Les Histoires du père Castor", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1993, Calendar.APRIL, 22, 10, 0, 0), null);
-		Evenement da30 = new Evenement("Il était une fois les Decouvreurs", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1994, Calendar.JANUARY, 1, 10, 0, 0), null);
+		Evenement da30 = new Evenement("Il était une fois... les Découvreurs", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1994, Calendar.JANUARY, 1, 10, 0, 0), null);
 		Evenement da31 = new Evenement("Les Pastagums", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1994, Calendar.FEBRUARY, 1, 10, 0, 0), null);
 		Evenement da32 = new Evenement("Les Animaniacs", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1994, Calendar.MARCH, 1, 10, 0, 0), null);
 		Evenement da33 = new Evenement("Zoo Cup", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1994, Calendar.MAY, 1, 10, 0, 0), null);
@@ -146,20 +147,22 @@ public class EvenementManager implements Serializable {
 		Evenement da41 = new Evenement("Minus et Cortex", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1996, Calendar.JANUARY, 1, 10, 0, 0), null);
 		Evenement da42 = new Evenement("Le Bus Magique", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1996, Calendar.APRIL, 1, 10, 0, 0), null);
 		Evenement da43 = new Evenement("The Mask", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1996, Calendar.SEPTEMBER, 1, 10, 0, 0), null);
-		Evenement da44 = new Evenement("Il était une fois les Explorateurs", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1997, Calendar.JANUARY, 1, 10, 0, 0), null);
+		Evenement da44 = new Evenement("Il était une fois... les Explorateurs", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1997, Calendar.JANUARY, 1, 10, 0, 0), null);
 		Evenement da45 = new Evenement("Drôles de Monstres", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1997, Calendar.SEPTEMBER, 1, 10, 0, 0), null);
 		Evenement da46 = new Evenement("South Park", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1998, Calendar.JULY, 17, 10, 0, 0), null);
-		Evenement da47 = new Evenement("Il était une fois notre Terre", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(2008, Calendar.JANUARY, 1, 10, 0, 0), null);
+		Evenement da47 = new Evenement("Batman", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1992, Calendar.SEPTEMBER, 5, 10, 0, 0), null);
+		Evenement da48 = new Evenement("Il était une fois... Les Amériques", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(1991, Calendar.OCTOBER, 28, 10, 0, 0), null);
+		Evenement da49 = new Evenement("Il était une fois... notre Terre", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME, DateManager.genereUneDate(2008, Calendar.JANUARY, 1, 10, 0, 0), null);
 	
 		// Dessins Animes 80 (10 ans)
-		Evenement da101 = new Evenement("Il était une fois l'Homme", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1990, Calendar.OCTOBER, 2, 10, 0, 0), null);
+		Evenement da101 = new Evenement("Il était une fois... l'Homme", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1990, Calendar.OCTOBER, 2, 10, 0, 0), null);
 		Evenement da102 = new Evenement("Albator", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1990, Calendar.DECEMBER, 7, 10, 0, 0), null);
 		Evenement da103 = new Evenement("Cocoshaker", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1991, Calendar.JANUARY, 2, 10, 0, 0), null);
 		Evenement da104 = new Evenement("Quick et Flupke", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1991, Calendar.FEBRUARY, 2, 10, 0, 0), null);
 		Evenement da105 = new Evenement("Capitaine Flam", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1991, Calendar.JANUARY, 7, 10, 0, 0), null);
 		Evenement da106 = new Evenement("Ulysse 31", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1991, Calendar.OCTOBER, 3, 10, 0, 0), null);
 		Evenement da107 = new Evenement("Bouba", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1991, Calendar.DECEMBER, 21, 10, 0, 0), null);
-		Evenement da108 = new Evenement("Il était une fois l'Espace", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1992, Calendar.JANUARY, 2, 10, 0, 0), null);
+		Evenement da108 = new Evenement("Il était une fois... l'Espace", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1992, Calendar.JANUARY, 2, 10, 0, 0), null);
 		Evenement da109 = new Evenement("Belle et Sebastien", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1992, Calendar.APRIL, 2, 10, 0, 0), null);
 		Evenement da110 = new Evenement("Rémi sans famille", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1992, Calendar.FEBRUARY, 17, 10, 0, 0), null);
 		Evenement da111 = new Evenement("Boule et Bill", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1992, Calendar.MARCH, 4, 10, 0, 0), null);
@@ -209,7 +212,7 @@ public class EvenementManager implements Serializable {
 		Evenement da155 = new Evenement("Les Luxioles", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.MARCH, 2, 10, 0, 0), null);
 		Evenement da156 = new Evenement("SOS Fantômes", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.APRIL, 2, 10, 0, 0), null);
 		Evenement da157 = new Evenement("L'Anglais avec Victor", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.MAY, 2, 10, 0, 0), null);
-		Evenement da158 = new Evenement("Il était une fois la Vie", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.JANUARY, 15, 10, 0, 0), null);
+		Evenement da158 = new Evenement("Il était une fois... la Vie", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.JANUARY, 15, 10, 0, 0), null);
 		Evenement da159 = new Evenement("Mon Petit Poney", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.JANUARY, 7, 10, 0, 0), null);
 		Evenement da160 = new Evenement("Les Ewoks", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.JANUARY, 8, 10, 0, 0), null);
 		Evenement da161 = new Evenement("Princesse Sarah", "", imagePathNull, sonPathNull, videoPathNull, EvenementTheme.SORTIE_DESSIN_ANIME_10ANS, DateManager.genereUneDate(1997, Calendar.MARCH, 15, 10, 0, 0), null);
@@ -306,6 +309,8 @@ public class EvenementManager implements Serializable {
 //		evenements.add(da45);
 //		evenements.add(da46);
 //		evenements.add(da47);
+//		evenements.add(da48);
+//		evenements.add(da49);
 
 //		evenements.add(da101);
 //		evenements.add(da102);
@@ -429,25 +434,27 @@ public class EvenementManager implements Serializable {
 				evenementsDisponibles.add(evenement);
 				evenementsIndisponibles.remove(evenement);
 				evenement.setDejaPresente(true);
-
-				// Lancer le son ou la musique associe a l evenement
-				if (evenement.getSonPath() != null) {
-					MusiqueManager.playSonEvenement(evenement.getSonPath());
-				}
-				
-				// Lancer la video associe a l evenement
-				if (evenement.getVideoPath() != null) {
-					VideoManager.play(evenement.getVideoPath());
-				}
-				
-				// Afficher JDialog pour l evenement
 				int type = getTypeEvenement(evenement);
-				ImageIcon image = FenetrePrincipal.getImageIcon(evenement.getImagePath());
-				// Si il n y a pas d image, on retourne l icone par defaut d un evenement
-				if (image == null || image.getIconWidth() == -1) {
-					image = FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png");
+
+				if (evenementsActives) {
+					// Lancer le son ou la musique associe a l evenement
+					if (evenement.getSonPath() != null) {
+						MusiqueManager.playSonEvenement(evenement.getSonPath());
+					}
+					
+					// Lancer la video associe a l evenement
+					if (evenement.getVideoPath() != null) {
+						VideoManager.play(evenement.getVideoPath());
+					}
+					
+					// Afficher JDialog pour l evenement
+					ImageIcon image = FenetrePrincipal.getImageIcon(evenement.getImagePath());
+					// Si il n y a pas d image, on retourne l icone par defaut d un evenement
+					if (image == null || image.getIconWidth() == -1) {
+						image = FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png");
+					}
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), evenement.getTitre(), type, image);
 				}
-				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), evenement.getTitre(), type, image);
 				
 				// Debloquer les items a debloquer 
 				List<Item> itemsDebloques = evenement.getItemsDebloques();
@@ -501,5 +508,13 @@ public class EvenementManager implements Serializable {
 			type = JOptionPane.ERROR_MESSAGE;
 		}
 		return type;
+	}
+
+	public boolean isEvenementsActives() {
+		return evenementsActives;
+	}
+
+	public void setEvenementsActives(boolean evenementsActives) {
+		this.evenementsActives = evenementsActives;
 	}
 }

@@ -7,7 +7,7 @@ Priorités :
 
 Problemes Graves: 
 - Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
-- Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false)
+- Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false) => Solution de secour : Ne pas permettre d'activer/desactiver le son au joueur!
 - Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
 - Probleme affichage auras dans la fenetre des persos en combat (!= en fonction des persos ???)
 - Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???) non reproductible mais recurrent
@@ -53,8 +53,11 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
-- message d'information en debut de combat/de match pour indiquer a quoi correspondent les caracteristiques pour ce jeu
+- Fiche perso : Agrandir l'image du sort quand on passe la souris ou click sur l'image 
+- Option activer/desactiver les evenements (Series, Dessins Animes, Film, Jeux, Musiques) 
+- Limites du jeu : Compte tenu de l'aspect nostalgique année 80-90 du jeu, nous ne feront pas de reference aux termes suivants : Swag, PLS, Vegan, PNL, Jul, Squeezy
 - Message de prevention (attention le contenu de ce jeu peut ne pas être approprié à tous les ages, toutes les sensibilités et tous les sexes, une equipe de developpement multi-confessions et multi-culturelles, toute ressemblance avec des personnages réels est fortuite
+- message d'information en debut de combat/de match pour indiquer a quoi correspondent les caracteristiques pour ce jeu
 - ajouter sons mort par perso
 - faire un proxy pour ne pas recharger les images a chaque fois
 - stun/provocation esquivables ? ou pas?
