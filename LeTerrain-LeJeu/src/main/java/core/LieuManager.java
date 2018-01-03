@@ -50,6 +50,7 @@ public class LieuManager implements Serializable {
 		Poi poiChezYo_garage = poiManager.getPoisById(202);
 		Poi poiChezYo_chambre = poiManager.getPoisById(203);
 		Poi poiChezYo_jardin = poiManager.getPoisById(204);
+		Poi poiChezYo_salleDeBain = poiManager.getPoisById(205);
 
 		Poi poiChezRuss_salon = poiManager.getPoisById(1000);
 		Poi poiChezRuss_portail = poiManager.getPoisById(1001);
@@ -104,6 +105,7 @@ public class LieuManager implements Serializable {
 		poisChezYo.add(poiChezYo_garage);
 		poisChezYo.add(poiChezYo_chambre);
 		poisChezYo.add(poiChezYo_jardin);
+		poisChezYo.add(poiChezYo_salleDeBain);
 		poisChezRuss.add(poiChezRuss_portail);
 		poisChezRuss.add(poiChezRuss_salon);
 		poisChezRuss.add(poiChezRuss_jardin);
