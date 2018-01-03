@@ -18,7 +18,7 @@ Problemes Legers:
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 - Probleme missions date bouton disable (si date ok mais perso necessaire ko) =>> correction moyenne a verifier
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
-- Probleme derniere action d'un combat avant la fin du tour/combat n'est pas visible (pas de solution?)
+- Probleme derniere action d'un combat avant la fin du tour/combat n'est pas visible (pas de solution? timer?)
 
 Indispensables:
 - Gestion des BOSS (nom, photo, actionsCombat specifiques)
@@ -53,6 +53,7 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- gestion d'armes et armures generés aleatoirement (avec pouvoir speciaux : +50 attaque/def/chances/etc ... avec  4 types blanc/vert/bleu/violet ou  vert/bleu/rouge/violet) 
 - Fiche perso : Agrandir l'image du sort quand on passe la souris ou click sur l'image 
 - Option activer/desactiver les evenements (Series, Dessins Animes, Film, Jeux, Musiques) 
 - Limites du jeu : Compte tenu de l'aspect nostalgique année 80-90 du jeu, nous ne feront pas de reference aux termes suivants : Swag, PLS, Vegan, PNL, Jul, Squeezy
