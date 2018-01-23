@@ -609,7 +609,7 @@ public class FrameCombat extends FrameJeu {
 	}
 
 	private PersoClasse randomClasses(List<PersoClasse> persoClasses) {
-		int index = RandomManager.random(0, persoClasses.size());
+		int index = RandomManager.random(0, persoClasses.size()-1);
 		return persoClasses.get(index);
 	}
 
