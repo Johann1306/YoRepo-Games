@@ -39,4 +39,9 @@ public class Aura {
 		this.valeurAjoutee = valeurAjoutee;
 	}
 	
+	@Override
+	public String toString() {
+		return stat.name();
+	}
+	
 }
