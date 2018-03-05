@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -220,15 +221,6 @@ public class FrameCombat extends FrameJeu {
 				firstPerso = jonathan.getPrenomPerso();
 			}
 		}
-		if (yannick.isDejaPresente() && !yannick.isMort()) {
-			panelPersos.add(boutonYannick);
-			boutonsAmis.add(boutonYannick);
-			amisVivants.add(yannick);
-			amisPresents.add(yannick);
-			if (firstPerso == null) {
-				firstPerso = yannick.getPrenomPerso();
-			}
-		}
 		if (johann.isDejaPresente() && !johann.isMort()) {
 			panelPersos.add(boutonJohann);
 			boutonsAmis.add(boutonJohann);
@@ -236,6 +228,15 @@ public class FrameCombat extends FrameJeu {
 			amisPresents.add(johann);
 			if (firstPerso == null) {
 				firstPerso = johann.getPrenomPerso();
+			}
+		}
+		if (yannick.isDejaPresente() && !yannick.isMort()) {
+			panelPersos.add(boutonYannick);
+			boutonsAmis.add(boutonYannick);
+			amisVivants.add(yannick);
+			amisPresents.add(yannick);
+			if (firstPerso == null) {
+				firstPerso = yannick.getPrenomPerso();
 			}
 		}
 		if (ali.isDejaPresente() && !ali.isMort()) {
@@ -648,8 +649,10 @@ public class FrameCombat extends FrameJeu {
 			JPanel panelMenu = new JPanel();
 			menuBar.add(menuActions);
 			panelMenu.add(menuBar);
-			panelMenu.setMaximumSize(new Dimension(Constante.PANEL_ACTION_PERSO_LARGEUR, 30));
-
+			//////// TODO Gestion bug taille du bouton ACTION
+//			panelMenu.setMaximumSize(new Dimension(Constante.PANEL_ACTION_PERSO_LARGEUR, 30));
+			////////
+			
 			// Gestion info stat
 			// TODO faire une methode generique comme au debut plutot que
 			// gestionLabel()
@@ -939,7 +942,7 @@ public class FrameCombat extends FrameJeu {
 	}
 
 	private void buildMenuActions(Personnage perso) {
-
+		
 		menuActions.removeAll();
 
 		JMenu menuAttaque = new JMenu("ATTAQUE");
@@ -950,7 +953,15 @@ public class FrameCombat extends FrameJeu {
 		// Menu Attaque
 		List<ActionCombat> actionsCombat = perso.getActionsCombat();
 
+		// Affiche les menus si il y a au moins un sort du type (special caché au debut!)
+		// TODO genere un bug d'affichage du menu quand deux joueurs n'ont pas le meme nombre de menu ? supprimer les boolean mais on perd la surprise du special
+		boolean hasAttaque = false;
+		boolean hasDefense = false;
+		boolean hasPouvoir = false;
+		boolean hasSpecial = false;
+		
 		if (actionsCombat != null) {
+			
 			for (ActionCombat actionCombat : actionsCombat) {
 				// Si l'action est disponible
 				if (actionCombat.isDisponible()) {
@@ -958,26 +969,47 @@ public class FrameCombat extends FrameJeu {
 
 					if (actionCombat.getActionCombatType() == ActionCombatType.ATTAQUE) {
 						menuAttaque.add(action);
+						hasAttaque = true;
 					} else if (actionCombat.getActionCombatType() == ActionCombatType.DEFENSE) {
 						menuDefense.add(action);
+						hasDefense = true;
 					} else if (actionCombat.getActionCombatType() == ActionCombatType.POUVOIR) {
 						menuPouvoir.add(action);
+						hasPouvoir = true;
 					} else if (actionCombat.getActionCombatType() == ActionCombatType.SPECIAL) {
 						menuSpecial.add(action);
+						hasSpecial = true;
 					}
 				}
 			}
 		}
-		menuActions.add(menuAttaque);
-		menuActions.add(menuDefense);
-		menuActions.add(menuPouvoir);
+		if (!hasSpecial) {
+			menuSpecial.setEnabled(false);
+//			menuSpecial.setVisible(false);
+		}
+		if (!hasPouvoir) {
+			menuPouvoir.setEnabled(false);
+//			menuPouvoir.setVisible(false);
+		}
+		if (!hasDefense) {
+			menuDefense.setEnabled(false);
+//			menuDefense.setVisible(false);
+		}
+		if (!hasAttaque) {
+			menuAttaque.setEnabled(false);
+//			menuAttaque.setVisible(false);
+		}
 		menuActions.add(menuSpecial);
+		menuActions.add(menuPouvoir);
+		menuActions.add(menuDefense);
+		menuActions.add(menuAttaque);
 	}
 
 	// Creation des boutons ActionCombat
 	private JMenu configureBoutonAction(Personnage lanceur, ActionCombat actionCombat) {
 
 		JMenu menuAction = new JMenu("Niv. " + actionCombat.getNiveau() + " - " + actionCombat.getNom());
+		menuAction.setToolTipText(actionCombat.getInformations());
 		testConsommationEnergie(menuAction, actionCombat, lanceur);
 		JMenuItem menuCible = null;
 
@@ -1050,6 +1082,7 @@ public class FrameCombat extends FrameJeu {
 								revalidate();
 							}
 						});
+						menuCible.setToolTipText(actionCombat.getInformations());
 						menuAction.add(menuCible);
 					}
 				}
@@ -1066,6 +1099,7 @@ public class FrameCombat extends FrameJeu {
 							revalidate();
 						}
 					});
+					menuCible.setToolTipText(actionCombat.getInformations());
 					menuAction.add(menuCible);
 				}
 			}
@@ -1083,6 +1117,7 @@ public class FrameCombat extends FrameJeu {
 						revalidate();
 					}
 				});
+				menuCible.setToolTipText(actionCombat.getInformations());
 				menuAction.add(menuCible);
 			}
 			// Si un seul bouton cible
@@ -1113,6 +1148,7 @@ public class FrameCombat extends FrameJeu {
 					revalidate();
 				}
 			});
+			menuCible.setToolTipText(actionCombat.getInformations());
 			menuAction.add(menuCible);
 		}
 
@@ -1639,6 +1675,10 @@ public class FrameCombat extends FrameJeu {
 								labelMort.setForeground(Color.RED);
 								//labelMort.setForeground(lanceur.getCouleur());
 								panelInfosCombat.add(labelMort, 0);
+
+								// Refresh avant fin du tour pour afficher les derniers degats
+								buildPanelCentre();
+								repaint();
 								revalidate();
 
 								// Test Fin du jeu
@@ -1870,7 +1910,18 @@ public class FrameCombat extends FrameJeu {
 		} else if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
 			cibles.addAll(amisVivants);
 		} else if (actionCombat.getCibleType() == CibleType.GROUPE_ALLIES) {
-			cibles.addAll(ennemisVivants);
+			// Cas particulier du Rez Multi pour les ennemis
+			if (actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
+				List<Personnage> morts = new ArrayList<Personnage>();
+				for (Personnage cible : ennemisPresents) {
+					if (cible.isMort()) {
+						morts.add(cible);
+					}
+				}
+				cibles.addAll(morts);
+			} else { 
+				cibles.addAll(ennemisVivants);
+			}
 		} else if (actionCombat.getCibleType() == CibleType.PERSO) {
 			cibles.add(lanceur);
 		} else if (actionCombat.getCibleType() == CibleType.TOUS) {
@@ -2413,6 +2464,11 @@ public class FrameCombat extends FrameJeu {
 			}
 		}
 		
+		// Refresh avant fin du tour pour afficher les derniers degats
+		buildPanelCentre();
+		repaint();
+		revalidate();
+		
 		// Si il y a des ennemis vivants
 		if (!ennemisVivants.isEmpty()) {
 			// On lance tour ennemis
@@ -2707,6 +2763,8 @@ public class FrameCombat extends FrameJeu {
 	}
 
 	private JPanel buildPanelPerso(Personnage perso) {
+		
+		
 		JPanel panelPerso = new JPanel();
 		BoxLayout boxlayout = new BoxLayout(panelPerso, BoxLayout.Y_AXIS);
 		panelPerso.setLayout(boxlayout);
@@ -2715,6 +2773,102 @@ public class FrameCombat extends FrameJeu {
 		int largeur = Constante.PANEL_INFO_PERSO_LARGEUR;
 		int hauteur = Constante.PANEL_INFO_PERSO_HAUTEUR;
 
+		// TODO mettre des images pour les statuts (Stun, Taunt, Esquive, Aura)
+		// Barre de Statut
+		JLayeredPane barreStatut = new JLayeredPane();
+		barreStatut.setLayout(new LayeredLayoutManager());
+
+		JPanel barreStatutTaunt = new JPanel();
+		barreStatutTaunt.setBackground(Color.ORANGE);
+		barreStatutTaunt.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		barreStatutTaunt.setMaximumSize(new Dimension(largeur/8, hauteur));
+		Set<Personnage> persosTaunt = perso.getTauntBy().keySet();
+		List<String> noms = new ArrayList<>();
+		for (Personnage personnage : persosTaunt) {
+			noms.add(personnage.getNom());
+		}
+		barreStatutTaunt.setToolTipText("Provoqué par : " + noms.toString());
+		
+		JPanel barreStatutStun = new JPanel();
+		barreStatutStun.setBackground(Color.RED);
+		barreStatutStun.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		barreStatutStun.setMaximumSize(new Dimension(largeur/8, hauteur));
+		barreStatutStun.setToolTipText("Bloqué");
+		
+		JPanel barreStatutEsquive = new JPanel();
+		barreStatutEsquive.setBackground(Color.GREEN);
+		barreStatutEsquive.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		barreStatutEsquive.setMaximumSize(new Dimension(largeur/8, hauteur));
+		barreStatutEsquive.setToolTipText("Esquive");
+		
+		JPanel barreStatutAura = new JPanel();
+		barreStatutAura.setBackground(Color.YELLOW);
+		barreStatutAura.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		barreStatutAura.setMaximumSize(new Dimension(largeur/8, hauteur));
+		Collection<Aura> auras = perso.getAuras().values();
+		barreStatutAura.setToolTipText("Aura : " + auras.toString());
+
+		JPanel barresStatut = new JPanel();
+		barresStatut.setLayout(new BoxLayout(barresStatut, BoxLayout.X_AXIS));
+//		barresStatut.setBackground(Color.BLACK);
+//		barresStatut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		JLabel labelStatutTaunt = new JLabel("(" + perso.getTauntBy().size() + ")");
+		labelStatutTaunt.setHorizontalAlignment(SwingConstants.CENTER);
+		labelStatutTaunt.setVerticalAlignment(SwingConstants.CENTER);
+		labelStatutTaunt.setForeground(Color.PINK);
+		labelStatutTaunt.setMaximumSize(new Dimension(largeur/8, hauteur));
+		
+		JLabel labelStatutStun = new JLabel("(" + perso.getNombreBloque() + ")");
+		labelStatutStun.setHorizontalAlignment(SwingConstants.CENTER);
+		labelStatutStun.setVerticalAlignment(SwingConstants.CENTER);
+		labelStatutStun.setForeground(Color.PINK);
+		labelStatutStun.setMaximumSize(new Dimension(largeur/8, hauteur));
+		
+		JLabel labelStatutEsquive = new JLabel("(" + perso.getNombreEsquive() + ")");
+		labelStatutEsquive.setHorizontalAlignment(SwingConstants.CENTER);
+		labelStatutEsquive.setVerticalAlignment(SwingConstants.CENTER);
+		labelStatutEsquive.setForeground(Color.PINK);
+		labelStatutEsquive.setMaximumSize(new Dimension(largeur/8, hauteur));
+		
+		JLabel labelStatutAura = new JLabel("(" + perso.getAuras().size() + ")");
+		labelStatutAura.setHorizontalAlignment(SwingConstants.CENTER);
+		labelStatutAura.setVerticalAlignment(SwingConstants.CENTER);
+		labelStatutAura.setForeground(Color.PINK);
+		labelStatutAura.setMaximumSize(new Dimension(largeur/8, hauteur));
+
+		// Statut Taunt
+		boolean taunted = !perso.getTauntBy().isEmpty();
+		
+		// Statut Stun
+		boolean stunted = perso.getNombreBloque() > 0;
+
+		// Statut Esquive
+		boolean hasEsquive = perso.getNombreEsquive() > 0;
+
+		// Statut Aura
+		boolean hasAura = !perso.getAuras().isEmpty();
+
+		if (stunted){
+			barresStatut.add(barreStatutStun, Integer.valueOf(1));
+			barresStatut.add(labelStatutStun, Integer.valueOf(5));
+		}
+		if (taunted) {
+			barresStatut.add(barreStatutTaunt, Integer.valueOf(1));
+			barresStatut.add(labelStatutTaunt, Integer.valueOf(5));
+		}
+		if (hasAura) {
+			barresStatut.add(barreStatutAura, Integer.valueOf(1));
+			barresStatut.add(labelStatutAura, Integer.valueOf(5));
+		}
+		if (hasEsquive) {
+			barresStatut.add(barreStatutEsquive, Integer.valueOf(1));
+			barresStatut.add(labelStatutEsquive, Integer.valueOf(5));
+		}
+		barreStatut.add(barresStatut, Integer.valueOf(1));
+
+		barreStatut.setPreferredSize(new Dimension(largeur, hauteur));
+		
 		// Barre de Charge
 		JLayeredPane barreCharge = new JLayeredPane();
 		barreCharge.setLayout(new LayeredLayoutManager());
@@ -2834,7 +2988,14 @@ public class FrameCombat extends FrameJeu {
 		// Barre de Personnage/Nom
 		JPanel barrePersonnage = new JPanel();
 		barrePersonnage.add(new JLabel(perso.getPrenom()));
+		
+		// ToolTips
+		barreCharge.setToolTipText("Charges");
+		barreMana.setToolTipText("Mana");
+		barreBouclier.setToolTipText("Bouclier");
+		barreVie.setToolTipText("Vie");
 
+		panelPerso.add(barreStatut);
 		panelPerso.add(barreCharge);
 		panelPerso.add(barreMana);
 		panelPerso.add(barreBouclier);
