@@ -1,12 +1,23 @@
 package modele.item.mission;
 
 public enum BossNom {
-	BOSS1,
-	BOSS2,
-	BOSS3,
-	BOSS4,
-	BOSS5,
-	BOSS6,
-	BOSS7,
-	BOSS8;
+	BOSS1("Zinedine Zidane"),
+	BOSS2("Lara Croft"),
+	BOSS3("Docteur Dre"),
+	BOSS4("Adolph Hitler"),
+	BOSS5("Anakin Skywalker"),
+	BOSS6("Mickael Jackson"),
+	BOSS7("Liquid Snake"),
+	BOSS8("Arnaud de la piscine");
+	
+	private String nom;
+
+	private BossNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+
 }

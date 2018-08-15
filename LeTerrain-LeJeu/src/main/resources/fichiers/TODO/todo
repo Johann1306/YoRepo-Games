@@ -6,15 +6,19 @@ Priorités :
 - Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats) => degats ennemis /4
 
 Problemes Graves: 
-- Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
+- Combat Boss : Si Le boss meurt mais qu'il reste des ennemis et que l'on fuit le combat et que l'on revient : il reapparait avec 0 de vie et se fait rez en double 
+	=> 3 solutions : si le boss meurt le combat est gagné : pas besoin de tué les autres ennemis? bonne solution ? a combiné avec la 3eme solution?
+					 empecher la fuite du combat quand c'est un combat de BOSS ! meilleur solution?
 - Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false) => Solution de secour : Ne pas permettre d'activer/desactiver le son au joueur!
 - Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
 - desactiver le bouton son en combat avec la barre d'espace
-- Probleme affichage auras dans la fenetre des persos en combat (!= en fonction des persos ???)
+- Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???)
 - Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???) non reproductible mais recurrent
 - (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
 
 Problemes Legers: 
+- Gestion des sorts de mana trop de mana ajouté  ou enlevé
+- Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
 - Probleme taille de la page fiche perso qui impacte la taille de la page carte (1ere init)
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 - Probleme missions date bouton disable (si date ok mais perso necessaire ko) =>> correction moyenne a verifier
@@ -27,11 +31,15 @@ Problemes combats :
 	- OU les deux
 	- Degats de Guy trop elevée quand il arrive. pourquoi? 350 degats => technique 80 / 100 trop elevé et niv 6 -> niv 4
 	
+- NORMAL :
+	- J'ai réussi à tuer le boss sans monter les skills en combat ou avec des popos: trop facile? boss avec seulement 650 de vie alors que certains ennemis avaient 900!
+	
 - tester le double taunt (si taunt par deux personnages : choix d'attaquer l'un ou l'autre? le premier? aucun?)
 - tester le rez multi des ennemis depuis le fix (probleme rez les ennemis vivants => doublon)
 
 Indispensables:
-- Gestion des BOSS (nom, photo, actionsCombat specifiques)
+- Mettre des musiques d'ambiances pour chaque perso et pour le groupe (Tom : Warcraft2, ..)
+- Gestion des BOSS (nom, photo, actionsCombat specifiques, phrases d'intro de combat)
 - Terminer FrameCombat
 - Terminer FrameQuizz (trouver des questions par theme)
 - Centrer PanelCentre on click milieu du scroll 
@@ -63,6 +71,17 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- faire un premier combat en one to one pour commencer les combats
+- limiter le bouton suivant par rapport au nombre de missions en cours (ex: bouton grisé si = 10 missions) pour eviter de voir la fin sans faire les missions
+- faire une intervention divine pour donner la capacité préféré de chaque perso (
+	- Tu n'aura qu'une couille mais tu aura de la chatte .Chance.
+	- C'est pas la taille du navire qui compte mais l'état du capitaine .Technique.
+	- Nico.Exploit.
+	- Tom.Intelligence.
+	- Tu aura des oreilles d'Elfe mais tu aura un nez et une bite de Troll .Agilité.
+	- Ya.Resistance.
+	- Ali.Rapidite.
+	- Russ.Endurance/Nervosité.)
 - gestion d'armes et armures generés aleatoirement (avec pouvoir speciaux : +50 attaque/def/chances/etc ... avec  4 types blanc/vert/bleu/violet ou  vert/bleu/rouge/violet) 
 - Fiche perso : Agrandir l'image du sort quand on passe la souris ou click sur l'image 
 - Option activer/desactiver les evenements (Series, Dessins Animes, Film, Jeux, Musiques) 

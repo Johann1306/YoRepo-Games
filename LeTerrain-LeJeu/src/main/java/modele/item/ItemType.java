@@ -69,6 +69,7 @@ public enum ItemType {
 	POG,
 	CARTE_FOOT,
 	CARTE_DBZ,
+	CARTE_CRADOS,
 	CARTE_MAGIC;
 	
 }

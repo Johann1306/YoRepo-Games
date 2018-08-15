@@ -8,16 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 import modele.competence.PersoStat;
-import modele.item.Item;
 import modele.item.mission.BossNom;
-import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
-import modele.item.mission.enums.MissionType;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.PersoClasse;
 import modele.item.personnage.PersoPrenom;
-import modele.item.personnage.PersonnagePrincipal;
-import modele.item.personnage.PersonnageSecondaire;
 import modele.item.personnage.action.ActionCombat;
 import modele.item.personnage.action.ActionCombatType;
 import modele.item.personnage.action.CibleType;
@@ -290,7 +285,7 @@ public class ActionCombatManager implements Serializable {
 		List<String> imagePaths882 = new ArrayList<String>();
 		imagePaths882.add("image/actionCombat/pasteque.jpg");
 
-		
+		// Son par defaut
 		String sonAttaque = "sonParDefaut/defautAttaque.mp3";
 		String sonAttaqueCritique = "sonParDefaut/defautAttaqueCritique.mp3";
 		String sonREZ = "sonParDefaut/defautREZ.mp3";
@@ -302,6 +297,24 @@ public class ActionCombatManager implements Serializable {
 		String sonRegenManaCritique = "sonParDefaut/defautRegenManaCritique.mp3";
 		String sonRegenVie = "sonParDefaut/defautRegenVie.mp3";
 		String sonRegenVieCritique = "sonParDefaut/defautRegenVieCritique.mp3";
+		
+		// Son par perso attaque special
+		String sonAttaque181 = "son/actionCombat/pet.mp3";
+		String sonAttaqueCritique181 = "son/actionCombat/mozart.mp3";
+		String sonAttaque281 = "son/actionCombat/finishHim.mp3";
+		String sonAttaqueCritique281 = "son/actionCombat/fatality.mp3";
+		String sonAttaque381 = "son/actionCombat/over9000.mp3";
+		String sonAttaqueCritique381 = "son/actionCombat/smoke-weed-everyday.mp3";
+		String sonAttaque481 = "son/actionCombat/oh_la_la_worms.mp3";
+		String sonAttaqueCritique481 = "sonParDefaut/defautREZ.mp3";
+		String sonAttaque581 = "son/actionCombat/centPatates.mp3";
+		String sonAttaqueCritique581 = "son/actionCombat/quandMeme.mp3";
+		String sonAttaque681 = "son/actionCombat/crachat.mp3";
+		String sonAttaqueCritique681 = "son/actionCombat/crachatCritique.mp3";
+		String sonAttaque781 = "son/actionCombat/mickael.mp3";
+		String sonAttaqueCritique781 = "son/actionCombat/mickaelCritique.mp3";
+		String sonAttaque882 = "son/actionCombat/pasteque.mp3";
+		String sonAttaqueCritique882 = "son/actionCombat/sparta.mp3";
 		
 		List<String> videoPaths = new ArrayList<String>();
 		videoPaths.add("video/Trololo.mp4");
@@ -318,6 +331,7 @@ public class ActionCombatManager implements Serializable {
 		
 		// TODO mettre des sorts en fonction de la stat principal du perso
 		// TODO restreindre le nombre de sort par perso en fonction de la classe
+		// TODO -> (Avoir/Choisir une classe de départ avec 3-4-5 type de sorts max (par type, ex : TANK = {Bouclier perso, Taunt}) et possibilité d'avoir plusieurs classes par la suite pour debloquer tous les sorts ???
 		// TODO noms et sons de sort specifiques
 		// TODO sorts special niv 5 des le debut ? oui
 		// TODO progression fixe a 10 ? (quelque soit le niveau) 
@@ -336,7 +350,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat johannDefense5 = new ActionCombat(115, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.LUCK, SortType.AURA_PERSO, PersoPrenom.Johann);
 //		ActionCombat johannDefense6 = new ActionCombat(116, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.LUCK, SortType.AURA_MONO, PersoPrenom.Johann);
 		// TODO Mission : "Chatroulette", "Ne pas réussir à se faire voler son booster et son portable, se faire controler sans se faire choper mais se faire emprunter sa Playstation à vie" / Image : lucky - trefle canabis / Son : jackpot
-		ActionCombat johannDefense7 = new ActionCombat(117, "(Aura Multi) Yo la charte", "Enroule un trèfle à quatre feuilles pour gratter mille francs de Banco et écrire sur les murs puis invoque une aura qui augmente la Chance de ses alliés illico", imagePaths117, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.AURA_MULTI, PersoPrenom.Johann);
+		ActionCombat johannDefense7 = new ActionCombat(117, "(Aura Multi - Chance) Yo la charte", "Enroule un trèfle à quatre feuilles pour gratter mille francs de Banco et écrire sur les murs puis invoque une aura qui augmente la Chance de ses alliés illico", imagePaths117, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.AURA_MULTI, PersoPrenom.Johann);
 		// TODO Mission : "Guerre bactériologique", "Lécher les murs, boire dans les flaques, prendre de la merde avec ses doigts et se laisser lécher par son chat" / Image : wow - cartman chie dans un pot / Musique : Live to win
 		ActionCombat johannDefense8 = new ActionCombat(118, "(Esquive) Immunité Virtuelle", "S'isole pour jouer au même Meuporg pendant 5 ans avec sa guilde et se nourrire uniquement de pain et de grecs pour esquiver toutes autres aggressions exterieurs", imagePaths118, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.LUCK, SortType.ESQUIVE, PersoPrenom.Johann);
 		// TODO Mission : "Père de claque", "Insister pour pouvoir assister à la soirée creperie avec ses potes et refaire la gueule en faisant greve de la faim avant de se faire décalquer le portrait au premier degré" / Image : traire - meuf qui boit directement a la source
@@ -362,7 +376,7 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat johannSort17 	= new ActionCombat(147, "(Stun Mono) Perlimpinpin", "Effrite un peu de parmesan de gland affiné de trois jours, le mélange à du popo sable doux et jete de la poudre aux yeux de l'ennemi pour l'enfumer et le bloquer", imagePaths147, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.LUCK, SortType.STUN_MONO, PersoPrenom.Johann);
 //		ActionCombat johannSort18 	= new ActionCombat(148, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.STUN_MULTI, PersoPrenom.Johann);
 		// TODO Mission : "Sketch à chier", "Tomber malade chez Nico, avoir la soiffade, descendre les 5 marches de la gloire, chevaucher le trone des Walkyries et reciter une cantate à Carmina Burana" / Image : helico - helico canadair / Son : carmina burana - valkyries
-		ActionCombat johannSpecial1 = new ActionCombat(181, "(Degats Multi) Super Copter", "Chope la gastro et fait un début de merde mal maitrisé combiné à la technique de l'hélico pour emmerder littéralement les ennemis", imagePaths181, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.DEGATS_MULTI, PersoPrenom.Johann);
+		ActionCombat johannSpecial1 = new ActionCombat(181, "(Degats Multi) Super Copter", "Chope la gastro et fait un début de merde mal maitrisé combiné à la technique de l'hélico pour emmerder littéralement les ennemis", imagePaths181, sonAttaque181, sonAttaqueCritique181, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.DEGATS_MULTI, PersoPrenom.Johann);
 //		ActionCombat johannSpecial2 = new ActionCombat(182, "(Degats All)", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Johann);
 		
 		
@@ -380,7 +394,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat nicolasDefense5 = new ActionCombat(215, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.AURA_PERSO, PersoPrenom.Nicolas);
 //		ActionCombat nicolasDefense6 = new ActionCombat(216, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.EXPLOIT, SortType.AURA_MONO, PersoPrenom.Nicolas);
 		// Mission "L'appel de la nature", "Aller au stade de foot un dimanche et se rendre compte de la difficulté qu'ont eu tous nos ancêtres de ne pas avoir eu l'eau courante et le PQ" / image : jurassik - chiasse de bronchiosaure
-		ActionCombat nicolasDefense7 = new ActionCombat(217, "(Aura Multi) Je suis malfaisant", "Invoque une aura qui augmente les Exploits de ses alliés comme la capacité de se retenir pendant cinq jours ou à l'inverse de chier instantanement au contact de la nature", imagePaths217, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.EXPLOIT, SortType.AURA_MULTI, PersoPrenom.Nicolas);
+		ActionCombat nicolasDefense7 = new ActionCombat(217, "(Aura Multi - Exploit) Je suis malfaisant", "Invoque une aura qui augmente les Exploits de ses alliés comme la capacité de se retenir pendant cinq jours ou à l'inverse de chier instantanement au contact de la nature", imagePaths217, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.EXPLOIT, SortType.AURA_MULTI, PersoPrenom.Nicolas);
 		// Mission "Antifioniste", "Regarder matrix et se brancher un lecteur de disquette dans le sion pour connaitre le kung-fu, le krav-maga et le pencak-silat" / image : matrix esquivant balles / Son : twist again
 		ActionCombat nicolasDefense8 = new ActionCombat(218, "(Esquive) El Mefiento", "Esquive les attaques sans contacts en faisant des twist nuggets et protège son espace vital grâce à une technique d'auto-défense brésilo-colombienne ancestrale", imagePaths218, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.EXPLOIT, SortType.ESQUIVE, PersoPrenom.Nicolas);
 		// Mission "Extrêmes limites", "Survivre à moult periples dont une lésion têtal fenestré, une fracture du tibia en escalier, une cagette nasifère volante et quelques molestages fraternels" / image : wolverine
@@ -406,7 +420,7 @@ public class ActionCombatManager implements Serializable {
 		// Mission "No Pain No Gain", "Faire un regime 'Ni pain Ni cola' puis se muscler la musculature en s'injectant des supo-stéroides anal-bolisants au café, les couilles tartinées de beurre et de miel" / image : schwarzy
 		ActionCombat nicolasSort18 	 = new ActionCombat(248, "(Stun Multi) Hulk Logan Legout", "Bande ses muscles jusqu'à démouler un Arabinou de café ou jouis de ses propres contractions utérines ou mange des céréales en boite pour impressioner et bloquer les ennemis", imagePaths248, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.STUN_MULTI, PersoPrenom.Nicolas);
 		// Mission : "Atchoum" "S'inspirer de Ricky morve au nez et se faire éternuer à la demande pour projetter 5 jets de slime sur les cibles plus grande et blanche que soi" / image : Grappin Link (TODO : Main collante verte ?)
-		ActionCombat nicolasSpecial1 = new ActionCombat(281, "(Degats Multi) Grapina Nicolada", "Grappine tout ce qu'il peut et saoule fatalement ses ennemies pour terminer en 'Finish Him' qui arrache et déchire les membres grappinés jusqu'à la moelle", imagePaths281, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, PersoPrenom.Nicolas);
+		ActionCombat nicolasSpecial1 = new ActionCombat(281, "(Degats Multi) Grapina Nicolada", "Grappine tout ce qu'il peut et saoule fatalement ses ennemies pour terminer en 'Finish Him' qui arrache et déchire les membres grappinés jusqu'à la moelle", imagePaths281, sonAttaque281, sonAttaqueCritique281, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.EXPLOIT, SortType.DEGATS_MULTI, PersoPrenom.Nicolas);
 //		ActionCombat nicolasSpecial2 = new ActionCombat(282, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Nicolas);
 	
 		
@@ -425,7 +439,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat pierreDefense5 = new ActionCombat(315, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.AURA_PERSO, PersoPrenom.Pierre);
 //		ActionCombat pierreDefense6 = new ActionCombat(316, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.AGILITE, SortType.AURA_MONO, PersoPrenom.Pierre);
 		// Mission : "La mole c'est dur", "Valider par l'experience personnelle le fait scientifique que certains organes poussent toute la vie" / image : trompe - elephant avec une trompe bite
-		ActionCombat pierreDefense7 = new ActionCombat(317, "(Aura Multi) Membres croissants", "Invoque une aura permettant d'améliorer l'Agilité et les sens des ses alliés en développant leurs organes externes comme le nez, les oreilles et la queue", imagePaths317, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.AGILITE, SortType.AURA_MULTI, PersoPrenom.Pierre);
+		ActionCombat pierreDefense7 = new ActionCombat(317, "(Aura Multi - Agilité) Membres croissants", "Invoque une aura permettant d'améliorer l'Agilité et les sens des ses alliés en développant leurs organes externes comme le nez, les oreilles et la queue", imagePaths317, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.AGILITE, SortType.AURA_MULTI, PersoPrenom.Pierre);
 //		ActionCombat pierreDefense8 = new ActionCombat(318, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Pierre);
 //		ActionCombat pierreSort1 	= new ActionCombat(331, "Regen Vie Perso", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Pierre);
 //		ActionCombat pierreSort2 	= new ActionCombat(332, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Pierre);
@@ -449,8 +463,8 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat pierreSort16 	= new ActionCombat(346, "(Taunt Multi) Warren G Squad", "Travaille son style de danseur rappeur en improvisant une chorégraphie sans tête à queue pour provoquer les ennemis", imagePaths346, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.AGILITE, SortType.TAUNT_MULTI, PersoPrenom.Pierre);
 //		ActionCombat pierreSort17 	= new ActionCombat(347, "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Pierre);
 //		ActionCombat pierreSort18 	= new ActionCombat(348, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Pierre);
-		// Mission : "Optic 2000" "Rouler deux cônes et descendre croquer un croc sans se taper de barre ou se casser les dents dans l'escalier pour ne pas se faire tricard par sa daronne qui dort sur ses 5 oreilles" / image : didier - didier l'embrouille avec oeil au beurre noir
-		ActionCombat pierreSpecial1 = new ActionCombat(381, "(Degats Multi) Oeil pour Oeil, Dent pour Dent", "Traite les ennemis en queue de peloton de la même façon qu'ils ont traité ou voulu traiter ses alliés grâce à sa dent de fer et à sa mère borgne", imagePaths381, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.AGILITE, SortType.DEGATS_MULTI, PersoPrenom.Pierre);
+		// Mission : "Optic 2000" "Rouler deux cônes et descendre croquer un croc sans se taper de barre ou se casser les dents dans l'escalier pour ne pas se faire tricard par sa daronne qui dort d'un oeil sur ses 5 oreilles" / image : didier - didier l'embrouille avec oeil au beurre noir
+		ActionCombat pierreSpecial1 = new ActionCombat(381, "(Degats Multi) Oeil pour Oeil, Dent pour Dent", "Traite les ennemis en queue de peloton de la même façon qu'ils ont traité ou voulu traiter ses alliés grâce à sa dent de fer et à sa mère borgne", imagePaths381, sonAttaque381, sonAttaqueCritique381, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.AGILITE, SortType.DEGATS_MULTI, PersoPrenom.Pierre);
 //		ActionCombat pierreSpecial2 = new ActionCombat(382, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Pierre);
 	
 		
@@ -467,9 +481,9 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat yannickDefense4 = new ActionCombat(414, "(Bouclier Multi) Defense de Jedi Knight", "Protège ses alliés grâce à ses reflexes et son taux de midi-alcolo-rien élevé mais limité, l'empêchant de tomber du coté obscur de la Forza", imagePaths414, sonBouclier, sonBouclierCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RESISTANCE, SortType.BOUCLIER_MULTI, PersoPrenom.Yannick);
 //		ActionCombat yannickDefense5 = new ActionCombat(415, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RESISTANCE, SortType.AURA_PERSO, PersoPrenom.Yannick);
 		// Mission : "Sainte Marie-Jeanne", "Rouler des graines de pavot avec un blunt mal séché pour atteindre le Nirvana et préciser que boire de l'eau annule les effets" / image : huggy - Huggy les bons tuyaux
-		ActionCombat yannickDefense6 = new ActionCombat(416, "(Aura Mono) Conseil d'ami", "Invoque une aura violette améliorant la Technique de consommation florale d'un allié comme la fameuse tulipe fanée triple vrillée et casquée en cappuccino frappé", imagePaths416, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Yannick);
+		ActionCombat yannickDefense6 = new ActionCombat(416, "(Aura Mono - Technique) Conseil d'ami", "Invoque une aura violette améliorant la Technique de consommation florale d'un allié comme la fameuse tulipe fanée triple vrillée et casquée en cappuccino frappé", imagePaths416, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Yannick);
 		// Mission : "Célébration cyclique", "Participer au premier jour de l'an des familles, à base d'oeufs pourris, de main dans le caca et de traces de pneu enflammées" / image : boris - Boris meurt gelé
-		ActionCombat yannickDefense7 = new ActionCombat(417, "(Aura Multi) Retour à la base", "Invoque une aura permettant d'améliorer l'accent russe et la Résistance de ses alliés au froid, au 'Golden Gun' et aux tickets resto", imagePaths417, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RESISTANCE, SortType.AURA_MULTI, PersoPrenom.Yannick);
+		ActionCombat yannickDefense7 = new ActionCombat(417, "(Aura Multi - Resistance) Retour à la base", "Invoque une aura permettant d'améliorer l'accent russe et la Résistance de ses alliés au froid, au 'Golden Gun' et aux tickets resto", imagePaths417, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RESISTANCE, SortType.AURA_MULTI, PersoPrenom.Yannick);
 //		ActionCombat yannickDefense8 = new ActionCombat(418, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Yannick);
 //		ActionCombat yannickSort1	 = new ActionCombat(431, "Regen Vie Perso", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Yannick);
 //		ActionCombat yannickSort2 	 = new ActionCombat(432, "Regen Vie Mono", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_MONO, PersoPrenom.Yannick);
@@ -494,7 +508,7 @@ public class ActionCombatManager implements Serializable {
 		// Mission : "A un poil près", "Partir en virée nocturne pour une ratonnade de réverbère et ramener Yo chez lui avant que sa mère ne l'enferme sur le balcon" / image : peinture - peinture lascaux
 		ActionCombat yannickSort18 	 = new ActionCombat(448, "(Stun Multi) Peinture rupestre volé", "Fait de mémoire un saint dessin des seins de la mère de Yo non retouché par Mme Braquet et le montre aux ennemis pour les bloquer", imagePaths448, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RESISTANCE, SortType.STUN_MULTI, PersoPrenom.Yannick);
 		// Mission : "Quelle guêpe t'as piqué", "Faire passer 5 grammmes de shit au shampoing aux Etats-Unis et acheter de la beuh de Montreal puis revenir jouer à Braveheart entre deux parties de worms dictateurs" / image : explosion - explosion en doigt d'honneur / Son : 
-		ActionCombat yannickSpecial1 = new ActionCombat(481, "(Degats Multi) Banana Bombe Sainte", "Effectue une frappe chirurgicale avec une bombe de type BOB-SA-66 sur les ennemis pour instaurer une démocratie sainte et une république bananière", imagePaths481, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RESISTANCE, SortType.DEGATS_MULTI, PersoPrenom.Yannick);
+		ActionCombat yannickSpecial1 = new ActionCombat(481, "(Degats Multi) Banana Bombe Sainte", "Effectue une frappe chirurgicale avec une bombe de type BOB-SA-66 sur les ennemis pour instaurer une démocratie sainte et une république bananière", imagePaths481, sonAttaque481, sonAttaqueCritique481, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RESISTANCE, SortType.DEGATS_MULTI, PersoPrenom.Yannick);
 //		ActionCombat yannickSpecial2 = new ActionCombat(482, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Yannick);
 	
 		
@@ -511,7 +525,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat thomasDefense5 = new ActionCombat(515, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.AURA_PERSO, PersoPrenom.Thomas);
 //		ActionCombat thomasDefense6 = new ActionCombat(516, "(Aura Mono) ", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.INTELLIGENCE, SortType.AURA_MONO, PersoPrenom.Thomas);
 		// Mission : "Danse avec les louveteaux", "Faire du feu et survivre à une nuit en forêt en évitant les animaux, les bêtes et les trois doigts de Jackie Chang le moniteur" / image : scout - gerard jugnot matte des seins
-		ActionCombat thomasDefense7 = new ActionCombat(517, "(Aura Multi) Scout en Schott", "Son experience et son adaptabilité aux milieux hostiles lui permet d'invoquer une aura qui augmente l'Intelligence, la survivabilité et la scratchitude de ses alliés", imagePaths517, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.AURA_MULTI, PersoPrenom.Thomas);
+		ActionCombat thomasDefense7 = new ActionCombat(517, "(Aura Multi - Intelligence) Scout en Schott", "Son experience et son adaptabilité aux milieux hostiles lui permet d'invoquer une aura qui augmente l'Intelligence, la survivabilité et la scratchitude de ses alliés", imagePaths517, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.AURA_MULTI, PersoPrenom.Thomas);
 //		ActionCombat thomasDefense8 = new ActionCombat(518, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Thomas);
 		// Mission : "Coagulation nasale", "Maitriser son flux et son reflux sanguin pour ne pas lacher la sauce et se vider involontairement en cas de choc pedestre" / image : tampax - tampax sur l'oreille
 		ActionCombat thomasSort1 	= new ActionCombat(531, "(Regen Vie Perso) Sang pur Sans coton", "Utilise tout objet absorbant à portée ou son sous-pull à col roulé en licra, pour arrêter une quelconque hémorragie et se soigner", imagePaths531, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Thomas);
@@ -538,7 +552,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat thomasSort17 	= new ActionCombat(547, "Stun Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.STUN_MONO, PersoPrenom.Thomas);
 //		ActionCombat thomasSort18 	= new ActionCombat(548, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Thomas);
 		// Mission : "Donnant-Donnant", "Gratter l'amitié avec 5 orphelines de l'est en leur payant un jus de fruit et en abandonnant son corps à la science en échange" / image : centPatates : tetes de dosés
-		ActionCombat thomasSpecial1 = new ActionCombat(581, "(Degats Multi) Shoot Sans patate", "Appelle à la rescousse Fred, son flingue à billes et l'enculé de Steph pour l'attaque des trois frères donnant cent patates aux ennemis, puis les reprenant... Quand même!", imagePaths581, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.DEGATS_MULTI, PersoPrenom.Thomas);
+		ActionCombat thomasSpecial1 = new ActionCombat(581, "(Degats Multi) Shoot Sans patate", "Appelle à la rescousse Fred, son flingue à billes et l'enculé de Steph pour l'attaque des trois frères donnant cent patates aux ennemis, puis les reprenant... Quand même!", imagePaths581, sonAttaque581, sonAttaqueCritique581, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.INTELLIGENCE, SortType.DEGATS_MULTI, PersoPrenom.Thomas);
 //		ActionCombat thomasSpecial2 = new ActionCombat(582, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_1, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Thomas);
 	
 		
@@ -556,7 +570,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat aliDefense5 = new ActionCombat(715, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.AURA_PERSO, PersoPrenom.Ali);
 //		ActionCombat aliDefense6 = new ActionCombat(716, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.AURA_MONO, PersoPrenom.Ali);
 		// Mission : "Coup de génie", "Emprunter des trucs chez Jafar sans se faire prendre la main dans le sac pour financer un traffic international de tapis volant" / image : aladdin - mechant qui coupe une main
-		ActionCombat aliDefense7 = new ActionCombat(717, "(Aura Multi) Pas vu, paprika", "Invoque une aura qui augmente la Rapidité et la dextérité de ses alliés pour voler d'immeuble en immeuble comme Superman, Batman ou Spiderman", imagePaths717, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, PersoPrenom.Ali);
+		ActionCombat aliDefense7 = new ActionCombat(717, "(Aura Multi - Rapidité) Pas vu, paprika", "Invoque une aura qui augmente la Rapidité et la dextérité de ses alliés pour voler d'immeuble en immeuble comme Superman, Batman ou Spiderman", imagePaths717, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, PersoPrenom.Ali);
 		// Mission : "Changement de bord", "Modifier ses fréquentations de manière radical et apprendre à gérer ses émotions derrière un pédalo à pédales douces" / image : soirées - Omar tu viens plus aux soirees
 		ActionCombat aliDefense8 = new ActionCombat(718, "(Esquive) Ali doudou", "Esquive les anniversaires, ne vient plus aux soirées et peut désormais sauter un filet de tennis sans se rétamer", imagePaths718, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.RAPIDITE, SortType.ESQUIVE, PersoPrenom.Ali);
 		// Mission : "Expérience sensorielle", "Survivre à la chaleur écrasante de l'Espagne en inventant un style de jeu peu orthodoxe 'avé l'acceng' de la garrigue" / image : teton - teton glacon humide
@@ -574,7 +588,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat aliSort11 	 = new ActionCombat(741, "Brulure Mana Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.BRULURE_MANA_MONO, PersoPrenom.Ali);
 		// Mission : "Roulette pakistanaise", "Tirer avec un pistolet dans une pièce fermée sans savoir si il est chargé, pour devenir cascadeur figurant terroriste" / image : lacrymo - JCVD aveugle
 		ActionCombat aliSort12 	 = new ActionCombat(742, "(Brulure Mana Multi) Plein les yeux", "Tire un coup de pistolet lacrymogène en intérieur pour bruler les yeux de ses ennemis et s'enfuit en se jetant par la fenêtre", imagePaths742, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.BRULURE_MANA_MULTI, PersoPrenom.Ali);
-		// Mission : "Heal the world", "Ecrire une chanson qui redonne espoir en la vie, après son mariage en secret avec Aïcha une enfant de 9 ans à ArabeLand" / image : healWorld - des mains autour de la Terre
+		// Mission : "Heal the world", "Ecrire une chanson qui redonne espoir en la vie, après son mariage en secret avec Aïcha 9 ans à ArabeLand" / image : healWorld - des mains autour de la Terre
 		ActionCombat aliSort13 	 = new ActionCombat(743, "(Resurrection Mono) Le chant de sucre rouge", "Redonne la vie à un allié en chantant et en mélangeant quelques épices rougeatres en référence au sang versé dans les champs de canne à sucre", imagePaths743, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ALLIE, PersoStat.RAPIDITE, SortType.RESURRECTION_MONO, PersoPrenom.Ali);
 //		ActionCombat aliSort14 	 = new ActionCombat(744, "Resurrection Multi", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.RESURRECTION_MULTI, PersoPrenom.Ali);
 //		ActionCombat aliSort15 	 = new ActionCombat(745, "Taunt Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.TAUNT_MONO, PersoPrenom.Ali);
@@ -584,7 +598,7 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat aliSort17 	 = new ActionCombat(747, "(Stun Mono) Croche-mensonge", "Bloque l'ennemi avec ses jambes pour lui frotter son sexe sur le corps, et l'imprégner d'une odeur de putois épicée entrainant l'évanouïte", imagePaths747, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.ENNEMI, PersoStat.RAPIDITE, SortType.STUN_MONO, PersoPrenom.Ali);
 //		ActionCombat aliSort18 	 = new ActionCombat(748, "Stun Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.STUN_MULTI, PersoPrenom.Ali);
 		// Mission : "Mohamed Ali Jackson", "Suivre les traces de son idole sous la contrainte de ses 5 soeurs et se battre pour atteindre son objectif sans se laisser rouler sur les chaussures noires" / image : bollywood - Michael Jackson indien sur Thriller / Son : 
-		ActionCombat aliSpecial1 = new ActionCombat(781, "(Degats Multi) Ali! Ali!", "Profite de l'engouement général pour se donner en spectacle bollywoodien, faire son one man chaud du rire sous l'oeil du grand blond et infliger des dégats aux ennemis", imagePaths781, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
+		ActionCombat aliSpecial1 = new ActionCombat(781, "(Degats Multi) Ali! Ali!", "Profite de l'engouement général pour se donner en spectacle bollywoodien, faire son one man chaud du rire sous l'oeil du grand blond et infliger des dégats aux ennemis", imagePaths781, sonAttaque781, sonAttaqueCritique781, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.RAPIDITE, SortType.DEGATS_MULTI, PersoPrenom.Ali);
 //		ActionCombat aliSpecial2 = new ActionCombat(782, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_5, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.RAPIDITE, SortType.DEGATS_ALL, PersoPrenom.Ali);
 		
 		
@@ -603,7 +617,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat guillaumeDefense5 = new ActionCombat(615, "Aura Perso", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.AURA_PERSO, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeDefense6 = new ActionCombat(616, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.TECHNIQUE, SortType.AURA_MONO, PersoPrenom.Guillaume);
 		// Mission : "La ronde des jonglerettes", "S'entrainer techniquement et physiquement pour essayer de finir un match debout dans sa vie en se mettant à la recherche du poumon perdu" / image : footBande - footballer pd
-		ActionCombat guillaumeDefense7 = new ActionCombat(617, "(Aura Multi) Tu m'as fait bander", "Glorifie ses alliés pour augmenter leur Technique en mêlant sport, sexualité et grand banditisme", imagePaths617, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Guillaume);
+		ActionCombat guillaumeDefense7 = new ActionCombat(617, "(Aura Multi - Technique) Tu m'as fait bander", "Glorifie ses alliés pour augmenter leur Technique en mêlant sport, sexualité et grand banditisme", imagePaths617, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeDefense8 = new ActionCombat(618, "Esquive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.AGILITE, SortType.ESQUIVE, PersoPrenom.Guillaume);
 		// Mission : "GuiHam Burger", "Créer une recette saine et équilibrée pour se nourrir quotidiennement de manière étrange, efficace et brève de Bruges" / image : pizzaMayo - gros burger degeulasse
 		ActionCombat guillaumeSort1    = new ActionCombat(631, "(Regen Vie Perso) Pizza mayo sandwich", "Se régénère en ingurgitant une composition personnelle pliable de mets savoureux qui poussent naturellement dans le frigo", imagePaths631, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.TECHNIQUE, SortType.REGEN_VIE_PERSO, PersoPrenom.Guillaume);
@@ -629,7 +643,7 @@ public class ActionCombatManager implements Serializable {
 		// Mission : "Le dauphin, la baleine, et l'éléphant", "Trouver un moyen de focaliser l'attention des spectateurs, en préparant un ballet aquatique alcoolique trompeur" / image : piscine - saut d'un asiat avec une vieille gueule
 		ActionCombat guillaumeSort18   = new ActionCombat(648, "(Stun Multi) Vous voulez voir mon cul?", "Emet une hypothèse embarrassante pour attirer l'attention puis effectue une action encore plus salace pour surprendre et bloquer les ennemis", imagePaths648, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.STUN_MULTI, PersoPrenom.Guillaume);
 		// Mission : "Brasserie Mollard", "Rouler sa bosse pour devenir chamelier et étancher sa soif en buvant 5 verres sans cracher dans la soupe ni baver sur la serveuse" / image : spit - crachat dans un verre / Son : crachat roulé
-		ActionCombat guillaumeSpecial1 = new ActionCombat(681, "(Degats Multi) Crache pas dans les verres", "Utilise une expression cocasse qui n'existe pas dans un contexte inaprorié pour infliger des dégats pendant que les ennemis restent perplexe", imagePaths681, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
+		ActionCombat guillaumeSpecial1 = new ActionCombat(681, "(Degats Multi) Crache pas dans les verres", "Utilise une expression cocasse qui n'existe pas dans un contexte inaprorié pour infliger des dégats pendant que les ennemis restent perplexe", imagePaths681, sonAttaque681, sonAttaqueCritique681, videoPaths, indisponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Guillaume);
 //		ActionCombat guillaumeSpecial2 = new ActionCombat(682, "Debut de merde (Degats All)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_6, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.TECHNIQUE, SortType.DEGATS_ALL, PersoPrenom.Guillaume);
 	
 		
@@ -650,7 +664,7 @@ public class ActionCombatManager implements Serializable {
 //		ActionCombat jonathanDefense6 = new ActionCombat(816, "Aura Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.ALLIE, PersoStat.ENDURANCE, SortType.AURA_MONO, PersoPrenom.Jonathan);
 		// TODO trouver une meilleur image que la trilogie du samedi
 		// Mission : "Premier samedi du mois", "Regarder la trilogie du samedi en attendant que ses parents s'endorment pour enregistrer discrètement sur VHS les 26 saisons de Turbo" / image : trilogieSamedi - 
-		ActionCombat jonathanDefense7 = new ActionCombat(817, "(Aura Multi) Le Triathlon du dimanche", "Invoque une aura d'Endurance physique et auto-moto-masturbo-télévisuelle pour ses alliés", imagePaths817, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
+		ActionCombat jonathanDefense7 = new ActionCombat(817, "(Aura Multi - Endurance) Le Triathlon du dimanche", "Invoque une aura d'Endurance physique et auto-moto-masturbo-télévisuelle pour ses alliés", imagePaths817, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, PersoPrenom.Jonathan);
 		// Mission : "Vibreur silencieux", "Omettre de répondre à son GSM le temps de mater un match et une emission culturelle juste avant le mariage d'Ali et son frère à Molenbeek" / image : autruche - rituel avec la tete planter dans le sol
 		ActionCombat jonathanDefense8 = new ActionCombat(818, "(Esquive) La technique de l'Autroych", "Ne sort plus du troux pour esquiver les attaques judiciaires en chantant la ligue des questions pour un champion allah capello en fa mineur avec l'accent belge", imagePaths818, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.PERSO, PersoStat.ENDURANCE, SortType.ESQUIVE, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSort1    = new ActionCombat(831, "Regen Vie Perso", "abc", imagePaths, sonRegenVie, sonRegenVieCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.PERSO, PersoStat.INTELLIGENCE, SortType.REGEN_VIE_PERSO, PersoPrenom.Jonathan);
@@ -678,7 +692,7 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat jonathanSort18   = new ActionCombat(848, "(Stun Multi) Requins Arlequin et Haribo", "Met son accoutrement fluorescent quadricolor de la Commedia dell'Arte ou fait le baffie bouffi bouffon pour éblouir les ennemis et les bloquer", imagePaths848, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.POUVOIR, EnergieType.MANA, CibleType.GROUPE_ENNEMIS, PersoStat.ENDURANCE, SortType.STUN_MULTI, PersoPrenom.Jonathan);
 //		ActionCombat jonathanSpecial1 = new ActionCombat(881, "Debut de merde (Degats Multi)", "Fait un debut de merde mal maitrisé", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, PersoPrenom.Jonathan);
 		// Mission : "La pizza de Gino", "Maitriser la cuisson des pâtes aux croutes de parmesan sans mettre de maillot et se taper 5 fruits et légumes par jour" / image : pasteque - pasteque qui explose / Son : 
-		ActionCombat jonathanSpecial2 = new ActionCombat(882, "(Degats All) Italien ou Russe mais pas Azteque", "Sacrifie une pastèque Inca en la fracassant sur l'autel dans un excès de rage pour infliger des dégats à tout le monde", imagePaths882, sonAttaque, sonAttaqueCritique, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.NERVOSITE, SortType.DEGATS_ALL, PersoPrenom.Jonathan);
+		ActionCombat jonathanSpecial2 = new ActionCombat(882, "(Degats All) Italien ou Russe mais pas Azteque", "Sacrifie une pastèque Inca en la fracassant sur l'autel dans un excès de rage pour infliger des dégats à tout le monde", imagePaths882, sonAttaque882, sonAttaqueCritique882, videoPaths, indisponible, niveau_7, niveauMax_10, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.TOUS, PersoStat.NERVOSITE, SortType.DEGATS_ALL, PersoPrenom.Jonathan);
 		
 		
 		
@@ -690,37 +704,53 @@ public class ActionCombatManager implements Serializable {
 		
 		// TODO nom des sorts boss / sorts specifiques par boss
 		
-		// Boss1 (Yo)
-		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss1 (Yo) (Zinedine Zidane) 
+		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de boule", "(Le triplé) Commence par deux coups de tête et fini sur un coup de boule", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque du Real", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss1Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Chance) La chance du débutant", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.AURA_MULTI, null);
+		ActionCombat boss1Special1 = new ActionCombat(incrementId(), "(Degats Mono) Reprise du gauche en final", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss2 (Nico)
-		ActionCombat boss2Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss2Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss2 (Nico) (Lara Croft)
+		ActionCombat boss2Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Munitions illimitées", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss2Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de Loups", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss2Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Exploit) Situation critique", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.EXPLOIT, SortType.AURA_MULTI, null);
+		ActionCombat boss2Special1 = new ActionCombat(incrementId(), "(Degats Mono) Motorboat", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss3 (Pip)
-		ActionCombat boss3Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss3Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss3 (Pip) (Dr Dre)
+		ActionCombat boss3Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de mic", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss3Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de gang", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss3Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Agilité) Pas de danse", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.AGILITE, SortType.AURA_MULTI, null);
+		ActionCombat boss3Special1 = new ActionCombat(incrementId(), "(Degats Mono) The difference between me and you", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss4 (Tom)
-		ActionCombat boss4Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss4Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss4 (Tom) (Hitler)
+		ActionCombat boss4Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de tête", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss4Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de SS", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss4Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Intelligence) Blitzkrieg", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.INTELLIGENCE, SortType.AURA_MULTI, null);
+		ActionCombat boss4Special1 = new ActionCombat(incrementId(), "(Degats Mono) Solution finale", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		
+		// Boss5 (Ya) (Anakin)
+		ActionCombat boss5Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de sabre laser", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss5Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de Droïdes", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss5Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Resistance) Aura de Jedi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RESISTANCE, SortType.AURA_MULTI, null);
+		ActionCombat boss5Special1 = new ActionCombat(incrementId(), "(Degats Mono) Ablation de la main", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss5 (Ya)
-		ActionCombat boss5Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss5Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss6 (Ali) (Mickael Jackson)
+		ActionCombat boss6Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Beat it", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss6Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de Zombies", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss6Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Rapidité) Déplacement accrue", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.RAPIDITE, SortType.AURA_MULTI, null);
+		ActionCombat boss6Special1 = new ActionCombat(incrementId(), "(Degats Mono) Moonwalk", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss6 (Ali)
-		ActionCombat boss6Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss6Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss7 (Guy) (Liquid Snake)
+		ActionCombat boss7Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de trop", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss7Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque de Serpents", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss7Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Technique) Ivresse télépathique", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.TECHNIQUE, SortType.AURA_MULTI, null);
+		ActionCombat boss7Special1 = new ActionCombat(incrementId(), "(Degats Mono) Cascade furtive", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
-		// Boss7 (Guy)
-		ActionCombat boss7Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss7Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
-
-		// Boss8 (Russ)
-		ActionCombat boss8Attaque1 = new ActionCombat(incrementId(), "Degats Mono", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss8Attaque2 = new ActionCombat(incrementId(), "Degats Multi", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		// Boss8 (Russ) (Arnaud de la piscine)
+		ActionCombat boss8Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup d'épée dans l'eau", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss8Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Pavé dans la mare", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss8Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Endurance) Iron Man", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.ENDURANCE, SortType.AURA_MULTI, null);
+		ActionCombat boss8Special1 = new ActionCombat(incrementId(), "(Degats Mono) Dans la peau de John Malkovich", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		// Gitans
 		
@@ -898,8 +928,6 @@ public class ActionCombatManager implements Serializable {
 		ActionCombat handicapeBardeSpecial1 = new ActionCombat(incrementId(), "Taunt Multi", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.GROUPE_ENNEMIS, PersoStat.LUCK, SortType.TAUNT_MULTI, null);
 		ActionCombat handicapeBardeSpecial2 = new ActionCombat(incrementId(), "Resurrection Mono", "abc", imagePaths, sonREZ, sonREZCritique, videoPaths, disponible, niveauSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ALLIE, PersoStat.LUCK, SortType.RESURRECTION_MONO, null);
 		
-		// Ennemi Noir
-		// la mer noire
 
 		List<ActionCombat> johannActions = new ArrayList<ActionCombat>();
 		List<ActionCombat> nicolasActions = new ArrayList<ActionCombat>();
@@ -1193,27 +1221,43 @@ public class ActionCombatManager implements Serializable {
 		
 		boss1Actions.add(boss1Attaque1);
 		boss1Actions.add(boss1Attaque2);
+		boss1Actions.add(boss1Defense7);
+		boss1Actions.add(boss1Special1);
 		
 		boss2Actions.add(boss2Attaque1);
 		boss2Actions.add(boss2Attaque2);
+		boss2Actions.add(boss2Defense7);
+		boss2Actions.add(boss2Special1);
 		
 		boss3Actions.add(boss3Attaque1);
 		boss3Actions.add(boss3Attaque2);
+		boss3Actions.add(boss3Defense7);
+		boss3Actions.add(boss3Special1);
 		
 		boss4Actions.add(boss4Attaque1);
 		boss4Actions.add(boss4Attaque2);
+		boss4Actions.add(boss4Defense7);
+		boss4Actions.add(boss4Special1);
 		
 		boss5Actions.add(boss5Attaque1);
 		boss5Actions.add(boss5Attaque2);
+		boss5Actions.add(boss5Defense7);
+		boss5Actions.add(boss5Special1);
 		
 		boss6Actions.add(boss6Attaque1);
 		boss6Actions.add(boss6Attaque2);
+		boss6Actions.add(boss6Defense7);
+		boss6Actions.add(boss6Special1);
 		
 		boss7Actions.add(boss7Attaque1);
 		boss7Actions.add(boss7Attaque2);
+		boss7Actions.add(boss7Defense7);
+		boss7Actions.add(boss7Special1);
 		
 		boss8Actions.add(boss8Attaque1);
 		boss8Actions.add(boss8Attaque2);
+		boss8Actions.add(boss8Defense7);
+		boss8Actions.add(boss8Special1);
 
 		gitanTankActions.add(gitanTankAttaque1);
 		gitanTankActions.add(gitanTankDefense1);

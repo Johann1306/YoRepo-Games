@@ -43,6 +43,7 @@ import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.mission.BossNom;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
@@ -350,7 +351,7 @@ public class FrameCombat extends FrameJeu {
 			ImageIcon photoBoss = ImageManager.resizeImage(boss.getPhotoPrincipal(),
 					Constante.PERSO_IMAGE_DIMENSION_64_64);
 			JButton boutonBoss = new JButton(photoBoss);
-			boutonBoss.setName(boss.getNom());
+			boutonBoss.setName(BossNom.valueOf(boss.getNom()).getNom());
 			boutonBoss.setToolTipText(boutonBoss.getName());
 			boutonBoss.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 			boutonBoss.setFocusable(false);
@@ -2111,7 +2112,7 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		else {
-			System.out.println("Ne devrait pas arriver la");
+			System.out.println("Erreur - Ne devrait pas arriver la");
 		}
 
 		// Si critique
@@ -2142,7 +2143,14 @@ public class FrameCombat extends FrameJeu {
 		VideoManager.hideAndStop();
 		MusiqueManager.stopAll();
 		MusiqueManager.startPlayListEnBoucle(mission);
-
+		
+		// TODO Presentation du combat / des ennemis / du boss (phrase + son spéciale (je suis ton père, ...))
+		if(mission.getMissionType().name().equals(MissionType.BOSS.name())) {
+			PersonnageBoss boss = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersonnageBossByNom(mission.getBossNom());
+			ImageIcon resizeImage = ImageManager.resizeImage(boss.getPhotoPrincipal(), Constante.PERSO_IMAGE_DIMENSION_180_180);
+			JOptionPane.showMessageDialog(this, boss.getPhrasesPerso().get(0), mission.getBossNom().getNom(), 0, resizeImage);
+		}
+		
 		JOptionPane.showMessageDialog(this, "Debut du combat");
 
 		// -- TODO Gestion IA
@@ -2189,12 +2197,15 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		// Message fin du jeu
+		// TODO changer les images victoire/defaite
 		if (win) {
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
-			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du combat", 0, icon);
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
+			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du combat", 0, resizeImage);
 		} else {
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
-			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du combat", 0, icon);
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
+			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du combat", 0, resizeImage);
 		}
 
 		// Gestion de la progression des sorts
@@ -2210,10 +2221,12 @@ public class FrameCombat extends FrameJeu {
 				if (actionCombat.amelioreItem()) {
 					// TODO son sort ameliore
 					// Message sort ameliore
+					ImageIcon icon = FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0));
+					ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
 					JOptionPane.showMessageDialog(this,
 							"Le sort de " + actionCombat.getProprietaire().name() + " : '" + actionCombat.getNom()
 									+ "' a progressé d'un niveau ! (" + actionCombat.getNiveau() + ")",
-							"Progression d'un sort", 0, FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0)));
+							"Progression d'un sort", 0, resizeImage);
 				} else {
 					// TODO Si item au niveau Max
 				}

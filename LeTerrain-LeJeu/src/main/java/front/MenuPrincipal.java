@@ -10,11 +10,13 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import core.ImageManager;
 import core.LieuManager;
 import core.MissionManager;
 import core.MusiqueManager;
@@ -581,9 +583,11 @@ public class MenuPrincipal extends JPanel {
 		PersonnageManager personnageManager = mainFrame.getCoreManager().getPersonnageManager();
 		MissionManager missionManager = mainFrame.getCoreManager().getMissionManager();
 		LieuManager lieuManager = mainFrame.getCoreManager().getLieuManager();
+		
+		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
 		int valeur = JOptionPane.showOptionDialog(getParent(), "Choisis ton héro principal",
 				"C'est parti!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"),
+				resizeImage,
 				new String[] {"Johann", "Nicolas", "Pierre", "Thomas", "Yannick"}, 
 				"default");
 		System.out.println(valeur);
@@ -619,9 +623,9 @@ public class MenuPrincipal extends JPanel {
 	}
 
 	public void demandeConfirmationQuitter() {
+		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
 		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sûr de vouloir t'arreter maintenant?",
-				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"),
+				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, resizeImage,
 				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, "default");
 		System.out.println(confirme);
 		if (confirme == 0) {

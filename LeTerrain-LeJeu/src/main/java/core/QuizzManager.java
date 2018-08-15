@@ -56,7 +56,7 @@ public class QuizzManager implements Serializable {
 
 		String imagePath3 = "image/enigme/ali.png";
 		String videoPath3 = "video/Trololo.mp4";
-		String question3 = "Qui a découvert l'Amerique en premier ?";
+		String question3 = "Quel est le plus vieil homme connu à avoir découvert l'Amerique en premier ?";
 		Reponse reponse31 = new Reponse("Gerard Depardieu", false);
 		Reponse reponse32 = new Reponse("Amerigo Vespuci", true);
 		Reponse reponse33 = new Reponse("Christophe Colomb", false);
@@ -70,12 +70,13 @@ public class QuizzManager implements Serializable {
 		
 		// MATH
 		// Laquelle de ces affirmations est vraie? Une soustraction peut donner un nombre positif, Une racine carré peut être négative, Deux droites parallèles peuvent se croiser, Un nombre peut être divisé par 0 (En effet : 7-2 = 5)   
+		// Combien de fois peut on plier une feuille de papier au maximum?
 		
 		// Faim / Soif / Sante / Richesses
 		// En 2016, quel pourcentage de la population mondiale détient la moitié des richesses de la planete? : 50%, 60%, 10%, 1% (18,5 millions de foyers detiennent 47% de la richesse en revenus, dépôts bancaires ou titres boursiers. Les 62 personnes les plus riches detiennent plus que les 3,5 milliards les plus pauvres(62/3 500 000 000))
 		
 		// Politique
-		// Quelle personnalité est presente sur la pochette de l'albulm des Beatlles ()? Aleister Crowley
+		// Quelle personnalité est presente sur la pochette de l'album des Beatlles ()? Aleister Crowley
 		
 		// Ecologie
 		
@@ -83,9 +84,10 @@ public class QuizzManager implements Serializable {
 		
 		// Guerres
 		// Nombre d'années des etats unis en paix (7/200)
-		// Nombre de pays ou les etats unis sont implanté militairement =~150
+		// Nombre de pays ou les etats unis sont implanté militairement =74/324 (France 10, Royaume Unis 7) (source : https://reseauinternational.net/tous-les-pays-ou-les-etats-unis-ont-une-presence-militaire/)
 		
-		
+		//Culture générale
+		// Les dinosaures ont-ils tous disparus? Oui, tué par un météorite il y a 65 millions d'années - Oui, ... Non,... Non,...
 		
 		// Decouvertes
 		// Tesla

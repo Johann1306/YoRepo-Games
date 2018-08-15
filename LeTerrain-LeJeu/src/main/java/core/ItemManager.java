@@ -52,7 +52,7 @@ public class ItemManager implements Serializable {
 		imagePathsGraisse.add(imagePathGraisse);
 		
 		
-
+		// TODO changer les images par defaut
 		List<String> imagePaths1 = new ArrayList<String>();
 		String imagePath1 = "image/mp3Player/stop.png";
 		imagePaths1.add(imagePath1);
@@ -64,6 +64,44 @@ public class ItemManager implements Serializable {
 		List<String> imagePaths3 = new ArrayList<String>();
 		String imagePath3 = "image/mp3Player/back.png";
 		imagePaths3.add(imagePath3);
+		
+		
+		
+		
+		
+		List<String> imagePaths1001 = new ArrayList<String>();
+		String imagePath1001 = "image/item/boss/ballon_dor.jpg";
+		imagePaths1001.add(imagePath1001);
+
+		List<String> imagePaths1002 = new ArrayList<String>();
+		String imagePath1002 = "image/item/boss/grappin_dor.jpg";
+		imagePaths1002.add(imagePath1002);
+		
+		List<String> imagePaths1003 = new ArrayList<String>();
+		String imagePath1003 = "image/item/boss/medaille_dor.png";
+		imagePaths1003.add(imagePath1003);
+		
+		List<String> imagePaths1004 = new ArrayList<String>();
+		String imagePath1004 = "image/item/boss/mouchoir_dor.jpg";
+		imagePaths1004.add(imagePath1004);
+		
+		List<String> imagePaths1005 = new ArrayList<String>();
+		String imagePath1005 = "image/item/boss/sabre_dor.png";
+		imagePaths1005.add(imagePath1005);
+		
+		List<String> imagePaths1006 = new ArrayList<String>();
+		String imagePath1006 = "image/item/boss/micro_dor.jpg";
+		imagePaths1006.add(imagePath1006);
+		
+		List<String> imagePaths1007 = new ArrayList<String>();
+		String imagePath1007 = "image/item/boss/coupe_dor.jpg";
+		imagePaths1007.add(imagePath1007);
+		
+		List<String> imagePaths1008 = new ArrayList<String>();
+		String imagePath1008 = "image/item/boss/palme_dor.jpg";
+		imagePaths1008.add(imagePath1008);
+		
+		
 		
 		// Sons
 		List<String> sonPathsManger1 = new ArrayList<String>();
@@ -80,7 +118,7 @@ public class ItemManager implements Serializable {
 		
 		
 		List<String> sonPaths1 = new ArrayList<String>();
-		String sonPath1 = "sonParDefaut/photoBruit2.mp3";
+		String sonPath1 = "sonParDefaut/inception.mp3";
 		sonPaths1.add(sonPath1);
 
 		List<String> sonPaths2 = new ArrayList<String>();
@@ -149,7 +187,9 @@ public class ItemManager implements Serializable {
 		
 		// Objets sort (REZ, damage, casse bouclier)
 		
-		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolore, jeu video pocket, avions en papier, ) 
+		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolore, jeu video pocket, avions en papier,) 
+		// TODO Donner les cartes en tant que recompenses de missions
+		// TODO Faire les rapports entre la carte et le joueur (Jo = Popovich)
 		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "Carte de San Goku",  imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "Carte de San Gohan", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Carte de Krilin",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
@@ -159,12 +199,41 @@ public class ItemManager implements Serializable {
 		Item carteDBZ7 = new Item(907, "Carte DBZ n°7", "Carte de Cell",      imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ8 = new Item(908, "Carte DBZ n°8", "Carte de Spopovich", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		
+		Item carteCrados1 = new Item(911, "Carte Crados n°1", "Carte de Johann", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados2 = new Item(912, "Carte Crados n°2", "Carte de Nicolas", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados3 = new Item(913, "Carte Crados n°3", "Carte de Pierre", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados4 = new Item(914, "Carte Crados n°4", "Carte de Yannick", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados5 = new Item(915, "Carte Crados n°5", "Carte de Thomas", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados6 = new Item(916, "Carte Crados n°6", "Carte de Ali", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados7 = new Item(917, "Carte Crados n°7", "Carte de Guillaume", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		Item carteCrados8 = new Item(918, "Carte Crados n°8", "Carte de Jonathan", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		
 		Item item10 = new Item(incrementeId(), "item10", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item11 = new Item(incrementeId(), "item11", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item12 = new Item(incrementeId(), "item12", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item13 = new Item(incrementeId(), "item13", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item14 = new Item(incrementeId(), "item14", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
 		Item item15 = new Item(incrementeId(), "item15", "info4", imagePaths3, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		
+		// Recompenses de BOSS
+		// TODO infos recompenses de BOSS marrantes
+		Item ballon_dor 	= new Item(1001, "Le Ballon d'Or", "Bonus Chance", imagePaths1001, sonPaths1, videoPaths1, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		Item grappin_dor 	= new Item(1002, "Le Grappin d'Or", "Bonus Exploit", imagePaths1002, sonPaths1, videoPaths1, PersoPrenom.Nicolas, ItemType.OBJET_QUETE, false);
+		Item medaille_dor 	= new Item(1003, "La Médaille d'Or", "Bonus Agilité", imagePaths1003, sonPaths1, videoPaths1, PersoPrenom.Pierre, ItemType.OBJET_QUETE, false);
+		Item mouchoir_dor 	= new Item(1004, "Le Mouchoir d'Or", "Bonus Intelligence", imagePaths1004, sonPaths1, videoPaths1, PersoPrenom.Thomas, ItemType.OBJET_QUETE, false);
+		Item sabre_dor 		= new Item(1005, "Le Sabre d'Or", "Bonus Resistance", imagePaths1005, sonPaths1, videoPaths1, PersoPrenom.Yannick, ItemType.OBJET_QUETE, false);
+		Item micro_dor 		= new Item(1006, "Le Micro d'Or", "Bonus Vitesse", imagePaths1006, sonPaths1, videoPaths1, PersoPrenom.Ali, ItemType.OBJET_QUETE, false);
+		Item coupe_dor		= new Item(1007, "La Coupe d'Or", "Bonus Technique", imagePaths1007, sonPaths1, videoPaths1, PersoPrenom.Guillaume, ItemType.OBJET_QUETE, false);
+		Item palme_dor		= new Item(1008, "La Palme d'Or", "Bonus Endurance", imagePaths1008, sonPaths1, videoPaths1, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
+	
+		items.add(ballon_dor);
+		items.add(grappin_dor);
+		items.add(medaille_dor);
+		items.add(mouchoir_dor);
+		items.add(sabre_dor);
+		items.add(micro_dor);
+		items.add(coupe_dor);
+		items.add(palme_dor);
 		
 		// Ajout a la liste
 		items.add(popoVie25);
@@ -212,6 +281,20 @@ public class ItemManager implements Serializable {
 		items.add(carteDBZ1);
 		items.add(carteDBZ2);
 		items.add(carteDBZ3);
+		items.add(carteDBZ4);
+		items.add(carteDBZ5);
+		items.add(carteDBZ6);
+		items.add(carteDBZ7);
+		items.add(carteDBZ8);
+		
+		items.add(carteCrados1);
+		items.add(carteCrados2);
+		items.add(carteCrados3);
+		items.add(carteCrados4);
+		items.add(carteCrados5);
+		items.add(carteCrados6);
+		items.add(carteCrados7);
+		items.add(carteCrados8);
 
 		items.add(item10);
 		items.add(item11);
