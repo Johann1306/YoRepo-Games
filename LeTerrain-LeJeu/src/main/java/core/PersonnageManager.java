@@ -41,7 +41,7 @@ import modele.location.Location;
 
 public class PersonnageManager implements Serializable {
 
-	// Need PouvoirManager instancie avant
+	// Need PouvoirManager instancié avant
 
 	private static final long serialVersionUID = 1L;
 
@@ -195,23 +195,32 @@ public class PersonnageManager implements Serializable {
 		List<String> particularitesSocial7 = new ArrayList<String>();
 		List<String> particularitesSocial8 = new ArrayList<String>();
 
+		// Phrase perso d'introduction de chaque Boss
 		List<String> phrasesPerso1 = new ArrayList<String>();
+		phrasesPerso1.add("La routourne va vite tourner. (Franck Ribery)");
 		List<String> phrasesPerso2 = new ArrayList<String>();
+		phrasesPerso2.add("La folie est la source des exploits de tous les héros. (Erasme)");
 		List<String> phrasesPerso3 = new ArrayList<String>();
+		phrasesPerso3.add("La bohémienne dansait ... agile, légère, joyeuse, et ne sentant pas le poids du regard redoutable qui tombait à plomb sur sa tête. (Victor Hugo)");
 		List<String> phrasesPerso4 = new ArrayList<String>();
+		phrasesPerso4.add("L'intelligence défend la paix. L'intelligence a horreur de la guerre. (Paul Vaillant-Couturier)");
 		List<String> phrasesPerso5 = new ArrayList<String>();
+		phrasesPerso5.add("L'épée de la résistance passive n'a pas besoin de fourreau et nul ne peut en être dépossédé par la force. (Gandhi)");
 		List<String> phrasesPerso6 = new ArrayList<String>();
+		phrasesPerso6.add("La beauté de la musique - comme celle de la lumière - est celle de la rapidité, de la mobilité, de l'insaisissable. (Jean-Michel Jarre)");
 		List<String> phrasesPerso7 = new ArrayList<String>();
+		phrasesPerso7.add("Beaucoup de gens boivent, très peu savent être bourrés. (Jacques Dutronc)");
 		List<String> phrasesPerso8 = new ArrayList<String>();
-
-		ImageIcon photoBoss1 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss2 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss3 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss4 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss5 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss6 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss7 = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon photoBoss8 = FenetrePrincipal.getImageIcon("image/guillaume.png");
+		phrasesPerso8.add("Si les mélancoliques ont besoin du tonique des coquetteries, peut-être les gens nerveux ou sanguins décampent-ils si la résistance dure trop. (Honoré de Balzac)");
+		
+		ImageIcon photoBoss1 = FenetrePrincipal.getImageIcon("image/boss/zinedine_zidane.png");
+		ImageIcon photoBoss2 = FenetrePrincipal.getImageIcon("image/boss/lara_croft.png");
+		ImageIcon photoBoss3 = FenetrePrincipal.getImageIcon("image/boss/dr_dre.png");
+		ImageIcon photoBoss4 = FenetrePrincipal.getImageIcon("image/boss/adolph_hitler.png");
+		ImageIcon photoBoss5 = FenetrePrincipal.getImageIcon("image/boss/anakin_skywalker.png");
+		ImageIcon photoBoss6 = FenetrePrincipal.getImageIcon("image/boss/thriller.png");
+		ImageIcon photoBoss7 = FenetrePrincipal.getImageIcon("image/boss/liquid_snake.png");
+		ImageIcon photoBoss8 = FenetrePrincipal.getImageIcon("image/boss/arnaud.png");
 
 		List<ImageIcon> photos1 = new ArrayList<ImageIcon>();
 		List<ImageIcon> photos2 = new ArrayList<ImageIcon>();
@@ -228,19 +237,19 @@ public class PersonnageManager implements Serializable {
 		int chargeMax = 10;
 
 		if (difficultePartie == Difficulte.FACILE) {
-			vieMax = 500;
+			vieMax = 1500;
 			manaMax = 50;
 			chargeMax = 3;
 		} else if (difficultePartie == Difficulte.NORMAL) {
-			vieMax = 650;
+			vieMax = 2000;
 			manaMax = 100;
 			chargeMax = 5;
 		} else if (difficultePartie == Difficulte.DIFFICILE) {
-			vieMax = 850;
+			vieMax = 3000;
 			manaMax = 150;
 			chargeMax = 7;
 		} else if (difficultePartie == Difficulte.HEROIQUE) {
-			vieMax = 1000;
+			vieMax = 5000;
 			manaMax = 200;
 			chargeMax = 10;
 		}
@@ -272,30 +281,47 @@ public class PersonnageManager implements Serializable {
 		List<ActionCombat> actionsCombat8 = actionCombatManager.getActionsCombat(BossNom.BOSS8.name());
 
 		// Creation des BOSS
+		
+		// BOSS YO
 		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique1, particularitesSocial1, phrasesPerso1, photoBoss1, photos1, actionsCombat1,
 				competence1);
+
+		// BOSS NICO
 		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique2, particularitesSocial2, phrasesPerso2, photoBoss2, photos2, actionsCombat2,
 				competence2);
+
+		// BOSS PIP
 		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique3, particularitesSocial3, phrasesPerso3, photoBoss3, photos3, actionsCombat3,
 				competence3);
+
+		// BOSS TOM
 		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique4, particularitesSocial4, phrasesPerso4, photoBoss4, photos4, actionsCombat4,
 				competence4);
+
+		// BOSS YA
 		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique5, particularitesSocial5, phrasesPerso5, photoBoss5, photos5, actionsCombat5,
 				competence5);
+
+		// BOSS ALI
 		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique6, particularitesSocial6, phrasesPerso6, photoBoss6, photos6, actionsCombat6,
 				competence6);
+
+		// BOSS GUY
 		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique7, particularitesSocial7, phrasesPerso7, photoBoss7, photos7, actionsCombat7,
 				competence7);
+
+		// BOSS RUSS
 		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.name(), vieMax, manaMax, chargeMax,
 				particularitesPhysique8, particularitesSocial8, phrasesPerso8, photoBoss8, photos8, actionsCombat8,
 				competence8);
+		
 		
 		personnagesBoss.add(boss1);
 		personnagesBoss.add(boss2);
@@ -383,7 +409,7 @@ public class PersonnageManager implements Serializable {
 			} else if ( classe == PersoClasse.BARDE) {
 				imagePath = "image/ennemi/ennemi_gitan_5.png";
 			}
-			nom = "Ennemi Gitan " + numero + "(" + classe.name() + ")";
+			nom = "Ennemi Gitan " + numero + " (" + classe.name() + ")";
 			phrasesPerso.add("Hey Gadjo!");
 			phrasesPerso.add("Mange tes maures!");
 			phrasesPerso.add("Ca c'est mon cousin! Viens mon cousin!");
@@ -443,7 +469,7 @@ public class PersonnageManager implements Serializable {
 			} else if ( classe == PersoClasse.BARDE) {
 				imagePath = "image/ennemi/ennemi_noir_5.png";
 			}
-			nom = "Ennemi Noir " + numero + "(" + classe.name() + ")";
+			nom = "Ennemi Noir " + numero + " (" + classe.name() + ")";
 			phrasesPerso.add("Hey Garçon!");
 			particularitesPhysique.add("Tchip");
 			particularitesPhysique.add(
@@ -470,7 +496,7 @@ public class PersonnageManager implements Serializable {
 			} else if ( classe == PersoClasse.BARDE) {
 				imagePath = "image/ennemi/ennemi_handicape_5.png";
 			}
-			nom = "Ennemi Handicapé " + numero + "(" + classe.name() + ")";
+			nom = "Ennemi Handicapé " + numero + " (" + classe.name() + ")";
 		}
 		// TODO autres type d'ennemi skin/alqueda/...
 
@@ -576,6 +602,9 @@ public class PersonnageManager implements Serializable {
 
 	private Competence choixDesCompetences(Difficulte difficulte, List<PersoStat> statsParType,
 			List<PersoStat> statsParClasse) {
+		
+		// TODO cas particulier des boss
+		
 
 		int valeurParDifficulte = 25;
 		Competence competence = null;

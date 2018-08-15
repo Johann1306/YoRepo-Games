@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import core.DateManager;
 import core.EvenementManager;
+import core.ImageManager;
 import core.MissionManager;
 import core.MusiqueManager;
 import core.configuration.Constante;
@@ -137,7 +138,8 @@ public class PanelHaut extends JPanel {
 					
 					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager();
 					MusiqueManager.playSonEvenement("musique/dodo/310-SecretOfMana-close-your-eyelids.mp3");
-					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonne nuit les petits",	"C'est l'heure de faire dodo", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemNuit.mp3"));
+					ImageIcon resizeImageNuit = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautItemNuit.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonne nuit les petits",	"C'est l'heure de faire dodo", 0, resizeImageNuit);
 					while (dateManager.getDateCourante().getHours() != 7) {
 						dateManager.passeUneHeure();						
 					}
@@ -147,7 +149,8 @@ public class PanelHaut extends JPanel {
 					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager();
 					// Reveil a 7h
 					MusiqueManager.playSonEvenement("musique/reveil/32-Zelda-hyrule-field-morning-theme.mp3");
-					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonjour madame", "C'est l'heure de se reveiller", 0, FenetrePrincipal.getImageIcon("image/defaut/defautItemJour.mp3"));
+					ImageIcon resizeImageJour = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautItemJour.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonjour madame", "C'est l'heure de se reveiller", 0, resizeImageJour);
 				}
 
 				// Refresh du panel du perso courant

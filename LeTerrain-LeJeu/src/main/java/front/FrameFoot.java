@@ -245,10 +245,12 @@ public class FrameFoot extends FrameJeu {
 		// Message fin du jeu
 		if (win) {
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
-			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du match", 0, icon);
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
+			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du match", 0, resizeImage);
 		} else {
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
-			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du match", 0, icon);
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
+			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du match", 0, resizeImage);
 		}
 
 		// Fermeture de la frame foot et reaffichage de la mainframe

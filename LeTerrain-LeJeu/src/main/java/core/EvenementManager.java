@@ -453,7 +453,8 @@ public class EvenementManager implements Serializable {
 					if (image == null || image.getIconWidth() == -1) {
 						image = FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png");
 					}
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), evenement.getTitre(), type, image);
+					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.PERSO_IMAGE_DIMENSION_180_180);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), evenement.getTitre(), type, resizeImage);
 				}
 				
 				// Debloquer les items a debloquer 

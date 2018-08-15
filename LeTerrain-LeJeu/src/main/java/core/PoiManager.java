@@ -111,6 +111,7 @@ public class PoiManager implements Serializable {
 		missionsPoi200.add(missionManager.getMissionById(1103));
 		missionsPoi200.add(missionManager.getMissionById(1106));
 		missionsPoi200.add(missionManager.getMissionById(1107));
+		missionsPoi200.add(missionManager.getMissionById(1001));
 		missionsPoi201.add(missionManager.getMissionById(200));
 		missionsPoi201.add(missionManager.getMissionById(703));
 		missionsPoi201.add(missionManager.getMissionById(1104));
@@ -129,6 +130,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1001.add(missionManager.getMissionById(303));
 		missionsPoi1001.add(missionManager.getMissionById(305));
 		missionsPoi1001.add(missionManager.getMissionById(311));
+		missionsPoi1001.add(missionManager.getMissionById(1008));
 		missionsPoi1002.add(missionManager.getMissionById(306));
 		missionsPoi1003.add(missionManager.getMissionById(304));
 		missionsPoi1003.add(missionManager.getMissionById(307));
@@ -140,6 +142,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1100.add(missionManager.getMissionById(405));
 		missionsPoi1100.add(missionManager.getMissionById(407));
 		missionsPoi1100.add(missionManager.getMissionById(408));
+		missionsPoi1100.add(missionManager.getMissionById(1007));
 		missionsPoi1101.add(missionManager.getMissionById(403));
 		missionsPoi1101.add(missionManager.getMissionById(404));
 		missionsPoi1101.add(missionManager.getMissionById(406));
@@ -147,6 +150,7 @@ public class PoiManager implements Serializable {
 		// Ali
 		missionsPoi1200.add(missionManager.getMissionById(501));
 		missionsPoi1200.add(missionManager.getMissionById(503));
+		missionsPoi1200.add(missionManager.getMissionById(1006));
 		missionsPoi1201.add(missionManager.getMissionById(502));
 		missionsPoi1201.add(missionManager.getMissionById(505));
 		missionsPoi1202.add(missionManager.getMissionById(508));
@@ -155,6 +159,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1300.add(missionManager.getMissionById(701));
 		missionsPoi1300.add(missionManager.getMissionById(706));
 		missionsPoi1300.add(missionManager.getMissionById(708));
+		missionsPoi1300.add(missionManager.getMissionById(1005));
 		missionsPoi1301.add(missionManager.getMissionById(704));
 		missionsPoi1301.add(missionManager.getMissionById(705));
 		missionsPoi1302.add(missionManager.getMissionById(506));
@@ -164,6 +169,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1400.add(missionManager.getMissionById(601));
 		missionsPoi1400.add(missionManager.getMissionById(604));
 		missionsPoi1400.add(missionManager.getMissionById(608));
+		missionsPoi1400.add(missionManager.getMissionById(1004));
 		missionsPoi1401.add(missionManager.getMissionById(602));
 		missionsPoi1401.add(missionManager.getMissionById(605));
 		missionsPoi1401.add(missionManager.getMissionById(607));
@@ -175,6 +181,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1500.add(missionManager.getMissionById(802));
 		missionsPoi1500.add(missionManager.getMissionById(805));
 		missionsPoi1500.add(missionManager.getMissionById(806));
+		missionsPoi1500.add(missionManager.getMissionById(1003));
 		missionsPoi1501.add(missionManager.getMissionById(800));
 		missionsPoi1501.add(missionManager.getMissionById(801));
 		missionsPoi1503.add(missionManager.getMissionById(803));
@@ -185,6 +192,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1600.add(missionManager.getMissionById(902));
 		missionsPoi1600.add(missionManager.getMissionById(904));
 		missionsPoi1600.add(missionManager.getMissionById(906));
+		missionsPoi1600.add(missionManager.getMissionById(1002));
 		missionsPoi1601.add(missionManager.getMissionById(901));
 		missionsPoi1603.add(missionManager.getMissionById(903));
 		missionsPoi1603.add(missionManager.getMissionById(905));
