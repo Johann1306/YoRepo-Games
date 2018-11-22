@@ -17,6 +17,8 @@ Problemes Graves:
 - (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
 
 Problemes Legers: 
+- Gerer le volume du son des combats (musique > bruit des sorts(special))
+- Verifier que le nom des boss apparait bien dans l'infobulle
 - Gestion des sorts de mana trop de mana ajouté  ou enlevé
 - Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
 - Probleme taille de la page fiche perso qui impacte la taille de la page carte (1ere init)
@@ -38,6 +40,8 @@ Problemes combats :
 - tester le rez multi des ennemis depuis le fix (probleme rez les ennemis vivants => doublon)
 
 Indispensables:
+- Didacticiel / Tutoriel
+- gestion de la sauvegarde (automatique / difficulté / possibilité de mourir et de tout recommencer?)
 - Mettre des musiques d'ambiances pour chaque perso et pour le groupe (Tom : Warcraft2, ..)
 - Gestion des BOSS (nom, photo, actionsCombat specifiques, phrases d'intro de combat)
 - Terminer FrameCombat
@@ -71,6 +75,9 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- les regles d'internet (jeannot nymouce)
+- limiter la progression en fonction du nombre de mission disponible (max 5 ou 10 non resolus) => bloquer le timer
+- Questions 'de personnalité' au debut du jeu à la fallout 4 (sans consequences / questions aleatoires? connes?)
 - faire un premier combat en one to one pour commencer les combats
 - limiter le bouton suivant par rapport au nombre de missions en cours (ex: bouton grisé si = 10 missions) pour eviter de voir la fin sans faire les missions
 - faire une intervention divine pour donner la capacité préféré de chaque perso (
