@@ -10,6 +10,7 @@ public class Constante {
 	public static final Dimension PERSO_IMAGE_DIMENSION_50_50 = new Dimension(50, 50);
 	public static final Dimension PERSO_IMAGE_DIMENSION_40_40 = new Dimension(40, 40);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
+	public static final Dimension EVENEMENT_IMAGE_DIMENSION_300_300 = new Dimension(300, 300);
 	
 	public static final int MAX_EVENEMENTS_AFFICHES = 5;
 	public static final int MAX_CASE_PAR_LIGNE = 10;

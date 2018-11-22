@@ -24,7 +24,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import com.google.common.base.Strings;
-import com.sun.xml.internal.ws.util.StringUtils;
 
 import core.MusiqueManager;
 import core.configuration.Constante;
