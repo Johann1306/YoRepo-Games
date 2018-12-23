@@ -1,7 +1,9 @@
 package core;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -9,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -44,7 +47,7 @@ public class PersonnageManager implements Serializable {
 	// Need PouvoirManager instancié avant
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private Groupe leGroupe;
 	private List<PersonnageSecondaire> personnagesSecondaires;
 	private List<PersonnageBoss> personnagesBoss;
@@ -76,64 +79,134 @@ public class PersonnageManager implements Serializable {
 		ImageIcon iconCombatAli = FenetrePrincipal.getImageIcon("image/ali 2.png");
 		ImageIcon iconCombatGuillaume = FenetrePrincipal.getImageIcon("image/guillaume 2.png");
 		ImageIcon iconCombatJonathan = FenetrePrincipal.getImageIcon("image/jonathan 2.png");
-
+		
+		// Les messages de dieu d'arrivee de chaque perso
+		String messageDieuJohann = ConfigurationManager.getProperties("message.dieu.johann");
+		String messageDieuNicolas = ConfigurationManager.getProperties("message.dieu.nicolas");
+		String messageDieuPierre = ConfigurationManager.getProperties("message.dieu.pierre");
+		String messageDieuThomas = ConfigurationManager.getProperties("message.dieu.thomas");
+		String messageDieuYannick = ConfigurationManager.getProperties("message.dieu.yannick");
+		String messageDieuAli = ConfigurationManager.getProperties("message.dieu.ali");
+		String messageDieuGuillaume = ConfigurationManager.getProperties("message.dieu.guillaume");
+		String messageDieuJonathan = ConfigurationManager.getProperties("message.dieu.jonathan");
+		
+		String surnomJohann = ConfigurationManager.getProperties("surnom.principal.johann");
+		String surnomNicolas = ConfigurationManager.getProperties("surnom.principal.nicolas");
+		String surnomPierre = ConfigurationManager.getProperties("surnom.principal.pierre");
+		String surnomThomas = ConfigurationManager.getProperties("surnom.principal.thomas");
+		String surnomYannick = ConfigurationManager.getProperties("surnom.principal.yannick");
+		String surnomAli = ConfigurationManager.getProperties("surnom.principal.ali");
+		String surnomGuillaume = ConfigurationManager.getProperties("surnom.principal.guillaume");
+		String surnomJonathan = ConfigurationManager.getProperties("surnom.principal.jonathan");
+		
+		String originesJohann = ConfigurationManager.getProperties("origines.johann");
+		String originesNicolas = ConfigurationManager.getProperties("origines.nicolas");
+		String originesPierre = ConfigurationManager.getProperties("origines.pierre");
+		String originesThomas = ConfigurationManager.getProperties("origines.thomas");
+		String originesYannick = ConfigurationManager.getProperties("origines.yannick");
+		String originesAli = ConfigurationManager.getProperties("origines.ali");
+		String originesGuillaume = ConfigurationManager.getProperties("origines.guillaume");
+		String originesJonathan = ConfigurationManager.getProperties("origines.jonathan");
+		
+		// Musiques Johann
+		// TODO 
+		// principal : Retour vers le futur Theme
+		// Son de clic : bruit de son retour vers le futur / de vomi
+		// secondaire : Dance Attitude, Lady Gaga, Supermen Lovers,
+		List<Musique> musiquesJohann = MusiqueManager.chargeMusiquesPerso("musique/personnage/johann", 1000);
+		// TODO 
+		// principal : JamesBond Theme
+		// Son de clic : JamesBond sons
+		// secondaire : Secteur A, Dre DRE, Snoop Dog, Eminem, Xzibit,  
+		List<Musique> musiquesPierre = MusiqueManager.chargeMusiquesPerso("musique/personnage/pierre", 2000);
+		// TODO 
+		// principal : Warcraft 2 Theme
+		// Son de clic : Voie de peon
+		// secondaire : Funk, Black EYed Peas, 
+		List<Musique> musiquesThomas = MusiqueManager.chargeMusiquesPerso("musique/personnage/thomas", 3000);
+		// TODO 
+		// principal : Matrix Theme
+		// Son de clic : Matrix sons
+		// secondaire : Carapitcho, Bailando, Drag Queen, Thriller, El Tiburon
+		List<Musique> musiquesNicolas = MusiqueManager.chargeMusiquesPerso("musique/personnage/nicolas", 4000);
+		// TODO 
+		// principal : StarWars Theme
+		// Son de clic : Laser star wars
+		// secondaire : Nirvana, NickelBack, Radiohead, Coldplay, Placebo,  
+		List<Musique> musiquesYannick = MusiqueManager.chargeMusiquesPerso("musique/personnage/yannick", 5000);
+		// TODO 
+		// principal : Le seigneur des anneaux Theme
+		// Son de clic : Bruit de Morgul
+		// secondaire : Mon vieu, 
+		List<Musique> musiquesAli = MusiqueManager.chargeMusiquesPerso("musique/personnage/ali", 6000);
+		// TODO 
+		// principal : Indiana Jones Theme
+		// Son de clic : Son de liquide qui remplit un verre / de serpent a sonette
+		// secondaire : Camaro, Bouga, 
+		List<Musique> musiquesGuillaume = MusiqueManager.chargeMusiquesPerso("musique/personnage/guillaume", 7000);
+		// TODO 
+		// principal : Le Parrain Theme
+		// Son de clic : crissement de pneu
+		// secondaire : Eve, DelaSoul,  
+		List<Musique> musiquesJonathan = MusiqueManager.chargeMusiquesPerso("musique/personnage/jonathan", 8000);
+		
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
-		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, "Yo",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), "Tchécoslovaques", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, surnomJohann,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), originesJohann, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuJohann, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesJohann, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Johann, false), new Competence(PersoPrenom.Johann, true), false);
-		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, "Nico",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), "Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, surnomNicolas,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), originesNicolas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuNicolas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesNicolas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Nicolas, false), new Competence(PersoPrenom.Nicolas, true), false);
-		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, "Pip",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), "Françaises à grosses bites", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, surnomPierre,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), originesPierre, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuPierre, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesPierre, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Pierre, false), new Competence(PersoPrenom.Pierre, true), false);
-		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, "Darm",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), "Judéo-Espagnoles", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, surnomThomas,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), originesThomas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuThomas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesThomas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Thomas, false), new Competence(PersoPrenom.Thomas, true), false);
-		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, "Ya",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), "Françaises florales", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, surnomYannick,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), originesYannick, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuYannick, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesYannick, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Yannick, false), new Competence(PersoPrenom.Yannick, true), false);
-		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, "Ali",
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), "Pakistanaises", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, surnomAli,
+				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), originesAli, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuAli, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesAli, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Ali, false), new Competence(PersoPrenom.Ali, true), false);
-		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, "Guy",
-				new ArrayList<String>(), DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, surnomGuillaume,
+				new ArrayList<String>(), DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), originesGuillaume, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuGuillaume, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesGuillaume, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Guillaume, false), new Competence(PersoPrenom.Guillaume, true), false);
-		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, "Russ",
-				new ArrayList<String>(), DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), "Italiennes", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, surnomJonathan,
+				new ArrayList<String>(), DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), originesJonathan, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
-				new ArrayList<MomentCle>(), new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
-				new ArrayList<Son>(), new ArrayList<Musique>(), new HashMap<Item, Integer>(), null,
+				new ArrayList<MomentCle>(), messageDieuJonathan, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
+				new ArrayList<Son>(), musiquesJonathan, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Jonathan, false), new Competence(PersoPrenom.Jonathan, true), false);
 
 		leGroupe.ajoutePerso(johann);
@@ -185,6 +258,11 @@ public class PersonnageManager implements Serializable {
 		List<String> particularitesPhysique6 = new ArrayList<String>();
 		List<String> particularitesPhysique7 = new ArrayList<String>();
 		List<String> particularitesPhysique8 = new ArrayList<String>();
+		List<String> particularitesPhysique11 = new ArrayList<String>();
+		List<String> particularitesPhysique12 = new ArrayList<String>();
+		List<String> particularitesPhysique13 = new ArrayList<String>();
+		List<String> particularitesPhysique14 = new ArrayList<String>();
+		List<String> particularitesPhysique15 = new ArrayList<String>();
 		
 		List<String> particularitesSocial1 = new ArrayList<String>();
 		List<String> particularitesSocial2 = new ArrayList<String>();
@@ -194,24 +272,41 @@ public class PersonnageManager implements Serializable {
 		List<String> particularitesSocial6 = new ArrayList<String>();
 		List<String> particularitesSocial7 = new ArrayList<String>();
 		List<String> particularitesSocial8 = new ArrayList<String>();
+		List<String> particularitesSocial11 = new ArrayList<String>();
+		List<String> particularitesSocial12 = new ArrayList<String>();
+		List<String> particularitesSocial13 = new ArrayList<String>();
+		List<String> particularitesSocial14 = new ArrayList<String>();
+		List<String> particularitesSocial15 = new ArrayList<String>();
 
 		// Phrase perso d'introduction de chaque Boss
 		List<String> phrasesPerso1 = new ArrayList<String>();
-		phrasesPerso1.add("La routourne va vite tourner. (Franck Ribery)");
+		phrasesPerso1.add(ConfigurationManager.getProperties("boss.citation.1"));
 		List<String> phrasesPerso2 = new ArrayList<String>();
-		phrasesPerso2.add("La folie est la source des exploits de tous les héros. (Erasme)");
+		phrasesPerso2.add(ConfigurationManager.getProperties("boss.citation.2"));
 		List<String> phrasesPerso3 = new ArrayList<String>();
-		phrasesPerso3.add("La bohémienne dansait ... agile, légère, joyeuse, et ne sentant pas le poids du regard redoutable qui tombait à plomb sur sa tête. (Victor Hugo)");
+		phrasesPerso3.add(ConfigurationManager.getProperties("boss.citation.3"));
 		List<String> phrasesPerso4 = new ArrayList<String>();
-		phrasesPerso4.add("L'intelligence défend la paix. L'intelligence a horreur de la guerre. (Paul Vaillant-Couturier)");
+		phrasesPerso4.add(ConfigurationManager.getProperties("boss.citation.4"));
 		List<String> phrasesPerso5 = new ArrayList<String>();
-		phrasesPerso5.add("L'épée de la résistance passive n'a pas besoin de fourreau et nul ne peut en être dépossédé par la force. (Gandhi)");
+		phrasesPerso5.add(ConfigurationManager.getProperties("boss.citation.5"));
 		List<String> phrasesPerso6 = new ArrayList<String>();
-		phrasesPerso6.add("La beauté de la musique - comme celle de la lumière - est celle de la rapidité, de la mobilité, de l'insaisissable. (Jean-Michel Jarre)");
+		phrasesPerso6.add(ConfigurationManager.getProperties("boss.citation.6"));
 		List<String> phrasesPerso7 = new ArrayList<String>();
-		phrasesPerso7.add("Beaucoup de gens boivent, très peu savent être bourrés. (Jacques Dutronc)");
+		phrasesPerso7.add(ConfigurationManager.getProperties("boss.citation.7"));
 		List<String> phrasesPerso8 = new ArrayList<String>();
-		phrasesPerso8.add("Si les mélancoliques ont besoin du tonique des coquetteries, peut-être les gens nerveux ou sanguins décampent-ils si la résistance dure trop. (Honoré de Balzac)");
+		phrasesPerso8.add(ConfigurationManager.getProperties("boss.citation.8"));
+		List<String> phrasesPerso11 = new ArrayList<String>();
+		
+		// Phrase perso d'introduction de chaque mini Boss ecole
+		phrasesPerso11.add(ConfigurationManager.getProperties("boss.citation.11"));
+		List<String> phrasesPerso12 = new ArrayList<String>();
+		phrasesPerso12.add(ConfigurationManager.getProperties("boss.citation.12"));
+		List<String> phrasesPerso13 = new ArrayList<String>();
+		phrasesPerso13.add(ConfigurationManager.getProperties("boss.citation.13"));
+		List<String> phrasesPerso14 = new ArrayList<String>();
+		phrasesPerso14.add(ConfigurationManager.getProperties("boss.citation.14"));
+		List<String> phrasesPerso15 = new ArrayList<String>();
+		phrasesPerso15.add(ConfigurationManager.getProperties("boss.citation.15"));
 		
 		ImageIcon photoBoss1 = FenetrePrincipal.getImageIcon("image/boss/zinedine_zidane.png");
 		ImageIcon photoBoss2 = FenetrePrincipal.getImageIcon("image/boss/lara_croft.png");
@@ -221,6 +316,11 @@ public class PersonnageManager implements Serializable {
 		ImageIcon photoBoss6 = FenetrePrincipal.getImageIcon("image/boss/thriller.png");
 		ImageIcon photoBoss7 = FenetrePrincipal.getImageIcon("image/boss/liquid_snake.png");
 		ImageIcon photoBoss8 = FenetrePrincipal.getImageIcon("image/boss/arnaud.png");
+		ImageIcon photoBoss11 = FenetrePrincipal.getImageIcon("image/miniboss/Chatelain.png");
+		ImageIcon photoBoss12 = FenetrePrincipal.getImageIcon("image/miniboss/Dubois.png");
+		ImageIcon photoBoss13 = FenetrePrincipal.getImageIcon("image/miniboss/Durand.png");
+		ImageIcon photoBoss14 = FenetrePrincipal.getImageIcon("image/miniboss/Braquet.png");
+		ImageIcon photoBoss15 = FenetrePrincipal.getImageIcon("image/miniboss/Bouchera.png");
 
 		List<ImageIcon> photos1 = new ArrayList<ImageIcon>();
 		List<ImageIcon> photos2 = new ArrayList<ImageIcon>();
@@ -230,6 +330,12 @@ public class PersonnageManager implements Serializable {
 		List<ImageIcon> photos6 = new ArrayList<ImageIcon>();
 		List<ImageIcon> photos7 = new ArrayList<ImageIcon>();
 		List<ImageIcon> photos8 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos11 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos12 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos13 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos14 = new ArrayList<ImageIcon>();
+		List<ImageIcon> photos15 = new ArrayList<ImageIcon>();
+		
 
 		// TODO vie/mana/charge par Boss ??
 		int vieMax = 1000;
@@ -269,7 +375,12 @@ public class PersonnageManager implements Serializable {
 		Competence competence6 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
 		Competence competence7 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
 		Competence competence8 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-
+		Competence competence11 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence12 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence13 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence14 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence15 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		
 		// ActionsCombat des BOSS
 		List<ActionCombat> actionsCombat1 = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
 		List<ActionCombat> actionsCombat2 = actionCombatManager.getActionsCombat(BossNom.BOSS2.name());
@@ -279,46 +390,72 @@ public class PersonnageManager implements Serializable {
 		List<ActionCombat> actionsCombat6 = actionCombatManager.getActionsCombat(BossNom.BOSS6.name());
 		List<ActionCombat> actionsCombat7 = actionCombatManager.getActionsCombat(BossNom.BOSS7.name());
 		List<ActionCombat> actionsCombat8 = actionCombatManager.getActionsCombat(BossNom.BOSS8.name());
+		List<ActionCombat> actionsCombat11 = actionCombatManager.getActionsCombat(BossNom.BOSS11.name());
+		List<ActionCombat> actionsCombat12 = actionCombatManager.getActionsCombat(BossNom.BOSS12.name());
+		List<ActionCombat> actionsCombat13 = actionCombatManager.getActionsCombat(BossNom.BOSS13.name());
+		List<ActionCombat> actionsCombat14 = actionCombatManager.getActionsCombat(BossNom.BOSS14.name());
+		List<ActionCombat> actionsCombat15 = actionCombatManager.getActionsCombat(BossNom.BOSS15.name());
 
+		// Creation des MINI BOSS
+		PersonnageBoss boss11 = new PersonnageBoss(BossNom.BOSS11.name(), BossNom.BOSS11.getNom(), vieMax, manaMax, chargeMax,
+				particularitesPhysique11, particularitesSocial11, phrasesPerso11, photoBoss11, photos11, actionsCombat11,
+				competence11);
+
+		PersonnageBoss boss12 = new PersonnageBoss(BossNom.BOSS12.name(), BossNom.BOSS12.getNom(), vieMax, manaMax, chargeMax,
+				particularitesPhysique12, particularitesSocial12, phrasesPerso12, photoBoss12, photos12, actionsCombat12,
+				competence12);
+
+		PersonnageBoss boss13 = new PersonnageBoss(BossNom.BOSS13.name(), BossNom.BOSS13.getNom(), vieMax, manaMax, chargeMax,
+				particularitesPhysique13, particularitesSocial13, phrasesPerso13, photoBoss13, photos13, actionsCombat13,
+				competence13);
+
+		PersonnageBoss boss14 = new PersonnageBoss(BossNom.BOSS14.name(), BossNom.BOSS14.getNom(), vieMax, manaMax, chargeMax,
+				particularitesPhysique14, particularitesSocial14, phrasesPerso14, photoBoss14, photos14, actionsCombat14,
+				competence14);
+
+		PersonnageBoss boss15 = new PersonnageBoss(BossNom.BOSS15.name(), BossNom.BOSS15.getNom(), vieMax, manaMax, chargeMax,
+				particularitesPhysique15, particularitesSocial15, phrasesPerso15, photoBoss15, photos15, actionsCombat15,
+				competence15);
+		
 		// Creation des BOSS
 		
 		// BOSS YO
-		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), BossNom.BOSS1.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique1, particularitesSocial1, phrasesPerso1, photoBoss1, photos1, actionsCombat1,
 				competence1);
 
 		// BOSS NICO
-		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.name(), BossNom.BOSS2.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique2, particularitesSocial2, phrasesPerso2, photoBoss2, photos2, actionsCombat2,
 				competence2);
 
 		// BOSS PIP
-		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.name(), BossNom.BOSS3.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique3, particularitesSocial3, phrasesPerso3, photoBoss3, photos3, actionsCombat3,
 				competence3);
 
 		// BOSS TOM
-		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.name(), BossNom.BOSS4.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique4, particularitesSocial4, phrasesPerso4, photoBoss4, photos4, actionsCombat4,
 				competence4);
 
 		// BOSS YA
-		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.name(), BossNom.BOSS5.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique5, particularitesSocial5, phrasesPerso5, photoBoss5, photos5, actionsCombat5,
 				competence5);
 
 		// BOSS ALI
-		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.name(), BossNom.BOSS6.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique6, particularitesSocial6, phrasesPerso6, photoBoss6, photos6, actionsCombat6,
 				competence6);
 
 		// BOSS GUY
-		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.name(), BossNom.BOSS7.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique7, particularitesSocial7, phrasesPerso7, photoBoss7, photos7, actionsCombat7,
 				competence7);
 
 		// BOSS RUSS
-		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.name(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.name(), BossNom.BOSS8.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique8, particularitesSocial8, phrasesPerso8, photoBoss8, photos8, actionsCombat8,
 				competence8);
 		
@@ -331,6 +468,11 @@ public class PersonnageManager implements Serializable {
 		personnagesBoss.add(boss6);
 		personnagesBoss.add(boss7);
 		personnagesBoss.add(boss8);
+		personnagesBoss.add(boss11);
+		personnagesBoss.add(boss12);
+		personnagesBoss.add(boss13);
+		personnagesBoss.add(boss14);
+		personnagesBoss.add(boss15);
 	}
 
 	public PersonnagePrincipal getPersoByPrenom(PersoPrenom nom) {
@@ -362,7 +504,7 @@ public class PersonnageManager implements Serializable {
 		for (PersonnageBoss personnageBoss : personnagesBoss) {
 			System.out.println("Nom : " + personnageBoss.getNom());
 			System.out.println("Nom : " + bossNom.name());
-			if (personnageBoss.getNom().equals(bossNom.name())) {
+			if (personnageBoss.getNom().equals(bossNom.getNom())) {
 				// Update competences boss en fonction des stats des joueurs
 				updateCompetences(personnageBoss);
 				return personnageBoss;
@@ -378,7 +520,7 @@ public class PersonnageManager implements Serializable {
 		personnage.setCompetence(choixDesCompetences(difficulte, statsParType, statsParClasse));
 	}
 
-	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int numero, int niveauSorts, PersoClasse classe) {
+	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int niveauSorts, PersoClasse classe) {
 
 		// TODO pour chaque type d ennemis
 		List<ImageIcon> photos = new ArrayList<ImageIcon>();
@@ -391,25 +533,22 @@ public class PersonnageManager implements Serializable {
 		List<PersoStat> statsParType = new ArrayList<PersoStat>();
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>();
 		
-		// TODO photos par classe pour Noirs, Handicapes, Gitans, ...
-		
 		// GITANS
 		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
 			statsParType.add(PersoStat.AGILITE);
 			statsParType.add(PersoStat.RESISTANCE);
 			statsParType.add(PersoStat.NERVOSITE);
-			if (classe == PersoClasse.TANK) {
-				imagePath = "image/ennemi/ennemi_gitan_1.png";
-			} else if ( classe == PersoClasse.HEALER) {
-				imagePath = "image/ennemi/ennemi_gitan_2.png";
-			} else if ( classe == PersoClasse.DPS) {
-				imagePath = "image/ennemi/ennemi_gitan_3.png";
-			} else if ( classe == PersoClasse.MAGE) {
-				imagePath = "image/ennemi/ennemi_gitan_4.png";
-			} else if ( classe == PersoClasse.BARDE) {
-				imagePath = "image/ennemi/ennemi_gitan_5.png";
-			}
-			nom = "Ennemi Gitan " + numero + " (" + classe.name() + ")";
+
+			// Random des images par type
+			File fileGitan = new File(FenetrePrincipal.getURL("image/ennemi/gitan/").getPath());
+			String[] pathsGitan = fileGitan.list();
+			imagePath = "image/ennemi/gitan/" + randomPhotoEnnemi(pathsGitan);
+			
+			// Random des noms des ennemis
+			String nomsGitan = ConfigurationManager.getProperties("ennemi.noms.gitan");
+			String[] nomsGitanTab = nomsGitan.split(",");
+			String nomGitanRandom = nomsGitanTab[RandomManager.random(0, nomsGitanTab.length-1)];
+			nom = nomGitanRandom + " (" + classe.name() + ")";
 			phrasesPerso.add("Hey Gadjo!");
 			phrasesPerso.add("Mange tes maures!");
 			phrasesPerso.add("Ca c'est mon cousin! Viens mon cousin!");
@@ -428,18 +567,17 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.TECHNIQUE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.NERVOSITE);
-			if (classe == PersoClasse.TANK) {
-				imagePath = "image/ennemi/ennemi_arabe_3.png";
-			} else if ( classe == PersoClasse.HEALER) {
-				imagePath = "image/ennemi/ennemi_arabe_2.png";
-			} else if ( classe == PersoClasse.DPS) {
-				imagePath = "image/ennemi/ennemi_arabe_5.png";
-			} else if ( classe == PersoClasse.MAGE) {
-				imagePath = "image/ennemi/ennemi_arabe_1.png";
-			} else if ( classe == PersoClasse.BARDE) {
-				imagePath = "image/ennemi/ennemi_arabe_4.png";
-			}
-			nom = "Arabe " + numero + " (" + classe.name() + ")";
+
+			// Random des images par type
+			File fileArabe = new File(FenetrePrincipal.getURL("image/ennemi/arabe/").getPath());
+			String[] pathsArabe = fileArabe.list();
+			imagePath = "image/ennemi/arabe/" + randomPhotoEnnemi(pathsArabe);
+			
+			// Random des noms des ennemis
+			String nomsArabe = ConfigurationManager.getProperties("ennemi.noms.arabe");
+			String[] nomsArabeTab = nomsArabe.split(",");
+			String nomArabeRandom = nomsArabeTab[RandomManager.random(0, nomsArabeTab.length-1)];
+			nom = nomArabeRandom + " (" + classe.name() + ")";
 			phrasesPerso.add("Wesh ma gueule!");
 			phrasesPerso.add("Meskine!");
 			phrasesPerso.add("Wesh, t'as une garette-ci?");
@@ -458,18 +596,17 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.ENDURANCE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.EXPLOIT);
-			if (classe == PersoClasse.TANK) {
-				imagePath = "image/ennemi/ennemi_noir_1.png";
-			} else if ( classe == PersoClasse.HEALER) {
-				imagePath = "image/ennemi/ennemi_noir_2.png";
-			} else if ( classe == PersoClasse.DPS) {
-				imagePath = "image/ennemi/ennemi_noir_3.png";
-			} else if ( classe == PersoClasse.MAGE) {
-				imagePath = "image/ennemi/ennemi_noir_4.png";
-			} else if ( classe == PersoClasse.BARDE) {
-				imagePath = "image/ennemi/ennemi_noir_5.png";
-			}
-			nom = "Ennemi Noir " + numero + " (" + classe.name() + ")";
+			
+			// Random des images par type
+			File fileNoir = new File(FenetrePrincipal.getURL("image/ennemi/noir/").getPath());
+			String[] pathsNoir = fileNoir.list();
+			imagePath = "image/ennemi/noir/" + randomPhotoEnnemi(pathsNoir);
+			
+			// Random des noms des ennemis
+			String nomsNoir = ConfigurationManager.getProperties("ennemi.noms.noir");
+			String[] nomsNoirTab = nomsNoir.split(",");
+			String nomNoirRandom = nomsNoirTab[RandomManager.random(0, nomsNoirTab.length-1)];
+			nom = nomNoirRandom + " (" + classe.name() + ")";
 			phrasesPerso.add("Hey Garçon!");
 			particularitesPhysique.add("Tchip");
 			particularitesPhysique.add(
@@ -485,18 +622,17 @@ public class PersonnageManager implements Serializable {
 			statsParType.add(PersoStat.INTELLIGENCE);
 			statsParType.add(PersoStat.LUCK);
 			statsParType.add(PersoStat.EXPLOIT);
-			if (classe == PersoClasse.TANK) {
-				imagePath = "image/ennemi/ennemi_handicape_1.png";
-			} else if ( classe == PersoClasse.HEALER) {
-				imagePath = "image/ennemi/ennemi_handicape_2.png";
-			} else if ( classe == PersoClasse.DPS) {
-				imagePath = "image/ennemi/ennemi_handicape_3.png";
-			} else if ( classe == PersoClasse.MAGE) {
-				imagePath = "image/ennemi/ennemi_handicape_4.png";
-			} else if ( classe == PersoClasse.BARDE) {
-				imagePath = "image/ennemi/ennemi_handicape_5.png";
-			}
-			nom = "Ennemi Handicapé " + numero + " (" + classe.name() + ")";
+
+			// Random des images par type
+			File fileHandicape = new File(FenetrePrincipal.getURL("image/ennemi/handicape/").getPath());
+			String[] pathsHandicape = fileHandicape.list();
+			imagePath = "image/ennemi/handicape/" + randomPhotoEnnemi(pathsHandicape);
+			
+			// Random des noms des ennemis
+			String nomsHandicape = ConfigurationManager.getProperties("ennemi.noms.handicape");
+			String[] nomsHandicapeTab = nomsHandicape.split(",");
+			String nomHandicapeRandom = nomsHandicapeTab[RandomManager.random(0, nomsHandicapeTab.length-1)];
+			nom = nomHandicapeRandom + " (" + classe.name() + ")";
 		}
 		// TODO autres type d'ennemi skin/alqueda/...
 
@@ -593,11 +729,17 @@ public class PersonnageManager implements Serializable {
 		manaMax = competence.getIntelligence();
 		chargeMax = competence.getNervosite() / 20;
 
-		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, vieMax, manaMax, chargeMax, particularitesPhysique,
+		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, nom, vieMax, manaMax, chargeMax, particularitesPhysique,
 				particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis(),
 				competence);
 
 		return ennemi;
+	}
+
+	private String randomPhotoEnnemi(String[] paths) {
+		String randomPhotoPath = paths[RandomManager.random(0, paths.length -1)];
+		System.out.println("RandomPhotoPath : " + randomPhotoPath);
+		return randomPhotoPath;
 	}
 
 	private Competence choixDesCompetences(Difficulte difficulte, List<PersoStat> statsParType,

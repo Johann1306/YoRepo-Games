@@ -6,6 +6,8 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
@@ -13,12 +15,15 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JViewport;
 
 import core.DateManager;
+import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersonnagePrincipal;
@@ -294,6 +299,10 @@ public class PanelFichePerso extends JPanel {
 //        panelCentre.add(panelActions);
         panelCentre.add(tableau.getTableHeader());
         panelCentre.add(tableau);
+        
+		JPanel panelBoutonCarte = new JPanel();
+		panelBoutonCarte.setOpaque(false);
+		addBoutonCarte(panelCentre, panelBoutonCarte);
 		
 		panelOuest.setBackground(Color.PINK);
 		panelCentre.setBackground(couleur);
@@ -345,6 +354,23 @@ public class PanelFichePerso extends JPanel {
 	        panel.setCursor(defCursor);
 	        panel.repaint();
 	    }
+	}
+	
+	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
+		JButton boutonCarte = new JButton("Retour Carte");
+		boutonCarte.setFont(Constante.SIMPSON_FONT);
+		boutonCarte.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				PanelCentre panelCentre = MainFrame.getPanelCentre();
+				panelCentre.refreshPanelCourant();
+				revalidate();
+			}
+		});
+		panelBouton.add(boutonCarte);
+		panelBouton.setLocation(-880, 0);
+		panel.add(panelBouton, Integer.valueOf(2));
 	}
 
 }

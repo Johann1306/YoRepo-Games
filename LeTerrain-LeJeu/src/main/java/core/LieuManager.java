@@ -145,7 +145,7 @@ public class LieuManager implements Serializable {
 		Lieu chezAli = new Lieu(6, "Chez ali", "La maison d'Ali", imagePaths , sonPaths, null, PersoPrenom.Ali, new Point(100, 500), "image/lieu/MaisonYo.png", poisChezAli, false);
 		Lieu chezGuy = new Lieu(7, "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.Guillaume, new Point(500, 980), "image/lieu/MaisonYo.png", poisChezGuy, false);
 		Lieu chezJo = new Lieu(8, "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.Jonathan, new Point(1800, 950), "image/lieu/MaisonYo.png", poisChezRuss, false);
-		Lieu ecole = new Lieu(9, "L'école", "L'école élémentaire Jules Ferry", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(500, 500), "image/lieu/Ecole.png", poisEcole, false);
+		Lieu ecole = new Lieu(9, "L'ecole", "L'école élémentaire Jules Ferry", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(500, 500), "image/lieu/Ecole.png", poisEcole, false);
 		Lieu terrain = new Lieu(10, "Le terrain", "Le site aux moults péripéties", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 800), "image/lieu/Terrain.png", poisTerrain, false);
 				
 		lieux.add(chezYo);

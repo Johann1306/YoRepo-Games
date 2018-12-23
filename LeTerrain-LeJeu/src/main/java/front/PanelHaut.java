@@ -119,6 +119,8 @@ public class PanelHaut extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				MusiqueManager.stopAll();
+				
 				// Raffraichissement bouton passer Next
 				// TODO : probleme passe toujours dans le else
 				if (MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsIndisponibles().isEmpty() && missionManager.getMissionsNonPresentees().isEmpty()) {
@@ -166,6 +168,9 @@ public class PanelHaut extends JPanel {
 			// TODO : gestion de la fin des evenements et des missions
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				MusiqueManager.stopAll();
+				
 				// Si il n'y a plus d'evenement et de mission, on grise le passage rapide
 				if (MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsIndisponibles().isEmpty() && missionManager.getMissionsNonPresentees().isEmpty()) {
 					boutonPasserNext.setEnabled(false);

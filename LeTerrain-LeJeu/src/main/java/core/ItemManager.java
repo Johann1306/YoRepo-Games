@@ -1,16 +1,31 @@
 package core;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+
+import front.MainFrame;
+import front.MenuPrincipal;
+import front.PanelPersonnage;
+import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.arme.Arme;
+import modele.item.arme.ArmeClasse;
+import modele.item.arme.ArmeType;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnagePrincipal;
 
 public class ItemManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private static Item itemSelectionne;
 	private List<Item> items;
 	private List<Item> itemsDisponibles;
 	private List<Item> itemsIndisponibles;
@@ -128,51 +143,54 @@ public class ItemManager implements Serializable {
 		List<String> videoPaths1 = new ArrayList<String>();
 		String videoPath1 = "video/Trololo.mp4";
 		videoPaths1.add(videoPath1);
+		
+		// Videos
+		List<String> videoPathsNull = null;
 
 		// Consommables Combat
 		
 		// Popo : vie/mana
-		Item popoVie25   = new Item(100, "Potion de vie (25%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_25, false);
-		Item popoVie50   = new Item(101, "Potion de vie (50%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_50, false);
-		Item popoVie75   = new Item(102, "Potion de vie (75%)",   "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_75, false);
-		Item popoVie100  = new Item(103, "Potion de vie (100%)",  "info1", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_100, false);
-		Item popoMana25  = new Item(200, "Potion de mana (25%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_25, false);
-		Item popoMana50  = new Item(201, "Potion de mana (50%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_50, false);
-		Item popoMana75  = new Item(202, "Potion de mana (75%)",  "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_75, false);
-		Item popoMana100 = new Item(203, "Potion de mana (100%)", "info2", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_100, false);
+		Item popoVie25   = new Item(100, "Potion de vie (25%)",   "Redonne 25% des points de vie", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_25, false);
+		Item popoVie50   = new Item(101, "Potion de vie (50%)",   "Redonne 50% des points de vie", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_50, false);
+		Item popoVie75   = new Item(102, "Potion de vie (75%)",   "Redonne 75% des points de vie", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_75, false);
+		Item popoVie100  = new Item(103, "Potion de vie (100%)",  "Redonne 100% des points de vie", imagePathsPopoVie, sonPathsManger1, null, PersoPrenom.GROUPE, ItemType.POTION_VIE_100, false);
+		Item popoMana25  = new Item(200, "Potion de mana (25%)",  "Redonne 25% des points de mana", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_25, false);
+		Item popoMana50  = new Item(201, "Potion de mana (50%)",  "Redonne 50% des points de mana", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_50, false);
+		Item popoMana75  = new Item(202, "Potion de mana (75%)",  "Redonne 75% des points de mana", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_75, false);
+		Item popoMana100 = new Item(203, "Potion de mana (100%)", "Redonne 100% des points de mana", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_100, false);
 		
 		// Bonus competences (+5, +10, +20)
-		Item bonusChance5 = 	   new Item(300, "Bonus de chance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_5, false);
-		Item bonusChance10 =       new Item(301, "Bonus de chance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_10, false);
-		Item bonusChance20 =       new Item(302, "Bonus de chance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_20, false);
-		Item bonusExploit5 =       new Item(303, "Bonus d'exploit (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_5, false);
-		Item bonusExploit10 =      new Item(304, "Bonus d'exploit (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_10, false);
-		Item bonusExploit20 =      new Item(305, "Bonus d'exploit (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_20, false);
-		Item bonusTechnique5 =     new Item(306, "Bonus de technique (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_5, false);
-		Item bonusTechnique10 =    new Item(307, "Bonus de technique (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_10, false);
-		Item bonusTechnique20 =    new Item(308, "Bonus de technique (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_20, false);
-		Item bonusEndurance5 =     new Item(309, "Bonus d'endurance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_5, false);
-		Item bonusEndurance10 =    new Item(310, "Bonus d'endurance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_10, false);
-		Item bonusEndurance20 =    new Item(311, "Bonus d'endurance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_20, false);
-		Item bonusRapidite5 =      new Item(312, "Bonus de rapidité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_5, false);
-		Item bonusRapidite10 =     new Item(313, "Bonus de rapidité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_10, false);
-		Item bonusRapidite20 =     new Item(314, "Bonus de rapidité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_20, false);
-		Item bonusResistance5 =    new Item(315, "Bonus de resistance (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_5, false);
-		Item bonusResistance10 =   new Item(316, "Bonus de resistance (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_10, false);
-		Item bonusResistance20 =   new Item(317, "Bonus de resistance (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_20, false);
-		Item bonusAgilite5 =       new Item(318, "Bonus d'agilité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_5, false);
-		Item bonusAgilite10 = 	   new Item(319, "Bonus d'agilité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_10, false);
-		Item bonusAgilite20 = 	   new Item(320, "Bonus d'agilité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_20, false);
-		Item bonusIntelligence5 =  new Item(321, "Bonus d'intelligence (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_5, false);
-		Item bonusIntelligence10 = new Item(322, "Bonus d'intelligence (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_10, false);
-		Item bonusIntelligence20 = new Item(323, "Bonus d'intelligence (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_20, false);
-		Item bonusNervosite5 = 	   new Item(324, "Bonus de nervosité (+5)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_5, false);
-		Item bonusNervosite10 =    new Item(325, "Bonus de nervosité (+10)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_10, false);
-		Item bonusNervosite20 =    new Item(326, "Bonus de nervosité (+20)", "info2", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_20, false);
+		Item bonusChance5 = 	   new Item(300, "Bonus de chance (+5)", "Gagne 5 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_5, false);
+		Item bonusChance10 =       new Item(301, "Bonus de chance (+10)", "Gagne 10 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_10, false);
+		Item bonusChance20 =       new Item(302, "Bonus de chance (+20)", "Gagne 20 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_20, false);
+		Item bonusExploit5 =       new Item(303, "Bonus d'exploit (+5)", "Gagne 5 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_5, false);
+		Item bonusExploit10 =      new Item(304, "Bonus d'exploit (+10)", "Gagne 10 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_10, false);
+		Item bonusExploit20 =      new Item(305, "Bonus d'exploit (+20)", "Gagne 20 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_20, false);
+		Item bonusTechnique5 =     new Item(306, "Bonus de technique (+5)", "Gagne 5 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_5, false);
+		Item bonusTechnique10 =    new Item(307, "Bonus de technique (+10)", "Gagne 10 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_10, false);
+		Item bonusTechnique20 =    new Item(308, "Bonus de technique (+20)", "Gagne 20 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_20, false);
+		Item bonusEndurance5 =     new Item(309, "Bonus d'endurance (+5)", "Gagne 5 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_5, false);
+		Item bonusEndurance10 =    new Item(310, "Bonus d'endurance (+10)", "Gagne 10 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_10, false);
+		Item bonusEndurance20 =    new Item(311, "Bonus d'endurance (+20)", "Gagne 20 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_20, false);
+		Item bonusRapidite5 =      new Item(312, "Bonus de rapidité (+5)", "Gagne 5 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_5, false);
+		Item bonusRapidite10 =     new Item(313, "Bonus de rapidité (+10)", "Gagne 10 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_10, false);
+		Item bonusRapidite20 =     new Item(314, "Bonus de rapidité (+20)", "Gagne 20 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_20, false);
+		Item bonusResistance5 =    new Item(315, "Bonus de resistance (+5)", "Gagne 5 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_5, false);
+		Item bonusResistance10 =   new Item(316, "Bonus de resistance (+10)", "Gagne 10 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_10, false);
+		Item bonusResistance20 =   new Item(317, "Bonus de resistance (+20)", "Gagne 20 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_20, false);
+		Item bonusAgilite5 =       new Item(318, "Bonus d'agilité (+5)", "Gagne 5 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_5, false);
+		Item bonusAgilite10 = 	   new Item(319, "Bonus d'agilité (+10)", "Gagne 10 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_10, false);
+		Item bonusAgilite20 = 	   new Item(320, "Bonus d'agilité (+20)", "Gagne 20 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_20, false);
+		Item bonusIntelligence5 =  new Item(321, "Bonus d'intelligence (+5)", "Gagne 5 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_5, false);
+		Item bonusIntelligence10 = new Item(322, "Bonus d'intelligence (+10)", "Gagne 10 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_10, false);
+		Item bonusIntelligence20 = new Item(323, "Bonus d'intelligence (+20)", "Gagne 20 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_20, false);
+		Item bonusNervosite5 = 	   new Item(324, "Bonus de nervosité (+5)", "Gagne 5 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_5, false);
+		Item bonusNervosite10 =    new Item(325, "Bonus de nervosité (+10)", "Gagne 10 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_10, false);
+		Item bonusNervosite20 =    new Item(326, "Bonus de nervosité (+20)", "Gagne 20 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_20, false);
 
 		// Objets de quete (pas d'utilisation)
-		Item cleTerrain = new Item(400, "Clés du terrain", "info2", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
-		Item graisse = new Item(401, "Graisse à traire", "info2", imagePathsGraisse, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
+		Item cleTerrain = new Item(400, "Les Clés du terrain", "info2", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		Item graisse = new Item(401, ConfigurationManager.getProperties("item.jonathan.401.nom"), ConfigurationManager.getProperties("item.jonathan.401.inf"), imagePathsGraisse, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
 		
 		// Films
 		Item VHS_diehard3 = new Item(600, "VHS - Die Hard 3", "", imagePathsdiehard3VHS, sonPathsdiehard3, null, PersoPrenom.GROUPE, ItemType.FILM, false);
@@ -180,8 +198,14 @@ public class ItemManager implements Serializable {
 		// Objets evenements
 		
 		// Armes
-		Item mouchoir = new Item(500, "Paquet de mouchoir", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Thomas, ItemType.ARME, false);
-		Item ventoline = new Item(501, "Ventoline", "info2", imagePaths1, sonPaths1, null, PersoPrenom.Pierre, ItemType.ARME, false);
+//		Arme mouchoir = new Arme(500, "Mouchoir", "", imagePaths500, sonPaths500, videoPathsNull, PersoPrenom.Thomas, 0, ArmeType.MOUCHOIR, ArmeClasse.GRIS, true);
+//		Arme ventoline = new Arme(501, "Ventoline", "", imagePaths501, sonPaths501, videoPathsNull, PersoPrenom.Pierre, 0, ArmeType.VENTOLINE, ArmeClasse.GRIS, true);
+//		Arme grappin = new Arme(502, "Grappin", "", imagePaths502, sonPaths502, videoPathsNull, PersoPrenom.Nicolas, 0, ArmeType.GRAPPIN, ArmeClasse.GRIS, true);
+//		Arme mousqueton = new Arme(503, "Mousqueton poing americain", "", imagePaths503, sonPaths503, videoPathsNull, PersoPrenom.Yannick, 0, ArmeType.MOUSQUETON, ArmeClasse.GRIS, true);
+//		Arme ballon = new Arme(504, "Ballon", "La balle molle", imagePaths504, sonPaths504, videoPathsNull, PersoPrenom.Johann, 0, ArmeType.BALLON, ArmeClasse.GRIS, true);
+//		Arme paquet = new Arme(505, "Paquet de Kingston vide", "La cigarette des Rois", imagePaths505, sonPaths505, videoPathsNull, PersoPrenom.Ali, 0, ArmeType.PAQUET_CLOPE, ArmeClasse.GRIS, true);
+//		Arme creme = new Arme(506, "Creme", "", imagePaths506, sonPaths506, videoPathsNull, PersoPrenom.Jonathan, 0, ArmeType.CREME, ArmeClasse.GRIS, true);
+//		Arme verre = new Arme(507, "Verre vide", "", imagePaths507, sonPaths507, videoPathsNull, PersoPrenom.Guillaume, 0, ArmeType.VERRE, ArmeClasse.GRIS, true);
 
 		// Equipements
 		
@@ -275,8 +299,8 @@ public class ItemManager implements Serializable {
 		items.add(cleTerrain);
 		items.add(graisse);
 		items.add(VHS_diehard3);
-		items.add(mouchoir);
-		items.add(ventoline);
+//		items.add(mouchoir);
+//		items.add(ventoline);
 		
 		items.add(carteDBZ1);
 		items.add(carteDBZ2);
@@ -373,6 +397,154 @@ public class ItemManager implements Serializable {
 	private int incrementeId() {
 		id = id +1;
 		return id;
+	}
+
+	public static void gestionItemSelectionne(PersoPrenom prenomCible, Component panel) {
+		
+		// Si on a selectionne un item, on utilise l'item sur la cible et on decremente l'item
+		if (itemSelectionne != null) {
+			
+			if (prenomCible != PersoPrenom.GROUPE) {
+				
+				
+				int reponse = JOptionPane.showConfirmDialog(panel,
+						"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenomCible.name() + "?");
+				if (reponse == 0) {
+					
+					// On recupere le perso lanceur et le perso cible
+					PersonnagePrincipal persoCible = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenomCible);
+					
+					if (itemSelectionne.getType() == ItemType.POTION_VIE_25) {
+						int vie = persoCible.getVie() + ((persoCible.getVieMax()*25)/100);
+						if (vie > persoCible.getVieMax()) {
+							vie = persoCible.getVieMax();
+						}
+						persoCible.setVie(vie);					
+					} else if (itemSelectionne.getType() == ItemType.POTION_VIE_50) {
+						int vie = persoCible.getVie() + ((persoCible.getVieMax()*50)/100);
+						if (vie > persoCible.getVieMax()) {
+							vie = persoCible.getVieMax();
+						}
+						persoCible.setVie(vie);	
+					} else if (itemSelectionne.getType() == ItemType.POTION_VIE_75) {
+						int vie = persoCible.getVie() + ((persoCible.getVieMax()*75)/100);
+						if (vie > persoCible.getVieMax()) {
+							vie = persoCible.getVieMax();
+						}
+						persoCible.setVie(vie);	
+					} else if (itemSelectionne.getType() == ItemType.POTION_VIE_100) {
+						persoCible.setVie(persoCible.getVieMax());	
+						
+					} else if (itemSelectionne.getType() == ItemType.POTION_MANA_25) {
+						int mana = persoCible.getMana() + ((persoCible.getManaMax()*25)/100);
+						if (mana > persoCible.getManaMax()) {
+							mana = persoCible.getManaMax();
+						}
+						persoCible.setMana(mana);	
+					} else if (itemSelectionne.getType() == ItemType.POTION_MANA_50) {
+						int mana = persoCible.getMana() + ((persoCible.getManaMax()*50)/100);
+						if (mana > persoCible.getManaMax()) {
+							mana = persoCible.getManaMax();
+						}
+						persoCible.setMana(mana);	
+					} else if (itemSelectionne.getType() == ItemType.POTION_MANA_75) {
+						int mana = persoCible.getMana() + ((persoCible.getManaMax()*75)/100);
+						if (mana > persoCible.getManaMax()) {
+							mana = persoCible.getManaMax();
+						}
+						persoCible.setMana(mana);	
+					} else if (itemSelectionne.getType() == ItemType.POTION_MANA_100) {
+						persoCible.setMana(persoCible.getManaMax());	
+						
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_5) {
+						persoCible.addCompetences(PersoStat.LUCK, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_10) {
+						persoCible.addCompetences(PersoStat.LUCK, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_20) {
+						persoCible.addCompetences(PersoStat.LUCK, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_5) {
+						persoCible.addCompetences(PersoStat.EXPLOIT, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_10) {
+						persoCible.addCompetences(PersoStat.EXPLOIT, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_20) {
+						persoCible.addCompetences(PersoStat.EXPLOIT, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_5) {
+						persoCible.addCompetences(PersoStat.TECHNIQUE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_10) {
+						persoCible.addCompetences(PersoStat.TECHNIQUE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_20) {
+						persoCible.addCompetences(PersoStat.TECHNIQUE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_5) {
+						persoCible.addCompetences(PersoStat.ENDURANCE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_10) {
+						persoCible.addCompetences(PersoStat.ENDURANCE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_20) {
+						persoCible.addCompetences(PersoStat.ENDURANCE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_5) {
+						persoCible.addCompetences(PersoStat.RAPIDITE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_10) {
+						persoCible.addCompetences(PersoStat.RAPIDITE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_20) {
+						persoCible.addCompetences(PersoStat.RAPIDITE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_5) {
+						persoCible.addCompetences(PersoStat.RESISTANCE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_10) {
+						persoCible.addCompetences(PersoStat.RESISTANCE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_20) {
+						persoCible.addCompetences(PersoStat.RESISTANCE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_5) {
+						persoCible.addCompetences(PersoStat.AGILITE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_10) {
+						persoCible.addCompetences(PersoStat.AGILITE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_20) {
+						persoCible.addCompetences(PersoStat.AGILITE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_5) {
+						persoCible.addCompetences(PersoStat.INTELLIGENCE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_10) {
+						persoCible.addCompetences(PersoStat.INTELLIGENCE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_20) {
+						persoCible.addCompetences(PersoStat.INTELLIGENCE, 20);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_5) {
+						persoCible.addCompetences(PersoStat.NERVOSITE, 5);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_10) {
+						persoCible.addCompetences(PersoStat.NERVOSITE, 10);
+					} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_20) {
+						persoCible.addCompetences(PersoStat.NERVOSITE, 20);
+					}
+					
+					// Cas du Groupe : On decremente l'objet dans le sac du groupe
+					Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
+					Integer valeur = sac.get(itemSelectionne);
+					sac.put(itemSelectionne, valeur -1);
+					
+					JOptionPane.showMessageDialog(panel, persoCible.getNom() + " a consommé : " + itemSelectionne.getNom());
+					itemSelectionne = null;
+					
+				} else {
+					// Si on accepte pas d'utiliser la popo, on ne fait rien
+				}
+				
+	
+			}
+			// On refresh le panelPersonnage MainFrame et le PanelBas
+			if (panel instanceof PanelPersonnage) {
+				MainFrame.getPanelPersonnage().setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+			} 
+			// TODO
+			// On refresh le panelPersonnage FrameCombat
+
+		} else {
+			// Si il n'y a pas d'item selectionne, on ne fait rien
+		}
+		MainFrame.getPanelBas().refreshPanelBas(prenomCible);
+	}
+
+	public static Item getItemSelectionne() {
+		return itemSelectionne;
+	}
+
+	public static void setItemSelectionne(Item itemSelectionne) {
+		ItemManager.itemSelectionne = itemSelectionne;
 	}
 
 }

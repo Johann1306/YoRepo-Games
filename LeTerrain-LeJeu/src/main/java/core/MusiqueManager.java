@@ -1,14 +1,19 @@
 package core;
 
+import java.io.File;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import core.audio.Sound;
+import front.FenetrePrincipal;
 import front.MenuPrincipal;
 import front.PanelMusique;
 import modele.item.media.audio.Musique;
 import modele.item.mission.Mission;
+import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnagePrincipal;
 
 public class MusiqueManager implements Serializable {
 
@@ -85,6 +90,26 @@ public class MusiqueManager implements Serializable {
 		List<String> musiquePaths10 = new ArrayList<String>();
 		musiquePaths10.add(musiquePath10);
 		
+		String musiquePath11 = "musique/combat/10-orc-battle-1.mp3";
+		List<String> musiquePaths11 = new ArrayList<String>();
+		musiquePaths11.add(musiquePath11);
+		
+		String musiquePath12 = "musique/combat/11-orc-battle-2.mp3";
+		List<String> musiquePaths12 = new ArrayList<String>();
+		musiquePaths12.add(musiquePath12);
+		
+		String musiquePath13 = "musique/combat/12-orc-battle-3.mp3";
+		List<String> musiquePaths13 = new ArrayList<String>();
+		musiquePaths13.add(musiquePath13);
+		
+		String musiquePath14 = "musique/combat/13-orc-battle-4.mp3";
+		List<String> musiquePaths14 = new ArrayList<String>();
+		musiquePaths14.add(musiquePath14);
+		
+		String musiquePath15 = "musique/combat/14-orc-battle-5.mp3";
+		List<String> musiquePaths15 = new ArrayList<String>();
+		musiquePaths15.add(musiquePath15);
+		
 		musiquesCombat.add(new Musique(1, "", "", "", null, null, musiquePaths1, null, "", true));
 		musiquesCombat.add(new Musique(2, "", "", "", null, null, musiquePaths2, null, "", true));
 		musiquesCombat.add(new Musique(3, "", "", "", null, null, musiquePaths3, null, "", true));
@@ -95,6 +120,11 @@ public class MusiqueManager implements Serializable {
 		musiquesCombat.add(new Musique(8, "", "", "", null, null, musiquePaths8, null, "", true));
 		musiquesCombat.add(new Musique(9, "", "", "", null, null, musiquePaths9, null, "", true));
 		musiquesCombat.add(new Musique(10, "", "", "", null, null, musiquePaths10, null, "", true));
+		musiquesCombat.add(new Musique(11, "", "", "", null, null, musiquePaths11, null, "", true));
+		musiquesCombat.add(new Musique(12, "", "", "", null, null, musiquePaths12, null, "", true));
+		musiquesCombat.add(new Musique(13, "", "", "", null, null, musiquePaths13, null, "", true));
+		musiquesCombat.add(new Musique(14, "", "", "", null, null, musiquePaths14, null, "", true));
+		musiquesCombat.add(new Musique(15, "", "", "", null, null, musiquePaths15, null, "", true));
 	}
 
 	public static void play(Musique musique) {
@@ -230,6 +260,7 @@ public class MusiqueManager implements Serializable {
 								applicationMenuPrincipal = new Sound(sonPath);
 								applicationMenuPrincipal.play();
 							} else {
+//								applicationMenuPrincipal.stop();
 								applicationMenuPrincipal = new Sound(sonPath);
 								applicationMenuPrincipal.play();
 							}
@@ -258,6 +289,7 @@ public class MusiqueManager implements Serializable {
 			if (applicationMission != null) {
 				applicationMission.stop();
 			}
+			stopped = true;
 			PanelMusique.application.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,8 +332,31 @@ public class MusiqueManager implements Serializable {
 				sonPaths.add(musiqueRandom.getSonPath().get(0));
 				temp.remove(musiqueRandom);
 			}
+			stopped = false;
 			playPlaylistEnBoucle(sonPaths);
 		}
+	}
+
+	
+	public static void startPlayListPerso(PersoPrenom prenom) {
+		System.out.println("startPlayListEnBoucle()");
+		
+		stopAll();
+		
+		PersonnagePrincipal perso = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenom);
+		
+		// Lance la liste de musique d'ambiance aleatoire pour un perso
+		List<Musique> musiques = perso.getMusiques();
+		List<String> sonPaths = new ArrayList<String>();
+		List<Musique> temp = new ArrayList<>(musiques);
+		for (int i = 0 ; i < musiques.size() ; i++) {
+			int random = RandomManager.random(0, temp.size()-1);
+			Musique musiqueRandom = temp.get(random);			
+			sonPaths.add(musiqueRandom.getSonPath().get(0));
+			temp.remove(musiqueRandom);
+		}
+		playSonMission(sonPaths);
+		
 	}
 	
 	public static void playPlaylistEnBoucle(List<String> sonPaths) {
@@ -312,8 +367,6 @@ public class MusiqueManager implements Serializable {
 			@Override
 			public void run() {
 				try {
-					// Boucle infini
-					// TODO probleme quand stopped = true au deuxieme combat => musique ne demarre pas car true
 					System.out.println("STOPPED : " + stopped);
 					while (!stopped) {
 						for (String sonPath : sonPaths) {
@@ -332,6 +385,7 @@ public class MusiqueManager implements Serializable {
 						}
 					}
 					stopped = false;
+					System.out.println("STOPPED : " + stopped);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -343,6 +397,7 @@ public class MusiqueManager implements Serializable {
 	}
 	
 	public static void stopPlaylistEnBoucle() {
+		System.out.println("stopPlaylistEnBoucle()");
 		try {
 			if (applicationMenuPrincipal != null) {
 				applicationMenuPrincipal.stop();
@@ -352,4 +407,21 @@ public class MusiqueManager implements Serializable {
 			e.printStackTrace();
 		}
 	}
+
+	public static List<Musique> chargeMusiquesPerso(String repertoire, int i) {
+		int id = i;
+		List<Musique> musiquesPerso = new ArrayList<>();
+		URL url = FenetrePrincipal.getURL(repertoire);
+		File rep = new File(url.getPath());
+		String[] list = rep.list();
+		for (String path : list) {
+			List<String> sonPath = new ArrayList<>();
+			sonPath.add(repertoire + "/" + path);
+			Musique musique = new Musique(id, path, "artiste", "album", DateManager.genereUneDate(1990, 8, 1, 10, 0, 0), null, sonPath, null, "informations", true);
+			musiquesPerso.add(musique);
+			id++;
+		}
+		return musiquesPerso;
+	}
+	
 }

@@ -74,7 +74,8 @@ public class VlcjPlayer {
             }
         });
         // TODO empecher la fermeture / virer l'icone
-        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        mainFrame.setUndecorated(true);
+        mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         mainFrame.setAlwaysOnTop(true);
         mainFrame.setVisible(true);
 
