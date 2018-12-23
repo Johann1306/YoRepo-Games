@@ -3,8 +3,6 @@ package modele.item;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import modele.item.personnage.PersoPrenom;
 
 public class Item implements Disponible, Consommable, Utilisable, Ameliorable, Serializable { 
@@ -21,7 +19,7 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 	private ItemType type;
 	private boolean isDisponible = false;
 	
-	public Item(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths, List<String> videoPaths, PersoPrenom proprietaire, ItemType type,  boolean isDisponible) {
+	public Item(int id, String nom, String informations, List<String> imagePaths, List<String> sonPaths, List<String> videoPaths, PersoPrenom proprietaire, ItemType type, boolean isDisponible) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -105,7 +103,7 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 	@Override
 	public boolean amelioreItem() {
 		// TODO test possibilite d ameliorer l'item
-		System.out.println("Utilise : " + this.getNom());
+		System.out.println("Ameliore : " + this.getNom());
 		return true;
 	}
 
@@ -128,6 +126,5 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 		}
 		return isConsommable;
 	}
-
 
 }

@@ -11,11 +11,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -38,8 +42,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	public FenetrePrincipal() {
 		super();
         addKeyListener(this);
-// TODO undecorated
-//        this.setUndecorated(true);
+        this.setUndecorated(true);
 //		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.addWindowListener(new WindowListener() {
 			
@@ -90,6 +93,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		
 		final JPanel titre = new PanelTitre();
 		titre.setOpaque(false);
+		titre.setLocation(0, 100);
 		
 		// JPanel Menu		
 		menu = new MenuPrincipal();
@@ -122,6 +126,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		// Ajout du menu a la fenetre
 		ImageIcon image = getImageIcon("image/carte/montfermeil.png");
 		JLabel label = new JLabel(image);
+		label.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 15), BorderFactory.createLineBorder(Color.WHITE, 5)));
 		content.add(label, Integer.valueOf(1));
 		content.add(titre, Integer.valueOf(5));
 //		content.add(titre);
@@ -192,4 +197,5 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		final InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathAndFileName);
 		return stream;
 	}
+
 }

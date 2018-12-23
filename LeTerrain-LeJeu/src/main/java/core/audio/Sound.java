@@ -9,18 +9,31 @@ public class Sound {
 
 	private boolean isPlaying = false;
 	private Player player = null;
+//	private static Player player = null;
 	private int position = 0;
 
 	public Sound(String path) throws Exception {
-		System.out.println("Play : " + path);
+		if (player != null) {
+			player.close();
+		}
 		player = new Player(FenetrePrincipal.getStream(path));
 	}
 
 	public void play() throws Exception {
+		System.out.println("1 Play() ......");
 		if (player != null) {
+			System.out.println("2 Player isPlaying() " + isPlaying);
+			if (isPlaying) {
+				System.out.println("3 Player close()");
+				player.close();
+			}
 			isPlaying = true;
+			System.out.println("4 Player play()");
 			player.play();
+		} else {
+			System.out.println("0 Player == null");
 		}
+		System.out.println("5 Player ...... OK");
 	}
 
 	public void pause() throws Exception {

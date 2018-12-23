@@ -46,11 +46,12 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private Location location;
 	public boolean isDejaPresente;
 	private Competence competenceMax;
+	private String messageDieu;
 	
 	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms, Date dateNaissance, String origines,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
 			ImageIcon photoPrincipal, ImageIcon photoCombat, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
-			List<MomentCle> momentsCle, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
+			List<MomentCle> momentsCle, String messageDieu, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, Map<Item, Integer> sac, Lieu domicile, Competence competence, Competence competenceMax,
 			boolean disponible) {
 		super(prenomPerso.name(), nomFamille.name(), disponible);
@@ -70,6 +71,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.actionsCombat = actionsCombat;
 		this.objectifs = objectifs;
 		this.momentsCle = momentsCle;
+		this.messageDieu = messageDieu;
 		this.boss = boss;
 		this.connaissances = connaissances;
 		this.sons = sons;
@@ -195,6 +197,10 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public String getOrigines() {
 		return origines;
 	}
+	
+	public String getMessageDieu() {
+		return messageDieu;
+	}
 
 	public void addCompetences(Map<PersoStat, Integer> map) {
 		
@@ -251,5 +257,6 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 			}
 			return actionsCombatDispo;
 		}
+
 
 }

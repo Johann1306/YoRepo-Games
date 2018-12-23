@@ -8,7 +8,12 @@ public enum BossNom {
 	BOSS5("Anakin Skywalker"),
 	BOSS6("Mickael Jackson"),
 	BOSS7("Liquid Snake"),
-	BOSS8("Arnaud de la piscine");
+	BOSS8("Arnaud de la piscine"),
+	BOSS11("Madame Chatelain"),
+	BOSS12("Madame Dubois"),
+	BOSS13("Madame Durand"),
+	BOSS14("Madame Braquet"),
+	BOSS15("Monsieur Bouchera");
 	
 	private String nom;
 

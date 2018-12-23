@@ -11,6 +11,7 @@ import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.arme.Arme;
 import modele.item.personnage.action.ActionCombat;
 
 public class Personnage extends Item implements Serializable {
@@ -38,6 +39,7 @@ public class Personnage extends Item implements Serializable {
 	private List<ActionCombat> actionsCombat;
 	private Competence competence;
 	private Map<Personnage, Aura> auras;
+	private Arme arme;
 
 	private boolean mort = false;
 	private boolean aDejaJoue = false;
@@ -262,6 +264,26 @@ public class Personnage extends Item implements Serializable {
 		this.nombreBloque = nombreBloque;
 	}
 
+	public Map<Personnage, Integer> getTauntBy() {
+		return tauntBy;
+	}
+
+	public Map<Personnage, Aura> getAuras() {
+		return auras;
+	}
+
+	public void setAuras(Map<Personnage, Aura> auras) {
+		this.auras = auras;
+	}
+
+	public Arme getArme() {
+		return arme;
+	}
+
+	public void setArme(Arme arme) {
+		this.arme = arme;
+	}
+
 	@Override
 	public String toString() {
 		return "Personnage [nom=" + nom + ", prenom=" + prenom + ", mort=" + mort + ", vie=" + vie + "/" + vieMax
@@ -277,18 +299,6 @@ public class Personnage extends Item implements Serializable {
 		if (nombreCharge < nombreChargeMax) {
 			nombreCharge = nombreCharge + 1;
 		}
-	}
-
-	public Map<Personnage, Integer> getTauntBy() {
-		return tauntBy;
-	}
-
-	public Map<Personnage, Aura> getAuras() {
-		return auras;
-	}
-
-	public void setAuras(Map<Personnage, Aura> auras) {
-		this.auras = auras;
 	}
 
 	public void enleveAuras() {

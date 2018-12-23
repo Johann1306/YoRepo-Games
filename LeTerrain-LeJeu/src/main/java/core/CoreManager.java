@@ -8,6 +8,7 @@ public class CoreManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private ConfigurationManager configurationManager;	
 	private transient MenuManager menuManager;
 	private transient VideoManager videoManager;
 	private DateManager dateManager;
@@ -33,6 +34,9 @@ public class CoreManager implements Serializable {
 	public void initialise() {
 
 		// Ordonne
+		configurationManager = new ConfigurationManager();
+		configurationManager.init();
+		
 		menuManager = new MenuManager();
 		menuManager.initialise();
 

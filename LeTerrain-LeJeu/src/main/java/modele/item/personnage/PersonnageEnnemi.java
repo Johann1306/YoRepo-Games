@@ -16,10 +16,10 @@ public class PersonnageEnnemi extends Personnage {
 	private List<ImageIcon> photos;
 	private EnnemiType ennemiType;
 
-	public PersonnageEnnemi(String nom, int vieMax, int manaMax, int chargeMax, List<String> particularitesPhysique,
+	public PersonnageEnnemi(String nom, String prenom, int vieMax, int manaMax, int chargeMax, List<String> particularitesPhysique,
 			List<String> particularitesSocial, List<String> phrasesPerso, ImageIcon photoPrincipal,
 			List<ImageIcon> photos, List<ActionCombat> actionsCombat, EnnemiType ennemiType, Competence competence) {
-		super(nom, nom, true);
+		super(nom, prenom, true);
 		this.setVieMax(vieMax);
 		this.setVie(vieMax);
 		this.setManaMax(manaMax);

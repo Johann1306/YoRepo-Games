@@ -48,7 +48,7 @@ public class Constante {
 	public static final Font ZELDA_FONT_MENU = new Font("Triforce", Font.PLAIN, 20);
 	public static final Font ZELDA_FONT_MENU_SELECTED = new Font("Triforce", Font.PLAIN, 23);
 	public static final Font ZELDA_FONT_TITRE = new Font("Triforce", Font.PLAIN, 30);
-	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 50);
+	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 100);
 	public static final Font MARIO_FONT_MENU = new Font("Super Mario Bros.", Font.PLAIN, 20);
 	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 20);
 	

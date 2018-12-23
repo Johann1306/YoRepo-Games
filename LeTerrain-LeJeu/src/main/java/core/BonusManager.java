@@ -333,6 +333,93 @@ public class BonusManager implements Serializable {
 		bonusMapBoss8.put(PersoPrenom.Guillaume, statsMapBoss8Guy);
 		bonusMapBoss8.put(PersoPrenom.Jonathan, statsMapBoss8Russ);
 		
+		// MINI BOSS
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapBoss11 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
+		Map<PersoStat,Integer> statsMapBoss11Yo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss11Nico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss11Pip = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss11Tom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss11Ya = new HashMap<PersoStat,Integer>();
+		statsMapBoss11Yo.put(PersoStat.LUCK, new Integer(5));
+		statsMapBoss11Nico.put(PersoStat.EXPLOIT, new Integer(5));
+		statsMapBoss11Pip.put(PersoStat.AGILITE, new Integer(5));
+		statsMapBoss11Tom.put(PersoStat.INTELLIGENCE, new Integer(5));
+		statsMapBoss11Ya.put(PersoStat.RESISTANCE, new Integer(5));
+		bonusMapBoss11.put(PersoPrenom.Johann, statsMapBoss11Yo);
+		bonusMapBoss11.put(PersoPrenom.Nicolas, statsMapBoss11Nico);
+		bonusMapBoss11.put(PersoPrenom.Pierre, statsMapBoss11Pip);
+		bonusMapBoss11.put(PersoPrenom.Thomas, statsMapBoss11Tom);
+		bonusMapBoss11.put(PersoPrenom.Yannick, statsMapBoss11Ya);
+		
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapBoss12 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
+		Map<PersoStat,Integer> statsMapBoss12Yo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss12Nico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss12Pip = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss12Tom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss12Ya = new HashMap<PersoStat,Integer>();
+		statsMapBoss12Yo.put(PersoStat.LUCK, new Integer(5));
+		statsMapBoss12Nico.put(PersoStat.EXPLOIT, new Integer(5));
+		statsMapBoss12Pip.put(PersoStat.AGILITE, new Integer(5));
+		statsMapBoss12Tom.put(PersoStat.INTELLIGENCE, new Integer(5));
+		statsMapBoss12Ya.put(PersoStat.RESISTANCE, new Integer(5));
+		bonusMapBoss12.put(PersoPrenom.Johann, statsMapBoss12Yo);
+		bonusMapBoss12.put(PersoPrenom.Nicolas, statsMapBoss12Nico);
+		bonusMapBoss12.put(PersoPrenom.Pierre, statsMapBoss12Pip);
+		bonusMapBoss12.put(PersoPrenom.Thomas, statsMapBoss12Tom);
+		bonusMapBoss12.put(PersoPrenom.Yannick, statsMapBoss12Ya);
+		
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapBoss13 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
+		Map<PersoStat,Integer> statsMapBoss13Yo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss13Nico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss13Pip = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss13Tom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss13Ya = new HashMap<PersoStat,Integer>();
+		statsMapBoss13Yo.put(PersoStat.LUCK, new Integer(5));
+		statsMapBoss13Nico.put(PersoStat.EXPLOIT, new Integer(5));
+		statsMapBoss13Pip.put(PersoStat.AGILITE, new Integer(5));
+		statsMapBoss13Tom.put(PersoStat.INTELLIGENCE, new Integer(5));
+		statsMapBoss13Ya.put(PersoStat.RESISTANCE, new Integer(5));
+		bonusMapBoss13.put(PersoPrenom.Johann, statsMapBoss13Yo);
+		bonusMapBoss13.put(PersoPrenom.Nicolas, statsMapBoss13Nico);
+		bonusMapBoss13.put(PersoPrenom.Pierre, statsMapBoss13Pip);
+		bonusMapBoss13.put(PersoPrenom.Thomas, statsMapBoss13Tom);
+		bonusMapBoss13.put(PersoPrenom.Yannick, statsMapBoss13Ya);
+		
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapBoss14 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
+		Map<PersoStat,Integer> statsMapBoss14Yo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss14Nico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss14Pip = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss14Tom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss14Ya = new HashMap<PersoStat,Integer>();
+		statsMapBoss14Yo.put(PersoStat.LUCK, new Integer(5));
+		statsMapBoss14Nico.put(PersoStat.EXPLOIT, new Integer(5));
+		statsMapBoss14Pip.put(PersoStat.AGILITE, new Integer(5));
+		statsMapBoss14Tom.put(PersoStat.INTELLIGENCE, new Integer(5));
+		statsMapBoss14Ya.put(PersoStat.RESISTANCE, new Integer(5));
+		bonusMapBoss14.put(PersoPrenom.Johann, statsMapBoss14Yo);
+		bonusMapBoss14.put(PersoPrenom.Nicolas, statsMapBoss14Nico);
+		bonusMapBoss14.put(PersoPrenom.Pierre, statsMapBoss14Pip);
+		bonusMapBoss14.put(PersoPrenom.Thomas, statsMapBoss14Tom);
+		bonusMapBoss14.put(PersoPrenom.Yannick, statsMapBoss14Ya);
+		
+		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapBoss15 = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
+		Map<PersoStat,Integer> statsMapBoss15Yo = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss15Nico = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss15Pip = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss15Tom = new HashMap<PersoStat,Integer>();
+		Map<PersoStat,Integer> statsMapBoss15Ya = new HashMap<PersoStat,Integer>();
+		statsMapBoss15Yo.put(PersoStat.LUCK, new Integer(5));
+		statsMapBoss15Nico.put(PersoStat.EXPLOIT, new Integer(5));
+		statsMapBoss15Pip.put(PersoStat.AGILITE, new Integer(5));
+		statsMapBoss15Tom.put(PersoStat.INTELLIGENCE, new Integer(5));
+		statsMapBoss15Ya.put(PersoStat.RESISTANCE, new Integer(5));
+		bonusMapBoss15.put(PersoPrenom.Johann, statsMapBoss15Yo);
+		bonusMapBoss15.put(PersoPrenom.Nicolas, statsMapBoss15Nico);
+		bonusMapBoss15.put(PersoPrenom.Pierre, statsMapBoss15Pip);
+		bonusMapBoss15.put(PersoPrenom.Thomas, statsMapBoss15Tom);
+		bonusMapBoss15.put(PersoPrenom.Yannick, statsMapBoss15Ya);
+		
+		
 		Bonus bonusPiscine = new Bonus(10, bonusMapPiscine);
 		Bonus bonusFoot = new Bonus(20, bonusMapFoot);
 		Bonus bonusBoss1 = new Bonus(101, bonusMapBoss1);
@@ -343,6 +430,11 @@ public class BonusManager implements Serializable {
 		Bonus bonusBoss6 = new Bonus(106, bonusMapBoss6);
 		Bonus bonusBoss7 = new Bonus(107, bonusMapBoss7);
 		Bonus bonusBoss8 = new Bonus(108, bonusMapBoss8);
+		Bonus bonusBoss11 = new Bonus(111, bonusMapBoss11);
+		Bonus bonusBoss12 = new Bonus(112, bonusMapBoss12);
+		Bonus bonusBoss13 = new Bonus(113, bonusMapBoss13);
+		Bonus bonusBoss14 = new Bonus(114, bonusMapBoss14);
+		Bonus bonusBoss15 = new Bonus(115, bonusMapBoss15);
 		
 		allBonus.add(bonusVide);
 		allBonus.add(bonusFoot);
@@ -355,6 +447,11 @@ public class BonusManager implements Serializable {
 		allBonus.add(bonusBoss6);
 		allBonus.add(bonusBoss7);
 		allBonus.add(bonusBoss8);
+		allBonus.add(bonusBoss11);
+		allBonus.add(bonusBoss12);
+		allBonus.add(bonusBoss13);
+		allBonus.add(bonusBoss14);
+		allBonus.add(bonusBoss15);
 	}
 	
 	public static void distribueBonus(Groupe groupe, Bonus bonus) {

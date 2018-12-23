@@ -3,14 +3,19 @@ package front;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -22,6 +27,7 @@ import core.configuration.Constante;
 import modele.evenement.Evenement;
 import modele.item.Item;
 import modele.item.personnage.PersoPrenom;
+import modele.item.personnage.PersonnagePrincipal;
 
 public class PanelBas extends JPanel {
 	
@@ -100,31 +106,30 @@ public class PanelBas extends JPanel {
 		BoxLayout boxLayout = new BoxLayout(panelVertical, BoxLayout.Y_AXIS);
 		panelVertical.setLayout(boxLayout);
 		
-		// On affiche les objets de quetes du perso ou du groupe
-		List<Item> items = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsDisponiblesByPerso(nom);
-		
-		// On affiche les consommables du perso
-		if (nom != PersoPrenom.GROUPE) {
-			Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(nom).getSac();
-			for (Item item : sac.keySet()) {
-				if (sac.get(item) > 0) {
-					items.add(item);
-				}
-			}
-		}
-		
 		int compteur = 0;
 		JPanel panelHorizontal = new JPanel();
 		panelVertical.add(panelHorizontal);
-		for (Item item : items) {
-			if (compteur == Constante.MAX_CASE_PAR_LIGNE) {
-				compteur = 1;
-				panelHorizontal = new JPanel();
-				createItemBouton(panelHorizontal, item);
-				panelVertical.add(panelHorizontal);
-			} else {
-				createItemBouton(panelHorizontal, item);
-				compteur++;
+		
+		// On affiche les objets du groupe + les objets du perso
+		PersonnagePrincipal perso = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(nom);
+		Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
+		Map<Item, Integer> sacTemp = new HashMap<>(sac);
+		// Si ce n'est pas le perso groupe on ajoute les objets du perso
+		if (perso != null && perso.getPrenomPerso() != PersoPrenom.GROUPE) {
+			sacTemp.putAll(perso.getSac());
+		}
+		for (Item item : sacTemp.keySet()) {
+			Integer nbItems = sacTemp.get(item);
+			if (nbItems > 0) {
+				if (compteur == Constante.MAX_CASE_PAR_LIGNE) {
+					compteur = 1;
+					panelHorizontal = new JPanel();
+					createItemBouton(panelHorizontal, item, nbItems);
+					panelVertical.add(panelHorizontal);
+				} else {
+					createItemBouton(panelHorizontal, item, nbItems);
+					compteur++;
+				}
 			}
 		}
 		JScrollPane scrollPaneInventaire = new JScrollPane();
@@ -135,17 +140,37 @@ public class PanelBas extends JPanel {
 		revalidate();
 	}
 
-	private void createItemBouton(JPanel panelHorizontal, Item item) {
+	private void createItemBouton(JPanel panelHorizontal, Item item, int nbItems) {
 		ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 		ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.ITEM_TAILLE_DIMENSION);
 		JButton boutonItem = new JButton(resizeImage);
-		boutonItem.setToolTipText(item.getNom() + " : " + item.getInformations());
+		boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")" + " : " + item.getInformations());
 		boutonItem.setPreferredSize(Constante.ITEM_TAILLE_DIMENSION);
+		boutonItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Item itemSelectionne = ItemManager.getItemSelectionne();
+				if (itemSelectionne == null) {
+					ItemManager.setItemSelectionne(item);
+					MainFrame.getPanelPersonnage().setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+				} else if (itemSelectionne == item) {
+					ItemManager.setItemSelectionne(null);
+					MainFrame.getPanelPersonnage().setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+				} else {
+					ItemManager.setItemSelectionne(item);
+					MainFrame.getPanelPersonnage().setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+				}
+				// TODO panelPerso en surbrillance
+				// TODO changer l icone de la souris jusqu a ce que l item soit utilise
+			}
+		});
+		
 		panelHorizontal.add(boutonItem);
 	}
 
-	public void refreshPanelBasByPerso(String panelCourant) {
-		refreshPanelBas(PersoPrenom.valueOf(panelCourant));
+	public void refreshPanelBasByPerso(String persoPrenom) {
+		refreshPanelBas(PersoPrenom.valueOf(persoPrenom));
 	}
+
 }
 

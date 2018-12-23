@@ -44,6 +44,7 @@ public class PanelCentre extends JPanel {
 	private JLayeredPane panelGuillaume = null;
 	private JLayeredPane panelJonathan = null;
 	private JLayeredPane panelGroupe = null;
+	private JLabel labelCarte = null;
 	 
 	public void generePanelCentre() {
 
@@ -93,6 +94,12 @@ public class PanelCentre extends JPanel {
 		panelGroupe.setBackground(Color.BLACK);
 		panelGroupe.setName(PersoPrenom.GROUPE.name());
 		panelGroupe.setLayout(new LayeredLayoutManager());
+		
+		// On recupere la carte
+		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
+		ImageIcon imageCarte = FenetrePrincipal.getImageIcon(carte.getImagePath().get(0));
+		ImageIcon resizedImage = ImageManager.resizeImage(imageCarte, Constante.PANEL_CENTRE_DIMENSION);
+		labelCarte = new JLabel(resizedImage);
 
 		// Construction de la carte
 		buildPanelPerso(panelGroupe);
@@ -129,14 +136,11 @@ public class PanelCentre extends JPanel {
 
 	// Construit l'enchainement de map/lieu/poi/missions/jeux pour un panel perso
 	private void buildPanelPerso(JComponent panel) {
+		
 		panel.removeAll();
-		// On recupere la carte
-		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
-		ImageIcon imageCarte = FenetrePrincipal.getImageIcon(carte.getImagePath().get(0));
-		ImageIcon resizedImage = ImageManager.resizeImage(imageCarte, Constante.PANEL_CENTRE_DIMENSION);
-		JLabel labelCarte = new JLabel(resizedImage);
 
 		// On recupere les lieux disponibles pour cette carte
+		Carte carte = MenuPrincipal.getMainFrame().getCoreManager().getCarteManager().getCartes().get(0);
 		List<Lieu> lieuxPersoGroupe = carte.getLieuxDisponiblesByPersoAndGroupe(panel.getName());
 		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
 		for (Lieu lieu : lieuxPersoGroupe) {
@@ -148,8 +152,15 @@ public class PanelCentre extends JPanel {
 			JButton bouton = null;
 			if (nbMissionsLieu == 0) {
 				bouton = new JButton(lieu.getNom()); 
+				bouton.setToolTipText(lieu.getInformations());
 			} else {
 				bouton = new JButton(lieu.getNom() + " (" + nbMissionsLieu + ")");
+				if (nbMissionsLieu == 1) {
+					bouton.setToolTipText(lieu.getInformations() + " (" + nbMissionsLieu + " mission disponible)");
+				} else {
+					bouton.setToolTipText(lieu.getInformations() + " (" + nbMissionsLieu + " missions disponibles)");
+				}
+				bouton.setBackground(Color.YELLOW);
 			}
 			bouton.setFont(Constante.SIMPSON_FONT);
 			
@@ -299,6 +310,7 @@ public class PanelCentre extends JPanel {
 		revalidate();
 	}
 
+	// Duplicate dans PanelFichePerso
 	private void addBoutonCarte(JComponent panel, JPanel panelBouton) {
 		JButton boutonCarte = new JButton("Retour Carte");
 		boutonCarte.setFont(Constante.SIMPSON_FONT);

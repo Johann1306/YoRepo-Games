@@ -1,24 +1,31 @@
 package front;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import core.CoreManager;
+import core.ItemManager;
 import core.MenuManager;
 import core.MusiqueManager;
 import core.PersonnageManager;
 import core.VideoManager;
 import core.configuration.Constante;
+import modele.competence.PersoStat;
 import modele.evenement.EvenementTheme;
+import modele.item.Item;
+import modele.item.ItemType;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersoPrenom;
@@ -104,10 +111,12 @@ public class PanelPersonnage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.Nicolas.name());
-				// TODO : essayer de ne pas rafraichir
 				panelBas.refreshPanelBas(PersoPrenom.Nicolas);
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Nicolas);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Nicolas);
 			}
 		});
 		boutonPierre.addActionListener(new ActionListener() {
@@ -117,6 +126,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Pierre);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Pierre);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Pierre);
 			}
 		});
 		boutonYannick.addActionListener(new ActionListener() {
@@ -126,6 +138,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Yannick);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Yannick);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Yannick);
 			}
 		});
 		boutonThomas.addActionListener(new ActionListener() {
@@ -135,6 +150,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Thomas);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Thomas);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Thomas);
 			}
 		});
 		boutonJohann.addActionListener(new ActionListener() {
@@ -144,6 +162,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Johann);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Johann);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Johann);
 			}
 		});
 		boutonAli.addActionListener(new ActionListener() {
@@ -153,6 +174,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Ali);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Ali);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Ali);
 			}
 		});
 		boutonGuillaume.addActionListener(new ActionListener() {
@@ -162,6 +186,9 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Guillaume);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Guillaume);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Guillaume);
 			}
 		});
 		boutonJonathan.addActionListener(new ActionListener() {
@@ -171,15 +198,20 @@ public class PanelPersonnage extends JPanel {
 				panelBas.refreshPanelBas(PersoPrenom.Jonathan);			
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+				gestionItemSelectionne(PersoPrenom.Jonathan);
+				MusiqueManager.stopAll();
+				MusiqueManager.startPlayListPerso(PersoPrenom.Jonathan);
 			}
 		});
 		boutonGroupe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(panelCentre, PersoPrenom.GROUPE.name());
-				panelBas.refreshPanelBas(PersoPrenom.GROUPE);			
+				panelBas.refreshPanelBas(PersoPrenom.GROUPE);
+				gestionItemSelectionne(PersoPrenom.GROUPE);
 				menuManager.lanceRefreshMenu();
 				panelCentre.refreshPanelCourant();
+//				MusiqueManager.stopAll();
 			}
 		});
 		
@@ -217,6 +249,8 @@ public class PanelPersonnage extends JPanel {
 		//		this.add(Box.createRigidArea(new Dimension(0, 5)));
 		this.add(boutonJonathan);
 		
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		
 //		refreshArriveePersonnage();
 	}
 
@@ -251,10 +285,16 @@ public class PanelPersonnage extends JPanel {
 									// lancer le son arrivee dans le groupe
 									MusiqueManager.playSon("sonParDefaut/312-SecretOfMana-ally-joins.mp3");
 									// affichage du panneau arrivee
-									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.name(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.getNom(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
 									perso.setDejaPresente(true);
 									// Affichage fiche perso
 									MainFrame.getPanelCentre().afficheFichePerso(perso.getPrenomPerso().name());
+
+									// Dieu donne la stat prefere du perso avec un message 
+									MusiqueManager.playSon("sonParDefaut/defautREZCritique.mp3");									
+									ImageIcon iconDieu = FenetrePrincipal.getImageIcon("image/pnj/dieu.png");
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " : " + perso.getMessageDieu(), EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
+									
 								}
 							} 
 						}
@@ -341,5 +381,38 @@ public class PanelPersonnage extends JPanel {
 				coreManager.getMenuManager().lanceRefreshMenu();
 			}
 		}
+	}
+	
+	private void gestionItemSelectionne(PersoPrenom prenomCible) {
+		
+		ItemManager.gestionItemSelectionne(prenomCible, MainFrame.getPanelCentre().getParent());
+		
+//		Item itemSelectionne = MainFrame.getPanelBas().getItemSelectionne();
+//		if (itemSelectionne != null) {
+//			PersoPrenom lanceur = MainFrame.getPanelBas().getProprietaireItem();
+//			PersonnagePrincipal persoCible = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenomCible);
+//			PersonnagePrincipal persoLanceur = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(lanceur);
+//		
+//			int reponse = JOptionPane.showConfirmDialog(this,
+//					"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenomCible.name() + "?");
+//			if (reponse == 0) {
+//				// OUI
+//				
+//				ItemManager.gestionItemSelectionne(persoCible, itemSelectionne, persoLanceur);
+//				
+//				JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
+//				
+//				
+//			} else {
+//				// NON
+//			}
+//
+//			MainFrame.getPanelBas().setItemSelectionne(null);
+//			MainFrame.getPanelBas().setProprietaireItem(null);
+//			MainFrame.getPanelPersonnage().setBorder(null);
+//			
+//			MainFrame.getPanelBas().refreshPanelBas(lanceur);
+//			MainFrame.getPanelPersonnage().refreshMortsPersonnage();
+//		}
 	}
 }

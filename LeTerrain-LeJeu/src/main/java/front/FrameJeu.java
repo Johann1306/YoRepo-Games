@@ -31,6 +31,7 @@ public class FrameJeu extends JFrame {
 					MusiqueManager.stopPlaylistEnBoucle();
 					musiqueRunning = false;
 				} else {
+					MusiqueManager.stopPlaylistEnBoucle();
 					MusiqueManager.startPlayListEnBoucle(mission);
 					musiqueRunning = true;
 				}

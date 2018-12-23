@@ -87,13 +87,18 @@ public class PoiManager implements Serializable {
 		
 		// Ecole
 		missionsPoiClasse.add(missionManager.getMissionById(101));
+		missionsPoiClasse.add(missionManager.getMissionById(1011));
 		missionsPoiCour.add(missionManager.getMissionById(102));
 		missionsPoiCour.add(missionManager.getMissionById(606));
 		missionsPoiCour.add(missionManager.getMissionById(1101));
 		missionsPoiCour.add(missionManager.getMissionById(1105));
+		missionsPoiCour.add(missionManager.getMissionById(1015));
 		missionsPoiPreau.add(missionManager.getMissionById(103));
+		missionsPoiPreau.add(missionManager.getMissionById(1014));
 		missionsPoiCantine.add(missionManager.getMissionById(104));
+		missionsPoiCantine.add(missionManager.getMissionById(1012));
 		missionsPoiLecture.add(missionManager.getMissionById(105));
+		missionsPoiLecture.add(missionManager.getMissionById(1013));
 
 		// Terrain
 		missionsPoi100.add(missionManager.getMissionById(201));

@@ -34,7 +34,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import core.ConfigurationManager;
 import core.ImageManager;
+import core.ItemManager;
 import core.MusiqueManager;
 import core.PersonnageManager;
 import core.RandomManager;
@@ -42,7 +44,6 @@ import core.VideoManager;
 import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.Item;
-import modele.item.ItemType;
 import modele.item.mission.BossNom;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
@@ -82,8 +83,7 @@ public class FrameCombat extends FrameJeu {
 	private JButton boutonGuillaume = null;
 	private JButton boutonJonathan = null;
 
-	private Item itemSelectionne = null;
-	private PersoPrenom proprietaireItem = null;
+	private PersoPrenom lanceurItem = null;
 	private JPanel panelInfosCombat = null;
 	private List<JButton> boutonsEnnemis = null;
 	private List<JButton> boutonsAmis = null;
@@ -310,27 +310,34 @@ public class FrameCombat extends FrameJeu {
 		BoxLayout boxlayoutEnnemis = new BoxLayout(panelEnnemis, BoxLayout.Y_AXIS);
 		panelEnnemis.setLayout(boxlayoutEnnemis);
 
-		// Gestion du nombre d'ennemis en fonction de la difficulte et du nombre
-		// de joueurs vivants
+		// Gestion du nombre d'ennemis en fonction de la difficulte et du nombre de joueurs vivants
 		// TODO difficulte generale + difficulte mission ? ou pas?
 		Difficulte difficulteMission = mission.getDifficulty();
 		int nombreJoueurs = amisVivants.size();
 		int nombreEnnemis = nombreJoueurs;
 		if (difficulteMission == Difficulte.FACILE) {
-			nombreEnnemis = nombreEnnemis + RandomManager.random(0, 1);
+			nombreEnnemis = nombreJoueurs + RandomManager.random(
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.facile.ennemis.supplementaires.min")),
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.facile.ennemis.supplementaires.max")));
 		} else if (difficulteMission == Difficulte.NORMAL) {
-			nombreEnnemis = nombreEnnemis + RandomManager.random(1, 2);
+			nombreEnnemis = nombreJoueurs + RandomManager.random(
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.normal.ennemis.supplementaires.min")),
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.normal.ennemis.supplementaires.max")));
 		} else if (difficulteMission == Difficulte.DIFFICILE) {
-			nombreEnnemis = nombreEnnemis + RandomManager.random(2, 3);
+			nombreEnnemis = nombreJoueurs + RandomManager.random(
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.difficile.ennemis.supplementaires.min")),
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.difficile.ennemis.supplementaires.max")));
 		} else if (difficulteMission == Difficulte.HEROIQUE) {
-			nombreEnnemis = nombreEnnemis + RandomManager.random(3, 4);
+			nombreEnnemis = nombreJoueurs + RandomManager.random(
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.heroique.ennemis.supplementaires.min")),
+					Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.heroique.ennemis.supplementaires.max")));
 		}
 
-		// random pour retirer des ennemis
-		if (nombreEnnemis > 5) {
-			int randomNombreEnnemis = RandomManager.random(0, 3);
-			nombreEnnemis = nombreEnnemis - randomNombreEnnemis;
-		}
+		// random pour retirer des ennemis ! NON - On aura toujours au moins autant d'ennemis que de joueurs amis !
+//		if (nombreEnnemis > 5) {
+//			int randomNombreEnnemis = RandomManager.random(0, 3);
+//			nombreEnnemis = nombreEnnemis - randomNombreEnnemis;
+//		}
 
 		// 8 ennemis max
 		if (nombreEnnemis > 8) {
@@ -351,7 +358,8 @@ public class FrameCombat extends FrameJeu {
 			ImageIcon photoBoss = ImageManager.resizeImage(boss.getPhotoPrincipal(),
 					Constante.PERSO_IMAGE_DIMENSION_64_64);
 			JButton boutonBoss = new JButton(photoBoss);
-			boutonBoss.setName(BossNom.valueOf(boss.getNom()).getNom());
+			// TODO Afficher le bon nom des Boss et pas Boss3
+			boutonBoss.setName(boss.getPrenom());
 			boutonBoss.setToolTipText(boutonBoss.getName());
 			boutonBoss.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 			boutonBoss.setFocusable(false);
@@ -370,7 +378,7 @@ public class FrameCombat extends FrameJeu {
 		// Creation des personnages ennemis
 		for (int i = 1; i <= nombreEnnemis; i++) {
 			PersoClasse classe = classes.get(i - 1);
-			PersonnageEnnemi ennemi = personnageManager.createPersonnageEnnemi(mission, i, niveauSorts, classe);
+			PersonnageEnnemi ennemi = personnageManager.createPersonnageEnnemi(mission, niveauSorts, classe);
 			ennemisVivants.add(ennemi);
 			ennemisPresents.add(ennemi);
 			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
@@ -425,7 +433,10 @@ public class FrameCombat extends FrameJeu {
 		panelCentre.setBackground(Color.WHITE);
 		panelEst.setBackground(Color.RED);
 		panelSud.setBackground(Color.BLUE);
-
+		
+		panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		panelEst.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		
 		content.add(panelNord, BorderLayout.NORTH);
 		content.add(panelOuest, BorderLayout.WEST);
 		content.add(panelCentre, BorderLayout.CENTER);
@@ -655,8 +666,7 @@ public class FrameCombat extends FrameJeu {
 			////////
 			
 			// Gestion info stat
-			// TODO faire une methode generique comme au debut plutot que
-			// gestionLabel()
+			// TODO faire une methode generique comme au debut plutot que gestionLabel()
 			JLabel labelAgilite = new JLabel(PersoStat.AGILITE.name() + " : " + perso.getCompetence().getAgilite());
 			gestionLabel(perso, labelAgilite, PersoStat.AGILITE);
 			JLabel labelEndurance = new JLabel(
@@ -724,15 +734,16 @@ public class FrameCombat extends FrameJeu {
 			BoxLayout boxlayoutItemsCombat = new BoxLayout(panelItemsCombat, BoxLayout.Y_AXIS);
 			panelItemsCombat.setLayout(boxlayoutItemsCombat);
 			
-			// On affiche les objets consommables du joueur (+ objets groupe ?)
-			Map<Item, Integer> sac = perso.getSac();
+			// On affiche les objets consommables du groupe
+			
+			Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
 			
 			for (Item item : sac.keySet()) {
 				Integer nbItems = sac.get(item);
 				if (nbItems > 0) {
 					// Si popo de vie ou popo de mana
 					// TODO potion de combat (degats, bouclier, casse bouclier, charge, aura, )
-					if (item.isConsommable()) {
+					if (item.isConsommable() && !item.getType().name().startsWith("BONUS_STAT")) {
 						ImageIcon imageItem = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 						ImageIcon resizeImage2 = ImageManager.resizeImage(imageItem, Constante.ITEM_CONSOMMABLE_DIMENSION);
 						JButton boutonItem = new JButton(resizeImage2);
@@ -744,10 +755,18 @@ public class FrameCombat extends FrameJeu {
 						boutonItem.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								itemSelectionne = item;
-								proprietaireItem = perso.getPrenomPerso();
-								// TODO panelPerso en surbrillance
-								panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+								Item itemSelectionne = ItemManager.getItemSelectionne();
+								if (itemSelectionne == null) {
+									ItemManager.setItemSelectionne(item);
+									panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+								} else if (itemSelectionne == item) {
+									ItemManager.setItemSelectionne(null);
+									panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+								} else {
+									ItemManager.setItemSelectionne(item);
+									panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+								}
+								lanceurItem = prenom;
 								// TODO changer l icone de la souris jusqu a ce que l item soit utilise
 							}
 						});
@@ -785,9 +804,17 @@ public class FrameCombat extends FrameJeu {
 			boutonFuir.setName("boutonFuir");
 			if (!peuxFuir) {
 				boutonFuir.setEnabled(false);
-			}
+				boutonFuir.setToolTipText("Vous ne pouvez plus fuir!");
+			} 
 			JButton boutonSeRendre = new JButton("SE RENDRE");
 			boutonSeRendre.setName("boutonSeRendre");
+			// Si c'est une mission boss on ne peut pas fuir
+			if (mission.getMissionType().name().equals(MissionType.BOSS.name())) {
+				boutonFuir.setEnabled(false);
+				boutonFuir.setToolTipText("Vous ne pouvez pas fuir face à un Boss!");
+				boutonSeRendre.setEnabled(false);
+				boutonSeRendre.setToolTipText("Vous ne pouvez pas vous rendre face à un Boss!");
+			}
 
 			panelBoutonsGroupe.setMaximumSize(
 					new Dimension(Constante.PANEL_BOUTON_GROUPE_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));
@@ -826,25 +853,25 @@ public class FrameCombat extends FrameJeu {
 					int chanceFuite = 0;
 					int nombreEnnemis = ennemisVivants.size(); // 1 a 8
 					if (nombreEnnemis > 6) {
-						chanceFuite = chanceFuite + 10;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.ennemis.8"));
 					} else if (nombreEnnemis > 4) {
-						chanceFuite = chanceFuite + 20;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.ennemis.6"));
 					} else if (nombreEnnemis > 2) {
-						chanceFuite = chanceFuite + 30;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.ennemis.4"));
 					} else if (nombreEnnemis > 0) {
-						chanceFuite = chanceFuite + 40;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.ennemis.2"));
 					}
 
 					// Chance de fuir en fonction de la difficulte (40% max -
 					// 10% min)
 					if (difficulte == Difficulte.FACILE) {
-						chanceFuite = chanceFuite + 40;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.facile"));
 					} else if (difficulte == Difficulte.NORMAL) {
-						chanceFuite = chanceFuite + 30;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.normal"));
 					} else if (difficulte == Difficulte.DIFFICILE) {
-						chanceFuite = chanceFuite + 20;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.difficile"));
 					} else if (difficulte == Difficulte.HEROIQUE) {
-						chanceFuite = chanceFuite + 10;
+						chanceFuite = chanceFuite + Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.fuite.heroique"));
 					}
 
 					int randomFuite = RandomManager.random0_100();
@@ -852,7 +879,7 @@ public class FrameCombat extends FrameJeu {
 					// Si on reussit a fuir
 					if (randomFuite < chanceFuite) {
 						// Message fuite reussi
-						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Vous avez réussi à fuir.");
+						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), ConfigurationManager.getProperties("jeu.combat.chance.fuite.message.reussi"));
 
 						// On arrete la partie
 						timerJoueurs.stop();
@@ -863,7 +890,7 @@ public class FrameCombat extends FrameJeu {
 						// negative si raté (mort, mana, charge, perte des
 						// stats, de fric)
 						// Message fuite echoue
-						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), "Vous n'avez pas réussi à fuir.");
+						JOptionPane.showMessageDialog(FrameCombat.getFrameCombat(), ConfigurationManager.getProperties("jeu.combat.chance.fuite.message.rate"));
 						boutonFuir.setEnabled(false);
 						peuxFuir = false;
 					}
@@ -1657,6 +1684,10 @@ public class FrameCombat extends FrameJeu {
 								// Grise le bouton du perso
 								ennemisVivants.remove(cible);
 								for (JButton bouton : boutonsEnnemis) {
+									// TODO tester le probleme du Boss qui reste affiché
+									System.out.println("Nom du bouton : " + bouton.getName());
+									System.out.println("Nom de la cible : " + cible.getPrenom());
+									System.out.println(bouton.getName() + " ==== " +cible.getPrenom());
 									if (bouton.getName().equals(cible.getPrenom())) {
 										bouton.setEnabled(false);
 									}
@@ -2252,149 +2283,29 @@ public class FrameCombat extends FrameJeu {
 	}
 
 	private void gestionItemSelectionne(PersoPrenom prenomCible) {
-		if (itemSelectionne != null) {
-			int reponse = JOptionPane.showConfirmDialog(this,
-					"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenomCible.name() + "?");
-			if (reponse == 0) {
-				// OUI
-				
-				PersonnagePrincipal persoCible = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenomCible);
-				PersonnagePrincipal persoLanceur = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(proprietaireItem);
-				if (itemSelectionne.getType() == ItemType.POTION_VIE_25) {
-					int vie = persoCible.getVie() + ((persoCible.getVieMax()*25)/100);
-					if (vie > persoCible.getVieMax()) {
-						vie = persoCible.getVieMax();
-					}
-					persoCible.setVie(vie);					
-				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_50) {
-					int vie = persoCible.getVie() + ((persoCible.getVieMax()*50)/100);
-					if (vie > persoCible.getVieMax()) {
-						vie = persoCible.getVieMax();
-					}
-					persoCible.setVie(vie);	
-				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_75) {
-					int vie = persoCible.getVie() + ((persoCible.getVieMax()*75)/100);
-					if (vie > persoCible.getVieMax()) {
-						vie = persoCible.getVieMax();
-					}
-					persoCible.setVie(vie);	
-				} else if (itemSelectionne.getType() == ItemType.POTION_VIE_100) {
-					persoCible.setVie(persoCible.getVieMax());	
-					
-				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_25) {
-					int mana = persoCible.getMana() + ((persoCible.getManaMax()*25)/100);
-					if (mana > persoCible.getManaMax()) {
-						mana = persoCible.getManaMax();
-					}
-					persoCible.setMana(mana);	
-				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_50) {
-					int mana = persoCible.getMana() + ((persoCible.getManaMax()*50)/100);
-					if (mana > persoCible.getManaMax()) {
-						mana = persoCible.getManaMax();
-					}
-					persoCible.setMana(mana);	
-				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_75) {
-					int mana = persoCible.getMana() + ((persoCible.getManaMax()*75)/100);
-					if (mana > persoCible.getManaMax()) {
-						mana = persoCible.getManaMax();
-					}
-					persoCible.setMana(mana);	
-				} else if (itemSelectionne.getType() == ItemType.POTION_MANA_100) {
-					persoCible.setMana(persoCible.getManaMax());	
-					
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_5) {
-					persoCible.addCompetences(PersoStat.LUCK, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_10) {
-					persoCible.addCompetences(PersoStat.LUCK, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_CHANCE_20) {
-					persoCible.addCompetences(PersoStat.LUCK, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_5) {
-					persoCible.addCompetences(PersoStat.EXPLOIT, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_10) {
-					persoCible.addCompetences(PersoStat.EXPLOIT, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_EXPLOIT_20) {
-					persoCible.addCompetences(PersoStat.EXPLOIT, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_5) {
-					persoCible.addCompetences(PersoStat.TECHNIQUE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_10) {
-					persoCible.addCompetences(PersoStat.TECHNIQUE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_TECHNIQUE_20) {
-					persoCible.addCompetences(PersoStat.TECHNIQUE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_5) {
-					persoCible.addCompetences(PersoStat.ENDURANCE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_10) {
-					persoCible.addCompetences(PersoStat.ENDURANCE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_ENDURANCE_20) {
-					persoCible.addCompetences(PersoStat.ENDURANCE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_5) {
-					persoCible.addCompetences(PersoStat.RAPIDITE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_10) {
-					persoCible.addCompetences(PersoStat.RAPIDITE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RAPIDITE_20) {
-					persoCible.addCompetences(PersoStat.RAPIDITE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_5) {
-					persoCible.addCompetences(PersoStat.RESISTANCE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_10) {
-					persoCible.addCompetences(PersoStat.RESISTANCE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_RESISTANCE_20) {
-					persoCible.addCompetences(PersoStat.RESISTANCE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_5) {
-					persoCible.addCompetences(PersoStat.AGILITE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_10) {
-					persoCible.addCompetences(PersoStat.AGILITE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_AGILITE_20) {
-					persoCible.addCompetences(PersoStat.AGILITE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_5) {
-					persoCible.addCompetences(PersoStat.INTELLIGENCE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_10) {
-					persoCible.addCompetences(PersoStat.INTELLIGENCE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_INTELLIGENCE_20) {
-					persoCible.addCompetences(PersoStat.INTELLIGENCE, 20);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_5) {
-					persoCible.addCompetences(PersoStat.NERVOSITE, 5);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_10) {
-					persoCible.addCompetences(PersoStat.NERVOSITE, 10);
-				} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_20) {
-					persoCible.addCompetences(PersoStat.NERVOSITE, 20);
-				}
-				
-				// TODO decremente l'item dans le sac du perso qui a utilisé l'item
-				int valeur = persoLanceur.getSac().get(itemSelectionne);
-				persoLanceur.getSac().put(itemSelectionne, valeur -1);
-				
-				JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
-				JLabel label = new JLabel(prenomCible.name() + " consomme " + itemSelectionne.getNom() + ".");
+		
+		if (ItemManager.getItemSelectionne() != null) {
+			Item item = ItemManager.getItemSelectionne();
+//			ItemManager.gestionItemSelectionne(prenomCible, lanceurItem, panelCentre);
+			ItemManager.gestionItemSelectionne(prenomCible, panelCentre);
+			
+			// Si on a consommé l'item
+			if (ItemManager.getItemSelectionne() == null) {
+			
+				JLabel label = new JLabel(prenomCible.name() + " consomme " + item.getNom() + ".");
 				label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
 				panelInfosCombat.add(label, 0);
-				itemSelectionne = null;
 				
 				// Fin du tour du joueur (1 popo par tour par joueur)
-				// FIXME probleme quand lanceur = cible la deuxieme fois, le focus reste sur le lanceur au lieu de switcher sur un autre joueur => ok?
-				// FIXME probleme cible de la popo non selectionnable (alors que vivante) => ok?
-				refreshFinTourJoueur(persoLanceur);
-
-				
-//				boolean itemConsomme = itemSelectionne.consommeItem();
-//				if (itemConsomme) {
-//					JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
-//					JLabel label = new JLabel(prenom.name() + " consomme " + itemSelectionne.getNom() + ".");
-//					// label.setFont(Constante.PRESS_START_FONT_FRAMECOMBAT_INFO);
-//					panelInfosCombat.add(label, 0);
-//					// TODO setDisponible(false)? ou etat consomme?
-//					// TODO modifier stats en fonction de l'item
-//					itemSelectionne.setDisponible(false);
-//
-//				} else {
-//					JOptionPane.showMessageDialog(this,
-//							"L'item : " + itemSelectionne.getNom() + " n'a pas pu etre consomme : raison");
-//				}
+				refreshFinTourJoueur(MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(lanceurItem));
+				lanceurItem = null;
+					
+				// TODO : remettre curseur souris normal
+//				panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+				// TODO refresh panelCombat et panelAction
 			}
-			// TODO : remettre curseur souris normal
-			panelOuest.setBorder(null);
-			itemSelectionne = null;
-			
-			// TODO refresh panelCombat et panelAction
 		}
+			
 	}
 
 	private void lancePartiePremiereFois() {

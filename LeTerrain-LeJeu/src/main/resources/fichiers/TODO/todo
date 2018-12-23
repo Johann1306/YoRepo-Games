@@ -2,31 +2,40 @@ TODO :
 
 Priorités :
 - Terminer ce qui est terminable (sortir une version jouable)
-- gerer les 4 difficultés (facile, normale, difficile, extreme)
+- gerer les 4 difficultés (facile, normale, difficile, extreme) => ou gerer une seule pour le moment
+- matrice de difficulté
 - Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats) => degats ennemis /4
+	 - 1er combat en heroique => 1 vs 4 => premiere attaque ennemi => 927 pt de degats => mort sans jouer
+	 - 1er combat en difficile => 1 vs 3 => deuxieme attaque ennemi => 720 pt de degats => mort sans jouer
+	 - 1er combat en normal => 1 vs 2 => deuxieme attaque ennemi => 250 pt de degats => mort apres un tour
+- Sortir les variables de conf dans un fichier a coté pour ce qui peut etre modifier par le joueur / class de constante
 
 Problemes Graves: 
-- Combat Boss : Si Le boss meurt mais qu'il reste des ennemis et que l'on fuit le combat et que l'on revient : il reapparait avec 0 de vie et se fait rez en double 
-	=> 3 solutions : si le boss meurt le combat est gagné : pas besoin de tué les autres ennemis? bonne solution ? a combiné avec la 3eme solution?
-					 empecher la fuite du combat quand c'est un combat de BOSS ! meilleur solution?
-- Problemes musique qui ne se lance pas au deuxieme combat si "se rendre" au premier et que la musique a été etteinte pendant le premier combat => etat running = false) => Solution de secour : Ne pas permettre d'activer/desactiver le son au joueur!
-- Probleme du bouton son combat qui ne demarre plus au deuxieme combat(le random est fait, pas d'exception mais le son ne se lance pas)
-- desactiver le bouton son en combat avec la barre d'espace
+- probleme de latence sur la carte au bout d'un moment (pas de montée en charge de la JVM) => singleton de la map + proxy 
+- quand spam espace (bouton son) en combat : les musiques se superposent => solution desactiver.
+- Bouton "SON" qui n'apparait pas en combat (au deuxieme combat? si desactivé au premier combat?). A cause de la taille du texte qui pousse a droite? ou commente dans le code?
 - Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???)
-- Mission premier perso qui n'apparait pas tout le temps (en fonction de bouton 'passer' ou '>>' ou 'spam Entree' ???) non reproductible mais recurrent
-- (en fonction de mourir une premiere fois et relancer une nouvelle partie?)
 
 Problemes Legers: 
+- gestion des items => empecher de pouvoir consommer les clefs
+- probleme lors du gain d'un sort => image en double => depuis la modif gestion des evenements recompenses
+- Probleme des doublons d'ennemis en combat depuis photo ennemis aleatoire 
+	=> Faire une liste pour avoir au moins un de chaque avant le doublon (chiant mais bien)
+	=> Faire plus de perso de chaque type (long)
+	=> Faire un mix des type EnnemiType.ALL + empecher les doublons
+- Ne pas augmenter les sorts si defaite en combat? pourquoi pas? en fonction de la difficulte?
+- mission du 1er personnage selectionné a ne pas afficher
 - Gerer le volume du son des combats (musique > bruit des sorts(special))
 - Verifier que le nom des boss apparait bien dans l'infobulle
-- Gestion des sorts de mana trop de mana ajouté  ou enlevé
+- Verifier que l'image des missions boss apparait bien
+- Gestion des sorts de mana trop de mana ajouté ou enlevé
 - Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
 - Probleme taille de la page fiche perso qui impacte la taille de la page carte (1ere init)
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
-- Probleme missions date bouton disable (si date ok mais perso necessaire ko) =>> correction moyenne a verifier
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
 
 Problemes combats :
+- Boss : Afficher le vrai nom du boss et pas Boss11
 - FACILE :
 	- gerer des popos qui monte le niveau d'un sort (+1 ou +2 lvl ou direct au lvl 5,6,7) en sachant que la difficulté des ennemis augmente en fonction du sort de plus haut lvl
 	- OU Gerer la progression de certains sorts plus rapidement car moins utilisé ()
@@ -42,8 +51,7 @@ Problemes combats :
 Indispensables:
 - Didacticiel / Tutoriel
 - gestion de la sauvegarde (automatique / difficulté / possibilité de mourir et de tout recommencer?)
-- Mettre des musiques d'ambiances pour chaque perso et pour le groupe (Tom : Warcraft2, ..)
-- Gestion des BOSS (nom, photo, actionsCombat specifiques, phrases d'intro de combat)
+- Gestion des BOSS (nom, photo, actionsCombat specifiques, phrases d'intro de combat, + de sorts pour les boss que attaque mono ou multi)
 - Terminer FrameCombat
 - Terminer FrameQuizz (trouver des questions par theme)
 - Centrer PanelCentre on click milieu du scroll 
@@ -62,6 +70,8 @@ Indispensables:
 - gerer les musiques (persos, jeux, groupe
 - gerer les images (+ fondu)
 
+- Faciliter la creation de contenu (Fichier Excel/CSV ou IHM de creation qui genere un fichier
+
 - Remplir le contenu (Carte) + IHM de creation
 - Remplir le contenu (Lieux) + IHM de creation
 - Remplir le contenu (POIs) + IHM de creation
@@ -75,21 +85,16 @@ Indispensables:
 - Tester sur un autre PC/Portable
 
 Optionnelles:
+- Tooltip sur les Competences dans la fiche perso (info sur les domaines dans lequel elle intervient : esquive / critique / ...) 
+- Animations quand passage de la souris sur les boutons
+- Faire la tonelle => pouvoir acheter des objets => avoir de l'argent.
+- integrer les profs => mini boss
 - les regles d'internet (jeannot nymouce)
 - limiter la progression en fonction du nombre de mission disponible (max 5 ou 10 non resolus) => bloquer le timer
 - Questions 'de personnalité' au debut du jeu à la fallout 4 (sans consequences / questions aleatoires? connes?)
 - faire un premier combat en one to one pour commencer les combats
-- limiter le bouton suivant par rapport au nombre de missions en cours (ex: bouton grisé si = 10 missions) pour eviter de voir la fin sans faire les missions
-- faire une intervention divine pour donner la capacité préféré de chaque perso (
-	- Tu n'aura qu'une couille mais tu aura de la chatte .Chance.
-	- C'est pas la taille du navire qui compte mais l'état du capitaine .Technique.
-	- Nico.Exploit.
-	- Tom.Intelligence.
-	- Tu aura des oreilles d'Elfe mais tu aura un nez et une bite de Troll .Agilité.
-	- Ya.Resistance.
-	- Ali.Rapidite.
-	- Russ.Endurance/Nervosité.)
-- gestion d'armes et armures generés aleatoirement (avec pouvoir speciaux : +50 attaque/def/chances/etc ... avec  4 types blanc/vert/bleu/violet ou  vert/bleu/rouge/violet) 
+- / Faire des missions bloquantes (BOSS) ? / limiter le bouton suivant par rapport au nombre de missions en cours (ex: bouton grisé si = 10 missions) pour eviter de voir la fin sans faire les missions
+- gestion d'armes et armures generés aleatoirement (avec pouvoir speciaux : +50 attaque/def/chances/etc ... avec  4 types gris/vert/bleu/violet ou  vert/bleu/rouge/violet) 
 - Fiche perso : Agrandir l'image du sort quand on passe la souris ou click sur l'image 
 - Option activer/desactiver les evenements (Series, Dessins Animes, Film, Jeux, Musiques) 
 - Limites du jeu : Compte tenu de l'aspect nostalgique année 80-90 du jeu, nous ne feront pas de reference aux termes suivants : Swag, PLS, Vegan, PNL, Jul, Squeezy
@@ -103,6 +108,7 @@ Optionnelles:
 - FrameFoot
 - FrameAchat
 - FrameDrugWar
+- gerer l'argent
 - gerer mieux les consommables
 - revoir la gestion des chargements des panel / gestion memoire 
 - gerer la possibilité d'ajouter du contenu
@@ -117,6 +123,7 @@ Optionnelles:
 - Gestion sauvegarde/charge (Timer, Plusieurs sauvegardes, fenetre avec screenshot et sauvegardes)
 - ajouter des sons quand deplacement carte, poi, mission et quand push bouton perso
 - Combiner plusieurs cartes pour plus de details (2x2)
+- Fichier de conf - Variables de conf pour tous ce qui peut etre externaliser
 
 Bonus :
 - easter eggs(si attente 1 min sur menu principal / choix du nom fake / (bas + R + haut + L + Y + B)) 

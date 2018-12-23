@@ -2,16 +2,22 @@ package modele.item.personnage;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import modele.item.Item;
 
 public class Groupe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private List<PersonnagePrincipal> leGroupe;
+	private Map<Item, Integer> sac;
 
 	public Groupe() {
 		this.leGroupe = new ArrayList<PersonnagePrincipal>();
+		this.sac = new HashMap<>();
 	}
 	
 	public List<PersonnagePrincipal> getPersos() {
@@ -72,6 +78,14 @@ public class Groupe implements Serializable {
 	public PersonnagePrincipal supprimePerso(PersonnagePrincipal perso) {
 		leGroupe.remove(perso);
 		return perso;
+	}
+
+	public Map<Item, Integer> getSac() {
+		return sac;
+	}
+
+	public void setSac(Map<Item, Integer> sac) {
+		this.sac = sac;
 	}
 
 }

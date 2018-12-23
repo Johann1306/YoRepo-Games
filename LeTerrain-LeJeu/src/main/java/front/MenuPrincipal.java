@@ -556,7 +556,7 @@ public class MenuPrincipal extends JPanel {
 		this.add(boutonJeux);
 		this.add(boutonScore);
 		this.add(boutonQuit);
-//		this.setBorder(BorderFactory.createLineBorder(Color.RED));
+//		this.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 	}
 	
 	private void lanceNouvellePartie(Difficulte difficulte) {
@@ -571,8 +571,8 @@ public class MenuPrincipal extends JPanel {
 		panelDifficulte.setVisible(false);
 		
 		// TODO son clic en fonction de la difficulte (Facile/bebe ou tetine, Normal/bruit d'epee, Difficile/pistolet, Heroique/hahaha)
-		MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 		MusiqueManager.stopPlaylistEnBoucle();
+		MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 		mainFrame = new MainFrame(difficulte);
 		mainFrame.startMainFrame();
 		FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
