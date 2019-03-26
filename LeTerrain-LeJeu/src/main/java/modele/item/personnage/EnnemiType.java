@@ -6,6 +6,7 @@ public enum EnnemiType {
 	// GITAN_HEALER
 	// GITAN_DPS
 	
+	TOUS,
 	GITANS,
 	ARABES,
 	NOIRS,

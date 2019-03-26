@@ -10,32 +10,30 @@ Priorités :
 	 - 1er combat en normal => 1 vs 2 => deuxieme attaque ennemi => 250 pt de degats => mort apres un tour
 - Sortir les variables de conf dans un fichier a coté pour ce qui peut etre modifier par le joueur / class de constante
 
-Problemes Graves: 
-- probleme de latence sur la carte au bout d'un moment (pas de montée en charge de la JVM) => singleton de la map + proxy 
+Problemes Graves:
+- TODO probleme du Nullpointer a reproduire quand on charge la derniere partie dans le jeu
+- probleme de latence sur la carte au bout d'un moment (pas de montée en charge de la JVM) => singleton de la map + proxy => pas de resultat? => ?
 - quand spam espace (bouton son) en combat : les musiques se superposent => solution desactiver.
 - Bouton "SON" qui n'apparait pas en combat (au deuxieme combat? si desactivé au premier combat?). A cause de la taille du texte qui pousse a droite? ou commente dans le code?
 - Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???)
 
 Problemes Legers: 
+- Tranches de degats trop variables en fonction de la difficulte (multiplicateur x3 - x25) (degats /4 /3 /2 /1) => regler le probleme
+- Les armes avec bonus de competence pour les ennemis doivent elles impacter les competences des ennemis? des boss? oui
+- Les degats des armes impactent tous les sorts => Impacter uniquement les sorts de base? les special?
+- Nettoyer le menu (nouvelle partie a partir du menu pas necessaire)
 - gestion des items => empecher de pouvoir consommer les clefs
 - probleme lors du gain d'un sort => image en double => depuis la modif gestion des evenements recompenses
-- Probleme des doublons d'ennemis en combat depuis photo ennemis aleatoire 
-	=> Faire une liste pour avoir au moins un de chaque avant le doublon (chiant mais bien)
-	=> Faire plus de perso de chaque type (long)
-	=> Faire un mix des type EnnemiType.ALL + empecher les doublons
 - Ne pas augmenter les sorts si defaite en combat? pourquoi pas? en fonction de la difficulte?
 - mission du 1er personnage selectionné a ne pas afficher
 - Gerer le volume du son des combats (musique > bruit des sorts(special))
-- Verifier que le nom des boss apparait bien dans l'infobulle
-- Verifier que l'image des missions boss apparait bien
-- Gestion des sorts de mana trop de mana ajouté ou enlevé
-- Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy 
+- Gestion des sorts de mana - trop de mana ajouté ou enlevé
+- Ralentissements quand chargements des images de la fiche perso pendant scroll horizontal => Solution : charger toutes les images au debut du jeu ou proxy => Proxy => Tester si ca ameliore
 - Probleme taille de la page fiche perso qui impacte la taille de la page carte (1ere init)
 - Probleme a reproduire : Tank ennemi qui augmente ses chances d'esquives de 42% => 63% pendant 1 tour mais ca reste activé plusieurs tours (Fix a faire : chanceEsquiveMax a 0 quand esquive = 0)
 - fenetre centrale JLayerPane dimension de la + grosse photo => resizeImage()
 
 Problemes combats :
-- Boss : Afficher le vrai nom du boss et pas Boss11
 - FACILE :
 	- gerer des popos qui monte le niveau d'un sort (+1 ou +2 lvl ou direct au lvl 5,6,7) en sachant que la difficulté des ennemis augmente en fonction du sort de plus haut lvl
 	- OU Gerer la progression de certains sorts plus rapidement car moins utilisé ()
@@ -151,6 +149,15 @@ Prerequis :
 - Installer les polices d'ecriture
 
 
+Infos :
+- Les missions quizz se debloquent a chaque anniversaire de chaque perso depuis son arrivée jusqu'en 2000
+- Thomas et Nico : 10 + 10 ; Yannick, Johann et Pierre : 9 + 9 + 9 ; Ali : 5 ; Guy : 3 ; Russ : 1 => (56 questions en tout)
+- Apres le 1 er janvier 2001 => mission repetable pour Russ avec le reste des questions
+
+Pour Executer le jar :
+Il faut copier l'ensemble du repertoire qui contient le JAR (C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target)
+- Execution au double click
+- OU en ligne de commande avec cmd => cd "repertoire qui contient" => java -jar "nom du jar" (D:\Johann\Le Terrain\Test JAR>java -jar LeTerrain-LeJeu-0.0.1-SNAPSHOT.jar)
 
 
 

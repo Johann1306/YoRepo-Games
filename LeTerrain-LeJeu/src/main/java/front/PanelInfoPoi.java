@@ -46,7 +46,7 @@ public class PanelInfoPoi extends JPanel {
 		labelInfoPoi.setFont(Constante.ZELDA_FONT);
 		panelNord.add(labelNomPoi);
 		panelNord.add(labelInfoPoi);
-		System.out.println(this.getMaximumSize());
+//		System.out.println(this.getMaximumSize());
 		labelNomPoi.setMaximumSize(this.getMaximumSize());
 
 		// TODO : taille des boutons par rapport au plus grand nom de mission

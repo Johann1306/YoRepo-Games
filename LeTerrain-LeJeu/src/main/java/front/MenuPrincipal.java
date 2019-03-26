@@ -303,6 +303,7 @@ public class MenuPrincipal extends JPanel {
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
+				MainFrame.getPanelCentre().refreshPanelCourant();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 			}
@@ -321,6 +322,7 @@ public class MenuPrincipal extends JPanel {
 				mainFrame.startMainFrame();
 				FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 				fenetrePrincipal.hide();
+				MainFrame.getPanelCentre().refreshPanelCourant();
 				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 			}
@@ -590,7 +592,6 @@ public class MenuPrincipal extends JPanel {
 				resizeImage,
 				new String[] {"Johann", "Nicolas", "Pierre", "Thomas", "Yannick"}, 
 				"default");
-		System.out.println(valeur);
 		if (valeur == 0) {
 			personnageManager.setPersonnagePrincipal(PersoPrenom.Johann);
 			personnageManager.getPersoByPrenom(PersoPrenom.Johann).setDisponible(true);
@@ -619,7 +620,7 @@ public class MenuPrincipal extends JPanel {
 		} 
 		// On Debloque l'école des le debut
 		lieuManager.getLieuById(9).setDisponible(true);
-		mainFrame.getPanelPersonnage().refreshArriveePersonnage();
+		MainFrame.getPanelPersonnage().refreshArriveePersonnage();
 	}
 
 	public void demandeConfirmationQuitter() {
@@ -627,7 +628,6 @@ public class MenuPrincipal extends JPanel {
 		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sûr de vouloir t'arreter maintenant?",
 				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, resizeImage,
 				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, "default");
-		System.out.println(confirme);
 		if (confirme == 0) {
 			System.exit(0);
 		}

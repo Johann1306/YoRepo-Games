@@ -1,9 +1,12 @@
 package core;
 
+import java.io.Serializable;
 import java.util.ResourceBundle;
 
-public class ConfigurationManager {
+public class ConfigurationManager implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private static ResourceBundle properties;
 	
 	public void init() {
@@ -11,6 +14,9 @@ public class ConfigurationManager {
 	}
 
 	public static String getProperties(String nom) {
+		if (properties == null) {
+			properties = ResourceBundle.getBundle("conf.leTerrain");
+		}
 		return properties.getString(nom);
 	}
 

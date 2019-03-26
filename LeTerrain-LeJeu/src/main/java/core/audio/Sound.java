@@ -20,20 +20,20 @@ public class Sound {
 	}
 
 	public void play() throws Exception {
-		System.out.println("1 Play() ......");
+//		System.out.println("1 Play() ......");
 		if (player != null) {
-			System.out.println("2 Player isPlaying() " + isPlaying);
+//			System.out.println("2 Player isPlaying() " + isPlaying);
 			if (isPlaying) {
-				System.out.println("3 Player close()");
+//				System.out.println("3 Player close()");
 				player.close();
 			}
 			isPlaying = true;
-			System.out.println("4 Player play()");
+//			System.out.println("4 Player play()");
 			player.play();
 		} else {
-			System.out.println("0 Player == null");
+//			System.out.println("0 Player == null");
 		}
-		System.out.println("5 Player ...... OK");
+//		System.out.println("5 Player ...... OK");
 	}
 
 	public void pause() throws Exception {

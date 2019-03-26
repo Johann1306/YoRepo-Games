@@ -28,7 +28,7 @@ public class QuizzManager implements Serializable {
 		
 		String imagePath1 = "image/enigme/ali.png";
 		String videoPath1 = "video/Trololo.mp4";
-		String question1 = "Combien fait : (2 + 2 x 2) ?";
+		String question1 = "En mathématique quel est le résultat de l'opération : X = (2 + 2 x 2) ?";
 		Reponse reponse11 = new Reponse("2", false);
 		Reponse reponse12 = new Reponse("4", false);
 		Reponse reponse13 = new Reponse("6", true);
@@ -68,6 +68,8 @@ public class QuizzManager implements Serializable {
 		reponsesPossibles3.add(reponse34);
 		String infoReponse3 = "D'ou le nom Amerique";
 		
+		// Questions Burger Quizz
+		
 		// MATH
 		// Laquelle de ces affirmations est vraie? Une soustraction peut donner un nombre positif, Une racine carré peut être négative, Deux droites parallèles peuvent se croiser, Un nombre peut être divisé par 0 (En effet : 7-2 = 5)   
 		// Combien de fois peut on plier une feuille de papier au maximum?
@@ -97,6 +99,8 @@ public class QuizzManager implements Serializable {
 		enigmesInconnus.add(new Enigme(imagePath1, videoPath1, question1, reponsesPossibles1, infoReponse1, TypeEnigme.ECOLE));
 		enigmesInconnus.add(new Enigme(imagePath2, videoPath2, question2, reponsesPossibles2, infoReponse2, TypeEnigme.PERSO));
 		enigmesInconnus.add(new Enigme(imagePath3, videoPath3, question3, reponsesPossibles3, infoReponse3, TypeEnigme.DECOUVERTE));
+		
+		// TODO Ajouter au moins 60 enigmes
 		
 	}
 

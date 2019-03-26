@@ -3,7 +3,6 @@ package core;
 import java.awt.Color;
 import java.io.File;
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -11,7 +10,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -54,6 +52,7 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageEnnemi> personnagesEnnemis;
 	private PersoPrenom personnagePrincipal;
 	private Difficulte difficulte = Difficulte.FACILE;
+	private static List<Integer> numsEnnemi = new ArrayList<>();
 
 	public void initialise(ActionCombatManager actionCombatManager, Difficulte difficultePartie) {
 
@@ -367,19 +366,19 @@ public class PersonnageManager implements Serializable {
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>(stats);
 		
 		// Choix des competences pour les BOSS par difficulte, type et classe
-		Competence competence1 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence2 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence3 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence4 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence5 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence6 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence7 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence8 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence11 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence12 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence13 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence14 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
-		Competence competence15 = choixDesCompetences(difficultePartie, statsParType, statsParClasse);
+		Competence competence1 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence2 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence3 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence4 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence5 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence6 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence7 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence8 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence11 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence12 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence13 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence14 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
+		Competence competence15 = choixDesCompetences(difficultePartie, statsParType, statsParClasse, null);
 		
 		// ActionsCombat des BOSS
 		List<ActionCombat> actionsCombat1 = actionCombatManager.getActionsCombat(BossNom.BOSS1.name());
@@ -397,65 +396,65 @@ public class PersonnageManager implements Serializable {
 		List<ActionCombat> actionsCombat15 = actionCombatManager.getActionsCombat(BossNom.BOSS15.name());
 
 		// Creation des MINI BOSS
-		PersonnageBoss boss11 = new PersonnageBoss(BossNom.BOSS11.name(), BossNom.BOSS11.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss11 = new PersonnageBoss(BossNom.BOSS11.getNom(), BossNom.BOSS11.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique11, particularitesSocial11, phrasesPerso11, photoBoss11, photos11, actionsCombat11,
 				competence11);
 
-		PersonnageBoss boss12 = new PersonnageBoss(BossNom.BOSS12.name(), BossNom.BOSS12.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss12 = new PersonnageBoss(BossNom.BOSS12.getNom(), BossNom.BOSS12.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique12, particularitesSocial12, phrasesPerso12, photoBoss12, photos12, actionsCombat12,
 				competence12);
 
-		PersonnageBoss boss13 = new PersonnageBoss(BossNom.BOSS13.name(), BossNom.BOSS13.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss13 = new PersonnageBoss(BossNom.BOSS13.getNom(), BossNom.BOSS13.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique13, particularitesSocial13, phrasesPerso13, photoBoss13, photos13, actionsCombat13,
 				competence13);
 
-		PersonnageBoss boss14 = new PersonnageBoss(BossNom.BOSS14.name(), BossNom.BOSS14.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss14 = new PersonnageBoss(BossNom.BOSS14.getNom(), BossNom.BOSS14.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique14, particularitesSocial14, phrasesPerso14, photoBoss14, photos14, actionsCombat14,
 				competence14);
 
-		PersonnageBoss boss15 = new PersonnageBoss(BossNom.BOSS15.name(), BossNom.BOSS15.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss15 = new PersonnageBoss(BossNom.BOSS15.getNom(), BossNom.BOSS15.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique15, particularitesSocial15, phrasesPerso15, photoBoss15, photos15, actionsCombat15,
 				competence15);
 		
 		// Creation des BOSS
 		
 		// BOSS YO
-		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.name(), BossNom.BOSS1.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss1 = new PersonnageBoss(BossNom.BOSS1.getNom(), BossNom.BOSS1.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique1, particularitesSocial1, phrasesPerso1, photoBoss1, photos1, actionsCombat1,
 				competence1);
 
 		// BOSS NICO
-		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.name(), BossNom.BOSS2.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss2 = new PersonnageBoss(BossNom.BOSS2.getNom(), BossNom.BOSS2.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique2, particularitesSocial2, phrasesPerso2, photoBoss2, photos2, actionsCombat2,
 				competence2);
 
 		// BOSS PIP
-		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.name(), BossNom.BOSS3.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss3 = new PersonnageBoss(BossNom.BOSS3.getNom(), BossNom.BOSS3.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique3, particularitesSocial3, phrasesPerso3, photoBoss3, photos3, actionsCombat3,
 				competence3);
 
 		// BOSS TOM
-		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.name(), BossNom.BOSS4.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss4 = new PersonnageBoss(BossNom.BOSS4.getNom(), BossNom.BOSS4.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique4, particularitesSocial4, phrasesPerso4, photoBoss4, photos4, actionsCombat4,
 				competence4);
 
 		// BOSS YA
-		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.name(), BossNom.BOSS5.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss5 = new PersonnageBoss(BossNom.BOSS5.getNom(), BossNom.BOSS5.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique5, particularitesSocial5, phrasesPerso5, photoBoss5, photos5, actionsCombat5,
 				competence5);
 
 		// BOSS ALI
-		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.name(), BossNom.BOSS6.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss6 = new PersonnageBoss(BossNom.BOSS6.getNom(), BossNom.BOSS6.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique6, particularitesSocial6, phrasesPerso6, photoBoss6, photos6, actionsCombat6,
 				competence6);
 
 		// BOSS GUY
-		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.name(), BossNom.BOSS7.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss7 = new PersonnageBoss(BossNom.BOSS7.getNom(), BossNom.BOSS7.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique7, particularitesSocial7, phrasesPerso7, photoBoss7, photos7, actionsCombat7,
 				competence7);
 
 		// BOSS RUSS
-		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.name(), BossNom.BOSS8.getNom(), vieMax, manaMax, chargeMax,
+		PersonnageBoss boss8 = new PersonnageBoss(BossNom.BOSS8.getNom(), BossNom.BOSS8.getNom(), vieMax, manaMax, chargeMax,
 				particularitesPhysique8, particularitesSocial8, phrasesPerso8, photoBoss8, photos8, actionsCombat8,
 				competence8);
 		
@@ -502,8 +501,6 @@ public class PersonnageManager implements Serializable {
 
 	public PersonnageBoss getPersonnageBossByNom(BossNom bossNom) {
 		for (PersonnageBoss personnageBoss : personnagesBoss) {
-			System.out.println("Nom : " + personnageBoss.getNom());
-			System.out.println("Nom : " + bossNom.name());
 			if (personnageBoss.getNom().equals(bossNom.getNom())) {
 				// Update competences boss en fonction des stats des joueurs
 				updateCompetences(personnageBoss);
@@ -517,10 +514,10 @@ public class PersonnageManager implements Serializable {
 		Set<PersoStat> stats = new HashSet<PersoStat>(Arrays.asList(PersoStat.values()));
 		List<PersoStat> statsParType = new ArrayList<PersoStat>(stats);
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>(stats);
-		personnage.setCompetence(choixDesCompetences(difficulte, statsParType, statsParClasse));
+		personnage.setCompetence(choixDesCompetences(difficulte, statsParType, statsParClasse, personnage));
 	}
 
-	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int niveauSorts, PersoClasse classe) {
+	public PersonnageEnnemi createPersonnageEnnemi(Mission mission, int niveauSorts, PersoClasse classe, int numeroEnnemi) {
 
 		// TODO pour chaque type d ennemis
 		List<ImageIcon> photos = new ArrayList<ImageIcon>();
@@ -533,16 +530,28 @@ public class PersonnageManager implements Serializable {
 		List<PersoStat> statsParType = new ArrayList<PersoStat>();
 		List<PersoStat> statsParClasse = new ArrayList<PersoStat>();
 		
+		EnnemiType typeEnnemis = mission.getTypeEnnemis();
+		if (typeEnnemis == EnnemiType.TOUS) {
+			// Random du type d'ennemis
+			List <EnnemiType> types = new ArrayList<>();{
+				types.add(EnnemiType.ARABES);
+				types.add(EnnemiType.NOIRS);
+				types.add(EnnemiType.HANDICAPES);
+				types.add(EnnemiType.GITANS);
+			}
+			int random = RandomManager.random(0, types.size() -1);
+			typeEnnemis = types.get(random);
+		}
+		
 		// GITANS
-		if (mission.getTypeEnnemis() == EnnemiType.GITANS) {
+		if (typeEnnemis == EnnemiType.GITANS) {
 			statsParType.add(PersoStat.AGILITE);
 			statsParType.add(PersoStat.RESISTANCE);
 			statsParType.add(PersoStat.NERVOSITE);
 
 			// Random des images par type
-			File fileGitan = new File(FenetrePrincipal.getURL("image/ennemi/gitan/").getPath());
-			String[] pathsGitan = fileGitan.list();
-			imagePath = "image/ennemi/gitan/" + randomPhotoEnnemi(pathsGitan);
+			String path = "image/ennemi/gitan/";
+			imagePath = randomImage(numeroEnnemi, path);
 			
 			// Random des noms des ennemis
 			String nomsGitan = ConfigurationManager.getProperties("ennemi.noms.gitan");
@@ -562,16 +571,15 @@ public class PersonnageManager implements Serializable {
 			particularitesSocial.add("Appelle les autres gitans : mon cousin.");
 		}
 		// ARABES
-		else if (mission.getTypeEnnemis() == EnnemiType.ARABES) {
+		else if (typeEnnemis == EnnemiType.ARABES) {
 			statsParType.add(PersoStat.AGILITE);
 			statsParType.add(PersoStat.TECHNIQUE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.NERVOSITE);
 
 			// Random des images par type
-			File fileArabe = new File(FenetrePrincipal.getURL("image/ennemi/arabe/").getPath());
-			String[] pathsArabe = fileArabe.list();
-			imagePath = "image/ennemi/arabe/" + randomPhotoEnnemi(pathsArabe);
+			String path = "image/ennemi/arabe/";
+			imagePath = randomImage(numeroEnnemi, path);
 			
 			// Random des noms des ennemis
 			String nomsArabe = ConfigurationManager.getProperties("ennemi.noms.arabe");
@@ -591,16 +599,15 @@ public class PersonnageManager implements Serializable {
 			particularitesSocial.add("Appelle les autres arabes : ma gueule/ma couille.");
 		}
 		// NOIRS
-		else if (mission.getTypeEnnemis() == EnnemiType.NOIRS) {
+		else if (typeEnnemis == EnnemiType.NOIRS) {
 			statsParType.add(PersoStat.AGILITE);
 			statsParType.add(PersoStat.ENDURANCE);
 			statsParType.add(PersoStat.RAPIDITE);
 			statsParType.add(PersoStat.EXPLOIT);
 			
 			// Random des images par type
-			File fileNoir = new File(FenetrePrincipal.getURL("image/ennemi/noir/").getPath());
-			String[] pathsNoir = fileNoir.list();
-			imagePath = "image/ennemi/noir/" + randomPhotoEnnemi(pathsNoir);
+			String path = "image/ennemi/noir/";
+			imagePath = randomImage(numeroEnnemi, path);
 			
 			// Random des noms des ennemis
 			String nomsNoir = ConfigurationManager.getProperties("ennemi.noms.noir");
@@ -618,15 +625,14 @@ public class PersonnageManager implements Serializable {
 			particularitesSocial.add("Appelle les autres noirs : mon frère/négro.");
 		}
 		// HANDICAPES
-		else if (mission.getTypeEnnemis() == EnnemiType.HANDICAPES) {
+		else if (typeEnnemis == EnnemiType.HANDICAPES) {
 			statsParType.add(PersoStat.INTELLIGENCE);
 			statsParType.add(PersoStat.LUCK);
 			statsParType.add(PersoStat.EXPLOIT);
 
 			// Random des images par type
-			File fileHandicape = new File(FenetrePrincipal.getURL("image/ennemi/handicape/").getPath());
-			String[] pathsHandicape = fileHandicape.list();
-			imagePath = "image/ennemi/handicape/" + randomPhotoEnnemi(pathsHandicape);
+			String path = "image/ennemi/handicape/";
+			imagePath = randomImage(numeroEnnemi, path);
 			
 			// Random des noms des ennemis
 			String nomsHandicape = ConfigurationManager.getProperties("ennemi.noms.handicape");
@@ -691,13 +697,14 @@ public class PersonnageManager implements Serializable {
 			statsParClasse.add(PersoStat.RAPIDITE);
 		}
 
-		ImageIcon photoPrincipal = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(imagePath),
+		ImageIcon imageIcon = FenetrePrincipal.getImageIcon(imagePath);
+		ImageIcon photoPrincipal = ImageManager.resizeImage(imageIcon,
 				Constante.PERSO_IMAGE_DIMENSION_64_64);
 
 		// TODO actionsCombat pour les ennemis en fonction de la difficulte du
 		// type d'ennemi et de la classe de l'ennemi
 		List<ActionCombat> actionsCombat = MenuPrincipal.getMainFrame().getCoreManager().getActionCombatManager()
-				.getActionsCombat(mission.getTypeEnnemis().name() + classe.name());
+				.getActionsCombat(typeEnnemis.name() + classe.name());
 
 		// Si le niveau du meilleur sort d'un joueur est plus grand que le
 		// niveau de base (1,3,6,10) du sort de l'ennemi (progression de la difficulte)
@@ -722,7 +729,7 @@ public class PersonnageManager implements Serializable {
 		int chargeMax;
 
 		// Choix des competences par difficulte, type et classe
-		Competence competence = choixDesCompetences(mission.getDifficulty(), statsParType, statsParClasse);
+		Competence competence = choixDesCompetences(mission.getDifficulty(), statsParType, statsParClasse, null);
 
 		// Vie Mana Charge
 		vieMax = competence.getEndurance() * 10;
@@ -730,22 +737,46 @@ public class PersonnageManager implements Serializable {
 		chargeMax = competence.getNervosite() / 20;
 
 		PersonnageEnnemi ennemi = new PersonnageEnnemi(nom, nom, vieMax, manaMax, chargeMax, particularitesPhysique,
-				particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, mission.getTypeEnnemis(),
+				particularitesSocial, phrasesPerso, photoPrincipal, photos, actionsCombat, typeEnnemis,
 				competence);
 
 		return ennemi;
 	}
 
-	private String randomPhotoEnnemi(String[] paths) {
-		String randomPhotoPath = paths[RandomManager.random(0, paths.length -1)];
-		System.out.println("RandomPhotoPath : " + randomPhotoPath);
+	private String randomImage(int numeroEnnemi, String path) {
+		String imagePath;
+		File file = new File(FenetrePrincipal.getURL(path).getPath());
+		String[] paths = file.list();
+		if (paths == null) {
+			path = "classes/" + path;
+			file = new File(path);
+			paths = file.list();
+		}
+		imagePath = path + randomPhotoEnnemi(paths, numeroEnnemi);
+		return imagePath;
+	}
+
+	private String randomPhotoEnnemi(String[] paths, int numeroEnnemi) {
+		// Si c'est le premier ennemi
+		int random = RandomManager.random(0, paths.length -1);
+		if (numeroEnnemi == 1 || numeroEnnemi > (paths.length)) {
+			numsEnnemi = new ArrayList<>();
+			
+		// Sinon 
+		} else {
+			while(numsEnnemi.contains(random)) {
+				random = RandomManager.random(0, paths.length -1);
+//				System.out.println("RANDOM PHOTO ENNEMI");
+			}
+		}
+		numsEnnemi.add(random);
+		String randomPhotoPath = paths[random];
 		return randomPhotoPath;
 	}
 
 	private Competence choixDesCompetences(Difficulte difficulte, List<PersoStat> statsParType,
-			List<PersoStat> statsParClasse) {
+			List<PersoStat> statsParClasse, Personnage personnage) {
 		
-		// TODO cas particulier des boss
 		
 
 		int valeurParDifficulte = 25;
@@ -757,12 +788,18 @@ public class PersonnageManager implements Serializable {
 		if (difficulte == Difficulte.FACILE) {
 			valeurParDifficulte = 25;
 		} else if (difficulte == Difficulte.NORMAL) {
-			valeurParDifficulte = 50;
+			valeurParDifficulte = 30;
 		} else if (difficulte == Difficulte.DIFFICILE) {
-			valeurParDifficulte = 75;
+			valeurParDifficulte = 35;
 		} else if (difficulte == Difficulte.HEROIQUE) {
-			valeurParDifficulte = 100;
+			valeurParDifficulte = 40;
 		}
+		
+		// TODO cas particulier des boss (50-75)
+		if (personnage != null && personnage instanceof PersonnageBoss) {
+			valeurParDifficulte = valeurParDifficulte + 35;
+		}
+		
 
 		// Met les competences de type et de classe au meme niveau que la
 		// competence max du groupe (progression de la difficulté)

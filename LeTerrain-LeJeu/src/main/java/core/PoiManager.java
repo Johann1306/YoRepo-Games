@@ -205,6 +205,77 @@ public class PoiManager implements Serializable {
 		missionsPoi1603.add(missionManager.getMissionById(908));
 		missionsPoi1603.add(missionManager.getMissionById(1108));
 		
+		// Missions quizz anniversaire
+		missionsPoi1601.add(missionManager.getMissionById(2001));
+		missionsPoi1601.add(missionManager.getMissionById(2002));
+		missionsPoi1601.add(missionManager.getMissionById(2003));
+		missionsPoi1601.add(missionManager.getMissionById(2004));
+		missionsPoi1601.add(missionManager.getMissionById(2005));
+		missionsPoi1601.add(missionManager.getMissionById(2006));
+		missionsPoi1601.add(missionManager.getMissionById(2007));
+		missionsPoi1601.add(missionManager.getMissionById(2008));
+		missionsPoi1601.add(missionManager.getMissionById(2009));
+		missionsPoi1601.add(missionManager.getMissionById(2010));
+		missionsPoi1601.add(missionManager.getMissionById(2011));
+		
+		missionsPoi1401.add(missionManager.getMissionById(2012));
+		missionsPoi1401.add(missionManager.getMissionById(2013));
+		missionsPoi1401.add(missionManager.getMissionById(2014));
+		missionsPoi1401.add(missionManager.getMissionById(2015));
+		missionsPoi1401.add(missionManager.getMissionById(2016));
+		missionsPoi1401.add(missionManager.getMissionById(2017));
+		missionsPoi1401.add(missionManager.getMissionById(2018));
+		missionsPoi1401.add(missionManager.getMissionById(2019));
+		missionsPoi1401.add(missionManager.getMissionById(2020));
+		missionsPoi1401.add(missionManager.getMissionById(2021));
+		missionsPoi1401.add(missionManager.getMissionById(2022));
+
+		missionsPoi1301.add(missionManager.getMissionById(2023));
+		missionsPoi1301.add(missionManager.getMissionById(2024));
+		missionsPoi1301.add(missionManager.getMissionById(2025));
+		missionsPoi1301.add(missionManager.getMissionById(2026));
+		missionsPoi1301.add(missionManager.getMissionById(2027));
+		missionsPoi1301.add(missionManager.getMissionById(2028));
+		missionsPoi1301.add(missionManager.getMissionById(2029));
+		missionsPoi1301.add(missionManager.getMissionById(2030));
+		missionsPoi1301.add(missionManager.getMissionById(2031));
+		missionsPoi1301.add(missionManager.getMissionById(2032));
+
+		missionsPoi201.add(missionManager.getMissionById(2033));
+		missionsPoi201.add(missionManager.getMissionById(2034));
+		missionsPoi201.add(missionManager.getMissionById(2035));
+		missionsPoi201.add(missionManager.getMissionById(2036));
+		missionsPoi201.add(missionManager.getMissionById(2037));
+		missionsPoi201.add(missionManager.getMissionById(2038));
+		missionsPoi201.add(missionManager.getMissionById(2039));
+		missionsPoi201.add(missionManager.getMissionById(2040));
+		missionsPoi201.add(missionManager.getMissionById(2041));
+		missionsPoi201.add(missionManager.getMissionById(2042));
+		
+		missionsPoi1501.add(missionManager.getMissionById(2043));
+		missionsPoi1501.add(missionManager.getMissionById(2044));
+		missionsPoi1501.add(missionManager.getMissionById(2045));
+		missionsPoi1501.add(missionManager.getMissionById(2046));
+		missionsPoi1501.add(missionManager.getMissionById(2047));
+		missionsPoi1501.add(missionManager.getMissionById(2048));
+		missionsPoi1501.add(missionManager.getMissionById(2049));
+		missionsPoi1501.add(missionManager.getMissionById(2050));
+		missionsPoi1501.add(missionManager.getMissionById(2051));
+		missionsPoi1501.add(missionManager.getMissionById(2052));
+		
+		missionsPoi1201.add(missionManager.getMissionById(2053));
+		missionsPoi1201.add(missionManager.getMissionById(2054));
+		missionsPoi1201.add(missionManager.getMissionById(2055));
+		missionsPoi1201.add(missionManager.getMissionById(2056));
+		missionsPoi1201.add(missionManager.getMissionById(2057));
+		
+		missionsPoi1101.add(missionManager.getMissionById(2058));
+		missionsPoi1101.add(missionManager.getMissionById(2059));
+		missionsPoi1101.add(missionManager.getMissionById(2060));
+		
+		missionsPoi1000.add(missionManager.getMissionById(2061));
+		missionsPoi1000.add(missionManager.getMissionById(2062));
+
 		
 		// (X,Y) en partant du haut-gauche
 		// Pour une Map (2000 x 1000)

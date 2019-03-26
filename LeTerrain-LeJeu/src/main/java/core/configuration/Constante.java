@@ -10,6 +10,9 @@ public class Constante {
 	public static final Dimension PERSO_IMAGE_DIMENSION_50_50 = new Dimension(50, 50);
 	public static final Dimension PERSO_IMAGE_DIMENSION_40_40 = new Dimension(40, 40);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
+	public static final Dimension ARME_IMAGE_DIMENSION_25_25 = new Dimension(25, 25);
+	public static final Dimension ARME_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
+	
 	public static final Dimension EVENEMENT_IMAGE_DIMENSION_300_300 = new Dimension(300, 300);
 	
 	public static final int MAX_EVENEMENTS_AFFICHES = 5;
@@ -63,6 +66,7 @@ public class Constante {
 	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
 	public static final double QUIZZ_MAX_TEMPS = 10.00;
+
 
 
 

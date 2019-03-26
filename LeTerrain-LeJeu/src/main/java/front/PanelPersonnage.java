@@ -362,7 +362,7 @@ public class PanelPersonnage extends JPanel {
 				String prenom = panelCentre.getPanelShowing().getName();
 				
 				// Si il est mort, on affiche le panel d'un perso vivant
-				System.out.println("PANEL_SHOWING : " + prenom);
+//				System.out.println("PANEL_SHOWING : " + prenom);
 				// TODO Nullpointer gestion si panel groupe
 				CardLayout cardLayout = panelCentre.getCardLayout();
 				if (!prenom.equals(PersoPrenom.GROUPE.name())) {

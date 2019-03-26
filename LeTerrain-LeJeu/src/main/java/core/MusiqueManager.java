@@ -360,7 +360,7 @@ public class MusiqueManager implements Serializable {
 	}
 	
 	public static void playPlaylistEnBoucle(List<String> sonPaths) {
-		System.out.println("playPlaylistEnBoucle()");
+//		System.out.println("playPlaylistEnBoucle()");
 
 		Thread t = new Thread(new Runnable() {
 
@@ -397,7 +397,6 @@ public class MusiqueManager implements Serializable {
 	}
 	
 	public static void stopPlaylistEnBoucle() {
-		System.out.println("stopPlaylistEnBoucle()");
 		try {
 			if (applicationMenuPrincipal != null) {
 				applicationMenuPrincipal.stop();
@@ -411,16 +410,31 @@ public class MusiqueManager implements Serializable {
 	public static List<Musique> chargeMusiquesPerso(String repertoire, int i) {
 		int id = i;
 		List<Musique> musiquesPerso = new ArrayList<>();
+		System.out.println("Repertoire : " + repertoire);
+		
+		// Si execution en local
 		URL url = FenetrePrincipal.getURL(repertoire);
+		System.out.println("URL : " + url);
 		File rep = new File(url.getPath());
+		System.out.println("File rep : " + rep);
 		String[] list = rep.list();
+		
+		// Si execution du JAR
+		if(list == null) {
+			rep = new File("classes/" + repertoire);
+			list = rep.list();
+		}
+		
 		for (String path : list) {
+			System.out.println("Path : " + path);
 			List<String> sonPath = new ArrayList<>();
 			sonPath.add(repertoire + "/" + path);
+			System.out.println("sonPAth.add(" + repertoire + "/" + path + ")");
 			Musique musique = new Musique(id, path, "artiste", "album", DateManager.genereUneDate(1990, 8, 1, 10, 0, 0), null, sonPath, null, "informations", true);
 			musiquesPerso.add(musique);
 			id++;
 		}
+		
 		return musiquesPerso;
 	}
 	
