@@ -88,4 +88,16 @@ public class Groupe implements Serializable {
 		this.sac = sac;
 	}
 
+	public void ajouteItem(Item item) {
+		Map<Item, Integer> sacGroupe = getSac();
+		Integer valeur = sacGroupe.get(item);
+		// Si le sac ne contient pas encore cet objet
+		if (valeur == null) {
+			sacGroupe.put(item, 1);
+		} else {
+			// Sinon on incremente
+			sacGroupe.put(item, valeur + 1);
+		}
+	}
+
 }

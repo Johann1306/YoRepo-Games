@@ -44,7 +44,8 @@ import core.VideoManager;
 import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.Item;
-import modele.item.mission.BossNom;
+import modele.item.arme.Arme;
+import modele.item.arme.ArmeClasse;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
@@ -351,15 +352,16 @@ public class FrameCombat extends FrameJeu {
 		ennemisVivants = new ArrayList<PersonnageEnnemi>();
 		ennemisPresents = new ArrayList<PersonnageEnnemi>();
 		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
+		ItemManager itemManager = MenuPrincipal.getMainFrame().getCoreManager().getItemManager();
 		if (mission.getMissionType() == MissionType.BOSS) {
 			PersonnageBoss boss = personnageManager.getPersonnageBossByNom(mission.getBossNom());
+			boss.setArme(itemManager.genereArmeEnnemi(ArmeClasse.VIOLET, mission, personnageManager, boss));
 			ennemisVivants.add(boss);
 			ennemisPresents.add(boss);
 			ImageIcon photoBoss = ImageManager.resizeImage(boss.getPhotoPrincipal(),
 					Constante.PERSO_IMAGE_DIMENSION_64_64);
 			JButton boutonBoss = new JButton(photoBoss);
-			// TODO Afficher le bon nom des Boss et pas Boss3
-			boutonBoss.setName(boss.getPrenom());
+			boutonBoss.setName(boss.getNom());
 			boutonBoss.setToolTipText(boutonBoss.getName());
 			boutonBoss.setPreferredSize(Constante.PERSO_IMAGE_DIMENSION_64_64);
 			boutonBoss.setFocusable(false);
@@ -378,7 +380,8 @@ public class FrameCombat extends FrameJeu {
 		// Creation des personnages ennemis
 		for (int i = 1; i <= nombreEnnemis; i++) {
 			PersoClasse classe = classes.get(i - 1);
-			PersonnageEnnemi ennemi = personnageManager.createPersonnageEnnemi(mission, niveauSorts, classe);
+			PersonnageEnnemi ennemi = personnageManager.createPersonnageEnnemi(mission, niveauSorts, classe, i);
+			ennemi.setArme(itemManager.genereArmeEnnemi(null, mission, personnageManager, ennemi));
 			ennemisVivants.add(ennemi);
 			ennemisPresents.add(ennemi);
 			JButton boutonEnnemi = new JButton(ennemi.getPhotoPrincipal());
@@ -1267,6 +1270,7 @@ public class FrameCombat extends FrameJeu {
 		// score min en fonction de la technique : max = 50
 		min = lanceur.getCompetence().getTechnique() / 2;
 
+		// TODO Attention : on se base sur le fait que les Action Combat de chaque perso ont TOUJOURS la meme stat que le perso => ca peut changer => mais c'est pas grave => 
 		// score max en fonction de la competence du perso : max = 100
 		max = lanceur.getCompetence().getStats().get(actionCombat.getPersoStat());
 
@@ -1275,16 +1279,16 @@ public class FrameCombat extends FrameJeu {
 			// PersonnagePrincipal
 			handicap = 0;
 		} else {
-			// PersonnageEnnemi
-			if (mission.getDifficulty() == Difficulte.FACILE) {
-				handicap = RandomManager.random(0, 2);
-			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-				handicap = RandomManager.random(1, 4);
-			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-				handicap = RandomManager.random(4, 7);
-			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-				handicap = RandomManager.random(5, 10);
-			}
+			// PersonnageEnnemi (Handicap en fonction de la difficulte)
+//			if (mission.getDifficulty() == Difficulte.FACILE) {
+//				handicap = RandomManager.random(0, 1);
+//			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
+//				handicap = RandomManager.random(1, 2);
+//			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+//				handicap = RandomManager.random(1, 3);
+//			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
+//				handicap = RandomManager.random(2, 3);
+//			}
 		}
 
 		if (min > max) {
@@ -1302,21 +1306,50 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		// Calcule du multiplicateur de Degats (3 => 25)
+		// degatsCritique (0-5)
+		// niveau (1-5)
+		// charges (0-5)
+		// Handicap (0)
 		int multiplicateurDegat = degatsCritique + niveau + charges + handicap;
 
 		// Calcul du score
 		score = (RandomManager.random(min, max) * multiplicateurDegat) / nombreCibles;
 		
-		// Reduction de la difficulte globale
+		// Ajout des degats de l'arme
+		if (lanceur.getArme() != null) {
+			int random = RandomManager.random(lanceur.getArme().getDegatsMin(), lanceur.getArme().getDegatsMax());
+			System.out.println("DegatsBase : " + score);
+			System.out.println("DegatsArme : " + random);
+			score = score + random;
+			System.out.println("Degats Total : " + score);
+		}
+		
+		// Reduction de la difficulte globale des ennemis
 		if (!(lanceur instanceof PersonnagePrincipal)) {
 			if (mission.getDifficulty() == Difficulte.FACILE) {
 				score = score / 4;
 			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-				score = score / 3;
+//				score = score / 3;
+				score = score / 4;
 			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-				score = score / 2;
+//				score = score / 2;
+				score = score / 4;
 			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-				score = score / 1;
+//				score = score / 1;
+				score = score / 4;
+			}
+		}
+		
+		// Augmentation des degats des Boss en fonction de la difficulté (x2 x3 x4 x5)
+		if (lanceur instanceof PersonnageBoss) {
+			if (mission.getDifficulty() == Difficulte.FACILE) {
+				score = score * 2;
+			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
+				score = score * 3;
+			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+				score = score * 4;
+			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
+				score = score * 5;
 			}
 		}
 		
@@ -1328,11 +1361,14 @@ public class FrameCombat extends FrameJeu {
 		animationLanceur(lanceur, score, cibles);
 
 		// TODO son/image si critique true
+		// TODO random son sur plusieurs sons pour varier
 		if (isCritique) {
 			MusiqueManager.playSon(actionCombat.getSonCritique());
 		} else {
+			// TODO si le perso a une arme, on joue le son de l'arme (uniquement sur les actionCombat de base? pas les sorts?)
 			MusiqueManager.playSon(actionCombat.getSon());
 		}
+		
 
 		// TODO faire mieux ou pas/ a un autre endroit : Gestion specifique pour message
 		// Aura
@@ -2301,7 +2337,7 @@ public class FrameCombat extends FrameJeu {
 				lanceurItem = null;
 					
 				// TODO : remettre curseur souris normal
-//				panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+				panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 				// TODO refresh panelCombat et panelAction
 			}
 		}
@@ -2325,17 +2361,17 @@ public class FrameCombat extends FrameJeu {
 		// 45, 30, 20)
 		// chanceInitiative en fonction de la difficulte (100, 75, 50, 25)
 		if (mission.getDifficulty() == Difficulte.FACILE) {
-			tempsMax = 0; // Pas de timer
-			chanceInitiative = 100;
+			tempsMax = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.timer.facile")); // Pas de timer
+			chanceInitiative = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.initiative.facile"));
 		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-			tempsMax = 5 * nombreJoueurs;
-			chanceInitiative = 75;
+			tempsMax = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.timer.normal")) * nombreJoueurs;
+			chanceInitiative = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.initiative.normal"));
 		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-			tempsMax = 4 * nombreJoueurs;
-			chanceInitiative = 50;
+			tempsMax = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.timer.difficile")) * nombreJoueurs;
+			chanceInitiative = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.initiative.difficile"));
 		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-			tempsMax = 3 * nombreJoueurs;
-			chanceInitiative = 25;
+			tempsMax = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.timer.heroique")) * nombreJoueurs;
+			chanceInitiative = Integer.valueOf(ConfigurationManager.getProperties("jeu.combat.chance.initiative.heroique"));
 		}
 		timerJoueurs = new Timer(10, new MyJoueurActionListener(tempsMax));
 
@@ -2702,6 +2738,26 @@ public class FrameCombat extends FrameJeu {
 		JLayeredPane barreStatut = new JLayeredPane();
 		barreStatut.setLayout(new LayeredLayoutManager());
 
+//		JPanel barreArme = new JPanel();
+//		if (perso.getArme() != null) {
+//			Arme armePerso = perso.getArme();
+//			ArmeClasse armeClasse = armePerso.getArmeClasse();
+////			barreArme.setBackground(Color.RED);
+//			
+//			// Couleur en fonction de la classe de l'arme
+//			if(armeClasse == ArmeClasse.GRIS) {
+//				barreArme.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+//			} else if(armeClasse == ArmeClasse.VERT) {
+//				barreArme.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+//			} else if(armeClasse == ArmeClasse.BLEU) {
+//				barreArme.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//			} else if(armeClasse == ArmeClasse.VIOLET) {
+//				barreArme.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
+//			} 
+//			barreArme.setMaximumSize(new Dimension(largeur/8, hauteur));
+//			barreArme.setToolTipText(armePerso.toString());
+//		}
+		
 		JPanel barreStatutTaunt = new JPanel();
 		barreStatutTaunt.setBackground(Color.ORANGE);
 		barreStatutTaunt.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -2737,6 +2793,31 @@ public class FrameCombat extends FrameJeu {
 //		barresStatut.setBackground(Color.BLACK);
 //		barresStatut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
+		JLabel labelArme = new JLabel();
+		if (perso.getArme() != null) {
+			// labe avec l image de l'arme
+			Arme armePerso = perso.getArme();
+			ArmeClasse armeClasse = armePerso.getArmeClasse();
+			ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(perso.getArme().getImagePath().get(0)), Constante.ARME_IMAGE_DIMENSION_25_25);
+			labelArme = new JLabel(resizeImage);
+			labelArme.setHorizontalAlignment(SwingConstants.CENTER);
+			labelArme.setVerticalAlignment(SwingConstants.CENTER);
+			labelArme.setForeground(Color.PINK);
+			labelArme.setMaximumSize(new Dimension(largeur/8, hauteur));
+			labelArme.setToolTipText(perso.getArme().toString());
+			
+			// Couleur en fonction de la classe de l'arme
+			if(armeClasse == ArmeClasse.GRIS) {
+				labelArme.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+			} else if(armeClasse == ArmeClasse.VERT) {
+				labelArme.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+			} else if(armeClasse == ArmeClasse.BLEU) {
+				labelArme.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+			} else if(armeClasse == ArmeClasse.VIOLET) {
+				labelArme.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
+			} 
+		}
+		
 		JLabel labelStatutTaunt = new JLabel("(" + perso.getTauntBy().size() + ")");
 		labelStatutTaunt.setHorizontalAlignment(SwingConstants.CENTER);
 		labelStatutTaunt.setVerticalAlignment(SwingConstants.CENTER);
@@ -2761,6 +2842,9 @@ public class FrameCombat extends FrameJeu {
 		labelStatutAura.setForeground(Color.PINK);
 		labelStatutAura.setMaximumSize(new Dimension(largeur/8, hauteur));
 
+		// Arme courante
+		boolean hasArme = perso.getArme() != null;
+
 		// Statut Taunt
 		boolean taunted = !perso.getTauntBy().isEmpty();
 		
@@ -2772,7 +2856,12 @@ public class FrameCombat extends FrameJeu {
 
 		// Statut Aura
 		boolean hasAura = !perso.getAuras().isEmpty();
+		
 
+		if (hasArme){
+//			barresStatut.add(barreArme, Integer.valueOf(1));
+			barresStatut.add(labelArme, Integer.valueOf(5));
+		}
 		if (stunted){
 			barresStatut.add(barreStatutStun, Integer.valueOf(1));
 			barresStatut.add(labelStatutStun, Integer.valueOf(5));

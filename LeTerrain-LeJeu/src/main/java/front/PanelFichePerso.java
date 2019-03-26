@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JViewport;
 
 import core.DateManager;
+import core.ImageManager;
 import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.personnage.PersoNom;
@@ -203,6 +205,23 @@ public class PanelFichePerso extends JPanel {
 		panelStats.add(labelNervosite);
 		panelStats.add(labelNervositeValue);
 		panelStats.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		JPanel panelArme = new JPanel();
+		BoxLayout boxlayoutArme = new BoxLayout(panelArme, BoxLayout.Y_AXIS);
+		panelArme.setLayout(boxlayoutArme);
+		panelArme.setBackground(couleur);
+		
+		if (perso.getArme() != null) {
+			ImageIcon imageArme = FenetrePrincipal.getImageIcon(perso.getArme().getImagePath().get(0));
+			ImageIcon resizedImage = ImageManager.resizeImage(imageArme, Constante.ARME_IMAGE_DIMENSION_100_100);
+			JLabel labelArme = new JLabel(resizedImage);
+			Color colorBorder = perso.getArme().getCouleur();
+			labelArme.setBorder(BorderFactory.createLineBorder(colorBorder, 3, true));
+			labelArme.setToolTipText(perso.getArme().toString());
+			panelArme.add(labelArme);
+		}
+		
+		
 
 		BoxLayout boxlayoutCentre = new BoxLayout(panelCentre, BoxLayout.Y_AXIS);
 		panelCentre.setLayout(boxlayoutCentre);		
@@ -294,6 +313,7 @@ public class PanelFichePerso extends JPanel {
 		panelFiche.add(panelPhoto);
 		panelFiche.add(panelInfos);
 		panelFiche.add(panelStats);
+		panelFiche.add(panelArme);
         
         panelCentre.add(panelFiche);
 //        panelCentre.add(panelActions);

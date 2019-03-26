@@ -2,6 +2,7 @@ package core;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -115,16 +116,24 @@ public class MenuManager extends JMenuBar implements Serializable {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
-				if (oldMainFrame != null) {
-					oldMainFrame.dispose();
+				
+				int reponse = JOptionPane.showConfirmDialog(MainFrame.getPanelCentre().getParent(),
+						"T'es sur de vouloir charger la dernière partie sauvegarder? Toute progression non sauvegardée sera perdue.");
+
+				if (reponse == 0) {
+					
+					MainFrame oldMainFrame = MenuPrincipal.getMainFrame();
+					if (oldMainFrame != null) {
+						oldMainFrame.dispose();
+					}
+					MainFrame load = SauvegardeManager.load();
+					MenuPrincipal.setMainFrame(load);
+					load.startMainFrame();
+					MainFrame.getPanelCentre().refreshPanelCourant();
+					MainFrame.getPanelPersonnage().refreshArriveePersonnage();
+					MainFrame.getPanelPersonnage().refreshMortsPersonnage();
+					JOptionPane.showMessageDialog(menuCharger.getParent().getParent(), "Chargement Réussi!");
 				}
-				MainFrame load = SauvegardeManager.load();
-				MenuPrincipal.setMainFrame(load);
-				load.startMainFrame();
-				MainFrame.getPanelPersonnage().refreshArriveePersonnage();
-				MainFrame.getPanelPersonnage().refreshMortsPersonnage();
-				JOptionPane.showMessageDialog(menuCharger.getParent().getParent(), "Chargement Réussi!");
 			}
 		});
 
@@ -140,10 +149,24 @@ public class MenuManager extends JMenuBar implements Serializable {
 		menuQuitter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// Random des video de fin
+				
+				// Si execution en local
+				File rep = new File(FenetrePrincipal.getURL("video/quitter/").getPath());
+				String[] mediaPaths = rep.list();
+				
+				// Si execution du JAR
+				if (mediaPaths == null) {
+					rep = new File ("classes/video/quitter/");
+					mediaPaths = rep.list();
+				}
+				String randomMediaPath = "video/quitter/" + mediaPaths[(RandomManager.random(0, mediaPaths.length -1))];
+				VideoManager.play(randomMediaPath);
+
+				// Message de confirmation et rappel sauvegarde
 				int reponse = JOptionPane.showOptionDialog(getParent(),
 						"N'oublie pas de sauvegarder avant de quitter batard!", "Attention jeune puceau", 0, 0, null,
 						new String[] { "Sauvegarder", "Quitter" }, "defaut");
-				System.out.println(reponse);
 				if (reponse == 0) {
 					SauvegardeManager.save();
 				} else if (reponse == 1) {

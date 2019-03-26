@@ -2,7 +2,6 @@ package front;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -15,17 +14,18 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import core.EvenementManager;
 import core.ImageManager;
 import core.ItemManager;
 import core.configuration.Constante;
+import modele.competence.PersoStat;
 import modele.evenement.Evenement;
 import modele.item.Item;
+import modele.item.ItemType;
+import modele.item.arme.Arme;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 
@@ -84,7 +84,7 @@ public class PanelBas extends JPanel {
 		panelEvenement.repaint();
 		
 		// Tri les 10 derniers evenements
-		// TODO : Attention ! Problemes d'affichage si MAX_EVENEMENTS_AFFICHES /= 5
+		// TODO : Attention ! Problemes d'affichage si MAX_EVENEMENTS_AFFICHES != 5
 		while (evenementsDisponibles.size() > Constante.MAX_EVENEMENTS_AFFICHES ) {
 			evenementsDisponibles.remove(0); 
 		}
@@ -113,6 +113,7 @@ public class PanelBas extends JPanel {
 		// On affiche les objets du groupe + les objets du perso
 		PersonnagePrincipal perso = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(nom);
 		Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
+		// TODO probleme du Nullpointer a reproduire quand on charge la derniere partie dans le jeu
 		Map<Item, Integer> sacTemp = new HashMap<>(sac);
 		// Si ce n'est pas le perso groupe on ajoute les objets du perso
 		if (perso != null && perso.getPrenomPerso() != PersoPrenom.GROUPE) {
@@ -144,7 +145,21 @@ public class PanelBas extends JPanel {
 		ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 		ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.ITEM_TAILLE_DIMENSION);
 		JButton boutonItem = new JButton(resizeImage);
-		boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")" + " : " + item.getInformations());
+		// Si c'est une arme
+		if (item.getType() == ItemType.ARME) {
+			Arme arme = (Arme)item;
+			StringBuilder bonusArme = new StringBuilder();
+			bonusArme.append("(");
+			for (PersoStat stat : arme.getBonusParStat().keySet()) {
+				bonusArme.append(" +" + arme.getBonusParStat().get(stat) + " " + stat.name() + " ");
+			}
+			bonusArme.append(")");
+			boutonItem.setToolTipText(arme.toString());
+		
+		// Si c'est une popo
+		} else if (item.isConsommable()) {
+			boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")" + " : " + item.getInformations());
+		}
 		boutonItem.setPreferredSize(Constante.ITEM_TAILLE_DIMENSION);
 		boutonItem.addActionListener(new ActionListener() {
 			@Override

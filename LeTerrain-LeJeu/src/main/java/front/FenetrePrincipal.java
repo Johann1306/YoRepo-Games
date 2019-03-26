@@ -2,7 +2,6 @@ package front;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ComponentEvent;
@@ -11,15 +10,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -27,8 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import com.google.common.base.Strings;
-
+import core.ImageManager;
 import core.MusiqueManager;
 import core.configuration.Constante;
 
@@ -177,23 +171,18 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	}
 		
 	public static ImageIcon getImageIcon(final String pathAndFileName) {
-		if (Strings.isNullOrEmpty(pathAndFileName)) {
-			return null;
-		}
-	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
-	    if (url == null) {
-	    	return null;
-	    }
-		Image image = Toolkit.getDefaultToolkit().getImage(url);
-	    return new ImageIcon(image);
+		System.out.println("getImageIcon : " + pathAndFileName);
+	    return ImageManager.getImageIconProxy(pathAndFileName);
 	}
 	
 	public static URL getURL(final String pathAndFileName) {
+		System.out.println("getURL : " + pathAndFileName);
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
 	    return url;
 	}
 
 	public static InputStream getStream(String pathAndFileName) {
+		System.out.println("getStream : " + pathAndFileName);
 		final InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathAndFileName);
 		return stream;
 	}

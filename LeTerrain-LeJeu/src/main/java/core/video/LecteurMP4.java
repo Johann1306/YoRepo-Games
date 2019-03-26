@@ -50,6 +50,7 @@ public class LecteurMP4 {
 //		}
 		Dimension size = MainFrame.getPanelDroite().getSize();
 		player.getMainFrame().setSize(size);
+		System.out.println("Play " + mediaPath);
 		player.play(mediaPath);
 		
 	}
