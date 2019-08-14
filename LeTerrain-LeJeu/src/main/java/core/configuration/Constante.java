@@ -8,10 +8,14 @@ public class Constante {
 	
 	public static final Dimension PERSO_IMAGE_DIMENSION_64_64 = new Dimension(64, 64);
 	public static final Dimension PERSO_IMAGE_DIMENSION_50_50 = new Dimension(50, 50);
+	public static final Dimension SHOP_TAB_ENTETES_DIMENSION = new Dimension(50, 50);
 	public static final Dimension PERSO_IMAGE_DIMENSION_40_40 = new Dimension(40, 40);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
 	public static final Dimension ARME_IMAGE_DIMENSION_25_25 = new Dimension(25, 25);
 	public static final Dimension ARME_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
+
+	// Dimension image piece d'un Franc
+	public static final Dimension ARGENT_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
 	
 	public static final Dimension EVENEMENT_IMAGE_DIMENSION_300_300 = new Dimension(300, 300);
 	
@@ -24,6 +28,7 @@ public class Constante {
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
+	public static final Dimension FENETRE_QUIZZ_DIMENSION_QUESTION = new Dimension(750,500);
 	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
 	public static final Dimension BOUTON_MISSIONS_DIMENSION = new Dimension(300,50); // pas exact
 	public static final Dimension BOUTON_LIEU_DIMENSION = new Dimension(500,50);
@@ -54,6 +59,12 @@ public class Constante {
 	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 100);
 	public static final Font MARIO_FONT_MENU = new Font("Super Mario Bros.", Font.PLAIN, 20);
 	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 20);
+	public static final Font MARIO_FONT_QUESTION_QUIZZ = new Font("Super Mario 256", Font.PLAIN, 30);
+	public static final Font MARIO_FONT_PANEL_INFO_MISSION = new Font("Super Mario 256", Font.ITALIC, 10);
+	public static final Font MARIO_FONT_SHOP_TABLEAU = new Font("Super Mario 256", Font.BOLD, 12);
+	public static final Font MARIO_FONT_SHOP_TABLEAU_BOUTONS = new Font("Super Mario 256", Font.BOLD, 20);
+	public static final Font MARIO_FONT_SHOP_ENTETES = new Font("Super Mario 256", Font.BOLD, 12);
+	public static final Font MARIO_FONT_LABEL_SHOP = new Font("Super Mario 256", Font.BOLD, 30);
 	
 	public static final String SYMBOLE_PASSER_NEXT = ">>";
 
@@ -66,6 +77,13 @@ public class Constante {
 	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
 	public static final double QUIZZ_MAX_TEMPS = 10.00;
+	
+	public static final int COEF_PRIX_VENTE = 5;
+
+
+
+
+
 
 
 

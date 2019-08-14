@@ -79,6 +79,11 @@ public class PersonnageManager implements Serializable {
 		ImageIcon iconCombatGuillaume = FenetrePrincipal.getImageIcon("image/guillaume 2.png");
 		ImageIcon iconCombatJonathan = FenetrePrincipal.getImageIcon("image/jonathan 2.png");
 		
+		ImageIcon photoPrincipal230 = FenetrePrincipal.getImageIcon("image/pnj/omar.png");
+		ImageIcon photoPrincipal240 = FenetrePrincipal.getImageIcon("image/pnj/jafar.png");
+		ImageIcon photoPrincipal250 = FenetrePrincipal.getImageIcon("image/pnj/jawad.png");
+		ImageIcon photoPrincipal260 = FenetrePrincipal.getImageIcon("image/pnj/banania.png");
+		
 		// Les messages de dieu d'arrivee de chaque perso
 		String messageDieuJohann = ConfigurationManager.getProperties("message.dieu.johann");
 		String messageDieuNicolas = ConfigurationManager.getProperties("message.dieu.nicolas");
@@ -112,42 +117,42 @@ public class PersonnageManager implements Serializable {
 		// principal : Retour vers le futur Theme
 		// Son de clic : bruit de son retour vers le futur / de vomi
 		// secondaire : Dance Attitude, Lady Gaga, Supermen Lovers,
-		List<Musique> musiquesJohann = MusiqueManager.chargeMusiquesPerso("musique/personnage/johann", 1000);
+		List<Musique> musiquesJohann = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/johann", 1000);
 		// TODO 
 		// principal : JamesBond Theme
 		// Son de clic : JamesBond sons
 		// secondaire : Secteur A, Dre DRE, Snoop Dog, Eminem, Xzibit,  
-		List<Musique> musiquesPierre = MusiqueManager.chargeMusiquesPerso("musique/personnage/pierre", 2000);
+		List<Musique> musiquesPierre = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/pierre", 2000);
 		// TODO 
 		// principal : Warcraft 2 Theme
 		// Son de clic : Voie de peon
 		// secondaire : Funk, Black EYed Peas, 
-		List<Musique> musiquesThomas = MusiqueManager.chargeMusiquesPerso("musique/personnage/thomas", 3000);
+		List<Musique> musiquesThomas = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/thomas", 3000);
 		// TODO 
 		// principal : Matrix Theme
 		// Son de clic : Matrix sons
 		// secondaire : Carapitcho, Bailando, Drag Queen, Thriller, El Tiburon
-		List<Musique> musiquesNicolas = MusiqueManager.chargeMusiquesPerso("musique/personnage/nicolas", 4000);
+		List<Musique> musiquesNicolas = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/nicolas", 4000);
 		// TODO 
 		// principal : StarWars Theme
 		// Son de clic : Laser star wars
 		// secondaire : Nirvana, NickelBack, Radiohead, Coldplay, Placebo,  
-		List<Musique> musiquesYannick = MusiqueManager.chargeMusiquesPerso("musique/personnage/yannick", 5000);
+		List<Musique> musiquesYannick = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/yannick", 5000);
 		// TODO 
 		// principal : Le seigneur des anneaux Theme
 		// Son de clic : Bruit de Morgul
 		// secondaire : Mon vieu, 
-		List<Musique> musiquesAli = MusiqueManager.chargeMusiquesPerso("musique/personnage/ali", 6000);
+		List<Musique> musiquesAli = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/ali", 6000);
 		// TODO 
 		// principal : Indiana Jones Theme
 		// Son de clic : Son de liquide qui remplit un verre / de serpent a sonette
 		// secondaire : Camaro, Bouga, 
-		List<Musique> musiquesGuillaume = MusiqueManager.chargeMusiquesPerso("musique/personnage/guillaume", 7000);
+		List<Musique> musiquesGuillaume = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/guillaume", 7000);
 		// TODO 
 		// principal : Le Parrain Theme
 		// Son de clic : crissement de pneu
 		// secondaire : Eve, DelaSoul,  
-		List<Musique> musiquesJonathan = MusiqueManager.chargeMusiquesPerso("musique/personnage/jonathan", 8000);
+		List<Musique> musiquesJonathan = MusiqueManager.chargeMusiquesParRepertoire("musique/personnage/jonathan", 8000);
 		
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
@@ -219,6 +224,33 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des personnages Secondaires
 		personnagesSecondaires = new ArrayList<PersonnageSecondaire>();
+
+		PersonnageSecondaire omarChefre = new PersonnageSecondaire("Omar", "Chefre");
+		omarChefre.setPhotoPrincipal(photoPrincipal230);
+		List<String> phrasesPerso230 = new ArrayList<>();
+		phrasesPerso230.add("Bonjour chef!");
+		phrasesPerso230.add("Repasses nous voir! Les stocks sont renouveles tous les mois!");
+		omarChefre.setPhrasesPerso(phrasesPerso230);
+		PersonnageSecondaire hassanCehef = new PersonnageSecondaire("Hassan", "Cehef");
+		hassanCehef.setPhotoPrincipal(photoPrincipal240);
+		List<String> phrasesPerso240 = new ArrayList<>();
+		phrasesPerso240.add("Bienvenue mon ami!");
+		phrasesPerso240.add("Reviens vite! J'ai de nouveaux trucs a vendre tous les mois!");
+		hassanCehef.setPhrasesPerso(phrasesPerso240);
+		PersonnageSecondaire omarIjuana = new PersonnageSecondaire("Omar", "Ijuana");
+		omarIjuana.setPhotoPrincipal(photoPrincipal250);
+		List<String> phrasesPerso250 = new ArrayList<>();
+		phrasesPerso250.add("Wesh");
+		phrasesPerso250.add("Si tu te fais choper par les condes, tu dis pas que c'est moi!");
+		omarIjuana.setPhrasesPerso(phrasesPerso250);
+		PersonnageSecondaire bencoBamboulaChocolat = new PersonnageSecondaire("Benco Bamboula", "Banania");
+		bencoBamboulaChocolat.setPhotoPrincipal(photoPrincipal260);
+		List<String> phrasesPerso260 = new ArrayList<>();
+		phrasesPerso260.add("Bien ou bien ?");
+		phrasesPerso260.add("Allez bouge de la avant que je te casses tes dents!");
+		bencoBamboulaChocolat.setPhrasesPerso(phrasesPerso260);
+
+		// TODO integrer les persos secondaires
 		PersonnageSecondaire jonathanMatignon = new PersonnageSecondaire("Jonathan", "Matignon");
 		PersonnageSecondaire ludovicVandeville = new PersonnageSecondaire("Ludovic", "Vandeville");
 		PersonnageSecondaire ludovicDasNeves = new PersonnageSecondaire("Ludovic", "Das neves");
@@ -240,7 +272,10 @@ public class PersonnageManager implements Serializable {
 		PersonnageSecondaire virginieIdjer = new PersonnageSecondaire("Virginie", "Idjer");
 		PersonnageSecondaire sophieLemoulec = new PersonnageSecondaire("Sophie", "Lemoulec");
 
-		personnagesSecondaires.add(barbaraStolic);
+		personnagesSecondaires.add(omarChefre);
+		personnagesSecondaires.add(hassanCehef);
+		personnagesSecondaires.add(omarIjuana);
+		personnagesSecondaires.add(bencoBamboulaChocolat);
 
 		// Chargement des personnages Ennemis
 		personnagesEnnemis = new ArrayList<PersonnageEnnemi>();
@@ -350,11 +385,11 @@ public class PersonnageManager implements Serializable {
 			manaMax = 100;
 			chargeMax = 5;
 		} else if (difficultePartie == Difficulte.DIFFICILE) {
-			vieMax = 3000;
+			vieMax = 2500;
 			manaMax = 150;
 			chargeMax = 7;
 		} else if (difficultePartie == Difficulte.HEROIQUE) {
-			vieMax = 5000;
+			vieMax = 3000;
 			manaMax = 200;
 			chargeMax = 10;
 		}
@@ -561,7 +596,7 @@ public class PersonnageManager implements Serializable {
 			phrasesPerso.add("Hey Gadjo!");
 			phrasesPerso.add("Mange tes maures!");
 			phrasesPerso.add("Ca c'est mon cousin! Viens mon cousin!");
-			phrasesPerso.add("T'inquietes pas que je sais l'en faire du vélo mon copain!");
+			phrasesPerso.add("T'inquietes pas que j'sais l'en faire du vélo mon copaing!");
 			phrasesPerso.add("J'te met un coup d'botte dans les couilles, tu décolles jusqu'à la lune!");
 			phrasesPerso.add("J'ai pris v'la l'pavée!");
 			particularitesPhysique.add("Parle bizzarement en phonétique.");
@@ -949,6 +984,15 @@ public class PersonnageManager implements Serializable {
 			// Et tout le monde retourne a la base
 			personnage.setLocation(new Location(personnage.getDomicile(), personnage.getDomicile().getPosition()));
 		}
+	}
+
+	public PersonnageSecondaire getPersonnageSecondaireByNomDeFamille(String name) {
+		for (PersonnageSecondaire perso : personnagesSecondaires) {
+			if (perso.getNom().equalsIgnoreCase(name)) {
+				return perso;
+			}
+		}
+		return null;
 	}
 
 }

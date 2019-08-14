@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.Timer;
 
 import core.MusiqueManager;
@@ -61,9 +61,12 @@ public class FrameQuizz extends FrameJeu {
 		// Panel Question
 		JPanel panelQuestion = new JPanel();
 		String question = enigme.getQuestion();
-		JTextField field = new JTextField(question);
+		JTextArea field = new JTextArea(question);
+		field.setLineWrap(true);
 		field.setEditable(false);
-		field.setFont(Constante.ZELDA_FONT_MENU);
+		field.setFont(Constante.MARIO_FONT_QUESTION_QUIZZ);
+		field.setSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);
+		field.setMinimumSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);  
 		panelQuestion.add(field);
 		
 		// Panel Reponses possibles
@@ -74,6 +77,7 @@ public class FrameQuizz extends FrameJeu {
 		List<Reponse> reponses = enigme.getReponsesPossibles();
 		for (Reponse reponse : reponses) {
 			JButton boutonReponse = new JButton(reponse.getReponse());
+			boutonReponse.setFont(Constante.MARIO_FONT_MENU_2);
 			// Si clic sur une reponse
 			boutonReponse.addActionListener(new ActionListener() {
 				@Override
@@ -96,6 +100,7 @@ public class FrameQuizz extends FrameJeu {
 		// Panel info reponse
 		String infoReponse = enigme.getInfoReponse();
 		JLabel infoReponseLabel = new JLabel(infoReponse);
+		infoReponseLabel.setFont(Constante.MARIO_FONT_MENU_2);
 		panelInfoReponse.add(infoReponseLabel);
 		panelInfoReponse.setVisible(false);
 		
@@ -103,7 +108,7 @@ public class FrameQuizz extends FrameJeu {
 		double maxTime = Constante.QUIZZ_MAX_TEMPS;
 		JPanel panelTimer = new JPanel();
 		labelTimer = new JLabel(String.valueOf(maxTime));
-		labelTimer.setFont(Constante.ZELDA_FONT_TITRE);
+		labelTimer.setFont(Constante.MARIO_FONT_MENU_2);
 		labelTimer.setBackground(Color.BLACK);
 		timer = new Timer(10, new MyTimerActionListener(maxTime));
 		panelTimer.add(labelTimer);
@@ -146,7 +151,12 @@ public class FrameQuizz extends FrameJeu {
 		MenuPrincipal.getMainFrame().setVisible(false);
 		VideoManager.hideAndStop();
 		MusiqueManager.stopAll();
-		JOptionPane.showMessageDialog(this, "Debut du Quizz");
+		MusiqueManager.startPlayListEnBoucle(mission);
+		this.setVisible(false);
+		JLabel message = new JLabel("Debut du Quizz");
+		message.setFont(Constante.MARIO_FONT_MENU_2);
+		JOptionPane.showMessageDialog(this, message);
+		this.setVisible(true);
 		timer.start();
 	}
 
@@ -155,15 +165,27 @@ public class FrameQuizz extends FrameJeu {
 
 		timer.stop();
 		
+		MusiqueManager.stopAll();
+		
 		// Message fin du jeu
 		if (win) {
 			// TODO son bonne reponse
+			MusiqueManager.playSon("sonParDefaut/motusWin.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
-			JOptionPane.showMessageDialog(this, "Bonne Réponse !", "Fin du Quizz", 0, icon);
+			String message = "Bonne Reponse !";
+			JLabel labelMessage = new JLabel(message);
+			labelMessage.setForeground(Color.GREEN);
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, icon);
 		} else {
 			// TODO son mauvaise reponse
+			MusiqueManager.playSon("sonParDefaut/maillonFaibleAuRevoir.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
-			JOptionPane.showMessageDialog(this, "Mauvaise Réponse !", "Fin du Quizz", 0, icon);
+			String message = "Mauvaise Reponse !";
+			JLabel labelMessage = new JLabel(message);
+			labelMessage.setForeground(Color.RED);
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, icon);
 		}
 		
 		// Refesh Liste Enigmes
@@ -171,6 +193,7 @@ public class FrameQuizz extends FrameJeu {
 		quizzManager.refreshEnigme(enigme, win);
 
 		// Fermeture des fenetres
+		this.removeAll();
 		this.dispose();
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
@@ -212,11 +235,11 @@ public class FrameQuizz extends FrameJeu {
 			if (time < (maxTime/4)) {
 				labelTimer.setForeground(Color.RED);
 			}
-			// Tic Tac quand il reste 4s
-			if (time <= 4) {
+			// Tic Tac quand il reste 3s
+			if (time <= 3) {
 				
 				if (!running ) {
-					MusiqueManager.playSon("sonParDefaut/tictac.mp3");
+					MusiqueManager.playSon("sonParDefaut/tictacQuestion.mp3");
 					running = true;
 				}
 				

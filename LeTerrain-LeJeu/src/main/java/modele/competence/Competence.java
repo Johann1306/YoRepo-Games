@@ -203,38 +203,38 @@ public class Competence implements Serializable {
 			}
 			// TODO stats plus eleve pour les 3 derniers persos
 			else if (prenom == PersoPrenom.Ali) {
-				// Ali stats max -30
+				// Ali stats max -50
 				stats.put(PersoStat.LUCK, 25);
-				stats.put(PersoStat.EXPLOIT, 50);
+				stats.put(PersoStat.EXPLOIT, 30);
 				stats.put(PersoStat.TECHNIQUE, 30);
 				stats.put(PersoStat.ENDURANCE, 30);
-				stats.put(PersoStat.RAPIDITE, 70);
+				stats.put(PersoStat.RAPIDITE, 50);
 				stats.put(PersoStat.RESISTANCE, 25);
-				stats.put(PersoStat.AGILITE, 60);
+				stats.put(PersoStat.AGILITE, 40);
 				stats.put(PersoStat.INTELLIGENCE, 25);
-				stats.put(PersoStat.NERVOSITE, 50);
+				stats.put(PersoStat.NERVOSITE, 40);
 			} else if (prenom == PersoPrenom.Guillaume) {
-				// Guillaume stats max -20
+				// Guillaume stats max -40
 				stats.put(PersoStat.LUCK, 40);
-				stats.put(PersoStat.EXPLOIT, 50);
-				stats.put(PersoStat.TECHNIQUE, 80);
+				stats.put(PersoStat.EXPLOIT, 40);
+				stats.put(PersoStat.TECHNIQUE, 50);
 				stats.put(PersoStat.ENDURANCE, 25);
 				stats.put(PersoStat.RAPIDITE, 40);
 				stats.put(PersoStat.RESISTANCE, 20);
-				stats.put(PersoStat.AGILITE, 60);
+				stats.put(PersoStat.AGILITE, 40);
 				stats.put(PersoStat.INTELLIGENCE, 25);
 				stats.put(PersoStat.NERVOSITE, 40);
 			} else if (prenom == PersoPrenom.Jonathan) {
-				// Jonathan stats max -10
-				stats.put(PersoStat.LUCK, 40);
-				stats.put(PersoStat.EXPLOIT, 80);
-				stats.put(PersoStat.TECHNIQUE, 60);
-				stats.put(PersoStat.ENDURANCE, 90);
+				// Jonathan stats max -30
+				stats.put(PersoStat.LUCK, 30);
+				stats.put(PersoStat.EXPLOIT, 50);
+				stats.put(PersoStat.TECHNIQUE, 40);
+				stats.put(PersoStat.ENDURANCE, 60);
 				stats.put(PersoStat.RAPIDITE, 60);
-				stats.put(PersoStat.RESISTANCE, 80);
+				stats.put(PersoStat.RESISTANCE, 50);
 				stats.put(PersoStat.AGILITE, 25);
 				stats.put(PersoStat.INTELLIGENCE, 30);
-				stats.put(PersoStat.NERVOSITE, 90);
+				stats.put(PersoStat.NERVOSITE, 60);
 			}
 		}
 	}

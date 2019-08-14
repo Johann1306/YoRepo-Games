@@ -28,6 +28,8 @@ import modele.item.personnage.PersoPrenom;
 
 public class MenuPrincipal extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private static final Border BORDER = BorderFactory.createLineBorder(Color.BLUE, 3);
 	private static MainFrame mainFrame;
 	private JPanel panelDifficulte = null;

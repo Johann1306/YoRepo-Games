@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import core.DateManager;
 import core.NomJeu;
 import front.MenuPrincipal;
 import modele.bonus.Bonus;
@@ -14,7 +13,6 @@ import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.PersoPrenom;
-import modele.item.personnage.PersonnageBoss;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
 

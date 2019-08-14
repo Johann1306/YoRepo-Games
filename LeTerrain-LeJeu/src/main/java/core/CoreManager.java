@@ -44,7 +44,7 @@ public class CoreManager implements Serializable {
 		dateManager.initialise();
 
 		itemManager = new ItemManager();
-		itemManager.initialise();
+		itemManager.initialise(difficultePartie);
 
 		evenementManager = new EvenementManager();
 		evenementManager.initialise(itemManager);

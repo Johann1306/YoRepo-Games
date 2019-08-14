@@ -284,7 +284,7 @@ public class PanelFichePerso extends JPanel {
 		Object[][] donnees = new Object[perso.getActionsCombatDisponibles().size()][9];
 		int i = 0;
 		for (ActionCombat actionCombat : perso.getActionsCombatDisponibles()) {
-			donnees[i][0] = actionCombat.getImagePath().get(0);
+			donnees[i][0] = actionCombat;
 			donnees[i][1] = actionCombat.getNom();
 			donnees[i][2] = actionCombat.getInformations();
 			donnees[i][3] = actionCombat.getNiveau() + " / " + actionCombat.getNiveauMax();

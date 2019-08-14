@@ -384,35 +384,6 @@ public class PanelPersonnage extends JPanel {
 	}
 	
 	private void gestionItemSelectionne(PersoPrenom prenomCible) {
-		
 		ItemManager.gestionItemSelectionne(prenomCible, MainFrame.getPanelCentre().getParent());
-		
-//		Item itemSelectionne = MainFrame.getPanelBas().getItemSelectionne();
-//		if (itemSelectionne != null) {
-//			PersoPrenom lanceur = MainFrame.getPanelBas().getProprietaireItem();
-//			PersonnagePrincipal persoCible = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenomCible);
-//			PersonnagePrincipal persoLanceur = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(lanceur);
-//		
-//			int reponse = JOptionPane.showConfirmDialog(this,
-//					"T'es sur de vouloir utiliser " + itemSelectionne.getNom() + " sur " + prenomCible.name() + "?");
-//			if (reponse == 0) {
-//				// OUI
-//				
-//				ItemManager.gestionItemSelectionne(persoCible, itemSelectionne, persoLanceur);
-//				
-//				JOptionPane.showMessageDialog(this, "Consomme : " + itemSelectionne.getNom());
-//				
-//				
-//			} else {
-//				// NON
-//			}
-//
-//			MainFrame.getPanelBas().setItemSelectionne(null);
-//			MainFrame.getPanelBas().setProprietaireItem(null);
-//			MainFrame.getPanelPersonnage().setBorder(null);
-//			
-//			MainFrame.getPanelBas().refreshPanelBas(lanceur);
-//			MainFrame.getPanelPersonnage().refreshMortsPersonnage();
-//		}
 	}
 }

@@ -254,6 +254,7 @@ public class FrameFoot extends FrameJeu {
 		}
 
 		// Fermeture de la frame foot et reaffichage de la mainframe
+		this.removeAll();
 		this.dispose();
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);

@@ -1,5 +1,6 @@
 package front;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,7 +42,6 @@ public class FrameJeu extends JFrame {
 		PersoPrenom prenom = mission.getProprietaire();
 		ImageIcon image = null;
 		if (prenom.name().equals("GROUPE")) {
-			// TODO : image groupe
 			image = FenetrePrincipal.getImageIcon("image/groupe.png");
 		} else {
 			PersonnagePrincipal proprietaire = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getPersoByNom(prenom);
@@ -49,21 +49,37 @@ public class FrameJeu extends JFrame {
 		}
 		ImageIcon resizeImagePerso = ImageManager.resizeImage(image,
 				new Dimension(Constante.PANEL_INFO_MISSION_HAUTEUR - 10, Constante.PANEL_INFO_MISSION_HAUTEUR - 10));
+		
+		JLabel labelProprio = new JLabel(mission.getProprietaire().name());
+		JLabel labelNom = new JLabel(mission.getNom());
+		JLabel labelInfo = new JLabel(mission.getInformations());
+		JLabel labelObjectif = new JLabel(mission.getObjectif());
+		JLabel labelConditionVictoire = new JLabel(mission.getConditionVictoire());
+		JLabel labelDifficulte = new JLabel(mission.getDifficulty().name());
+		JLabel labelTypeMisson = new JLabel(mission.getMissionType().name());
+		
 		panelInfoMission.add(new JLabel(resizeImagePerso));
-		panelInfoMission.add(new JLabel(mission.getProprietaire().name()));
-		panelInfoMission.add(new JLabel(mission.getNom()));
-		panelInfoMission.add(new JLabel(mission.getInformations()));
-		panelInfoMission.add(new JLabel(mission.getObjectif()));
-		panelInfoMission.add(new JLabel(mission.getConditionVictoire()));
-		panelInfoMission.add(new JLabel(mission.getDifficulty().name()));
-		panelInfoMission.add(new JLabel(mission.getMissionType().name()));
+		panelInfoMission.add(labelProprio);
+		panelInfoMission.add(labelNom);
+		panelInfoMission.add(labelInfo);
+		panelInfoMission.add(labelObjectif);
+		panelInfoMission.add(labelConditionVictoire);
+		panelInfoMission.add(labelDifficulte);
+		panelInfoMission.add(labelTypeMisson);
 		panelInfoMission.add(boutonMusiqueOnOff);
+		
+		// Font
+		Component[] components = panelInfoMission.getComponents();
+		for (Component component : components) {
+			component.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
+		}
 
+		// Size
 		panelInfoMission
 				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));
 		return panelInfoMission;
 	}
-	
+
 	public boolean isMusiqueRunning() {
 		return musiqueRunning;
 	}

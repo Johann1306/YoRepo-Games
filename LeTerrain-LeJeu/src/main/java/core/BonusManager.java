@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JOptionPane;
-
-import front.MainFrame;
 import modele.bonus.Bonus;
 import modele.competence.PersoStat;
+import modele.item.mission.Mission;
+import modele.item.mission.enums.Difficulte;
+import modele.item.mission.enums.MissionType;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
@@ -456,6 +456,7 @@ public class BonusManager implements Serializable {
 	
 	public static void distribueBonus(Groupe groupe, Bonus bonus) {
 		// TODO gestion perte/gain bonus/malus
+		// TODO gestion perteMAx et GainMAx (nombre de fois que l'on peut debloquer le bonus)
 		for (PersonnagePrincipal perso : groupe.getPersos()) {
 			// On distribue le bonus si le perso est deja dans le groupe et qu'il est vivant 
 			if (bonus.getBonusMap().containsKey(perso.getPrenomPerso()) && perso.isDejaPresente() && !perso.isMort()) {
@@ -476,5 +477,46 @@ public class BonusManager implements Serializable {
 			}
 		}
 		return newBonus;
+	}
+
+	
+	public static void distribueArgent(Groupe leGroupe, Mission mission) {
+	
+		// TODO gestion du gain d'argent par type de mission, par difficulte, par stat(lUCk), (par progression du jeu?) par tranche (entre 100 et 150) (variation de 50% aleatoire arrondi a un chiffr rond si >100 (730 et non 733)
+
+		int argent = 0;
+		
+		// En fonction du type de mission
+		if (mission.getMissionType() == MissionType.PRINCIPAL) {
+			argent = argent + 50;
+		} else if (mission.getMissionType() == MissionType.BOSS) {
+			argent = argent + 200;
+		} else if (mission.getMissionType() == MissionType.MINIJEU) {
+			argent = argent + 20;
+		} else {
+			argent = argent + 10;
+		} 
+
+		// En fonction de la progression ?
+
+		// En fonction des stats du groupe ?
+		
+		// En fonction de la difficulte
+		if (mission.getDifficulty() == Difficulte.FACILE) {
+			argent = argent * 1;
+		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
+			argent = argent * 2;
+		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+			argent = argent * 3;
+		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
+			argent = argent * 5;
+		}
+		
+		// 50% aleatoire
+		int variable = argent/2;
+		int random = RandomManager.random(0, variable);
+		argent = argent - random;
+		
+		leGroupe.ajouteArgent(argent, false);
 	}
 }
