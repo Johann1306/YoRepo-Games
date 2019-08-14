@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +35,21 @@ public class ItemManager implements Serializable {
 	private List<Item> items;
 	private List<Item> itemsDisponibles;
 	private List<Item> itemsIndisponibles;
+	private List<Item> itemsAAcheterMiranda;
+	private List<Item> itemsAAcheterTonelle;
+	private Date dateRenouvellementMiranda;
+	private Date dateRenouvellementTonelle;
+	private Difficulte difficulte = Difficulte.FACILE;
 	private static int id = 10000;
 
-	public void initialise() {
+	public void initialise(Difficulte difficultePartie) {
 
 		items = new ArrayList<Item>();
 		itemsDisponibles = new ArrayList<Item>();
 		itemsIndisponibles = new ArrayList<Item>();
+		itemsAAcheterMiranda = new ArrayList<Item>();
+		itemsAAcheterTonelle = new ArrayList<Item>();
+		difficulte = difficultePartie;
 
 		// Chargement des items
 		
@@ -474,38 +483,44 @@ public class ItemManager implements Serializable {
 		Item popoMana100 = new Item(203, "Potion de mana (100%)", "Redonne 100% des points de mana", imagePathsPopoMana, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.POTION_MANA_100, false);
 		
 		// Bonus competences (+5, +10, +20)
-		Item bonusChance5 = 	   new Item(300, "Bonus de chance (+5)", "Gagne 5 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_5, false);
-		Item bonusChance10 =       new Item(301, "Bonus de chance (+10)", "Gagne 10 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_10, false);
-		Item bonusChance20 =       new Item(302, "Bonus de chance (+20)", "Gagne 20 de Chance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_20, false);
-		Item bonusExploit5 =       new Item(303, "Bonus d'exploit (+5)", "Gagne 5 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_5, false);
-		Item bonusExploit10 =      new Item(304, "Bonus d'exploit (+10)", "Gagne 10 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_10, false);
-		Item bonusExploit20 =      new Item(305, "Bonus d'exploit (+20)", "Gagne 20 d'Exploit de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_20, false);
-		Item bonusTechnique5 =     new Item(306, "Bonus de technique (+5)", "Gagne 5 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_5, false);
-		Item bonusTechnique10 =    new Item(307, "Bonus de technique (+10)", "Gagne 10 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_10, false);
-		Item bonusTechnique20 =    new Item(308, "Bonus de technique (+20)", "Gagne 20 de Technique de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_20, false);
-		Item bonusEndurance5 =     new Item(309, "Bonus d'endurance (+5)", "Gagne 5 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_5, false);
-		Item bonusEndurance10 =    new Item(310, "Bonus d'endurance (+10)", "Gagne 10 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_10, false);
-		Item bonusEndurance20 =    new Item(311, "Bonus d'endurance (+20)", "Gagne 20 d'Endurance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_20, false);
-		Item bonusRapidite5 =      new Item(312, "Bonus de rapidité (+5)", "Gagne 5 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_5, false);
-		Item bonusRapidite10 =     new Item(313, "Bonus de rapidité (+10)", "Gagne 10 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_10, false);
-		Item bonusRapidite20 =     new Item(314, "Bonus de rapidité (+20)", "Gagne 20 de Rapidité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_20, false);
-		Item bonusResistance5 =    new Item(315, "Bonus de resistance (+5)", "Gagne 5 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_5, false);
-		Item bonusResistance10 =   new Item(316, "Bonus de resistance (+10)", "Gagne 10 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_10, false);
-		Item bonusResistance20 =   new Item(317, "Bonus de resistance (+20)", "Gagne 20 de Resistance de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_20, false);
-		Item bonusAgilite5 =       new Item(318, "Bonus d'agilité (+5)", "Gagne 5 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_5, false);
-		Item bonusAgilite10 = 	   new Item(319, "Bonus d'agilité (+10)", "Gagne 10 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_10, false);
-		Item bonusAgilite20 = 	   new Item(320, "Bonus d'agilité (+20)", "Gagne 20 d'Agilité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_20, false);
-		Item bonusIntelligence5 =  new Item(321, "Bonus d'intelligence (+5)", "Gagne 5 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_5, false);
-		Item bonusIntelligence10 = new Item(322, "Bonus d'intelligence (+10)", "Gagne 10 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_10, false);
-		Item bonusIntelligence20 = new Item(323, "Bonus d'intelligence (+20)", "Gagne 20 d'Intelligence de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_20, false);
-		Item bonusNervosite5 = 	   new Item(324, "Bonus de nervosité (+5)", "Gagne 5 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_5, false);
-		Item bonusNervosite10 =    new Item(325, "Bonus de nervosité (+10)", "Gagne 10 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_10, false);
-		Item bonusNervosite20 =    new Item(326, "Bonus de nervosité (+20)", "Gagne 20 de Nervosité de manière permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_20, false);
+		Item bonusChance5 = 	   new Item(300, "Bonus de chance (+5)", 		"Gagne 5 de Chance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_5, false);
+		Item bonusChance10 =       new Item(301, "Bonus de chance (+10)", 		"Gagne 10 de Chance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_10, false);
+		Item bonusChance20 =       new Item(302, "Bonus de chance (+20)", 		"Gagne 20 de Chance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_CHANCE_20, false);
+		Item bonusExploit5 =       new Item(303, "Bonus d'exploit (+5)", 		"Gagne 5 d'Exploit de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_5, false);
+		Item bonusExploit10 =      new Item(304, "Bonus d'exploit (+10)", 		"Gagne 10 d'Exploit de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_10, false);
+		Item bonusExploit20 =      new Item(305, "Bonus d'exploit (+20)", 		"Gagne 20 d'Exploit de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_EXPLOIT_20, false);
+		Item bonusTechnique5 =     new Item(306, "Bonus de technique (+5)", 	"Gagne 5 de Technique de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_5, false);
+		Item bonusTechnique10 =    new Item(307, "Bonus de technique (+10)", 	"Gagne 10 de Technique de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_10, false);
+		Item bonusTechnique20 =    new Item(308, "Bonus de technique (+20)", 	"Gagne 20 de Technique de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_TECHNIQUE_20, false);
+		Item bonusEndurance5 =     new Item(309, "Bonus d'endurance (+5)", 		"Gagne 5 d'Endurance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_5, false);
+		Item bonusEndurance10 =    new Item(310, "Bonus d'endurance (+10)", 	"Gagne 10 d'Endurance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_10, false);
+		Item bonusEndurance20 =    new Item(311, "Bonus d'endurance (+20)", 	"Gagne 20 d'Endurance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_ENDURANCE_20, false);
+		Item bonusRapidite5 =      new Item(312, "Bonus de rapidite (+5)", 		"Gagne 5 de Rapidite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_5, false);
+		Item bonusRapidite10 =     new Item(313, "Bonus de rapidite (+10)", 	"Gagne 10 de Rapidite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_10, false);
+		Item bonusRapidite20 =     new Item(314, "Bonus de rapidite (+20)", 	"Gagne 20 de Rapidite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RAPIDITE_20, false);
+		Item bonusResistance5 =    new Item(315, "Bonus de resistance (+5)", 	"Gagne 5 de Resistance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_5, false);
+		Item bonusResistance10 =   new Item(316, "Bonus de resistance (+10)", 	"Gagne 10 de Resistance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_10, false);
+		Item bonusResistance20 =   new Item(317, "Bonus de resistance (+20)", 	"Gagne 20 de Resistance de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_RESISTANCE_20, false);
+		Item bonusAgilite5 =       new Item(318, "Bonus d'agilite (+5)", 		"Gagne 5 d'Agilite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_5, false);
+		Item bonusAgilite10 = 	   new Item(319, "Bonus d'agilite (+10)", 		"Gagne 10 d'Agilite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_10, false);
+		Item bonusAgilite20 = 	   new Item(320, "Bonus d'agilite (+20)", 		"Gagne 20 d'Agilite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_AGILITE_20, false);
+		Item bonusIntelligence5 =  new Item(321, "Bonus d'intelligence (+5)", 	"Gagne 5 d'Intelligence de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_5, false);
+		Item bonusIntelligence10 = new Item(322, "Bonus d'intelligence (+10)", 	"Gagne 10 d'Intelligence de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_10, false);
+		Item bonusIntelligence20 = new Item(323, "Bonus d'intelligence (+20)", 	"Gagne 20 d'Intelligence de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_INTELLIGENCE_20, false);
+		Item bonusNervosite5 = 	   new Item(324, "Bonus de nervosite (+5)", 	"Gagne 5 de Nervosite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_5, false);
+		Item bonusNervosite10 =    new Item(325, "Bonus de nervosite (+10)", 	"Gagne 10 de Nervosite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_10, false);
+		Item bonusNervosite20 =    new Item(326, "Bonus de nervosite (+20)", 	"Gagne 20 de Nervosite de maniere permanente", imagePathsBonus, sonPathsBoire1, null, PersoPrenom.GROUPE, ItemType.BONUS_STAT_NERVOSITE_20, false);
 
 		// Objets de quete (pas d'utilisation)
-		Item cleTerrain = new Item(400, "Les Clés du terrain", "info2", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+		Item cleTerrain = new Item(400, "Les Cles du terrain", "info", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
 		Item graisse = new Item(401, ConfigurationManager.getProperties("item.jonathan.401.nom"), ConfigurationManager.getProperties("item.jonathan.401.inf"), imagePathsGraisse, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
-		
+
+		// TODO image cles differentes ? objets perso ou de groupe ?
+		Item clesMiranda = new Item(403, "Les Cles de la Miranda", "Sesame, ouvre toi!", imagePathsCles, sonPaths1, null, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
+		Item clesTonelle = new Item(404, "Les Cles de la Tonelle", "Branle la lampe du Genie et la porte s'ouvrira!", imagePathsCles, sonPaths1, null, PersoPrenom.Nicolas, ItemType.OBJET_QUETE, false);
+		Item clesDahlias = new Item(405, "Les Cles des Dahlias", "Ma 6T va craquer!", imagePathsCles, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
+		Item clesBosquets = new Item(406, "Les Cles des Bosquets", "Ouvre egalement la voiture brulee sur le parking!", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
+
 		// Films
 		Item VHS_diehard3 = new Item(600, "VHS - Die Hard 3", "", imagePathsdiehard3VHS, sonPathsdiehard3, null, PersoPrenom.GROUPE, ItemType.FILM, false);
 		
@@ -516,100 +531,99 @@ public class ItemManager implements Serializable {
 		// TODO info des armes
 		
 		// ARMES PAR PERSO
-		Arme mouchoir = new Arme(500, "Paquet de Mouchoir", "", imagePaths500, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.MOUCHOIR, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme patate = new Arme(501, "Patates", "", imagePaths501, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.PATATE, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme tampon = new Arme(520, "Tampon", "", imagePaths520, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.TAMPON, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme coton = new Arme(538, "Coton", "", imagePaths538, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.COTON, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme pansement = new Arme(539, "Pansement", "", imagePaths539, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.PANSEMENT, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme croix = new Arme(540, "Svastika", "", imagePaths540, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.CROIX, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme mouchoir = new Arme(500, "Paquet de Mouchoir", "Ultra resistant et absorbant", imagePaths500, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.MOUCHOIR, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme patate = new Arme(501, "Patates", "100 si t'as les 3 TV", imagePaths501, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.PATATE, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme tampon = new Arme(520, "Tampon", "Avec vibrateur integre", imagePaths520, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.TAMPON, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme coton = new Arme(538, "Coton", "Fait a partir de pissenlit ou de pissenbain", imagePaths538, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.COTON, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme pansement = new Arme(539, "Pansement", "Mercurochrome, le pansement des heros", imagePaths539, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.PANSEMENT, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme croix = new Arme(540, "Svastika", "<Ce qui apporte la bonne fortune> en sanskrit", imagePaths540, sonPaths1, videoPathsNull, PersoPrenom.Thomas, 0, 0, ArmeType.CROIX, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
 			
-		Arme mousqueton = new Arme(502, "Mousqueton poing americain", "", imagePaths502, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.MOUSQUETON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme couteauPapillon = new Arme(503, "Couteau papillon", "", imagePaths503, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.COUTEAU_PAPILLON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme epeeBois = new Arme(504, "Epée en bois", "Fait maison", imagePaths504, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.EPEE_EN_BOIS, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme sabreLaser = new Arme(505, "Sabre laser", "", imagePaths505, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.SABRE_LASER, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme banane = new Arme(524, "Bananes", "", imagePaths524, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.BANANE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme guitare = new Arme(525, "Guitare", "", imagePaths525, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.GUITARE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme mousqueton = new Arme(502, "Mousqueton poing americain", "Peut servir de porte-cles", imagePaths502, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.MOUSQUETON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme couteauPapillon = new Arme(503, "Couteau papillon", "Pour faire Edward aux mains d'argent", imagePaths503, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.COUTEAU_PAPILLON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme epeeBois = new Arme(504, "Epee en bois", "Fait maison", imagePaths504, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.EPEE_EN_BOIS, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme sabreLaser = new Arme(505, "Sabre laser", "Un pour de vrai!", imagePaths505, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.SABRE_LASER, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme banane = new Arme(524, "Bananes", "En provenance de Bambouli", imagePaths524, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.BANANE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme guitare = new Arme(525, "Guitare", "Pour branler autre chose", imagePaths525, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.GUITARE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
 		
 		Arme ballon = new Arme(506, "Ballon de foot", "La balle molle", imagePaths506, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.BALLON, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme fusil = new Arme(507, "Fusil de chasse", "", imagePaths507, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.FUSIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme pistoletAEau = new Arme(534, "Pissstolet à eau", "", imagePaths534, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PISTOLET_A_EAU, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme reveil = new Arme(535, "Réveil midi", "", imagePaths535, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.REVEIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme trefle = new Arme(536, "Trèfle à 4 feuilles", "", imagePaths536, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.TREFLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme pain = new Arme(537, "Baguette de pain", "Le pain c'est la vie", imagePaths537, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PAIN, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme fusil = new Arme(507, "Fusil de chasse", "Peut tuer un ragondin", imagePaths507, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.FUSIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme pistoletAEau = new Arme(534, "Pissstolet à eau", "C'est vraiment de l'eau?", imagePaths534, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PISTOLET_A_EAU, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme reveil = new Arme(535, "Reveil midi", "Pour les matins difficiles", imagePaths535, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.REVEIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme trefle = new Arme(536, "Trefle à 4 feuilles", "La grosse chatte poilue", imagePaths536, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.TREFLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme pain = new Arme(537, "Baguette de pain", "Le pain c'est la vie!", imagePaths537, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PAIN, ArmeClasse.GRIS, PersoStat.LUCK, false);
 
-		Arme ventoline = new Arme(508, "Ventoline", "", imagePaths508, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.VENTOLINE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme oeufs = new Arme(509, "Oeufs pourris", "", imagePaths509, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.OEUFS, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme dent = new Arme(526, "Dent", "", imagePaths526, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.DENT, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme dictaphone = new Arme(527, "Dictaphone", "", imagePaths527, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.DICTAPHONE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme walkman = new Arme(528, "Walkman", "", imagePaths528, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.WALKMAN, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme ciseau = new Arme(529, "Paire de ciseau", "", imagePaths529, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.CISEAU, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme rhum = new Arme(530, "Bouteille de Rhum", "Le rhum de l'enculé de Pierre", imagePaths530, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.RHUM, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme ventoline = new Arme(508, "Ventoline", "Tube qui contient de l'air", imagePaths508, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.VENTOLINE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme oeufs = new Arme(509, "Oeufs pourris", "Si t'attends encore, ca va faire des poussins zombies", imagePaths509, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.OEUFS, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme dent = new Arme(526, "Dent", "Peut etre utile pour manger", imagePaths526, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.DENT, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme dictaphone = new Arme(527, "Dictaphone", "L'outil indispensable d'un bon compteur de Marak", imagePaths527, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.DICTAPHONE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme walkman = new Arme(528, "Walkman", "Pour ecouter Jean-Jacques Goldman", imagePaths528, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.WALKMAN, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme ciseau = new Arme(529, "Paire de ciseau", "Peut couper un prepus", imagePaths529, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.CISEAU, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme rhum = new Arme(530, "Bouteille de Rhum", "Le rhum de l'encule de Pierre", imagePaths530, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.RHUM, ArmeClasse.GRIS, PersoStat.AGILITE, false);
 		
-		Arme grappin = new Arme(510, "Grappin", "", imagePaths510, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.GRAPPIN, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme selPoivre = new Arme(511, "Sel et Poivre", "", imagePaths511, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.SEL_ET_POIVRE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme pq = new Arme(531, "Rouleau de PQ", "", imagePaths531, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.PQ, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme steroide = new Arme(532, "Stéroïdes", "", imagePaths532, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.STEROIDE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme nuggets = new Arme(533, "Nuggets", "", imagePaths533, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.NUGGETS, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme grappin = new Arme(510, "Grappin", "L'outil indispensable du grappineur", imagePaths510, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.GRAPPIN, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme selPoivre = new Arme(511, "Sel et Poivre", "Poivre et Sel", imagePaths511, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.SEL_ET_POIVRE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme pq = new Arme(531, "Rouleau de PQ", "Apres avoir depose les ptits a la piscine", imagePaths531, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.PQ, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme steroide = new Arme(532, "Steroides", "Si juvabien, c’est Juvamine", imagePaths532, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.STEROIDE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme nuggets = new Arme(533, "Nuggets", "Hachis de reste de poulet blanchi et pane", imagePaths533, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.NUGGETS, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		
-		Arme paquet = new Arme(512, "Paquet de Kingston vide", "La cigarette des Rois (Garder un paquet de clope vide, c'est comme garder un preservatif usagé)", imagePaths512, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.PAQUET_CLOPE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme epices = new Arme(513, "Sachet d'épices", "", imagePaths513, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.EPICES, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme micro = new Arme(514, "Microphone", "", imagePaths514, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.MICRO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme plug = new Arme(522, "Plug", "", imagePaths522, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.PLUG, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme glacon = new Arme(523, "Glaçon", "", imagePaths523, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.GLACON, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme paquet = new Arme(512, "Paquet de Kingston vide", "La cigarette des Rois", imagePaths512, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.PAQUET_CLOPE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme epices = new Arme(513, "Sachet d'epices", "Differentes varietes de paprika", imagePaths513, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.EPICES, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme micro = new Arme(514, "Microphone", "Ne pas sucer sinon le son sature", imagePaths514, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.MICRO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme plug = new Arme(522, "Plug", "S'emboite n'importe ou", imagePaths522, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.PLUG, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme glacon = new Arme(523, "Glaçon", "Pour les soirees caliente", imagePaths523, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.GLACON, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 
-		Arme verre = new Arme(515, "Verre vide", "", imagePaths515, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.VERRE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme bouteille = new Arme(516, "Bouteille vide", "", imagePaths516, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.BOUTEILLE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme bescherelle = new Arme(517, "Bescherelle", "", imagePaths517, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.BESCHERELLE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme verre = new Arme(515, "Verre vide", "Rhabilles le ptit avant qu'il prenne froid", imagePaths515, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.VERRE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme bouteille = new Arme(516, "Bouteille vide", "Le cauchemar de Guy", imagePaths516, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.BOUTEILLE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme bescherelle = new Arme(517, "Bescherelle", "Le nom du livre est deja dur a ecrire", imagePaths517, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.BESCHERELLE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		
-		Arme creme = new Arme(518, "Creme", "", imagePaths518, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.CREME, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
-		Arme pasteque = new Arme(519, "Pasteque", "", imagePaths519, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.PASTEQUE, ArmeClasse.GRIS, PersoStat.NERVOSITE, false);
-		Arme rasoir = new Arme(521, "Rasoir", "", imagePaths521, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.RASOIR, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
-
+		Arme creme = new Arme(518, "Creme", "Contre les secheresses vaginales", imagePaths518, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.CREME, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
+		Arme pasteque = new Arme(519, "Pasteque", "Grosse comme la couille de Yo", imagePaths519, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.PASTEQUE, ArmeClasse.GRIS, PersoStat.NERVOSITE, false);
+		Arme rasoir = new Arme(521, "Rasoir", "Avec 12 niveaux de rasouze", imagePaths521, sonPaths1, videoPathsNull, PersoPrenom.Jonathan, 0, 0, ArmeType.RASOIR, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
 
 
 		// ARMES DE GROUPE
-		Arme cagette = new Arme(550, "Cagette", "", imagePaths550, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CAGETTE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme gazeuse = new Arme(551, "Gazeuse", "", imagePaths551, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GAZEUSE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme taser = new Arme(552, "Taser", "", imagePaths552, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.TASER, ArmeClasse.GRIS, PersoStat.NERVOSITE, false);
+		Arme cagette = new Arme(550, "Cagette", "Peut etre un projectile dangereux", imagePaths550, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CAGETTE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme gazeuse = new Arme(551, "Gazeuse", "Ne pas inhaler, avaler ou mettre dans les yeux", imagePaths551, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GAZEUSE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme taser = new Arme(552, "Taser", "Autorise si on se sent agresse", imagePaths552, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.TASER, ArmeClasse.GRIS, PersoStat.NERVOSITE, false);
 		// Disponible des le debut pour les ennemis
-		Arme bouteilleCassee = new Arme(553, "Bouteille cassée", "", imagePaths553, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOUTEILLE_CASSEE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, true);
-		Arme bouteillePuante = new Arme(554, "Bouteille puante", "", imagePaths554, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOUTEILLE_QUI_PUE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
-		Arme bouleBowling = new Arme(555, "Boule de Bowling", "", imagePaths555, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOULE_DE_BOWLING, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme bouteilleCassee = new Arme(553, "Bouteille cassee", "Le classique des bagarres de bars", imagePaths553, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOUTEILLE_CASSEE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, true);
+		Arme bouteillePuante = new Arme(554, "Bouteille puante", "Ne pas sniffer sous peine d'evanouite", imagePaths554, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOUTEILLE_QUI_PUE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
+		Arme bouleBowling = new Arme(555, "Boule de Bowling", "Il faut avoir au moins 3 doigts", imagePaths555, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BOULE_DE_BOWLING, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 		// Disponible des le debut pour les ennemis
-		Arme batte = new Arme(556, "Batte de Baseball", "", imagePaths556, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BATTE_DE_BASEBALL, ArmeClasse.GRIS, PersoStat.NERVOSITE, true);
+		Arme batte = new Arme(556, "Batte de Baseball", "Fait mal si on rate la balle", imagePaths556, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BATTE_DE_BASEBALL, ArmeClasse.GRIS, PersoStat.NERVOSITE, true);
 		// Disponible des le debut pour les ennemis
-		Arme poingAmericain = new Arme(557, "Poing Americain", "", imagePaths557, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.POING_AMERICAIN, ArmeClasse.GRIS, PersoStat.RESISTANCE, true);
-		Arme raquette = new Arme(558, "Raquette de Tennis", "", imagePaths558, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.RAQUETTE_TENNIS, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme poingAmericain = new Arme(557, "Poing Americain", "Ne pas fister avec", imagePaths557, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.POING_AMERICAIN, ArmeClasse.GRIS, PersoStat.RESISTANCE, true);
+		Arme raquette = new Arme(558, "Raquette de Tennis", "Frapper plutot avec le bois", imagePaths558, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.RAQUETTE_TENNIS, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		// Disponible des le debut pour les ennemis
-		Arme baton = new Arme(559, "Baton", "", imagePaths559, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BATON, ArmeClasse.GRIS, PersoStat.EXPLOIT, true);
-		Arme javelot = new Arme(560, "Javelot", "", imagePaths560, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.JAVELOT, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme baton = new Arme(559, "Baton", "Fait de bois bande de bambou de Bamako", imagePaths559, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BATON, ArmeClasse.GRIS, PersoStat.EXPLOIT, true);
+		Arme javelot = new Arme(560, "Javelot", "T'es un homme ou un javelot", imagePaths560, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.JAVELOT, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		// Disponible des le debut pour les ennemis
-		Arme barreDeFer = new Arme(561, "Barre de Fer", "", imagePaths561, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BARRE_DE_FER, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, true);
-		Arme marteau = new Arme(562, "Marteau", "", imagePaths562, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.MARTEAU, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme barreDeFer = new Arme(561, "Barre de Fer", "La Barre de fer...mer ta gueule", imagePaths561, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BARRE_DE_FER, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, true);
+		Arme marteau = new Arme(562, "Marteau", "Ne vaut pas un clou sans huile de coude", imagePaths562, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.MARTEAU, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		// Disponible des le debut pour les ennemis
-		Arme pelle = new Arme(563, "Pelle", "", imagePaths563, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PELLE, ArmeClasse.GRIS, PersoStat.ENDURANCE, true);
-		Arme couteau = new Arme(564, "Couteau", "", imagePaths564, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.COUTEAU, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme epee = new Arme(565, "Epée", "", imagePaths565, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.EPEE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme sabre = new Arme(566, "Sabre", "", imagePaths566, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.SABRE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme arc = new Arme(567, "Arc", "", imagePaths567, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.ARC, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme arbalete = new Arme(568, "Arbalète", "", imagePaths568, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.ARBALETE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme carabine = new Arme(569, "Carabine", "", imagePaths569, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CARABINE_A_PLOMB, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme revolver = new Arme(570, "Revolver", "", imagePaths570, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.REVOLVER, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme pistolet = new Arme(571, "Pistolet", "", imagePaths571, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme pistoletLacrymo = new Arme(572, "Pistolet Lacrymo", "Ne pas utiliser en intérieur", imagePaths572, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LACRYMO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme pistoletBille = new Arme(573, "Flingue à Bille", "", imagePaths573, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_A_BILLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme pistoletLaser = new Arme(574, "Pistolet Laser", "", imagePaths574, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LASER, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme fusilPompe = new Arme(575, "Fusil à Pompe", "", imagePaths575, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_A_POMPE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
-		Arme fusilHomme = new Arme(576, "Fusil Homme", "", imagePaths576, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_HOMME_KINGPIN, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme fusilFemme = new Arme(577, "Fusil Femme", "", imagePaths577, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_FEMME_CHAUDE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme mitraillette = new Arme(578, "Sulfateuse", "", imagePaths578, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.MITRAILLETTE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
-		Arme sniper = new Arme(579, "Sniper", "", imagePaths579, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.SNIPER, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme bazooka = new Arme(580, "Bazooka", "Fatal", imagePaths580, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BAZOOKA, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme ceinture = new Arme(581, "Ceinture Explosive", "Je ne suis pas Charlie", imagePaths581, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CEINTURE_EXPLOSIF, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme pelle = new Arme(563, "Pelle", "L'outil du bon jardinier", imagePaths563, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PELLE, ArmeClasse.GRIS, PersoStat.ENDURANCE, true);
+		Arme couteau = new Arme(564, "Couteau", "Moins bien qu'une epee mais mieux qu'une cuillere", imagePaths564, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.COUTEAU, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme epee = new Arme(565, "Epee", "Moins bien qu'Excalibur mais mieux qu'un couteau", imagePaths565, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.EPEE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme sabre = new Arme(566, "Sabre", "Pour se deguiser comme a Arabeland", imagePaths566, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.SABRE, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme arc = new Arme(567, "Arc", "Ne pas oublier son carcan et son carquois", imagePaths567, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.ARC, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme arbalete = new Arme(568, "Arbalete", "Si on change deux lettres, c'est un anagramme de 'branlette'", imagePaths568, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.ARBALETE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme carabine = new Arme(569, "Carabine", "Recommande par 'cul de plomb' lui-meme", imagePaths569, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CARABINE_A_PLOMB, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme revolver = new Arme(570, "Revolver", "A l'americaine", imagePaths570, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.REVOLVER, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme pistolet = new Arme(571, "Pistolet", "Comme dans les films", imagePaths571, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme pistoletLacrymo = new Arme(572, "Pistolet Lacrymo", "Ne pas utiliser en interieur", imagePaths572, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LACRYMO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme pistoletBille = new Arme(573, "Flingue a Bille", "Livre par Fred lui-meme", imagePaths573, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_A_BILLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme pistoletLaser = new Arme(574, "Pistolet Laser", "Augmente la precision d'a peu pres 69 (normalement)", imagePaths574, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LASER, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme fusilPompe = new Arme(575, "Fusil a Pompe", "Pour pomper au corps a corps", imagePaths575, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_A_POMPE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
+		Arme fusilHomme = new Arme(576, "Fusil Homme", "Il parle!", imagePaths576, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_HOMME_KINGPIN, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme fusilFemme = new Arme(577, "Fusil Femme", "Elle fait du bruit!", imagePaths577, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_FEMME_CHAUDE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme mitraillette = new Arme(578, "Sulfateuse", "La fameuse!", imagePaths578, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.MITRAILLETTE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
+		Arme sniper = new Arme(579, "Sniper", "L'arme favorite des campeurs-campeuses!", imagePaths579, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.SNIPER, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
+		Arme bazooka = new Arme(580, "Bazooka", "Bachi-bouzouk %@!$^§¨*?~µ°#&/<£¤", imagePaths580, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BAZOOKA, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme ceinture = new Arme(581, "Ceinture Explosive", "Je ne suis pas Charlie!", imagePaths581, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CEINTURE_EXPLOSIF, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme grenade = new Arme(582, "Grenade", "Creuveeeeeeez", imagePaths582, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GRENADE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
-		Arme lanceGrenade = new Arme(583, "Lance Grenade", "", imagePaths583, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_GRENADE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme lanceRoquette = new Arme(584, "Lance Roquette", "", imagePaths584, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_ROQUETTE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme god = new Arme(585, "God montguichet", "", imagePaths585, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GOD, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme lanceGrenade = new Arme(583, "Lance Grenade", "Pas pour les pd", imagePaths583, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_GRENADE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme lanceRoquette = new Arme(584, "Lance Roquette", "A la goldeneye 64", imagePaths584, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_ROQUETTE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme god = new Arme(585, "God montguichet", "Plus de 30 kilojoules mais deja souille par Ali", imagePaths585, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GOD, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 		
 		// Equipements
 		
@@ -626,6 +640,7 @@ public class ItemManager implements Serializable {
 		// Collections (Cartes (dbz, panini foot), billes, pogs, pins, jouets (puce rebondissante, ressort multicolore, jeu video pocket, avions en papier,) 
 		// TODO Donner les cartes en tant que recompenses de missions
 		// TODO Faire les rapports entre la carte et le joueur (Jo = Popovich)
+		// TODO Faire une mission combat contre persos dbz
 		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "Carte de San Goku",  imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "Carte de San Gohan", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Carte de Krilin",    imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
@@ -635,6 +650,7 @@ public class ItemManager implements Serializable {
 		Item carteDBZ7 = new Item(907, "Carte DBZ n°7", "Carte de Cell",      imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		Item carteDBZ8 = new Item(908, "Carte DBZ n°8", "Carte de Spopovich", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
 		
+		// TODO Faire une mission combat contre persos crados
 		Item carteCrados1 = new Item(911, "Carte Crados n°1", "Carte de Johann", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
 		Item carteCrados2 = new Item(912, "Carte Crados n°2", "Carte de Nicolas", imagePaths2, sonPaths2, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
 		Item carteCrados3 = new Item(913, "Carte Crados n°3", "Carte de Pierre", imagePaths3, sonPaths1, videoPaths1, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
@@ -703,6 +719,11 @@ public class ItemManager implements Serializable {
 		
 		items.add(cleTerrain);
 		items.add(graisse);
+		items.add(clesMiranda);
+		items.add(clesTonelle);
+		items.add(clesDahlias);
+		items.add(clesBosquets);
+		
 		items.add(VHS_diehard3);
 		
 		items.add(mouchoir);
@@ -993,6 +1014,11 @@ public class ItemManager implements Serializable {
 						Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
 						Integer valeur = sac.get(itemSelectionne);
 						sac.put(itemSelectionne, valeur -1);
+						
+						// Si il n'y a plus d'objet de ce type on le supprime de la map
+						if (sac.get(itemSelectionne) == 0) {
+							sac.remove(itemSelectionne, 0);
+						}
 						
 						JOptionPane.showMessageDialog(panel, persoCible.getPrenom() + " a consommé : " + itemSelectionne.getNom());
 						
@@ -1516,5 +1542,159 @@ public class ItemManager implements Serializable {
 		return arme;
 	}
 
+	public List<Item> getItemsAAcheterMiranda() {
+		
+		// Si la liste est vide on l'intitalise
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		if (itemsAAcheterMiranda.isEmpty()) {
+			itemsAAcheterMiranda = genereNouveauxItemsAAcheter();
+			dateRenouvellementMiranda = new Date(dateCourante.getTime());
+			
+		// Si la liste n'est pas vide
+		} else {
+			
+			// On verifie si la date de renouvellement est depassee
+			if (dateRenouvellementMiranda.getMonth() != dateCourante.getMonth()) {
+				itemsAAcheterMiranda = genereNouveauxItemsAAcheter();
+				dateRenouvellementMiranda = new Date(dateCourante.getTime());
+			}
+		}
+		return itemsAAcheterMiranda;
+	}
+	
+	public List<Item> getItemsAAcheterTonelle() {
+		// Si la liste est vide on l'intitalise
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		if (itemsAAcheterTonelle.isEmpty()) {
+			itemsAAcheterTonelle = genereNouveauxItemsAAcheter();
+			dateRenouvellementTonelle = new Date(dateCourante.getTime());
+			
+		// Si la liste n'est pas vide
+		} else {
+			
+			// On verifie si la date de renouvellement est depasse
+			if (dateRenouvellementTonelle.getMonth() != dateCourante.getMonth()) {
+				itemsAAcheterTonelle = genereNouveauxItemsAAcheter();
+				dateRenouvellementTonelle = new Date(dateCourante.getTime());
+			}
+		}
+		return itemsAAcheterTonelle;
+	}
+
+	private List<Item> genereNouveauxItemsAAcheter() {
+		List<Item> items = new ArrayList<>();
+		
+		// 1 Arme epique Violet
+		items.add(genereArmeAVendre(ArmeClasse.VIOLET));
+		
+		// 2 Armes Bleues
+		items.add(genereArmeAVendre(ArmeClasse.BLEU));
+		items.add(genereArmeAVendre(ArmeClasse.BLEU));
+		
+		// 3 Armes Vertes
+		items.add(genereArmeAVendre(ArmeClasse.VERT));
+		items.add(genereArmeAVendre(ArmeClasse.VERT));
+		items.add(genereArmeAVendre(ArmeClasse.VERT));
+		
+		// 2 Popos de soin
+		items.add(generePopoVieAVendre());
+		items.add(generePopoVieAVendre());
+		
+		// 2 Popos de mana
+		items.add(generePopoManaAVendre());
+		items.add(generePopoManaAVendre());
+		
+		// 3 Popos special
+		items.add(generePopoBonusAVendre());
+		items.add(generePopoBonusAVendre());
+		items.add(generePopoBonusAVendre());
+		
+		// TODO 1 armure violette / 2 armures bleues ...
+
+		return items;
+	}
+	
+	private Item generePopoBonusAVendre() {
+		
+		// Recupere un popo de stat aleatoire
+		int randomItem = RandomManager.random(300, 326);
+		Item randomPopo = getItemById(randomItem);
+		
+		// Si la popo n a pas encore ete debloquee
+		if (!randomPopo.isDisponible()) {
+			// On renvoie une popo de technique +5 par default (306)
+			randomPopo = getItemById(306);
+		}
+		return randomPopo;
+	}
+
+	private Item generePopoManaAVendre() {
+		
+		// Recupere le meilleur type de popo de mana debloque
+	
+		Item popoMana25 = getItemById(200);
+		Item popoMana50 = getItemById(201);
+		Item popoMana75 = getItemById(202);
+		Item popoMana100 = getItemById(203);
+		
+		if (popoMana100.isDisponible()) {
+			return popoMana100;
+		} else if (popoMana75.isDisponible()) {
+			return popoMana75;
+		} else if (popoMana50.isDisponible()) {
+			return popoMana50;
+		} 
+		return popoMana25;
+	}
+
+	private Item generePopoVieAVendre() {
+		
+		// Recupere le meilleur type de popo de vie debloque
+		
+		Item popoVie25 = getItemById(100);
+		Item popoVie50 = getItemById(101);
+		Item popoVie75 = getItemById(102);
+		Item popoVie100 = getItemById(103);
+		
+		if (popoVie100.isDisponible()) {
+			return popoVie100;
+		} else if (popoVie75.isDisponible()) {
+			return popoVie75;
+		} else if (popoVie50.isDisponible()) {
+			return popoVie50;
+		} 
+
+		return popoVie25;
+	}
+
+	public Arme genereArmeAVendre(ArmeClasse classe) {
+
+		// Random un modele d'arme qui a deja été decouvert		
+		Arme modele = getRandomArmeDejaDecouverte();
+		
+		Arme arme = copieArme(modele);
+		arme.setId(incrementeIdArme());
+		if(classe != null) {
+			arme.setArmeClasse(classe);
+		} else {
+			arme.setArmeClasse(randomArmeClasse(difficulte));
+		}
+		arme.setCouleur(getCouleurArme(arme.getArmeClasse()));
+		PersonnageManager personnageManager = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager();
+		arme.setDegatsMin(randomDegatsMin(difficulte, arme.getArmeClasse(), personnageManager, null));
+		arme.setDegatsMax(randomDegatsMax(difficulte, arme.getArmeClasse(), arme.getDegatsMin(), personnageManager, null));
+		arme.setBonusParStat(randomBonusStat(difficulte, arme, personnageManager, null));
+		
+		return arme;
+		
+	}
+
+	public void removeItemsAAcheterMiranda(Item item) {
+		itemsAAcheterMiranda.remove(item);
+	}
+
+	public void removeItemsAAcheterTonelle(Item item) {
+		itemsAAcheterTonelle.remove(item);		
+	}
 
 }

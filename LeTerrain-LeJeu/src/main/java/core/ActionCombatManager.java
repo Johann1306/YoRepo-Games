@@ -706,7 +706,7 @@ public class ActionCombatManager implements Serializable {
 		
 		// Boss1 (Yo) (Zinedine Zidane) 
 		ActionCombat boss1Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de boule", "(Le triplé) Commence par deux coups de tête et fini sur un coup de boule", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
-		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque du Real", "attaque 1 info", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
+		ActionCombat boss1Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Attaque du Real", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss1Defense7 = new ActionCombat(incrementId(), "(Aura Multi - Chance) La chance du débutant", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.DEFENSE, EnergieType.CHARGE, CibleType.GROUPE_ALLIES, PersoStat.LUCK, SortType.AURA_MULTI, null);
 		ActionCombat boss1Special1 = new ActionCombat(incrementId(), "(Degats Mono) Reprise du gauche en final", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
@@ -756,22 +756,27 @@ public class ActionCombatManager implements Serializable {
 		
 		// Mme Chatelain
 		ActionCombat boss11Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de chatte", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss11Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Coups de chatte", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss11Special1 = new ActionCombat(incrementId(), "(Degats Mono) Recopiez le tableau", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		// Mme Dubois
 		ActionCombat boss12Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de bois", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss12Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Coups de bois", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss12Special1 = new ActionCombat(incrementId(), "(Degats Mono) Faites des sketchs", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		// Mme Durand
 		ActionCombat boss13Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup d'ni", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss13Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Coups d'ni", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss13Special1 = new ActionCombat(incrementId(), "(Degats Mono) Regis est un con", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		// Mme Braquet
 		ActionCombat boss14Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de stylo", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss14Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Coups de stylo", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss14Special1 = new ActionCombat(incrementId(), "(Degats Mono) Faites des dessins", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		// Mr Bouchera
 		ActionCombat boss15Attaque1 = new ActionCombat(incrementId(), "(Degats Mono) Coup de rat", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
+		ActionCombat boss15Attaque2 = new ActionCombat(incrementId(), "(Degats Multi) Coups de rat", "", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.GROUPE_ENNEMIS, PersoStat.TECHNIQUE, SortType.DEGATS_MULTI, null);
 		ActionCombat boss15Special1 = new ActionCombat(incrementId(), "(Degats Mono) Sortez dans la cour", "abc", imagePaths, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveauMaxSort, niveauMaxSort, progression, ActionCombatType.SPECIAL, EnergieType.CHARGE_ET_MANA, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, null);
 
 		
@@ -1288,18 +1293,23 @@ public class ActionCombatManager implements Serializable {
 		boss8Actions.add(boss8Special1);
 		
 		boss11Actions.add(boss11Attaque1);
+		boss11Actions.add(boss11Attaque2);
 		boss11Actions.add(boss11Special1);
 		
 		boss12Actions.add(boss12Attaque1);
+		boss12Actions.add(boss12Attaque2);
 		boss12Actions.add(boss12Special1);
 		
 		boss13Actions.add(boss13Attaque1);
+		boss13Actions.add(boss13Attaque2);
 		boss13Actions.add(boss13Special1);
 		
 		boss14Actions.add(boss14Attaque1);
+		boss14Actions.add(boss14Attaque2);
 		boss14Actions.add(boss14Special1);
 		
 		boss15Actions.add(boss15Attaque1);
+		boss15Actions.add(boss15Attaque2);
 		boss15Actions.add(boss15Special1);
 
 		gitanTankActions.add(gitanTankAttaque1);

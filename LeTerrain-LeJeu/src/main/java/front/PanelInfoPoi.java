@@ -2,6 +2,7 @@ package front;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 
 import core.MissionManager;
+import core.MusiqueManager;
 import core.configuration.Constante;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.MissionType;
@@ -42,8 +44,8 @@ public class PanelInfoPoi extends JPanel {
 		// Panel Nord : Poi
 		JLabel labelNomPoi = new JLabel(poi.getNom());
 		JLabel labelInfoPoi = new JLabel(poi.getInformations());
-		labelNomPoi.setFont(Constante.ZELDA_FONT_TITRE);
-		labelInfoPoi.setFont(Constante.ZELDA_FONT);
+		labelNomPoi.setFont(Constante.MARIO_FONT_MENU_2);
+		labelInfoPoi.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
 		panelNord.add(labelNomPoi);
 		panelNord.add(labelInfoPoi);
 //		System.out.println(this.getMaximumSize());
@@ -56,7 +58,7 @@ public class PanelInfoPoi extends JPanel {
 			if (mission != null) {
 				if (mission.isDisponible() && (!mission.isDejaFaite() || mission.isRepetable())) {
 					JButton bouton = new JButton(mission.getNom());
-					bouton.setFont(Constante.ZELDA_FONT_MENU);
+					bouton.setFont(Constante.MARIO_FONT_MENU_2);
 					if (mission.isRepetable()) {
 						bouton.setBackground(Constante.COULEUR_MISSION_REPETABLE);
 					} else if (mission.getMissionType().equals(MissionType.PRINCIPAL)) {
@@ -70,6 +72,8 @@ public class PanelInfoPoi extends JPanel {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
+
+							MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
 
 							// Nettoyage
 							panelCentre.removeAll();
@@ -86,23 +90,23 @@ public class PanelInfoPoi extends JPanel {
 							JPanel panelTypeJeu = new JPanel();
 							JPanel panelNombreEssais = new JPanel();
 							JPanel panelNombreVictoire = new JPanel();
-							JPanel panelDateMission = new JPanel();
-							JPanel panelLieuMission = new JPanel();
+//							JPanel panelDateMission = new JPanel();
+//							JPanel panelLieuMission = new JPanel();
 
-							panelProprio.add(new JLabel("Propriétaire : " + mission.getProprietaire().name()));
+							panelProprio.add(new JLabel("Proprietaire : " + mission.getProprietaire().name()));
 							panelNomMission.add(new JLabel("Nom de mission : " + mission.getNom()));
 							panelInfoMission.add(new JLabel("Infos : " + mission.getInformations()));
 							panelObjectif.add(new JLabel("Objectif : " + mission.getObjectif()));
 							panelCondVictoire
 									.add(new JLabel("Condition de victoire : " + mission.getConditionVictoire()));
 							panelCondDfaite.add(new JLabel("Condition de defaite : " + mission.getConditionDefaite()));
-							panelDifficulte.add(new JLabel("Difficulté : " + mission.getDifficulty().name()));
+							panelDifficulte.add(new JLabel("Difficulte : " + mission.getDifficulty().name()));
 							panelTypeMission.add(new JLabel("Type de mission : " + mission.getMissionType().name()));
 							panelTypeJeu.add(new JLabel("Type de jeu : " + mission.getJeu().name()));
 							panelNombreEssais.add(new JLabel("Essais : " + mission.getNombreEssai()));
 							panelNombreVictoire.add(new JLabel("Victoires : " + mission.getNombreWin()));
-							panelDateMission.add(new JLabel("Date : " + mission.getDate()));
-							panelLieuMission.add(new JLabel("Lieu : " + mission.getLieu()));
+//							panelDateMission.add(new JLabel("Date de disponibilite: " + mission.getDate()));
+//							panelLieuMission.add(new JLabel("Lieu : " + mission.getLieu()));
 
 							panelCentre.add(panelProprio);
 							panelCentre.add(panelNomMission);
@@ -115,9 +119,21 @@ public class PanelInfoPoi extends JPanel {
 							panelCentre.add(panelTypeJeu);
 							panelCentre.add(panelNombreEssais);
 							panelCentre.add(panelNombreVictoire);
-							panelCentre.add(panelDateMission);
-							panelCentre.add(panelLieuMission);
-
+//							panelCentre.add(panelDateMission);
+//							panelCentre.add(panelLieuMission);
+							
+							// Font
+							Component[] components = panelCentre.getComponents();
+							for (Component component : components) {
+								if (component instanceof JPanel) {
+									JPanel panel = (JPanel) component;
+									Component[] panelComponents = panel.getComponents();
+									for (Component panelComponent : panelComponents) {
+										panelComponent.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
+									}
+								}
+							}
+							
 							// TODO : a presenter
 							// List<String> imagePaths =
 							// mission.getImagePaths();
@@ -138,11 +154,15 @@ public class PanelInfoPoi extends JPanel {
 
 							// Bouton lancer mission
 							JButton boutonMission = new JButton("START");
-							boutonMission.setFont(Constante.ZELDA_FONT);
+							boutonMission.setFont(Constante.MARIO_FONT_MENU_2);
 							boutonMission.addActionListener(new ActionListener() {
 
 								@Override
 								public void actionPerformed(ActionEvent e) {
+									
+									// TODO son different pour demarrage de mission
+									MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
+									
 									// Lance la mission
 									MissionManager missionManager = MenuPrincipal.getMainFrame().getCoreManager()
 											.getMissionManager();

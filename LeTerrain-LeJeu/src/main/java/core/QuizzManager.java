@@ -42,17 +42,17 @@ public class QuizzManager implements Serializable {
 		
 		String imagePath2 = "image/enigme/ali.png";
 		String videoPath2 = "video/Trololo.mp4";
-		String question2 = "Quel est le nom de famille de Nicolas ---------------------------------------?";
+		String question2 = "Quel est le nom de famille de Nicolas ---------------- ------------------- -------------- --------------- ------------ ------- -------- ---------?";
 		Reponse reponse21 = new Reponse("Bercot", false);
 		Reponse reponse22 = new Reponse("Darmouni", false);
 		Reponse reponse23 = new Reponse("Lopez", true);
-		Reponse reponse24 = new Reponse("Sermain", false);
+		Reponse reponse24 = new Reponse("Sermain------------------------------- ---------- --------------- ---------------------- ------------------ ------------ ----------", false);
 		List<Reponse> reponsesPossibles2 = new ArrayList<Reponse>();
 		reponsesPossibles2.add(reponse21);
 		reponsesPossibles2.add(reponse22);
 		reponsesPossibles2.add(reponse23);
 		reponsesPossibles2.add(reponse24);
-		String infoReponse2 = "Comme 50% des espagnols";
+		String infoReponse2 = "Comme 50% des espagnols--------- --------- ----------------------- ---------------- --------------- ------------------- ------------- -------------";
 
 		String imagePath3 = "image/enigme/ali.png";
 		String videoPath3 = "video/Trololo.mp4";

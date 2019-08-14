@@ -4,11 +4,14 @@ Priorités :
 - Terminer ce qui est terminable (sortir une version jouable)
 - gerer les 4 difficultés (facile, normale, difficile, extreme) => ou gerer une seule pour le moment
 - matrice de difficulté
-- Gerer la difficulté combat trop elevée (allie 50 - ennemi 500 degats) => degats ennemis /4
-	 - 1er combat en heroique => 1 vs 4 => premiere attaque ennemi => 927 pt de degats => mort sans jouer
-	 - 1er combat en difficile => 1 vs 3 => deuxieme attaque ennemi => 720 pt de degats => mort sans jouer
-	 - 1er combat en normal => 1 vs 2 => deuxieme attaque ennemi => 250 pt de degats => mort apres un tour
-- Sortir les variables de conf dans un fichier a coté pour ce qui peut etre modifier par le joueur / class de constante
+- Objets de missions pour gagner d'autre type de stat que Inte (Quizz) 
+- Gerer la difficulté combat trop elevée :
+	 - 1er boss en FACILE => trop dur par rapport aux combats jusque la (rez a chaque tour) => mort avec les ennemis full life (trop de vie + trop de degats du boss + 3 rez)
+	 - 1er combats en HEROIQUE 	=> pas assez dur 
+	 							=> focus sur Darm systematique (=> prendre en compte la vie + bouclier pour choix des cibles de l'ennemi + aleatoire de temps en temps + attaque multiple plus souvent)
+	 							=> Les boss sont trop dur 
+- Sortir les variables de conf dans un fichier a coté pour ce qui peut etre modifier par le joueur / class de constante => Pour pouvoir faire des reglages à la fin rapidement
+- Correction orthographique => valider tous les textes (contenu, blague, choquant)
 
 Problemes Graves:
 - TODO probleme du Nullpointer a reproduire quand on charge la derniere partie dans le jeu
@@ -16,8 +19,10 @@ Problemes Graves:
 - quand spam espace (bouton son) en combat : les musiques se superposent => solution desactiver.
 - Bouton "SON" qui n'apparait pas en combat (au deuxieme combat? si desactivé au premier combat?). A cause de la taille du texte qui pousse a droite? ou commente dans le code?
 - Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???)
+- (VLC) Videos qui ne s'affiche plus apres une sauvegarde (le son est ok ?) (Pas le probleme si on relance le jeu)
 
 Problemes Legers: 
+- sauvegarde auto apres chaque mission reussie (au dernier moment sinon problemes pour tester)
 - Tranches de degats trop variables en fonction de la difficulte (multiplicateur x3 - x25) (degats /4 /3 /2 /1) => regler le probleme
 - Les armes avec bonus de competence pour les ennemis doivent elles impacter les competences des ennemis? des boss? oui
 - Les degats des armes impactent tous les sorts => Impacter uniquement les sorts de base? les special?
@@ -86,7 +91,6 @@ Optionnelles:
 - Tooltip sur les Competences dans la fiche perso (info sur les domaines dans lequel elle intervient : esquive / critique / ...) 
 - Animations quand passage de la souris sur les boutons
 - Faire la tonelle => pouvoir acheter des objets => avoir de l'argent.
-- integrer les profs => mini boss
 - les regles d'internet (jeannot nymouce)
 - limiter la progression en fonction du nombre de mission disponible (max 5 ou 10 non resolus) => bloquer le timer
 - Questions 'de personnalité' au debut du jeu à la fallout 4 (sans consequences / questions aleatoires? connes?)
@@ -150,9 +154,10 @@ Prerequis :
 
 
 Infos :
-- Les missions quizz se debloquent a chaque anniversaire de chaque perso depuis son arrivée jusqu'en 2000
-- Thomas et Nico : 10 + 10 ; Yannick, Johann et Pierre : 9 + 9 + 9 ; Ali : 5 ; Guy : 3 ; Russ : 1 => (56 questions en tout)
-- Apres le 1 er janvier 2001 => mission repetable pour Russ avec le reste des questions
+- Missions Quizz :
+	- Les missions quizz se debloquent a chaque anniversaire de chaque perso depuis son arrivée jusqu'en 2000
+	- Thomas et Nico : 10 + 10 ; Yannick, Johann et Pierre : 9 + 9 + 9 ; Ali : 5 ; Guy : 3 ; Russ : 1 => (56 questions en tout)
+	- Apres le 1 er janvier 2001 => mission repetable pour Russ avec le reste des questions
 
 Pour Executer le jar :
 Il faut copier l'ensemble du repertoire qui contient le JAR (C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target)

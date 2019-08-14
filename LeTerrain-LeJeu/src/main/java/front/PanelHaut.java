@@ -3,7 +3,6 @@ package front;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -13,7 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import core.DateManager;
-import core.EvenementManager;
 import core.ImageManager;
 import core.MissionManager;
 import core.MusiqueManager;
@@ -37,54 +35,76 @@ public class PanelHaut extends JPanel {
 		
 		// bouton info
 		
-		
-		// label temps passe dans le jeu
-		JLabel labelTempsPasseDansLeJeu = new JLabel("0");
-		labelTempsPasseDansLeJeu.setFont(Constante.ZELDA_FONT);
-		long currentTimeMillis = System.currentTimeMillis();
-		long debutTimeMillis = currentTimeMillis;
-		Date timer = new Date(currentTimeMillis - debutTimeMillis);
-		Thread t = new Thread(new Runnable() {
+		// TODO faire mieux qu'un thread toute les seconde => refresh du label seulement quand on gagne de l'argent
+		// label Argent du groupe
+		int argent = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getBourse();
+		JLabel labelArgent = new JLabel("Bourse : " + argent + " Francs");
+		Thread t1 = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				try {
 					while(true) {
 						Thread.sleep(1000);
-						long currentTimeMillis = System.currentTimeMillis();
-						timer.setTime(currentTimeMillis - debutTimeMillis);
-						String jours = null;
-						if ((timer.getDate()-1) >=2) {
-							jours = "jours";
-						} else {
-							jours = "jour";
-						}
-						int heure = timer.getHours()-1;
-						String heures = Integer.toString(heure);
-						if (heure<10) {
-							heures = "0" + heures;
-						}
-						int minute = timer.getMinutes();
-						String minutes = Integer.toString(minute);
-						if (minute<10) {
-							minutes = "0" + minutes;
-						}
-						int seconde = timer.getSeconds();
-						String secondes = Integer.toString(seconde);
-						if (seconde<10) {
-							secondes = "0" + secondes;
-						}
-						String text = timer.getDate()-1 + " " + jours + ", " + heures + ":" + minutes + ":" + secondes;
-						labelTempsPasseDansLeJeu.setText(text);
+						int argent = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getBourse();
+						labelArgent.setText("Bourse : " + argent + " Francs");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		if (!t.isAlive()) {
-			t.start();
+		if (!t1.isAlive()) {
+			t1.start();
 		}
+		
+		// label temps passe dans le jeu
+//		JLabel labelTempsPasseDansLeJeu = new JLabel("0");
+//		labelTempsPasseDansLeJeu.setFont(Constante.ZELDA_FONT);
+//		long currentTimeMillis = System.currentTimeMillis();
+//		long debutTimeMillis = currentTimeMillis;
+//		Date timer = new Date(currentTimeMillis - debutTimeMillis);
+//		Thread t = new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				try {
+//					while(true) {
+//						Thread.sleep(1000);
+//						long currentTimeMillis = System.currentTimeMillis();
+//						timer.setTime(currentTimeMillis - debutTimeMillis);
+//						String jours = null;
+//						if ((timer.getDate()-1) >=2) {
+//							jours = "jours";
+//						} else {
+//							jours = "jour";
+//						}
+//						int heure = timer.getHours()-1;
+//						String heures = Integer.toString(heure);
+//						if (heure<10) {
+//							heures = "0" + heures;
+//						}
+//						int minute = timer.getMinutes();
+//						String minutes = Integer.toString(minute);
+//						if (minute<10) {
+//							minutes = "0" + minutes;
+//						}
+//						int seconde = timer.getSeconds();
+//						String secondes = Integer.toString(seconde);
+//						if (seconde<10) {
+//							secondes = "0" + secondes;
+//						}
+//						String text = timer.getDate()-1 + " " + jours + ", " + heures + ":" + minutes + ":" + secondes;
+//						labelTempsPasseDansLeJeu.setText(text);
+//					}
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//		if (!t.isAlive()) {
+//			t.start();
+//		}
 		
 		// label Difficulte
 		Difficulte difficultePartie = MenuPrincipal.getMainFrame().getCoreManager().getDifficultePartie();
@@ -223,6 +243,8 @@ public class PanelHaut extends JPanel {
 		// Font
 		labelDifficulte.setFont(Constante.ZELDA_FONT);
 		labelAvancement.setFont(Constante.ZELDA_FONT);
+		labelArgent.setFont(Constante.ZELDA_FONT);
+		labelArgent.setForeground(Color.YELLOW);
 		labelDate.setFont(Constante.ZELDA_FONT);
 		labelDate.setForeground(Color.WHITE);
 		boutonPasser.setFont(Constante.ZELDA_FONT);
@@ -230,7 +252,8 @@ public class PanelHaut extends JPanel {
 		
 		// Ajout au panel
 		panelDate.add(labelDate);
-		this.add(labelTempsPasseDansLeJeu);
+		this.add(labelArgent);
+//		this.add(labelTempsPasseDansLeJeu);
 		this.add(panelDate);
 		this.add(labelDifficulte);
 		this.add(labelAvancement);

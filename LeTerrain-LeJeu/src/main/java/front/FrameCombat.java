@@ -2292,7 +2292,7 @@ public class FrameCombat extends FrameJeu {
 					ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
 					JOptionPane.showMessageDialog(this,
 							"Le sort de " + actionCombat.getProprietaire().name() + " : '" + actionCombat.getNom()
-									+ "' a progressé d'un niveau ! (" + actionCombat.getNiveau() + ")",
+									+ "' a progresse d'un niveau ! (" + actionCombat.getNiveau() + ")",
 							"Progression d'un sort", 0, resizeImage);
 				} else {
 					// TODO Si item au niveau Max
@@ -2301,6 +2301,7 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		// Fermeture de la frame combat et reaffichage de la mainframe
+		this.removeAll();
 		this.dispose();
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
@@ -2322,7 +2323,6 @@ public class FrameCombat extends FrameJeu {
 		
 		if (ItemManager.getItemSelectionne() != null) {
 			Item item = ItemManager.getItemSelectionne();
-//			ItemManager.gestionItemSelectionne(prenomCible, lanceurItem, panelCentre);
 			ItemManager.gestionItemSelectionne(prenomCible, panelCentre);
 			
 			// Si on a consommé l'item

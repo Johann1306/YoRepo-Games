@@ -84,7 +84,16 @@ public class PoiManager implements Serializable {
 		List<Mission> missionsPoi1601 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1602 = new ArrayList<Mission>();
 		List<Mission> missionsPoi1603 = new ArrayList<Mission>();
-		
+
+		List<Mission> missionsPoi2001 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2002 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2003 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2004 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2005 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2006 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2007 = new ArrayList<Mission>();
+		List<Mission> missionsPoi2008 = new ArrayList<Mission>();
+
 		// Ecole
 		missionsPoiClasse.add(missionManager.getMissionById(101));
 		missionsPoiClasse.add(missionManager.getMissionById(1011));
@@ -93,6 +102,7 @@ public class PoiManager implements Serializable {
 		missionsPoiCour.add(missionManager.getMissionById(1101));
 		missionsPoiCour.add(missionManager.getMissionById(1105));
 		missionsPoiCour.add(missionManager.getMissionById(1015));
+		missionsPoiCour.add(missionManager.getMissionById(203));
 		missionsPoiPreau.add(missionManager.getMissionById(103));
 		missionsPoiPreau.add(missionManager.getMissionById(1014));
 		missionsPoiCantine.add(missionManager.getMissionById(104));
@@ -112,6 +122,7 @@ public class PoiManager implements Serializable {
 			missionsPoi101.add(missionManager.getMissionById(202));
 			
 		// Yo
+		missionsPoi200.add(missionManager.getMissionById(206));
 		missionsPoi200.add(missionManager.getMissionById(1102));
 		missionsPoi200.add(missionManager.getMissionById(1103));
 		missionsPoi200.add(missionManager.getMissionById(1106));
@@ -130,6 +141,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1000.add(missionManager.getMissionById(300));
 		missionsPoi1000.add(missionManager.getMissionById(308));
 		missionsPoi1000.add(missionManager.getMissionById(309));
+		missionsPoi1001.add(missionManager.getMissionById(205));
 		missionsPoi1001.add(missionManager.getMissionById(301));
 		missionsPoi1001.add(missionManager.getMissionById(302));
 		missionsPoi1001.add(missionManager.getMissionById(303));
@@ -194,6 +206,7 @@ public class PoiManager implements Serializable {
 		missionsPoi1503.add(missionManager.getMissionById(808));
 		
 		// Nico
+		missionsPoi1600.add(missionManager.getMissionById(204));
 		missionsPoi1600.add(missionManager.getMissionById(902));
 		missionsPoi1600.add(missionManager.getMissionById(904));
 		missionsPoi1600.add(missionManager.getMissionById(906));
@@ -275,6 +288,12 @@ public class PoiManager implements Serializable {
 		
 		missionsPoi1000.add(missionManager.getMissionById(2061));
 		missionsPoi1000.add(missionManager.getMissionById(2062));
+		
+		// Acheter/Vendre
+		missionsPoi2001.add(missionManager.getMissionById(230));
+		missionsPoi2003.add(missionManager.getMissionById(240));
+		missionsPoi2005.add(missionManager.getMissionById(250));
+		missionsPoi2007.add(missionManager.getMissionById(260));
 
 		
 		// (X,Y) en partant du haut-gauche
@@ -327,6 +346,15 @@ public class PoiManager implements Serializable {
 		Poi poiChezNico_Salon = new Poi(1601, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1601);
 		Poi poiChezNico_Jardin = new Poi(1602, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1602);
 		Poi poiChezNico_Chambre = new Poi(1603, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 600), missionsPoi1603);
+		
+		Poi poiAchatMiranda = new Poi(2001, "Acheter/Vendre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2001);
+		Poi poiVenteMiranda = new Poi(2002, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi2002);
+		Poi poiAchatTonelle = new Poi(2003, "Acheter/Vendre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2003);
+		Poi poiVenteTonelle = new Poi(2004, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 600), missionsPoi2004);
+		Poi poiAchatDahlias = new Poi(2005, "Acheter/Vendre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2005);
+		Poi poiVenteDahlias = new Poi(2006, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi2006);
+		Poi poiAchatBosquets = new Poi(2007, "Acheter/Vendre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2007);
+		Poi poiVenteBosquets = new Poi(2008, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 600), missionsPoi2008);
 
 		pois.add(poiChezRuss_Portail);
 		pois.add(poiChezRuss_Salon);
@@ -373,6 +401,15 @@ public class PoiManager implements Serializable {
 		pois.add(poiEcole5);
 		pois.add(poiTerrain_Cabane);
 		pois.add(poiTerrain_Terrain);
+		
+		pois.add(poiAchatMiranda);
+		pois.add(poiVenteMiranda);
+		pois.add(poiAchatTonelle);
+		pois.add(poiVenteTonelle);
+		pois.add(poiAchatDahlias);
+		pois.add(poiVenteDahlias);
+		pois.add(poiAchatBosquets);
+		pois.add(poiVenteBosquets);
 		
 		// On suppose que tous les pois sont indisponibles au depart
 		poisIndisponible.addAll(pois);

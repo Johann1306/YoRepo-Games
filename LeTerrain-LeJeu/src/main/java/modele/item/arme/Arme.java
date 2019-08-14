@@ -103,21 +103,43 @@ public class Arme extends Item implements Serializable {
 		stringBuilder.append(getDegatsMax());
 		stringBuilder.append(")");
 		if (!bonusParStat.isEmpty()) {
-			stringBuilder.append(" ( Bonus : ");
+			stringBuilder.append(" (Bonus : ");
 			Set<PersoStat> keySet = bonusParStat.keySet();
 			for (PersoStat persoStat : keySet) {
 				Integer value = bonusParStat.get(persoStat);
-				stringBuilder.append("+");
+				stringBuilder.append(" +");
 				stringBuilder.append(value);
 				stringBuilder.append(" ");
 				stringBuilder.append(persoStat.name());
-				stringBuilder.append(" ");
 			}
 			stringBuilder.append(")");
 		}
 		if (!getInformations().isEmpty()) {
 			stringBuilder.append(" - ");
 			stringBuilder.append(getInformations());
+		}
+		return stringBuilder.toString();
+	}
+
+	public String getStats() {
+		StringBuilder stringBuilder= new StringBuilder();
+		stringBuilder.append("Degats:");
+		stringBuilder.append(" (");
+		stringBuilder.append(getDegatsMin());
+		stringBuilder.append("-");
+		stringBuilder.append(getDegatsMax());
+		stringBuilder.append(")");
+		if (!bonusParStat.isEmpty()) {
+			stringBuilder.append(" (Bonus:");
+			Set<PersoStat> keySet = bonusParStat.keySet();
+			for (PersoStat persoStat : keySet) {
+				Integer value = bonusParStat.get(persoStat);
+				stringBuilder.append(" +");
+				stringBuilder.append(value);
+				stringBuilder.append(" ");
+				stringBuilder.append(persoStat.name());
+			}
+			stringBuilder.append(")");
 		}
 		return stringBuilder.toString();
 	}

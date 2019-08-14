@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 
 import core.ImageManager;
+import core.MusiqueManager;
 import core.PersonnageManager;
 import core.configuration.Constante;
 import modele.item.carte.Carte;
@@ -179,6 +180,8 @@ public class PanelCentre extends JPanel {
 					// TODO evenement aleatoire quand deplacement lieu
 					System.out.println("- evenement aleatoire quand deplacement lieu");
 					
+					MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
+					
 					// Deplacement du perso ou du groupe
 					if (panel.getName() == PersoPrenom.GROUPE.name()) {
 						List<PersonnagePrincipal> persos = personnageManager.getPersoVivantsEtDejaPresentes();
@@ -215,6 +218,7 @@ public class PanelCentre extends JPanel {
 							public void actionPerformed(ActionEvent e) {
 								// TODO evenement aleatoire quand selection Poi
 								System.out.println("- evenement aleatoire quand selection Poi");
+								MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
 								JPanel panelInfoPoi = new PanelInfoPoi(poi);
 								panel.removeAll();
 								panel.add(panelInfoPoi);
@@ -317,6 +321,7 @@ public class PanelCentre extends JPanel {
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
 				panel.removeAll();
 				buildPanelPerso(panel);
 				revalidate();

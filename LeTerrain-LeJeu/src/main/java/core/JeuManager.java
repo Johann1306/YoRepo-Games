@@ -9,6 +9,8 @@ import core.jeu.JeuCombat;
 import core.jeu.JeuCourse;
 import core.jeu.JeuQuizz;
 import core.jeu.JeuRandom;
+import core.jeu.JeuShopAdulte;
+import core.jeu.JeuShopEnfant;
 import front.MenuPrincipal;
 import modele.item.mission.Mission;
 import modele.item.personnage.Groupe;
@@ -30,7 +32,9 @@ public class JeuManager implements Serializable {
 		Jeu jeuAgilite = new JeuAgilite(NomJeu.JEU_AGILITE);
 		Jeu jeuCombat = new JeuCombat(NomJeu.JEU_COMBAT);
 		Jeu jeuCourse = new JeuCourse(NomJeu.JEU_COURSE);
-		Jeu jeuFoot = new JeuCourse(NomJeu.JEU_FOOT);
+		Jeu jeuShopEnfant = new JeuShopEnfant(NomJeu.JEU_SHOP_ENFANT);
+		Jeu jeuShopAdulte = new JeuShopAdulte(NomJeu.JEU_SHOP_ADULTE);
+//		Jeu jeuFoot = new JeuFoot(NomJeu.JEU_FOOT);
 		// JEU_BILLE
 
 		jeux.put(NomJeu.JEU_RANDOM, jeuRandom);
@@ -38,7 +42,9 @@ public class JeuManager implements Serializable {
 		jeux.put(NomJeu.JEU_AGILITE, jeuAgilite);
 		jeux.put(NomJeu.JEU_COMBAT, jeuCombat);
 		jeux.put(NomJeu.JEU_COURSE, jeuCourse);
-		jeux.put(NomJeu.JEU_FOOT, jeuFoot);
+		jeux.put(NomJeu.JEU_SHOP_ENFANT, jeuShopEnfant);
+		jeux.put(NomJeu.JEU_SHOP_ADULTE, jeuShopAdulte);
+//		jeux.put(NomJeu.JEU_FOOT, jeuFoot);
 	}
 	
 	public Jeu getJeu(NomJeu nomJeu) {
