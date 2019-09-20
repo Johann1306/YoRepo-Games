@@ -148,7 +148,9 @@ public class PanelCentre extends JPanel {
 			// Affiche le nombre de nouvelles missions sur ce lieu
 			int nbMissionsLieu = 0;
 			for (Poi poi : lieu.getPois()) {
-				nbMissionsLieu = nbMissionsLieu + poi.getNouvellesMissionsDisponibles().size();
+				if (poi != null) {
+					nbMissionsLieu = nbMissionsLieu + poi.getNouvellesMissionsDisponibles().size();
+				}
 			}
 			JButton bouton = null;
 			if (nbMissionsLieu == 0) {
@@ -194,42 +196,48 @@ public class PanelCentre extends JPanel {
 					}
 					
 					panel.removeAll();
-					for (Poi poi : lieu.getPois()) {
-						// Affiche le nombre de nouvelles missions sur ce lieu
-						int nbMissionsPoi = poi.getNouvellesMissionsDisponibles().size();
-						JButton bouton = null;
-						if (nbMissionsPoi == 0) {
-							bouton = new JButton(poi.getNom());
-						} else {
-							bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
-						}
-						bouton.setFont(Constante.SIMPSON_FONT);
-						// TODO taille bouton unique (minimum)
-//						bouton.setMaximumSize(Constante.BOUTON_LIEU_DIMENSION);
-						JPanel panelBouton = new JPanel();
-						panelBouton.setLocation(poi.getPoint());
-						panelBouton.add(bouton);
-						panelBouton.setOpaque(false);
-						panelBouton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 10, true));
-						
-						// Si Clic sur un Poi
-						bouton.addActionListener(new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO evenement aleatoire quand selection Poi
-								System.out.println("- evenement aleatoire quand selection Poi");
-								MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
-								JPanel panelInfoPoi = new PanelInfoPoi(poi);
-								panel.removeAll();
-								panel.add(panelInfoPoi);
-								JPanel panelBoutons = new JPanel();
-								panelBoutons.setOpaque(false);
-								addBoutonCarte(panel, panelBoutons);
-								revalidate();
+					
+					List<Poi> pois = lieu.getPois();
+					if (pois != null && !pois.isEmpty()) {
+						for (Poi poi : pois) {
+							// Affiche le nombre de nouvelles missions sur ce lieu
+							int nbMissionsPoi = poi.getNouvellesMissionsDisponibles().size();
+							JButton bouton = null;
+							if (nbMissionsPoi == 0) {
+								bouton = new JButton(poi.getNom());
+							} else {
+								bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
 							}
-						});
-						panel.add(panelBouton, Integer.valueOf(2));
+							bouton.setFont(Constante.SIMPSON_FONT);
+							// TODO taille bouton unique (minimum)
+	//						bouton.setMaximumSize(Constante.BOUTON_LIEU_DIMENSION);
+							JPanel panelBouton = new JPanel();
+							panelBouton.setLocation(poi.getPoint());
+							panelBouton.add(bouton);
+							panelBouton.setOpaque(false);
+							panelBouton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 10, true));
+							
+							// Si Clic sur un Poi
+							bouton.addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									// TODO evenement aleatoire quand selection Poi
+									System.out.println("- evenement aleatoire quand selection Poi");
+									MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
+									JPanel panelInfoPoi = new PanelInfoPoi(poi);
+									panel.removeAll();
+									panel.add(panelInfoPoi);
+									JPanel panelBoutons = new JPanel();
+									panelBoutons.setOpaque(false);
+									addBoutonCarte(panel, panelBoutons);
+									revalidate();
+								}
+							});
+							panel.add(panelBouton, Integer.valueOf(2));
+						}
+					
 					}
+					
 					JPanel panelBoutonCarte = new JPanel();
 					panelBoutonCarte.setOpaque(false);
 					addBoutonCarte(panel, panelBoutonCarte);

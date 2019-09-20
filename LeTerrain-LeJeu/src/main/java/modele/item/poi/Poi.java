@@ -1,6 +1,5 @@
 package modele.item.poi;
 
-import java.awt.Component;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;

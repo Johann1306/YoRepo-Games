@@ -517,6 +517,723 @@ public class BonusManager implements Serializable {
 		int random = RandomManager.random(0, variable);
 		argent = argent - random;
 		
-		leGroupe.ajouteArgent(argent, false);
+		leGroupe.ajouteArgent(argent, false, false);
+	}
+
+	// Bonus de stats pour chaque drogue
+	
+	public static Map<PersoStat, Integer> getBonusParStatCanabis() {
+		
+		Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.canabis.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatHerbe() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.herbe.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatCocaine() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cocaine.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatExtasy() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.extasy.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatMdma() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.mdma.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatSpeed() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.speed.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatHeroine() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.heroine.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatLsd() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.lsd.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatGhb() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.ghb.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatPoppers() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.poppers.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatChampignon() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.champignon.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatAmphetamine() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.amphetamine.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatCristal() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.cristal.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
+	}
+
+	public static Map<PersoStat, Integer> getBonusParStatPavot() {
+	Map<PersoStat, Integer> map = new HashMap<>();
+		
+		int chance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.chance")); 
+		if (chance != 0) {
+			map.put(PersoStat.LUCK, chance);			
+		}
+		
+		int endurance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.endurance")); 
+		if (endurance != 0) {
+			map.put(PersoStat.ENDURANCE, endurance);			
+		}
+		
+		int technique = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.technique")); 
+		if (technique != 0) {
+			map.put(PersoStat.TECHNIQUE, technique);			
+		}
+		
+		int exploit = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.exploit")); 
+		if (exploit != 0) {
+			map.put(PersoStat.EXPLOIT, exploit);			
+		}
+		
+		int rapidite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.rapidite")); 
+		if (rapidite != 0) {
+			map.put(PersoStat.RAPIDITE, rapidite);			
+		}
+		
+		int resistance = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.resistance")); 
+		if (resistance != 0) {
+			map.put(PersoStat.RESISTANCE, resistance);			
+		}
+		
+		int agilite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.agilite")); 
+		if (agilite != 0) {
+			map.put(PersoStat.AGILITE, agilite);			
+		}
+		
+		int intelligence = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.intelligence")); 
+		if (intelligence != 0) {
+			map.put(PersoStat.INTELLIGENCE, intelligence);			
+		}
+		
+		int nervosite = Integer.valueOf(ConfigurationManager.getProperties("drogue.bonus.pavot.nervosite")); 
+		if (nervosite != 0) {
+			map.put(PersoStat.NERVOSITE, nervosite);			
+		}
+		
+		return map;
 	}
 }

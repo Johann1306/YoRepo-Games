@@ -14,6 +14,8 @@ import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.arme.Arme;
 import modele.item.arme.ArmeClasse;
+import modele.item.drogue.Drogue;
+import modele.item.drogue.DrogueClasse;
 
 public class MyImageCellRenderer extends DefaultTableCellRenderer  {
 
@@ -34,7 +36,7 @@ public class MyImageCellRenderer extends DefaultTableCellRenderer  {
 			setIcon(resizeImage);
 			// TODO Couleur en fonction du type pour les armures aussi
 			
-			// Couleur en fonction du type d'arme
+			// Couleur en fonction de la classe d'arme
 			if (type.equals(ItemType.ARME.name())) {
 				Arme arme = (Arme) item;
 				String armeClasse = arme.getArmeClasse().name();
@@ -95,6 +97,20 @@ public class MyImageCellRenderer extends DefaultTableCellRenderer  {
 					|| type.equals(ItemType.BONUS_STAT_EXPLOIT_20.name())) {
 				
 				this.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
+				
+			// Couleur en fonction de la classe de drogue
+			} else if (type.equals(ItemType.DROGUE.name())) {
+				Drogue drogue = (Drogue) item;
+				String drogueClasse = drogue.getDrogueClasse().name();
+				if (drogueClasse.equals(DrogueClasse.GRIS.name())) {
+					this.setBorder(BorderFactory.createLineBorder(Color.GRAY));				
+				} else if (drogueClasse.equals(DrogueClasse.VERT.name())) {
+					this.setBorder(BorderFactory.createLineBorder(Color.GREEN));				
+				} else if (drogueClasse.equals(DrogueClasse.BLEU.name())) {
+					this.setBorder(BorderFactory.createLineBorder(Color.BLUE));				
+				} else if (drogueClasse.equals(DrogueClasse.VIOLET.name())) {
+					this.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));				
+				} 
 			}
 		}
 		

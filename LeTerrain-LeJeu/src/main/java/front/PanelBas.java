@@ -26,6 +26,7 @@ import modele.evenement.Evenement;
 import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.arme.Arme;
+import modele.item.drogue.Drogue;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
 
@@ -93,7 +94,7 @@ public class PanelBas extends JPanel {
 		for (Evenement evenement : evenementsDisponibles) {
 			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
 			labelEvenement.setForeground(Color.WHITE);
-			labelEvenement.setFont(Constante.ZELDA_FONT);
+			labelEvenement.setFont(Constante.SIMPSON_FONT);
 			panelEvenement.add(labelEvenement);
 		}
 	}
@@ -155,11 +156,21 @@ public class PanelBas extends JPanel {
 			}
 			bonusArme.append(")");
 			boutonItem.setToolTipText(arme.toString());
-		
+
+		// Si c'est une drogue
+		} else if (item.getType() == ItemType.DROGUE) {
+			Drogue drogue = (Drogue)item;
+			boutonItem.setToolTipText(drogue.getNom() + " (x" + nbItems + ")" + " : " + drogue.getStats());
+			
 		// Si c'est une popo
 		} else if (item.isConsommable()) {
 			boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")" + " : " + item.getInformations());
+		
+		// Sinon pour tous les autres objets, on affiche le nom + info
+		} else {
+			boutonItem.setToolTipText(item.getNom()  + " : " + item.getInformations());			
 		}
+		
 		boutonItem.setPreferredSize(Constante.ITEM_TAILLE_DIMENSION);
 		boutonItem.addActionListener(new ActionListener() {
 			@Override

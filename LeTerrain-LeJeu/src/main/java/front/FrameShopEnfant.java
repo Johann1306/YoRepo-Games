@@ -444,7 +444,7 @@ public class FrameShopEnfant extends FrameJeu {
 				if (reponse == 0) {		    	
 					
 					// Ajoute les sous a la bourse du groupe
-					leGroupe.ajouteArgent(prixDeVente, true);
+					leGroupe.ajouteArgent(prixDeVente, true, false);
 					
 					// Retire l'objet du sac
 					leGroupe.enleveItem(item);

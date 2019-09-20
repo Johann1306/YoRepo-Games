@@ -26,6 +26,7 @@ import modele.competence.PersoStat;
 import modele.evenement.EvenementTheme;
 import modele.item.Item;
 import modele.item.ItemType;
+import modele.item.media.audio.Musique;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoNom;
 import modele.item.personnage.PersoPrenom;
@@ -295,6 +296,10 @@ public class PanelPersonnage extends JPanel {
 									ImageIcon iconDieu = FenetrePrincipal.getImageIcon("image/pnj/dieu.png");
 									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " : " + perso.getMessageDieu(), EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
 									
+									// Demarre une musique d'ambiance 
+									MusiqueManager.stopAll();
+									List<Musique> musiques = MusiqueManager.chargeMusiquesParRepertoire("musique/reveil", 20000);
+									MusiqueManager.playMusiquesRandom(musiques);
 								}
 							} 
 						}

@@ -1,5 +1,36 @@
 TODO :
 
+Test grandeur nature le 26/08/2019 : (difficulte HEROIQUE)
+- 1er boss tué : lara Croft sans difficulté avec un seul rezzer (Thomas)
+- 2eme boss tué : Mme Chatelain apres 3 essais (depend de l'arme du boss) (le boss doit avoir + de sorts => ne fait plus rien a la fin avec les boubou)
+- 1ere mort tres tardive (contre le boss final de Yo)
+- deblocage des persos avec un combat ?
+- Mettre un son quand mission reussi 
+- Mettre un son quand sort monte de niveau (possible plusieurs enchainement de perso a la fin du meme combat)
+- Mettre un son quand utilisation d'un objet (popo (boire), arme (equiper), drogue(fumer)) + quand push boutons
+- Mettre le generique d'anniversaire de dorothee pour les missions anniversaire
+- Fiche perso : empecher les modif du tableau (comme boutique) (refonte graphique)
+- Quizz manager : message d'info qui deborde -> JTextArea (comme question) (refonte graphique)
+- Probleme des accents avec police de Mario (Trouver une autre police ou virer les accents partout) (refonte graphique)
+- Mettre les POIs au bon endroit
+- Image de fond des maison perso (plus recente ou pas?)
+- Stat Rapidité (Pierre) (Quand est elle utilisée?)
+- Jeux : Etendre le Panel info mission en full screen (refonte graphique)
+- Jeu Combat : Etendre le panel perso en full screen (refonte graphique)
+- Carte de Montfermeil ne s'affiche pas quand retour mission avec des morts dans l'equipe et que le panel par defaut est celui d'un perso mort? a verifier 
+-- Sauvegarde auto :
+	- chaque année le 1er janvier 
+	- apres chaque victoire de boss
+	- apres chaque victoire?
+- Retirer la mission du Terain - Le bedo c'est de la merde	
+- Sort de mana (regen et brulure) et de bouclier trop eleve (100/200 bouclier => 10/100)
+- les objets de quete sont toujours gris et donc jamais equipés => modif des valeurs de la conf => a tester
+- Special pas assez puissant (= meme degats que sort multi niv4 mais special niv5 avec 1 de nervosite)
+- les stats montent trop vite (popos, bonus armes, bonus drogue, bonus boss, marchand)
+- Mettre des "infos" pour les objets de l'inventaire non consommable + drogues (clés, objets perso, ...)
+- Les Boss doivent avoir plus de sorts (rez multi ou solo, regen mana, taunt multi)
+
+
 Priorités :
 - Terminer ce qui est terminable (sortir une version jouable)
 - gerer les 4 difficultés (facile, normale, difficile, extreme) => ou gerer une seule pour le moment
@@ -14,21 +45,19 @@ Priorités :
 - Correction orthographique => valider tous les textes (contenu, blague, choquant)
 
 Problemes Graves:
-- TODO probleme du Nullpointer a reproduire quand on charge la derniere partie dans le jeu
 - probleme de latence sur la carte au bout d'un moment (pas de montée en charge de la JVM) => singleton de la map + proxy => pas de resultat? => ?
 - quand spam espace (bouton son) en combat : les musiques se superposent => solution desactiver.
 - Bouton "SON" qui n'apparait pas en combat (au deuxieme combat? si desactivé au premier combat?). A cause de la taille du texte qui pousse a droite? ou commente dans le code?
 - Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???)
-- (VLC) Videos qui ne s'affiche plus apres une sauvegarde (le son est ok ?) (Pas le probleme si on relance le jeu)
+- (VLC) Videos qui ne s'affiche plus apres une sauvegarde + retour au menu + chargement (le son est ok ?) (Pas le probleme si on relance le jeu) (direct3d11 vout display error: SetThumbNailClip failed)
 
 Problemes Legers: 
+- Execution du jar => Exception car lit le fichier .gitignore des repertoire contenant les musiques => Solution : les supprimer! => A faire
 - sauvegarde auto apres chaque mission reussie (au dernier moment sinon problemes pour tester)
 - Tranches de degats trop variables en fonction de la difficulte (multiplicateur x3 - x25) (degats /4 /3 /2 /1) => regler le probleme
 - Les armes avec bonus de competence pour les ennemis doivent elles impacter les competences des ennemis? des boss? oui
 - Les degats des armes impactent tous les sorts => Impacter uniquement les sorts de base? les special?
 - Nettoyer le menu (nouvelle partie a partir du menu pas necessaire)
-- gestion des items => empecher de pouvoir consommer les clefs
-- probleme lors du gain d'un sort => image en double => depuis la modif gestion des evenements recompenses
 - Ne pas augmenter les sorts si defaite en combat? pourquoi pas? en fonction de la difficulte?
 - mission du 1er personnage selectionné a ne pas afficher
 - Gerer le volume du son des combats (musique > bruit des sorts(special))
@@ -43,7 +72,6 @@ Problemes combats :
 	- gerer des popos qui monte le niveau d'un sort (+1 ou +2 lvl ou direct au lvl 5,6,7) en sachant que la difficulté des ennemis augmente en fonction du sort de plus haut lvl
 	- OU Gerer la progression de certains sorts plus rapidement car moins utilisé ()
 	- OU les deux
-	- Degats de Guy trop elevée quand il arrive. pourquoi? 350 degats => technique 80 / 100 trop elevé et niv 6 -> niv 4
 	
 - NORMAL :
 	- J'ai réussi à tuer le boss sans monter les skills en combat ou avec des popos: trop facile? boss avec seulement 650 de vie alors que certains ennemis avaient 900!
@@ -158,9 +186,14 @@ Infos :
 	- Les missions quizz se debloquent a chaque anniversaire de chaque perso depuis son arrivée jusqu'en 2000
 	- Thomas et Nico : 10 + 10 ; Yannick, Johann et Pierre : 9 + 9 + 9 ; Ali : 5 ; Guy : 3 ; Russ : 1 => (56 questions en tout)
 	- Apres le 1 er janvier 2001 => mission repetable pour Russ avec le reste des questions
+	
+- Regeneration la nuit:
+	- Il faut attendre la nuit pour que la vie, le mana et la charge se mettent a jour par rapport aux bonus de stats accumulés dans la journée precedante
 
 Pour Executer le jar :
-Il faut copier l'ensemble du repertoire qui contient le JAR (C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target)
+Build Project : mvn clean install
+Genere le jar dans le repertoire "target"
+Il faut copier l'ensemble du repertoire qui contient le JAR (C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target) (Avec le repertoire /classes => Pas dans eclipse mais dans "C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target")
 - Execution au double click
 - OU en ligne de commande avec cmd => cd "repertoire qui contient" => java -jar "nom du jar" (D:\Johann\Le Terrain\Test JAR>java -jar LeTerrain-LeJeu-0.0.1-SNAPSHOT.jar)
 

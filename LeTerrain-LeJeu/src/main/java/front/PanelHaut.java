@@ -195,28 +195,30 @@ public class PanelHaut extends JPanel {
 				if (MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getEvenementsIndisponibles().isEmpty() && missionManager.getMissionsNonPresentees().isEmpty()) {
 					boutonPasserNext.setEnabled(false);
 					System.out.println("Fin des evenements et des missions a presenter");
-					// sinon on passe jusqu'au prochain evenement ou la prochaine mission
+					
+				// Sinon on passe jusqu'au prochain evenement ou la prochaine mission
 				} else {
 					Evenement nextEvenement = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().getNextEvenement();
 					
 					Mission nextMission = missionManager.getNextMissionAvecDateEtItemsDisponibles();
 					boutonPasserNext.setEnabled(false);
+					boolean evenementBloquant = false;
 					if (nextMission == null && nextEvenement != null) {
 						System.out.println("Fin des missions avec date");
-						while (!nextEvenement.estDisponibleAPresenter()) {
+						while (!nextEvenement.estDisponibleAPresenter() && evenementBloquant == false) {
 							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
 							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
-								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+								evenementBloquant = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
 							}
 						}
 						boutonPasserNext.setEnabled(true);
 					} else if (nextEvenement == null && nextMission != null){
 						System.out.println("Fin des evenements");
 						// TODO probleme boucle infini : missions necessitants items
-						while (!nextMission.estDisponibleAPresenter()) {
+						while (!nextMission.estDisponibleAPresenter() && evenementBloquant == false) {
 							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
 							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
-								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+								evenementBloquant = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
 							}
 						}
 						boutonPasserNext.setEnabled(true);
@@ -224,10 +226,10 @@ public class PanelHaut extends JPanel {
 					} else if (nextEvenement == null && nextMission == null) {
 						System.out.println("Fin des missions avec date et des evenements");
 					} else {
-						while (!nextEvenement.estDisponibleAPresenter() && !nextMission.estDisponibleAPresenter()) {
+						while (!nextEvenement.estDisponibleAPresenter() && !nextMission.estDisponibleAPresenter() && evenementBloquant == false) {
 							MenuPrincipal.getMainFrame().getCoreManager().getDateManager().passeUneHeure();
 							if (MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante().getHours() == 7) {
-								MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
+								evenementBloquant = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().regenerationNuit();
 							}
 						}
 						boutonPasserNext.setEnabled(true);

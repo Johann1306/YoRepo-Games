@@ -87,7 +87,12 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		
 		final JPanel titre = new PanelTitre();
 		titre.setOpaque(false);
-		titre.setLocation(0, 100);
+		titre.setLocation(0, 50);
+		
+		final JPanel infoTitre = new PanelInfoTitre();
+		infoTitre.setOpaque(false);
+		infoTitre.setLocation(0, 600);
+
 		
 		// JPanel Menu		
 		menu = new MenuPrincipal();
@@ -125,6 +130,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		content.add(titre, Integer.valueOf(5));
 //		content.add(titre);
 		content.add(menu, Integer.valueOf(10));
+		content.add(infoTitre, Integer.valueOf(5));
 		// Ajout dans la fenetre
 		this.setContentPane(content);
 		this.setVisible(true);

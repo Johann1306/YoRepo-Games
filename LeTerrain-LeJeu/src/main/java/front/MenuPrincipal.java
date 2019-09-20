@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -588,12 +590,20 @@ public class MenuPrincipal extends JPanel {
 		MissionManager missionManager = mainFrame.getCoreManager().getMissionManager();
 		LieuManager lieuManager = mainFrame.getCoreManager().getLieuManager();
 		
+		// Son menu choix du perso (zelda theme)
+		List<String> sonPaths = new ArrayList<>();
+		sonPaths.add("musique/personnage/selection/11.zelda-select-screen.mp3");
+		MusiqueManager.playPlaylist(sonPaths);
+		
 		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
 		int valeur = JOptionPane.showOptionDialog(getParent(), "Choisis ton héro principal",
 				"C'est parti!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				resizeImage,
 				new String[] {"Johann", "Nicolas", "Pierre", "Thomas", "Yannick"}, 
 				"default");
+		
+		MusiqueManager.stopAll();
+		
 		if (valeur == 0) {
 			personnageManager.setPersonnagePrincipal(PersoPrenom.Johann);
 			personnageManager.getPersoByPrenom(PersoPrenom.Johann).setDisponible(true);

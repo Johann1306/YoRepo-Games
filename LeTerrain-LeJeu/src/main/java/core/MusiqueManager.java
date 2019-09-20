@@ -225,7 +225,7 @@ public class MusiqueManager implements Serializable {
 			stopped = true;
 			PanelMusique.application.stop();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erreur lors de l arret du lecteur : " + e.getMessage() + " :: " + e);
 		}
 	}
 	
@@ -407,6 +407,11 @@ public class MusiqueManager implements Serializable {
 		}
 		
 		return musiquesPerso;
+	}
+
+	public static void playMusiquesRandom(List<Musique> musiques) {
+		int random = RandomManager.random(0, musiques.size()-1);
+		playSonEvenement(musiques.get(random).getSonPath().get(0));
 	}
 	
 }

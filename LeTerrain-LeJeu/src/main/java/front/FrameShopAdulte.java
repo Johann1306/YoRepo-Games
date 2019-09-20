@@ -7,10 +7,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
@@ -30,18 +29,19 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import core.ImageManager;
+import core.ItemManager;
 import core.MusiqueManager;
 import core.VideoManager;
 import core.configuration.Constante;
 import core.utils.JTableUtilities;
 import modele.item.Item;
 import modele.item.ItemType;
-import modele.item.arme.Arme;
-import modele.item.arme.ArmeClasse;
+import modele.item.drogue.Drogue;
+import modele.item.drogue.DrogueClasse;
+import modele.item.drogue.DrogueType;
 import modele.item.mission.Mission;
 import modele.item.personnage.Groupe;
 import modele.item.personnage.PersoPrenom;
-import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
 
 public class FrameShopAdulte extends FrameJeu {
@@ -77,12 +77,14 @@ public class FrameShopAdulte extends FrameJeu {
 		panelCentre.setLayout(boxlayout);
 		
 		JScrollPane scrollPaneVente = new JScrollPane();
-		// Vitesse de la barre de scroll
+		
+		// Vitesse de la barre de scroll horizontal
 		JScrollBar jScrollBarHorizontalVente = new JScrollBar(1, 5, 5, 0, 10);
 		jScrollBarHorizontalVente.setUnitIncrement(50);
 		jScrollBarHorizontalVente.setVisible(false);
 		scrollPaneVente.setHorizontalScrollBar(jScrollBarHorizontalVente);
 		
+		// Vitesse de la barre de scroll vertical
 		JScrollBar jScrollBarVerticalVente = new JScrollBar(1, 5, 5, 0, 10);
 		jScrollBarVerticalVente.setUnitIncrement(50);
 		jScrollBarVerticalVente.setVisible(false);
@@ -176,7 +178,7 @@ public class FrameShopAdulte extends FrameJeu {
 		// Panel Acahat
 		
 		JPanel panelAchatLabel = new JPanel();
-		JLabel labelAchat = new JLabel(" - Objets a acheter - ");
+		JLabel labelAchat = new JLabel(" - Drogues a acheter - ");
 		labelAchat.setFont(Constante.MARIO_FONT_LABEL_SHOP);
 		labelAchat.setForeground(Color.CYAN);
 		panelAchatLabel.add(labelAchat);
@@ -186,38 +188,39 @@ public class FrameShopAdulte extends FrameJeu {
 		BoxLayout boxlayoutPanelAchat = new BoxLayout(panelAchat, BoxLayout.Y_AXIS);
 		panelAchat.setLayout(boxlayoutPanelAchat);
 		
-		String[] entetesAchat = {"Objet", "Quantite", "Nom", "Info", "Stats", "Proprio", "Prix", "Action"};
+		String[] entetesAchat = {"Drogue", "Quantite", "Nom", "Info", "Stats", "Proprio", "Prix", "Action"};
 
-		List<Item> itemsAAcheter = new ArrayList<>();
+		Map<Item, Integer> itemsAAcheter = new HashMap<>();
 		
 		// Mission Dahlias
 		if (mission.getId() == 250) {
-			itemsAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsAAcheterDahlias();
+			itemsAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getDroguesAAcheterDahlias();
 			
 		// Mission Bosquets
 		} else if (mission.getId() == 260) {
-			itemsAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsAAcheterBosquets();
+			itemsAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getDroguesAAcheterBosquets();
 		}
 		
 		int nbElementsAchat = itemsAAcheter.size();
 		Object[][] donneesAchat = new Object[nbElementsAchat][entetesAchat.length];
 		int i = 0;
 		
-		for (Item item : itemsAAcheter) {
+		for (Item item : itemsAAcheter.keySet()) {
 			
-			String statsArme = "";
-			if (item.getType().name().equals(ItemType.ARME.name())) {
-				Arme arme = (Arme)item;
-				statsArme = arme.getStats();
+			String statsDrogue = "";
+			if (item.getType().name().equals(ItemType.DROGUE.name())) {
+				Drogue drogue = (Drogue)item;
+				statsDrogue = drogue.getStats();
 			}
 			
-			int prix = calculePrixItemAAcheter(item);
+			int quantite = itemsAAcheter.get(item);
+			int prix = calculePrixDrogueAAcheter(item, quantite);
 			
 			donneesAchat[i][0] = item;
-			donneesAchat[i][1] = "X 1";
+			donneesAchat[i][1] = "X " + quantite;
 			donneesAchat[i][2] = item.getNom();
 			donneesAchat[i][3] = item.getInformations();
-			donneesAchat[i][4] = statsArme;
+			donneesAchat[i][4] = statsDrogue;
 			donneesAchat[i][5] = item.getProprietaire().name();
 			donneesAchat[i][6] = prix;
 			donneesAchat[i][7] = "Acheter";
@@ -289,22 +292,49 @@ public class FrameShopAdulte extends FrameJeu {
 						// Retire les sous de la bourse du groupe
 						leGroupe.enleveArgent(prixDeVente);
 						
+						// Si l'item est une Drogue, on demarre la date de peremption
+						if (item instanceof Drogue) {
+							Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+							int vitessePeremption = ((Drogue) item).getVitessePeremption();
+							Date delai = new Date(0);
+							delai.setMonth((2 * vitessePeremption));
+							long date = dateCourante.getTime() + delai.getTime(); 
+							((Drogue) item).setDatePeremption(new Date(date));
+						}
+						
 						// Ajout de l'objet dans le sac
 						leGroupe.ajouteItem(item);
 						
 						// Suppression de la liste d'objet a acheter
+						Map<Item, Integer> droguesAAcheter = new HashMap<>();
 						if (mission.getId() == 250) {
-							// Mission Miranda
-							MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeItemsAAcheterDahlias(item);
+							// Mission Dahlias
+							droguesAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getDroguesAAcheterDahlias();
+//							MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeDroguesAAcheterDahlias(item);
 							
 						} else if (mission.getId() == 260) {
-							// Mission Tonelle
-							MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeItemsAAcheterBosquets(item);
+							// Mission Bosquets
+							droguesAAcheter = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getDroguesAAcheterBosquets();
+//							MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeDroguesAAcheterBosquets(item);
 						}
 						
-						// Suppression de la ligne dans la table
-				        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-				        ((DefaultTableModel)table.getModel()).fireTableRowsDeleted(modelRow, modelRow);
+						droguesAAcheter.put(item, droguesAAcheter.get(item)-1);
+						if (droguesAAcheter.get(item) == 0) { 
+							
+							// Suppression de la ligne dans la table
+					        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+					        ((DefaultTableModel)table.getModel()).fireTableRowsDeleted(modelRow, modelRow);
+					        
+					        // Suppression de l'item du magazin
+					        MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeDroguesAAcheterBosquets(item);
+					        MenuPrincipal.getMainFrame().getCoreManager().getItemManager().removeDroguesAAcheterDahlias(item);
+
+						} else {
+							
+							// Met a jour la quantité de donnees dispo quand vente
+							((DefaultTableModel)table.getModel()).setValueAt("X " + droguesAAcheter.get(item), modelRow, 1);;
+							((DefaultTableModel)table.getModel()).fireTableCellUpdated(modelRow, 1);
+						}
 				        ((DefaultTableModel)table.getModel()).fireTableDataChanged();
 				        refreshPanelAchatVente();
 					} 
@@ -327,7 +357,7 @@ public class FrameShopAdulte extends FrameJeu {
 		// Panel Vente
 		
 		JPanel panelVenteLabel = new JPanel();
-		JLabel labelVente = new JLabel(" - Objets a vendre - ");
+		JLabel labelVente = new JLabel(" - Drogues a vendre - ");
 		labelVente.setFont(Constante.MARIO_FONT_LABEL_SHOP);
 		labelVente.setForeground(Color.YELLOW);
 		panelVenteLabel.add(labelVente);
@@ -337,30 +367,11 @@ public class FrameShopAdulte extends FrameJeu {
 		BoxLayout boxlayoutPanelVente = new BoxLayout(panelVente, BoxLayout.Y_AXIS);
 		panelVente.setLayout(boxlayoutPanelVente);
 		
-		String[] entetesVente = {"Objet", "Quantite", "Nom", "Info", "Stats", "Proprio", "Prix", "Action"};
+		String[] entetesVente = {"Drogue", "Quantite", "Nom", "Info", "Stats", "Proprio", "Prix", "Action"};
 
-		// On ajoute tous les objets du sac de groupe (armes + popos)
+		// On ajoute toutes les drogues du sac de groupe
 		Map<Item,Integer> mapItemsAVendre = new HashMap<>();
-		mapItemsAVendre.putAll(MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac());
-
-		// On propose a la vente les objets du sac groupe plus les objets perso(non equipes)
-		List<PersonnagePrincipal> persosDejaPresentes = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoDejaPresentes();
-		for (PersonnagePrincipal personnagePrincipal : persosDejaPresentes) {
-			
-			// On ajoute tous les objets du sac de chaque perso (armes)
-			Map<Item, Integer> sacPerso = personnagePrincipal.getSac();
-			for (Item item : sacPerso.keySet()) {
-				if (item.getType().name().equals(ItemType.ARME.name())) {
-					mapItemsAVendre.put(item, sacPerso.get(item));
-				}
-			}
-			
-			// On ne propose pas a la vente les objets deja equipes
-			Arme armePerso = personnagePrincipal.getArme();
-			if (armePerso != null) {
-				mapItemsAVendre.remove(armePerso);
-			}
-		}
+		mapItemsAVendre.putAll(MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getDrogues());
 		
 		int nbElementsVente = mapItemsAVendre.size();
 		Object[][] donneesVente = new Object[nbElementsVente][entetesVente.length];
@@ -368,20 +379,19 @@ public class FrameShopAdulte extends FrameJeu {
 		
 		for (Item item : mapItemsAVendre.keySet()) {
 			
-			String statsArme = "";
-			if (item.getType().name().equals(ItemType.ARME.name())) {
-				Arme arme = (Arme)item;
-				statsArme = arme.getStats();
+			String statsDrogue = "";
+			if (item.getType().name().equals(ItemType.DROGUE.name())) {
+				Drogue drogue = (Drogue)item;
+				statsDrogue = drogue.getStats();
 			}
 			
-			int prix = calculePrixItemAAcheter(item);
-			prix = prix / Constante.COEF_PRIX_VENTE;
+			int prix = calculePrixDrogueAAcheter(item, 10);
 			
 			donneesVente[j][0] = item;
 			donneesVente[j][1] = "X " + mapItemsAVendre.get(item);
 			donneesVente[j][2] = item.getNom();
 			donneesVente[j][3] = item.getInformations();
-			donneesVente[j][4] = statsArme;
+			donneesVente[j][4] = statsDrogue;
 			donneesVente[j][5] = item.getProprietaire().name();
 			donneesVente[j][6] = prix;
 			donneesVente[j][7] = "Vendre";
@@ -443,7 +453,7 @@ public class FrameShopAdulte extends FrameJeu {
 				if (reponse == 0) {		    	
 					
 					// Ajoute les sous a la bourse du groupe
-					leGroupe.ajouteArgent(prixDeVente, true);
+					leGroupe.ajouteArgent(prixDeVente, false, true);
 					
 					// Retire l'objet du sac
 					leGroupe.enleveItem(item);
@@ -489,68 +499,73 @@ public class FrameShopAdulte extends FrameJeu {
 		
 	}
 
-	private int calculePrixItemAAcheter(Item item) {
-		int prix = 50;
-		if (item instanceof Arme) {
-			Arme arme = (Arme) item;
-			Collection<Integer> values = arme.getBonusParStat().values();
+	private int calculePrixDrogueAAcheter(Item item, int quantite) {
+		int prix = 0;
+		if (item instanceof Drogue) {
+			Drogue drogue = (Drogue) item;
+			
+			// Prix augmente en fonction des bonus
+			Collection<Integer> values = drogue.getBonusParStat().values();
 			for (Integer bonusValue : values) {
 				prix = prix + (10 * bonusValue);
 			}
-			prix = prix + 10 * (arme.getDegatsMin() + arme.getDegatsMax()); 
-			if (arme.getArmeClasse().name().equals(ArmeClasse.VERT)) {
-				prix = prix + 100;	
-			} else if (arme.getArmeClasse().name().equals(ArmeClasse.BLEU)) {
-				prix = prix + 250;	
-			} else if (arme.getArmeClasse().name().equals(ArmeClasse.VIOLET)) {
-				prix = prix + 500;	
+
+			// Prix change en fonction du type de drogue
+			if (drogue.getDrogueType().name().equals(DrogueType.CANABIS.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.CANABIS.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.HERBE.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.HERBE.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.COCAINE.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.COCAINE.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.ECSTASY.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.ECSTASY.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.MDMA.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.MDMA.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.SPEED.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.SPEED.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.HEROINE.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.HEROINE.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.LSD.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.LSD.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.GHB.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.GHB.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.POPPERS.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.POPPERS.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.CHAMPIGNON.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.CHAMPIGNON.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.AMPHETAMINE.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.AMPHETAMINE.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.CRISTAL.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.CRISTAL.name());
+			} else if (drogue.getDrogueType().name().equals(DrogueType.PAVOT.name())) {
+				prix = prix + ItemManager.getPrixDuMoisDesDrogues().get(DrogueType.PAVOT.name());
 			}
-		} else {
-			String type = item.getType().name();
-			if (type.equals(ItemType.POTION_MANA_25.name()) || type.equals(ItemType.POTION_VIE_25.name())) {
-				prix = 100;
-			} else if (type.equals(ItemType.POTION_MANA_50.name()) || type.equals(ItemType.POTION_VIE_50.name())) {
-				prix = 250;
-			} else if (type.equals(ItemType.POTION_MANA_75.name()) || type.equals(ItemType.POTION_VIE_75.name())) {
-				prix = 750;
-			} else if (type.equals(ItemType.POTION_MANA_100.name()) || type.equals(ItemType.POTION_VIE_100.name())) {
-				prix = 1500;
-			} else if (type.equals(ItemType.BONUS_STAT_AGILITE_5.name()) 
-					|| type.equals(ItemType.BONUS_STAT_CHANCE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_ENDURANCE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_INTELLIGENCE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_NERVOSITE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_RAPIDITE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_RESISTANCE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_TECHNIQUE_5.name())
-					|| type.equals(ItemType.BONUS_STAT_EXPLOIT_5.name())
-					) {
-				prix = 500;
-			} else if (type.equals(ItemType.BONUS_STAT_AGILITE_10.name()) 
-					|| type.equals(ItemType.BONUS_STAT_CHANCE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_ENDURANCE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_INTELLIGENCE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_NERVOSITE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_RAPIDITE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_RESISTANCE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_TECHNIQUE_10.name())
-					|| type.equals(ItemType.BONUS_STAT_EXPLOIT_10.name())
-					) {
-				prix = 800;
-			} else if (type.equals(ItemType.BONUS_STAT_AGILITE_20.name()) 
-					|| type.equals(ItemType.BONUS_STAT_CHANCE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_ENDURANCE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_INTELLIGENCE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_NERVOSITE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_RAPIDITE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_RESISTANCE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_TECHNIQUE_20.name())
-					|| type.equals(ItemType.BONUS_STAT_EXPLOIT_20.name())
-					) {
-				prix = 1500;
+			
+			// Prix augmente en fonction de la qualite
+			if (drogue.getDrogueClasse().name().equals(DrogueClasse.VERT.name())) {
+				prix = prix * 2;	
+			} else if (drogue.getDrogueClasse().name().equals(DrogueClasse.BLEU.name())) {
+				prix = prix * 3;	
+			} else if (drogue.getDrogueClasse().name().equals(DrogueClasse.VIOLET.name())) {
+				prix = prix * 5;	
+			}
+			
+			// Prix varie en fonction de l'offre et la demande 50% du prix en moins quand 10 elements
+			int variation = (prix * (quantite -1)) / 20;
+			prix = prix - variation;
+			
+			// Arrondi au superieur dizaine
+			prix = (prix / 10) + 1;
+			prix = prix * 10;
+
+			// Arrondi au superieur centaine
+			if (prix > 999) {
+				prix = (prix / 100);
+				prix = prix * 100;				
 			}
 
 		}
+
 		return prix;
 	}
 

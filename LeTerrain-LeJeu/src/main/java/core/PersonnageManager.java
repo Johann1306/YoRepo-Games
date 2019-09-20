@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,13 +14,17 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import core.configuration.Constante;
 import front.FenetrePrincipal;
+import front.MainFrame;
 import front.MenuPrincipal;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.Item;
+import modele.item.drogue.Drogue;
+import modele.item.drogue.DrogueClasse;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
 import modele.item.mission.BossNom;
@@ -962,14 +967,25 @@ public class PersonnageManager implements Serializable {
 		this.personnagePrincipal = personnagePrincipal;
 	}
 
-	public void regenerationNuit() {
-		//System.out.println("Regeneration nuit");
+	public boolean regenerationNuit() {
+
+		boolean evenementBloquant = false;
+		
+		// Pour chaque personnage
 		for (PersonnagePrincipal personnage : leGroupe.getPersos()) {
+			
+			// On ressucite les morts
 			if (personnage.isMort()) {
-				// On ressucite les morts
 				personnage.setMort(false);
 			}
-			// Recalcul des stats en fonction des competences
+			
+			// On supprime les bonus de drogues consommes sur le perso
+			personnage.supprimeEffetsDrogues();
+
+			// Inutile normalement
+			personnage.getAuras().clear();
+			
+			// On recalcule les stats en fonction des competences acquises la veille
 			personnage.setVieMax(personnage.getCompetence().getEndurance()*10);
 			personnage.setVie(personnage.getVieMax());
 			personnage.setManaMax(personnage.getCompetence().getIntelligence());
@@ -978,12 +994,45 @@ public class PersonnageManager implements Serializable {
 			// TODO protection si item de defense
 			personnage.setNombreCharge(0);
 			personnage.setNombreChargeMax(personnage.getCompetence().getNervosite()/20);
-			// Inutile normalement
-			personnage.getAuras().clear();
 			
 			// Et tout le monde retourne a la base
 			personnage.setLocation(new Location(personnage.getDomicile(), personnage.getDomicile().getPosition()));
 		}
+		
+		// Maj de l'etat de peremption des drogues
+		Map<Item, Integer> sac = leGroupe.getSac();
+		for (Item item : sac.keySet()) {
+			if (item instanceof Drogue) {
+				Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+				long diff = ((Drogue)item).getDatePeremption().getTime() - dateCourante.getTime();
+				
+				// Si la date de peremption est depassee
+				if (diff < 1 && !((Drogue) item).getDrogueClasse().name().equals(DrogueClasse.GRIS.name())) {
+					
+					// La drogue devient gris si la date de peremption est depasse
+					((Drogue) item).setDrogueClasse(DrogueClasse.GRIS);
+					
+					// On supprime les bonus par stat de la drogue
+					((Drogue) item).getBonusParStat().clear();
+					
+					// On informe l'utilisateur que la drogue est perime
+					ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
+					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "T'as laissé pourir ta drogue!", "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
+					evenementBloquant = true;
+					
+				// Si il reste une semaine avant la date de peremption	
+				} else if ( (diff / (1000 * 60 * 60 * 24)) == 7 ) {
+
+					// On informe l'utilisateur qu il reste 7 jours avant la date de peremption	
+					ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
+					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Il reste une semaine avant que ta drogue perime!", "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
+					evenementBloquant = true;
+				}
+			}
+		}
+		return evenementBloquant;
 	}
 
 	public PersonnageSecondaire getPersonnageSecondaireByNomDeFamille(String name) {
