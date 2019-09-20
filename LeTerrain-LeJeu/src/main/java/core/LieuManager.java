@@ -84,13 +84,13 @@ public class LieuManager implements Serializable {
 		Poi poiChezNico_chambre = poiManager.getPoisById(1603);
 		
 		Poi poiAchatMiranda = poiManager.getPoisById(2001);
-		Poi poiVenteMiranda = poiManager.getPoisById(2002);
+//		Poi poiVenteMiranda = poiManager.getPoisById(2002);
 		Poi poiAchatTonelle = poiManager.getPoisById(2003);
-		Poi poiVenteTonelle = poiManager.getPoisById(2004);
+//		Poi poiVenteTonelle = poiManager.getPoisById(2004);
 		Poi poiAchatDahlias = poiManager.getPoisById(2005);
-		Poi poiVenteDahlias = poiManager.getPoisById(2006);
+//		Poi poiVenteDahlias = poiManager.getPoisById(2006);
 		Poi poiAchatBosquets = poiManager.getPoisById(2007);
-		Poi poiVenteBosquets = poiManager.getPoisById(2008);
+//		Poi poiVenteBosquets = poiManager.getPoisById(2008);
 
 		
 		List<Poi> poisEcole = new ArrayList<Poi>();
@@ -146,13 +146,13 @@ public class LieuManager implements Serializable {
 		poisChezNico.add(poiChezNico_jardin);
 		poisChezNico.add(poiChezNico_chambre);
 		poisMiranda.add(poiAchatMiranda);
-		poisMiranda.add(poiVenteMiranda);
+//		poisMiranda.add(poiVenteMiranda);
 		poisTonelle.add(poiAchatTonelle);
-		poisTonelle.add(poiVenteTonelle);
+//		poisTonelle.add(poiVenteTonelle);
 		poisDahlias.add(poiAchatDahlias);
-		poisDahlias.add(poiVenteDahlias);
+//		poisDahlias.add(poiVenteDahlias);
 		poisBosquets.add(poiAchatBosquets);
-		poisBosquets.add(poiVenteBosquets);
+//		poisBosquets.add(poiVenteBosquets);
 		
 		// (X,Y) en partant du haut-gauche
 		// Pour une Map (2000 x 1000)
@@ -169,11 +169,10 @@ public class LieuManager implements Serializable {
 		Lieu chezJo = new Lieu(8, "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.Jonathan, new Point(1800, 950), "image/lieu/MaisonYo.png", poisChezRuss, false);
 		Lieu ecole = new Lieu(9, "L'ecole", "L'école élémentaire Jules Ferry", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(500, 500), "image/lieu/Ecole.png", poisEcole, false);
 		Lieu terrain = new Lieu(10, "Le terrain", "Le site aux moults péripéties", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 800), "image/lieu/Terrain.png", poisTerrain, false);
-		// TODO images.png des bons lieux
-		Lieu miranda = new Lieu(11, "La Miranda", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 600), "image/lieu/Terrain.png", poisMiranda, false);
-		Lieu tonelle = new Lieu(12, "La Tonelle", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 400), "image/lieu/Terrain.png", poisTonelle, false);
-		Lieu dahlias = new Lieu(13, "Les Dahlias", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 200), "image/lieu/Terrain.png", poisDahlias, false);
-		Lieu bosquets = new Lieu(14, "Les Bosquets", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 56), "image/lieu/Terrain.png", poisBosquets, false);
+		Lieu miranda = new Lieu(11, "La Miranda", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 600), "image/lieu/Miranda.png", poisMiranda, false);
+		Lieu tonelle = new Lieu(12, "La Tonnelle", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 400), "image/lieu/Tonnelle.png", poisTonelle, false);
+		Lieu dahlias = new Lieu(13, "Les Dahlias", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 200), "image/lieu/Dahlias.png", poisDahlias, false);
+		Lieu bosquets = new Lieu(14, "Les Bosquets", "Boutique de bonbon", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(800, 56), "image/lieu/Bosquets.png", poisBosquets, false);
 				
 		lieux.add(chezYo);
 		lieux.add(chezNico);

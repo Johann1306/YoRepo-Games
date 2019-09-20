@@ -1327,16 +1327,16 @@ public class FrameCombat extends FrameJeu {
 		// Reduction de la difficulte globale des ennemis
 		if (!(lanceur instanceof PersonnagePrincipal)) {
 			if (mission.getDifficulty() == Difficulte.FACILE) {
-				score = score / 4;
+				score = score / 3;
 			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
 //				score = score / 3;
-				score = score / 4;
+				score = score / 3;
 			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
 //				score = score / 2;
-				score = score / 4;
+				score = score / 3;
 			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
 //				score = score / 1;
-				score = score / 4;
+				score = score / 3;
 			}
 		}
 		
@@ -1345,11 +1345,11 @@ public class FrameCombat extends FrameJeu {
 			if (mission.getDifficulty() == Difficulte.FACILE) {
 				score = score * 2;
 			} else if (mission.getDifficulty() == Difficulte.NORMAL) {
-				score = score * 3;
+				score = score * 2;
 			} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
-				score = score * 4;
+				score = score * 3;
 			} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
-				score = score * 5;
+				score = score * 4;
 			}
 		}
 		
@@ -1848,35 +1848,17 @@ public class FrameCombat extends FrameJeu {
 
 			// FACILE => cible aleatoire
 			if (mission.getDifficulty() == Difficulte.FACILE) {
-				// cible aleatoire
-				int randomPerso = 0;
-				if (!amisVivants.isEmpty()) {
-					randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-				}
-				Personnage cible = amisVivants.get(randomPerso);
+				Personnage cible = trouveAmiAleatoire();
 				cibles.add(cible);
 			}
 			// NORMAL => cible moins de vie / aleatoire
 			else if (mission.getDifficulty() == Difficulte.NORMAL) {
 				int random = RandomManager.random0_100();
 				if (random < 50) {
-					// Cible moins de vie
-					Personnage meilleurCible = null;
-					int vieMin = 10000;
-					for (Personnage cible : amisVivants) {
-						if (cible.getVie() < vieMin) {
-							vieMin = cible.getVie();
-							meilleurCible = cible;
-						}
-					}
+					Personnage meilleurCible = trouveAmiAvecLeMoinsDeVieEtBouclier();
 					cibles.add(meilleurCible);
 				} else {
-					// Cible aleatoire
-					int randomPerso = 0;
-					if (!amisVivants.isEmpty()) {
-						randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-					}
-					Personnage cible = amisVivants.get(randomPerso);
+					Personnage cible = trouveAmiAleatoire();
 					cibles.add(cible);
 				}
 			}
@@ -1885,22 +1867,11 @@ public class FrameCombat extends FrameJeu {
 				int random = RandomManager.random0_100();
 				if (random < 30) {
 					// Cible moins de vie
-					Personnage meilleurCible = null;
-					int vieMin = 10000;
-					for (Personnage cible : amisVivants) {
-						if (cible.getVie() < vieMin) {
-							vieMin = cible.getVie();
-							meilleurCible = cible;
-						}
-					}
+					Personnage meilleurCible = trouveAmiAvecLeMoinsDeVieEtBouclier();
 					cibles.add(meilleurCible);
 				} else if (random > 60) {
 					// Cible aleatoire
-					int randomPerso = 0;
-					if (!amisVivants.isEmpty()) {
-						randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-					}
-					Personnage cible = amisVivants.get(randomPerso);
+					Personnage cible = trouveAmiAleatoire();
 					cibles.add(cible);
 				} else {
 					// TODO cible healer (celui qui a le plus d'inte)
@@ -1912,15 +1883,7 @@ public class FrameCombat extends FrameJeu {
 			else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
 				int random = RandomManager.random0_100();
 				if (random < 50) {
-					// Cible moins de vie
-					Personnage meilleurCible = null;
-					int vieMin = 10000;
-					for (Personnage cible : amisVivants) {
-						if (cible.getVie() < vieMin) {
-							vieMin = cible.getVie();
-							meilleurCible = cible;
-						}
-					}
+					Personnage meilleurCible = trouveAmiAvecLeMoinsDeVieEtBouclier();
 					cibles.add(meilleurCible);
 				} else {
 					// TODO cible healer (celui qui a le plus d'inte)
@@ -1936,25 +1899,11 @@ public class FrameCombat extends FrameJeu {
 			if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO
 					|| actionCombat.getSortType() == SortType.BOUCLIER_MONO) {
 				// Cible moins de vie
-				Personnage meilleurCible = null;
-				int vieMin = 10000;
-				for (Personnage cible : ennemisVivants) {
-					if (cible.getVie() < vieMin) {
-						vieMin = cible.getVie();
-						meilleurCible = cible;
-					}
-				}
+				Personnage meilleurCible = trouveEnnemiAvecLeMoinsDeVie();
 				cibles.add(meilleurCible);
 			} else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO) {
 				// Cible moins de mana
-				Personnage meilleurCible = null;
-				int manaMin = 10000;
-				for (Personnage cible : ennemisVivants) {
-					if (cible.getMana() < manaMin) {
-						manaMin = cible.getMana();
-						meilleurCible = cible;
-					}
-				}
+				Personnage meilleurCible = trouveEnnemiAvecLeMoinsDeMana();
 				cibles.add(meilleurCible);
 			} else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO) {
 				// Cible morte aleatoire (+ d'inte)
@@ -1970,9 +1919,8 @@ public class FrameCombat extends FrameJeu {
 				meilleurCible = personnageManager.getBestStatPersoMorts(PersoStat.INTELLIGENCE, morts);
 				cibles.add(meilleurCible);
 			} else {
-				int randomPerso = RandomManager.random(0, amisVivants.size() - 1);
-				Personnage cible = ennemisVivants.get(randomPerso);
 				// TODO meilleurCible possible (moins de vie, healer)
+				Personnage cible = trouveEnnemiRandom();
 				cibles.add(cible);
 			}
 		} else if (actionCombat.getCibleType() == CibleType.GROUPE_ENNEMIS) {
@@ -1997,6 +1945,57 @@ public class FrameCombat extends FrameJeu {
 			cibles.addAll(amisVivants);
 		}
 		return cibles;
+	}
+
+	private Personnage trouveEnnemiRandom() {
+		int randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+		Personnage cible = ennemisVivants.get(randomPerso);
+		return cible;
+	}
+
+	private Personnage trouveEnnemiAvecLeMoinsDeMana() {
+		Personnage meilleurCible = null;
+		int manaMin = 10000;
+		for (Personnage cible : ennemisVivants) {
+			if (cible.getMana() < manaMin) {
+				manaMin = cible.getMana();
+				meilleurCible = cible;
+			}
+		}
+		return meilleurCible;
+	}
+
+	private Personnage trouveEnnemiAvecLeMoinsDeVie() {
+		Personnage meilleurCible = null;
+		int vieMin = 10000;
+		for (Personnage cible : ennemisVivants) {
+			if (cible.getVie() + cible.getBouclier() < vieMin) {
+				vieMin = cible.getVie() + cible.getBouclier();
+				meilleurCible = cible;
+			}
+		}
+		return meilleurCible;
+	}
+
+	private Personnage trouveAmiAleatoire() {
+		int randomPerso = 0;
+		if (!amisVivants.isEmpty()) {
+			randomPerso = RandomManager.random(0, amisVivants.size() - 1);
+		}
+		Personnage cible = amisVivants.get(randomPerso);
+		return cible;
+	}
+
+	private Personnage trouveAmiAvecLeMoinsDeVieEtBouclier() {
+		Personnage meilleurCible = null;
+		int vieMin = 10000;
+		for (Personnage cible : amisVivants) {
+			if (cible.getVie() + cible.getBouclier() < vieMin) {
+				vieMin = cible.getVie() + cible.getBouclier();
+				meilleurCible = cible;
+			}
+		}
+		return meilleurCible;
 	}
 
 	private JLabel getMessage(Personnage perso, ActionCombat actionCombat, int score, List<Personnage> cibles,
@@ -2201,6 +2200,7 @@ public class FrameCombat extends FrameJeu {
 		// TODO Deplacement de la fenetre de la cible de haut en bas
 
 		// TODO Affichage du score sur les cibles
+		
 
 	}
 
@@ -2795,7 +2795,7 @@ public class FrameCombat extends FrameJeu {
 		
 		JLabel labelArme = new JLabel();
 		if (perso.getArme() != null) {
-			// labe avec l image de l'arme
+			// label avec l image de l'arme
 			Arme armePerso = perso.getArme();
 			ArmeClasse armeClasse = armePerso.getArmeClasse();
 			ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon(perso.getArme().getImagePath().get(0)), Constante.ARME_IMAGE_DIMENSION_25_25);

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -20,6 +21,9 @@ import modele.item.ItemType;
 import modele.item.arme.Arme;
 import modele.item.arme.ArmeClasse;
 import modele.item.arme.ArmeType;
+import modele.item.drogue.Drogue;
+import modele.item.drogue.DrogueClasse;
+import modele.item.drogue.DrogueType;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
 import modele.item.mission.enums.MissionType;
@@ -37,10 +41,17 @@ public class ItemManager implements Serializable {
 	private List<Item> itemsIndisponibles;
 	private List<Item> itemsAAcheterMiranda;
 	private List<Item> itemsAAcheterTonelle;
+	private Map<Item, Integer> droguesAAcheterDahlias;
+	private Map<Item, Integer> droguesAAcheterBosquets;
 	private Date dateRenouvellementMiranda;
 	private Date dateRenouvellementTonelle;
+	private Date dateRenouvellementDahlias;
+	private Date dateRenouvellementBosquets;
+	private static Date dateRenouvellementPrixDrogues;
 	private Difficulte difficulte = Difficulte.FACILE;
-	private static int id = 10000;
+	private static int idArme = 10000;
+	private static int idDrogue = 10000;
+	private static Map<String, Integer> prixDuMois;
 
 	public void initialise(Difficulte difficultePartie) {
 
@@ -49,6 +60,9 @@ public class ItemManager implements Serializable {
 		itemsIndisponibles = new ArrayList<Item>();
 		itemsAAcheterMiranda = new ArrayList<Item>();
 		itemsAAcheterTonelle = new ArrayList<Item>();
+		droguesAAcheterDahlias = new HashMap<>();
+		droguesAAcheterBosquets = new HashMap<>();;
+		prixDuMois = new HashMap<>();
 		difficulte = difficultePartie;
 
 		// Chargement des items
@@ -405,7 +419,64 @@ public class ItemManager implements Serializable {
 		String imagePath585 = "image/arme/god.jpg";
 		imagePaths585.add(imagePath585);
 
+		// Images drogues
+		List<String> imagePaths800 = new ArrayList<String>();
+		String imagePath800 = "image/drogue/canabis.png";
+		imagePaths800.add(imagePath800);
 		
+		List<String> imagePaths801 = new ArrayList<String>();
+		String imagePath801 = "image/drogue/herbe.png";
+		imagePaths801.add(imagePath801);
+		
+		List<String> imagePaths802 = new ArrayList<String>();
+		String imagePath802 = "image/drogue/cocaine.png";
+		imagePaths802.add(imagePath802);
+		
+		List<String> imagePaths803 = new ArrayList<String>();
+		String imagePath803 = "image/drogue/ecstasy.png";
+		imagePaths803.add(imagePath803);
+		
+		List<String> imagePaths804 = new ArrayList<String>();
+		String imagePath804 = "image/drogue/mdma.png";
+		imagePaths804.add(imagePath804);
+		
+		List<String> imagePaths805 = new ArrayList<String>();
+		String imagePath805 = "image/drogue/speed.png";
+		imagePaths805.add(imagePath805);
+		
+		List<String> imagePaths806 = new ArrayList<String>();
+		String imagePath806 = "image/drogue/heroine.png";
+		imagePaths806.add(imagePath806);
+		
+		List<String> imagePaths807 = new ArrayList<String>();
+		String imagePath807 = "image/drogue/lsd.png";
+		imagePaths807.add(imagePath807);
+		
+		List<String> imagePaths808 = new ArrayList<String>();
+		String imagePath808 = "image/drogue/ghb.png";
+		imagePaths808.add(imagePath808);
+		
+		List<String> imagePaths809 = new ArrayList<String>();
+		String imagePath809 = "image/drogue/poppers.png";
+		imagePaths809.add(imagePath809);
+		
+		List<String> imagePaths810 = new ArrayList<String>();
+		String imagePath810 = "image/drogue/champignon.png";
+		imagePaths810.add(imagePath810);
+		
+		List<String> imagePaths811 = new ArrayList<String>();
+		String imagePath811 = "image/drogue/amphetamine.png";
+		imagePaths811.add(imagePath811);
+		
+		List<String> imagePaths812 = new ArrayList<String>();
+		String imagePath812 = "image/drogue/cristal.png";
+		imagePaths812.add(imagePath812);
+		
+		List<String> imagePaths813 = new ArrayList<String>();
+		String imagePath813 = "image/drogue/pavot.png";
+		imagePaths813.add(imagePath813);
+		
+		// Images recompenses BOSS
 		
 		List<String> imagePaths1001 = new ArrayList<String>();
 		String imagePath1001 = "image/item/boss/ballon_dor.jpg";
@@ -517,7 +588,7 @@ public class ItemManager implements Serializable {
 
 		// TODO image cles differentes ? objets perso ou de groupe ?
 		Item clesMiranda = new Item(403, "Les Cles de la Miranda", "Sesame, ouvre toi!", imagePathsCles, sonPaths1, null, PersoPrenom.GROUPE, ItemType.OBJET_QUETE, false);
-		Item clesTonelle = new Item(404, "Les Cles de la Tonelle", "Branle la lampe du Genie et la porte s'ouvrira!", imagePathsCles, sonPaths1, null, PersoPrenom.Nicolas, ItemType.OBJET_QUETE, false);
+		Item clesTonelle = new Item(404, "Les Cles de la Tonnelle", "Branle la lampe du Genie et la porte s'ouvrira!", imagePathsCles, sonPaths1, null, PersoPrenom.Nicolas, ItemType.OBJET_QUETE, false);
 		Item clesDahlias = new Item(405, "Les Cles des Dahlias", "Ma 6T va craquer!", imagePathsCles, sonPaths1, null, PersoPrenom.Jonathan, ItemType.OBJET_QUETE, false);
 		Item clesBosquets = new Item(406, "Les Cles des Bosquets", "Ouvre egalement la voiture brulee sur le parking!", imagePathsCles, sonPaths1, null, PersoPrenom.Johann, ItemType.OBJET_QUETE, false);
 
@@ -540,7 +611,7 @@ public class ItemManager implements Serializable {
 			
 		Arme mousqueton = new Arme(502, "Mousqueton poing americain", "Peut servir de porte-cles", imagePaths502, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.MOUSQUETON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
 		Arme couteauPapillon = new Arme(503, "Couteau papillon", "Pour faire Edward aux mains d'argent", imagePaths503, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.COUTEAU_PAPILLON, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
-		Arme epeeBois = new Arme(504, "Epee en bois", "Fait maison", imagePaths504, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.EPEE_EN_BOIS, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
+		Arme epeeBois = new Arme(504, "Epee en bois", "Faite maison", imagePaths504, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.EPEE_EN_BOIS, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
 		Arme sabreLaser = new Arme(505, "Sabre laser", "Un pour de vrai!", imagePaths505, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.SABRE_LASER, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
 		Arme banane = new Arme(524, "Bananes", "En provenance de Bambouli", imagePaths524, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.BANANE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
 		Arme guitare = new Arme(525, "Guitare", "Pour branler autre chose", imagePaths525, sonPaths1, videoPathsNull, PersoPrenom.Yannick, 0, 0, ArmeType.GUITARE, ArmeClasse.GRIS, PersoStat.RESISTANCE, false);
@@ -560,7 +631,7 @@ public class ItemManager implements Serializable {
 		Arme ciseau = new Arme(529, "Paire de ciseau", "Peut couper un prepus", imagePaths529, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.CISEAU, ArmeClasse.GRIS, PersoStat.AGILITE, false);
 		Arme rhum = new Arme(530, "Bouteille de Rhum", "Le rhum de l'encule de Pierre", imagePaths530, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.RHUM, ArmeClasse.GRIS, PersoStat.AGILITE, false);
 		
-		Arme grappin = new Arme(510, "Grappin", "L'outil indispensable du grappineur", imagePaths510, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.GRAPPIN, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
+		Arme grappin = new Arme(510, "Grappin", "Pour grappiner de loin", imagePaths510, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.GRAPPIN, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme selPoivre = new Arme(511, "Sel et Poivre", "Poivre et Sel", imagePaths511, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.SEL_ET_POIVRE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme pq = new Arme(531, "Rouleau de PQ", "Apres avoir depose les ptits a la piscine", imagePaths531, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.PQ, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme steroide = new Arme(532, "Steroides", "Si juvabien, c’est Juvamine", imagePaths532, sonPaths1, videoPathsNull, PersoPrenom.Nicolas, 0, 0, ArmeType.STEROIDE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
@@ -611,7 +682,7 @@ public class ItemManager implements Serializable {
 		Arme revolver = new Arme(570, "Revolver", "A l'americaine", imagePaths570, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.REVOLVER, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme pistolet = new Arme(571, "Pistolet", "Comme dans les films", imagePaths571, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme pistoletLacrymo = new Arme(572, "Pistolet Lacrymo", "Ne pas utiliser en interieur", imagePaths572, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LACRYMO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme pistoletBille = new Arme(573, "Flingue a Bille", "Livre par Fred lui-meme", imagePaths573, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_A_BILLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme pistoletBille = new Arme(573, "Flingue a Bille", "Fourni par Fred lui-meme", imagePaths573, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_A_BILLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		Arme pistoletLaser = new Arme(574, "Pistolet Laser", "Augmente la precision d'a peu pres 69 (normalement)", imagePaths574, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.PISTOLET_LASER, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme fusilPompe = new Arme(575, "Fusil a Pompe", "Pour pomper au corps a corps", imagePaths575, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_A_POMPE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
 		Arme fusilHomme = new Arme(576, "Fusil Homme", "Il parle!", imagePaths576, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_HOMME_KINGPIN, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
@@ -624,6 +695,39 @@ public class ItemManager implements Serializable {
 		Arme lanceGrenade = new Arme(583, "Lance Grenade", "Pas pour les pd", imagePaths583, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_GRENADE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme lanceRoquette = new Arme(584, "Lance Roquette", "A la goldeneye 64", imagePaths584, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_ROQUETTE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme god = new Arme(585, "God montguichet", "Plus de 30 kilojoules mais deja souille par Ali", imagePaths585, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GOD, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		
+		// Drogues
+		
+		int vitessePeremptionCanabis = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.canabis"));
+		int vitessePeremptionHerbe = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.herbe"));
+		int vitessePeremptionChampignon = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.champignon"));
+		int vitessePeremptionSpeed = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.speed"));
+		int vitessePeremptionPoppers = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.poppers"));
+		int vitessePeremptionExtasy = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.extasy"));
+		int vitessePeremptionHeroine = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.heroine"));
+		int vitessePeremptionMdma = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.mdma"));
+		int vitessePeremptionCocaine = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.cocaine"));
+		int vitessePeremptionAmphetamine = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.amphetamine"));
+		int vitessePeremptionLsd = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.lsd"));
+		int vitessePeremptionCristal = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.cristal"));
+		int vitessePeremptionGhb = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.ghb"));
+		int vitessePeremptionPavot = Integer.valueOf(ConfigurationManager.getProperties("drogue.peremption.pavot"));
+		
+		Drogue canabis = new Drogue(800, "Canabis", "", imagePaths800, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.CANABIS, DrogueClasse.GRIS, BonusManager.getBonusParStatCanabis(), vitessePeremptionCanabis, false);
+		Drogue herbe = new Drogue(801, "Herbe", "Smoke weed everyday", imagePaths801, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.HERBE, DrogueClasse.GRIS, BonusManager.getBonusParStatHerbe(), vitessePeremptionHerbe, false);
+		Drogue cocaine = new Drogue(802, "Cocaine", "", imagePaths802, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.COCAINE, DrogueClasse.GRIS, BonusManager.getBonusParStatCocaine(), vitessePeremptionCocaine, false);
+		Drogue extasy = new Drogue(803, "Ecstasy", "", imagePaths803, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.ECSTASY, DrogueClasse.GRIS, BonusManager.getBonusParStatExtasy(), vitessePeremptionExtasy, false);
+		Drogue mdma = new Drogue(804, "MDMA", "", imagePaths804, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.MDMA, DrogueClasse.GRIS, BonusManager.getBonusParStatMdma(), vitessePeremptionMdma, false);
+		Drogue speed = new Drogue(805, "Speed", "", imagePaths805, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.SPEED, DrogueClasse.GRIS, BonusManager.getBonusParStatSpeed(), vitessePeremptionSpeed, false);
+		Drogue heroine = new Drogue(806, "Heroine", "", imagePaths806, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.HEROINE, DrogueClasse.GRIS, BonusManager.getBonusParStatHeroine(), vitessePeremptionHeroine, false);
+		Drogue lsd = new Drogue(807, "LSD", "", imagePaths807, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.LSD, DrogueClasse.GRIS, BonusManager.getBonusParStatLsd(), vitessePeremptionLsd, false);
+		Drogue ghb = new Drogue(808, "GHB", "", imagePaths808, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.GHB, DrogueClasse.GRIS, BonusManager.getBonusParStatGhb(), vitessePeremptionGhb, false);
+		Drogue poppers = new Drogue(809, "Poppers", "", imagePaths809, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.POPPERS, DrogueClasse.GRIS, BonusManager.getBonusParStatPoppers(), vitessePeremptionPoppers, false);
+		Drogue champignon = new Drogue(810, "Champignon", "", imagePaths810, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.CHAMPIGNON, DrogueClasse.GRIS, BonusManager.getBonusParStatChampignon(), vitessePeremptionChampignon, false);
+		Drogue amphetamine = new Drogue(811, "Amphetamine", "", imagePaths811, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.AMPHETAMINE, DrogueClasse.GRIS, BonusManager.getBonusParStatAmphetamine(), vitessePeremptionAmphetamine, false);
+		Drogue cristal = new Drogue(812, "Cristal", "", imagePaths812, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.CRISTAL, DrogueClasse.GRIS, BonusManager.getBonusParStatCristal(), vitessePeremptionCristal, false);
+		Drogue pavot = new Drogue(813, "Pavot", "", imagePaths813, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, DrogueType.PAVOT, DrogueClasse.GRIS, BonusManager.getBonusParStatPavot(), vitessePeremptionPavot, false);
+		
 		
 		// Equipements
 		
@@ -803,8 +907,22 @@ public class ItemManager implements Serializable {
 		items.add(glacon);
 		items.add(plug);
 		items.add(rasoir);
-
 		
+		items.add(canabis);
+		items.add(herbe);
+		items.add(cocaine);
+		items.add(extasy);
+		items.add(mdma);
+		items.add(speed);
+		items.add(heroine);
+		items.add(lsd);
+		items.add(ghb);
+		items.add(poppers);
+		items.add(champignon);
+		items.add(amphetamine);
+		items.add(cristal);
+		items.add(pavot);
+
 		items.add(carteDBZ1);
 		items.add(carteDBZ2);
 		items.add(carteDBZ3);
@@ -868,6 +986,88 @@ public class ItemManager implements Serializable {
 		refreshItems();
 		return itemsIndisponibles;
 	}
+	
+	public static Map<String, Integer> getPrixDuMoisDesDrogues() {
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		if (prixDuMois == null || prixDuMois.isEmpty()) {
+			refreshPrixDuMois();
+			dateRenouvellementPrixDrogues = new Date(dateCourante.getTime());
+		} else if (dateRenouvellementPrixDrogues != null && dateRenouvellementPrixDrogues.getMonth() != dateCourante.getMonth()) {
+			prixDuMois.clear();
+			refreshPrixDuMois();
+			dateRenouvellementPrixDrogues = new Date(dateCourante.getTime());
+		} else if (dateRenouvellementPrixDrogues == null ) {
+			refreshPrixDuMois();
+			dateRenouvellementPrixDrogues = new Date(dateCourante.getTime());
+		}
+		return prixDuMois;
+	}
+
+	private static void refreshPrixDuMois() {
+		
+		prixDuMois = new HashMap<>();
+		
+		int minCanabis = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.canabis.min"));
+		int maxCanabis = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.canabis.max"));
+		prixDuMois.put(DrogueType.CANABIS.name(), RandomManager.random(minCanabis, maxCanabis));
+
+		int minamphetamine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.amphetamine.min"));
+		int maxamphetamine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.amphetamine.max"));
+		prixDuMois.put(DrogueType.AMPHETAMINE.name(), RandomManager.random(minamphetamine, maxamphetamine));
+		
+		int minchampignon = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.champignon.min"));
+		int maxchampignon = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.champignon.max"));
+		prixDuMois.put(DrogueType.CHAMPIGNON.name(), RandomManager.random(minchampignon, maxchampignon));
+		
+		int mincocaine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.cocaine.min"));
+		int maxcocaine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.cocaine.max"));
+		prixDuMois.put(DrogueType.COCAINE.name(), RandomManager.random(mincocaine, maxcocaine));
+		
+		int mincristal = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.cristal.min"));
+		int maxcristal = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.cristal.max"));
+		prixDuMois.put(DrogueType.CRISTAL.name(), RandomManager.random(mincristal, maxcristal));
+		
+		int minextasy = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.extasy.min"));
+		int maxextasy = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.extasy.max"));
+		prixDuMois.put(DrogueType.ECSTASY.name(), RandomManager.random(minextasy, maxextasy));
+		
+		int minghb = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.ghb.min"));
+		int maxghb = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.ghb.max"));
+		prixDuMois.put(DrogueType.GHB.name(), RandomManager.random(minghb, maxghb));
+
+		int minherbe = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.herbe.min"));
+		int maxherbe = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.herbe.max"));
+		prixDuMois.put(DrogueType.HERBE.name(), RandomManager.random(minherbe, maxherbe));
+
+		int minheroine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.heroine.min"));
+		int maxheroine = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.heroine.max"));
+		prixDuMois.put(DrogueType.HEROINE.name(), RandomManager.random(minheroine, maxheroine));
+		
+		int minlsd = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.lsd.min"));
+		int maxlsd = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.lsd.max"));
+		prixDuMois.put(DrogueType.LSD.name(), RandomManager.random(minlsd, maxlsd));
+		
+		int minmdma = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.mdma.min"));
+		int maxmdma = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.mdma.max"));
+		prixDuMois.put(DrogueType.MDMA.name(), RandomManager.random(minmdma, maxmdma));
+		
+		int minpavot = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.pavot.min"));
+		int maxpavot = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.pavot.max"));
+		prixDuMois.put(DrogueType.PAVOT.name(), RandomManager.random(minpavot, maxpavot));
+		
+		int minpoppers = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.poppers.min"));
+		int maxpoppers = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.poppers.max"));
+		prixDuMois.put(DrogueType.POPPERS.name(), RandomManager.random(minpoppers, maxpoppers));
+		
+		int minspeed = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.speed.min"));
+		int maxspeed = Integer.valueOf(ConfigurationManager.getProperties("drogue.prix.speed.max"));
+		prixDuMois.put(DrogueType.SPEED.name(), RandomManager.random(minspeed, maxspeed));
+	}
+	
+
+	public static void setPrixDuMois(Map<String, Integer> prixDuMois) {
+		ItemManager.prixDuMois = prixDuMois;
+	}
 
 	private void triItems() {
 		for (Item item : items) {
@@ -891,8 +1091,14 @@ public class ItemManager implements Serializable {
 	}
 	
 	private static int incrementeIdArme() {
-		id = id +1;
-		return id;
+		idArme = idArme +1;
+		return idArme;
+	}
+	
+
+	private static int incrementeIdDrogue() {
+		idDrogue = idDrogue +1;
+		return idDrogue;
 	}
 
 	public static void gestionItemSelectionne(PersoPrenom prenomCible, Component panel) {
@@ -1008,6 +1214,37 @@ public class ItemManager implements Serializable {
 							persoCible.addCompetences(PersoStat.NERVOSITE, 10);
 						} else if (itemSelectionne.getType() == ItemType.BONUS_STAT_NERVOSITE_20) {
 							persoCible.addCompetences(PersoStat.NERVOSITE, 20);
+						}
+						
+						// Cas du Groupe : On decremente l'objet dans le sac du groupe
+						Map<Item, Integer> sac = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getLeGroupe().getSac();
+						Integer valeur = sac.get(itemSelectionne);
+						sac.put(itemSelectionne, valeur -1);
+						
+						// Si il n'y a plus d'objet de ce type on le supprime de la map
+						if (sac.get(itemSelectionne) == 0) {
+							sac.remove(itemSelectionne, 0);
+						}
+						
+						JOptionPane.showMessageDialog(panel, persoCible.getPrenom() + " a consommé : " + itemSelectionne.getNom());
+					
+					// Si c'est une drogue
+					} else if (itemSelectionne.getType() == ItemType.DROGUE) {
+						
+						// On ajoute la drogue aux drogues consommes du perso cible
+						Drogue drogueSelectionnee = (Drogue)itemSelectionne;
+						Map<PersoStat, Integer> bonusParStat = drogueSelectionnee.getBonusParStat();
+						Map<DrogueType, Map<PersoStat, Integer>> drogueConsommees = persoCible.getDroguesConsommees();
+						if (bonusParStat != null && !bonusParStat.isEmpty()) {
+							if (!drogueConsommees.containsKey(drogueSelectionnee.getDrogueType())) {
+							
+								drogueConsommees.put(drogueSelectionnee.getDrogueType(), bonusParStat);
+							
+								// On applique le bonus de stat de la drogue
+								persoCible.addCompetences(bonusParStat);
+							} else {
+								JOptionPane.showMessageDialog(panel, persoCible.getPrenom() + " a deja consommé : " + itemSelectionne.getNom() + " aujourd'hui. Le bonus n'est pas cumulatif.");
+							}
 						}
 						
 						// Cas du Groupe : On decremente l'objet dans le sac du groupe
@@ -1180,28 +1417,32 @@ public class ItemManager implements Serializable {
 		arme.setDegatsMax(randomDegatsMax(mission.getDifficulty(), arme.getArmeClasse(), arme.getDegatsMin(), personnageManager, proprio));
 		arme.setBonusParStat(randomBonusStat(mission.getDifficulty(), arme, personnageManager, proprio));
 		
-		//////////////////////////
-		StringBuilder bonusArme = new StringBuilder();
-		for (PersoStat stat : arme.getBonusParStat().keySet()) {
-			bonusArme.append(" +" + arme.getBonusParStat().get(stat) + " " + stat.name() + " -");
-		}
-		System.out.println("Nouvelle Arme " + id + " (" + arme.getArmeType().name() + ") (" + arme.getArmeClasse() + ") : " + arme.getDegatsMin() + " - " + arme.getDegatsMax() + " (" + bonusArme + ")" + " pour " + arme.getProprietaire().name()  );
-		//////////////////////////
-		
 		return arme;
 	}
 	
-
-
 	private static Color getCouleurArme(ArmeClasse armeClasse) {
 		Color couleur = Color.GRAY;
-		if (armeClasse == ArmeClasse.GRIS) {
+		if (armeClasse.name() == ArmeClasse.GRIS.name()) {
 			couleur = Color.GRAY;
-		} else if (armeClasse == ArmeClasse.VERT) {
+		} else if (armeClasse.name() == ArmeClasse.VERT.name()) {
 			couleur = Color.GREEN;
-		} else if (armeClasse == ArmeClasse.BLEU) {
+		} else if (armeClasse.name() == ArmeClasse.BLEU.name()) {
 			couleur = Color.BLUE;
-		} else if (armeClasse == ArmeClasse.VIOLET) {
+		} else if (armeClasse.name() == ArmeClasse.VIOLET.name()) {
+			couleur = Color.MAGENTA;
+		}
+		return couleur;
+	}
+	
+	private static Color getCouleurDrogue(DrogueClasse drogueClasse) {
+		Color couleur = Color.GRAY;
+		if (drogueClasse.name().equals(DrogueClasse.GRIS.name())) {
+			couleur = Color.GRAY;
+		} else if (drogueClasse.name().equals(DrogueClasse.VERT.name())) {
+			couleur = Color.GREEN;
+		} else if (drogueClasse.name().equals(DrogueClasse.BLEU.name())) {
+			couleur = Color.BLUE;
+		} else if (drogueClasse.name().equals(DrogueClasse.VIOLET.name())) {
 			couleur = Color.MAGENTA;
 		}
 		return couleur;
@@ -1242,14 +1483,6 @@ public class ItemManager implements Serializable {
 		arme.setDegatsMax(randomDegatsMax(mission.getDifficulty(), arme.getArmeClasse(), arme.getDegatsMin(), personnageManager, proprio));
 		arme.setBonusParStat(randomBonusStat(mission.getDifficulty(), arme, personnageManager, proprio));
 		
-		//////////////////////////
-		StringBuilder bonusArme = new StringBuilder();
-		for (PersoStat stat : arme.getBonusParStat().keySet()) {
-			bonusArme.append(" +" + arme.getBonusParStat().get(stat) + " " + stat.name() + " -");
-		}
-		System.out.println("Nouvelle Arme Ennemi" + id + " (" + arme.getArmeType().name() + ") (" + arme.getArmeClasse() + ") : " + arme.getDegatsMin() + " - " + arme.getDegatsMax() + " (" + bonusArme + ")" + " pour " + arme.getProprietaire().name()  );
-		//////////////////////////
-		
 		return arme;
 		
 	}
@@ -1266,6 +1499,21 @@ public class ItemManager implements Serializable {
 		Arme arme = itemsPerso.get(randomIndex);
 		
 		return arme;
+	}
+	
+
+	private Drogue getRandomDrogueDejaDecouverte() {
+		List<Drogue> droguesPerso = new ArrayList<>();
+		for (Item item : items) {
+			if ((item.getType() == ItemType.DROGUE) && (item.getProprietaire() == PersoPrenom.GROUPE) && (item.isDisponible())) {
+				droguesPerso.add((Drogue)item);
+			}
+		}
+		
+		int randomIndex = RandomManager.random(0, droguesPerso.size()-1);
+		Drogue drogue = droguesPerso.get(randomIndex);
+		
+		return drogue;
 	}
 
 	private static Arme copieArme(Arme modele) {
@@ -1287,7 +1535,27 @@ public class ItemManager implements Serializable {
 		Arme arme = new Arme(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, degatsMin, degatsMax, armeType, armeClasse, persoStat, isDisponible);
 		return arme;
 	}
+	
 
+	private Drogue copieDrogue(Drogue modele) {
+		int id = modele.getId();
+		String nom = modele.getNom();
+		String informations = modele.getInformations();
+		List<String> imagePaths = modele.getImagePath();
+		List<String> sonPaths = modele.getSonPath();
+		List<String> videoPaths = modele.getVideoPaths();
+		PersoPrenom proprietaire = modele.getProprietaire();
+		DrogueType drogueType = modele.getDrogueType();
+		DrogueClasse drogueClasse = modele.getDrogueClasse();
+		Map<PersoStat, Integer> bonusParStat = new HashMap<>(modele.getBonusParStat()); 
+		int vitessePeremption = modele.getVitessePeremption();
+		boolean isDisponible = modele.isDisponible();
+		
+		Drogue drogue = new Drogue(id, nom, informations, imagePaths, sonPaths, videoPaths, proprietaire, drogueType, drogueClasse, bonusParStat, vitessePeremption, isDisponible);
+		return drogue;
+	}
+
+	
 	private static int randomDegatsMin(Difficulte difficulty, ArmeClasse armeClasse, PersonnageManager personnageManager, Personnage proprio) {
 		// En fonction de la difficulte + de la classe (Gris, Vert, Bleu, Violet) + de niv du perso
 		int degatsMin = 0; 
@@ -1412,6 +1680,57 @@ public class ItemManager implements Serializable {
 			}
 		}  
 		return armeClasse;
+	}
+	
+	private DrogueClasse randomDrogueClasse(Difficulte difficulty) {
+		DrogueClasse drogueClasse = DrogueClasse.GRIS;
+		int random = RandomManager.random0_100();
+		if (difficulty == Difficulte.FACILE) {
+			// 10 % de chance que ce soit Violet
+			if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.facile.violet")))) {
+				drogueClasse = DrogueClasse.VIOLET;
+			// 20 % de chance que ce soit Bleu
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.facile.bleu")))) {
+				drogueClasse = DrogueClasse.BLEU;
+			// 30 % de chance que ce soit Vert
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.facile.vert")))) {
+				drogueClasse = DrogueClasse.VERT;
+			}
+		} else if (difficulty == Difficulte.NORMAL) {
+			// 10 % de chance que ce soit Violet
+			if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.normal.violet")))) {
+				drogueClasse = DrogueClasse.VIOLET;
+			// 20 % de chance que ce soit Bleu
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.normal.bleu")))) {
+				drogueClasse = DrogueClasse.BLEU;
+			// 30 % de chance que ce soit Vert
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.normal.vert")))) {
+				drogueClasse = DrogueClasse.VERT;
+			}
+		} else if (difficulty == Difficulte.DIFFICILE) {
+			// 10 % de chance que ce soit Violet
+			if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.difficile.violet")))) {
+				drogueClasse = DrogueClasse.VIOLET;
+			// 20 % de chance que ce soit Bleu
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.difficile.bleu")))) {
+				drogueClasse = DrogueClasse.BLEU;
+			// 30 % de chance que ce soit Vert
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.difficile.vert")))) {
+				drogueClasse = DrogueClasse.VERT;
+			}
+		} else if (difficulty == Difficulte.HEROIQUE) {
+			// 10 % de chance que ce soit Violet
+			if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.heroique.violet")))) {
+				drogueClasse = DrogueClasse.VIOLET;
+			// 20 % de chance que ce soit Bleu
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.heroique.bleu")))) {
+				drogueClasse = DrogueClasse.BLEU;
+			// 30 % de chance que ce soit Vert
+			} else if (random < RandomManager.random(0, Integer.valueOf(ConfigurationManager.getProperties("drogue.creation.random.classe.heroique.vert")))) {
+				drogueClasse = DrogueClasse.VERT;
+			}
+		}  
+		return drogueClasse;
 	}
 	
 	private static Map<PersoStat, Integer> randomBonusStat(Difficulte difficulty, Arme arme, PersonnageManager personnageManager, Personnage proprio) {
@@ -1580,6 +1899,67 @@ public class ItemManager implements Serializable {
 		}
 		return itemsAAcheterTonelle;
 	}
+	
+
+	public Map<Item, Integer> getDroguesAAcheterDahlias() {
+		// Si la liste est vide on l'intitalise
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		if (droguesAAcheterDahlias.isEmpty()) {
+			droguesAAcheterDahlias = genereNouvelleDroguesAAcheter();
+			dateRenouvellementDahlias = new Date(dateCourante.getTime());
+			
+		// Si la liste n'est pas vide
+		} else {
+			
+			// On verifie si la date de renouvellement est depasse
+			if (dateRenouvellementDahlias.getMonth() != dateCourante.getMonth()) {
+				droguesAAcheterDahlias = genereNouvelleDroguesAAcheter();
+				dateRenouvellementDahlias = new Date(dateCourante.getTime());
+			}
+		}
+		return droguesAAcheterDahlias;
+	}
+	
+	public Map<Item, Integer> getDroguesAAcheterBosquets() {
+		// Si la liste est vide on l'intitalise
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		if (droguesAAcheterBosquets.isEmpty()) {
+			droguesAAcheterBosquets = genereNouvelleDroguesAAcheter();
+			dateRenouvellementBosquets = new Date(dateCourante.getTime());
+			
+		// Si la liste n'est pas vide
+		} else {
+			
+			// On verifie si la date de renouvellement est depasse
+			if (dateRenouvellementBosquets.getMonth() != dateCourante.getMonth()) {
+				droguesAAcheterBosquets = genereNouvelleDroguesAAcheter();
+				dateRenouvellementBosquets = new Date(dateCourante.getTime());
+			}
+		}
+		return droguesAAcheterBosquets;
+	}
+
+	private Map<Item, Integer> genereNouvelleDroguesAAcheter() {
+		
+		// Genere drogues
+		Map<Item, Integer> drogues = new HashMap<>();
+		
+		drogues.put(genereDrogueAVendre(DrogueClasse.VIOLET), RandomManager.random(1, 10));
+
+		drogues.put(genereDrogueAVendre(DrogueClasse.BLEU), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.BLEU), RandomManager.random(1, 10));
+
+		drogues.put(genereDrogueAVendre(DrogueClasse.VERT), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.VERT), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.VERT), RandomManager.random(1, 10));
+
+		drogues.put(genereDrogueAVendre(DrogueClasse.GRIS), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.GRIS), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.GRIS), RandomManager.random(1, 10));
+		drogues.put(genereDrogueAVendre(DrogueClasse.GRIS), RandomManager.random(1, 10));
+
+		return drogues;
+	}
 
 	private List<Item> genereNouveauxItemsAAcheter() {
 		List<Item> items = new ArrayList<>();
@@ -1688,6 +2068,48 @@ public class ItemManager implements Serializable {
 		return arme;
 		
 	}
+	
+	private Item genereDrogueAVendre(DrogueClasse classe) {
+		// Random un modele d'arme qui a deja été decouvert		
+		Drogue modele = getRandomDrogueDejaDecouverte();
+		
+		Drogue drogue = copieDrogue(modele);
+		drogue.setId(incrementeIdDrogue());
+		if(classe != null) {
+			drogue.setDrogueClasse(classe);
+		} else {
+			drogue.setDrogueClasse(randomDrogueClasse(difficulte));
+		}
+		drogue.setCouleur(getCouleurDrogue(drogue.getDrogueClasse()));
+		
+		// TODO modifie les bonus par stat en fonction de la qualite
+		Map<PersoStat, Integer> bonusParStat = drogue.getBonusParStat();
+		Set<PersoStat> persoStats = bonusParStat.keySet();
+		
+		if (DrogueClasse.VIOLET.name().equals(drogue.getDrogueClasse().name())) {
+			for (PersoStat persoStat : persoStats) {
+				bonusParStat.put(persoStat, bonusParStat.get(persoStat) * 5);
+			}
+
+		} else if (DrogueClasse.BLEU.name().equals(drogue.getDrogueClasse().name())) {
+			for (PersoStat persoStat : persoStats) {
+				bonusParStat.put(persoStat, bonusParStat.get(persoStat) * 3);
+			}
+			
+		} else if (DrogueClasse.VERT.name().equals(drogue.getDrogueClasse().name())) {
+			// Valeurs par default
+			for (PersoStat persoStat : persoStats) {
+				bonusParStat.put(persoStat, bonusParStat.get(persoStat) * 1);
+			}
+	
+		} else if (DrogueClasse.GRIS.name().equals(drogue.getDrogueClasse().name())) {
+			// Pas de bonus
+			bonusParStat.clear();
+		}
+		
+		return drogue;
+	}
+
 
 	public void removeItemsAAcheterMiranda(Item item) {
 		itemsAAcheterMiranda.remove(item);
@@ -1695,6 +2117,14 @@ public class ItemManager implements Serializable {
 
 	public void removeItemsAAcheterTonelle(Item item) {
 		itemsAAcheterTonelle.remove(item);		
+	}
+
+	public void removeDroguesAAcheterDahlias(Item item) {
+		droguesAAcheterDahlias.remove(item);
+	}
+	
+	public void removeDroguesAAcheterBosquets(Item item) {
+		droguesAAcheterBosquets.remove(item);
 	}
 
 }

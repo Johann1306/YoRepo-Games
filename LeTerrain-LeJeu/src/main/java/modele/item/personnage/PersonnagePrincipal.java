@@ -15,6 +15,7 @@ import front.MainFrame;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
 import modele.item.Item;
+import modele.item.drogue.DrogueType;
 import modele.item.lieu.Lieu;
 import modele.item.media.audio.Musique;
 import modele.item.media.audio.Son;
@@ -47,6 +48,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	public boolean isDejaPresente;
 	private Competence competenceMax;
 	private String messageDieu;
+	private Map<DrogueType, Map<PersoStat, Integer>> droguesConsommees;
 	
 	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms, Date dateNaissance, String origines,
 			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
@@ -92,6 +94,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setNombreChargeMax(competence.getNervosite()/20); // max charge = 5
 		this.setNombreCharge(0);
 		this.setBouclier(0);
+		this.droguesConsommees = new HashMap<>();
 	}
 
 	public PersoNom getNomFamille() {
@@ -241,6 +244,30 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		}
 	}
 	
+	public void removeCompetences(Map<PersoStat, Integer> map) {
+		
+		if (map != null) {
+			// On recupere les stats du perso
+			Map<PersoStat, Integer> statsPerso = getCompetence().getStats();
+			
+			// Pour chaque stat
+			for (PersoStat stat : statsPerso.keySet()) {
+				
+				// Si cette stat est modifiee
+				if (map.containsKey(stat)) {
+					
+					// On la modifie
+					Integer valeurStat = statsPerso.get(stat);
+					Integer valeurARetirer = map.get(stat);
+					Integer valeurModifie = valeurStat - valeurARetirer;
+
+					// On met a jour les stats du perso
+					statsPerso.put(stat, valeurModifie);	
+				}
+			}
+		}
+	}
+	
 	public void addCompetences(PersoStat stat, int valeur) {
 		Map<PersoStat, Integer> statsPerso = new HashMap<PersoStat, Integer>();
 		statsPerso.put(stat, valeur);
@@ -257,6 +284,28 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 			}
 			return actionsCombatDispo;
 		}
+
+	public Map<DrogueType, Map<PersoStat, Integer>> getDroguesConsommees() {
+		return droguesConsommees;
+	}
+
+	public void supprimeEffetsDrogues() {
+		// On vide les drogues consommees et leurs bonus
+		if (droguesConsommees != null && !droguesConsommees.isEmpty()) {
+			for (Map<PersoStat, Integer> map : droguesConsommees.values()) {
+				removeCompetences(map);
+			} 
+			
+			droguesConsommees.clear();
+
+			// Message info drogue
+			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), this.getPrenom()
+					+ " a perdu les effets bénéfiques des drogues consommées hier.", "Redescente", 0, this.getPhotoCombat());
+			
+			
+		}
+		
+	}
 
 
 }

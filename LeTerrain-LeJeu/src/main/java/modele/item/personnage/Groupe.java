@@ -13,9 +13,11 @@ import core.ImageManager;
 import core.MusiqueManager;
 import core.configuration.Constante;
 import front.FenetrePrincipal;
+import front.FrameShopAdulte;
 import front.FrameShopEnfant;
 import front.MainFrame;
 import modele.item.Item;
+import modele.item.ItemType;
 
 public class Groupe implements Serializable {
 
@@ -150,7 +152,7 @@ public class Groupe implements Serializable {
 		}
 	}
 	
-	public void ajouteArgent(int somme, boolean frameShop) {
+	public void ajouteArgent(int somme, boolean frameShopEnfant, boolean frameShopAdulte) {
 		if (somme > 0) {
 			bourse = bourse + somme;
 			
@@ -166,9 +168,14 @@ public class Groupe implements Serializable {
 			ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.ARGENT_IMAGE_DIMENSION_100_100);
 			
 			
-			if (frameShop) {
+			if (frameShopEnfant) {
 				JOptionPane.showMessageDialog(FrameShopEnfant.getFrameShop(),
 						"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
+				
+			} else if (frameShopAdulte) {
+				JOptionPane.showMessageDialog(FrameShopAdulte.getFrameShop(),
+						"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
+			
 			} else {
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(),
 					"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
@@ -204,6 +211,16 @@ public class Groupe implements Serializable {
 		} else {
 			System.out.println("La somme a retirer de la bourse est inferieur ou egal à O : Somme = " + somme);
 		}
+	}
+
+	public Map<? extends Item, ? extends Integer> getDrogues() {
+		Map<Item,Integer> map = new HashMap<>();
+		for (Item item : sac.keySet()) {
+			if (item.getType().name().equals(ItemType.DROGUE.name())) {
+				map.put(item, sac.get(item));
+			}
+		}
+		return map;
 	}
 
 }

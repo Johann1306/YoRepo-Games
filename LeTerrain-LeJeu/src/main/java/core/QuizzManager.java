@@ -38,7 +38,7 @@ public class QuizzManager implements Serializable {
 		reponsesPossibles1.add(reponse12);
 		reponsesPossibles1.add(reponse13);
 		reponsesPossibles1.add(reponse14);
-		String infoReponse1 = "La multiplication l'emporte sur l'addition";
+		String infoReponse1 = "La multiplication est prioritaire par rapport à l'addition";
 		
 		String imagePath2 = "image/enigme/ali.png";
 		String videoPath2 = "video/Trololo.mp4";
@@ -74,6 +74,27 @@ public class QuizzManager implements Serializable {
 		// Laquelle de ces affirmations est vraie? Une soustraction peut donner un nombre positif, Une racine carré peut être négative, Deux droites parallèles peuvent se croiser, Un nombre peut être divisé par 0 (En effet : 7-2 = 5)   
 		// Combien de fois peut on plier une feuille de papier au maximum?
 		
+		// Une annee lumiere est une unité de temps? de distance? de vitesse? d'energie? (info def de l'année lumiere)
+		
+		// Faits extraordinaires
+		// - Taille du soleil et de la lune vu de la terre
+		// - Pourcentage de la masse de la Terre dans le systeme solaire par rapport au soleil (+95%)
+		// - Calendrier de l'existence de l'homme a l'echelle de l'univers (31 dec 23h59)
+		// - Vitesse max de la lumiere
+		// - Nombre de bacteries dans le corps / dans une cuillere a café de terre
+		// - En 2015 Nombre de musulmans (1,8 Milliard) / nombre d'arabes dans le monde (422 millions d'Arabes) (soit 23.44%)
+		// - ADN : Similarités avec des especes proches mais differentes (crevette?)
+		// - Cleopatre a vecu a une epoque plus proche du telephone que de la construction des pyramides
+		// - Le Stégosaure a vécu entre 156 et 140 millions d’années avant notre ère alors que le T-Rex aurait vécu il y a environ 65 à 70 millions d'années. Ce qui rapproche plus le T-Rex de notre ère que de celle du Stégosaure. 
+		// - Il y a 1,6 Million de Fourmi pour chaque etre humain
+		// - Mario casse les blocs avec la main? ( tete, pied, bite)
+		// - Pourquoi les ouragans portent ils des noms de personnes ? A cause des politiciens? a cause des religieux? a cause des scientifiques? a cause des femmes? (Les cyclones et les ouragans portent le nom de personnes en raison de Clément Wragge, un météorologue qui utilisait les noms de politiciens qu'il n'aimait pas pour leur signifier qu'ils étaient destructeurs et qu'ils erraient sans but.)
+		// - Quel animal a la morsure la plus puissante : crocodile (requin? morse? cachalot?)
+		
+		// Qu'est-ce que c'est ???
+		// Sable au microscope : Pierres precieuses, etre vivants, des mini-bonbons?
+		// Carte de jeu nintendo : Créé en 1889 par Fusajiro Yamauchi, Nintendo vendait des cartes à jouer jusqu'en 1970, les hanafuda. C'est ensuite que la société a diversifié ses activités en produisant des jouets et des bornes d’arcade.
+		
 		// Faim / Soif / Sante / Richesses
 		// En 2016, quel pourcentage de la population mondiale détient la moitié des richesses de la planete? : 50%, 60%, 10%, 1% (18,5 millions de foyers detiennent 47% de la richesse en revenus, dépôts bancaires ou titres boursiers. Les 62 personnes les plus riches detiennent plus que les 3,5 milliards les plus pauvres(62/3 500 000 000))
 		
@@ -89,7 +110,7 @@ public class QuizzManager implements Serializable {
 		// Nombre de pays ou les etats unis sont implanté militairement =74/324 (France 10, Royaume Unis 7) (source : https://reseauinternational.net/tous-les-pays-ou-les-etats-unis-ont-une-presence-militaire/)
 		
 		//Culture générale
-		// Les dinosaures ont-ils tous disparus? Oui, tué par un météorite il y a 65 millions d'années - Oui, ... Non,... Non,...
+		// Les dinosaures ont-ils tous disparus? Oui, tués par un météorite il y a 65 millions d'années - Oui, ... Non,... Non,...
 		
 		// Decouvertes
 		// Tesla

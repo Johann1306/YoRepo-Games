@@ -57,12 +57,17 @@ public enum ItemType {
 	
 	// Equipements
 	TETE,
+	LUNETTES,
 	TORSE,
-	JAMBES,
+	BRAS,
 	MAINS,
 	DOIGT,
+	CEINTURE,
+	JAMBES,
+	PIEDS,
 	
 	ARME,
+	DROGUE,
 	
 	// Collections
 	BILLE,	
