@@ -57,6 +57,17 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageEnnemi> personnagesEnnemis;
 	private PersoPrenom personnagePrincipal;
 	private Difficulte difficulte = Difficulte.FACILE;
+
+	private List<PersonnageSecondaire> adversairesEcole;
+	private List<PersonnageSecondaire> adversairesTerrainSamir;
+	private List<PersonnageSecondaire> adversairesTerrainGitan;
+	private List<PersonnageSecondaire> adversairesTerrainBoulets;
+	private List<PersonnageSecondaire> adversairesChellesFred;
+	private List<PersonnageSecondaire> adversairesChellesGiani;
+	private List<PersonnageSecondaire> adversairesNoisyHakim;
+	private List<PersonnageSecondaire> adversairesNoisyBene;
+	private List<PersonnageSecondaire> adversairesNoisyTom;
+	
 	private static List<Integer> numsEnnemi = new ArrayList<>();
 
 	public void initialise(ActionCombatManager actionCombatManager, Difficulte difficultePartie) {
@@ -66,14 +77,38 @@ public class PersonnageManager implements Serializable {
 
 		// Chargement des personnages Principaux
 
-		ImageIcon iconNicolas = FenetrePrincipal.getImageIcon("image/nico petit.png");
-		ImageIcon iconPierre = FenetrePrincipal.getImageIcon("image/pierre petit.png");
-		ImageIcon iconYannick = FenetrePrincipal.getImageIcon("image/yannick petit.png");
-		ImageIcon iconThomas = FenetrePrincipal.getImageIcon("image/thomas petit.png");
-		ImageIcon iconJohann = FenetrePrincipal.getImageIcon("image/johann petit.png");
-		ImageIcon iconAli = FenetrePrincipal.getImageIcon("image/ali.png");
-		ImageIcon iconGuillaume = FenetrePrincipal.getImageIcon("image/guillaume.png");
-		ImageIcon iconJonathan = FenetrePrincipal.getImageIcon("image/jonathan.png");
+		List<String> photoPathsNicolas = new ArrayList<>(); 
+		photoPathsNicolas.add("image/nico petit.png");
+		ImageIcon iconNicolas = FenetrePrincipal.getImageIcon(photoPathsNicolas.get(0));
+		
+		List<String> photoPathsPierre = new ArrayList<>(); 
+		photoPathsPierre.add("image/pierre petit.png");
+		ImageIcon iconPierre = FenetrePrincipal.getImageIcon(photoPathsPierre.get(0));
+		
+		List<String> photoPathsYannick = new ArrayList<>(); 
+		photoPathsYannick.add("image/yannick petit.png");
+		ImageIcon iconYannick = FenetrePrincipal.getImageIcon(photoPathsYannick.get(0));
+		
+		List<String> photoPathsThomas = new ArrayList<>(); 
+		photoPathsThomas.add("image/thomas petit.png");
+		ImageIcon iconThomas = FenetrePrincipal.getImageIcon(photoPathsThomas.get(0));
+		
+		List<String> photoPathsJohann = new ArrayList<>(); 
+		photoPathsJohann.add("image/johann petit.png");
+		ImageIcon iconJohann = FenetrePrincipal.getImageIcon(photoPathsJohann.get(0));
+		
+		List<String> photoPathsAli = new ArrayList<>(); 
+		photoPathsAli.add("image/ali.png");
+		ImageIcon iconAli = FenetrePrincipal.getImageIcon(photoPathsAli.get(0));
+		
+		List<String> photoPathsGuillaume = new ArrayList<>(); 
+		photoPathsGuillaume.add("image/guillaume.png");
+		ImageIcon iconGuillaume = FenetrePrincipal.getImageIcon(photoPathsGuillaume.get(0));
+		
+		List<String> photoPathsJonathan = new ArrayList<>(); 
+		photoPathsJonathan.add("image/jonathan.png");
+		ImageIcon iconJonathan = FenetrePrincipal.getImageIcon(photoPathsJonathan.get(0));
+		
 
 		ImageIcon iconCombatNicolas = FenetrePrincipal.getImageIcon("image/nico petit 2.png");
 		ImageIcon iconCombatPierre = FenetrePrincipal.getImageIcon("image/pierre petit 2.png");
@@ -163,56 +198,56 @@ public class PersonnageManager implements Serializable {
 		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, surnomJohann,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), originesJohann, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
+				photoPathsJohann, iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuJohann, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesJohann, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Johann, false), new Competence(PersoPrenom.Johann, true), false);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, surnomNicolas,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), originesNicolas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
+				photoPathsNicolas, iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuNicolas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesNicolas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Nicolas, false), new Competence(PersoPrenom.Nicolas, true), false);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, surnomPierre,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), originesPierre, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
+				photoPathsPierre, iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuPierre, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesPierre, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Pierre, false), new Competence(PersoPrenom.Pierre, true), false);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, surnomThomas,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), originesThomas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
+				photoPathsThomas, iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuThomas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesThomas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Thomas, false), new Competence(PersoPrenom.Thomas, true), false);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, surnomYannick,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), originesYannick, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
+				photoPathsYannick, iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuYannick, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesYannick, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Yannick, false), new Competence(PersoPrenom.Yannick, true), false);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, surnomAli,
 				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), originesAli, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
+				photoPathsAli, iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuAli, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesAli, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Ali, false), new Competence(PersoPrenom.Ali, true), false);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, surnomGuillaume,
 				new ArrayList<String>(), DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), originesGuillaume, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
+				photoPathsGuillaume, iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuGuillaume, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesGuillaume, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Guillaume, false), new Competence(PersoPrenom.Guillaume, true), false);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, surnomJonathan,
 				new ArrayList<String>(), DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), originesJonathan, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
-				iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
+				photoPathsJonathan, iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuJonathan, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesJonathan, new HashMap<Item, Integer>(), null,
@@ -256,9 +291,69 @@ public class PersonnageManager implements Serializable {
 		bencoBamboulaChocolat.setPhrasesPerso(phrasesPerso260);
 
 		// TODO integrer les persos secondaires
+		
+		// FOOT a l'ecole (5v5) Team Cancres de l'ecole
+		// Joueurs : 	- "Miguel", "Dos Santos"
+		//				- "Jonathan", "Matignon"
+		//				- "Ludovic", "Vandeville"
+		//				- "Geoffrey", "Martino"
+		//				- "Mickael", "Karagoz"
+
+		//				- "George", "Charpentier"
+		//				- "Jonathan", "Flama"
+		//				- "Benjamin", "Blondel"
+		
+
+		// FOOT au terrain (5v5 6v6 7v7 ou 8v8) Team Samir / Team Gitans / Team Boulets
+		// Joueurs : 	- "Samir"
+		//				- "Frere de Samir"
+		//				- "Cousin de Samir 1"
+		//				- "Cousin de Samir 2"
+		
+		//				- "Petit Gitan"
+		//				- "Cousin du petit gitan 1"
+		//				- "Cousin du petit gitan 2"
+
+		//				- "Renaud"
+		//				- "Marc"
+		//				- "Tristan"
+
+		// FOOT a Chelles (7v7 ou 8v8) Team Fred / Team Giani
+		// Joueurs : 	- "Fred"
+		//				- "Pote de Fred bourré"
+		//				- "Pote de Fred 1"
+		//				- "Pote de Fred 2"
+
+		//				- "Giani"
+		//				- "Frere de Giani"
+		//				- "Pote de Giani 1"
+		//				- "Pote de Giani 2"
+
+
+		// FOOT a Noisy (5v5 ou 6v6) Team Hakim / Team Bene / Team Thomas
+		// Joueurs : 	- "Hakim"
+		//				- "Ryhad"
+		//				- "Frere d'Hakim"
+		//				- "Pote d'Hakim 1"
+		//				- "Pote d'Hakim 2"
+
+		//				- "Bene"
+		//				- "Yaya"
+		//				- "Dridri"
+		//				- "Costi"
+		//				- "Alessandro"
+		//				- "Maxxxou"
+		//				- "PV"
+		//				- "Pote de Bene 1"
+		//				- "Pote de Bene 2"
+				
+		//				- "Pote de Thomas 1"
+		//				- "Pote de Thomas 2"
+		
+		
+		// Adversaires Ecole
 		PersonnageSecondaire jonathanMatignon = new PersonnageSecondaire("Jonathan", "Matignon");
 		PersonnageSecondaire ludovicVandeville = new PersonnageSecondaire("Ludovic", "Vandeville");
-		PersonnageSecondaire ludovicDasNeves = new PersonnageSecondaire("Ludovic", "Das neves");
 		PersonnageSecondaire mickaelKaragoz = new PersonnageSecondaire("Mickael", "Karagoz");
 		PersonnageSecondaire georgeCharpentier = new PersonnageSecondaire("George", "Charpentier");
 		PersonnageSecondaire miguelDosSantos = new PersonnageSecondaire("Miguel", "Dos Santos");
@@ -266,16 +361,156 @@ public class PersonnageManager implements Serializable {
 		PersonnageSecondaire benjaminBlondel = new PersonnageSecondaire("Benjamin", "Blondel");
 		PersonnageSecondaire geoffreyMartino = new PersonnageSecondaire("Geoffrey", "Martino");
 		
-		PersonnageSecondaire pattyMartino = new PersonnageSecondaire("Patty", "Martino");
-		PersonnageSecondaire barbaraStolic = new PersonnageSecondaire("Barbara", "Stolic");
-		PersonnageSecondaire claireBB = new PersonnageSecondaire("Claire", "Blaque-Belair");
-		PersonnageSecondaire claireJaquet = new PersonnageSecondaire("Claire", "Jaquet");
-		PersonnageSecondaire jacquelineGuinet = new PersonnageSecondaire("Jacqueline", "Guinet");
-		PersonnageSecondaire shanazRicard = new PersonnageSecondaire("Shanaz", "Ricard");
-		PersonnageSecondaire priscillaRemy = new PersonnageSecondaire("Priscilla", "Remy");
-		PersonnageSecondaire judithRosenkrantz = new PersonnageSecondaire("Judith", "Rosenkrantz");
-		PersonnageSecondaire virginieIdjer = new PersonnageSecondaire("Virginie", "Idjer");
-		PersonnageSecondaire sophieLemoulec = new PersonnageSecondaire("Sophie", "Lemoulec");
+		adversairesEcole = new ArrayList<>();
+		adversairesEcole.add(miguelDosSantos);
+		adversairesEcole.add(jonathanMatignon);
+		adversairesEcole.add(ludovicVandeville);
+		adversairesEcole.add(mickaelKaragoz);
+		adversairesEcole.add(georgeCharpentier);
+		adversairesEcole.add(jonathanFlama);
+		adversairesEcole.add(benjaminBlondel);
+		adversairesEcole.add(geoffreyMartino);
+
+		// Adversaires Terrain
+		PersonnageSecondaire samir = new PersonnageSecondaire("Samir", "Karchaoui");
+		PersonnageSecondaire frereSamir1 = new PersonnageSecondaire("Frère de Samir 1", "");
+		PersonnageSecondaire frereSamir2 = new PersonnageSecondaire("Frère de Samir 2", "");
+		PersonnageSecondaire cousinSamir1 = new PersonnageSecondaire("Cousin de Samir 1", "");
+		PersonnageSecondaire gitan = new PersonnageSecondaire("Le ptit gitan", "Monkouzin");
+		PersonnageSecondaire cousinGitan1 = new PersonnageSecondaire("Le cousin du ptit gitan 1", "");
+		PersonnageSecondaire cousinGitan2 = new PersonnageSecondaire("Le cousin du ptit gitan 2", "");
+		PersonnageSecondaire cousinGitan3 = new PersonnageSecondaire("Le cousin du ptit gitan 3", "");
+		PersonnageSecondaire marc = new PersonnageSecondaire("Marc", "Bastien");
+		PersonnageSecondaire tristan = new PersonnageSecondaire("Tristan", "JeSaisPlus");
+		PersonnageSecondaire renault = new PersonnageSecondaire("Renault", "JeSaisPlus");
+		
+		adversairesTerrainSamir = new ArrayList<>();
+		adversairesTerrainSamir.add(samir);
+		adversairesTerrainSamir.add(frereSamir1);
+		adversairesTerrainSamir.add(frereSamir2);
+		adversairesTerrainSamir.add(cousinSamir1);
+		adversairesTerrainSamir.add(gitan);
+		adversairesTerrainSamir.add(cousinGitan1);
+		adversairesTerrainSamir.add(marc);
+		adversairesTerrainSamir.add(tristan);
+
+		adversairesTerrainGitan = new ArrayList<>();
+		adversairesTerrainGitan.add(gitan);
+		adversairesTerrainGitan.add(cousinGitan1);
+		adversairesTerrainGitan.add(cousinGitan2);
+		adversairesTerrainGitan.add(cousinGitan3);
+		adversairesTerrainGitan.add(samir);
+		adversairesTerrainGitan.add(frereSamir1);
+		adversairesTerrainGitan.add(frereSamir2);
+		adversairesTerrainGitan.add(cousinSamir1);
+		
+		adversairesTerrainBoulets = new ArrayList<>();
+		adversairesTerrainBoulets.add(marc);
+		adversairesTerrainBoulets.add(tristan);
+		adversairesTerrainBoulets.add(renault);
+		adversairesTerrainBoulets.add(samir);
+		adversairesTerrainBoulets.add(gitan);
+		adversairesTerrainBoulets.add(frereSamir1);
+		adversairesTerrainBoulets.add(cousinSamir1);
+		adversairesTerrainBoulets.add(frereSamir2);
+
+		
+		// Adversaires Chelles
+		PersonnageSecondaire fred = new PersonnageSecondaire("Frederic", "Darmouni");
+		PersonnageSecondaire poteDeFred1 = new PersonnageSecondaire("Pote de Fred bourré", "");
+		PersonnageSecondaire poteDeFred2 = new PersonnageSecondaire("Pote de Fred 1", "");
+		PersonnageSecondaire poteDeFred3 = new PersonnageSecondaire("Pote de Fred 2", "");
+		PersonnageSecondaire poteDeFred4 = new PersonnageSecondaire("Pote de Fred 3", "");
+		PersonnageSecondaire giani = new PersonnageSecondaire("Giani", "Le Rital");
+		PersonnageSecondaire frereDeGiani = new PersonnageSecondaire("Frère de Giani", "");
+		PersonnageSecondaire poteDeGiani1 = new PersonnageSecondaire("Pote de Giani 1", "");
+		PersonnageSecondaire poteDeGiani2 = new PersonnageSecondaire("Pote de Giani 2", "");
+		
+		adversairesChellesFred = new ArrayList<>();
+		adversairesChellesFred.add(fred);
+		adversairesChellesFred.add(poteDeFred1);
+		adversairesChellesFred.add(poteDeFred2);
+		adversairesChellesFred.add(poteDeFred3);
+		adversairesChellesFred.add(poteDeFred4);
+		adversairesChellesFred.add(samir);
+		adversairesChellesFred.add(frereSamir1);
+		adversairesChellesFred.add(frereSamir2);
+		adversairesChellesFred.add(cousinSamir1);
+
+		adversairesChellesGiani = new ArrayList<>();
+		adversairesChellesGiani.add(giani);
+		adversairesChellesGiani.add(frereDeGiani);
+		adversairesChellesGiani.add(poteDeGiani1);
+		adversairesChellesGiani.add(poteDeGiani2);
+		adversairesChellesGiani.add(fred);
+		adversairesChellesGiani.add(poteDeFred1);
+		adversairesChellesGiani.add(samir);
+		adversairesChellesGiani.add(frereSamir1);
+		
+		// Adversaires Noisy
+		PersonnageSecondaire hakim = new PersonnageSecondaire("Hakim", "Guenineche");
+		PersonnageSecondaire frereHakim = new PersonnageSecondaire("Frère d'Hakim", "");
+		PersonnageSecondaire ryhad = new PersonnageSecondaire("Ryhad", "Amani");
+		PersonnageSecondaire poteHakim1 = new PersonnageSecondaire("Pote d'Hakim 1", "");
+		PersonnageSecondaire poteHakim2 = new PersonnageSecondaire("Pote d'Hakim 2", "");
+		PersonnageSecondaire poteHakim3 = new PersonnageSecondaire("Pote d'Hakim 3", "");
+		PersonnageSecondaire poteHakim4 = new PersonnageSecondaire("Pote d'Hakim 4", "");
+		
+		PersonnageSecondaire bene = new PersonnageSecondaire("Benoit", "Salidot");
+		PersonnageSecondaire dridri = new PersonnageSecondaire("Adrian", "Salmeron");
+		PersonnageSecondaire costi = new PersonnageSecondaire("Cedric", "Heustache");
+		PersonnageSecondaire yaya = new PersonnageSecondaire("Yacine", "Amara");
+		PersonnageSecondaire alessandro = new PersonnageSecondaire("Alessandro", "");
+		PersonnageSecondaire maxou = new PersonnageSecondaire("Maxime", "Clement");
+		PersonnageSecondaire pv = new PersonnageSecondaire("Pierre-Vincent", "Jacquier");
+		PersonnageSecondaire poteBene1 = new PersonnageSecondaire("Pote de Bene 1", "");
+		PersonnageSecondaire poteBene2 = new PersonnageSecondaire("Pote de Bene 2", "");
+
+		PersonnageSecondaire poteDeTom1 = new PersonnageSecondaire("Pote de Tom 1", "");
+		PersonnageSecondaire poteDeTom2 = new PersonnageSecondaire("Pote de Tom 2", "");
+		PersonnageSecondaire poteDeTom3 = new PersonnageSecondaire("Pote de Tom 3", "");
+		PersonnageSecondaire poteDeTom4 = new PersonnageSecondaire("Pote de Tom 4", "");
+		PersonnageSecondaire poteDeTom5 = new PersonnageSecondaire("Pote de Tom 5", "");
+		PersonnageSecondaire poteDeTom6 = new PersonnageSecondaire("Pote de Tom 6", "");
+		
+		adversairesNoisyHakim = new ArrayList<>();
+		adversairesNoisyHakim.add(hakim);
+		adversairesNoisyHakim.add(frereHakim);
+		adversairesNoisyHakim.add(ryhad);
+		adversairesNoisyHakim.add(poteHakim1);
+		adversairesNoisyHakim.add(poteHakim2);
+		adversairesNoisyHakim.add(poteHakim3);
+		adversairesNoisyHakim.add(poteHakim4);
+
+		adversairesNoisyBene = new ArrayList<>();
+		adversairesNoisyBene.add(bene);
+		adversairesNoisyBene.add(dridri);
+		adversairesNoisyBene.add(yaya);
+		adversairesNoisyBene.add(costi);
+		adversairesNoisyBene.add(alessandro);
+		adversairesNoisyBene.add(maxou);
+		adversairesNoisyBene.add(pv);
+		adversairesNoisyBene.add(poteBene1);
+		adversairesNoisyBene.add(poteBene2);
+
+		adversairesNoisyTom = new ArrayList<>();
+		adversairesNoisyTom.add(poteDeTom1);
+		adversairesNoisyTom.add(poteDeTom2);
+		adversairesNoisyTom.add(poteDeTom3);
+		adversairesNoisyTom.add(poteDeTom4);
+		adversairesNoisyTom.add(poteDeTom5);
+		adversairesNoisyTom.add(poteDeTom6);
+		
+//		PersonnageSecondaire pattyMartino = new PersonnageSecondaire("Patty", "Martino");
+//		PersonnageSecondaire barbaraStolic = new PersonnageSecondaire("Barbara", "Stolic");
+//		PersonnageSecondaire claireBB = new PersonnageSecondaire("Claire", "Blaque-Belair");
+//		PersonnageSecondaire claireJaquet = new PersonnageSecondaire("Claire", "Jaquet");
+//		PersonnageSecondaire jacquelineGuinet = new PersonnageSecondaire("Jacqueline", "Guinet");
+//		PersonnageSecondaire shanazRicard = new PersonnageSecondaire("Shanaz", "Ricard");
+//		PersonnageSecondaire priscillaRemy = new PersonnageSecondaire("Priscilla", "Remy");
+//		PersonnageSecondaire judithRosenkrantz = new PersonnageSecondaire("Judith", "Rosenkrantz");
+//		PersonnageSecondaire virginieIdjer = new PersonnageSecondaire("Virginie", "Idjer");
+//		PersonnageSecondaire sophieLemoulec = new PersonnageSecondaire("Sophie", "Lemoulec");
 
 		personnagesSecondaires.add(omarChefre);
 		personnagesSecondaires.add(hassanCehef);
@@ -1042,6 +1277,47 @@ public class PersonnageManager implements Serializable {
 			}
 		}
 		return null;
+	}
+
+	public List<PersonnageSecondaire> getAdversairesEcole() {
+		return adversairesEcole;
+	}
+
+	public List<PersonnageSecondaire> getAdversairesTerrain() {
+		List<PersonnageSecondaire> adversaires = null;
+		int random = RandomManager.random(0, 2);
+		if (random == 0) {
+			adversaires = adversairesTerrainSamir;
+		} else if (random == 1) {
+			adversaires = adversairesTerrainGitan;
+		} else if (random == 2) {
+			adversaires = adversairesTerrainBoulets;
+		}
+		return adversaires;
+	}
+
+	public List<PersonnageSecondaire> getAdversairesChelles() {
+		List<PersonnageSecondaire> adversaires = null;
+		int random = RandomManager.random(0, 1);
+		if (random == 0) {
+			adversaires = adversairesChellesFred;
+		} else if (random == 1) {
+			adversaires = adversairesChellesGiani;
+		} 
+		return adversaires;
+	}
+
+	public List<PersonnageSecondaire> getAdversairesNoisy() {
+		List<PersonnageSecondaire> adversaires = null;
+		int random = RandomManager.random(0, 2);
+		if (random == 0) {
+			adversaires = adversairesNoisyHakim;
+		} else if (random == 1) {
+			adversaires = adversairesNoisyBene;
+		} else if (random == 2) {
+			adversaires = adversairesNoisyTom;
+		}
+		return adversaires;
 	}
 
 }

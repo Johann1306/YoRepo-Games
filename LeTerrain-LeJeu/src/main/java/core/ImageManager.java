@@ -19,6 +19,16 @@ public class ImageManager {
 		Image scaledInstance = image.getImage().getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH);
 		return new ImageIcon(scaledInstance);
 	}
+	
+	@SuppressWarnings("restriction")
+	public static javafx.scene.image.ImageView resizeImageView(javafx.scene.image.Image image,
+			Dimension dimension) {
+		javafx.scene.image.ImageView resizedImage = new javafx.scene.image.ImageView(image);
+		resizedImage.setFitHeight(dimension.getHeight());
+		resizedImage.setFitWidth(dimension.getWidth());
+		return resizedImage;
+	}
+
 
 	public static ImageIcon getImageIconProxy(String pathAndFileName) {
 		

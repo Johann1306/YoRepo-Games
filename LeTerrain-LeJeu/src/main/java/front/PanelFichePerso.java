@@ -25,6 +25,7 @@ import javax.swing.JViewport;
 
 import core.DateManager;
 import core.ImageManager;
+import core.MusiqueManager;
 import core.configuration.Constante;
 import modele.competence.PersoStat;
 import modele.item.personnage.PersoNom;
@@ -382,6 +383,7 @@ public class PanelFichePerso extends JPanel {
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MusiqueManager.playSon("sonParDefaut/boutonRetour.mp3");
 				panel.removeAll();
 				PanelCentre panelCentre = MainFrame.getPanelCentre();
 				panelCentre.refreshPanelCourant();

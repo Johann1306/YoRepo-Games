@@ -12,6 +12,10 @@ public class Competence implements Serializable {
 
 	private Map<PersoStat, Integer> stats = null;
 
+	public Competence(Map<PersoStat, Integer> stats) {
+		this.stats = new HashMap<>(stats);
+	}
+	
 	public Competence() {
 
 		stats = new HashMap<PersoStat, Integer>();

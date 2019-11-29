@@ -3,8 +3,10 @@ package core.jeu;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 import core.NomJeu;
-import front.FrameFoot;
+import front.FrameFootFX;
 import modele.item.Item;
 import modele.item.mission.Mission;
 import modele.item.mission.enums.Difficulte;
@@ -16,6 +18,8 @@ import modele.jeu.Jeu;
 public class JeuFoot extends Jeu implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private transient FrameFootFX frame = null;
 
 	public JeuFoot(NomJeu nomJeu) {
 		super(nomJeu);
@@ -32,11 +36,23 @@ public class JeuFoot extends Jeu implements Serializable {
 		String conditionDefaite = mission.getConditionDefaite();
 		String conditionVictoire = mission.getConditionVictoire();
 		List<Item> itemsDebloques = mission.getItemsDebloques();
-		
-		boolean win = false;
 
-		// Frame Foot
-		FrameFoot frameFoot = new FrameFoot(groupe, mission);
-		frameFoot.start();
+		// FrameFootFX
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				initAndShowGUI(mission);
+			}
+		});
+		
 	}
+	
+	private void initAndShowGUI(Mission mission) {
+		// This method is invoked on the EDT thread
+		System.out.println("Nouvelle instance de FrameFootFX");
+		frame = new FrameFootFX(mission);
+		frame.setVisible(true);
+		frame.start();
+	}
+
 }

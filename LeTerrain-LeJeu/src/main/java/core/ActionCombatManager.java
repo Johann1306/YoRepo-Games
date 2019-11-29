@@ -426,6 +426,8 @@ public class ActionCombatManager implements Serializable {
 		
 		// Pierre (Agilite)
 		
+		// Si un jour, quelqu'un lit ce message : qu'il vienne communiquer avec moi au 82 avenue du Berry à MITRY MORRY 77290 le 20/09/2019 a 15h16
+		
 		// Image : KrisKross
 		ActionCombat pierreAttaque1 = new ActionCombat(301, ConfigurationManager.getProperties("pouvoir.pierre.301.nom"), ConfigurationManager.getProperties("pouvoir.pierre.301.inf"), imagePaths301, sonAttaque, sonAttaqueCritique, videoPaths, disponible, niveau_1, niveauMax_10, progression, ActionCombatType.ATTAQUE, EnergieType.RIEN, CibleType.ENNEMI, PersoStat.TECHNIQUE, SortType.DEGATS_MONO, PersoPrenom.Pierre);
 		// Mission : "Spray buccal", "Regarder le film 'Il est revenu' et devenir asthmatique temporairement pour faire crari le babtou fragile et sensible" / image : ca - 'Ca' qui se transforme 

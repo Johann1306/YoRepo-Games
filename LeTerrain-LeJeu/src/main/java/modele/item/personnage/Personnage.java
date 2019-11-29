@@ -353,4 +353,15 @@ public class Personnage extends Item implements Serializable {
 		auras.put(lanceur, aura);
 	}
 
+	public void addAllCompetences(int valeur) {
+		for (PersoStat persoStat : competence.getStats().keySet()) {
+			int nouvelleValeur = competence.getStats().get(persoStat) + valeur;
+			if (nouvelleValeur > 100) {
+				nouvelleValeur = 100;
+			}
+			competence.getStats().put(persoStat, nouvelleValeur);
+			System.out.println("Ajoute " + valeur + " en " + persoStat.name() + " (" + nouvelleValeur + ")");
+		}
+	}
+
 }

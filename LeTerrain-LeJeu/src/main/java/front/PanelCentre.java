@@ -329,7 +329,7 @@ public class PanelCentre extends JPanel {
 		boutonCarte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
+				MusiqueManager.playSon("sonParDefaut/boutonRetour.mp3");
 				panel.removeAll();
 				buildPanelPerso(panel);
 				revalidate();

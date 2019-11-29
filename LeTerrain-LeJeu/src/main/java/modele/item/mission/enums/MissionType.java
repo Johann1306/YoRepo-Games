@@ -7,5 +7,6 @@ public enum MissionType {
 	MINIJEU,
 	QUIZZ,
 	BOUTIQUE,
-	BOSS;
+	BOSS,
+	FOOT;
 }
