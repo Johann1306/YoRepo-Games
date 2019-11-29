@@ -21,6 +21,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
@@ -446,6 +447,8 @@ public class FrameCombat extends FrameJeu {
 		content.add(panelEst, BorderLayout.EAST);
 		content.add(panelSud, BorderLayout.SOUTH);
 
+		this.setUndecorated(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setContentPane(content);
 		this.setVisible(true);
 	}
@@ -1245,7 +1248,7 @@ public class FrameCombat extends FrameJeu {
 		int score = -1;
 		boolean isCritique = false;
 		int degatsCritique = 1;
-		int charges = 1;
+		int charges = 0;
 		int niveau = 1;
 		int min = 0;
 		int max = 100;
@@ -2457,11 +2460,11 @@ public class FrameCombat extends FrameJeu {
 		// choisi)
 		int handicap = 0;
 		if (mission.getDifficulty() == Difficulte.FACILE) {
-			handicap = 30;
-		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
 			handicap = 20;
-		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+		} else if (mission.getDifficulty() == Difficulte.NORMAL) {
 			handicap = 10;
+		} else if (mission.getDifficulty() == Difficulte.DIFFICILE) {
+			handicap = 5;
 		} else if (mission.getDifficulty() == Difficulte.HEROIQUE) {
 			handicap = 0;
 		}

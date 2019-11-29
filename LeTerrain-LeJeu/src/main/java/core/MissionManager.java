@@ -135,8 +135,15 @@ public class MissionManager implements Serializable {
 		Date date3 = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 4, 9, 00, 00);
 		Date dateNull = null;
 		
-		Date dateCleTerrain = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 1, 9, 00, 00);
-
+		// TODO remettre les bonnes dates
+//		Date dateCleTerrain = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 1, 9, 00, 00);
+//		Date dateFootChelles = DateManager.genereUneDate(2002, Calendar.SEPTEMBER, 1, 9, 00, 00);
+//		Date dateFootNoisy = DateManager.genereUneDate(2005, Calendar.SEPTEMBER, 1, 9, 00, 00);
+		// TODO Pour tester les boutiques en debut de partie
+		Date dateCleTerrain = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 12, 9, 00, 00);
+		Date dateFootChelles = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 12, 9, 00, 00);
+		Date dateFootNoisy = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 12, 9, 00, 00);
+		
 		Date dateMiranda = DateManager.genereUneDate(1990, Calendar.SEPTEMBER, 11, 9, 00, 00);
 		Date dateTonelle = DateManager.genereUneDate(1995, Calendar.SEPTEMBER, 11, 9, 00, 00);
 		Date dateDahlias = DateManager.genereUneDate(1998, Calendar.DECEMBER, 31, 20, 00, 00);
@@ -564,6 +571,86 @@ public class MissionManager implements Serializable {
 		itemsNecessairesMissionFinale.add(micro_dor);
 		itemsNecessairesMissionFinale.add(coupe_dor);
 		itemsNecessairesMissionFinale.add(palme_dor);
+		
+		// Mission Foot Ecole
+		List<Item> itemsNecessairesMission3001 = new ArrayList<>();
+		itemsNecessairesMission3001.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3001.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3001.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3001.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3001.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		List<Item> itemsNecessairesMission3002 = new ArrayList<>();
+		itemsNecessairesMission3002.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3002.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3002.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3002.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3002.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3002.add(clesDuTerrain);
+		
+		List<Item> itemsNecessairesMission3003 = new ArrayList<>();
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3003.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
+		itemsNecessairesMission3003.add(clesDuTerrain);
+		
+		List<Item> itemsNecessairesMission3004 = new ArrayList<>();
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
+		itemsNecessairesMission3004.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
+		itemsNecessairesMission3004.add(clesDuTerrain);
+		
+		List<Item> itemsNecessairesMission3005 = new ArrayList<>();
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
+		itemsNecessairesMission3005.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
+		itemsNecessairesMission3005.add(clesDuTerrain);
+		
+		List<Item> itemsNecessairesMission3006 = new ArrayList<>();
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
+		itemsNecessairesMission3006.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
+		
+		List<Item> itemsNecessairesMission3007 = new ArrayList<>();
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Guillaume));
+		itemsNecessairesMission3007.add(personnageManager.getPersoByPrenom(PersoPrenom.Jonathan));
+		
+		List<Item> itemsNecessairesMission3008 = new ArrayList<>();
+		itemsNecessairesMission3008.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3008.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3008.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3008.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3008.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		
+		List<Item> itemsNecessairesMission3009 = new ArrayList<>();
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Pierre));
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Yannick));
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Johann));
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Nicolas));
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Thomas));
+		itemsNecessairesMission3009.add(personnageManager.getPersoByPrenom(PersoPrenom.Ali));
 		
 		// Mission Terrain
 		List<Item> itemsNecessairesMissionTerrain = new ArrayList<>();
@@ -1127,6 +1214,12 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission1108.add(itemManager.getArmeById(580));
 		itemsDebloquesMission1108.add(bonusChance10);
 		
+		// Mission Foot Ecole
+		List<Item> itemsDebloquesMission3001 = new ArrayList<>();
+		itemsDebloquesMission3001.add(bonusEndurance5);
+		itemsDebloquesMission3001.add(bonusAgilite5);
+		itemsDebloquesMission3001.add(bonusRapidite5);
+		itemsDebloquesMission3001.add(bonusTechnique5);
 		
 		// Missions Quizz anniversaire
 		List<Item> itemsDebloquesMissionAnniversaireINT5 = new ArrayList<>();
@@ -1254,11 +1347,11 @@ public class MissionManager implements Serializable {
 
 		// MISSIONS PRINCIPAL
 		// Deblocages des persos et domiciles
-		Mission mission101 = new Mission(101, "Rencontrer Johann", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission101, 1, false);
-		Mission mission102 = new Mission(102, "Rencontrer Pierre", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission102, 2, false);
-		Mission mission103 = new Mission(103, "Rencontrer Nicolas", 	"Rassembler le groupe", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1,	MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null,	new ArrayList<>(), itemsDebloquesMission103, 3, false);
-		Mission mission104 = new Mission(104, "Rencontrer Yannick", 	"Rassembler le groupe", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1,	MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null,	new ArrayList<>(), itemsDebloquesMission104, 4, false);
-		Mission mission105 = new Mission(105, "Rencontrer Thomas", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission105, 5, false);
+		Mission mission101 = new Mission(101, "Rencontrer Johann", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission101, 1, false);
+		Mission mission102 = new Mission(102, "Rencontrer Pierre", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission102, 2, false);
+		Mission mission103 = new Mission(103, "Rencontrer Nicolas", 	"Rassembler le groupe", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1,	MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null,	new ArrayList<>(), itemsDebloquesMission103, 3, false);
+		Mission mission104 = new Mission(104, "Rencontrer Yannick", 	"Rassembler le groupe", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1,	MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null,	new ArrayList<>(), itemsDebloquesMission104, 4, false);
+		Mission mission105 = new Mission(105, "Rencontrer Thomas", 		"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date1, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission105, 5, false);
 		Mission mission106 = new Mission(106, "Rencontrer Ali", 		"Rassembler le groupe", imagePaths1, sonPaths1,	videoPaths1, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateRencontreAli, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission106, 6, false);
 		Mission mission107 = new Mission(107, "Rencontrer Guillaume", 	"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateRencontreGuy, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM,	new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(),	new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission107, 7, false);
 		Mission mission108 = new Mission(108, "Rencontrer Jonathan", 	"Rassembler le groupe", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateRencontreJo, MissionType.PRINCIPAL, Difficulte.FACILE, null, NomJeu.JEU_RANDOM, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission108, 8, false);
@@ -1472,6 +1565,26 @@ public class MissionManager implements Serializable {
 
 		// MISSION QUIZZ REPETABLE POUR FINIR TOUTES LES QUESTIONS
 		Mission mission2062 = new Mission(2062, ConfigurationManager.getProperties("mission.repetable.quizz.2062.nom"), ConfigurationManager.getProperties("mission.repetable.quizz.2062.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date21siecle, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMissionAnniversaireINT5, 0, true);
+
+		
+		// MISSIONS FOOT
+		
+		// MISSIONS FOOT ECOLE
+		Mission mission3001 = new Mission(3001, ConfigurationManager.getProperties("mission.repetable.foot.ecole.5v5.3001.nom"), ConfigurationManager.getProperties("mission.repetable.foot.ecole.5v5.3001.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3001, itemsDebloquesMission3001, 0, true);
+	
+		// MISSIONS FOOT TERRAIN
+		Mission mission3002 = new Mission(3002, ConfigurationManager.getProperties("mission.repetable.foot.terrain.5v5.3002.nom"), ConfigurationManager.getProperties("mission.repetable.foot.terrain.5v5.3002.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3002, itemsDebloquesMission3001, 0, true);
+		Mission mission3003 = new Mission(3003, ConfigurationManager.getProperties("mission.repetable.foot.terrain.6v6.3003.nom"), ConfigurationManager.getProperties("mission.repetable.foot.terrain.6v6.3003.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3003, itemsDebloquesMission3001, 0, true);
+		Mission mission3004 = new Mission(3004, ConfigurationManager.getProperties("mission.repetable.foot.terrain.7v7.3004.nom"), ConfigurationManager.getProperties("mission.repetable.foot.terrain.7v7.3004.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3004, itemsDebloquesMission3001, 0, true);
+		Mission mission3005 = new Mission(3005, ConfigurationManager.getProperties("mission.repetable.foot.terrain.8v8.3005.nom"), ConfigurationManager.getProperties("mission.repetable.foot.terrain.8v8.3005.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateNull, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3005, itemsDebloquesMission3001, 0, true);
+	
+		// MISSIONS FOOT CHELLES
+		Mission mission3006 = new Mission(3006, ConfigurationManager.getProperties("mission.repetable.foot.chelles.7v7.3006.nom"), ConfigurationManager.getProperties("mission.repetable.foot.chelles.7v7.3006.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateFootChelles, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3006, itemsDebloquesMission3001, 0, true);
+		Mission mission3007 = new Mission(3007, ConfigurationManager.getProperties("mission.repetable.foot.chelles.8v8.3007.nom"), ConfigurationManager.getProperties("mission.repetable.foot.chelles.8v8.3007.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateFootChelles, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3007, itemsDebloquesMission3001, 0, true);
+	
+		// MISSIONS FOOT NOISY
+		Mission mission3008 = new Mission(3008, ConfigurationManager.getProperties("mission.repetable.foot.noisy.5v5.3008.nom"), ConfigurationManager.getProperties("mission.repetable.foot.noisy.5v5.3008.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateFootNoisy, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3008, itemsDebloquesMission3001, 0, true);
+		Mission mission3009 = new Mission(3009, ConfigurationManager.getProperties("mission.repetable.foot.noisy.6v6.3009.nom"), ConfigurationManager.getProperties("mission.repetable.foot.noisy.6v6.3009.inf"), imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusFoot, bonusVide, 1, 1, dateFootNoisy, MissionType.FOOT, difficultePartie, null, NomJeu.JEU_FOOT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMission3009, itemsDebloquesMission3001, 0, true);
 
 		
 		// MISSIONS DATE FIXE
@@ -1736,6 +1849,16 @@ public class MissionManager implements Serializable {
 		missions.add(mission2060);
 		missions.add(mission2061);
 		missions.add(mission2062);
+		
+		missions.add(mission3001);
+		missions.add(mission3002);
+		missions.add(mission3003);
+		missions.add(mission3004);
+		missions.add(mission3005);
+		missions.add(mission3006);
+		missions.add(mission3007);
+		missions.add(mission3008);
+		missions.add(mission3009);
 
 		// Refresh Listes
 		triMissions();

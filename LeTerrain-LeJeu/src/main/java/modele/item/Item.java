@@ -59,6 +59,10 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 	public List<String> getImagePath() {
 		return imagePaths;
 	}
+
+	public void setImagePaths(List<String> imagePaths) {
+		this.imagePaths = imagePaths;
+	}
 	
 	public List<String> getSonPath() {
 		return sonPaths;

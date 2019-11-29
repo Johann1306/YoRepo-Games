@@ -51,7 +51,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 	private Map<DrogueType, Map<PersoStat, Integer>> droguesConsommees;
 	
 	public PersonnagePrincipal(PersoNom nomFamille, PersoPrenom prenomPerso, String surnomPrincipal, List<String> surnoms, Date dateNaissance, String origines,
-			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso,
+			List<String> particularitesPhysique, List<String> particularitesSocial, List<String> phrasesPerso, List<String> photoPaths,
 			ImageIcon photoPrincipal, ImageIcon photoCombat, List<ImageIcon> photos, Color couleur, List<ActionCombat> actionsCombat, List<Objectif> objectifs,
 			List<MomentCle> momentsCle, String messageDieu, List<PersonnageEnnemi> boss, List<PersonnageSecondaire> connaissances,
 			List<Son> sons, List<Musique> musiques, Map<Item, Integer> sac, Lieu domicile, Competence competence, Competence competenceMax,
@@ -66,6 +66,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		this.setParticularitesPhysique(particularitesPhysique);
 		this.setParticularitesSocial(particularitesSocial);
 		this.setPhrasesPerso(phrasesPerso);
+		this.setImagePaths(photoPaths);
 		this.setPhotoPrincipal(photoPrincipal);
 		this.setPhotoCombat(photoCombat);
 		this.photos = photos;

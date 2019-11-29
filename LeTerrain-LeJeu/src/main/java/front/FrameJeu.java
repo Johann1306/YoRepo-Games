@@ -20,21 +20,23 @@ import modele.item.personnage.PersonnagePrincipal;
 
 public class FrameJeu extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private boolean musiqueRunning = true;
 
 	public JPanel createPanelInfoMission(Mission mission) {
 		JPanel panelInfoMission = new JPanel();
-		JButton boutonMusiqueOnOff = new JButton("SON");
+		JButton boutonMusiqueOnOff = new JButton("Musique ON/OFF");
 		boutonMusiqueOnOff.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (musiqueRunning) {
+				if (isMusiqueRunning()) {
 					MusiqueManager.stopPlaylistEnBoucle();
-					musiqueRunning = false;
+					setMusiqueRunning(false);
 				} else {
 					MusiqueManager.stopPlaylistEnBoucle();
 					MusiqueManager.startPlayListEnBoucle(mission);
-					musiqueRunning = true;
+					setMusiqueRunning(true);
 				}
 			}
 		});
@@ -75,8 +77,8 @@ public class FrameJeu extends JFrame {
 		}
 
 		// Size
-		panelInfoMission
-				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));
+//		panelInfoMission
+//				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));
 		return panelInfoMission;
 	}
 

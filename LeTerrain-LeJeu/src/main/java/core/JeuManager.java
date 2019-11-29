@@ -7,6 +7,7 @@ import java.util.Map;
 import core.jeu.JeuAgilite;
 import core.jeu.JeuCombat;
 import core.jeu.JeuCourse;
+import core.jeu.JeuFoot;
 import core.jeu.JeuQuizz;
 import core.jeu.JeuRandom;
 import core.jeu.JeuShopAdulte;
@@ -34,7 +35,7 @@ public class JeuManager implements Serializable {
 		Jeu jeuCourse = new JeuCourse(NomJeu.JEU_COURSE);
 		Jeu jeuShopEnfant = new JeuShopEnfant(NomJeu.JEU_SHOP_ENFANT);
 		Jeu jeuShopAdulte = new JeuShopAdulte(NomJeu.JEU_SHOP_ADULTE);
-//		Jeu jeuFoot = new JeuFoot(NomJeu.JEU_FOOT);
+		Jeu jeuFoot = new JeuFoot(NomJeu.JEU_FOOT);
 		// JEU_BILLE
 
 		jeux.put(NomJeu.JEU_RANDOM, jeuRandom);
@@ -44,7 +45,7 @@ public class JeuManager implements Serializable {
 		jeux.put(NomJeu.JEU_COURSE, jeuCourse);
 		jeux.put(NomJeu.JEU_SHOP_ENFANT, jeuShopEnfant);
 		jeux.put(NomJeu.JEU_SHOP_ADULTE, jeuShopAdulte);
-//		jeux.put(NomJeu.JEU_FOOT, jeuFoot);
+		jeux.put(NomJeu.JEU_FOOT, jeuFoot);
 	}
 	
 	public Jeu getJeu(NomJeu nomJeu) {

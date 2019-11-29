@@ -7,6 +7,19 @@
 	<groupId>com.johann.game</groupId>
 
 	<dependencies>
+	
+		<dependency>
+		    <groupId>org.openjfx</groupId>
+		    <artifactId>javafx</artifactId>
+		    <version>14-ea+1</version>
+		    <type>pom</type>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.controlsfx</groupId>
+		    <artifactId>controlsfx</artifactId>
+		    <version>8.40.15</version>
+		</dependency>
 
 		<!-- SLF4J -->
 		<dependency>

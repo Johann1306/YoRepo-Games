@@ -72,22 +72,29 @@ public class QuizzManager implements Serializable {
 		
 		// MATH
 		// Laquelle de ces affirmations est vraie? Une soustraction peut donner un nombre positif, Une racine carré peut être négative, Deux droites parallèles peuvent se croiser, Un nombre peut être divisé par 0 (En effet : 7-2 = 5)   
-		// Combien de fois peut on plier une feuille de papier au maximum?
+		// Combien de fois peut on plier une feuille de papier au maximum? 7?
 		
-		// Une annee lumiere est une unité de temps? de distance? de vitesse? d'energie? (info def de l'année lumiere)
+		// Une annee lumiere est une unité de distance? de temps? de vitesse? d'energie? (L'Union astronomique internationale la définit comme la distance parcourue par un photon (ou plus simplement la lumière) dans le vide, en une année julienne (soit 365,25 jours)
+		
+		// Idees recus / legendes urbaines
+		// - Pourquoi le ciel est bleu a cause ? ( de l'Atmosphere, (du Reflet des oceans, du Reflet de l'espace, des nuages)) (Le bleu du ciel est le résultat de la diffusion de la lumière solaire par l'atmosphère. )
+		// - Quel est la couleur du soleil? (Blanc aryen, (Jaune poussin, Orange grenadine, Rouge regles) ) (C'est la diffusion des rayons du soleil dans l'atmosphere qui donne la couleur jaune)
+		// - La celebre Joconde de Leonard De Vinci est peinte avec : de la peinture a l'huile sur un panneau de bois? (avec de la peinture acrylique sur une toile en soie? avec de la peinture a l'eau sur une toile en chanvre? avec du sperme sur une toile en peau de couille?)
+		// - Le pere noel est habillé en rouge a cause de : - de la culture populaire? (de Coca-Cola? de l'Eglise? des Femen) ( Il a d’abord été dessiné par Thomas Nast en 1863, à l'origine en monochrome, puis dans un habit de fourrure de couleur brune. Plusieurs colorations anonymes de ses dessins, vertes, rouges ou bleues, ont commencé à émerger, jusqu’à ce que le rouge devienne majoritaire. Lorsque Coca-Cola commença à l’utiliser dans les années 1930, son image était déjà courante dans les médias et la culture populaire.)
 		
 		// Faits extraordinaires
 		// - Taille du soleil et de la lune vu de la terre
 		// - Pourcentage de la masse de la Terre dans le systeme solaire par rapport au soleil (+95%)
-		// - Calendrier de l'existence de l'homme a l'echelle de l'univers (31 dec 23h59)
+		// - Calendrier de l'existence de l'homme a l'echelle de l'univers (31 dec 23h59) un battement de cil a l'echelle cosmique
 		// - Vitesse max de la lumiere
 		// - Nombre de bacteries dans le corps / dans une cuillere a café de terre
 		// - En 2015 Nombre de musulmans (1,8 Milliard) / nombre d'arabes dans le monde (422 millions d'Arabes) (soit 23.44%)
 		// - ADN : Similarités avec des especes proches mais differentes (crevette?)
-		// - Cleopatre a vecu a une epoque plus proche du telephone que de la construction des pyramides
+		// - Cleopatre a vecu a une epoque plus proche du telephone que de la construction des pyramides.
+		// - Cleopatre etait d'origine : grecque? egyptienne? romaine? gauloise? (Elle appartient à la dynastie d'origine macédonienne des Lagides qui est typiquement grecque et se réclame comme telle)
 		// - Le Stégosaure a vécu entre 156 et 140 millions d’années avant notre ère alors que le T-Rex aurait vécu il y a environ 65 à 70 millions d'années. Ce qui rapproche plus le T-Rex de notre ère que de celle du Stégosaure. 
 		// - Il y a 1,6 Million de Fourmi pour chaque etre humain
-		// - Mario casse les blocs avec la main? ( tete, pied, bite)
+		// - Lorsqu'il saute, Mario casse les blocs avec la main? (tete, pied, moustache)
 		// - Pourquoi les ouragans portent ils des noms de personnes ? A cause des politiciens? a cause des religieux? a cause des scientifiques? a cause des femmes? (Les cyclones et les ouragans portent le nom de personnes en raison de Clément Wragge, un météorologue qui utilisait les noms de politiciens qu'il n'aimait pas pour leur signifier qu'ils étaient destructeurs et qu'ils erraient sans but.)
 		// - Quel animal a la morsure la plus puissante : crocodile (requin? morse? cachalot?)
 		
@@ -111,6 +118,7 @@ public class QuizzManager implements Serializable {
 		
 		//Culture générale
 		// Les dinosaures ont-ils tous disparus? Oui, tués par un météorite il y a 65 millions d'années - Oui, ... Non,... Non,...
+		// Qu'appelle-t-on aujourd'hui une année? la terre fait un tour de soleil? le soleil fait 365,25 tours de Terre? La lune fait 12 tours de Terre? le soleil fait un tour de terre?
 		
 		// Decouvertes
 		// Tesla

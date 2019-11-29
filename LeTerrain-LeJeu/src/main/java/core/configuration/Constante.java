@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+@SuppressWarnings("restriction")
 public class Constante {
 	
 	public static final Dimension PERSO_IMAGE_DIMENSION_64_64 = new Dimension(64, 64);
@@ -13,14 +14,8 @@ public class Constante {
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
 	public static final Dimension ARME_IMAGE_DIMENSION_25_25 = new Dimension(25, 25);
 	public static final Dimension ARME_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
-
-	// Dimension image piece d'un Franc
 	public static final Dimension ARGENT_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
-	
 	public static final Dimension EVENEMENT_IMAGE_DIMENSION_300_300 = new Dimension(300, 300);
-	
-	public static final int MAX_EVENEMENTS_AFFICHES = 5;
-	public static final int MAX_CASE_PAR_LIGNE = 10;
 	
 	public static final Dimension ITEM_TAILLE_DIMENSION = new Dimension(32,32);
 	public static final Dimension ITEM_CONSOMMABLE_DIMENSION = new Dimension(32,32);
@@ -32,6 +27,7 @@ public class Constante {
 	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
 	public static final Dimension BOUTON_MISSIONS_DIMENSION = new Dimension(300,50); // pas exact
 	public static final Dimension BOUTON_LIEU_DIMENSION = new Dimension(500,50);
+	public static final Dimension POPUP_IMAGE_DIMENSION_100_100 = new Dimension(200,200);
 
 	public static final int PANEL_BAS_HAUTEUR = 120;		// Pour 2 barres d'inventaire TODO mieux
 	public static final int PANEL_GAUCHE_LARGEUR = 180;
@@ -49,6 +45,9 @@ public class Constante {
 	public static final int PANEL_INFO_PERSO_LARGEUR = 200;
 	public static final int PANEL_INFO_PERSO_HAUTEUR = 25;
 
+	public static final int MAX_EVENEMENTS_AFFICHES = 5;
+	public static final int MAX_CASE_PAR_LIGNE = 10;
+	
 	// FONT
 	public static final Font ZELDA_FONT_FRAMECOMBAT_INFO = new Font("Triforce", Font.PLAIN, 15);
 	public static final Font ZELDA_FONT = new Font("Triforce", Font.PLAIN, 20);
@@ -73,14 +72,40 @@ public class Constante {
 	public static final int MENU_HEIGHT = 250;
 	public static final int MENU_WIDTH = 380;
 
-	public static final int ESPACE_PANEL_CENTRE = 10;
-
 	public static final Color COULEUR_MISSION_REPETABLE = Color.GREEN;
 	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
+	
+	// Quizz
 	public static final double QUIZZ_MAX_TEMPS = 10.00;
 	
+	// Marchand
 	public static final int COEF_PRIX_VENTE = 5;
+	
+	/// Foot
+	public static final javafx.scene.text.Font SIMPSON_FONT_JAVAFX = new javafx.scene.text.Font("Simpsonfont", 30);
+	public static final javafx.scene.text.Font MARIO_FONT_JAVAFX = new javafx.scene.text.Font("Super Mario 256", 30);
+
+// 	Coordonnees terrain professionnel
+	public static final int LARGEUR_TERRAIN = 680;
+	public static final int LONGEUR_TERRAIN = 1050;
+	
+	// Point d'origine superieur gauche du terrain
+	public static final int COORD_X_TERRAIN = 100;
+	public static final int COORD_Y_TERRAIN = 100;
+	
+	public static final int RAYON_BALLON = 5;
+	public static final int RAYON_JOUEUR = 12;
+	public static final int ECART_MAX_PRECISON_PASSE = 50;
+	public static final int ECART_MAX_PRECISON_TIR = 100;
+	public static final double DISTANCE_RECUPERATION_DEFENSE = 80.0;
+	public static final double DISTANCE_POSITION_DEFENSE = 90.0;
+	public static final int VITESSE_MAX_BALLON = 150;
+
+	public static final int DUREE_DU_MATCH_EN_MINUTE = 3;   // 3 min
+	public static final long DELAI_APRES_BUT = 2000000000l; // 2 s
+	public static final long DELAI_AVANT_INACTIVITE = 2000; // 2 s
+
 
 
 
