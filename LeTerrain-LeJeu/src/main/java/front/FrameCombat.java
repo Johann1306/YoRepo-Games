@@ -118,8 +118,8 @@ public class FrameCombat extends FrameJeu {
 		// panelActions.setLayout(boxlayoutActions);
 
 		this.setAlwaysOnTop(true);
-		this.setSize(Constante.FENETRE_COMBAT_DIMENSION);
-		this.setMinimumSize(Constante.FENETRE_COMBAT_DIMENSION);
+//		this.setSize(Constante.FENETRE_COMBAT_DIMENSION);
+//		this.setMinimumSize(Constante.FENETRE_COMBAT_DIMENSION);
 		centreFenetre();
 
 		// Personnages principaux
@@ -434,9 +434,9 @@ public class FrameCombat extends FrameJeu {
 		// --
 		panelNord.setBackground(Color.BLACK);
 		panelOuest.setBackground(Color.GREEN);
-		panelCentre.setBackground(Color.WHITE);
+		panelCentre.setBackground(Color.BLACK);
 		panelEst.setBackground(Color.RED);
-		panelSud.setBackground(Color.BLUE);
+		panelSud.setBackground(Color.BLACK);
 		
 		panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		panelEst.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
@@ -754,7 +754,7 @@ public class FrameCombat extends FrameJeu {
 						ImageIcon resizeImage2 = ImageManager.resizeImage(imageItem, Constante.ITEM_CONSOMMABLE_DIMENSION);
 						JButton boutonItem = new JButton(resizeImage2);
 						boutonItem.setToolTipText(item.getNom() + " (x" + nbItems + ")");
-						boutonItem.setPreferredSize(new Dimension(resizeImage2.getIconWidth(), resizeImage2.getIconHeight()));
+						boutonItem.setPreferredSize(new Dimension(resizeImage2.getIconWidth() +10, resizeImage2.getIconHeight()));
 						// TODO afficher le nombre d'items si >1 (popup?)
 		
 						// Clic sur un item
@@ -921,9 +921,9 @@ public class FrameCombat extends FrameJeu {
 			panelPerso.setBackground(Color.BLACK);
 			panelBoutonsPerso.setBackground(Color.BLACK);
 			panelInfosCombat.setBackground(Color.YELLOW);
-			panelItemsCombat.setBackground(Color.PINK);
+			panelItemsCombat.setBackground(Color.ORANGE);
 			panelBoutonsGroupe.setBackground(Color.BLACK);
-			panelActions.setBackground(Color.RED);
+			panelActions.setBackground(Color.BLACK);
 
 			JScrollPane scrollPaneInfosCombat = new JScrollPane();
 			// Vitesse de la barre de scroll
@@ -931,6 +931,7 @@ public class FrameCombat extends FrameJeu {
 			jScrollBarInfos.setUnitIncrement(30);
 			scrollPaneInfosCombat.setVerticalScrollBar(jScrollBarInfos);
 			scrollPaneInfosCombat.getViewport().add(panelInfosCombat);
+			scrollPaneInfosCombat.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_ACTION_HAUTEUR));
 
 			JScrollPane scrollPaneItemsCombat = new JScrollPane();
 			// Vitesse de la barre de scroll
@@ -940,6 +941,7 @@ public class FrameCombat extends FrameJeu {
 			scrollPaneItemsCombat.getViewport().add(panelItemsCombat);
 			scrollPaneItemsCombat.setHorizontalScrollBar(null);
 			scrollPaneItemsCombat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPaneItemsCombat.setPreferredSize(new Dimension(70, Constante.PANEL_ACTION_HAUTEUR));
 
 			panelActions.add(panelPerso);
 			panelActions.add(panelBoutonsPerso);
@@ -1321,10 +1323,10 @@ public class FrameCombat extends FrameJeu {
 		// Ajout des degats de l'arme
 		if (lanceur.getArme() != null) {
 			int random = RandomManager.random(lanceur.getArme().getDegatsMin(), lanceur.getArme().getDegatsMax());
-			System.out.println("DegatsBase : " + score);
-			System.out.println("DegatsArme : " + random);
+//			System.out.println("DegatsBase : " + score);
+//			System.out.println("DegatsArme : " + random);
 			score = score + random;
-			System.out.println("Degats Total : " + score);
+//			System.out.println("Degats Total : " + score);
 		}
 		
 		// Reduction de la difficulte globale des ennemis
@@ -1415,14 +1417,14 @@ public class FrameCombat extends FrameJeu {
 						|| actionCombat.getSortType() == SortType.BOUCLIER_MONO
 						|| actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
 					// Gestion defense de la cible
-					cible.setBouclier(cible.getBouclier() + score);
+					cible.setBouclier(cible.getBouclier() + (score / Constante.RATIO_BOUCLIER));
 				}
 				// Si Regen Mana
 				else if (actionCombat.getSortType() == SortType.REGEN_MANA_PERSO
 						|| actionCombat.getSortType() == SortType.REGEN_MANA_MONO
 						|| actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
 					// Gestion mana de la cible
-					cible.setMana(cible.getMana() + score);
+					cible.setMana(cible.getMana() + (score / Constante.RATIO_REGEN_MANA));
 					if (cible.getMana() > cible.getManaMax()) {
 						cible.setMana(cible.getManaMax());
 					}
@@ -1431,7 +1433,7 @@ public class FrameCombat extends FrameJeu {
 				else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MONO
 						|| actionCombat.getSortType() == SortType.BRULURE_MANA_MULTI) {
 					// Gestion mana de la cible
-					cible.setMana(cible.getMana() - score);
+					cible.setMana(cible.getMana() - (score / Constante.RATIO_BRULURE_MANA));
 					if (cible.getMana() < 0) {
 						cible.setMana(0);
 					}
@@ -1440,7 +1442,7 @@ public class FrameCombat extends FrameJeu {
 				else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MONO
 						|| actionCombat.getSortType() == SortType.ABSORPTION_MANA_MULTI) {
 					// Gestion mana du lanceur
-					lanceur.setMana(lanceur.getMana() + score);
+					lanceur.setMana(lanceur.getMana() + (score / Constante.RATIO_ABSORPTION_MANA));
 					if (lanceur.getMana() > lanceur.getManaMax()) {
 						lanceur.setMana(lanceur.getManaMax());
 					}
@@ -1616,7 +1618,7 @@ public class FrameCombat extends FrameJeu {
 				// Si dégats
 				else {
 
-					System.out.println("Cible avant degats : " + cible.toString());
+//					System.out.println("Cible avant degats : " + cible.toString());
 
 					// Si Absorption Vie
 					if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO
@@ -1724,9 +1726,6 @@ public class FrameCombat extends FrameJeu {
 								ennemisVivants.remove(cible);
 								for (JButton bouton : boutonsEnnemis) {
 									// TODO tester le probleme du Boss qui reste affiché
-									System.out.println("Nom du bouton : " + bouton.getName());
-									System.out.println("Nom de la cible : " + cible.getPrenom());
-									System.out.println(bouton.getName() + " ==== " +cible.getPrenom());
 									if (bouton.getName().equals(cible.getPrenom())) {
 										bouton.setEnabled(false);
 									}
@@ -1742,7 +1741,7 @@ public class FrameCombat extends FrameJeu {
 								MusiqueManager.playSon("sonParDefaut/defautMort.mp3");
 								JLabel labelMort = new JLabel(
 										lanceur.getPrenom() + " a tué " + cible.getPrenom() + ".");
-								labelMort.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
+								labelMort.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 								labelMort.setForeground(Color.RED);
 								//labelMort.setForeground(lanceur.getCouleur());
 								panelInfosCombat.add(labelMort, 0);
@@ -1783,7 +1782,7 @@ public class FrameCombat extends FrameJeu {
 						}
 					}
 				}
-				System.out.println("Cible apres sort : " + cible.toString());
+//				System.out.println("Cible apres sort : " + cible.toString());
 
 				// TODO ajoute charge que quand degats ???
 				// Ajoute une charge a chaque cible
@@ -2189,7 +2188,7 @@ public class FrameCombat extends FrameJeu {
 			label.setText("(CRITIQUE) " + label.getText());
 		}
 
-		label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
+		label.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 		// label.setForeground(perso.getCouleur());
 		return label;
 	}
@@ -2218,7 +2217,9 @@ public class FrameCombat extends FrameJeu {
 		if(mission.getMissionType().name().equals(MissionType.BOSS.name())) {
 			PersonnageBoss boss = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersonnageBossByNom(mission.getBossNom());
 			ImageIcon resizeImage = ImageManager.resizeImage(boss.getPhotoPrincipal(), Constante.PERSO_IMAGE_DIMENSION_180_180);
-			JOptionPane.showMessageDialog(this, boss.getPhrasesPerso().get(0), mission.getBossNom().getNom(), 0, resizeImage);
+			JLabel labelMessage = new JLabel(boss.getPhrasesPerso().get(0));
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, mission.getBossNom().getNom(), 0, resizeImage);
 		}
 		
 		JOptionPane.showMessageDialog(this, "Debut du combat");
@@ -2229,10 +2230,6 @@ public class FrameCombat extends FrameJeu {
 
 	// Fin du jeu
 	private void stop(Mission mission, boolean win) {
-
-		// Eteint la musique de combat
-		MusiqueManager.stopPlaylistEnBoucle();
-		setMusiqueRunning(false);
 
 		// Remise a zero pour prochain combat (duplique avec lancePartie())
 		for (PersonnagePrincipal ami : amisPresents) {
@@ -2267,15 +2264,21 @@ public class FrameCombat extends FrameJeu {
 		}
 
 		// Message fin du jeu
-		// TODO changer les images victoire/defaite
+		MusiqueManager.stopAll();
 		if (win) {
+			MusiqueManager.playSonItem("sonParDefaut/defautVictoire.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
 			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
-			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du combat", 0, resizeImage);
+			JLabel labelMessage = new JLabel("Victoire !");
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du combat", 0, resizeImage);
 		} else {
+			MusiqueManager.playSonItem("sonParDefaut/defautDefaite.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
 			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
-			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du combat", 0, resizeImage);
+			JLabel labelMessage = new JLabel("Defaite !");
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du combat", 0, resizeImage);
 		}
 
 		// Gestion de la progression des sorts
@@ -2290,6 +2293,9 @@ public class FrameCombat extends FrameJeu {
 				// On ameliore le sort
 				if (actionCombat.amelioreItem()) {
 					// TODO son sort ameliore
+					
+					MusiqueManager.playSonItem("sonParDefaut/defautLevelUp.mp3");
+					
 					// Message sort ameliore
 					ImageIcon icon = FenetrePrincipal.getImageIcon(actionCombat.getImagePath().get(0));
 					ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
@@ -2309,7 +2315,10 @@ public class FrameCombat extends FrameJeu {
 		MenuPrincipal.getMainFrame().setEnabled(true);
 		MenuPrincipal.getMainFrame().setVisible(true);
 		VideoManager.show();
-//		MusiqueManager.stopAll();
+		
+		// Eteint la musique de combat
+		MusiqueManager.stopPlaylistEnBoucle();
+		setMusiqueRunning(false);
 
 		// Fin de la mission
 		MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().termineMission(mission, win);
@@ -2332,7 +2341,7 @@ public class FrameCombat extends FrameJeu {
 			if (ItemManager.getItemSelectionne() == null) {
 			
 				JLabel label = new JLabel(prenomCible.name() + " consomme " + item.getNom() + ".");
-				label.setFont(Constante.ZELDA_FONT_FRAMECOMBAT_INFO);
+				label.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 				panelInfosCombat.add(label, 0);
 				
 				// Fin du tour du joueur (1 popo par tour par joueur)
@@ -2659,16 +2668,16 @@ public class FrameCombat extends FrameJeu {
 				}
 			}
 			int random = RandomManager.random(0, 100);
-			System.out.println(
-					"Essaie de lancer '" + meilleurAction.getNom() + "' avec (" + meilleurScore + "%) de chance.");
+//			System.out.println(
+//					"Essaie de lancer '" + meilleurAction.getNom() + "' avec (" + meilleurScore + "%) de chance.");
 			if (random < meilleurScore) {
 				action = meilleurAction;
-				System.out.println("Reussie.");
+//				System.out.println("Reussie.");
 			} else {
-				System.out.println("Raté.");
-				System.out.println("Il y a " + entrySetTemp.size() + " actions a essayer");
+//				System.out.println("Raté.");
+//				System.out.println("Il y a " + entrySetTemp.size() + " actions a essayer");
 				entrySetTemp.remove(meilleurEntry);
-				System.out.println("Il reste " + entrySetTemp.size() + " actions a essayer");
+//				System.out.println("Il reste " + entrySetTemp.size() + " actions a essayer");
 				if (entrySetTemp.isEmpty()) {
 					action = meilleurAction;
 				}

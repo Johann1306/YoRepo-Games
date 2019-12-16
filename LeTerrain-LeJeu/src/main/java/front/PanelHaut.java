@@ -161,7 +161,9 @@ public class PanelHaut extends JPanel {
 					MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager();
 					MusiqueManager.playSonEvenement("musique/dodo/310-SecretOfMana-close-your-eyelids.mp3");
 					ImageIcon resizeImageNuit = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautItemNuit.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
-					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonne nuit les petits",	"C'est l'heure de faire dodo", 0, resizeImageNuit);
+					JLabel messageLabel = new JLabel("Bonne nuit les petits");
+					messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), messageLabel, "C'est l'heure de faire dodo", 0, resizeImageNuit);
 					while (dateManager.getDateCourante().getHours() != 7) {
 						dateManager.passeUneHeure();						
 					}
@@ -172,7 +174,9 @@ public class PanelHaut extends JPanel {
 					// Reveil a 7h
 					MusiqueManager.playSonEvenement("musique/reveil/32-Zelda-hyrule-field-morning-theme.mp3");
 					ImageIcon resizeImageJour = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautItemJour.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
-					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),"Bonjour madame", "C'est l'heure de se reveiller", 0, resizeImageJour);
+					JLabel messageLabel2 = new JLabel("Bonjour madame");
+					messageLabel2.setFont(Constante.MARIO_FONT_MENU_3);
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), messageLabel2, "C'est l'heure de se reveiller", 0, resizeImageJour);
 				}
 
 				// Refresh du panel du perso courant
@@ -247,7 +251,7 @@ public class PanelHaut extends JPanel {
 		labelAvancement.setFont(Constante.ZELDA_FONT);
 		labelArgent.setFont(Constante.ZELDA_FONT);
 		labelArgent.setForeground(Color.YELLOW);
-		labelDate.setFont(Constante.ZELDA_FONT);
+		labelDate.setFont(Constante.SERIF_FONT);
 		labelDate.setForeground(Color.WHITE);
 		boutonPasser.setFont(Constante.ZELDA_FONT);
 		boutonPasserNext.setFont(Constante.ZELDA_FONT);

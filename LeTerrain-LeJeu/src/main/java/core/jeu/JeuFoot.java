@@ -49,7 +49,6 @@ public class JeuFoot extends Jeu implements Serializable {
 	
 	private void initAndShowGUI(Mission mission) {
 		// This method is invoked on the EDT thread
-		System.out.println("Nouvelle instance de FrameFootFX");
 		frame = new FrameFootFX(mission);
 		frame.setVisible(true);
 		frame.start();

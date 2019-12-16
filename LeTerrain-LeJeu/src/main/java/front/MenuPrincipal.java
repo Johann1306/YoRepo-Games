@@ -24,6 +24,7 @@ import core.MissionManager;
 import core.MusiqueManager;
 import core.PersonnageManager;
 import core.SauvegardeManager;
+import core.VideoManager;
 import core.configuration.Constante;
 import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.PersoPrenom;
@@ -32,7 +33,7 @@ public class MenuPrincipal extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final Border BORDER = BorderFactory.createLineBorder(Color.BLUE, 3);
+	private static final Border BORDER = BorderFactory.createLineBorder(Color.YELLOW, 3);
 	private static MainFrame mainFrame;
 	private JPanel panelDifficulte = null;
 	private static JButton boutonQuit = null;
@@ -198,7 +199,7 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonFacile.setFont(Constante.MARIO_FONT_MENU_2);
+						boutonFacile.setFont(Constante.MARIO_FONT_MENU_3);
 						boutonFacile.setBorder(BORDER);
 					}
 
@@ -224,7 +225,7 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonNormal.setFont(Constante.MARIO_FONT_MENU_2);
+						boutonNormal.setFont(Constante.MARIO_FONT_MENU_3);
 						boutonNormal.setBorder(BORDER);
 					}
 
@@ -250,7 +251,7 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonDifficile.setFont(Constante.MARIO_FONT_MENU_2);
+						boutonDifficile.setFont(Constante.MARIO_FONT_MENU_3);
 						boutonDifficile.setBorder(BORDER);
 					}
 
@@ -276,7 +277,7 @@ public class MenuPrincipal extends JPanel {
 
 					@Override
 					public void mouseEntered(MouseEvent e) {
-						boutonHeroique.setFont(Constante.MARIO_FONT_MENU_2);
+						boutonHeroique.setFont(Constante.MARIO_FONT_MENU_3);
 						boutonHeroique.setBorder(BORDER);
 					}
 
@@ -390,7 +391,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonNew.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonNew.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonNew.setBorder(BORDER);
 			}
 
@@ -416,7 +417,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonContinue.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonContinue.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonContinue.setBorder(BORDER);
 			}
 
@@ -442,7 +443,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonLoad.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonLoad.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonLoad.setBorder(BORDER);
 			}
 
@@ -468,7 +469,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonEdit.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonEdit.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonEdit.setBorder(BORDER);
 			}
 
@@ -494,7 +495,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonJeux.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonJeux.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonJeux.setBorder(BORDER);
 			}
 
@@ -520,7 +521,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonScore.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonScore.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonScore.setBorder(BORDER);
 			}
 
@@ -546,7 +547,7 @@ public class MenuPrincipal extends JPanel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				boutonQuit.setFont(Constante.MARIO_FONT_MENU_2);
+				boutonQuit.setFont(Constante.MARIO_FONT_MENU_3);
 				boutonQuit.setBorder(BORDER);
 			}
 
@@ -567,6 +568,10 @@ public class MenuPrincipal extends JPanel {
 	
 	private void lanceNouvellePartie(Difficulte difficulte) {
 		
+		// TODO son clic en fonction de la difficulte (Facile/bebe ou tetine, Normal/bruit d'epee, Difficile/pistolet, Heroique/hahaha)
+		MusiqueManager.stopPlaylistEnBoucle();
+		MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
+		
 		// Reaffichage panel Menu
 		Component[] components = this.getComponents();
 		for (Component component : components) {
@@ -576,9 +581,6 @@ public class MenuPrincipal extends JPanel {
 		panelDifficulte.removeAll();
 		panelDifficulte.setVisible(false);
 		
-		// TODO son clic en fonction de la difficulte (Facile/bebe ou tetine, Normal/bruit d'epee, Difficile/pistolet, Heroique/hahaha)
-		MusiqueManager.stopPlaylistEnBoucle();
-		MusiqueManager.playSon("son/Super_mario_bros_coin_sound_effect.mp3");
 		mainFrame = new MainFrame(difficulte);
 		mainFrame.startMainFrame();
 		FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
@@ -590,12 +592,14 @@ public class MenuPrincipal extends JPanel {
 		MissionManager missionManager = mainFrame.getCoreManager().getMissionManager();
 		LieuManager lieuManager = mainFrame.getCoreManager().getLieuManager();
 		
+		VideoManager.play("video/debut/zoom.mp4");
+		
 		// Son menu choix du perso (zelda theme)
 		List<String> sonPaths = new ArrayList<>();
 		sonPaths.add("musique/personnage/selection/11.zelda-select-screen.mp3");
 		MusiqueManager.playPlaylist(sonPaths);
 		
-		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
+		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautSelection.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
 		int valeur = JOptionPane.showOptionDialog(getParent(), "Choisis ton héro principal",
 				"C'est parti!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				resizeImage,
@@ -603,6 +607,7 @@ public class MenuPrincipal extends JPanel {
 				"default");
 		
 		MusiqueManager.stopAll();
+
 		
 		if (valeur == 0) {
 			personnageManager.setPersonnagePrincipal(PersoPrenom.Johann);
@@ -637,9 +642,9 @@ public class MenuPrincipal extends JPanel {
 
 	public void demandeConfirmationQuitter() {
 		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
-		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sûr de vouloir t'arreter maintenant?",
+		int confirme = JOptionPane.showOptionDialog(getParent(), "T'es sur de vouloir t'arreter maintenant?",
 				"Attention jeune puceau", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, resizeImage,
-				new String[] { "Oui, je suis sûr!", "Nan attends, je vais continuer un peu..." }, "default");
+				new String[] { "Oui, je suis sur!", "Nan attends, je vais continuer un peu..." }, "default");
 		if (confirme == 0) {
 			System.exit(0);
 		}

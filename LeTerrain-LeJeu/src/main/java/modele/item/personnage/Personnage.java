@@ -360,7 +360,6 @@ public class Personnage extends Item implements Serializable {
 				nouvelleValeur = 100;
 			}
 			competence.getStats().put(persoStat, nouvelleValeur);
-			System.out.println("Ajoute " + valeur + " en " + persoStat.name() + " (" + nouvelleValeur + ")");
 		}
 	}
 

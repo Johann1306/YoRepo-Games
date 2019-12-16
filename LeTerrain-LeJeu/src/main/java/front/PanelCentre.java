@@ -180,7 +180,6 @@ public class PanelCentre extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO evenement aleatoire quand deplacement lieu
-					System.out.println("- evenement aleatoire quand deplacement lieu");
 					
 					MusiqueManager.playSon("sonParDefaut/bom-ncis.mp3");
 					
@@ -215,7 +214,7 @@ public class PanelCentre extends JPanel {
 							panelBouton.setLocation(poi.getPoint());
 							panelBouton.add(bouton);
 							panelBouton.setOpaque(false);
-							panelBouton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 10, true));
+//							panelBouton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 10, true));
 							
 							// Si Clic sur un Poi
 							bouton.addActionListener(new ActionListener() {

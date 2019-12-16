@@ -325,11 +325,11 @@ public class PanelFichePerso extends JPanel {
 		panelBoutonCarte.setOpaque(false);
 		addBoutonCarte(panelCentre, panelBoutonCarte);
 		
-		panelOuest.setBackground(Color.PINK);
+		panelOuest.setBackground(couleur);
 		panelCentre.setBackground(couleur);
-		panelNord.setBackground(Color.RED);
-		panelEst.setBackground(Color.BLUE);
-		panelSud.setBackground(Color.GREEN);
+		panelNord.setBackground(couleur);
+		panelEst.setBackground(couleur);
+		panelSud.setBackground(couleur);
 		
 		// Gestion scroll dragged panel centre
 		Moustener moustener = new Moustener(this);

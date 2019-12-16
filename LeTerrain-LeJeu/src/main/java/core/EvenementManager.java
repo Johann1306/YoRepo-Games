@@ -1,5 +1,6 @@
 package core;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import core.configuration.Constante;
@@ -42,8 +44,6 @@ public class EvenementManager implements Serializable {
 		String informations1 = "infosEvent1troooooooooooooooooooooooooooooooooooooooooooplong";
 		String path1 = "image/defaut/defautEvenement.png";
 		String sonPath1 = "sonParDefaut/314-SecretOfMana-got-an-item.mp3";
-		
-		String videoPath1 = "video/Trololo.mp4";
 		
 		// Vidéo generique de chaque Dessins Animes
 		String videoPathda1 = "video/dessinAnime/NICKY LARSON.mp4";
@@ -754,7 +754,9 @@ public class EvenementManager implements Serializable {
 						titre = titre + " - (10 ans)";
 					}
 					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), evenement.getInformations(), titre, type, resizeImage);
+					JLabel labelMessage = new JLabel(evenement.getInformations());
+					labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), labelMessage, titre, type, resizeImage);
 				}
 				
 				// Debloquer les items a debloquer 

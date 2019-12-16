@@ -41,9 +41,9 @@ public class PoiManager implements Serializable {
 		String sonPath2 = "sonParDefaut/08-Zelda-item-catch.mp3";
 		sonPaths2.add(sonPath2);
 		
-		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "video/Trololo.mp4";
-		videoPaths1.add(videoPath1);
+//		List<String> null = new ArrayList<String>();
+//		String videoPath1 = "video/Trololo.mp4";
+//		null.add(videoPath1);
 		
 		// TODO faire toutes les missions
 		List<Mission> missionsPoiClasse = new ArrayList<Mission>();
@@ -111,15 +111,14 @@ public class PoiManager implements Serializable {
 		missionsPoiLecture.add(missionManager.getMissionById(1013));
 
 		// Terrain
-		missionsPoi100.add(missionManager.getMissionById(201));
 		missionsPoi100.add(missionManager.getMissionById(106));
 		missionsPoi100.add(missionManager.getMissionById(107));
 		missionsPoi100.add(missionManager.getMissionById(108));		
 		missionsPoi100.add(missionManager.getMissionById(500));
+		missionsPoi100.add(missionManager.getMissionById(999));
 		missionsPoi100.add(missionManager.getMissionById(1000));
 		missionsPoi100.add(missionManager.getMissionById(804));
 		missionsPoi101.add(missionManager.getMissionById(402));
-			missionsPoi101.add(missionManager.getMissionById(202));
 		missionsPoi101.add(missionManager.getMissionById(3002));
 		missionsPoi101.add(missionManager.getMissionById(3003));
 		missionsPoi101.add(missionManager.getMissionById(3004));
@@ -308,61 +307,61 @@ public class PoiManager implements Serializable {
 		// Pour une Map (2000 x 1000)
 		// X (min= 0, max= 1800)
 		// Y (min= 56, max= 980)
-		Poi poiEcole1 = new Poi(1, "Classe", "info", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, true, new Point(200, 200), missionsPoiClasse);
-		Poi poiEcole2 = new Poi(2, "Cour", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), missionsPoiCour);
-		Poi poiEcole3 = new Poi(3, "Préau", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 250), missionsPoiPreau);
-		Poi poiEcole4 = new Poi(4, "Cantine", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(300, 200), missionsPoiCantine);
-		Poi poiEcole5 = new Poi(5, "Salle de lecture", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 300), missionsPoiLecture);
+		Poi poiEcole1 = new Poi(1, "La salle de classe", "info", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, true, new Point(0, 250), missionsPoiClasse);
+		Poi poiEcole2 = new Poi(2, "La cour de recreation", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-150, 400), missionsPoiCour);
+		Poi poiEcole3 = new Poi(3, "Le preau", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-400, 400), missionsPoiPreau);
+		Poi poiEcole4 = new Poi(4, "La cantine", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(300, 250), missionsPoiCantine);
+		Poi poiEcole5 = new Poi(5, "La salle de lecture", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-500, 470), missionsPoiLecture);
 		
-		Poi poiTerrain_Cabane = new Poi(100, "La cabane", "La cabane du terrain", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, true, new Point(200, 200), missionsPoi100);
-		Poi poiTerrain_Terrain = new Poi(101, "Le terrain", "Le terrain de tennis du terrain", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), missionsPoi101);
+		Poi poiTerrain_Cabane = new Poi(100, "La cabane", "La cabane du terrain", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, true, new Point(200, 950), missionsPoi100);
+		Poi poiTerrain_Terrain = new Poi(101, "Le terrain", "Le terrain de tennis du terrain", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-200, 300), missionsPoi101);
 
-		Poi poiChezYo_Portail = new Poi(200, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), missionsPoi200);
-		Poi poiChezYo_Salon = new Poi(201, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 200), missionsPoi201);
-		Poi poiChezYo_Garage = new Poi(202, "Garage", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi202);
-		Poi poiChezYo_Chambre = new Poi(203, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 450), missionsPoi203);
-		Poi poiChezYo_Jardin = new Poi(204, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 450), missionsPoi204);
-		Poi poiChezYo_SalleDeBain = new Poi(205, "Salle de bain", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 650), missionsPoi205);
+		Poi poiChezYo_Portail = new Poi(200, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 650), missionsPoi200);
+		Poi poiChezYo_Salon = new Poi(201, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-150, 450), missionsPoi201);
+		Poi poiChezYo_Garage = new Poi(202, "Garage", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(130, 500), missionsPoi202);
+		Poi poiChezYo_Chambre = new Poi(203, "Chambre", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-150, 350), missionsPoi203);
+		Poi poiChezYo_Jardin = new Poi(204, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(200, 250), missionsPoi204);
+		Poi poiChezYo_SalleDeBain = new Poi(205, "Salle de bain", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(200, 400), missionsPoi205);
 
-		Poi poiChezRuss_Salon = new Poi(1000, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(250, 200), missionsPoi1000);
-		Poi poiChezRuss_Portail = new Poi(1001, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1001);
-		Poi poiChezRuss_Jardin = new Poi(1002, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1002);
-		Poi poiChezRuss_SalleDeBain = new Poi(1003, "Salle de bain", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1003);
+		Poi poiChezRuss_Salon = new Poi(1000, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-300, 600), missionsPoi1000);
+		Poi poiChezRuss_Portail = new Poi(1001, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(100, 300), missionsPoi1001);
+		Poi poiChezRuss_Jardin = new Poi(1002, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi1002);
+		Poi poiChezRuss_SalleDeBain = new Poi(1003, "Salle de bain", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-300, 800), missionsPoi1003);
 		
-		Poi poiChezGuy_Portail = new Poi(1100, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1100);
-		Poi poiChezGuy_Salon = new Poi(1101, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1101);
+		Poi poiChezGuy_Portail = new Poi(1100, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(100, 600), missionsPoi1100);
+		Poi poiChezGuy_Salon = new Poi(1101, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(200, 300), missionsPoi1101);
 
-		Poi poiChezAli_Portail = new Poi(1200, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1200);
-		Poi poiChezAli_Salon = new Poi(1201, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1201);
-		Poi poiChezAli_Chambre = new Poi(1202, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 700), missionsPoi1202);
+		Poi poiChezAli_Portail = new Poi(1200, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 650), missionsPoi1200);
+		Poi poiChezAli_Salon = new Poi(1201, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 450), missionsPoi1201);
+		Poi poiChezAli_Chambre = new Poi(1202, "Chambre", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-200, 450), missionsPoi1202);
 
-		Poi poiChezYa_Portail = new Poi(1300, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1300);
-		Poi poiChezYa_Salon = new Poi(1301, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1301);
-		Poi poiChezYa_Jardin = new Poi(1302, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1302);
-		Poi poiChezYa_Chambre = new Poi(1303, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 600), missionsPoi1303);
+		Poi poiChezYa_Portail = new Poi(1300, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 650), missionsPoi1300);
+		Poi poiChezYa_Salon = new Poi(1301, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-70, 450), missionsPoi1301);
+		Poi poiChezYa_Jardin = new Poi(1302, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(130, 250), missionsPoi1302);
+		Poi poiChezYa_Chambre = new Poi(1303, "Chambre", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(100, 400), missionsPoi1303);
 
-		Poi poiChezTom_Portail = new Poi(1400, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1400);
-		Poi poiChezTom_Salon = new Poi(1401, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1401);
-		Poi poiChezTom_Jardin = new Poi(1402, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1402);
+		Poi poiChezTom_Portail = new Poi(1400, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(200, 700), missionsPoi1400);
+		Poi poiChezTom_Salon = new Poi(1401, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-150, 450), missionsPoi1401);
+		Poi poiChezTom_Jardin = new Poi(1402, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-300, 400), missionsPoi1402);
 		
-		Poi poiChezPip_Portail = new Poi(1500, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1500);
-		Poi poiChezPip_Salon = new Poi(1501, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1501);
-		Poi poiChezPip_Jardin = new Poi(1502, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1502);
-		Poi poiChezPip_Chambre = new Poi(1503, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 600), missionsPoi1503);
+		Poi poiChezPip_Portail = new Poi(1500, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi1500);
+		Poi poiChezPip_Salon = new Poi(1501, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-50, 400), missionsPoi1501);
+		Poi poiChezPip_Jardin = new Poi(1502, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(100, 300), missionsPoi1502);
+		Poi poiChezPip_Chambre = new Poi(1503, "Chambre", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(-150, 280), missionsPoi1503);
 		
-		Poi poiChezNico_Portail = new Poi(1600, "Sortie", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi1600);
-		Poi poiChezNico_Salon = new Poi(1601, "Salon", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 500), missionsPoi1601);
-		Poi poiChezNico_Jardin = new Poi(1602, "Jardin", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(650, 300), missionsPoi1602);
-		Poi poiChezNico_Chambre = new Poi(1603, "Chambre", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(850, 600), missionsPoi1603);
+		Poi poiChezNico_Portail = new Poi(1600, "Sortie", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(400, 540), missionsPoi1600);
+		Poi poiChezNico_Salon = new Poi(1601, "Salon", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(300, 340), missionsPoi1601);
+		Poi poiChezNico_Jardin = new Poi(1602, "Jardin", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(235, 370), missionsPoi1602);
+		Poi poiChezNico_Chambre = new Poi(1603, "Chambre", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(250, 240), missionsPoi1603);
 		
-		Poi poiAchatMiranda = new Poi(2001, "Entrer", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2001);
-//		Poi poiVenteMiranda = new Poi(2002, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2002);
-		Poi poiAchatTonelle = new Poi(2003, "Entrer", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2003);
-//		Poi poiVenteTonelle = new Poi(2004, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2004);
-		Poi poiAchatDahlias = new Poi(2005, "Entrer", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 600), missionsPoi2005);
-//		Poi poiVenteDahlias = new Poi(2006, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2006);
-		Poi poiAchatBosquets = new Poi(2007, "Entrer", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2007);
-//		Poi poiVenteBosquets = new Poi(2008, "Autres Deals", "info", imagePaths2, null, videoPaths1, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2008);
+		Poi poiAchatMiranda = new Poi(2001, "Entrer", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2001);
+//		Poi poiVenteMiranda = new Poi(2002, "Autres Deals", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2002);
+		Poi poiAchatTonelle = new Poi(2003, "Entrer", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2003);
+//		Poi poiVenteTonelle = new Poi(2004, "Autres Deals", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2004);
+		Poi poiAchatDahlias = new Poi(2005, "Entrer", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(450, 600), missionsPoi2005);
+//		Poi poiVenteDahlias = new Poi(2006, "Autres Deals", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(450, 300), missionsPoi2006);
+		Poi poiAchatBosquets = new Poi(2007, "Entrer", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 600), missionsPoi2007);
+//		Poi poiVenteBosquets = new Poi(2008, "Autres Deals", "info", imagePaths2, null, null, PersoPrenom.GROUPE, true, new Point(0, 300), missionsPoi2008);
 
 		pois.add(poiChezRuss_Portail);
 		pois.add(poiChezRuss_Salon);

@@ -50,14 +50,9 @@ public class LecteurMP4 {
 //		}
 		Dimension size = MainFrame.getPanelDroite().getSize();
 		player.getMainFrame().setSize(size);
-		System.out.println("Play " + mediaPath);
 		player.play(mediaPath);
 		
 	}
-//	
-//	public static VlcjPlayer getPlayer() {
-//		return player;
-//	}
 	
 	private static void setLookAndFeel() {
 		String lookAndFeelClassName;

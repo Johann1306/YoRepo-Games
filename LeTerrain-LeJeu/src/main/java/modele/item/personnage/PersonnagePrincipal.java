@@ -9,8 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import core.MusiqueManager;
+import core.RandomManager;
+import core.configuration.Constante;
 import front.MainFrame;
 import modele.competence.Competence;
 import modele.competence.PersoStat;
@@ -211,6 +215,7 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		if (map != null) {
 			// On recupere les stats du perso
 			Map<PersoStat, Integer> statsPerso = getCompetence().getStats();
+			String surnomAleatoire = getSurnomAleatoire();
 			
 			// Pour chaque stat
 			for (PersoStat stat : statsPerso.keySet()) {
@@ -233,9 +238,13 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 						// TODO prevenir le joueur si la stat arrive au max
 						valeurModifie = valeurMax;
 					}
+					
+					MusiqueManager.playSonItem("sonParDefaut/defautPowerUp.mp3");
+					
 					// TODO affichage info bonus
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), this.getPrenom()
-							+ " a gagné : " + (valeurModifie - valeurStat) + " point(s) de " + stat.name(), "Points de competences gagnés", 0, this.getPhotoPrincipal());
+					JLabel messageLabel = new JLabel(surnomAleatoire + " a gagne : " + (valeurModifie - valeurStat) + " point(s) de " + stat.name() + " (" + valeurModifie + "/" + valeurMax + ")");
+					messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageLabel, "Points de competences gagnés", 0, this.getPhotoPrincipal());
 					
 					// On met a jour les stats du perso
 					statsPerso.put(stat, valeurModifie);	
@@ -245,6 +254,11 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 		}
 	}
 	
+	private String getSurnomAleatoire() {
+		int random = RandomManager.random(0, this.getSurnoms().size() -1);
+		return this.getSurnoms().get(random);
+	}
+
 	public void removeCompetences(Map<PersoStat, Integer> map) {
 		
 		if (map != null) {
@@ -300,8 +314,9 @@ public class PersonnagePrincipal extends Personnage { //extends Item {
 			droguesConsommees.clear();
 
 			// Message info drogue
-			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), this.getPrenom()
-					+ " a perdu les effets bénéfiques des drogues consommées hier.", "Redescente", 0, this.getPhotoCombat());
+			JLabel messageLabel = new JLabel(this.getPrenom() + " a perdu les effets benefiques des drogues consommees hier.");
+			messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageLabel, "Redescente", 0, this.getPhotoCombat());
 			
 			
 		}

@@ -64,7 +64,7 @@ public class Ballon extends Pane {
     			&& ((location.y - ballonPositionCible.y) <= Constante.VITESSE_MAX_BALLON/20 
     			&& (location.y - ballonPositionCible.y) >= - Constante.VITESSE_MAX_BALLON/20)) {
 
-    		System.out.println("------INTERSECTION BALLON AVEC LA CIBLE--------");
+//    		System.out.println("------INTERSECTION BALLON AVEC LA CIBLE--------");
     		aDepasseLaCible = true;
     		
     	} 
@@ -122,11 +122,11 @@ public class Ballon extends Pane {
 				
 				if ((location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) 
 						&& (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8))) {
-					System.out.println("------- Ballon touche la ligne de but---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Ballon touche la ligne de but---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					
 					// Si but allie
 					if (location.x > Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN) {
-						System.out.println("------- Ballon depasse la ligne de but => BUT - " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//						System.out.println("------- Ballon depasse la ligne de but => BUT - " + "(x:" + location.x + "," + "y:" + location.y + ")");
 						setEstEntre(true);
 						but = 1;
 					}
@@ -141,11 +141,11 @@ public class Ballon extends Pane {
 				
 				if ((location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) 
 						&& (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8))) {
-					System.out.println("------- Ballon touche la ligne de but---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Ballon touche la ligne de but---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 			
 					// Si but adverse
 					if (location.x < Constante.COORD_X_TERRAIN) {
-						System.out.println("------- Ballon depasse la ligne de but => BUT - " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//						System.out.println("------- Ballon depasse la ligne de but => BUT - " + "(x:" + location.x + "," + "y:" + location.y + ")");
 						setEstEntre(true);
 						but = 2;
 					} 
@@ -162,7 +162,7 @@ public class Ballon extends Pane {
 					&& ((location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) 
 					|| (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8)))) {
 					
-					System.out.println("------- Rebond mur gauche/droite---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond mur gauche/droite---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN -1 - rayon, getLocation().y, 0));
 					rebondDroiteGauche();
 					
@@ -171,18 +171,18 @@ public class Ballon extends Pane {
 					&& ((location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) 
 							|| (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8)))) {
 					
-					System.out.println("------- Rebond mur gauche/droite---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond mur gauche/droite---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(Constante.COORD_X_TERRAIN +1 + rayon, getLocation().y, 0));
 					rebondDroiteGauche();
 				}
 				
 				// Rebond sur le mur haut et bas
 				if (location.y >= Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN - rayon) {
-					System.out.println("------- Rebond haut/bas ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN - rayon -1, 0));
 					rebondHautBas();
 				} else if (location.y <= Constante.COORD_Y_TERRAIN + rayon) {
-					System.out.println("------- Rebond haut/bas ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + rayon +1, 0));
 					rebondHautBas();
 				}
@@ -193,7 +193,7 @@ public class Ballon extends Pane {
 			
 			// Rebond dans les buts adverse
 			if ((location.x >= Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN + Constante.LARGEUR_TERRAIN/16 - rayon)) {
-				System.out.println("------- Rebond gauche droite dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//				System.out.println("------- Rebond gauche droite dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 				setLocation(new PVector(Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN + Constante.LARGEUR_TERRAIN/16 - rayon -1, getLocation().y, 0));
 				rebondDroiteGauche();
 			}
@@ -201,11 +201,11 @@ public class Ballon extends Pane {
 			if (location.x >= Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN) {
 				
 				if (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) {
-					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon +1 - Constante.LARGEUR_TERRAIN/8, 0));
 					rebondHautBas();
 				} else if (location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8)) {
-					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon -1 + Constante.LARGEUR_TERRAIN/8, 0));
 					rebondHautBas();
 				}
@@ -213,18 +213,18 @@ public class Ballon extends Pane {
 			
 			// Rebond dans les buts allie
 			if ((location.x <= Constante.COORD_X_TERRAIN - Constante.LARGEUR_TERRAIN/16 + rayon)) {
-				System.out.println("------- Rebond gauche droite dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//				System.out.println("------- Rebond gauche droite dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 				setLocation(new PVector(Constante.COORD_X_TERRAIN - Constante.LARGEUR_TERRAIN/16 + rayon + 1, getLocation().y, 0));
 				rebondDroiteGauche();
 			}
 			
 			if (location.x <= Constante.COORD_X_TERRAIN) {
 				if (location.y <= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon - Constante.LARGEUR_TERRAIN/8)) {
-					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 + rayon +1 - Constante.LARGEUR_TERRAIN/8, 0));
 					rebondHautBas();
 				} else if (location.y >= (Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon + Constante.LARGEUR_TERRAIN/8)) {
-					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//					System.out.println("------- Rebond haut/bas dans les but ---------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 					setLocation(new PVector(getLocation().x, Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN/2 - rayon -1 + Constante.LARGEUR_TERRAIN/8, 0));
 					rebondHautBas();
 				}
@@ -235,7 +235,7 @@ public class Ballon extends Pane {
     }
 
 	private void rebondDroiteGauche() {
-		System.out.println("------REBOND X-------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//		System.out.println("------REBOND X-------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 		
 //		if (location.x > Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN) {
 //			location.x = Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN -1 - rayon;
@@ -264,7 +264,7 @@ public class Ballon extends Pane {
 	}
 
 	private void rebondHautBas() {
-		System.out.println("------REBOND Y-------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
+//		System.out.println("------REBOND Y-------- " + "(x:" + location.x + "," + "y:" + location.y + ")");
 		
 //		if (location.y > Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN) {
 //			location.y = Constante.COORD_Y_TERRAIN + Constante.LARGEUR_TERRAIN -1 -rayon;
