@@ -31,12 +31,12 @@ public class CarteManager implements Serializable {
 		String sonPath1 = "son/23-ending.mp3";
 		sonPaths1.add(sonPath1);
 
-		List<String> videoPaths1 = new ArrayList<String>();
-		String videoPath1 = "video/Trololo.mp4";
-		videoPaths1.add(videoPath1);
+//		List<String> videoPaths1 = new ArrayList<String>();
+//		String videoPath1 = "video/Trololo.mp4";
+//		videoPaths1.add(videoPath1);
 		
 		List<Lieu> lieux = lieuManager.getLieux();
-		Carte montfermeil = new Carte(1, "Franceville", "info", imagePaths1, sonPaths1, videoPaths1, PersoPrenom.GROUPE, true, lieux);
+		Carte montfermeil = new Carte(1, "Franceville", "info", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, true, lieux);
 		
 		cartes.add(montfermeil);
 		

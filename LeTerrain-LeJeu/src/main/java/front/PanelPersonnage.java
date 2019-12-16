@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -286,7 +287,9 @@ public class PanelPersonnage extends JPanel {
 									// lancer le son arrivee dans le groupe
 									MusiqueManager.playSon("sonParDefaut/312-SecretOfMana-ally-joins.mp3");
 									// affichage du panneau arrivee
-									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " a rejoint le Groupe!", EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.getNom(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
+									JLabel messageLabel = new JLabel(perso.getPrenom() + " a rejoint le Groupe!");
+									messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageLabel, EvenementTheme.ARRIVEE_NOUVEAU_PERSONNAGE.getNom(), JOptionPane.PLAIN_MESSAGE, perso.getPhotoPrincipal());
 									perso.setDejaPresente(true);
 									// Affichage fiche perso
 									MainFrame.getPanelCentre().afficheFichePerso(perso.getPrenomPerso().name());
@@ -294,7 +297,9 @@ public class PanelPersonnage extends JPanel {
 									// Dieu donne la stat prefere du perso avec un message 
 									MusiqueManager.playSon("sonParDefaut/defautREZCritique.mp3");									
 									ImageIcon iconDieu = FenetrePrincipal.getImageIcon("image/pnj/dieu.png");
-									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), perso.getPrenom() + " : " + perso.getMessageDieu(), EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
+									JLabel messageLabel2 = new JLabel(perso.getPrenom() + " : " + perso.getMessageDieu());
+									messageLabel2.setFont(Constante.MARIO_FONT_MENU_3);
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageLabel2, EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
 									
 									// Demarre une musique d'ambiance 
 									MusiqueManager.stopAll();

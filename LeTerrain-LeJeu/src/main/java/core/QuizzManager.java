@@ -81,6 +81,8 @@ public class QuizzManager implements Serializable {
 		// - Quel est la couleur du soleil? (Blanc aryen, (Jaune poussin, Orange grenadine, Rouge regles) ) (C'est la diffusion des rayons du soleil dans l'atmosphere qui donne la couleur jaune)
 		// - La celebre Joconde de Leonard De Vinci est peinte avec : de la peinture a l'huile sur un panneau de bois? (avec de la peinture acrylique sur une toile en soie? avec de la peinture a l'eau sur une toile en chanvre? avec du sperme sur une toile en peau de couille?)
 		// - Le pere noel est habillé en rouge a cause de : - de la culture populaire? (de Coca-Cola? de l'Eglise? des Femen) ( Il a d’abord été dessiné par Thomas Nast en 1863, à l'origine en monochrome, puis dans un habit de fourrure de couleur brune. Plusieurs colorations anonymes de ses dessins, vertes, rouges ou bleues, ont commencé à émerger, jusqu’à ce que le rouge devienne majoritaire. Lorsque Coca-Cola commença à l’utiliser dans les années 1930, son image était déjà courante dans les médias et la culture populaire.)
+		// - En 2010, il restera à la premiere place des singles en France pendant 3 mois avec "Mignon, mignon". Le celebre René est (une marmotte? (une taupe, une moule, une chatte) (Le design est bien plus proche d'une marmotte que d'une taupe)
+		
 		
 		// Faits extraordinaires
 		// - Taille du soleil et de la lune vu de la terre

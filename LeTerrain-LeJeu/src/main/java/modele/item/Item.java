@@ -93,21 +93,18 @@ public class Item implements Disponible, Consommable, Utilisable, Ameliorable, S
 		// TODO consomme Item
 		// TODO test possibilite de consommer l'item
 		
-		System.out.println("Consomme : " + this.getNom());
 		return true;
 	}
 
 	@Override
 	public boolean utiliseItem() {
 		// TODO test possibilite d utiliser l'item
-		System.out.println("Utilise : " + this.getNom());
 		return true;
 	}
 
 	@Override
 	public boolean amelioreItem() {
 		// TODO test possibilite d ameliorer l'item
-		System.out.println("Ameliore : " + this.getNom());
 		return true;
 	}
 

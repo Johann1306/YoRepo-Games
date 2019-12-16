@@ -12,6 +12,7 @@ public class Constante {
 	public static final Dimension SHOP_TAB_ENTETES_DIMENSION = new Dimension(50, 50);
 	public static final Dimension PERSO_IMAGE_DIMENSION_40_40 = new Dimension(40, 40);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
+	public static final Dimension PERSO_IMAGE_DIMENSION_360_360 = new Dimension(360, 360);
 	public static final Dimension ARME_IMAGE_DIMENSION_25_25 = new Dimension(25, 25);
 	public static final Dimension ARME_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
 	public static final Dimension ARGENT_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
@@ -37,7 +38,7 @@ public class Constante {
 	public static final int PANEL_INFO_MISSION_HAUTEUR = 100;		
 	
 	public static final int PANEL_COMBAT_PERSO_LARGEUR = PANEL_ACTION_HAUTEUR;		
-	public static final int PANEL_MISSION_LARGEUR = 975;		
+	public static final int PANEL_MISSION_LARGEUR = 1500;		
 	public static final int PANEL_BOUTON_GROUPE_LARGEUR = 150;
 	public static final int PANEL_ACTION_PERSO_LARGEUR = 150;
 	public static final int PANEL_INFO_COMBAT_LARGEUR = 465;
@@ -50,18 +51,26 @@ public class Constante {
 	
 	// FONT
 	public static final Font ZELDA_FONT_FRAMECOMBAT_INFO = new Font("Triforce", Font.PLAIN, 15);
+	public static final Font SERIF_FONT_FRAMECOMBAT_INFO = new Font("Serif", Font.BOLD, 15);
 	public static final Font ZELDA_FONT = new Font("Triforce", Font.PLAIN, 20);
+	public static final Font SERIF_FONT = new Font("Serif", Font.BOLD, 15);
+	public static final Font ZELDA_FONT_ARGENT = new Font("Triforce", Font.PLAIN, 30);
 	public static final Font SIMPSON_FONT = new Font("Simpsonfont", Font.PLAIN, 15);
 	public static final Font ZELDA_FONT_MENU = new Font("Triforce", Font.PLAIN, 20);
 	public static final Font ZELDA_FONT_MENU_SELECTED = new Font("Triforce", Font.PLAIN, 23);
 	public static final Font ZELDA_FONT_TITRE = new Font("Triforce", Font.PLAIN, 30);
 	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 100);
+	public static final Font STARWARS_FONT_TITRE = new Font("Triforce", Font.BOLD, 90);
+	public static final Font STARWARS_FONT_SOUS_TITRE = new Font("Triforce", Font.BOLD, 40);
+//	public static final Font STARWARS_FONT_TITRE = new Font("Hylia", Font.BOLD, 90);
+//	public static final Font STARWARS_FONT_SOUS_TITRE = new Font("Triforce", Font.PLAIN, 40);
 	public static final Font MARIO_FONT_SOUS_TITRE = new Font("codeman38_press-start", Font.PLAIN, 30);
 	public static final Font MARIO_FONT_INFO_TITRE = new Font("codeman38_press-start", Font.PLAIN, 20);
 	public static final Font MARIO_FONT_MENU = new Font("Super Mario Bros.", Font.PLAIN, 20);
-	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 20);
+	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 15);
+	public static final Font MARIO_FONT_MENU_3 = new Font("Super Mario 256", Font.PLAIN, 20);
 	public static final Font MARIO_FONT_QUESTION_QUIZZ = new Font("Super Mario 256", Font.PLAIN, 30);
-	public static final Font MARIO_FONT_PANEL_INFO_MISSION = new Font("Super Mario 256", Font.ITALIC, 10);
+	public static final Font MARIO_FONT_PANEL_INFO_MISSION = new Font("Serif", Font.BOLD, 10);
 	public static final Font MARIO_FONT_SHOP_TABLEAU = new Font("Super Mario 256", Font.BOLD, 12);
 	public static final Font MARIO_FONT_SHOP_TABLEAU_BOUTONS = new Font("Super Mario 256", Font.BOLD, 20);
 	public static final Font MARIO_FONT_SHOP_ENTETES = new Font("Super Mario 256", Font.BOLD, 12);
@@ -105,6 +114,14 @@ public class Constante {
 	public static final int DUREE_DU_MATCH_EN_MINUTE = 3;   // 3 min
 	public static final long DELAI_APRES_BUT = 2000000000l; // 2 s
 	public static final long DELAI_AVANT_INACTIVITE = 2000; // 2 s
+	
+	public static final int RATIO_BOUCLIER = 4;
+	public static final int RATIO_REGEN_MANA = 4;
+	public static final int RATIO_BRULURE_MANA = 4;
+	public static final int RATIO_ABSORPTION_MANA = 4;
+
+
+
 
 
 

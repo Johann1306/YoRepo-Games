@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
+import core.ImageManager;
 import core.MusiqueManager;
 import core.QuizzManager;
 import core.VideoManager;
@@ -77,7 +78,7 @@ public class FrameQuizz extends FrameJeu {
 		List<Reponse> reponses = enigme.getReponsesPossibles();
 		for (Reponse reponse : reponses) {
 			JButton boutonReponse = new JButton(reponse.getReponse());
-			boutonReponse.setFont(Constante.MARIO_FONT_MENU_2);
+			boutonReponse.setFont(Constante.MARIO_FONT_MENU_3);
 			// Si clic sur une reponse
 			boutonReponse.addActionListener(new ActionListener() {
 				@Override
@@ -154,7 +155,7 @@ public class FrameQuizz extends FrameJeu {
 		MusiqueManager.startPlayListEnBoucle(mission);
 		this.setVisible(false);
 		JLabel message = new JLabel("Debut du Quizz");
-		message.setFont(Constante.MARIO_FONT_MENU_2);
+		message.setFont(Constante.MARIO_FONT_MENU_3);
 		JOptionPane.showMessageDialog(this, message);
 		this.setVisible(true);
 		timer.start();
@@ -172,20 +173,22 @@ public class FrameQuizz extends FrameJeu {
 			// TODO son bonne reponse
 			MusiqueManager.playSon("sonParDefaut/motusWin.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
 			String message = "Bonne Reponse !";
 			JLabel labelMessage = new JLabel(message);
 			labelMessage.setForeground(Color.GREEN);
-			labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
-			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, icon);
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, resizeImage);
 		} else {
 			// TODO son mauvaise reponse
 			MusiqueManager.playSon("sonParDefaut/maillonFaibleAuRevoir.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
+			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
 			String message = "Mauvaise Reponse !";
 			JLabel labelMessage = new JLabel(message);
 			labelMessage.setForeground(Color.RED);
-			labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
-			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, icon);
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du Quizz", 0, resizeImage);
 		}
 		
 		// Refesh Liste Enigmes

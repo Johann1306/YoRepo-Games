@@ -125,7 +125,7 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 		// Ajout du menu a la fenetre
 		ImageIcon image = getImageIcon("image/carte/montfermeil.png");
 		JLabel label = new JLabel(image);
-		label.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 15), BorderFactory.createLineBorder(Color.WHITE, 5)));
+		label.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 15), BorderFactory.createLineBorder(Color.YELLOW, 5)));
 		content.add(label, Integer.valueOf(1));
 		content.add(titre, Integer.valueOf(5));
 //		content.add(titre);
@@ -156,17 +156,17 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("KeyTyped");
+//		System.out.println("KeyTyped");
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("keyPressed");
+//		System.out.println("keyPressed");
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("keyReleased");
+//		System.out.println("keyReleased");
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
 			menu.demandeConfirmationQuitter();
 		}
@@ -177,18 +177,18 @@ public class FenetrePrincipal extends JFrame implements KeyListener {
 	}
 		
 	public static ImageIcon getImageIcon(final String pathAndFileName) {
-		System.out.println("getImageIcon : " + pathAndFileName);
+//		System.out.println("getImageIcon : " + pathAndFileName);
 	    return ImageManager.getImageIconProxy(pathAndFileName);
 	}
 	
 	public static URL getURL(final String pathAndFileName) {
-		System.out.println("getURL : " + pathAndFileName);
+//		System.out.println("getURL : " + pathAndFileName);
 	    final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
 	    return url;
 	}
 
 	public static InputStream getStream(String pathAndFileName) {
-		System.out.println("getStream : " + pathAndFileName);
+//		System.out.println("getStream : " + pathAndFileName);
 		final InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathAndFileName);
 		return stream;
 	}

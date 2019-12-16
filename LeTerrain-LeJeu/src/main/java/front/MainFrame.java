@@ -88,11 +88,17 @@ public class MainFrame extends JFrame {
 		panelMusique.generePanelMusique();
 
 		// Gestion des JPanel de la fenetre principale
+//		panelHaut.setBackground(Color.BLACK);
+//		panelGauche.setBackground(Color.BLACK);	
+//		panelCentre.setBackground(Color.YELLOW);	
+//		panelDroite.setBackground(Color.GREEN);	
+//		panelBas.setBackground(Color.GRAY);
+		
 		panelHaut.setBackground(Color.BLACK);
 		panelGauche.setBackground(Color.BLACK);	
-		panelCentre.setBackground(Color.YELLOW);	
-		panelDroite.setBackground(Color.GREEN);	
-		panelBas.setBackground(Color.GRAY);
+		panelCentre.setBackground(Color.BLACK);	
+		panelDroite.setBackground(Color.BLACK);	
+		panelBas.setBackground(Color.BLACK);
 		
 //		panelGauche.setPreferredSize(new Dimension(Constante.PANEL_GAUCHE_LARGEUR, Constante.PANEL_GAUCHE_MAX_HAUTEUR));
 

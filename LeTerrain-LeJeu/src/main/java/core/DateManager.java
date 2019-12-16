@@ -140,7 +140,6 @@ public class DateManager implements Serializable {
 //				DateManager.afficheDateCourrante();
 //			}
 //		}
-//		System.out.println("Taille Max = " + tailleMax);
 //	}
 	
 //	public static void main(String[] args) {

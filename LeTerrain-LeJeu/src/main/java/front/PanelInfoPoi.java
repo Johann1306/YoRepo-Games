@@ -44,7 +44,7 @@ public class PanelInfoPoi extends JPanel {
 		// Panel Nord : Poi
 		JLabel labelNomPoi = new JLabel(poi.getNom());
 		JLabel labelInfoPoi = new JLabel(poi.getInformations());
-		labelNomPoi.setFont(Constante.MARIO_FONT_MENU_2);
+		labelNomPoi.setFont(Constante.MARIO_FONT_MENU_3);
 		labelInfoPoi.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
 		panelNord.add(labelNomPoi);
 		panelNord.add(labelInfoPoi);
@@ -154,7 +154,7 @@ public class PanelInfoPoi extends JPanel {
 
 							// Bouton lancer mission
 							JButton boutonMission = new JButton("START");
-							boutonMission.setFont(Constante.MARIO_FONT_MENU_2);
+							boutonMission.setFont(Constante.MARIO_FONT_MENU_3);
 							boutonMission.addActionListener(new ActionListener() {
 
 								@Override

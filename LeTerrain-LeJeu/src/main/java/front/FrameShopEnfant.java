@@ -132,7 +132,7 @@ public class FrameShopEnfant extends FrameJeu {
 		JPanel panelQuitter = new JPanel();
 		
 		JButton boutonQuitter = new JButton("Quitter");
-		boutonQuitter.setFont(Constante.MARIO_FONT_MENU_2);
+		boutonQuitter.setFont(Constante.MARIO_FONT_MENU_3);
 		boutonQuitter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -275,7 +275,7 @@ public class FrameShopEnfant extends FrameJeu {
 				int bourse = leGroupe.getBourse();
 		    	if (prixDeVente > bourse) {
 		    		JLabel messageLabel = new JLabel("T'as pas assez d'argent mec! Reviens plus tard!");
-		    		messageLabel.setFont(Constante.MARIO_FONT_MENU_2);
+		    		messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
 					JOptionPane.showMessageDialog(panelCentre, messageLabel);
 		    		
 		    	} else {
@@ -439,7 +439,7 @@ public class FrameShopEnfant extends FrameJeu {
 	    		// Popup de confirmation Achat
 		    	String message = "T'es sur de vouloir vendre " + item.getNom() + " pour " + prixDeVente + " Francs?";
 	    		JLabel messageLabel = new JLabel(message);
-	    		messageLabel.setFont(Constante.MARIO_FONT_MENU_2);
+	    		messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
 				int reponse = JOptionPane.showConfirmDialog(panelCentre, messageLabel);
 				if (reponse == 0) {		    	
 					
@@ -570,8 +570,8 @@ public class FrameShopEnfant extends FrameJeu {
 		ImageIcon resizeImage = ImageManager.resizeImage(photoPrincipal, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
 		String messageAcceuil = personnageSecondaire.getPhrasesPerso().get(0);
 		JLabel messageLabel = new JLabel(messageAcceuil);
-		messageLabel.setFont(Constante.MARIO_FONT_MENU_2);
-		JOptionPane.showMessageDialog(this, messageLabel, "Pénétrer le lieu", 0, resizeImage);
+		messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
+		JOptionPane.showMessageDialog(this, messageLabel, "Penetrer le lieu", 0, resizeImage);
 	}
 
 	// Fin du jeu
@@ -583,7 +583,7 @@ public class FrameShopEnfant extends FrameJeu {
 		ImageIcon resizeImage = ImageManager.resizeImage(photoPrincipal, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
 		String messageFin = personnageSecondaire.getPhrasesPerso().get(1);
 		JLabel messageLabel = new JLabel(messageFin);
-		messageLabel.setFont(Constante.MARIO_FONT_MENU_2);
+		messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
 		JOptionPane.showMessageDialog(this, messageLabel, "Quitter le lieu", 0, resizeImage);
 		
 		// Fermeture des fenetres

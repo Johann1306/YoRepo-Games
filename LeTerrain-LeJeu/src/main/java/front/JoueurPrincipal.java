@@ -50,8 +50,6 @@ public class JoueurPrincipal extends Pane {
 
     public JoueurPrincipal(Personnage personnage, boolean isAllie, Poste poste, int facteurAgrandissement) {
     	
-    	System.out.println("-- Creation du personnage " + personnage.getPrenom());
-    	
     	this.largeur = Constante.RAYON_JOUEUR *2 * (1 + facteurAgrandissement/2);
     	this.hauteur = largeur;
     	this.centerX = largeur / 2.0;
@@ -235,7 +233,6 @@ public class JoueurPrincipal extends Pane {
 		int endurance = personnage.getCompetence().getEndurance();
 		double moyenne = (technique + agilite + rapidite + nervosite + endurance) / 5;
     	moyenne = moyenne / 50;
-    	System.out.println("STAT vitesse retournement (0.5 - 2) = " + moyenne);
 		return moyenne;
 	}
 
@@ -249,7 +246,6 @@ public class JoueurPrincipal extends Pane {
     	moyenne = moyenne + 1;
     	moyenne = moyenne * facteurAgrandissement;
     	moyenne = moyenne / 2;
-    	System.out.println("STAT vitesse max (2-4) = " + moyenne);
 		return moyenne;
 	}
 
@@ -265,7 +261,6 @@ public class JoueurPrincipal extends Pane {
     	if (delaiReaction < 0) {
     		delaiReaction = 0;
     	}
-    	System.out.println("STAT temps de reaction clash = " + delaiReaction  + "ms");
 		return delaiReaction;
 	}
 
@@ -279,7 +274,6 @@ public class JoueurPrincipal extends Pane {
     	if (delaiReaction < 0) {
     		delaiReaction = 0;
     	}
-    	System.out.println("STAT temps de reaction interception = " + delaiReaction  + "ms");
 		return delaiReaction;
 	}
 
@@ -289,7 +283,6 @@ public class JoueurPrincipal extends Pane {
 		bonus = bonus / 3; // /100
 		// En fonction du rayon du ballon
 		bonus = bonus * Constante.RAYON_BALLON / 100;
-		System.out.println("BONUS zone interception = " + bonus + "/" + Constante.RAYON_BALLON);
 		return bonus;
 	}
 

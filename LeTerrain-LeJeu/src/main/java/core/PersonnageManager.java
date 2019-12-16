@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import core.configuration.Constante;
@@ -67,6 +68,17 @@ public class PersonnageManager implements Serializable {
 	private List<PersonnageSecondaire> adversairesNoisyHakim;
 	private List<PersonnageSecondaire> adversairesNoisyBene;
 	private List<PersonnageSecondaire> adversairesNoisyTom;
+
+	private int nextVideo = 0;
+
+	private Date momentPub;
+
+	private	List<String> pubsDeCetteAnnee = null;
+
+	private int currentYear;
+
+	private long ecartPub;
+
 	
 	private static List<Integer> numsEnnemi = new ArrayList<>();
 
@@ -142,7 +154,25 @@ public class PersonnageManager implements Serializable {
 		String surnomAli = ConfigurationManager.getProperties("surnom.principal.ali");
 		String surnomGuillaume = ConfigurationManager.getProperties("surnom.principal.guillaume");
 		String surnomJonathan = ConfigurationManager.getProperties("surnom.principal.jonathan");
+
+		String surnomsListJohann = ConfigurationManager.getProperties("surnom.secondaires.johann");
+		String surnomsListNicolas = ConfigurationManager.getProperties("surnom.secondaires.nicolas");
+		String surnomsListPierre = ConfigurationManager.getProperties("surnom.secondaires.pierre");
+		String surnomsListThomas = ConfigurationManager.getProperties("surnom.secondaires.thomas");
+		String surnomsListYannick = ConfigurationManager.getProperties("surnom.secondaires.yannick");
+		String surnomsListAli = ConfigurationManager.getProperties("surnom.secondaires.ali");
+		String surnomsListGuillaume = ConfigurationManager.getProperties("surnom.secondaires.guillaume");
+		String surnomsListJonathan = ConfigurationManager.getProperties("surnom.secondaires.jonathan");
 		
+		List<String> surnomsJohann = Arrays.asList(surnomsListJohann.split(","));
+		List<String> surnomsNicolas = Arrays.asList(surnomsListNicolas.split(","));
+		List<String> surnomsPierre = Arrays.asList(surnomsListPierre.split(","));
+		List<String> surnomsThomas = Arrays.asList(surnomsListThomas.split(","));
+		List<String> surnomsYannick = Arrays.asList(surnomsListYannick.split(","));
+		List<String> surnomsAli = Arrays.asList(surnomsListAli.split(","));
+		List<String> surnomsGuillaume = Arrays.asList(surnomsListGuillaume.split(","));
+		List<String> surnomsJonathan = Arrays.asList(surnomsListJonathan.split(","));
+
 		String originesJohann = ConfigurationManager.getProperties("origines.johann");
 		String originesNicolas = ConfigurationManager.getProperties("origines.nicolas");
 		String originesPierre = ConfigurationManager.getProperties("origines.pierre");
@@ -197,56 +227,56 @@ public class PersonnageManager implements Serializable {
 		// TODO remettre new Competence(PersoPrenom.Johann, true) a false pour
 		// competence debut de jeu
 		PersonnagePrincipal johann = new PersonnagePrincipal(PersoNom.AVELINE, PersoPrenom.Johann, surnomJohann,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), originesJohann, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsJohann, DateManager.genereUneDate(1984, Calendar.JUNE, 13, 9, 0, 0), originesJohann, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsJohann, iconJohann, iconCombatJohann, new ArrayList<ImageIcon>(), Color.BLUE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Johann.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuJohann, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesJohann, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Johann, false), new Competence(PersoPrenom.Johann, true), false);
 		PersonnagePrincipal nicolas = new PersonnagePrincipal(PersoNom.LOPEZ, PersoPrenom.Nicolas, surnomNicolas,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), originesNicolas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsNicolas, DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 7, 9, 0, 0), originesNicolas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsNicolas, iconNicolas, iconCombatNicolas, new ArrayList<ImageIcon>(), Color.YELLOW,
 				actionCombatManager.getActionsCombat(PersoPrenom.Nicolas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuNicolas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesNicolas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Nicolas, false), new Competence(PersoPrenom.Nicolas, true), false);
 		PersonnagePrincipal pierre = new PersonnagePrincipal(PersoNom.SERMAIN, PersoPrenom.Pierre, surnomPierre,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), originesPierre, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsPierre, DateManager.genereUneDate(1984, Calendar.AUGUST, 4, 9, 0, 0), originesPierre, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsPierre, iconPierre, iconCombatPierre, new ArrayList<ImageIcon>(), Color.GREEN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Pierre.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuPierre, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesPierre, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Pierre, false), new Competence(PersoPrenom.Pierre, true), false);
 		PersonnagePrincipal thomas = new PersonnagePrincipal(PersoNom.DARMOUNI, PersoPrenom.Thomas, surnomThomas,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), originesThomas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsThomas, DateManager.genereUneDate(1984, Calendar.SEPTEMBER, 5, 9, 0, 0), originesThomas, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsThomas, iconThomas, iconCombatThomas, new ArrayList<ImageIcon>(), Color.RED,
 				actionCombatManager.getActionsCombat(PersoPrenom.Thomas.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuThomas, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesThomas, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Thomas, false), new Competence(PersoPrenom.Thomas, true), false);
 		PersonnagePrincipal yannick = new PersonnagePrincipal(PersoNom.BERCOT, PersoPrenom.Yannick, surnomYannick,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), originesYannick, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsYannick, DateManager.genereUneDate(1984, Calendar.APRIL, 14, 9, 0, 0), originesYannick, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsYannick, iconYannick, iconCombatYannick, new ArrayList<ImageIcon>(), Color.MAGENTA,
 				actionCombatManager.getActionsCombat(PersoPrenom.Yannick.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuYannick, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesYannick, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Yannick, false), new Competence(PersoPrenom.Yannick, true), false);
 		PersonnagePrincipal ali = new PersonnagePrincipal(PersoNom.CHAUDHRY, PersoPrenom.Ali, surnomAli,
-				new ArrayList<String>(), DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), originesAli, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsAli, DateManager.genereUneDate(1984, Calendar.JULY, 1, 9, 0, 0), originesAli, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsAli, iconAli, iconCombatAli, new ArrayList<ImageIcon>(), Color.PINK,
 				actionCombatManager.getActionsCombat(PersoPrenom.Ali.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuAli, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesAli, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Ali, false), new Competence(PersoPrenom.Ali, true), false);
 		PersonnagePrincipal guillaume = new PersonnagePrincipal(PersoNom.BURGUET, PersoPrenom.Guillaume, surnomGuillaume,
-				new ArrayList<String>(), DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), originesGuillaume, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsGuillaume, DateManager.genereUneDate(1982, Calendar.JANUARY, 11, 9, 0, 0), originesGuillaume, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsGuillaume, iconGuillaume, iconCombatGuillaume, new ArrayList<ImageIcon>(), Color.ORANGE,
 				actionCombatManager.getActionsCombat(PersoPrenom.Guillaume.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuGuillaume, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
 				new ArrayList<Son>(), musiquesGuillaume, new HashMap<Item, Integer>(), null,
 				new Competence(PersoPrenom.Guillaume, false), new Competence(PersoPrenom.Guillaume, true), false);
 		PersonnagePrincipal jonathan = new PersonnagePrincipal(PersoNom.RUSCITO, PersoPrenom.Jonathan, surnomJonathan,
-				new ArrayList<String>(), DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), originesJonathan, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
+				surnomsJonathan, DateManager.genereUneDate(1983, Calendar.MAY, 19, 9, 0, 0), originesJonathan, new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(),
 				photoPathsJonathan, iconJonathan, iconCombatJonathan, new ArrayList<ImageIcon>(), Color.CYAN,
 				actionCombatManager.getActionsCombat(PersoPrenom.Jonathan.name()), new ArrayList<Objectif>(),
 				new ArrayList<MomentCle>(), messageDieuJonathan, new ArrayList<PersonnageEnnemi>(), new ArrayList<PersonnageSecondaire>(),
@@ -747,6 +777,19 @@ public class PersonnageManager implements Serializable {
 		personnagesBoss.add(boss13);
 		personnagesBoss.add(boss14);
 		personnagesBoss.add(boss15);
+	}
+
+	private List<String> recuperePubs(int annee) {
+		List<String> videoPaths = VideoManager.chargeVideosParRepertoire("video/publicite/" + annee);
+		ecartPub = calculeEcartPub(videoPaths);
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		momentPub = new Date(dateCourante.getTime() + (ecartPub * 1000 * 60 * 60 * 24));
+		return videoPaths;
+	}
+
+	private long calculeEcartPub(List<String> videoPaths) {
+		int ecart = 365 / (videoPaths.size() + 2);
+		return ecart;
 	}
 
 	public PersonnagePrincipal getPersoByPrenom(PersoPrenom nom) {
@@ -1253,7 +1296,9 @@ public class PersonnageManager implements Serializable {
 					// On informe l'utilisateur que la drogue est perime
 					ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "T'as laissé pourir ta drogue!", "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
+					JLabel labelMessage = new JLabel("T'as laisse pourrir ta drogue!");
+					labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), labelMessage, "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
 					evenementBloquant = true;
 					
 				// Si il reste une semaine avant la date de peremption	
@@ -1262,11 +1307,59 @@ public class PersonnageManager implements Serializable {
 					// On informe l'utilisateur qu il reste 7 jours avant la date de peremption	
 					ImageIcon image = FenetrePrincipal.getImageIcon(item.getImagePath().get(0));
 					ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
-					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "Il reste une semaine avant que ta drogue perime!", "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
+					JLabel labelMessage = new JLabel("Il reste une semaine avant que ta drogue perime!");
+					labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), labelMessage, "Pertes de memoire", JOptionPane.PLAIN_MESSAGE, resizeImage);
 					evenementBloquant = true;
 				}
 			}
 		}
+		
+		// TODO gestion des pubs
+		
+		if (pubsDeCetteAnnee == null ) {
+			pubsDeCetteAnnee = recuperePubs(1990);
+//			ecartPub = 90 / (pubsDeCetteAnnee.size() + 5);
+			// 1 pub par jour pour les 90 premiers jours 
+			ecartPub = 1;
+			currentYear = 1990;
+		}
+		
+		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
+		int year = dateCourante.getYear() + 1900;
+		if (year != currentYear) {
+			currentYear = year;
+			nextVideo = 0;
+			pubsDeCetteAnnee = recuperePubs(year);
+		}
+		
+		// Si c'es le moment de mettre une pub
+		if (momentPub.getTime() <= dateCourante.getTime()) {
+			
+			// Lance la pub
+			if (nextVideo < pubsDeCetteAnnee.size()) {
+
+				boolean evenementsActives = MenuPrincipal.getMainFrame().getCoreManager().getEvenementManager().isEvenementsActives();
+				if (evenementsActives) {
+					String videoPath = pubsDeCetteAnnee.get(nextVideo);
+					VideoManager.play(videoPath);
+					ImageIcon itemPub = FenetrePrincipal.getImageIcon("image/defaut/defautPublicite.jpg");
+					ImageIcon resizeImage = ImageManager.resizeImage(itemPub, Constante.EVENEMENT_IMAGE_DIMENSION_300_300);
+					
+					String[] split = videoPath.split("/");
+					String nom = split[split.length -1];
+					String substring = nom.substring(0, nom.length()-4);
+					JLabel labelMessage = new JLabel(substring);
+					labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), labelMessage, "Page de pubs - Conditionnement", JOptionPane.PLAIN_MESSAGE, resizeImage);
+					evenementBloquant = true;
+				}
+
+				momentPub = new Date(dateCourante.getTime() + (ecartPub * 1000 * 60 * 60 * 24));
+				nextVideo++;
+			}
+		}
+		
 		return evenementBloquant;
 	}
 

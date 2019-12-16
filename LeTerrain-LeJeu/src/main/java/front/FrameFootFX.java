@@ -213,8 +213,6 @@ public class FrameFootFX extends FrameJeu {
 		
 		// TODO probleme a la selection des perso (le joueur disparait des fois pendant le drag and drop) ! reproduit (mettre un bouton retour! sinon on est bloqué)
 		
-		System.out.println("constructeur FrameFootFX()");
-
 		this.mission = mission;
 		
 		choixDesPersos();
@@ -272,13 +270,13 @@ public class FrameFootFX extends FrameJeu {
 		JLabel labelTypeMisson = new JLabel(mission.getMissionType().name());
 		
 		panelInfoMission.add(new JLabel(resizeImagePerso));
-		panelInfoMission.add(labelProprio);
+//		panelInfoMission.add(labelProprio);
 		panelInfoMission.add(labelNom);
 		panelInfoMission.add(labelInfo);
-		panelInfoMission.add(labelObjectif);
-		panelInfoMission.add(labelConditionVictoire);
-		panelInfoMission.add(labelDifficulte);
-		panelInfoMission.add(labelTypeMisson);
+//		panelInfoMission.add(labelObjectif);
+//		panelInfoMission.add(labelConditionVictoire);
+//		panelInfoMission.add(labelDifficulte);
+//		panelInfoMission.add(labelTypeMisson);
 		panelInfoMission.add(boutonMusiqueOnOff);
 		
 		// Font
@@ -302,8 +300,6 @@ public class FrameFootFX extends FrameJeu {
 	}
 
 	public void reinitialisation() {
-		
-		System.out.println("reinitialisation() FrameFootFX()");
 		
 		butsAllies = 0;
 		butsAdverses = 0;
@@ -509,8 +505,6 @@ public class FrameFootFX extends FrameJeu {
 	}
 
 	public void start() {
-		System.out.println("start() FrameFootFX");
-
 		MenuPrincipal.getMainFrame().setEnabled(false);
 		MenuPrincipal.getMainFrame().setVisible(false);
 		VideoManager.hideAndStop();
@@ -522,7 +516,6 @@ public class FrameFootFX extends FrameJeu {
 	}
 
 	private void lancePartie() {
-		System.out.println("lancePartie() FrameFootFX");
 		MusiqueManager.stopAll();
 		MusiqueManager.stopPlaylistEnBoucle();
 		List<Musique> musiques = MusiqueManager.chargeMusiquesParRepertoire("musique/foot", 281000);
@@ -537,8 +530,6 @@ public class FrameFootFX extends FrameJeu {
 	}
 	
 	private void initFX() {
-		System.out.println("initFX() FrameFootFX");
-
 		// This method is invoked on the JavaFX thread
 		Scene scene = createScene();
 		panelCentre.removeAll();
@@ -553,8 +544,6 @@ public class FrameFootFX extends FrameJeu {
 	
 	private Scene createScenePersos() {
 
-		System.out.println("createScene() FrameChoixPersos");
-		
 		root = new Group();
 		Scene scene = new Scene(root, Color.BLACK);
 		
@@ -650,11 +639,16 @@ public class FrameFootFX extends FrameJeu {
 			}
 		}
 		
-		// TODO mesage alerte "Vous n'avez pas assez de joueur disponible" + retour a l'ecran mission (finDeMission(win=false))
-		if (persosDispo.size() < 5) {
+		// Mesage alerte "Il n'y a pas assez de joueurs disponibles" + retour a l'ecran mission (finDeMission(win=false))
+		if (persosDispo.size() < nombreDeJoueursMax) {
+			
+			// TODO a reactiver pour empecher le match si le nombre de joueur est insuffisant
+			JOptionPane.showMessageDialog(this, "Il n'y a pas assez de joueurs disponibles !", "Fin du match", 0, null);
+			stopPartie(false);
+			
 			// TODO a supprimer (pour tester avant d'etre 5)
-			persosDispo.clear();
-			persosDispo.addAll(groupe.getPersos());
+//			persosDispo.clear();
+//			persosDispo.addAll(groupe.getPersos());
 		}
 		
 		
@@ -671,7 +665,6 @@ public class FrameFootFX extends FrameJeu {
 
 				@Override
 				public void handle(Event event) {
-			    	System.out.println("DRAG DETECTED");
 			    	
 			    	imageDropped = view.getImage();
 					
@@ -692,7 +685,6 @@ public class FrameFootFX extends FrameJeu {
 			    
 
 				public void handle(DragEvent event) {
-			    	System.out.println("DRAG DONE");
 			    	
 			        /* the drag and drop gesture ended */
 			        /* if the data was successfully moved, clear it */
@@ -754,7 +746,6 @@ public class FrameFootFX extends FrameJeu {
 			viewTarget.setOnDragOver(new EventHandler <DragEvent>() {
 
 			    public void handle(DragEvent event) {
-			    	System.out.println("DRAG OVER VIEWTARGET");
 			        event.acceptTransferModes(TransferMode.ANY);
 			        event.consume();
 			    }
@@ -762,7 +753,6 @@ public class FrameFootFX extends FrameJeu {
 			
 			viewTarget.setOnDragDropped(new EventHandler<DragEvent>() {
 			    public void handle(DragEvent event) {
-			    	System.out.println("DRAG DROPPED");
 			        /* data dropped */
 			        /* if there is a string data on dragboard, read it and use it */
 			        Dragboard db = event.getDragboard();
@@ -1046,8 +1036,6 @@ public class FrameFootFX extends FrameJeu {
 	}
 
 	private Scene createScene() {
-		
-		System.out.println("createScene() FrameFootFX");
 		
 		root = new Group();
 		Scene scene = new Scene(root, Color.BLACK);
@@ -1475,8 +1463,6 @@ public class FrameFootFX extends FrameJeu {
 					coupDEnvoi(!pourLesAllies);
 					
 				} else if (momentButAllie != 0) {
-					System.out.println("MODULO : " + (momentButAllie - now) % (Constante.DELAI_APRES_BUT/4) %16);
-					
 					// Scintillement label nom buteur
 					if ((momentButAllie - now) % (Constante.DELAI_APRES_BUT/4) %16 == 0) {
 						if (labelNomButeur.getTextFill() == Color.WHITE) {
@@ -1492,8 +1478,6 @@ public class FrameFootFX extends FrameJeu {
 					coupDEnvoi(pourLesAllies);
 					
 				} else if (momentButAdverse != 0) {
-					System.out.println("MODULO : " + (momentButAdverse - now) % (Constante.DELAI_APRES_BUT/4) %16);
-
 					// Scintillement label nom buteur
 					if ((momentButAdverse - now) % (Constante.DELAI_APRES_BUT/4) %16 == 0) {
 						if (labelNomButeur.getTextFill() == Color.WHITE) {
@@ -1569,7 +1553,6 @@ public class FrameFootFX extends FrameJeu {
 						JoueurPrincipal cible = trouveJoueurPlusProcheDesButsAdverses();
 						if (cible != null) {
 							passe(cible.getLocation().x, cible.getLocation().y);
-							System.out.println("(PASSE) Cible le plus devant");
 						}
 						
 					} else if (random0_100 > 66) {
@@ -1577,7 +1560,6 @@ public class FrameFootFX extends FrameJeu {
 						JoueurPrincipal cible = trouveJoueurDevantLePorteur();
 						if (cible != null) {
 							passe(cible.getLocation().x, cible.getLocation().y);
-							System.out.println("(PASSE) Cible devant");
 						}
 						
 					} else {
@@ -1585,7 +1567,6 @@ public class FrameFootFX extends FrameJeu {
 						JoueurPrincipal cible = trouveJoueurPlusProcheDuPorteur();
 						if (cible != null) {
 							passe(cible.getLocation().x, cible.getLocation().y);
-							System.out.println("(PASSE) Cible le plus proche");
 
 						}
 						
@@ -1597,12 +1578,9 @@ public class FrameFootFX extends FrameJeu {
 						// Passe aleatoire
 						JoueurPrincipal cible = trouveJoueurCibleAleatoire();
 						passe(cible.getLocation().x, cible.getLocation().y);
-						System.out.println("(PASSE) Cible aleatoire");
 
 					} else {
 						// Ne fait rien (avance)
-						System.out.println("(PASSE) NE FAIT RIEN");
-
 						
 					}
 				}
@@ -1908,14 +1886,11 @@ public class FrameFootFX extends FrameJeu {
 					positionDefense = new PVector(defenseur.getLocation().x, defenseur.getLocation().y, 0);
 				}
 				
-//				System.out.println("Position defense de : "+ defenseur.getPersonnage().getPrenom() + " poste (" + defenseur.getPoste().name() + ") " + positionDefense.x + " " + positionDefense.y);
-
 				return positionDefense;
 			}
 
 			private PVector defendSur(Poste poste, JoueurPrincipal defenseur) {
 				
-//				System.out.println("Defend sur " + poste.name() + " " + defenseur.getPersonnage().getPrenom());
 				PVector position = null;
 				if (defenseur.isAllie()) {
 					for (JoueurPrincipal ennemi : joueursEnnemis) {
@@ -1963,10 +1938,6 @@ public class FrameFootFX extends FrameJeu {
 					if (!intercepteur.vientDIntercepter() && !intercepteur.vientDeClasher()) {
 						
 						logging.appendText(labelTimer.getText() + " - " + "(INTERCEPTION) : tentative d'interception de " + intercepteur.getPersonnage().getPrenom() + "\n");
-						System.out.println("(INTERCEPTION) : tentative d'interception de " + intercepteur.getPersonnage().getPrenom());
-						System.out.println("(INTERCEPTION) : Centre Ballon (" + (ballon.getLocation().x) + "," + (ballon.getLocation().y) + ")");
-						System.out.println("(INTERCEPTION) : Ennemi Bounds X (" + (intercepteur.getLocation().x - intercepteur.getRadius() - intercepteur.getBonusZoneInterception()) + "," + (intercepteur.getLocation().x + intercepteur.getRadius()) + intercepteur.getBonusZoneInterception() + ")");
-						System.out.println("(INTERCEPTION) : Ennemi Bounds Y (" + (intercepteur.getLocation().y - intercepteur.getRadius() - intercepteur.getBonusZoneInterception()) + "," + (intercepteur.getLocation().y + intercepteur.getRadius()) + intercepteur.getBonusZoneInterception() + ")");
 
 						// Le devieur ne pourra plus devier ou intercepter avant un laps de temps
 						intercepteur.setDateDerniereInterception(System.currentTimeMillis());
@@ -2006,7 +1977,6 @@ public class FrameFootFX extends FrameJeu {
 									MusiqueManager.playSonRandom(musiques);	
 									
 									logging.appendText(labelTimer.getText() + " - " + "(INTERCEPTION) : Le ballon passe a travers " + intercepteur.getPersonnage().getPrenom() + "\n");
-									System.out.println("(INTERCEPTION) : Le ballon passe a travers " + intercepteur.getPersonnage().getPrenom());
 									
 								}
 							}
@@ -2065,7 +2035,6 @@ public class FrameFootFX extends FrameJeu {
 				if (!clasheur.vientDeClasher() && !clasheur.vientDIntercepter()) {
 
 					logging.appendText(labelTimer.getText() + " - " + "(CLASH) " + clasheur.getPersonnage().getPrenom() + " VS " + porteur.getPersonnage().getPrenom() + "\n");
-					System.out.println("(CLASH) " + clasheur.getPersonnage().getPrenom() + " VS " + porteur.getPersonnage().getPrenom());
 					
 					// Reussite clash attaque : AGILITE / TECHNIQUE / EXPLOIT / INTELLIGENCE / NERVOSITE / LUCK
 					int randomPorteurAttaque = calculeRandomClashAttaque(porteur);
@@ -2087,14 +2056,12 @@ public class FrameFootFX extends FrameJeu {
 						interceptePar(clasheur);
 						
 						logging.appendText(labelTimer.getText() + " - " + "(CLASH) " + clasheur.getPersonnage().getPrenom() + " recupere le ballon" + "\n");
-						System.out.println("(CLASH) " + clasheur.getPersonnage().getPrenom() + " recupere le ballon");
 					
 					// Si le porteur gagne le clash
 					} else {
 						
 						// Le porteur garde le ballon
 						logging.appendText(labelTimer.getText() + " - " + "(CLASH) " + porteur.getPersonnage().getPrenom() + " elimine " + clasheur.getPersonnage().getPrenom() + "\n");
-						System.out.println("(CLASH) " + porteur.getPersonnage().getPrenom() + " elimine " + clasheur.getPersonnage().getPrenom());
 						
 						// Le clasheur est stun
 						clasheur.setVitesseZero();
@@ -2129,7 +2096,6 @@ public class FrameFootFX extends FrameJeu {
 				if (random > 90) {
 					random = 90;
 				}
-				System.out.println("INTERCEPTION - Chance de controller = " + random + "/ 90");
 				return random;
 			}
 
@@ -2145,7 +2111,6 @@ public class FrameFootFX extends FrameJeu {
 				int random = resistance + endurance + exploit + intelligence + nervosite + chance;
 				random = random / 6;
 				int valeur = RandomManager.random(0, random);
-				System.out.println("CLASH valeur clash def = " + valeur + "/" + random);
 				return valeur;
 			}
 
@@ -2161,7 +2126,6 @@ public class FrameFootFX extends FrameJeu {
 				int random = agilite + technique + exploit + intelligence + nervosite + chance;
 				random = random / 6;
 				int valeur = RandomManager.random(0, random);
-				System.out.println("CLASH valeur clash att = " + valeur + "/" + random);
 				return valeur;
 			}
 
@@ -2205,13 +2169,11 @@ public class FrameFootFX extends FrameJeu {
 					}
 				}
 				logging.appendText(labelTimer.getText() + " - " + "(Joueur cible aleatoire) : " + joueurCible.getPersonnage().getPrenom() + "\n");
-				System.out.println("(Joueur cible aleatoire) : " + joueurCible.getPersonnage().getPrenom());
 				return joueurCible;
 			}
 
 			private void interceptePar(JoueurPrincipal joueur) {
 				logging.appendText(labelTimer.getText() + " - " + "(INTERCEPTION) : " + joueur.getPersonnage().getPrenom() + " intercepte le ballon"  + "\n");
-				System.out.println("(INTERCEPTION) : " + joueur.getPersonnage().getPrenom() + " intercepte le ballon" );
 				ballonLibre = false;
 				porteur = joueur;
 				porteur.setDateDerniereInterception(System.currentTimeMillis());
@@ -2235,7 +2197,6 @@ public class FrameFootFX extends FrameJeu {
 				
 				// Le devieur ne pourra plus devier ou intercepter avant un laps de temps
 				logging.appendText(labelTimer.getText() + " - " + "(DEVIATION) : " + ennemi.getPersonnage().getPrenom() + " devie le ballon"  + "\n");
-				System.out.println("(DEVIATION) : " + ennemi.getPersonnage().getPrenom() + " devie le ballon" );
 				ennemi.setDateDerniereInterception(System.currentTimeMillis());
 				ennemi.setVientDIntercepter(true);
 				
@@ -2250,7 +2211,7 @@ public class FrameFootFX extends FrameJeu {
 					nouvelleVitesseMax = ballon.getTopspeed() - (ballon.getTopspeed()/4);
 					
 					// On eloigne moyennement la cible de la deviation
-					int min = 0;
+					int min = 10;
 					int max = 100;
 					nouvelleCible = genereNouvellePositionAleatoire(min, max);
 					
@@ -2259,7 +2220,7 @@ public class FrameFootFX extends FrameJeu {
 					nouvelleVitesseMax = ballon.getTopspeed() - (ballon.getTopspeed()/3);
 
 					// On eloigne un peu la cible de la deviation
-					int min = 0;
+					int min = 10;
 					int max = 50;
 					nouvelleCible = genereNouvellePositionAleatoire(min, max);
 				
@@ -2268,7 +2229,7 @@ public class FrameFootFX extends FrameJeu {
 					nouvelleVitesseMax = ballon.getTopspeed() - (ballon.getTopspeed()/2);
 
 					// On eloigne un peu la cible de la deviation
-					int min = 0;
+					int min = 10;
 					int max = 50;
 					nouvelleCible = genereNouvellePositionAleatoire(min, max);
 				
@@ -2354,7 +2315,7 @@ public class FrameFootFX extends FrameJeu {
         	// Clic gauche
         	if (e.getButton() == MouseButton.PRIMARY) {
         		
-        		System.out.println("-----------CLIC GAUCHE----------");
+//        		System.out.println("-----------CLIC GAUCHE----------");
         		
         		// Engagement
         		if (!gameStarted) {
@@ -2388,7 +2349,7 @@ public class FrameFootFX extends FrameJeu {
 
            	// Clic droit
         	} else if (e.getButton() == MouseButton.SECONDARY) {
-            	System.out.println("-----------CLIC DROIT----------");            	
+//            	System.out.println("-----------CLIC DROIT----------");            	
             	
         		if (!ballonLibre) {
         			
@@ -2709,7 +2670,6 @@ public class FrameFootFX extends FrameJeu {
 		int vitesseMax = calculePuissanceDeLaPasse(cible);
 
 		logging.appendText(labelTimer.getText() + " - " + "(PASSE) : " + porteur.getPersonnage().getPrenom() + " fait une passe (vitesse : " + vitesseMax + ")\n");
-		System.out.println("(PASSE) : " + porteur.getPersonnage().getPrenom() + " fait une passe (vitesse : " + vitesseMax + ")");
 		
 		porteur = null;
 		ballonLibre = true;
@@ -2742,7 +2702,6 @@ public class FrameFootFX extends FrameJeu {
 		int vitesseMax = calculePuissanceDuTir();
 	
 		logging.appendText(labelTimer.getText() + " - " + "(TIR) : " + porteur.getPersonnage().getPrenom() + " tir (vitesse : " + vitesseMax + ")\n");
-		System.out.println("(TIR) : " + porteur.getPersonnage().getPrenom() + " tir (vitesse : " + vitesseMax + ")");
 		
 		porteur = null;
 		ballonLibre = true;
@@ -2788,7 +2747,6 @@ public class FrameFootFX extends FrameJeu {
 			valeur = 1;
 		}
 		int precision = RandomManager.random(0, valeur); 
-		System.out.println("(TIR) precision du tir/passe = " + (ecartMax - precision) + "/" + ecartMax);
 		
 		int random0_100 = RandomManager.random0_100();
 		if (random0_100 < 50) {
@@ -2834,7 +2792,6 @@ public class FrameFootFX extends FrameJeu {
 		random = random / 6;
 		int valeur = RandomManager.random(0, random);
 		valeur = valeur + Constante.VITESSE_MAX_BALLON/2;
-		System.out.println("(TIR) puissance du tir = " + valeur + "/" + (random + Constante.VITESSE_MAX_BALLON/2));
 		return valeur;
 	}
 
@@ -2850,7 +2807,6 @@ public class FrameFootFX extends FrameJeu {
 			equipe = "ennemis";
 		}
 		logging.appendText(labelTimer.getText() + " - " + "(ENGAGEMENT) Coup d'envoi pour les " + equipe + "\n");
-		System.out.println("(ENGAGEMENT) Coup d'envoi pour les " + equipe);
 		
 		// Replacement des joueurs a leur poste initial
 		for (JoueurPrincipal personnage : joueursAmis) {
@@ -2901,20 +2857,28 @@ public class FrameFootFX extends FrameJeu {
 
 	// Fin du jeu
 	public void stopPartie(boolean win) {
-
-		timer.stop();
+		
+		if (timer != null) {
+			timer.stop();
+		}
 		gameStarted = false;
 		root.getChildren().clear();
 		
 		// Message fin du jeu
 		if (win) {
+			MusiqueManager.playSonItem("sonParDefaut/defautVictoire.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautVictoire.png");
 			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
-			JOptionPane.showMessageDialog(this, "Victoire !", "Fin du match", 0, resizeImage);
+			JLabel labelMessage = new JLabel("Victoire !");
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du match", 0, resizeImage);
 		} else {
+			MusiqueManager.playSonItem("sonParDefaut/defautDefaite.mp3");
 			ImageIcon icon = FenetrePrincipal.getImageIcon("image/defaut/defautDefaite.png");
 			ImageIcon resizeImage = ImageManager.resizeImage(icon, Constante.PERSO_IMAGE_DIMENSION_180_180);
-			JOptionPane.showMessageDialog(this, "Defaite !", "Fin du match", 0, resizeImage);
+			JLabel labelMessage = new JLabel("Defaite !");
+			labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+			JOptionPane.showMessageDialog(this, labelMessage, "Fin du match", 0, resizeImage);
 		}
 		
 		// Cachage de la frame foot et reaffichage de la mainframe

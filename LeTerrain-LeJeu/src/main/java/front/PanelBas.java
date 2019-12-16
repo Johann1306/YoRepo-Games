@@ -94,7 +94,7 @@ public class PanelBas extends JPanel {
 		for (Evenement evenement : evenementsDisponibles) {
 			JLabel labelEvenement = new JLabel(evenement.getTitre() + " : -" + evenement.getInformations());
 			labelEvenement.setForeground(Color.WHITE);
-			labelEvenement.setFont(Constante.SIMPSON_FONT);
+			labelEvenement.setFont(Constante.SERIF_FONT);
 			panelEvenement.add(labelEvenement);
 		}
 	}

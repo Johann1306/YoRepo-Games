@@ -61,13 +61,13 @@ public class FrameJeu extends JFrame {
 		JLabel labelTypeMisson = new JLabel(mission.getMissionType().name());
 		
 		panelInfoMission.add(new JLabel(resizeImagePerso));
-		panelInfoMission.add(labelProprio);
+//		panelInfoMission.add(labelProprio);
 		panelInfoMission.add(labelNom);
 		panelInfoMission.add(labelInfo);
-		panelInfoMission.add(labelObjectif);
-		panelInfoMission.add(labelConditionVictoire);
-		panelInfoMission.add(labelDifficulte);
-		panelInfoMission.add(labelTypeMisson);
+//		panelInfoMission.add(labelObjectif);
+//		panelInfoMission.add(labelConditionVictoire);
+//		panelInfoMission.add(labelDifficulte);
+//		panelInfoMission.add(labelTypeMisson);
 		panelInfoMission.add(boutonMusiqueOnOff);
 		
 		// Font

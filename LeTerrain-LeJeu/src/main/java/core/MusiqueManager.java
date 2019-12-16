@@ -268,7 +268,6 @@ public class MusiqueManager implements Serializable {
 			}
 			stopped = true;
 			PanelMusique.application.stop();
-			System.out.println("-------Stop all lecteurs---------");
 		} catch (Exception e) {
 			System.out.println("Erreur lors de l arret du lecteur : " + e.getMessage() + " :: " + e);
 		}
@@ -319,7 +318,6 @@ public class MusiqueManager implements Serializable {
 	}
 
 	public static void startPlayListEnBoucle(Mission mission) {
-		System.out.println("startPlayListEnBoucle()");
 		List<Musique> musiques = new ArrayList<>();
 		if (mission.getJeu() == NomJeu.JEU_COMBAT) {
 			
@@ -364,8 +362,6 @@ public class MusiqueManager implements Serializable {
 	}
 
 	public static void startPlayListPerso(PersoPrenom prenom) {
-		System.out.println("startPlayListEnBoucle()");
-		
 		stopAll();
 		
 		PersonnagePrincipal perso = MenuPrincipal.getMainFrame().getCoreManager().getPersonnageManager().getPersoByPrenom(prenom);
@@ -385,17 +381,14 @@ public class MusiqueManager implements Serializable {
 	}
 	
 	public static void playPlaylistEnBoucle(List<String> sonPaths) {
-//		System.out.println("playPlaylistEnBoucle()");
 
 		Thread t = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				try {
-					System.out.println("STOPPED : " + stopped);
 					while (!stopped) {
 						for (String sonPath : sonPaths) {
-							System.out.println("Play : " + sonPath);
 							// Pause 1s entre 2 musiques
 							if (!stopped) {
 								Thread.sleep(500);
@@ -410,7 +403,6 @@ public class MusiqueManager implements Serializable {
 						}
 					}
 					stopped = false;
-					System.out.println("STOPPED : " + stopped);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -435,13 +427,10 @@ public class MusiqueManager implements Serializable {
 	public static List<Musique> chargeMusiquesParRepertoire(String repertoire, int i) {
 		int id = i;
 		List<Musique> musiquesPerso = new ArrayList<>();
-		System.out.println("Repertoire : " + repertoire);
 		
 		// Si execution en local
 		URL url = FenetrePrincipal.getURL(repertoire);
-		System.out.println("URL : " + url);
 		File rep = new File(url.getPath());
-		System.out.println("File rep : " + rep);
 		String[] list = rep.list();
 		
 		// Si execution du JAR
@@ -451,10 +440,8 @@ public class MusiqueManager implements Serializable {
 		}
 		
 		for (String path : list) {
-			System.out.println("Path : " + path);
 			List<String> sonPath = new ArrayList<>();
 			sonPath.add(repertoire + "/" + path);
-			System.out.println("sonPAth.add(" + repertoire + "/" + path + ")");
 			Musique musique = new Musique(id, path, "artiste", "album", DateManager.genereUneDate(1990, 8, 1, 10, 0, 0), null, sonPath, null, "informations", true);
 			musiquesPerso.add(musique);
 			id++;
@@ -462,7 +449,7 @@ public class MusiqueManager implements Serializable {
 		
 		return musiquesPerso;
 	}
-
+	
 	public static void playMusiquesRandom(List<Musique> musiques) {
 		int random = RandomManager.random(0, musiques.size()-1);
 		playSonEvenement(musiques.get(random).getSonPath().get(0));

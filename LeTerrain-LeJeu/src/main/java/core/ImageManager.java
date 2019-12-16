@@ -46,8 +46,6 @@ public class ImageManager {
 		// Si le proxy contient l'image
 		if (proxyImages.containsKey(pathAndFileName)) {
 			
-			System.out.println("RETOURNE UNE IMAGE DU PROXY : " + pathAndFileName);
-		
 			// On retourne l'image du proxy
 			return proxyImages.get(pathAndFileName);
 
@@ -66,7 +64,6 @@ public class ImageManager {
 					url = file.toURL();
 				} catch (MalformedURLException e) {
 					System.out.println(e.getMessage());
-					e.printStackTrace();
 					return null;
 				}
 		    }

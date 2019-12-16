@@ -13,15 +13,20 @@ public class PanelTitre extends JPanel {
 
 	public PanelTitre() {
 		JLabel titre = new JLabel("LE TERRAIN");
-		JLabel titreSecondaire = new JLabel("SCOOTER FOOT SHIT **");
+		JLabel titreVide = new JLabel("         *         ");
+		JLabel titreSecondaire = new JLabel("FOOT - SCOOTER - SHIT");
 		
-		titre.setFont(Constante.MARIO_FONT_TITRE);
-		titre.setForeground(Color.WHITE);
+		titre.setFont(Constante.STARWARS_FONT_TITRE);
+		titre.setForeground(Color.BLACK);
 		
-		titreSecondaire.setFont(Constante.MARIO_FONT_SOUS_TITRE);
-		titreSecondaire.setForeground(Color.WHITE);
+		titreVide.setFont(Constante.STARWARS_FONT_SOUS_TITRE);
+		titreVide.setForeground(Color.YELLOW);
+		
+		titreSecondaire.setFont(Constante.STARWARS_FONT_SOUS_TITRE);
+		titreSecondaire.setForeground(Color.BLACK);
 		
 		this.add(titre);
+		this.add(titreVide);
 		this.add(titreSecondaire);
 	}
 }

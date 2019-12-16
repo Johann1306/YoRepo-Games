@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import core.ImageManager;
@@ -166,24 +167,24 @@ public class Groupe implements Serializable {
 				image = FenetrePrincipal.getImageIcon("image/defaut/defautEvenement.png");
 			}
 			ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.ARGENT_IMAGE_DIMENSION_100_100);
-			
+			JLabel messageLabel = new JLabel("La groupe a gagne : " + somme + " Francs");
+			messageLabel.setFont(Constante.MARIO_FONT_MENU_3);
 			
 			if (frameShopEnfant) {
 				JOptionPane.showMessageDialog(FrameShopEnfant.getFrameShop(),
-						"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
+						messageLabel, "Argent gagné", 0, resizeImage);
 				
 			} else if (frameShopAdulte) {
 				JOptionPane.showMessageDialog(FrameShopAdulte.getFrameShop(),
-						"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
+						messageLabel, "Argent gagné", 0, resizeImage);
 			
 			} else {
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(),
-					"La groupe a gagné : " + somme + " Francs", "Argent gagné", 0, resizeImage);
+						messageLabel, "Argent gagné", 0, resizeImage);
 			}
 			
-			
 		} else {
-			System.out.println("La somme a ajouter dans la bourse est inferieur ou egal à O : Somme = " + somme);
+//			System.out.println("La somme a ajouter dans la bourse est inferieur ou egal à O : Somme = " + somme);
 		}
 	}
 	
@@ -193,11 +194,10 @@ public class Groupe implements Serializable {
 				bourse = bourse - somme;
 				return 1;
 			} else {
-				System.out.println("La somme a retirer est superieur au contenu de la bourse : Somme = " + somme + " - Bourse(" + bourse + ")");
 				return -1;
 			}
 		} else {
-			System.out.println("La somme a retirer de la bourse est inferieur ou egal à O : Somme = " + somme);
+//			System.out.println("La somme a retirer de la bourse est inferieur ou egal à O : Somme = " + somme);
 		}
 		return 0;
 	}
@@ -209,7 +209,7 @@ public class Groupe implements Serializable {
 				bourse = 0;
 			}
 		} else {
-			System.out.println("La somme a retirer de la bourse est inferieur ou egal à O : Somme = " + somme);
+//			System.out.println("La somme a retirer de la bourse est inferieur ou egal à O : Somme = " + somme);
 		}
 	}
 
