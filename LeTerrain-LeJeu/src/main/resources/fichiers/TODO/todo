@@ -136,6 +136,7 @@ Bonus :
 - Gerer le deplacement de persos sur des maps adaptés vue de coté (+animation des mouvements / des maps) pour les mini-jeux
 
 Ce que j'aurai voulu :
+- Tutoriel
 - Emissions TV 90
 - Films 90
 - Jouets 90
@@ -147,11 +148,15 @@ Ce que j'aurai voulu :
 - Choix entre plusieurs visages pour chaque perso (debloquable avec le temps)
 - Contenu differents en fonction du perso selectionné et de la difficulté et de l'avancement dans le jeu
 - Lieux en 3D
+- Lieux externes
 - Integrer l'histoire des jeux videos (consoles, pc, mascottes, ...)
 - Integere l'histoire des MEME internet  
 - Integrer un emulateur nes / master system / snes / playstation
 - Mini-Jeux pour augmenter les competences (reflexes, spam boutons, strategie, precision, ...)
 - Mettre des persos feminins
+- Popos (Bonbons et barres de chocolat de l'epoque)
+- Mission Final contre tous les Boss et contre une equipe miroir
+- Contenu specifique au choix du perso de depart
 
 
 JP:
@@ -182,7 +187,7 @@ Build Project : mvn clean install
 Genere le jar dans le repertoire "target"
 Il faut copier l'ensemble du repertoire qui contient le JAR (C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target) (Avec le repertoire /classes => Pas dans eclipse mais dans "C:\Users\Johann\git\YoRepo-Games\LeTerrain-LeJeu\target")
 - Execution au double click
-- OU en ligne de commande avec cmd => cd "repertoire qui contient" => java -jar "nom du jar" (D:\Johann\Le Terrain\Test JAR>java -jar LeTerrain-LeJeu-0.0.1-SNAPSHOT.jar)
+- OU en ligne de commande avec cmd => cd "repertoire qui contient" => java -jar "nom du jar" (D:\Johann\Le Terrain\Projet - Le Terrain\Le Terrain - Le Jeu>java -jar LeTerrain-LeJeu-0.0.1-SNAPSHOT.jar)
 
 
 
