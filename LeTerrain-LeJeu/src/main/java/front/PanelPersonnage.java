@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import core.CoreManager;
 import core.ItemManager;
@@ -70,7 +73,35 @@ public class PanelPersonnage extends JPanel {
 		boutonAli = new JButton(ali.getPhotoPrincipal());
 		boutonGuillaume = new JButton(guillaume.getPhotoPrincipal());
 		boutonJonathan = new JButton(jonathan.getPhotoPrincipal());
-		boutonGroupe = new JButton("GROUPE");
+		boutonGroupe = new JButton("LE GROUPE");
+		boutonGroupe.setBackground(Color.BLACK);
+		boutonGroupe.setFont(Constante.MARIO_FONT_MENU);
+		boutonGroupe.setForeground(Color.WHITE);
+		
+		boutonGroupe.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				boutonGroupe.setFont(Constante.MARIO_FONT_MENU);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				boutonGroupe.setFont(Constante.MARIO_FONT_MENU_3);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		
 		boutonNicolas.setName(nicolas.getPrenom());
 		boutonPierre.setName(pierre.getPrenom());
@@ -295,11 +326,27 @@ public class PanelPersonnage extends JPanel {
 									MainFrame.getPanelCentre().afficheFichePerso(perso.getPrenomPerso().name());
 
 									// Dieu donne la stat prefere du perso avec un message 
-									MusiqueManager.playSon("sonParDefaut/defautREZCritique.mp3");									
+									MusiqueManager.playSon("sonParDefaut/defautREZ.mp3");									
 									ImageIcon iconDieu = FenetrePrincipal.getImageIcon("image/pnj/dieu.png");
-									JLabel messageLabel2 = new JLabel(perso.getPrenom() + " : " + perso.getMessageDieu());
-									messageLabel2.setFont(Constante.MARIO_FONT_MENU_3);
-									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageLabel2, EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
+									if (perso.getPrenom().equals(PersoPrenom.Ali.name())) {
+										iconDieu = FenetrePrincipal.getImageIcon("image/pnj/ousama.png");
+									}
+									
+									JTextArea infoMissionValue = new JTextArea(perso.getPrenom() + " : " + perso.getMessageDieu());
+									infoMissionValue.setLineWrap(true);
+									infoMissionValue.setWrapStyleWord(true);
+									infoMissionValue.setEditable(false);
+									infoMissionValue.setFont(Constante.MARIO_FONT_MENU_3);
+									infoMissionValue.setForeground(Color.BLACK);
+									infoMissionValue.setOpaque(false);
+									infoMissionValue.setSize(Constante.INFO_MISSION_800_100);
+									infoMissionValue.setMinimumSize(Constante.INFO_MISSION_800_100);  
+									
+									MusiqueManager.playSon("son/dieu/" + perso.getPrenom().toLowerCase() + ".mp3");	
+									JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), infoMissionValue, EvenementTheme.INTERVENTION_DIVINE.getNom(), JOptionPane.PLAIN_MESSAGE, iconDieu);
+									if (perso.getPrenom().equals(PersoPrenom.Nicolas.name())) {
+										MusiqueManager.playSon("son/dieu/six futs.mp3");	
+									}
 									
 									// Demarre une musique d'ambiance 
 									MusiqueManager.stopAll();

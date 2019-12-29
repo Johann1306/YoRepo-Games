@@ -167,6 +167,8 @@ public class FrameShopAdulte extends FrameJeu {
 		content.add(panelEst, BorderLayout.EAST);
 		content.add(panelSud, BorderLayout.SOUTH);
 		
+		this.setUndecorated(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setContentPane(content);
 		this.setVisible(true);
 	}

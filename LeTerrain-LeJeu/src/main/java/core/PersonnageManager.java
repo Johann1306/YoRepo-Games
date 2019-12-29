@@ -780,7 +780,18 @@ public class PersonnageManager implements Serializable {
 	}
 
 	private List<String> recuperePubs(int annee) {
-		List<String> videoPaths = VideoManager.chargeVideosParRepertoire("video/publicite/" + annee);
+		int sousRep = 1;
+		if (difficulte.name().equals(Difficulte.FACILE.name())) {
+			sousRep = 1;
+		} else if (difficulte.name().equals(Difficulte.NORMAL.name())) {
+			sousRep = 2;
+		} else if (difficulte.name().equals(Difficulte.DIFFICILE.name())) {
+			sousRep = 3;
+		} else if (difficulte.name().equals(Difficulte.HEROIQUE.name())) {
+			sousRep = 4;
+		}
+
+		List<String> videoPaths = VideoManager.chargeVideosParRepertoire("video/publicite/" + annee + "/" + sousRep);
 		ecartPub = calculeEcartPub(videoPaths);
 		Date dateCourante = MenuPrincipal.getMainFrame().getCoreManager().getDateManager().getDateCourante();
 		momentPub = new Date(dateCourante.getTime() + (ecartPub * 1000 * 60 * 60 * 24));
@@ -1315,13 +1326,13 @@ public class PersonnageManager implements Serializable {
 			}
 		}
 		
-		// TODO gestion des pubs
+		// Gestion des pubs
 		
 		if (pubsDeCetteAnnee == null ) {
 			pubsDeCetteAnnee = recuperePubs(1990);
-//			ecartPub = 90 / (pubsDeCetteAnnee.size() + 5);
+			ecartPub = 90 / (pubsDeCetteAnnee.size() + 5);
 			// 1 pub par jour pour les 90 premiers jours 
-			ecartPub = 1;
+//			ecartPub = 1;
 			currentYear = 1990;
 		}
 		

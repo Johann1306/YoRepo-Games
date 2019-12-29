@@ -1391,10 +1391,11 @@ public class FrameCombat extends FrameJeu {
 		// Affichage info sort
 		JLabel messageInfoCombat = getMessage(lanceur, actionCombat, score, cibles, isCritique);
 		if (lanceur instanceof PersonnagePrincipal) {
-			messageInfoCombat.setForeground(Color.GREEN);
-		} else {
 			messageInfoCombat.setForeground(Color.BLUE);
+		} else {
+			messageInfoCombat.setForeground(Color.MAGENTA);
 		}
+		messageInfoCombat.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 		panelInfosCombat.add(messageInfoCombat, 0);
 
 		// Animation cible de haut en bas
@@ -1526,6 +1527,7 @@ public class FrameCombat extends FrameJeu {
 					if (random < chanceStun) {
 						if (cible instanceof PersonnageBoss) {
 							JLabel labelStun = new JLabel(cible.getNom() + " ne peut pas être bloqué.");
+							labelStun.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelStun, 0);
 						} else {
 							if (isCritique) {
@@ -1535,6 +1537,7 @@ public class FrameCombat extends FrameJeu {
 							}
 							JLabel labelStun = new JLabel(
 									lanceur.getPrenom() + " a réussi à bloquer " + cible.getPrenom() + ".");
+							labelStun.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelStun, 0);
 						}
 						revalidate();
@@ -1561,6 +1564,7 @@ public class FrameCombat extends FrameJeu {
 					if (random < chanceTaunt) {
 						if (cible instanceof PersonnageBoss) {
 							JLabel labelTaunt = new JLabel(cible.getNom() + " ne peut pas être provoqué.");
+							labelTaunt.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelTaunt, 0);
 						} else {
 							Map<Personnage, Integer> tauntBy = cible.getTauntBy();
@@ -1585,6 +1589,7 @@ public class FrameCombat extends FrameJeu {
 							}
 							JLabel labelTaunt = new JLabel(
 									lanceur.getPrenom() + " a réussi à provoquer " + cible.getPrenom() + ".");
+							labelTaunt.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelTaunt, 0);
 						}
 						revalidate();
@@ -1639,6 +1644,7 @@ public class FrameCombat extends FrameJeu {
 						}
 						JLabel labelEsquive = new JLabel(
 								cible.getPrenom() + " a absorbé les degats avec son bouclier.");
+						labelEsquive.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 						panelInfosCombat.add(labelEsquive, 0);
 						revalidate();
 					}
@@ -1673,6 +1679,7 @@ public class FrameCombat extends FrameJeu {
 							MusiqueManager.playSon("sonParDefaut/defautEsquive.mp3");
 							JLabel labelEsquive = new JLabel(cible.getPrenom() + " a esquivé l'attaque de "
 									+ lanceur.getPrenom() + " avec (" + chanceEsquive + "%) de chance.");
+							labelEsquive.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelEsquive, 0);
 							revalidate();
 						}
@@ -1689,6 +1696,7 @@ public class FrameCombat extends FrameJeu {
 
 							JLabel labelDegatsReel = new JLabel(cible.getPrenom() + " a subit " + score + " (-"
 									+ (score - degatsReels) + ") dégats.");
+							labelDegatsReel.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 							panelInfosCombat.add(labelDegatsReel, 0);
 							revalidate();
 
@@ -2017,165 +2025,165 @@ public class FrameCombat extends FrameJeu {
 
 		// Attaque Mono ennemi
 		if (actionCombat.getSortType() == SortType.DEGATS_MONO) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et inflige " + score + " dégats à "
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et inflige " + score + " dégats à "
 					+ cibles.get(0).getPrenom() + ".");
 		}
 		// Attaque Multi ennemis
 		else if (actionCombat.getSortType() == SortType.DEGATS_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et inflige " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et inflige " + score
 					+ " dégats à tous les ennemis.");
 		}
 		// Attaque All
 		else if (actionCombat.getSortType() == SortType.DEGATS_ALL) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et inflige " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et inflige " + score
 					+ " dégats à tout le monde.");
 		}
 		// Bouclier Perso
 		else if (actionCombat.getSortType() == SortType.BOUCLIER_PERSO) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et se protege avec un bouclier ("
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et se protege avec un bouclier ("
 					+ score + ").");
 		}
 		// Bouclier Mono ami
 		else if (actionCombat.getSortType() == SortType.BOUCLIER_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et protege "
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et protege "
 					+ personnageCible.getPrenom() + " avec un bouclier (" + score + ").");
 		}
 		// Bouclier Multi amis
 		else if (actionCombat.getSortType() == SortType.BOUCLIER_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom()
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'"
 					+ " et protege tous les alliés avec un bouclier (" + score + ").");
 		}
 		// Soins Perso
 		else if (actionCombat.getSortType() == SortType.REGEN_VIE_PERSO) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et se soigne de " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et se soigne de " + score
 					+ " points de vie.");
 		}
 		// Soins Mono ami
 		else if (actionCombat.getSortType() == SortType.REGEN_VIE_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et soigne " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et soigne " + score
 					+ " points de vie à " + personnageCible.getPrenom() + ".");
 		}
 		// Soins Multi amis
 		else if (actionCombat.getSortType() == SortType.REGEN_VIE_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et soigne " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et soigne " + score
 					+ " points de vie à tous les alliés.");
 		}
 		// Absorption vie mono
 		else if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et absorbe " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et absorbe " + score
 					+ " points de vie à " + personnageCible.getPrenom() + ".");
 		}
 		// Absorption vie multi
 		else if (actionCombat.getSortType() == SortType.ABSORPTION_VIE_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et absorbe " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et absorbe " + score
 					+ " points de vie à tous les ennemis.");
 		}
 		// Regen Mana Perso
 		else if (actionCombat.getSortType() == SortType.REGEN_MANA_PERSO) {
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et se redonne " + score + " points de mana.");
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et se redonne " + score + " points de mana.");
 		}
 		// Regen Mana Mono
 		else if (actionCombat.getSortType() == SortType.REGEN_MANA_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et redonne " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et redonne " + score
 					+ " points de mana à " + personnageCible.getPrenom() + ".");
 		}
 		// Regen Mana Multi
 		else if (actionCombat.getSortType() == SortType.REGEN_MANA_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et redonne " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et redonne " + score
 					+ " points de mana à tous les alliés.");
 		}
 		// Brulure Mana Mono
 		else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et brule " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et brule " + score
 					+ " points de mana à " + personnageCible.getPrenom() + ".");
 		}
 		// Brulure Mana Multi
 		else if (actionCombat.getSortType() == SortType.BRULURE_MANA_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et brule " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et brule " + score
 					+ " points de mana à tous les ennemis.");
 		}
 		// Absorption mana mono
 		else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et absorbe " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et absorbe " + score
 					+ " points de mana à " + personnageCible.getPrenom() + ".");
 		}
 		// Absorption mana multi
 		else if (actionCombat.getSortType() == SortType.ABSORPTION_MANA_MULTI) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et absorbe " + score
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et absorbe " + score
 					+ " points de mana à tous les ennemis.");
 		}
 		// Aura Perso
 		else if (actionCombat.getSortType() == SortType.AURA_PERSO) {
-			label = new JLabel(perso.getNom() + lance + actionCombat.getNom() + " et se protège avec une aura (+"
+			label = new JLabel(perso.getNom() + lance + "'" + actionCombat.getNom() + "'" + " et se protège avec une aura (+"
 					+ score + " " + actionCombat.getPersoStat() + ").");
 		}
 		// Aura Mono
 		else if (actionCombat.getSortType() == SortType.AURA_MONO) {
 			Personnage personnageCible = cibles.get(0);
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et protège " + personnageCible.getPrenom()
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et protège " + personnageCible.getPrenom()
 							+ " avec une aura (+" + score + " " + actionCombat.getPersoStat() + ").");
 		}
 		// Aura Multi
 		else if (actionCombat.getSortType() == SortType.AURA_MULTI) {
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et protège tous les alliés avec une aura (+"
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et protège tous les alliés avec une aura (+"
 							+ score + " " + actionCombat.getPersoStat() + ").");
 		}
 		// Resurrection Mono
 		else if (actionCombat.getSortType() == SortType.RESURRECTION_MONO) {
 			Personnage personnageCible = cibles.get(0);
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et redonne la vie à "
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et redonne la vie à "
 					+ personnageCible.getPrenom() + ".");
 		}
 		// Resurrection Multi
 		else if (actionCombat.getSortType() == SortType.RESURRECTION_MULTI) {
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et redonne la vie à tous les alliés morts.");
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et redonne la vie à tous les alliés morts.");
 		}
 		// Esquive
 		else if (actionCombat.getSortType() == SortType.ESQUIVE) {
 			int chanceEsquiveSort = (((actionCombat.getNiveau() * 100) / actionCombat.getNiveauMax()) * 70) / 100;
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et augmente ses chances d'esquiver de "
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et augmente ses chances d'esquiver de "
 							+ chanceEsquiveSort + "% pour " + nbTour + " prochaine(s) attaque(s).");
 		}
 		// Renvoi degats
 		else if (actionCombat.getSortType() == SortType.RENVOI_DEGATS_PERSO) {
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom()
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'"
 					+ " et se met en position de renvoi de degats pour " + nbTour + " tour(s).");
 		}
 		// Stun Mono
 		else if (actionCombat.getSortType() == SortType.STUN_MONO) {
 			int chanceStun = (actionCombat.getNiveau() * 100) / actionCombat.getNiveauMax();
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et tente de bloquer "
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et tente de bloquer "
 					+ cibles.get(0).getPrenom() + " avec " + chanceStun + "% de chance pour " + nbTour + " tour(s).");
 		}
 		// Stun Multi
 		else if (actionCombat.getSortType() == SortType.STUN_MULTI) {
 			int chanceStun = (actionCombat.getNiveau() * 50) / actionCombat.getNiveauMax();
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et tente de bloquer tous les ennemis avec "
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et tente de bloquer tous les ennemis avec "
 							+ chanceStun + "% de chance pour " + nbTour + " tour(s).");
 		}
 		// Taunt Mono
 		else if (actionCombat.getSortType() == SortType.TAUNT_MONO) {
 			int chanceTaunt = (actionCombat.getNiveau() * 100) / actionCombat.getNiveauMax();
-			label = new JLabel(perso.getPrenom() + lance + actionCombat.getNom() + " et tente de provoquer "
+			label = new JLabel(perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et tente de provoquer "
 					+ cibles.get(0).getPrenom() + " avec " + chanceTaunt + "% de chance pour " + nbTour + " tour(s).");
 		}
 		// Taunt Multi
 		else if (actionCombat.getSortType() == SortType.TAUNT_MULTI) {
 			int chanceTaunt = (actionCombat.getNiveau() * 50) / actionCombat.getNiveauMax();
 			label = new JLabel(
-					perso.getPrenom() + lance + actionCombat.getNom() + " et tente de provoquer tous les ennemis avec "
+					perso.getPrenom() + lance + "'" + actionCombat.getNom() + "'" + " et tente de provoquer tous les ennemis avec "
 							+ chanceTaunt + "% de chance pour " + nbTour + " tour(s).");
 		}
 
@@ -3065,6 +3073,7 @@ public class FrameCombat extends FrameJeu {
 				if (ennemi.getNombreBloque() > 0) {
 					ennemi.setNombreBloque(ennemi.getNombreBloque() - 1);
 					JLabel label = new JLabel(ennemi.getPrenom() + " est bloqué ce tour-ci.");
+					label.setFont(Constante.SERIF_FONT_FRAMECOMBAT_INFO);
 					panelInfosCombat.add(label, 0);
 				}
 				// Si l'ennemi n'est pas bloqué

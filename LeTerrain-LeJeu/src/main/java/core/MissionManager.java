@@ -1,5 +1,6 @@
 package core;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,12 +11,15 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import core.configuration.Constante;
 import front.FenetrePrincipal;
 import front.MainFrame;
 import front.MenuPrincipal;
 import modele.bonus.Bonus;
+import modele.competence.Competence;
+import modele.competence.PersoStat;
 import modele.item.Item;
 import modele.item.ItemType;
 import modele.item.arme.Arme;
@@ -31,6 +35,7 @@ import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.Personnage;
 import modele.item.personnage.PersonnagePrincipal;
 import modele.item.personnage.PersonnageSecondaire;
+import modele.item.personnage.action.ActionCombat;
 import modele.jeu.Jeu;
 
 public class MissionManager implements Serializable {
@@ -827,6 +832,7 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission306 = new ArrayList<>();
 		itemsDebloquesMission306.add(actionCombatManager.getActionById(842));
 		itemsDebloquesMission306.add(itemManager.getArmeById(521));
+		itemsDebloquesMission306.add(itemManager.getItemById(918));
 			
 		// Mission 307
 		List<Item> itemsDebloquesMission307 = new ArrayList<>();
@@ -839,6 +845,7 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission308 = new ArrayList<>();
 		itemsDebloquesMission308.add(actionCombatManager.getActionById(818));
 		itemsDebloquesMission308.add(itemManager.getArmeById(551));
+		itemsDebloquesMission308.add(itemManager.getItemById(908));
 			
 		// Mission 309
 		List<Item> itemsDebloquesMission309 = new ArrayList<>();
@@ -848,6 +855,8 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission310 = new ArrayList<>();
 		itemsDebloquesMission310.add(actionCombatManager.getActionById(812));
 		itemsDebloquesMission310.add(itemManager.getArmeById(521));
+		itemsDebloquesMission310.add(itemManager.getItemById(928));
+
 			
 		// Mission 311
 		List<Item> itemsDebloquesMission311 = new ArrayList<>();
@@ -875,6 +884,7 @@ public class MissionManager implements Serializable {
 		// Mission 403
 		List<Item> itemsDebloquesMission403 = new ArrayList<>();
 		itemsDebloquesMission403.add(actionCombatManager.getActionById(631));
+		itemsDebloquesMission403.add(itemManager.getItemById(927));
 		
 		// Mission 404
 		List<Item> itemsDebloquesMission404 = new ArrayList<>();
@@ -893,10 +903,12 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission406.add(actionCombatManager.getActionById(640));
 		itemsDebloquesMission406.add(itemManager.getArmeById(516));
 		itemsDebloquesMission406.add(itemManager.getArmeById(517));
+		itemsDebloquesMission406.add(itemManager.getItemById(917));
 
 		// Mission 407
 		List<Item> itemsDebloquesMission407 = new ArrayList<>();
 		itemsDebloquesMission407.add(actionCombatManager.getActionById(648));
+		itemsDebloquesMission407.add(itemManager.getItemById(901));
 
 		// Mission 408
 		List<Item> itemsDebloquesMission408 = new ArrayList<>();
@@ -923,7 +935,8 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission502 = new ArrayList<>();
 		itemsDebloquesMission502.add(actionCombatManager.getActionById(718));
 		itemsDebloquesMission502.add(itemManager.getArmeById(522));
-		
+		itemsDebloquesMission502.add(itemManager.getItemById(916));
+
 		// Mission 503
 		List<Item> itemsDebloquesMission503 = new ArrayList<>();
 		itemsDebloquesMission503.add(actionCombatManager.getActionById(731));
@@ -938,11 +951,13 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission505 = new ArrayList<>();
 		itemsDebloquesMission505.add(actionCombatManager.getActionById(743));
 		itemsDebloquesMission505.add(itemManager.getArmeById(513));
+		itemsDebloquesMission505.add(itemManager.getItemById(903));
 		
 		// Mission 506
 		List<Item> itemsDebloquesMission506 = new ArrayList<>();
 		itemsDebloquesMission506.add(actionCombatManager.getActionById(746));
 		itemsDebloquesMission506.add(itemManager.getArmeById(560));
+		itemsDebloquesMission506.add(itemManager.getItemById(926));
 		// Poppers
 		itemsDebloquesMission506.add(itemManager.getItemById(809));
 		
@@ -978,6 +993,7 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission603.add(actionCombatManager.getActionById(533));
 		itemsDebloquesMission603.add(itemManager.getArmeById(539));
 		itemsDebloquesMission603.add(itemManager.getArmeById(576));
+		itemsDebloquesMission603.add(itemManager.getItemById(924));
 		
 		// Mission 604
 		List<Item> itemsDebloquesMission604 = new ArrayList<>();
@@ -988,11 +1004,14 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission605 = new ArrayList<>();
 		itemsDebloquesMission605.add(actionCombatManager.getActionById(541));
 		itemsDebloquesMission605.add(itemManager.getArmeById(500));
+		itemsDebloquesMission605.add(itemManager.getItemById(915));
+
 		
 		// Mission 606
 		List<Item> itemsDebloquesMission606 = new ArrayList<>();
 		itemsDebloquesMission606.add(actionCombatManager.getActionById(543));
 		itemsDebloquesMission606.add(itemManager.getArmeById(520));
+		itemsDebloquesMission606.add(itemManager.getItemById(906));
 		
 		// Mission 607
 		List<Item> itemsDebloquesMission607 = new ArrayList<>();
@@ -1018,7 +1037,8 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission701 = new ArrayList<>();
 		itemsDebloquesMission701.add(actionCombatManager.getActionById(414));
 		itemsDebloquesMission701.add(itemManager.getArmeById(505));
-	
+		itemsDebloquesMission701.add(itemManager.getItemById(921));
+
 		// Mission 702
 		List<Item> itemsDebloquesMission702 = new ArrayList<>();
 		itemsDebloquesMission702.add(actionCombatManager.getActionById(416));
@@ -1026,11 +1046,13 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission702.add(itemManager.getArmeById(574));
 		// Pavot
 		itemsDebloquesMission702.add(itemManager.getItemById(813));
+		itemsDebloquesMission702.add(itemManager.getItemById(914));
 		
 		// Mission 703
 		List<Item> itemsDebloquesMission703 = new ArrayList<>();
 		itemsDebloquesMission703.add(actionCombatManager.getActionById(417));
 		itemsDebloquesMission703.add(itemManager.getArmeById(509));
+		itemsDebloquesMission703.add(itemManager.getItemById(904));
 		
 		// Mission 704
 		List<Item> itemsDebloquesMission704 = new ArrayList<>();
@@ -1076,6 +1098,7 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission802.add(actionCombatManager.getActionById(314));
 		itemsDebloquesMission802.add(itemManager.getArmeById(530));
 		itemsDebloquesMission802.add(itemManager.getArmeById(554));
+		itemsDebloquesMission802.add(itemManager.getItemById(923));
 		
 		// Mission 803
 		List<Item> itemsDebloquesMission803 = new ArrayList<>();
@@ -1083,13 +1106,15 @@ public class MissionManager implements Serializable {
 		itemsDebloquesMission803.add(itemManager.getArmeById(585));
 		// Ecstasy
 		itemsDebloquesMission803.add(itemManager.getItemById(803));
+		itemsDebloquesMission803.add(itemManager.getItemById(913));
 		
 	
 		// Mission 804
 		List<Item> itemsDebloquesMission804 = new ArrayList<>();
 		itemsDebloquesMission804.add(actionCombatManager.getActionById(334));
 		itemsDebloquesMission804.add(itemManager.getArmeById(529));
-	
+		itemsDebloquesMission804.add(itemManager.getItemById(907));
+
 		// Mission 805
 		List<Item> itemsDebloquesMission805 = new ArrayList<>();
 		itemsDebloquesMission805.add(actionCombatManager.getActionById(338));
@@ -1124,6 +1149,7 @@ public class MissionManager implements Serializable {
 		// Mission 901
 		List<Item> itemsDebloquesMission901 = new ArrayList<>();
 		itemsDebloquesMission901.add(actionCombatManager.getActionById(212));
+		itemsDebloquesMission901.add(itemManager.getItemById(905));
 		
 		// Mission 902
 		List<Item> itemsDebloquesMission902 = new ArrayList<>();
@@ -1154,12 +1180,15 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission906 = new ArrayList<>();
 		itemsDebloquesMission906.add(actionCombatManager.getActionById(241));
 		itemsDebloquesMission906.add(itemManager.getArmeById(511));	
+		itemsDebloquesMission906.add(itemManager.getItemById(925));	
 
 		// Mission 907
 		List<Item> itemsDebloquesMission907 = new ArrayList<>();
 		itemsDebloquesMission907.add(actionCombatManager.getActionById(248));
 		itemsDebloquesMission907.add(itemManager.getArmeById(532));	
 		itemsDebloquesMission907.add(itemManager.getArmeById(582));	
+		itemsDebloquesMission907.add(itemManager.getItemById(912));
+
 		// Amphetamine
 		itemsDebloquesMission907.add(itemManager.getItemById(811));	
 
@@ -1173,6 +1202,7 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission1100 = new ArrayList<>();
 		itemsDebloquesMission1100.add(actionCombatManager.getActionById(112));
 		itemsDebloquesMission1100.add(itemManager.getArmeById(534));	
+		itemsDebloquesMission1100.add(itemManager.getItemById(911));
 		
 		// Mission 1101
 		List<Item> itemsDebloquesMission1101 = new ArrayList<>();
@@ -1183,12 +1213,14 @@ public class MissionManager implements Serializable {
 		List<Item> itemsDebloquesMission1102 = new ArrayList<>();
 		itemsDebloquesMission1102.add(actionCombatManager.getActionById(117));
 		itemsDebloquesMission1102.add(itemManager.getArmeById(536));	
+		itemsDebloquesMission1102.add(itemManager.getItemById(922));	
 
 		// Mission 1103
 		List<Item> itemsDebloquesMission1103 = new ArrayList<>();
 		itemsDebloquesMission1103.add(actionCombatManager.getActionById(118));
 		itemsDebloquesMission1103.add(itemManager.getArmeById(537));
 		itemsDebloquesMission1103.add(itemManager.getArmeById(577));
+		itemsDebloquesMission1103.add(itemManager.getItemById(902));
 		// MDMA
 		itemsDebloquesMission1103.add(itemManager.getItemById(804));
 
@@ -1374,10 +1406,10 @@ public class MissionManager implements Serializable {
 		Mission mission204 = new Mission(204, "Carrefour Dangereux", "Deratisez la rue pour acceder au magasin", imagePaths1, sonPaths1,	null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateTonelle, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission204, 12, false);
 
 		// TODO Deblocage du lieu : Les Dahlias
-		Mission mission205 = new Mission(205, "Herbe Fraiche", "Arrachez les mauvaises herbes pour acceder à la cite", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateDahlias, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission205, 13, false);
+		Mission mission205 = new Mission(205, "Herbe Fraiche", "Arrachez les mauvaises herbes pour acceder a la cite", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateDahlias, MissionType.PRINCIPAL, difficultePartie, EnnemiType.ARABES, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission205, 13, false);
 
 		// TODO Deblocage du lieu : Les Bosquets
-		Mission mission206 = new Mission(206, "Compteur Electrique", "Karcherisez la Racaille pour acceder à la cite", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBosquets, MissionType.PRINCIPAL, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission206, 14, false);
+		Mission mission206 = new Mission(206, "Compteur Electrique", "Karcherisez la Racaille pour acceder a la cite", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateBosquets, MissionType.PRINCIPAL, difficultePartie, EnnemiType.NOIRS, NomJeu.JEU_COMBAT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, new ArrayList<>(), itemsDebloquesMission206, 14, false);
 		
 		Mission mission230 = new Mission(230, "La Miranda", "Tous les bonbons a 5 centimes de Franc", imagePaths1, sonPaths1,	null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOUTIQUE, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_SHOP_ENFANT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), persosSecondairesMission230, null, itemsNecessairesMission230, new ArrayList<>(), 0, true);
 		Mission mission240 = new Mission(240, "La Tonnelle", "ATTENTION : Camera anti-vol integree dans Jafar", imagePaths1, sonPaths1,	null, PersoPrenom.GROUPE, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateNull, MissionType.BOUTIQUE, difficultePartie, EnnemiType.GITANS, NomJeu.JEU_SHOP_ENFANT, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), persosSecondairesMission240, null, itemsNecessairesMission240, new ArrayList<>(), 0, true);
@@ -1489,84 +1521,84 @@ public class MissionManager implements Serializable {
 
 		
 		// MISSIONS ANNIVERSAIRE QUIZZ - NICOLAS
-		Mission mission2001 = new Mission(2001, ConfigurationManager.getProperties("mission.nicolas.2001.nom"), ConfigurationManager.getProperties("mission.nicolas.2001.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1990, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2002 = new Mission(2002, ConfigurationManager.getProperties("mission.nicolas.2002.nom"), ConfigurationManager.getProperties("mission.nicolas.2002.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1991, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2003 = new Mission(2003, ConfigurationManager.getProperties("mission.nicolas.2003.nom"), ConfigurationManager.getProperties("mission.nicolas.2003.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1992, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2004 = new Mission(2004, ConfigurationManager.getProperties("mission.nicolas.2004.nom"), ConfigurationManager.getProperties("mission.nicolas.2004.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1993, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2005 = new Mission(2005, ConfigurationManager.getProperties("mission.nicolas.2005.nom"), ConfigurationManager.getProperties("mission.nicolas.2005.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1994, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2006 = new Mission(2006, ConfigurationManager.getProperties("mission.nicolas.2006.nom"), ConfigurationManager.getProperties("mission.nicolas.2006.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1995, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2007 = new Mission(2007, ConfigurationManager.getProperties("mission.nicolas.2007.nom"), ConfigurationManager.getProperties("mission.nicolas.2007.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2008 = new Mission(2008, ConfigurationManager.getProperties("mission.nicolas.2008.nom"), ConfigurationManager.getProperties("mission.nicolas.2008.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2009 = new Mission(2009, ConfigurationManager.getProperties("mission.nicolas.2009.nom"), ConfigurationManager.getProperties("mission.nicolas.2009.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2010 = new Mission(2010, ConfigurationManager.getProperties("mission.nicolas.2010.nom"), ConfigurationManager.getProperties("mission.nicolas.2010.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2011 = new Mission(2011, ConfigurationManager.getProperties("mission.nicolas.2011.nom"), ConfigurationManager.getProperties("mission.nicolas.2011.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT10, 0, false);
+		Mission mission2001 = new Mission(2001, ConfigurationManager.getProperties("mission.nicolas.2001.nom"), ConfigurationManager.getProperties("mission.nicolas.2001.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1990, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2002 = new Mission(2002, ConfigurationManager.getProperties("mission.nicolas.2002.nom"), ConfigurationManager.getProperties("mission.nicolas.2002.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1991, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2003 = new Mission(2003, ConfigurationManager.getProperties("mission.nicolas.2003.nom"), ConfigurationManager.getProperties("mission.nicolas.2003.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1992, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2004 = new Mission(2004, ConfigurationManager.getProperties("mission.nicolas.2004.nom"), ConfigurationManager.getProperties("mission.nicolas.2004.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1993, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2005 = new Mission(2005, ConfigurationManager.getProperties("mission.nicolas.2005.nom"), ConfigurationManager.getProperties("mission.nicolas.2005.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1994, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2006 = new Mission(2006, ConfigurationManager.getProperties("mission.nicolas.2006.nom"), ConfigurationManager.getProperties("mission.nicolas.2006.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1995, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2007 = new Mission(2007, ConfigurationManager.getProperties("mission.nicolas.2007.nom"), ConfigurationManager.getProperties("mission.nicolas.2007.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2008 = new Mission(2008, ConfigurationManager.getProperties("mission.nicolas.2008.nom"), ConfigurationManager.getProperties("mission.nicolas.2008.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2009 = new Mission(2009, ConfigurationManager.getProperties("mission.nicolas.2009.nom"), ConfigurationManager.getProperties("mission.nicolas.2009.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2010 = new Mission(2010, ConfigurationManager.getProperties("mission.nicolas.2010.nom"), ConfigurationManager.getProperties("mission.nicolas.2010.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2011 = new Mission(2011, ConfigurationManager.getProperties("mission.nicolas.2011.nom"), ConfigurationManager.getProperties("mission.nicolas.2011.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Nicolas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivNico2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionNico, itemsDebloquesMissionAnniversaireINT10, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - THOMAS
-		Mission mission2012 = new Mission(2012, ConfigurationManager.getProperties("mission.thomas.2012.nom"), ConfigurationManager.getProperties("mission.thomas.2012.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1990, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2013 = new Mission(2013, ConfigurationManager.getProperties("mission.thomas.2013.nom"), ConfigurationManager.getProperties("mission.thomas.2013.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1991, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2014 = new Mission(2014, ConfigurationManager.getProperties("mission.thomas.2014.nom"), ConfigurationManager.getProperties("mission.thomas.2014.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1992, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2015 = new Mission(2015, ConfigurationManager.getProperties("mission.thomas.2015.nom"), ConfigurationManager.getProperties("mission.thomas.2015.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1993, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2016 = new Mission(2016, ConfigurationManager.getProperties("mission.thomas.2016.nom"), ConfigurationManager.getProperties("mission.thomas.2016.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1994, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2017 = new Mission(2017, ConfigurationManager.getProperties("mission.thomas.2017.nom"), ConfigurationManager.getProperties("mission.thomas.2017.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1995, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2018 = new Mission(2018, ConfigurationManager.getProperties("mission.thomas.2018.nom"), ConfigurationManager.getProperties("mission.thomas.2018.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2019 = new Mission(2019, ConfigurationManager.getProperties("mission.thomas.2019.nom"), ConfigurationManager.getProperties("mission.thomas.2019.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2020 = new Mission(2020, ConfigurationManager.getProperties("mission.thomas.2020.nom"), ConfigurationManager.getProperties("mission.thomas.2020.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2021 = new Mission(2021, ConfigurationManager.getProperties("mission.thomas.2021.nom"), ConfigurationManager.getProperties("mission.thomas.2021.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2022 = new Mission(2022, ConfigurationManager.getProperties("mission.thomas.2022.nom"), ConfigurationManager.getProperties("mission.thomas.2022.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT10, 0, false);
+		Mission mission2012 = new Mission(2012, ConfigurationManager.getProperties("mission.thomas.2012.nom"), ConfigurationManager.getProperties("mission.thomas.2012.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1990, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2013 = new Mission(2013, ConfigurationManager.getProperties("mission.thomas.2013.nom"), ConfigurationManager.getProperties("mission.thomas.2013.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1991, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2014 = new Mission(2014, ConfigurationManager.getProperties("mission.thomas.2014.nom"), ConfigurationManager.getProperties("mission.thomas.2014.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1992, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2015 = new Mission(2015, ConfigurationManager.getProperties("mission.thomas.2015.nom"), ConfigurationManager.getProperties("mission.thomas.2015.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1993, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2016 = new Mission(2016, ConfigurationManager.getProperties("mission.thomas.2016.nom"), ConfigurationManager.getProperties("mission.thomas.2016.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1994, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2017 = new Mission(2017, ConfigurationManager.getProperties("mission.thomas.2017.nom"), ConfigurationManager.getProperties("mission.thomas.2017.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1995, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2018 = new Mission(2018, ConfigurationManager.getProperties("mission.thomas.2018.nom"), ConfigurationManager.getProperties("mission.thomas.2018.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2019 = new Mission(2019, ConfigurationManager.getProperties("mission.thomas.2019.nom"), ConfigurationManager.getProperties("mission.thomas.2019.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2020 = new Mission(2020, ConfigurationManager.getProperties("mission.thomas.2020.nom"), ConfigurationManager.getProperties("mission.thomas.2020.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2021 = new Mission(2021, ConfigurationManager.getProperties("mission.thomas.2021.nom"), ConfigurationManager.getProperties("mission.thomas.2021.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2022 = new Mission(2022, ConfigurationManager.getProperties("mission.thomas.2022.nom"), ConfigurationManager.getProperties("mission.thomas.2022.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Thomas, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivTom2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionTom, itemsDebloquesMissionAnniversaireINT10, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - YANNICK
-		Mission mission2023 = new Mission(2023, ConfigurationManager.getProperties("mission.yannick.2023.nom"), ConfigurationManager.getProperties("mission.yannick.2023.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1991, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2024 = new Mission(2024, ConfigurationManager.getProperties("mission.yannick.2024.nom"), ConfigurationManager.getProperties("mission.yannick.2024.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1992, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2025 = new Mission(2025, ConfigurationManager.getProperties("mission.yannick.2025.nom"), ConfigurationManager.getProperties("mission.yannick.2025.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1993, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2026 = new Mission(2026, ConfigurationManager.getProperties("mission.yannick.2026.nom"), ConfigurationManager.getProperties("mission.yannick.2026.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1994, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2027 = new Mission(2027, ConfigurationManager.getProperties("mission.yannick.2027.nom"), ConfigurationManager.getProperties("mission.yannick.2027.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1995, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2028 = new Mission(2028, ConfigurationManager.getProperties("mission.yannick.2028.nom"), ConfigurationManager.getProperties("mission.yannick.2028.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2029 = new Mission(2029, ConfigurationManager.getProperties("mission.yannick.2029.nom"), ConfigurationManager.getProperties("mission.yannick.2029.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2030 = new Mission(2030, ConfigurationManager.getProperties("mission.yannick.2030.nom"), ConfigurationManager.getProperties("mission.yannick.2030.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2031 = new Mission(2031, ConfigurationManager.getProperties("mission.yannick.2031.nom"), ConfigurationManager.getProperties("mission.yannick.2031.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2032 = new Mission(2032, ConfigurationManager.getProperties("mission.yannick.2032.nom"), ConfigurationManager.getProperties("mission.yannick.2032.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT10, 0, false);
+		Mission mission2023 = new Mission(2023, ConfigurationManager.getProperties("mission.yannick.2023.nom"), ConfigurationManager.getProperties("mission.yannick.2023.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1991, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2024 = new Mission(2024, ConfigurationManager.getProperties("mission.yannick.2024.nom"), ConfigurationManager.getProperties("mission.yannick.2024.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1992, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2025 = new Mission(2025, ConfigurationManager.getProperties("mission.yannick.2025.nom"), ConfigurationManager.getProperties("mission.yannick.2025.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1993, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2026 = new Mission(2026, ConfigurationManager.getProperties("mission.yannick.2026.nom"), ConfigurationManager.getProperties("mission.yannick.2026.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1994, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2027 = new Mission(2027, ConfigurationManager.getProperties("mission.yannick.2027.nom"), ConfigurationManager.getProperties("mission.yannick.2027.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1995, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2028 = new Mission(2028, ConfigurationManager.getProperties("mission.yannick.2028.nom"), ConfigurationManager.getProperties("mission.yannick.2028.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2029 = new Mission(2029, ConfigurationManager.getProperties("mission.yannick.2029.nom"), ConfigurationManager.getProperties("mission.yannick.2029.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2030 = new Mission(2030, ConfigurationManager.getProperties("mission.yannick.2030.nom"), ConfigurationManager.getProperties("mission.yannick.2030.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2031 = new Mission(2031, ConfigurationManager.getProperties("mission.yannick.2031.nom"), ConfigurationManager.getProperties("mission.yannick.2031.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2032 = new Mission(2032, ConfigurationManager.getProperties("mission.yannick.2032.nom"), ConfigurationManager.getProperties("mission.yannick.2032.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Yannick, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYa2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYa, itemsDebloquesMissionAnniversaireINT10, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - JOHANN
-		Mission mission2033 = new Mission(2033, ConfigurationManager.getProperties("mission.johann.2033.nom"), ConfigurationManager.getProperties("mission.johann.2033.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1991, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2034 = new Mission(2034, ConfigurationManager.getProperties("mission.johann.2034.nom"), ConfigurationManager.getProperties("mission.johann.2034.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1992, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2035 = new Mission(2035, ConfigurationManager.getProperties("mission.johann.2035.nom"), ConfigurationManager.getProperties("mission.johann.2035.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1993, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2036 = new Mission(2036, ConfigurationManager.getProperties("mission.johann.2036.nom"), ConfigurationManager.getProperties("mission.johann.2036.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1994, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2037 = new Mission(2037, ConfigurationManager.getProperties("mission.johann.2037.nom"), ConfigurationManager.getProperties("mission.johann.2037.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1995, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2038 = new Mission(2038, ConfigurationManager.getProperties("mission.johann.2038.nom"), ConfigurationManager.getProperties("mission.johann.2038.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2039 = new Mission(2039, ConfigurationManager.getProperties("mission.johann.2039.nom"), ConfigurationManager.getProperties("mission.johann.2039.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2040 = new Mission(2040, ConfigurationManager.getProperties("mission.johann.2040.nom"), ConfigurationManager.getProperties("mission.johann.2040.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2041 = new Mission(2041, ConfigurationManager.getProperties("mission.johann.2041.nom"), ConfigurationManager.getProperties("mission.johann.2041.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2042 = new Mission(2042, ConfigurationManager.getProperties("mission.johann.2042.nom"), ConfigurationManager.getProperties("mission.johann.2042.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT10, 0, false);
+		Mission mission2033 = new Mission(2033, ConfigurationManager.getProperties("mission.johann.2033.nom"), ConfigurationManager.getProperties("mission.johann.2033.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1991, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2034 = new Mission(2034, ConfigurationManager.getProperties("mission.johann.2034.nom"), ConfigurationManager.getProperties("mission.johann.2034.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1992, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2035 = new Mission(2035, ConfigurationManager.getProperties("mission.johann.2035.nom"), ConfigurationManager.getProperties("mission.johann.2035.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1993, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2036 = new Mission(2036, ConfigurationManager.getProperties("mission.johann.2036.nom"), ConfigurationManager.getProperties("mission.johann.2036.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1994, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2037 = new Mission(2037, ConfigurationManager.getProperties("mission.johann.2037.nom"), ConfigurationManager.getProperties("mission.johann.2037.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1995, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2038 = new Mission(2038, ConfigurationManager.getProperties("mission.johann.2038.nom"), ConfigurationManager.getProperties("mission.johann.2038.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2039 = new Mission(2039, ConfigurationManager.getProperties("mission.johann.2039.nom"), ConfigurationManager.getProperties("mission.johann.2039.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2040 = new Mission(2040, ConfigurationManager.getProperties("mission.johann.2040.nom"), ConfigurationManager.getProperties("mission.johann.2040.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2041 = new Mission(2041, ConfigurationManager.getProperties("mission.johann.2041.nom"), ConfigurationManager.getProperties("mission.johann.2041.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2042 = new Mission(2042, ConfigurationManager.getProperties("mission.johann.2042.nom"), ConfigurationManager.getProperties("mission.johann.2042.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Johann, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivYo2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionYo, itemsDebloquesMissionAnniversaireINT10, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - PIERRE
-		Mission mission2043 = new Mission(2043, ConfigurationManager.getProperties("mission.pierre.2043.nom"), ConfigurationManager.getProperties("mission.pierre.2043.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1991, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2044 = new Mission(2044, ConfigurationManager.getProperties("mission.pierre.2044.nom"), ConfigurationManager.getProperties("mission.pierre.2044.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1992, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2045 = new Mission(2045, ConfigurationManager.getProperties("mission.pierre.2045.nom"), ConfigurationManager.getProperties("mission.pierre.2045.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1993, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2046 = new Mission(2046, ConfigurationManager.getProperties("mission.pierre.2046.nom"), ConfigurationManager.getProperties("mission.pierre.2046.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1994, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2047 = new Mission(2047, ConfigurationManager.getProperties("mission.pierre.2047.nom"), ConfigurationManager.getProperties("mission.pierre.2047.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1995, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2048 = new Mission(2048, ConfigurationManager.getProperties("mission.pierre.2048.nom"), ConfigurationManager.getProperties("mission.pierre.2048.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2049 = new Mission(2049, ConfigurationManager.getProperties("mission.pierre.2049.nom"), ConfigurationManager.getProperties("mission.pierre.2049.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2050 = new Mission(2050, ConfigurationManager.getProperties("mission.pierre.2050.nom"), ConfigurationManager.getProperties("mission.pierre.2050.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2051 = new Mission(2051, ConfigurationManager.getProperties("mission.pierre.2051.nom"), ConfigurationManager.getProperties("mission.pierre.2051.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2052 = new Mission(2052, ConfigurationManager.getProperties("mission.pierre.2052.nom"), ConfigurationManager.getProperties("mission.pierre.2052.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT10, 0, false);
+		Mission mission2043 = new Mission(2043, ConfigurationManager.getProperties("mission.pierre.2043.nom"), ConfigurationManager.getProperties("mission.pierre.2043.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1991, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2044 = new Mission(2044, ConfigurationManager.getProperties("mission.pierre.2044.nom"), ConfigurationManager.getProperties("mission.pierre.2044.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1992, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2045 = new Mission(2045, ConfigurationManager.getProperties("mission.pierre.2045.nom"), ConfigurationManager.getProperties("mission.pierre.2045.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1993, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2046 = new Mission(2046, ConfigurationManager.getProperties("mission.pierre.2046.nom"), ConfigurationManager.getProperties("mission.pierre.2046.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1994, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2047 = new Mission(2047, ConfigurationManager.getProperties("mission.pierre.2047.nom"), ConfigurationManager.getProperties("mission.pierre.2047.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1995, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2048 = new Mission(2048, ConfigurationManager.getProperties("mission.pierre.2048.nom"), ConfigurationManager.getProperties("mission.pierre.2048.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2049 = new Mission(2049, ConfigurationManager.getProperties("mission.pierre.2049.nom"), ConfigurationManager.getProperties("mission.pierre.2049.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2050 = new Mission(2050, ConfigurationManager.getProperties("mission.pierre.2050.nom"), ConfigurationManager.getProperties("mission.pierre.2050.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2051 = new Mission(2051, ConfigurationManager.getProperties("mission.pierre.2051.nom"), ConfigurationManager.getProperties("mission.pierre.2051.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2052 = new Mission(2052, ConfigurationManager.getProperties("mission.pierre.2052.nom"), ConfigurationManager.getProperties("mission.pierre.2052.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Pierre, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivPip2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionPip, itemsDebloquesMissionAnniversaireINT10, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - ALI
-		Mission mission2053 = new Mission(2053, ConfigurationManager.getProperties("mission.ali.2053.nom"), ConfigurationManager.getProperties("mission.ali.2053.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1996, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2054 = new Mission(2054, ConfigurationManager.getProperties("mission.ali.2054.nom"), ConfigurationManager.getProperties("mission.ali.2054.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1997, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2055 = new Mission(2055, ConfigurationManager.getProperties("mission.ali.2055.nom"), ConfigurationManager.getProperties("mission.ali.2055.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2056 = new Mission(2056, ConfigurationManager.getProperties("mission.ali.2056.nom"), ConfigurationManager.getProperties("mission.ali.2056.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2057 = new Mission(2057, ConfigurationManager.getProperties("mission.ali.2057.nom"), ConfigurationManager.getProperties("mission.ali.2057.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT20, 0, false);
+		Mission mission2053 = new Mission(2053, ConfigurationManager.getProperties("mission.ali.2053.nom"), ConfigurationManager.getProperties("mission.ali.2053.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1996, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2054 = new Mission(2054, ConfigurationManager.getProperties("mission.ali.2054.nom"), ConfigurationManager.getProperties("mission.ali.2054.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1997, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2055 = new Mission(2055, ConfigurationManager.getProperties("mission.ali.2055.nom"), ConfigurationManager.getProperties("mission.ali.2055.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2056 = new Mission(2056, ConfigurationManager.getProperties("mission.ali.2056.nom"), ConfigurationManager.getProperties("mission.ali.2056.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2057 = new Mission(2057, ConfigurationManager.getProperties("mission.ali.2057.nom"), ConfigurationManager.getProperties("mission.ali.2057.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Ali, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivAli2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionAli, itemsDebloquesMissionAnniversaireINT20, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - GUILLAUME
-		Mission mission2058 = new Mission(2058, ConfigurationManager.getProperties("mission.guillaume.2058.nom"), ConfigurationManager.getProperties("mission.guillaume.2058.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy1998, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2059 = new Mission(2059, ConfigurationManager.getProperties("mission.guillaume.2059.nom"), ConfigurationManager.getProperties("mission.guillaume.2059.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy1999, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT5, 0, false);
-		Mission mission2060 = new Mission(2060, ConfigurationManager.getProperties("mission.guillaume.2060.nom"), ConfigurationManager.getProperties("mission.guillaume.2060.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT20, 0, false);
+		Mission mission2058 = new Mission(2058, ConfigurationManager.getProperties("mission.guillaume.2058.nom"), ConfigurationManager.getProperties("mission.guillaume.2058.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy1998, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2059 = new Mission(2059, ConfigurationManager.getProperties("mission.guillaume.2059.nom"), ConfigurationManager.getProperties("mission.guillaume.2059.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy1999, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT5, 0, false);
+		Mission mission2060 = new Mission(2060, ConfigurationManager.getProperties("mission.guillaume.2060.nom"), ConfigurationManager.getProperties("mission.guillaume.2060.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Guillaume, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivGuy2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionGuy, itemsDebloquesMissionAnniversaireINT20, 0, false);
 
 		// MISSIONS ANNIVERSAIRE QUIZZ - JONATHAN
-		Mission mission2061 = new Mission(2061, ConfigurationManager.getProperties("mission.jonathan.2061.nom"), ConfigurationManager.getProperties("mission.jonathan.2061.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivRuss2000, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMissionAnniversaireINT20, 0, false);
+		Mission mission2061 = new Mission(2061, ConfigurationManager.getProperties("mission.jonathan.2061.nom"), ConfigurationManager.getProperties("mission.jonathan.2061.inf"), imagePaths1, sonPathsAnniversaire, null, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, dateAnnivRuss2000, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMissionAnniversaireINT20, 0, false);
 
 		// MISSION QUIZZ REPETABLE POUR FINIR TOUTES LES QUESTIONS
-		Mission mission2062 = new Mission(2062, ConfigurationManager.getProperties("mission.repetable.quizz.2062.nom"), ConfigurationManager.getProperties("mission.repetable.quizz.2062.inf"), imagePaths1, sonPaths1, null, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date21siecle, MissionType.MINIJEU, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMissionAnniversaireINT5, 0, true);
+		Mission mission2062 = new Mission(2062, ConfigurationManager.getProperties("mission.repetable.quizz.2062.nom"), ConfigurationManager.getProperties("mission.repetable.quizz.2062.inf"), imagePaths1, sonPaths1, null, PersoPrenom.Jonathan, null, 100, "", "", "objectif1", bonusVide, bonusVide, 1, 1, date21siecle, MissionType.QUIZZ, difficultePartie, null, NomJeu.JEU_QUIZZ, new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnagePrincipal>(), new ArrayList<PersonnageSecondaire>(), null, itemsNecessairesMissionRuss, itemsDebloquesMissionAnniversaireINT5, 0, true);
 
 		
 		// MISSIONS FOOT
@@ -1976,8 +2008,17 @@ public class MissionManager implements Serializable {
 					image =  FenetrePrincipal.getImageIcon("image/defaut/defautItemMission.jpg");
 				}
 				ImageIcon resizeImage = ImageManager.resizeImage(image, Constante.PERSO_IMAGE_DIMENSION_180_180);
-				JLabel labelMessage = new JLabel(mission.getNom() + " : " + mission.getInformations());
-				labelMessage.setFont(Constante.MARIO_FONT_MENU_2);
+				
+				JTextArea labelMessage = new JTextArea(mission.getNom() + " : " + mission.getInformations());
+				labelMessage.setLineWrap(true);
+				labelMessage.setWrapStyleWord(true);
+				labelMessage.setEditable(false);
+				labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
+				labelMessage.setForeground(Color.BLACK);
+				labelMessage.setOpaque(false);
+				labelMessage.setSize(Constante.INFO_MISSION_800_100);
+				labelMessage.setMinimumSize(Constante.INFO_MISSION_800_100);  
+				
 				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(),
 						labelMessage,"Mission debloquée pour " + mission.getProprietaire().name(), type, resizeImage);
 
@@ -2030,51 +2071,83 @@ public class MissionManager implements Serializable {
 			if (mission.getId() == 1000) {
 				System.out.println("FIN DU JEU");
 
-				// Musique fin du jeu
-				// TODO sur un lecteur arretable
-				MusiqueManager.stopAll();
-				MusiqueManager.playSonEvenement("sonParDefaut/defautFinDuJeu.mp3");
+				if (difficultePartie == Difficulte.HEROIQUE) {
+					MusiqueManager.stopAll();
+					MusiqueManager.playSonEvenement("sonParDefaut/Yiruma - River Flows in You.mp3");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Voila, c'est fini!");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Toutes les bonnes choses ont une fin.");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Click sur le bouton et attends la fin de la chanson.");
+					
+				
+					// TODO Hommage Suzie Le Guyader
+					ImageIcon resizeImage2 = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/suzon/suzon.png"), Constante.PERSO_IMAGE_DIMENSION_360_360);
+					JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "En hommage à Suzon", "...", 0, resizeImage2);
+					
+					MusiqueManager.stopAll();
+					MusiqueManager.playSonEvenement("sonParDefaut/Louane - Je vole.mp3");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Merci!");
+				} else {
+					
+					// Musique fin du jeu
+					MusiqueManager.stopAll();
+					MusiqueManager.playSonEvenement("sonParDefaut/defautFinDuJeu.mp3");
 
-				// Message fin du jeu
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Félicitations! T'as terminé le jeu en difficulté " + difficultePartie.name() + " !");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Envoie tes statistiques sur le site pour comparer ton score avec les autres!");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Envoie moi tes remarques/critiques/souhaits pour une eventuelle future prochaine version possible!");
-				// TODO messages en fonction de la difficulte
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"T'as désormais le droit de sucer le frère d'Ali pour une durée indeterminée!");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Si tu as aimé ce jeu, tu peux faire directement un don à l'équipe de développement!");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"L'intégralité des recettes sera reversée à des oeuvres caritatives telles que 'La croix rouge', 'Médecin sans frontières' ou 'Des millions de copains'!");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Nan j'déconne!");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Je vais tout garder pour moi!");
+					// Message fin du jeu
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Félicitations! T'as terminé le jeu en difficulté " + difficultePartie.name() + " !");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Envoie tes statistiques sur le site pour comparer ton score avec les autres!");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Envoie moi tes remarques/critiques/souhaits pour une eventuelle future prochaine version possible!");
+					
+					if (difficultePartie == Difficulte.FACILE) {
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"T'as désormais le droit de traverser la route sans adulte et en dehors des passages pietons!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Si t'es une racaille, tu peux essayer en difficulté 'NORMAL'");
+						
+					} else if (difficultePartie == Difficulte.NORMAL) {
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"T'as désormais le droit de te branler sans demander a tes parents l'autorisation!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Si t'es un homme, tu peux essayer en difficulté 'DIFFICILE'");
+						
+					} else if (difficultePartie == Difficulte.DIFFICILE) {
+						// TODO messages en fonction de la difficulte
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Si tu as aimé ce jeu, tu peux faire directement un don à l'équipe de développement!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"L'intégralité des recettes sera reversée à des oeuvres caritatives telles que 'La croix rouge', 'Médecin sans frontières' ou 'Des millions de copains'!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Nan j'déconne!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Je vais tout garder pour moi!");
+						
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"T'as désormais le droit de sucer le frère d'Ali pour une durée indeterminée!");
+						JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+								"Si t'es un vrai ouf, tu peux essayer en difficulté 'HEROIQUE'");
+					} 
+					
+					MusiqueManager.stopAll();
+					MusiqueManager.playSonEvenement("sonParDefaut/Sad Emotional Piano Music.mp3");
+					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
+							"Merci!");
+				}
 				
-				// TODO message progression/missionsTermines/missionsRates
+				int score = calculeScoreFinal();
 				
-				MusiqueManager.stopAll();
-				MusiqueManager.playSonEvenement("sonParDefaut/Yiruma - River Flows in You.mp3");
 				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Voila, c'est fini!");
+						"Prends en photo ton score et envoie le sur le groupe du Terrain!");
+				
 				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Toutes les bonnes choses ont une fin.");
-				
-				
-				
-				// TODO Hommage Suzie Le Guyader
-				ImageIcon resizeImage2 = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/suzon/suzon.png"), Constante.PERSO_IMAGE_DIMENSION_360_360);
-				JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), "En hommage à Suzon", "...", 0, resizeImage2);
-				
-				MusiqueManager.stopAll();
-				MusiqueManager.playSonEvenement("sonParDefaut/Sad Emotional Piano Music.mp3");
-				JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(),
-						"Merci!");
-				
-				// TODO quitter ou continuer
+						"Ton score est de " + score + " / 1000 en difficulte " + difficultePartie.name() + "!");
+							
+				// Quitter ou continuer
 				int quitter = JOptionPane.showOptionDialog(MenuPrincipal.getMainFrame(),
 						"Tu peux rester dans le jeu et continuer de clicker sur suivant si tu n'as rien de mieux à faire!",
 						"Fin du jeu", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
@@ -2084,12 +2157,10 @@ public class MissionManager implements Serializable {
 					// Retour menuPrincipal
 					FenetrePrincipal fenetrePrincipal = FenetrePrincipal.getFenetrePrincipal();
 					fenetrePrincipal.setVisible(true);
-//					FenetrePrincipal.joueMusiquesAmbiances();
 
 					// Supprime le panelVideo et la MainFrame
 					MenuPrincipal.getMainFrame().dispose();
 					VideoManager.hideAndStop();
-//					MusiqueManager.stopAll();
 					finduJeu = true;
 				}
 			}
@@ -2122,6 +2193,81 @@ public class MissionManager implements Serializable {
 			MainFrame.getPanelPersonnage().refreshMortsPersonnage();
 		}
 
+	}
+
+	public int calculeScoreFinal() {
+		
+		int scoreFinal = 0;
+		
+		if (missionsTerminees == null || missionsTerminees.isEmpty()) {
+
+		} else {
+			
+			// TODO meilleur calcule du score /1000 ? 100 points par competences
+			
+			
+			// -Luck
+			// Random (0-100) en fonction de la chance moyenne de l'equipe? random(moyenne - 100)
+			
+			// -Exploit
+			// Argent final (0-100 000)
+			
+			// -Technique
+			// Avoir toutes les cartes (10 par carte)
+			
+			// -Endurance
+			// Competences full (80 et 100%)
+			
+			// -Rapidite
+			// Nombre de missions/sorts restantes (100 si au moins 10 missions restantes)
+			
+			// -Resistance
+			// Nombre de mission rates (10 max) nb essais
+			
+			// -Agilite
+			// Si tout le monde a une arme epique (20-100)
+			
+			// -Intelligence
+			// Quizz (0-100 10 mauvaises reponses)
+			
+			// -Nervosite
+			// Action combat niv 10 par perso (10 par perso qui a un lvl 10)
+
+			
+			// On ajoute 40 point pour chaque carte decouverte (max 960)
+			List<Item> itemsDisponibles = MenuPrincipal.getMainFrame().getCoreManager().getItemManager().getItemsDisponibles();
+			for (Item item : itemsDisponibles) {
+				if (item.getType() == ItemType.CARTE_CRADOS) {
+					scoreFinal = scoreFinal + 40;
+				} else if (item.getType() == ItemType.CARTE_DBZ) {
+					scoreFinal = scoreFinal + 40;
+				} else if (item.getType() == ItemType.CARTE_STARWARS) {
+					scoreFinal = scoreFinal + 40;
+				}
+			}
+			
+			// On retire un point pour chaque mission effectue
+			int nbMissionsTerminees = missionsTerminees.size();
+			scoreFinal = scoreFinal - nbMissionsTerminees;
+			
+			// On retire un point pour chaque question quizz ratee
+			for (Mission mission : missionsTerminees) {
+				if (mission.getMissionType() == MissionType.QUIZZ) {
+					int scoreNegatif = mission.getNombreEssai() - mission.getNombreWin();
+					if (scoreNegatif > 0) {
+						scoreFinal = scoreFinal - scoreNegatif;
+					}
+				}
+			}
+			
+			if (scoreFinal < 0) {
+				scoreFinal = 0;
+			}
+
+		}
+		
+		return scoreFinal;
+			
 	}
 
 	public Mission getNextMissionAvecDateEtItemsDisponibles() {
@@ -2213,7 +2359,6 @@ public class MissionManager implements Serializable {
 				}
 			}
 			
-			// TODO si une mission a debloque une actionCombat
 			// Debloquer les items a debloquer
 			List<Item> itemsDebloques = mission.getItemsDebloques();
 			for (Item item : itemsDebloques) {
@@ -2226,6 +2371,18 @@ public class MissionManager implements Serializable {
 				}
 				ImageIcon resizedImage = ImageManager.resizeImage(itemImage, Constante.PERSO_IMAGE_DIMENSION_180_180);
 				String itemType = item.getType().name().toLowerCase();
+				if(itemType.equals(ItemType.ACTION_COMBAT.name().toLowerCase())) {
+					itemType = "Sort";
+				}
+				if (item.getType() == ItemType.CARTE_CRADOS) {
+					resizedImage = ImageManager.resizeImage(itemImage, Constante.CRADOS_IMAGE_DIMENSION_360_500);
+				} else if (item.getType() == ItemType.CARTE_DBZ) {
+					resizedImage = ImageManager.resizeImage(itemImage, Constante.DBZ_IMAGE_DIMENSION_360_500);
+				} else if (item.getType() == ItemType.CARTE_STARWARS) {
+					resizedImage = ImageManager.resizeImage(itemImage, Constante.STARWARS_IMAGE_DIMENSION_360_500);
+				}
+
+
 				PersoPrenom proprietaire = item.getProprietaire();
 	
 				// Si premiere fois, presentation de l'item
@@ -2255,9 +2412,19 @@ public class MissionManager implements Serializable {
 						if (!item.getInformations().isEmpty()) {
 							info = " - " + item.getInformations();
 						}
-						JLabel labelMessage = new JLabel(proprietaire + " a debloque : " + item.getNom() + info);
-						labelMessage.setFont(Constante.MARIO_FONT_MENU_3);
-						JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), labelMessage,
+						
+						JTextArea infoMissionValue = new JTextArea(proprietaire + " a debloque : " + item.getNom() + info);
+						infoMissionValue.setLineWrap(true);
+						infoMissionValue.setWrapStyleWord(true);
+						infoMissionValue.setEditable(false);
+						infoMissionValue.setFont(Constante.MARIO_FONT_MENU_3);
+						infoMissionValue.setForeground(Color.BLACK);
+						infoMissionValue.setOpaque(false);
+						infoMissionValue.setSize(Constante.INFO_MISSION_800_100);
+						infoMissionValue.setMinimumSize(Constante.INFO_MISSION_800_100);  
+						
+						
+						JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), infoMissionValue,
 								"Nouveau type d'objet disponible ! (" + itemType + ")", type, resizedImage);
 					}
 					

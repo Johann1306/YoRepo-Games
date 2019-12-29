@@ -1,6 +1,7 @@
 package modele.quizz;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 public class Enigme implements Serializable {
@@ -50,6 +51,7 @@ public class Enigme implements Serializable {
 	}
 	
 	public List<Reponse> getReponsesPossibles() {
+		Collections.shuffle(reponsesPossibles);
 		return reponsesPossibles;
 	}
 	
