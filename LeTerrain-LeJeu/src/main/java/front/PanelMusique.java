@@ -371,7 +371,7 @@ public class PanelMusique extends JPanel {
 
 		JPanel panelVideo = new JPanel();
 		panelVideo.setPreferredSize(panelTitle.getPreferredSize());
-		panelVideo.setBackground(Color.WHITE);
+		panelVideo.setBackground(Color.BLACK);
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(panelTitle);

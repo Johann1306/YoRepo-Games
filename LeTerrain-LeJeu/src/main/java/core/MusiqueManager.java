@@ -77,21 +77,21 @@ public class MusiqueManager implements Serializable {
 		// Chargement des musiques a debloquer
 		musiques = new ArrayList<Musique>();
 		
-		String sonPath1 = "son/01.Zelda-title.mp3";
-		List<String> sonPaths1 = new ArrayList<String>();
-		sonPaths1.add(sonPath1);
-
-		String sonPath2 = "son/23-ending.mp3";
-		List<String> sonPaths2 = new ArrayList<String>();
-		sonPaths2.add(sonPath2);
+//		String sonPath1 = "son/01.Zelda-title.mp3";
+//		List<String> sonPaths1 = new ArrayList<String>();
+//		sonPaths1.add(sonPath1);
+//
+//		String sonPath2 = "son/23-ending.mp3";
+//		List<String> sonPaths2 = new ArrayList<String>();
+//		sonPaths2.add(sonPath2);
+//		
+//		String sonPath3 = "son/18-overworld-bgm.mp3";
+//		List<String> sonPaths3 = new ArrayList<String>();
+//		sonPaths3.add(sonPath3);
 		
-		String sonPath3 = "son/18-overworld-bgm.mp3";
-		List<String> sonPaths3 = new ArrayList<String>();
-		sonPaths3.add(sonPath3);
-		
-		musiques.add(new Musique(1, "Zelda Intro Titre", "Nintendo", "", null, null, sonPaths1, null, "La musique d'intro de Zelda 3", true));
-		musiques.add(new Musique(2, "Mario Fin", "Nintendo", "", null, null, sonPaths2, null, "La musique de fin de Mario", true));
-		musiques.add(new Musique(3, "Mario Bonus", "Nintendo", "", null, null, sonPaths3, null, "La musique du niveau bonus de Mario", true));
+//		musiques.add(new Musique(1, "Zelda Intro Titre", "Nintendo", "", null, null, sonPaths1, null, "La musique d'intro de Zelda 3", true));
+//		musiques.add(new Musique(2, "Mario Fin", "Nintendo", "", null, null, sonPaths2, null, "La musique de fin de Mario", true));
+//		musiques.add(new Musique(3, "Mario Bonus", "Nintendo", "", null, null, sonPaths3, null, "La musique du niveau bonus de Mario", true));
 
 		// Chargement des musiques de jeu
 		musiquesCombat =  MusiqueManager.chargeMusiquesParRepertoire("musique/combat", 10000);
@@ -100,6 +100,8 @@ public class MusiqueManager implements Serializable {
 		musiquesShopAdulte =  MusiqueManager.chargeMusiquesParRepertoire("musique/shop/adulte", 11500);
 		musiquesQuizz =  MusiqueManager.chargeMusiquesParRepertoire("musique/quizz", 12000);
 		musiquesFoot =  MusiqueManager.chargeMusiquesParRepertoire("musique/foot", 130000);
+		musiques = MusiqueManager.chargeMusiquesParRepertoire("musique/perso", 14000);
+
 	}
 
 	public static void play(Musique musique) {
@@ -313,7 +315,6 @@ public class MusiqueManager implements Serializable {
 		return musiquesShopAdulte;
 	}
 
-	
 	public List<Musique> getMusiquesQuizz() {
 		return musiquesQuizz;
 	}
