@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -26,6 +27,7 @@ import core.PersonnageManager;
 import core.SauvegardeManager;
 import core.VideoManager;
 import core.configuration.Constante;
+import modele.evenement.EvenementTheme;
 import modele.item.mission.enums.Difficulte;
 import modele.item.personnage.PersoPrenom;
 
@@ -587,6 +589,29 @@ public class MenuPrincipal extends JPanel {
 		fenetrePrincipal.hide();
 //		parent.show();
 		
+		VideoManager.play("video/debut/PlaystationIntro.mp4");		
+
+		// Message debut
+		JLabel messageIntro1 = new JLabel("Attention !!! Message de prevention !");
+		JLabel messageIntro2 = new JLabel("Le contenu de ce jeu peut ne pas etre approprie a tous les ages, toutes les sensibilites et tous les sexes!");
+		JLabel messageIntro3 = new JLabel("Il a ete developpe par une equipe multiconfessionnelle et d'horizons culturels differents!");
+		JLabel messageIntro4 = new JLabel("Les personnages et les situations de ce recit etant purement fictifs...");
+		JLabel messageIntro5 = new JLabel("Toute ressemblance avec des personnes ou des situations existantes ne saurait etre que fortuite!");
+		
+		messageIntro1.setFont(Constante.MARIO_FONT_MENU_2);
+		messageIntro2.setFont(Constante.MARIO_FONT_MENU_2);
+		messageIntro3.setFont(Constante.MARIO_FONT_MENU_2);
+		messageIntro4.setFont(Constante.MARIO_FONT_MENU_2);
+		messageIntro5.setFont(Constante.MARIO_FONT_MENU_2);
+		
+		JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageIntro1, EvenementTheme.SORTIE_JEU_VIDEO.getNom(), JOptionPane.WARNING_MESSAGE, null);
+		JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageIntro2, EvenementTheme.SORTIE_JEU_VIDEO.getNom(), JOptionPane.WARNING_MESSAGE, null);
+		JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageIntro3, EvenementTheme.SORTIE_JEU_VIDEO.getNom(), JOptionPane.INFORMATION_MESSAGE, null);
+		JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageIntro4, EvenementTheme.SORTIE_JEU_VIDEO.getNom(), JOptionPane.INFORMATION_MESSAGE, null);
+		JOptionPane.showMessageDialog(MainFrame.getPanelCentre().getParent(), messageIntro5, EvenementTheme.SORTIE_JEU_VIDEO.getNom(), JOptionPane.ERROR_MESSAGE, null);
+			
+		
+		
 		// Choix du perso principal
 		PersonnageManager personnageManager = mainFrame.getCoreManager().getPersonnageManager();
 		MissionManager missionManager = mainFrame.getCoreManager().getMissionManager();
@@ -599,8 +624,10 @@ public class MenuPrincipal extends JPanel {
 		sonPaths.add("musique/personnage/selection/11.zelda-select-screen.mp3");
 		MusiqueManager.playPlaylist(sonPaths);
 		
-		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautSelection.png"), Constante.PERSO_IMAGE_DIMENSION_180_180);
-		int valeur = JOptionPane.showOptionDialog(getParent(), "Choisis ton héro principal",
+		ImageIcon resizeImage = ImageManager.resizeImage(FenetrePrincipal.getImageIcon("image/defaut/defautSelection.png"), Constante.PERSO_IMAGE_DIMENSION_64_64);
+		JLabel message = new JLabel("Choisis ton hero principal");
+		message.setFont(Constante.MARIO_FONT_MENU_3);
+		int valeur = JOptionPane.showOptionDialog(getParent(), message,
 				"C'est parti!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				resizeImage,
 				new String[] {"Johann", "Nicolas", "Pierre", "Thomas", "Yannick"}, 

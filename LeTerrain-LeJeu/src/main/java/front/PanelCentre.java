@@ -206,6 +206,7 @@ public class PanelCentre extends JPanel {
 								bouton = new JButton(poi.getNom());
 							} else {
 								bouton = new JButton(poi.getNom() + " (" + nbMissionsPoi + ")");
+								bouton.setBackground(Color.YELLOW);
 							}
 							bouton.setFont(Constante.SIMPSON_FONT);
 							// TODO taille bouton unique (minimum)

@@ -1,5 +1,6 @@
 package front;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -53,8 +54,13 @@ public class FrameJeu extends JFrame {
 				new Dimension(Constante.PANEL_INFO_MISSION_HAUTEUR - 10, Constante.PANEL_INFO_MISSION_HAUTEUR - 10));
 		
 		JLabel labelProprio = new JLabel(mission.getProprietaire().name());
-		JLabel labelNom = new JLabel(mission.getNom());
+		JLabel labelNom = new JLabel(mission.getNom() + " : ");
 		JLabel labelInfo = new JLabel(mission.getInformations());
+		labelNom.setFont(Constante.MARIO_FONT_MENU_3);
+		labelInfo.setFont(Constante.MARIO_FONT_MENU_2);
+		labelNom.setForeground(Color.YELLOW);
+		labelInfo.setForeground(Color.WHITE);
+		labelNom.setMaximumSize(this.getMaximumSize());
 		JLabel labelObjectif = new JLabel(mission.getObjectif());
 		JLabel labelConditionVictoire = new JLabel(mission.getConditionVictoire());
 		JLabel labelDifficulte = new JLabel(mission.getDifficulty().name());
@@ -70,15 +76,7 @@ public class FrameJeu extends JFrame {
 //		panelInfoMission.add(labelTypeMisson);
 		panelInfoMission.add(boutonMusiqueOnOff);
 		
-		// Font
-		Component[] components = panelInfoMission.getComponents();
-		for (Component component : components) {
-			component.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
-		}
-
-		// Size
-//		panelInfoMission
-//				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));
+		panelInfoMission.setBackground(Color.BLACK);
 		return panelInfoMission;
 	}
 

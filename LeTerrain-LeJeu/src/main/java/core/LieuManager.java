@@ -165,7 +165,7 @@ public class LieuManager implements Serializable {
 		Lieu chezYa = new Lieu(4, "Chez yannick", "La maison de Yannick", imagePaths , sonPaths, null, PersoPrenom.Yannick, new Point(600, 450), "image/lieu/MaisonYa.png", poisChezYa, false);
 		Lieu chezTom = new Lieu(5, "Chez thomas", "La maison de Thomas", imagePaths , sonPaths, null, PersoPrenom.Thomas, new Point(615, 840), "image/lieu/MaisonNicoEtTom.png", poisChezTom, false);
 		Lieu chezAli = new Lieu(6, "Chez ali", "La maison d'Ali", imagePaths , sonPaths, null, PersoPrenom.Ali, new Point(1300, 800), "image/lieu/MaisonAli.png", poisChezAli, false);
-		Lieu chezGuy = new Lieu(7, "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.Guillaume, new Point(1700, 230), "image/lieu/MaisonGuy.png", poisChezGuy, false);
+		Lieu chezGuy = new Lieu(7, "Chez guillaume", "La maison de Guillaume", imagePaths , sonPaths, null, PersoPrenom.Guillaume, new Point(1700, 225), "image/lieu/MaisonGuy.png", poisChezGuy, false);
 		Lieu chezJo = new Lieu(8, "Chez jonathan", "La maison de Jonathan", imagePaths , sonPaths, null, PersoPrenom.Jonathan, new Point(100, 330), "image/lieu/MaisonRuss.png", poisChezRuss, false);
 		Lieu ecole = new Lieu(9, "L'ecole", "L'ecole elementaire Jules Ferry", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(850, 470), "image/lieu/Ecole.png", poisEcole, false);
 		Lieu terrain = new Lieu(10, "Le terrain", "Le site aux moults peripeties", imagePaths , sonPaths, null, PersoPrenom.GROUPE, new Point(1450, 270), "image/lieu/Terrain.png", poisTerrain, false);

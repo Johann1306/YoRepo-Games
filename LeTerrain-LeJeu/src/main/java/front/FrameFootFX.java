@@ -249,7 +249,6 @@ public class FrameFootFX extends FrameJeu {
 				}
 			}
 		});
-
 		PersoPrenom prenom = mission.getProprietaire();
 		ImageIcon image = null;
 		if (prenom.name().equals("GROUPE")) {
@@ -262,8 +261,13 @@ public class FrameFootFX extends FrameJeu {
 				new Dimension(Constante.PANEL_INFO_MISSION_HAUTEUR - 10, Constante.PANEL_INFO_MISSION_HAUTEUR - 10));
 		
 		JLabel labelProprio = new JLabel(mission.getProprietaire().name());
-		JLabel labelNom = new JLabel(mission.getNom());
+		JLabel labelNom = new JLabel(mission.getNom() + " : ");
 		JLabel labelInfo = new JLabel(mission.getInformations());
+		labelNom.setFont(Constante.MARIO_FONT_MENU_3);
+		labelInfo.setFont(Constante.MARIO_FONT_MENU_2);
+		labelNom.setForeground(java.awt.Color.YELLOW);
+		labelInfo.setForeground(java.awt.Color.WHITE);
+		labelNom.setMaximumSize(this.getMaximumSize());
 		JLabel labelObjectif = new JLabel(mission.getObjectif());
 		JLabel labelConditionVictoire = new JLabel(mission.getConditionVictoire());
 		JLabel labelDifficulte = new JLabel(mission.getDifficulty().name());
@@ -279,15 +283,7 @@ public class FrameFootFX extends FrameJeu {
 //		panelInfoMission.add(labelTypeMisson);
 		panelInfoMission.add(boutonMusiqueOnOff);
 		
-		// Font
-		Component[] components = panelInfoMission.getComponents();
-		for (Component component : components) {
-			component.setFont(Constante.MARIO_FONT_PANEL_INFO_MISSION);
-		}
-
-		// Size
-//		panelInfoMission
-//				.setPreferredSize(new Dimension(Constante.PANEL_MISSION_LARGEUR, Constante.PANEL_INFO_MISSION_HAUTEUR));
+		panelInfoMission.setBackground(java.awt.Color.BLACK);
 		return panelInfoMission;
 	}
 
@@ -588,8 +584,8 @@ public class FrameFootFX extends FrameJeu {
 			
 		} else {
 			// TODO a supprimer
-			choixDesJoueursAmis(5);
-//			choixDesJoueursAmis(8);
+//			choixDesJoueursAmis(5);
+////			choixDesJoueursAmis(8);
 		}
 		
 		root.getChildren().addAll(boutonValider);
@@ -652,7 +648,7 @@ public class FrameFootFX extends FrameJeu {
 		}
 		
 		
-		int x=200;
+		int x=100;
 		for (PersonnagePrincipal perso : persosDispo) {
 			ImageView view = new ImageView();
 			Image image = new Image(perso.getImagePath().get(0), 180.0, 180.0, false, true);
@@ -712,7 +708,7 @@ public class FrameFootFX extends FrameJeu {
 			root.getChildren().addAll(view, text);
 		}
 		
-		x=200;
+		x=100;
 		imageViewsTarget = new ArrayList<>();
 		postes = getPostesAPourvoir(nombreDeJoueursMax);
 		
@@ -856,8 +852,8 @@ public class FrameFootFX extends FrameJeu {
 //					lieuDuTerrain = "chelles";
 //					choixDesAdversairesTerrain();
 //					lieuDuTerrain = "terrain";			
-					choixDesAdversairesEcole();
-					lieuDuTerrain = "ecole";	
+//					choixDesAdversairesEcole();
+//					lieuDuTerrain = "ecole";	
 				}
 				
 				// Gestion facteur agrandissement en fonction du terrain
@@ -900,7 +896,7 @@ public class FrameFootFX extends FrameJeu {
 				root = new Group();
 				Scene scene = new Scene(root, Color.BLACK);
 				
-				int x = 200;
+				int x = 100;
 				
 				// Tri des persos par poste
 				List<PersonnagePrincipal> persos = new ArrayList<>();
@@ -950,7 +946,7 @@ public class FrameFootFX extends FrameJeu {
 				}
 				
 				viewPersoSelected = new ImageView();
-				viewPersoSelected.relocate(moitieEcran - 200, 650);
+				viewPersoSelected.relocate(moitieEcran - 90, 650);
 				viewPersoSelected.setImage(imageDefaut);
 				
 				labelInfoJoueurPrincipal = new Label("Selectionne le joueur que tu veux controller");
@@ -963,7 +959,7 @@ public class FrameFootFX extends FrameJeu {
 				labelJoueurPrincipal.setAlignment(Pos.CENTER);
 				labelJoueurPrincipal.setFont(Constante.MARIO_FONT_JAVAFX);
 				labelJoueurPrincipal.setTextFill(Color.WHITE);
-				labelJoueurPrincipal.relocate(moitieEcran - 200, 850);
+				labelJoueurPrincipal.relocate(moitieEcran - 90, 850);
 				
 				// Bouton EXIT
 				boutonValiderPersoPrincipal = new Button("Valider");
@@ -971,7 +967,7 @@ public class FrameFootFX extends FrameJeu {
 				boutonValiderPersoPrincipal.setFont(Constante.MARIO_FONT_JAVAFX);
 				boutonValiderPersoPrincipal.setDisable(true);
 				boutonValiderPersoPrincipal.setAlignment(Pos.CENTER);
-				boutonValiderPersoPrincipal.relocate(moitieEcran - 200, 900);
+				boutonValiderPersoPrincipal.relocate(moitieEcran - 90, 900);
 				boutonValiderPersoPrincipal.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					@Override
@@ -1111,6 +1107,7 @@ public class FrameFootFX extends FrameJeu {
 		labelTimer.setMinHeight(50);
 		labelTimer.setMinWidth(100);
 		labelTimer.setFont(Constante.MARIO_FONT_JAVAFX);
+		labelTimer.setTextFill(Color.YELLOW);
 		labelTimer.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(30), new BorderWidths(3))));
 		labelTimer.relocate(Constante.COORD_X_TERRAIN + Constante.LONGEUR_TERRAIN/2 - labelTimer.getMinWidth()/2, Constante.COORD_Y_TERRAIN - (labelTimer.getMinHeight()*3)/2);
 		labelTimer.setAlignment(Pos.CENTER);

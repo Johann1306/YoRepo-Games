@@ -1,5 +1,9 @@
 TODO :
 
+- FrameCombat font
+- Varier les sons de base combat (non critique)
+- Varier les sons de mort (mort de street fighter)
+
 - Transmettre les info de chaque stat en fonction du jeu + info regen nuit + comment utiliser popo, arme et drogues + info ennemis
 	- Message d'aide regulier (au debut de chaque jeu / pendant des chargements!(y en a pas))
 	- Fiche info evolutive
@@ -21,14 +25,9 @@ Test grandeur nature le 26/08/2019 : (difficulte HEROIQUE)
 	- chaque année le 1er janvier 
 	- apres chaque victoire de boss
 	- apres chaque victoire?
-- Sort de mana (regen et brulure) et de bouclier trop eleve (100/200 bouclier => 10/100) -> Constante /4 a tester
-- Sort boubou multi trop cheaté => depenser du mana pour l'utiliser => a tester
-- Special pas assez puissant (= meme degats que sort multi niv4 mais special niv5 avec 1 de nervosite)
 - les stats montent trop vite (popos, bonus armes, bonus drogue, bonus boss, marchand)
 - Les Boss doivent avoir plus de sorts (rez multi ou solo, regen mana, taunt multi)
 
-- Mettre des "infos" pour les objets de l'inventaire non consommable + drogues (clés, objets perso, ...) => a tester
-- les objets de quete sont toujours gris et donc jamais equipés => modif des valeurs de la conf => a tester
 - Probleme affichage auras dans la fenetre des persos en combat (different en fonction des persos ???) => a tester
 - tester le double taunt (si taunt par deux personnages : choix d'attaquer l'un ou l'autre? le premier? aucun?)
 
@@ -46,7 +45,6 @@ Problemes Graves:
 
 Problemes Legers: 
 - Missions repetables (mission foot) => rejouable une fois par semaine/mois mais pas a l'infini + gain de popos seulement a la premiere victoire mais bonus stats tout le temps (si victoire)
-- Execution du jar => Exception car lit le fichier .gitignore des repertoire contenant les musiques => Solution : empecher la generation des .gitignore ou les supprimer apres coup! => A faire
 - sauvegarde auto apres chaque mission reussie (au dernier moment sinon problemes pour tester)
 - Les armes avec bonus de competence pour les ennemis doivent elles impacter les competences des ennemis? des boss? oui
 - Les degats des armes impactent tous les sorts => Impacter uniquement les sorts de base? les special?
@@ -73,16 +71,12 @@ Indispensables:
 - Didacticiel / Tutoriel
 - gestion de la sauvegarde (automatique / difficulté / possibilité de mourir et de tout recommencer?)
 - Gestion des BOSS (nom, photo, actionsCombat specifiques, phrases d'intro de combat, + de sorts pour les boss que attaque mono ou multi)
-- Terminer FrameCombat
-- Terminer FrameQuizz (trouver des questions par theme)
 - Centrer PanelCentre on click milieu du scroll 
 - Fiche perso evolutive
 - gerer les consommables
-- Gerer les Carte, Lieu, POI (decoupage des cartes + coordonnes des pois)
 - integrer la fenetre media a l'appli / ou faire suivre la fenetre en cas de redimensionnement de l'autre fenetre !!!
 - Gerer l'installation sur un autre poste (doc utilisateur d'installation)
 - les TODOs
-- virer les sysout
 - gerer la difficulte generale
 - gerer les sons (a la bouche au micro)
 - gerer les musiques (persos, jeux, groupe
@@ -114,7 +108,6 @@ Optionnelles:
 - gestion d'armes et armures generés aleatoirement (avec pouvoir speciaux : +50 attaque/def/chances/etc ... avec  4 types gris/vert/bleu/violet ou  vert/bleu/rouge/violet) 
 - Fiche perso : Agrandir l'image du sort quand on passe la souris ou click sur l'image 
 - Limites du jeu : Compte tenu de l'aspect nostalgique année 80-90 du jeu, nous ne feront pas de reference aux termes suivants : Swag, PLS, Vegan, PNL, Jul, Squeezy
-- Message de prevention (attention le contenu de ce jeu peut ne pas être approprié à tous les ages, toutes les sensibilités et tous les sexes, une equipe de developpement multi-confessions et multi-culturelles, toute ressemblance avec des personnages réels est fortuite
 - message d'information en debut de combat/de match pour indiquer a quoi correspondent les caracteristiques pour ce jeu
 - ajouter sons mort par perso
 - stun/provocation esquivables ? ou pas?

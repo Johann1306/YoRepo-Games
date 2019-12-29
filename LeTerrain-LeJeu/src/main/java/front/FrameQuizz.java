@@ -3,15 +3,20 @@ package front;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +26,7 @@ import javax.swing.Timer;
 import core.ImageManager;
 import core.MusiqueManager;
 import core.QuizzManager;
+import core.RandomManager;
 import core.VideoManager;
 import core.configuration.Constante;
 import modele.item.mission.Mission;
@@ -40,10 +46,13 @@ public class FrameQuizz extends FrameJeu {
 	private JLabel labelTimer = null;
 	private Mission mission = null;
 	private Enigme enigme = null;
+	private JPanel panelInfoReponse;
 	
 	public FrameQuizz(Groupe groupe, Mission mission) {
 		
 		this.mission = mission;
+		this.setUndecorated(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
 		// QuizzManager
 		QuizzManager quizzManager = MenuPrincipal.getMainFrame().getCoreManager().getQuizzManager();
@@ -54,31 +63,47 @@ public class FrameQuizz extends FrameJeu {
 		content.setLayout(new BorderLayout());
 	
 		// -- Panel Nord - Info
-		JPanel panelInfoMission = createPanelInfoMission(mission);
-		panelNord.add(panelInfoMission);
+//		JPanel panelInfoMission = createPanelInfoMission(mission);
+//		panelNord.add(panelInfoMission);
 		
 		// -- Panel Centre
 		
 		// Panel Question
-		JPanel panelQuestion = new JPanel();
+		JPanel panelQuestion = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panelQuestion.setBackground(Color.BLACK);
 		String question = enigme.getQuestion();
 		JTextArea field = new JTextArea(question);
 		field.setLineWrap(true);
+		field.setWrapStyleWord(true);
 		field.setEditable(false);
 		field.setFont(Constante.MARIO_FONT_QUESTION_QUIZZ);
+		field.setForeground(Color.YELLOW);
+		field.setBackground(Color.BLACK);
 		field.setSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);
 		field.setMinimumSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);  
+		
+		List<String> listPhotos = VideoManager.chargeVideosParRepertoire("image/enigme");
+		int size = listPhotos.size();
+		int random = RandomManager.random(0, size-1);
+		String randomPhoto = listPhotos.get(random);
+		ImageIcon imagePhoto = ImageManager.getImageIconProxy(randomPhoto);
+		ImageIcon resizeImage = ImageManager.resizeImage(imagePhoto,  new Dimension(200,200));
+		JLabel photoPresentateur = new JLabel(resizeImage);
+		photoPresentateur.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5, false));
+		panelQuestion.add(photoPresentateur);		
 		panelQuestion.add(field);
 		
 		// Panel Reponses possibles
-		JPanel panelInfoReponse = new JPanel();
+		panelInfoReponse = new JPanel();
 		JPanel panelReponses = new JPanel();
 		GridLayout layout = new GridLayout(2,2);
 		panelReponses.setLayout(layout);
+		panelReponses.setBackground(Color.BLACK);
+		panelInfoReponse.setBackground(Color.BLACK);
 		List<Reponse> reponses = enigme.getReponsesPossibles();
 		for (Reponse reponse : reponses) {
 			JButton boutonReponse = new JButton(reponse.getReponse());
-			boutonReponse.setFont(Constante.MARIO_FONT_MENU_3);
+			boutonReponse.setFont(Constante.MARIO_FONT_REPONSE_2);
 			// Si clic sur une reponse
 			boutonReponse.addActionListener(new ActionListener() {
 				@Override
@@ -95,24 +120,67 @@ public class FrameQuizz extends FrameJeu {
 					}
 				}
 			});
+			boutonReponse.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					boutonReponse.setFont(Constante.MARIO_FONT_REPONSE_2);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					boutonReponse.setFont(Constante.MARIO_FONT_REPONSE_1);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
 			panelReponses.add(boutonReponse);
 		}
 		
 		// Panel info reponse
 		String infoReponse = enigme.getInfoReponse();
-		JLabel infoReponseLabel = new JLabel(infoReponse);
-		infoReponseLabel.setFont(Constante.MARIO_FONT_MENU_2);
-		panelInfoReponse.add(infoReponseLabel);
+		JTextArea fieldInfo = new JTextArea(infoReponse);
+		fieldInfo.setLineWrap(true);
+		fieldInfo.setWrapStyleWord(true);
+		fieldInfo.setEditable(false);
+		fieldInfo.setFont(Constante.MARIO_FONT_QUESTION_QUIZZ);
+		fieldInfo.setForeground(Color.GREEN);
+		fieldInfo.setBackground(Color.BLACK);
+		fieldInfo.setSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);
+		fieldInfo.setMinimumSize(Constante.FENETRE_QUIZZ_DIMENSION_QUESTION);  
+		panelInfoReponse.add(fieldInfo);
 		panelInfoReponse.setVisible(false);
 		
 		// Panel Timer
 		double maxTime = Constante.QUIZZ_MAX_TEMPS;
 		JPanel panelTimer = new JPanel();
+		panelTimer.setBackground(Color.BLACK);
 		labelTimer = new JLabel(String.valueOf(maxTime));
-		labelTimer.setFont(Constante.MARIO_FONT_MENU_2);
+		labelTimer.setFont(Constante.MARIO_FONT_QUIZZ_TIMER);
 		labelTimer.setBackground(Color.BLACK);
 		timer = new Timer(10, new MyTimerActionListener(maxTime));
 		panelTimer.add(labelTimer);
+		
+		// Panel Image
+		JPanel panelImage = new JPanel();
+		ImageIcon image = FenetrePrincipal.getImageIcon(enigme.getImagePath());
+		if (image == null) {
+			image = FenetrePrincipal.getImageIcon("image/defaut/defautQuestion.png");
+		}
+		ImageIcon resizeImagePerso = ImageManager.resizeImage(image, new Dimension(200,200));
+		JLabel photo = new JLabel(resizeImagePerso);
+		panelImage.setBackground(Color.BLACK);
+		panelImage.add(photo);
 		
 		// --
 		
@@ -120,9 +188,10 @@ public class FrameQuizz extends FrameJeu {
 		panelCentre.setLayout(boxlayout);
 		
 		panelCentre.add(panelQuestion);
-		panelCentre.add(panelReponses);
-		panelCentre.add(panelInfoReponse);
+		panelCentre.add(panelImage);
 		panelCentre.add(panelTimer);
+		panelCentre.add(panelReponses);
+		panelSud.add(panelInfoReponse);
 
 		// --
 	
@@ -132,10 +201,10 @@ public class FrameQuizz extends FrameJeu {
 		centreFenetre();
 		
 		panelNord.setBackground(Color.BLACK);
-		panelOuest.setBackground(Color.RED);
-		panelCentre.setBackground(Color.WHITE);
-		panelEst.setBackground(Color.GREEN);
-		panelSud.setBackground(Color.BLUE);
+		panelOuest.setBackground(Color.BLACK);
+		panelCentre.setBackground(Color.BLACK);
+		panelEst.setBackground(Color.BLACK);
+		panelSud.setBackground(Color.BLACK);
 		
 		content.add(panelNord, BorderLayout.NORTH);
 		content.add(panelOuest, BorderLayout.WEST);
@@ -259,6 +328,7 @@ public class FrameQuizz extends FrameJeu {
 					}
 				}
 				if (!fini) {
+					panelInfoReponse.setVisible(true);
 					stop(mission, true, enigme);
 				}
 			}

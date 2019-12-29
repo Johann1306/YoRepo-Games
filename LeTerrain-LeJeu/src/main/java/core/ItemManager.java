@@ -476,6 +476,110 @@ public class ItemManager implements Serializable {
 		String imagePath813 = "image/drogue/pavot.png";
 		imagePaths813.add(imagePath813);
 		
+		
+		// Image DBZ
+		List<String> imagePaths901 = new ArrayList<String>();
+		String imagePath901 = "image/dbz/dbzGuy.png";
+		imagePaths901.add(imagePath901);
+
+		List<String> imagePaths902 = new ArrayList<String>();
+		String imagePath902 = "image/dbz/dbzYo.png";
+		imagePaths902.add(imagePath902);
+
+		List<String> imagePaths903 = new ArrayList<String>();
+		String imagePath903 = "image/dbz/dbzAli.png";
+		imagePaths903.add(imagePath903);
+
+		List<String> imagePaths904 = new ArrayList<String>();
+		String imagePath904 = "image/dbz/dbzYa.png";
+		imagePaths904.add(imagePath904);
+
+		List<String> imagePaths905 = new ArrayList<String>();
+		String imagePath905 = "image/dbz/dbzNico.png";
+		imagePaths905.add(imagePath905);
+
+		List<String> imagePaths906 = new ArrayList<String>();
+		String imagePath906 = "image/dbz/dbzTom.png";
+		imagePaths906.add(imagePath906);
+
+		List<String> imagePaths907 = new ArrayList<String>();
+		String imagePath907 = "image/dbz/dbzPip.png";
+		imagePaths907.add(imagePath907);
+
+		List<String> imagePaths908 = new ArrayList<String>();
+		String imagePath908 = "image/dbz/dbzRuss.png";
+		imagePaths908.add(imagePath908);
+		
+		
+		// Image Crados
+		
+		List<String> imagePaths911 = new ArrayList<String>();
+		String imagePath911 = "image/crados/cradosYo.jpg";
+		imagePaths911.add(imagePath911);
+
+		List<String> imagePaths912 = new ArrayList<String>();
+		String imagePath912 = "image/crados/cradosNico.jpg";
+		imagePaths912.add(imagePath912);
+
+		List<String> imagePaths913 = new ArrayList<String>();
+		String imagePath913 = "image/crados/cradosPip.jpg";
+		imagePaths913.add(imagePath913);
+
+		List<String> imagePaths914 = new ArrayList<String>();
+		String imagePath914 = "image/crados/cradosYa.jpg";
+		imagePaths914.add(imagePath914);
+
+		List<String> imagePaths915 = new ArrayList<String>();
+		String imagePath915 = "image/crados/cradosTom.jpg";
+		imagePaths915.add(imagePath915);
+
+		List<String> imagePaths916 = new ArrayList<String>();
+		String imagePath916 = "image/crados/cradosAli.jpg";
+		imagePaths916.add(imagePath916);
+
+		List<String> imagePaths917 = new ArrayList<String>();
+		String imagePath917 = "image/crados/cradosGuy.jpg";
+		imagePaths917.add(imagePath917);
+
+		List<String> imagePaths918 = new ArrayList<String>();
+		String imagePath918 = "image/crados/cradosRuss.jpg";
+		imagePaths918.add(imagePath918);
+
+		// Image Star Wars
+		
+		List<String> imagePaths921 = new ArrayList<String>();
+		String imagePath921 = "image/starwars/starwarsYa.jpg";
+		imagePaths921.add(imagePath921);
+
+		List<String> imagePaths922 = new ArrayList<String>();
+		String imagePath922 = "image/starwars/starwarsYo.jpg";
+		imagePaths922.add(imagePath922);
+
+		List<String> imagePaths923 = new ArrayList<String>();
+		String imagePath923 = "image/starwars/starwarsPip.jpg";
+		imagePaths923.add(imagePath923);
+
+		List<String> imagePaths924 = new ArrayList<String>();
+		String imagePath924 = "image/starwars/starwarsTom.jpg";
+		imagePaths924.add(imagePath924);
+
+		List<String> imagePaths925 = new ArrayList<String>();
+		String imagePath925 = "image/starwars/starwarsNico.jpg";
+		imagePaths925.add(imagePath925);
+
+		List<String> imagePaths926 = new ArrayList<String>();
+		String imagePath926 = "image/starwars/starwarsAli.jpg";
+		imagePaths926.add(imagePath926);
+
+		List<String> imagePaths927 = new ArrayList<String>();
+		String imagePath927 = "image/starwars/starwarsGuy.jpg";
+		imagePaths927.add(imagePath927);
+
+		List<String> imagePaths928 = new ArrayList<String>();
+		String imagePath928 = "image/starwars/starwarsRuss.jpg";
+		imagePaths928.add(imagePath928);
+		
+		
 		// Images recompenses BOSS
 		
 		List<String> imagePaths1001 = new ArrayList<String>();
@@ -618,9 +722,9 @@ public class ItemManager implements Serializable {
 		
 		Arme ballon = new Arme(506, "Ballon de foot", "La balle molle", imagePaths506, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.BALLON, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		Arme fusil = new Arme(507, "Fusil de chasse", "Peut tuer un ragondin", imagePaths507, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.FUSIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme pistoletAEau = new Arme(534, "Pissstolet à eau", "C'est vraiment de l'eau?", imagePaths534, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PISTOLET_A_EAU, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme pistoletAEau = new Arme(534, "Pissstolet a eau", "C'est vraiment de l'eau?", imagePaths534, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PISTOLET_A_EAU, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		Arme reveil = new Arme(535, "Reveil midi", "Pour les matins difficiles", imagePaths535, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.REVEIL, ArmeClasse.GRIS, PersoStat.LUCK, false);
-		Arme trefle = new Arme(536, "Trefle à 4 feuilles", "La grosse chatte poilue", imagePaths536, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.TREFLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
+		Arme trefle = new Arme(536, "Trefle a 4 feuilles", "La grosse chatte poilue", imagePaths536, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.TREFLE, ArmeClasse.GRIS, PersoStat.LUCK, false);
 		Arme pain = new Arme(537, "Baguette de pain", "Le pain c'est la vie!", imagePaths537, sonPaths1, videoPathsNull, PersoPrenom.Johann, 0, 0, ArmeType.PAIN, ArmeClasse.GRIS, PersoStat.LUCK, false);
 
 		Arme ventoline = new Arme(508, "Ventoline", "Tube qui contient de l'air", imagePaths508, sonPaths1, videoPathsNull, PersoPrenom.Pierre, 0, 0, ArmeType.VENTOLINE, ArmeClasse.GRIS, PersoStat.AGILITE, false);
@@ -641,7 +745,7 @@ public class ItemManager implements Serializable {
 		Arme epices = new Arme(513, "Sachet d'epices", "Differentes varietes de paprika", imagePaths513, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.EPICES, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 		Arme micro = new Arme(514, "Microphone", "Ne pas sucer sinon le son sature", imagePaths514, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.MICRO, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 		Arme plug = new Arme(522, "Plug", "S'emboite n'importe ou", imagePaths522, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.PLUG, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
-		Arme glacon = new Arme(523, "Glaçon", "Pour les soirees caliente", imagePaths523, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.GLACON, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme glacon = new Arme(523, "Glacon", "Pour les soirees caliente", imagePaths523, sonPaths1, videoPathsNull, PersoPrenom.Ali, 0, 0, ArmeType.GLACON, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 
 		Arme verre = new Arme(515, "Verre vide", "Rhabilles le ptit avant qu'il prenne froid", imagePaths515, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.VERRE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme bouteille = new Arme(516, "Bouteille vide", "Le cauchemar de Guy", imagePaths516, sonPaths1, videoPathsNull, PersoPrenom.Guillaume, 0, 0, ArmeType.BOUTEILLE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
@@ -689,12 +793,12 @@ public class ItemManager implements Serializable {
 		Arme fusilFemme = new Arme(577, "Fusil Femme", "Elle fait du bruit!", imagePaths577, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.FUSIL_QUI_PARLE_FEMME_CHAUDE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme mitraillette = new Arme(578, "Sulfateuse", "La fameuse!", imagePaths578, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.MITRAILLETTE, ArmeClasse.GRIS, PersoStat.ENDURANCE, false);
 		Arme sniper = new Arme(579, "Sniper", "L'arme favorite des campeurs-campeuses!", imagePaths579, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.SNIPER, ArmeClasse.GRIS, PersoStat.INTELLIGENCE, false);
-		Arme bazooka = new Arme(580, "Bazooka", "Bachi-bouzouk %@!$^§¨*?~µ°#&/<£¤", imagePaths580, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BAZOOKA, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
+		Arme bazooka = new Arme(580, "Bazooka", "Bachi-bouzouk <%@!$?#/>", imagePaths580, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.BAZOOKA, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme ceinture = new Arme(581, "Ceinture Explosive", "Je ne suis pas Charlie!", imagePaths581, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.CEINTURE_EXPLOSIF, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme grenade = new Arme(582, "Grenade", "Creuveeeeeeez", imagePaths582, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GRENADE, ArmeClasse.GRIS, PersoStat.EXPLOIT, false);
 		Arme lanceGrenade = new Arme(583, "Lance Grenade", "Pas pour les pd", imagePaths583, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_GRENADE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
 		Arme lanceRoquette = new Arme(584, "Lance Roquette", "A la goldeneye 64", imagePaths584, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.LANCE_ROQUETTE, ArmeClasse.GRIS, PersoStat.TECHNIQUE, false);
-		Arme god = new Arme(585, "God montguichet", "Plus de 30 kilojoules mais deja souille par Ali", imagePaths585, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GOD, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
+		Arme god = new Arme(585, "God montguichet", "Plus de 30 kilojoules", imagePaths585, sonPaths1, videoPathsNull, PersoPrenom.GROUPE, 0, 0, ArmeType.GOD, ArmeClasse.GRIS, PersoStat.RAPIDITE, false);
 		
 		// Drogues
 		
@@ -745,24 +849,36 @@ public class ItemManager implements Serializable {
 		// TODO Donner les cartes en tant que recompenses de missions
 		// TODO Faire les rapports entre la carte et le joueur (Jo = Popovich)
 		// TODO Faire une mission combat contre persos dbz
-		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "Carte de San Goku",  imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "Carte de San Gohan", imagePaths2, sonPaths2, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Carte de Krilin",    imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ4 = new Item(904, "Carte DBZ n°4", "Carte de Yamcha",    imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ5 = new Item(905, "Carte DBZ n°5", "Carte de Picolo",    imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ6 = new Item(906, "Carte DBZ n°6", "Carte de Vegeta",    imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ7 = new Item(907, "Carte DBZ n°7", "Carte de Cell",      imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		Item carteDBZ8 = new Item(908, "Carte DBZ n°8", "Carte de Spopovich", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_DBZ, false);
-		
 		// TODO Faire une mission combat contre persos crados
-		Item carteCrados1 = new Item(911, "Carte Crados n°1", "Carte de Johann", imagePaths1, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados2 = new Item(912, "Carte Crados n°2", "Carte de Nicolas", imagePaths2, sonPaths2, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados3 = new Item(913, "Carte Crados n°3", "Carte de Pierre", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados4 = new Item(914, "Carte Crados n°4", "Carte de Yannick", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados5 = new Item(915, "Carte Crados n°5", "Carte de Thomas", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados6 = new Item(916, "Carte Crados n°6", "Carte de Ali", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados7 = new Item(917, "Carte Crados n°7", "Carte de Guillaume", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
-		Item carteCrados8 = new Item(918, "Carte Crados n°8", "Carte de Jonathan", imagePaths3, sonPaths1, null, PersoPrenom.GROUPE, ItemType.CARTE_CRADOS, false);
+		// TODO Faire une mission combat contre persos starwars
+
+		Item carteDBZ1 = new Item(901, "Carte DBZ n°1", "San Guyku - La technique de l'homme bourre (Montre sa bite, chasse les serpents et ingurgite)",  imagePaths901, sonPaths1, null, PersoPrenom.Guillaume, ItemType.CARTE_DBZ, false);
+		Item carteDBZ2 = new Item(902, "Carte DBZ n°2", "San Johan - Kamehamehaaaaarg (Sait faire le Malaxe-Sen-Kouille et a sauver l'humanite dans l'anonymat)", imagePaths902, sonPaths2, null, PersoPrenom.Johann, ItemType.CARTE_DBZ, false);
+		Item carteDBZ3 = new Item(903, "Carte DBZ n°3", "Kralin - La bouchee du couchee de soleil (Point d'indou et probleme de nez, il finira par se marrier a un cyborg",    imagePaths903, sonPaths1, null, PersoPrenom.Ali, ItemType.CARTE_DBZ, false);
+		Item carteDBZ4 = new Item(904, "Carte DBZ n°4", "Yamcha - La technique du louveteau",    imagePaths904, sonPaths1, null, PersoPrenom.Yannick, ItemType.CARTE_DBZ, false);
+		Item carteDBZ5 = new Item(905, "Carte DBZ n°5", "Nicolo - Bras/Grapin (Peut devenir geant mais le fait pas souvent)",    imagePaths905, sonPaths1, null, PersoPrenom.Nicolas, ItemType.CARTE_DBZ, false);
+		Item carteDBZ6 = new Item(906, "Carte DBZ n°6", "Viergeta - Solution Final Flash (Coupe de cheveux identique)",    imagePaths906, sonPaths1, null, PersoPrenom.Thomas, ItemType.CARTE_DBZ, false);
+		Item carteDBZ7 = new Item(907, "Carte DBZ n°7", "Cell-main - Absorption par la queue (Fait une DJ Pierrot si il est trop plein)",      imagePaths907, sonPaths1, null, PersoPrenom.Pierre, ItemType.CARTE_DBZ, false);
+		Item carteDBZ8 = new Item(908, "Carte DBZ n°8", "Jojovich - John Jojovich (Est passe du cote obscur pour avoir de la masse et a humilie une meuf en public)", imagePaths908, sonPaths1, null, PersoPrenom.Jonathan, ItemType.CARTE_DBZ, false);
+		
+		Item carteCrados1 = new Item(911, "Carte Crados n°1", "Carte de Johann", imagePaths911, sonPaths1, null, PersoPrenom.Johann, ItemType.CARTE_CRADOS, false);
+		Item carteCrados2 = new Item(912, "Carte Crados n°2", "Carte de Nicolas", imagePaths912, sonPaths2, null, PersoPrenom.Nicolas, ItemType.CARTE_CRADOS, false);
+		Item carteCrados3 = new Item(913, "Carte Crados n°3", "Carte de Pierre", imagePaths913, sonPaths1, null, PersoPrenom.Pierre, ItemType.CARTE_CRADOS, false);
+		Item carteCrados4 = new Item(914, "Carte Crados n°4", "Carte de Yannick", imagePaths914, sonPaths1, null, PersoPrenom.Yannick, ItemType.CARTE_CRADOS, false);
+		Item carteCrados5 = new Item(915, "Carte Crados n°5", "Carte de Thomas", imagePaths915, sonPaths1, null, PersoPrenom.Thomas, ItemType.CARTE_CRADOS, false);
+		Item carteCrados6 = new Item(916, "Carte Crados n°6", "Carte de Ali", imagePaths916, sonPaths1, null, PersoPrenom.Ali, ItemType.CARTE_CRADOS, false);
+		Item carteCrados7 = new Item(917, "Carte Crados n°7", "Carte de Guillaume", imagePaths917, sonPaths1, null, PersoPrenom.Guillaume, ItemType.CARTE_CRADOS, false);
+		Item carteCrados8 = new Item(918, "Carte Crados n°8", "Carte de Jonathan", imagePaths918, sonPaths1, null, PersoPrenom.Jonathan, ItemType.CARTE_CRADOS, false);
+		
+		Item carteStarWars1 = new Item(921, "Carte StarWars n°1", "Obi Yan Kenobi",  imagePaths921, sonPaths1, null, PersoPrenom.Yannick, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars2 = new Item(922, "Carte StarWars n°2", "Yoda", imagePaths922, sonPaths2, null, PersoPrenom.Johann, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars3 = new Item(923, "Carte StarWars n°3", "C3-Pierrot",    imagePaths923, sonPaths1, null, PersoPrenom.Pierre, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars4 = new Item(924, "Carte StarWars n°4", "DAR2 D2",    imagePaths924, sonPaths1, null, PersoPrenom.Thomas, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars5 = new Item(925, "Carte StarWars n°5", "Nicolan Solo",    imagePaths925, sonPaths1, null, PersoPrenom.Nicolas, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars6 = new Item(926, "Carte StarWars n°6", "Aleia",    imagePaths926, sonPaths1, null, PersoPrenom.Ali, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars7 = new Item(927, "Carte StarWars n°7", "Guy-wok",      imagePaths927, sonPaths1, null, PersoPrenom.Guillaume, ItemType.CARTE_STARWARS, false);
+		Item carteStarWars8 = new Item(928, "Carte StarWars n°8", "Joba le hunt", imagePaths928, sonPaths1, null, PersoPrenom.Jonathan, ItemType.CARTE_STARWARS, false);
+
 		
 		// Recompenses de BOSS
 		// TODO infos recompenses de BOSS marrantes
@@ -940,6 +1056,16 @@ public class ItemManager implements Serializable {
 		items.add(carteCrados6);
 		items.add(carteCrados7);
 		items.add(carteCrados8);
+		
+		items.add(carteStarWars1);
+		items.add(carteStarWars2);
+		items.add(carteStarWars3);
+		items.add(carteStarWars4);
+		items.add(carteStarWars5);
+		items.add(carteStarWars6);
+		items.add(carteStarWars7);
+		items.add(carteStarWars8);
+
 
 		// Refresh Listes
 		triItems();

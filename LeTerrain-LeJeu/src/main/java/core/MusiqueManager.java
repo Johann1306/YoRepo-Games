@@ -45,6 +45,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.VBox;
 import modele.item.media.audio.Musique;
 import modele.item.mission.Mission;
+import modele.item.mission.enums.MissionType;
 import modele.item.personnage.EnnemiType;
 import modele.item.personnage.PersoPrenom;
 import modele.item.personnage.PersonnagePrincipal;
@@ -321,7 +322,7 @@ public class MusiqueManager implements Serializable {
 		List<Musique> musiques = new ArrayList<>();
 		if (mission.getJeu() == NomJeu.JEU_COMBAT) {
 			
-			if(mission.getTypeEnnemis().name().equals(EnnemiType.BOSS.name())) {
+			if(mission.getMissionType().name().equals(MissionType.BOSS.name())) {
 				// Lance une liste de musique de combat aleatoire BOSS
 				musiques = MenuPrincipal.getMainFrame().getCoreManager().getMusiqueManager().getMusiquesBoss();
 			} else {

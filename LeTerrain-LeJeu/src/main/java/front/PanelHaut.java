@@ -105,22 +105,28 @@ public class PanelHaut extends JPanel {
 //		if (!t.isAlive()) {
 //			t.start();
 //		}
+
+		// label avancement du jeu
+		JLabel labelAvancement = new JLabel(" 0 / 1000 ");
 		
 		// label Difficulte
 		Difficulte difficultePartie = MenuPrincipal.getMainFrame().getCoreManager().getDifficultePartie();
 		JLabel labelDifficulte = new JLabel(difficultePartie.name());
+		
 		if (difficultePartie == Difficulte.FACILE) {
 			labelDifficulte.setForeground(Color.GREEN);
+			labelAvancement.setForeground(Color.GREEN);
 		} else if (difficultePartie == Difficulte.NORMAL) {
 			labelDifficulte.setForeground(Color.BLUE);
+			labelAvancement.setForeground(Color.BLUE);
 		} else if (difficultePartie == Difficulte.DIFFICILE) {
 			labelDifficulte.setForeground(Color.RED);
+			labelAvancement.setForeground(Color.RED);
 		} else if (difficultePartie == Difficulte.HEROIQUE) {
 			labelDifficulte.setForeground(Color.MAGENTA);
+			labelAvancement.setForeground(Color.MAGENTA);
 		} 
 		
-		// label avancement du jeu
-		JLabel labelAvancement = new JLabel(" 0 / 100 ");
 		
 		// date
 		JPanel panelDate = new JPanel();
@@ -133,7 +139,9 @@ public class PanelHaut extends JPanel {
 		
 		// bouton passer
 		JButton boutonPasserNext = new JButton(Constante.SYMBOLE_PASSER_NEXT);
-		JButton boutonPasser = new JButton("PASSER");
+		boutonPasserNext.setToolTipText("Avance jusqu'au prochain evenement");
+		JButton boutonPasser = new JButton(Constante.SYMBOLE_PASSER_1H);
+		boutonPasser.setToolTipText("Avance dans le temps de une heure");
 		boutonPasser.addActionListener(new ActionListener() {
 			
 			@Override
@@ -178,6 +186,9 @@ public class PanelHaut extends JPanel {
 					messageLabel2.setFont(Constante.MARIO_FONT_MENU_3);
 					JOptionPane.showMessageDialog(MenuPrincipal.getMainFrame(), messageLabel2, "C'est l'heure de se reveiller", 0, resizeImageJour);
 				}
+				
+				int score = MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().calculeScoreFinal();
+				labelAvancement.setText(" "+ score + " / 1000 ");
 
 				// Refresh du panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
@@ -239,6 +250,10 @@ public class PanelHaut extends JPanel {
 						boutonPasserNext.setEnabled(true);
 					}
 				}
+				
+				int score = MenuPrincipal.getMainFrame().getCoreManager().getMissionManager().calculeScoreFinal();
+				labelAvancement.setText(" "+ score + " / 1000 ");
+				
 				// Refresh des panel du perso courant
 				MainFrame.getPanelBas().refreshPanelBasByPerso(MainFrame.getPanelCentre().getPanelShowing().getName());
 				MainFrame.getPanelPersonnage().refreshMortsPersonnage();

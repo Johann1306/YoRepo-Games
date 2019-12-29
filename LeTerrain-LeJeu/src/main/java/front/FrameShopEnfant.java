@@ -165,6 +165,8 @@ public class FrameShopEnfant extends FrameJeu {
 		content.add(panelEst, BorderLayout.EAST);
 		content.add(panelSud, BorderLayout.SOUTH);
 		
+		this.setUndecorated(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setContentPane(content);
 		this.setVisible(true);
 	}
@@ -176,9 +178,9 @@ public class FrameShopEnfant extends FrameJeu {
 		// Panel Achat
 		
 		JPanel panelAchatLabel = new JPanel();
-		JLabel labelAchat = new JLabel(" - Objets a acheter - ");
+		JLabel labelAchat = new JLabel(" < Objets a acheter > ");
 		labelAchat.setFont(Constante.MARIO_FONT_LABEL_SHOP);
-		labelAchat.setForeground(Color.CYAN);
+		labelAchat.setForeground(Color.YELLOW);
 		panelAchatLabel.add(labelAchat);
 		
 		JPanel panelAchat = new JPanel();
@@ -328,9 +330,9 @@ public class FrameShopEnfant extends FrameJeu {
 		// Panel Vente
 
 		JPanel panelVenteLabel = new JPanel();
-		JLabel labelVente = new JLabel(" - Objets a vendre - ");
+		JLabel labelVente = new JLabel(" < Objets a vendre > ");
 		labelVente.setFont(Constante.MARIO_FONT_LABEL_SHOP);
-		labelVente.setForeground(Color.YELLOW);
+		labelVente.setForeground(Color.CYAN);
 		panelVenteLabel.add(labelVente);
 		
 		JPanel panelVente = new JPanel();

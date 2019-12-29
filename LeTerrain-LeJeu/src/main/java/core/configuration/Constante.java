@@ -13,6 +13,12 @@ public class Constante {
 	public static final Dimension PERSO_IMAGE_DIMENSION_40_40 = new Dimension(40, 40);
 	public static final Dimension PERSO_IMAGE_DIMENSION_180_180 = new Dimension(180, 180);
 	public static final Dimension PERSO_IMAGE_DIMENSION_360_360 = new Dimension(360, 360);
+	public static final Dimension CRADOS_IMAGE_DIMENSION_360_500 = new Dimension(360, 500);
+	public static final Dimension STARWARS_IMAGE_DIMENSION_360_500 = new Dimension(360, 500);
+	public static final Dimension DBZ_IMAGE_DIMENSION_360_500 = new Dimension(360, 500);
+	public static final Dimension CRADOS_IMAGE_DIMENSION_130_180 = new Dimension(130, 180);
+	public static final Dimension STARWARS_IMAGE_DIMENSION_130_180 = new Dimension(130, 180);
+	public static final Dimension DBZ_IMAGE_DIMENSION_130_180 = new Dimension(130, 180);
 	public static final Dimension ARME_IMAGE_DIMENSION_25_25 = new Dimension(25, 25);
 	public static final Dimension ARME_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
 	public static final Dimension ARGENT_IMAGE_DIMENSION_100_100 = new Dimension(100, 100);
@@ -24,7 +30,8 @@ public class Constante {
 	public static final Dimension FENETRE_COMBAT_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_COURSE_DIMENSION = new Dimension(1000,1000);
 	public static final Dimension FENETRE_QUIZZ_DIMENSION = new Dimension(1000,1000);
-	public static final Dimension FENETRE_QUIZZ_DIMENSION_QUESTION = new Dimension(750,500);
+	public static final Dimension FENETRE_QUIZZ_DIMENSION_QUESTION = new Dimension(1400,500);
+	public static final Dimension INFO_MISSION_800_100 = new Dimension(800,50);
 	public static final Dimension PANEL_CENTRE_DIMENSION = new Dimension(2000,1000);
 	public static final Dimension BOUTON_MISSIONS_DIMENSION = new Dimension(300,50); // pas exact
 	public static final Dimension BOUTON_LIEU_DIMENSION = new Dimension(500,50);
@@ -60,30 +67,46 @@ public class Constante {
 	public static final Font ZELDA_FONT_MENU_SELECTED = new Font("Triforce", Font.PLAIN, 23);
 	public static final Font ZELDA_FONT_TITRE = new Font("Triforce", Font.PLAIN, 30);
 	public static final Font MARIO_FONT_TITRE = new Font("Super Mario 256", Font.PLAIN, 100);
-	public static final Font STARWARS_FONT_TITRE = new Font("Triforce", Font.BOLD, 90);
-	public static final Font STARWARS_FONT_SOUS_TITRE = new Font("Triforce", Font.BOLD, 40);
+	public static final Font STARWARS_FONT_TITRE = new Font("Serif", 1, 90);
+	public static final Font STARWARS_FONT_SOUS_TITRE = new Font("Serif", Font.BOLD, 30);
+	public static final Font ZELDA_FONT_SOUS_TITRE_SYMBOLE = new Font("Triforce", Font.BOLD, 70);
 //	public static final Font STARWARS_FONT_TITRE = new Font("Hylia", Font.BOLD, 90);
 //	public static final Font STARWARS_FONT_SOUS_TITRE = new Font("Triforce", Font.PLAIN, 40);
 	public static final Font MARIO_FONT_SOUS_TITRE = new Font("codeman38_press-start", Font.PLAIN, 30);
 	public static final Font MARIO_FONT_INFO_TITRE = new Font("codeman38_press-start", Font.PLAIN, 20);
 	public static final Font MARIO_FONT_MENU = new Font("Super Mario Bros.", Font.PLAIN, 20);
-	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 15);
+	public static final Font MARIO_FONT_MENU_2 = new Font("Super Mario 256", Font.PLAIN, 14);
 	public static final Font MARIO_FONT_MENU_3 = new Font("Super Mario 256", Font.PLAIN, 20);
-	public static final Font MARIO_FONT_QUESTION_QUIZZ = new Font("Super Mario 256", Font.PLAIN, 30);
+	public static final Font MARIO_FONT_MENU_START = new Font("Super Mario 256", Font.PLAIN, 55);
+	public static final Font MARIO_FONT_MENU_START_2 = new Font("Super Mario Bros.", Font.PLAIN, 60);
+	public static final Font MARIO_FONT_MENU_FICHE = new Font("Super Mario 256", Font.PLAIN, 20);
+	public static final Font MARIO_FONT_MENU_FICHE_2 = new Font("Super Mario 256", Font.PLAIN, 25);
+	public static final Font MARIO_FONT_MENU_FICHE_3 = new Font("Super Mario 256", Font.PLAIN, 30);
+	public static final Font MARIO_FONT_REPONSE_1 = new Font("Super Mario 256", Font.PLAIN, 15);
+	public static final Font MARIO_FONT_REPONSE_2 = new Font("Super Mario Bros.", Font.PLAIN, 15);
+	public static final Font MARIO_FONT_QUIZZ_TIMER = new Font("Super Mario 256", Font.PLAIN, 80);
+	public static final Font MARIO_FONT_QUESTION_QUIZZ = new Font("Super Mario 256", Font.PLAIN, 40);
 	public static final Font MARIO_FONT_PANEL_INFO_MISSION = new Font("Serif", Font.BOLD, 10);
+	public static final Font MARIO_FONT_PANEL_INFO_POI = new Font("Serif", Font.BOLD, 20);
 	public static final Font MARIO_FONT_SHOP_TABLEAU = new Font("Super Mario 256", Font.BOLD, 12);
 	public static final Font MARIO_FONT_SHOP_TABLEAU_BOUTONS = new Font("Super Mario 256", Font.BOLD, 20);
 	public static final Font MARIO_FONT_SHOP_ENTETES = new Font("Super Mario 256", Font.BOLD, 12);
 	public static final Font MARIO_FONT_LABEL_SHOP = new Font("Super Mario 256", Font.BOLD, 30);
 	
 	public static final String SYMBOLE_PASSER_NEXT = ">>";
+	public static final String SYMBOLE_PASSER_1H = ">";
 
 	public static final int MENU_HEIGHT = 250;
 	public static final int MENU_WIDTH = 380;
 
 	public static final Color COULEUR_MISSION_REPETABLE = Color.GREEN;
-	public static final Color COULEUR_MISSION_PRINCIPAL = Color.BLUE;
+	public static final Color COULEUR_MISSION_REPETABLE_2 = Color.WHITE;
+	public static final Color COULEUR_MISSION_PRINCIPAL = Color.CYAN;
+	public static final Color COULEUR_MISSION_PRINCIPAL_2 = Color.RED;
 	public static final Color COULEUR_MISSION_BOSS = Color.MAGENTA;
+	public static final Color COULEUR_MISSION_BOSS_2 = Color.YELLOW;
+	public static final Color COULEUR_MISSION_QUIZZ = Color.YELLOW;
+	public static final Color COULEUR_MISSION_QUIZZ_2 = Color.GREEN;
 	
 	// Quizz
 	public static final double QUIZZ_MAX_TEMPS = 10.00;
@@ -119,6 +142,14 @@ public class Constante {
 	public static final int RATIO_REGEN_MANA = 4;
 	public static final int RATIO_BRULURE_MANA = 4;
 	public static final int RATIO_ABSORPTION_MANA = 4;
+
+
+
+
+
+
+
+
 
 
 

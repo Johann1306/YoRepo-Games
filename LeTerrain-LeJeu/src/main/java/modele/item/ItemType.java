@@ -75,6 +75,7 @@ public enum ItemType {
 	CARTE_FOOT,
 	CARTE_DBZ,
 	CARTE_CRADOS,
+	CARTE_STARWARS,
 	CARTE_MAGIC;
 	
 }
