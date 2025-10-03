@@ -42,7 +42,7 @@ public class PoiManager implements Serializable {
 		sonPaths2.add(sonPath2);
 		
 //		List<String> null = new ArrayList<String>();
-		String videoPath1 = "video/Trololo.mp4";
+//		String videoPath1 = "video/Trololo.mp4";
 //		null.add(videoPath1);
 		
 		// TODO faire toutes les missions
