@@ -29,7 +29,6 @@ public class BonusManager implements Serializable {
 		Map<PersoPrenom,Map<PersoStat,Integer>> bonusMapVide = new HashMap<PersoPrenom,Map<PersoStat,Integer>>();
 		
 //		Map<PersoStat,Integer> statsMapNicoVide = new HashMap<PersoStat,Integer>();
-//
 //		Map<PersoStat,Integer> statsMapPipoVide = new HashMap<PersoStat,Integer>();
 //		Map<PersoStat,Integer> statsMapYacoVide = new HashMap<PersoStat,Integer>();
 //		Map<PersoStat,Integer> statsMapTomVide = new HashMap<PersoStat,Integer>();
